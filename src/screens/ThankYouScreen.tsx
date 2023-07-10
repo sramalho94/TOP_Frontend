@@ -1,13 +1,13 @@
-import { View, Text } from 'react-native'
+import { View, Text, SafeAreaView } from 'react-native'
 import React from 'react'
 
 type Props = {}
 
 const ThankYouScreen = (props: Props) => {
     return (
-        <View>
+        <SafeAreaView>
             <Text>ThankYouScreen</Text>
-        </View>
+        </SafeAreaView>
     )
 }
 
