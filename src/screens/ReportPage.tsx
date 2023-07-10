@@ -5,8 +5,10 @@ type Props = {}
 
 const ReportPage = (props: Props) => {
     return (
-        <SafeAreaView>
-            <Text>ReportPage</Text>
+        <SafeAreaView className="mx-auto">
+            <View className="h-[110] mt-[46]">
+                <Text className="text-lg font-bold">Report COVID-19 Test Result</Text>
+            </View>
         </SafeAreaView>
     )
 }
