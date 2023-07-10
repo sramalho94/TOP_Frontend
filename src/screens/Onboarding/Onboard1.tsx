@@ -4,7 +4,9 @@ import {
     View,
     Text,
     TouchableOpacity,
+    Image,
 } from 'react-native';
+import NoImage from '../../../assets/nopicture.png'
 
 const Onboard1 = () => {
 
@@ -12,8 +14,9 @@ const Onboard1 = () => {
     return (
         <>
             <SafeAreaView>
-                <View>
-                    <Text>Onboard Page 1</Text>
+                <View className="">
+                    <Image source={NoImage}></Image>
+                    <Text>What the app does and the impact of data</Text>
                 </View>
             </SafeAreaView>
         </>
