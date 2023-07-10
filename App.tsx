@@ -16,10 +16,15 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
-import Onboard1 from './src/screens/Onboard1';
+import Onboard1 from './src/screens/Onboarding/Onboard1';
 
 function App(): JSX.Element {
-  return <SafeAreaView></SafeAreaView>;
+  return (
+    <SafeAreaView>
+      <Onboard1 />
+
+    </SafeAreaView>
+  );
 }
 
 export default App;
