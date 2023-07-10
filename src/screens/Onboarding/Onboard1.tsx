@@ -25,10 +25,10 @@ const Onboard1 = () => {
                         </View>
 
                         {/* container for dots and buttons */}
-                        <View className="flex-1 flex-end justify-self-end">
+                        <View className="flex-1 flex-end mt-32 justify-end">
 
                             {/* progress dots */}
-                            <View className="flex-row mx-auto mt-72">
+                            <View className="flex-row mx-auto">
                                 <View className="rounded-lg bg-black w-3 h-3 m-1"></View>
                                 <View className="rounded-lg bg-gray-300 w-3 h-3 m-1"></View>
                                 <View className="rounded-lg bg-gray-300 w-3 h-3 m-1"></View>
