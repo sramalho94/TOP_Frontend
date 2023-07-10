@@ -6,6 +6,7 @@
  */
 
 import React from 'react';
+import SignInPage from './src/screens/SignInPage';
 
 import {
   SafeAreaView,
@@ -16,10 +17,12 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
-import Onboard1 from './src/screens/Onboard1';
 
 function App(): JSX.Element {
-  return <SafeAreaView></SafeAreaView>;
+  return <SafeAreaView>
+    <SignInPage />
+
+  </SafeAreaView>;
 }
 
 export default App;
