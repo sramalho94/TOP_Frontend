@@ -1,13 +1,8 @@
 import React, { useState } from 'react';
-import {
-  SafeAreaView,
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-} from 'react-native';
+import { SafeAreaView, View, Text, TextInput, TouchableOpacity } from 'react-native';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+
 
 const SignInPage: React.FC = () => {
   const [form, setForm] = useState({
@@ -16,7 +11,8 @@ const SignInPage: React.FC = () => {
   });
 
   return (
-    <SafeAreaView className="flex-1 bg-blueGray-300">
+    <SafeAreaView>
+    <View className="flex-1 bg-blueGray-300">
       <View className="p-6 flex-1">
         <View className="my-9">
           <View className="self-center w-20 h-20 mb-9 bg-white rounded-3xl flex items-center justify-center">
@@ -24,11 +20,11 @@ const SignInPage: React.FC = () => {
           </View>
 
           <Text className="text-2xl font-bold text-gray-900 mb-2 text-center">
-            Welcome to <Text className="text-blue-500">Covid App</Text>
+            Welcome to <Text className="text-blue-500">RealApps</Text>
           </Text>
 
           <Text className="text-base font-medium text-gray-600 text-center">
-            Keep America Covid Free!
+            Collaborate with your friends
           </Text>
         </View>
 
@@ -106,6 +102,7 @@ const SignInPage: React.FC = () => {
           </Text>
         </View>
       </View>
+    </View>
     </SafeAreaView>
   );
 };
