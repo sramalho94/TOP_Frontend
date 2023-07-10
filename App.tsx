@@ -22,7 +22,7 @@ import Onboard1 from './src/screens/Onboard1';
 
 function App(): JSX.Element {
   return <SafeAreaView>
-    <LandingPage />
+
   </SafeAreaView>;
 }
 
