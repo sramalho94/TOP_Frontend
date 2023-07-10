@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView } from 'react-native'
+import { View, Text, SafeAreaView, TextInput } from 'react-native'
 import React from 'react'
 
 type Props = {}
@@ -11,6 +11,10 @@ const ReportPage = (props: Props) => {
             </View>
             <View>
                 <Text className="text-lg font-bold">What were the results of your test?</Text>
+                <View></View>
+                <View></View>
+                <Text>Zip Code*</Text>
+                <TextInput></TextInput>
             </View>
         </SafeAreaView>
     )
