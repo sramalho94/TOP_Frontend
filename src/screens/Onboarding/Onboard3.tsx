@@ -6,14 +6,14 @@ import {
     TouchableOpacity,
 } from 'react-native';
 
-const Onboard1 = () => {
+const Onboard3 = () => {
 
 
     return (
         <>
             <SafeAreaView>
                 <View>
-                    <Text>Onboard Page 1</Text>
+                    <Text>Onboard Page 3</Text>
                 </View>
             </SafeAreaView>
         </>
@@ -21,4 +21,4 @@ const Onboard1 = () => {
 
 }
 
-export default Onboard1;
+export default Onboard3;

@@ -16,7 +16,7 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
-import Onboard1 from './src/screens/Onboarding/Onboard1';
+import Onboard1 from './src/screens/onboarding/Onboard1';
 
 function App(): JSX.Element {
   return (
