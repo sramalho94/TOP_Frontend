@@ -6,7 +6,9 @@
  */
 
 import React from 'react';
-
+import LandingPage from './src/screens/LandingPage';
+import ReportPage from './src/screens/ReportPagePage';
+import ThankYouScreen from './src/screens/ThankYouScreen';
 import {
   SafeAreaView,
   ScrollView,
@@ -19,7 +21,9 @@ import {
 import Onboard1 from './src/screens/Onboard1';
 
 function App(): JSX.Element {
-  return <SafeAreaView></SafeAreaView>;
+  return <SafeAreaView>
+
+  </SafeAreaView>;
 }
 
 export default App;
