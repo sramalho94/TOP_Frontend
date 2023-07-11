@@ -19,8 +19,10 @@ export default function SignInPage() {
           </View>
 
           <View className="m-6">
-            <View className="m-6 bg-red-500">
-              <Text className="w-36 h-11 flex items-center justify-center text-black font-medium">
+            <View className="mb-6">
+            {/* <View className="m-6 bg-red-500"> */}
+
+              <Text className="w-36 h-8 flex items-center justify-center text-black font-medium">
                 Username
               </Text>
 
@@ -29,22 +31,23 @@ export default function SignInPage() {
                 autoCorrect={false}
                 keyboardType="email-address"
                 onChangeText={email => setForm({ ...form, email })}
-                placeholder="john@example.com"
+                // placeholder="john@example.com"
                 placeholderTextColor="#6b7280"
                 className="h-11 bg-white pl-8 pr-6 rounded-lg text-base font-medium text-gray-700 border"
                 value={form.email}
               />
             </View>
 
-            <View className="mb-6 bg-red-500">
-              <Text className="w-36 h-11 flex items-center justify-center text-black font-medium">
+            <View className="mb-6">
+
+              <Text className="w-36 h-8 flex items-center justify-center text-black font-medium">
                 Password
               </Text>
 
               <TextInput
                 autoCorrect={false}
                 onChangeText={password => setForm({ ...form, password })}
-                placeholder="********"
+                // placeholder="********"
                 placeholderTextColor="#6b7280"
                 className="h-11 bg-white pl-8 pr-6 rounded-lg text-base font-medium text-gray-700 border"
                 secureTextEntry={true}
