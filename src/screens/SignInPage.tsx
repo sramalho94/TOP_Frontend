@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { SafeAreaView, View, Text, TouchableOpacity, TextInput, Image, ScrollView } from 'react-native'; View
+import { SafeAreaView, View, Text, TouchableOpacity, TextInput, Image, ScrollView } from 'react-native';
 import NoImage from "../../assets/blankimage.png"
 import Icon from 'react-native-vector-icons/Ionicons';
 
+type Props = {}
 
-
-export default function SignInPage() {
+export default function SignInPage(props: Props) {
   const [form, setForm] = useState({
-    email: '',
+    username: '',
     password: '',
   });
 
@@ -36,11 +36,11 @@ export default function SignInPage() {
               <TextInput
                 autoCapitalize="none"
                 autoCorrect={false}
-                keyboardType="email-address"
-                onChangeText={email => setForm({ ...form, email })}
+                keyboardType="default"
+                onChangeText={username => setForm({ ...form, username })}
                 placeholderTextColor="#6b7280"
                 className="h-11 bg-white pl-8 pr-6 rounded-lg text-base font-medium text-gray-700 border"
-                value={form.email}
+                value={form.username}
               />
             </View>
 
