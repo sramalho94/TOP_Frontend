@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { SafeAreaView, View, Text, TouchableOpacity, TextInput, Image, ScrollView } from 'react-native'; View
 import NoImage from "../../assets/blankimage.png"
-import Icon from 'react-native-vector-icons/FontAwesome5';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 
 
@@ -17,13 +17,13 @@ export default function SignInPage() {
       showPassword: !prevState.showPassword,
     }));
   };
-  
+
   return (
     <SafeAreaView className="w-342 m-6">
       <ScrollView>
         <View className="">
           <View className="flex flex-row justify-center align-middle">
-            <Image className="bg-green-500 w-342 h-349 m-4" source={NoImage}>
+            <Image className="w-342 h-349 m-4" source={NoImage}>
             </Image>
           </View>
 
@@ -62,7 +62,7 @@ export default function SignInPage() {
                 onPress={togglePasswordVisibility}
                 className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer"
               >
-                <Icon className="text-gray-500" name={form.showPassword ? 'eye-slash' : 'eye'} size={15}/>
+                <Icon className="text-gray-500" type="Ionicons" name={form.showPassword ? 'eye-off-outline' : 'eye-outline'} size={30} />
 
               </TouchableOpacity>
 
