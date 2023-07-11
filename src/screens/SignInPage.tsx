@@ -1,29 +1,29 @@
 import React, { useState } from 'react';
-import { SafeAreaView, View, Text, TouchableOpacity, TextInput } from 'react-native';
+import { SafeAreaView, View, Text, TouchableOpacity, TextInput, Image } from 'react-native';
 
-export default function Example() {
+export default function SignInPage() {
   const [form, setForm] = useState({
     email: '',
     password: '',
   });
 
   return (
-    <SafeAreaView style="flex-1 bg-white">
-      <View style="p-6 flex-1">
-        <View style="my-9">
-          <Text style="text-2xl font-bold text-gray-900 mb-2 text-center">
-            Welcome back!
-          </Text>
+    <SafeAreaView className="">
+      <View className="">
+        <View className="">
+          {/* <Image className="bg-green-500 w-342 h-349" source={NoImage}>
+            Keeping the World Covid Free!
+          </Image> */}
 
-          <Text style="text-base font-medium text-gray-600 text-center">
-            Sign in to your account
+          <Text className="text-base font-medium text-gray-600 text-center">
+            Please Log into your account
           </Text>
         </View>
 
-        <View style="mb-6">
-          <View style="mb-6">
-            <Text style="absolute w-36 h-11 flex items-center justify-center text-black font-medium">
-              Email address
+        <View className="mb-6">
+          <View className="mb-6">
+            <Text className="absolute w-36 h-11 flex items-center justify-center text-black font-medium">
+              Username
             </Text>
 
             <TextInput
@@ -33,13 +33,13 @@ export default function Example() {
               onChangeText={email => setForm({ ...form, email })}
               placeholder="john@example.com"
               placeholderTextColor="#6b7280"
-              style="h-11 bg-white pl-8 pr-6 rounded-lg text-base font-medium text-gray-700"
+              className="h-11 bg-white pl-8 pr-6 rounded-lg text-base font-medium text-gray-700"
               value={form.email}
             />
           </View>
 
-          <View style="mb-6">
-            <Text style="absolute w-36 h-11 flex items-center justify-center text-gray-400 font-medium">
+          <View className="mb-6">
+            <Text className="absolute w-36 h-11 flex items-center justify-center text-gray-400 font-medium">
               Password
             </Text>
 
@@ -48,21 +48,21 @@ export default function Example() {
               onChangeText={password => setForm({ ...form, password })}
               placeholder="********"
               placeholderTextColor="#6b7280"
-              style="h-11 bg-white pl-8 pr-6 rounded-lg text-base font-medium text-gray-700"
+              className="h-11 bg-white pl-8 pr-6 rounded-lg text-base font-medium text-gray-700"
               secureTextEntry={true}
               value={form.password}
             />
           </View>
 
-          <View style="mb-10">
+          <View className="mb-10">
             <TouchableOpacity
               onPress={() => {
                 // handle onPress
               }}
-              style="flex items-center justify-center rounded-md bg-black border border-black py-2 px-4"
+              className="flex items-center justify-center rounded-md bg-black border border-black py-2 px-4"
             >
-              <Text style="text-white font-semibold text-base">
-                Sign in
+              <Text className="text-white font-semibold text-base">
+                Log In
               </Text>
             </TouchableOpacity>
           </View>
@@ -72,9 +72,9 @@ export default function Example() {
               // handle link
             }}
           >
-            <Text style="text-sm font-normal text-gray-600 text-center">
+            <Text className="flex items-center justify-center rounded-md bg-black border border-black py-2 px-4">
               Don't have an account?{' '}
-              <Text style="font-semibold underline">Sign up</Text>
+              <Text className="font-semibold text-white">Sign up</Text>
             </Text>
           </TouchableOpacity>
 
@@ -83,9 +83,9 @@ export default function Example() {
               // handle link
             }}
           >
-            <Text style="text-sm font-normal text-gray-600 text-center">
+            <Text className="text-sm font-normal text-gray-600 text-center">
               Forgot Password?{' '}
-              <Text style="font-semibold underline">Reset Password</Text>
+              <Text className="font-semibold underline">Reset Password</Text>
             </Text>
           </TouchableOpacity>
         </View>
