@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { SafeAreaView, View, Text, TouchableOpacity, TextInput, Image, ScrollView } from 'react-native'; View
 import NoImage from "../../assets/blankimage.png"
+import Icon from 'react-native-vector-icons/FontAwesome5';
+
 
 
 export default function SignInPage() {
@@ -9,6 +11,13 @@ export default function SignInPage() {
     password: '',
   });
 
+  const togglePasswordVisibility = () => {
+    setForm((prevState) => ({
+      ...prevState,
+      showPassword: !prevState.showPassword,
+    }));
+  };
+  
   return (
     <SafeAreaView className="w-342 m-6">
       <ScrollView>
@@ -47,25 +56,19 @@ export default function SignInPage() {
               <TextInput
                 autoCorrect={false}
                 onChangeText={password => setForm({ ...form, password })}
-                // placeholder="********"
                 placeholderTextColor="#6b7280"
                 className="h-11 bg-white pl-8 pr-6 rounded-lg text-base font-medium text-gray-700 border"
-                secureTextEntry={true}
+                secureTextEntry={!form.showPassword}
                 value={form.password}
               />
-            </View>
-
-            <View className="mb-5">
               <TouchableOpacity
-                onPress={() => {
-                  // handle onPress
-                }}
-                className="flex items-center justify-center rounded-md bg-white border border-black py-2 px-4"
+                onPress={togglePasswordVisibility}
+                className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer"
               >
-                <Text className="text-black font-semibold text-base">
-                  Log In
-                </Text>
+                <Icon className="text-gray-500" name={form.showPassword ? 'eye-slash' : 'eye'} size={15}/>
+
               </TouchableOpacity>
+
             </View>
 
             <View className="mb-5">
