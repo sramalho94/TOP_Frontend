@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { SafeAreaView, View, Text, TouchableOpacity, TextInput, Image, ScrollView } from 'react-native';View
+import { SafeAreaView, View, Text, TouchableOpacity, TextInput, Image, ScrollView } from 'react-native'; View
 import NoImage from "../../assets/blankimage.png"
 
 
@@ -52,20 +52,33 @@ export default function SignInPage() {
               />
             </View>
 
-            <View className="mb-10">
+            <View className="mb-5">
               <TouchableOpacity
                 onPress={() => {
                   // handle onPress
                 }}
-                className="flex items-center justify-center rounded-md bg-black border border-black py-2 px-4"
+                className="flex items-center justify-center rounded-md bg-white border border-black py-2 px-4"
               >
-                <Text className="text-white font-semibold text-base">
+                <Text className="text-black font-semibold text-base">
                   Log In
                 </Text>
               </TouchableOpacity>
             </View>
 
-            <TouchableOpacity
+            <View className="mb-5">
+              <TouchableOpacity
+                onPress={() => {
+                  // handle onPress
+                }}
+                className="flex items-center justify-center rounded-md bg-white border border-black py-2 px-4"
+              >
+                <Text className="text-black font-semibold text-base">
+                  Forgot Password
+                </Text>
+              </TouchableOpacity>
+            </View>
+
+            {/* <TouchableOpacity
               onPress={() => {
                 // handle link
               }}
@@ -74,16 +87,17 @@ export default function SignInPage() {
                 Don't have an account?{' '}
                 <Text className="font-semibold text-white">Sign up</Text>
               </Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
 
             <TouchableOpacity
               onPress={() => {
                 // handle link
               }}
             >
-              <Text className="text-sm font-normal text-gray-600 text-center">
-                Forgot Password?{' '}
-                <Text className="font-semibold underline">Reset Password</Text>
+              <Text className="text-sm font-normal text-black text-center">
+                Back
+                {/* Forgot Password?{' '}
+                <Text className="font-semibold underline">Reset Password</Text> */}
               </Text>
             </TouchableOpacity>
           </View>
