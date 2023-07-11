@@ -11,11 +11,7 @@ const Onboard2 = () => {
 
     return (
         <>
-            <SafeAreaView>
-                <View>
-                    <Text>Onboard Page 2</Text>
-                </View>
-            </SafeAreaView>
+
         </>
     )
 
