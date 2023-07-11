@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { SafeAreaView, View, Text, TouchableOpacity, TextInput, Image } from 'react-native';
+import NoImage from "../../assets/blankimage.png"
+
 
 export default function SignInPage() {
   const [form, setForm] = useState({
@@ -8,20 +10,15 @@ export default function SignInPage() {
   });
 
   return (
-    <SafeAreaView className="">
+    <SafeAreaView className="w-342 m-6">
       <View className="">
-        <View className="">
-          {/* <Image className="bg-green-500 w-342 h-349" source={NoImage}>
-            Keeping the World Covid Free!
-          </Image> */}
-
-          <Text className="text-base font-medium text-gray-600 text-center">
-            Please Log into your account
-          </Text>
+        <View className="flex flex-row justify-center align-middle">
+          <Image className="bg-green-500 w-342 h-349 m-4" source={NoImage}>
+          </Image>
         </View>
 
-        <View className="mb-6">
-          <View className="mb-6">
+        <View className="m-6">
+          <View className="m-6">
             <Text className="absolute w-36 h-11 flex items-center justify-center text-black font-medium">
               Username
             </Text>
@@ -33,7 +30,7 @@ export default function SignInPage() {
               onChangeText={email => setForm({ ...form, email })}
               placeholder="john@example.com"
               placeholderTextColor="#6b7280"
-              className="h-11 bg-white pl-8 pr-6 rounded-lg text-base font-medium text-gray-700"
+              className="h-11 bg-white pl-8 pr-6 rounded-lg text-base font-medium text-gray-700 border"
               value={form.email}
             />
           </View>
@@ -48,7 +45,7 @@ export default function SignInPage() {
               onChangeText={password => setForm({ ...form, password })}
               placeholder="********"
               placeholderTextColor="#6b7280"
-              className="h-11 bg-white pl-8 pr-6 rounded-lg text-base font-medium text-gray-700"
+              className="h-11 bg-white pl-8 pr-6 rounded-lg text-base font-medium text-gray-700 border"
               secureTextEntry={true}
               value={form.password}
             />
