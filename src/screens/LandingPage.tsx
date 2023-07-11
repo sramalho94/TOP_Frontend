@@ -11,7 +11,7 @@ const LandingPage = (props: Props) => {
                 <TouchableOpacity className="border-4 border-black flex justify-center items-center w-[342] h-[52] rounded-lg ">
                     <Text className="text-lg font-bold">Log In</Text>
                 </TouchableOpacity>
-                <TouchableOpacity className="border-4 border-black flex justify-center items-center w-[342] h-[52] rounded-lg ">
+                <TouchableOpacity className="border-4 border-black flex justify-center items-center w-[342] h-[52] rounded-lg">
                     <Text className="text-lg font-bold">Create Account</Text>
                 </TouchableOpacity>
                 <TouchableOpacity className="border-4 border-black flex justify-center items-center w-[342] h-[52] rounded-lg bg-[#B4B4B4]">
