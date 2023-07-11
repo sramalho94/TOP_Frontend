@@ -18,9 +18,11 @@ const ReportPage = (props: Props) => {
     return (
         <SafeAreaView className="">
             <ScrollView>
-                <View className="h-[110] border-b-4 border-slate-200 flex-row my-6">
-                    <Icon name="arrowleft" size={30} color="#000" />
-                    <Text className="text-lg font-bold mx-auto mt-2 flex justify-center">Report COVID-19 Test Result</Text>
+                <View className="h-[90] border-b-4 border-slate-200 flex-row my-6">
+                    <TouchableOpacity className='mt-2 ml-4'>
+                        <Icon name="arrowleft" size={30} color="#000" className='' />
+                    </TouchableOpacity>
+                    <Text className="text-xl font-bold mx-auto mt-2 flex pr-12">Report COVID-19 Test Result</Text>
                 </View>
                 <View className="mx-auto my-auto">
                     <Text className="text-lg font-bold mx-auto">What were the results of your test?</Text>

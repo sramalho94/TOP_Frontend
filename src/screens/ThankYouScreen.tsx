@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView, Pressable, TouchableOpacity } from 'react-native'
+import { View, Text, SafeAreaView, TouchableOpacity } from 'react-native'
 import React from 'react'
 
 type Props = {}
