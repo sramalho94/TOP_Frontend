@@ -29,8 +29,6 @@ export default function SignInPage() {
 
           <View className="m-6">
             <View className="mb-6">
-            {/* <View className="m-6 bg-red-500"> */}
-
               <Text className="w-36 h-8 flex items-center justify-center text-black font-medium">
                 Username
               </Text>
@@ -40,7 +38,6 @@ export default function SignInPage() {
                 autoCorrect={false}
                 keyboardType="email-address"
                 onChangeText={email => setForm({ ...form, email })}
-                // placeholder="john@example.com"
                 placeholderTextColor="#6b7280"
                 className="h-11 bg-white pl-8 pr-6 rounded-lg text-base font-medium text-gray-700 border"
                 value={form.email}
@@ -97,17 +94,6 @@ export default function SignInPage() {
               </TouchableOpacity>
             </View>
 
-            {/* <TouchableOpacity
-              onPress={() => {
-                // handle link
-              }}
-            >
-              <Text className="flex items-center justify-center rounded-md bg-black border border-black py-2 px-4">
-                Don't have an account?{' '}
-                <Text className="font-semibold text-white">Sign up</Text>
-              </Text>
-            </TouchableOpacity> */}
-
             <TouchableOpacity
               onPress={() => {
                 // handle link
@@ -115,8 +101,6 @@ export default function SignInPage() {
             >
               <Text className="text-sm font-normal text-black text-center">
                 Back
-                {/* Forgot Password?{' '}
-                <Text className="font-semibold underline">Reset Password</Text> */}
               </Text>
             </TouchableOpacity>
           </View>
