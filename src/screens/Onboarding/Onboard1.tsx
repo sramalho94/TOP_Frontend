@@ -8,6 +8,7 @@ import {
     ScrollView
 } from 'react-native';
 import NoImage from '../../../assets/nopicture.png'
+import ProgressDots from '../../components/ProgressDots'
 // import { useNavigation } from '@react-navigation/native';
 // import Onboard2 from './Onboard2';
 // import { RootStackParamList } from '../../../App'
@@ -56,11 +57,8 @@ const Onboard1 = () => {
                         </View>
 
                         {/* progress dots */}
-                        <View className="flex-row justify-center">
-                            <View className="rounded-lg bg-black w-3 h-3 m-1"></View>
-                            <View className="rounded-lg bg-gray-300 w-3 h-3 m-1"></View>
-                            <View className="rounded-lg bg-gray-300 w-3 h-3 m-1"></View>
-                        </View>
+                        
+                            <ProgressDots/>
 
                     </View>
                 </View>
