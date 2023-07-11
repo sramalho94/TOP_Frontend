@@ -8,9 +8,26 @@ import {
     ScrollView
 } from 'react-native';
 import NoImage from '../../../assets/nopicture.png'
+// import { useNavigation } from '@react-navigation/native';
+// import Onboard2 from './Onboard2';
+// import { RootStackParamList } from '../../../App'
+// import { NativeStackNavigationProp } from '@react-navigation/native-stack'
+
+type Props = {};
+
+// export type NavigationProp = NativeStackNavigationProp<
+// RootStackParamList,
+// 'Onboard1'
+// > 
 
 const Onboard1 = () => {
 
+    //below is not ready yet
+    // const navigation = useNavigation();
+
+    // const handleContinuePress = () => {
+    //     navigation.navigate("Onboard2");
+    // }
 
     return (
         <>
@@ -37,6 +54,7 @@ const Onboard1 = () => {
                             {/* buttons */}
                             <View className="m-5">
                                 <TouchableOpacity className="rounded border justify-items-center">
+                                    {/* onPress={handleContinuePress} */}
                                     <Text className="text-center py-3">Continue</Text>
                                 </TouchableOpacity>
                                 <TouchableOpacity className="justify-items-center">
