@@ -79,6 +79,19 @@ export default function SignInPage() {
                 className="flex items-center justify-center rounded-md bg-white border border-black py-2 px-4"
               >
                 <Text className="text-black font-semibold text-base">
+                  Log In
+                </Text>
+              </TouchableOpacity>
+            </View>
+
+            <View className="mb-5">
+              <TouchableOpacity
+                onPress={() => {
+                  // handle onPress
+                }}
+                className="flex items-center justify-center rounded-md bg-white border border-black py-2 px-4"
+              >
+                <Text className="text-black font-semibold text-base">
                   Forgot Password
                 </Text>
               </TouchableOpacity>
