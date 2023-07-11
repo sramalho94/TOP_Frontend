@@ -37,21 +37,21 @@ const Onboard1 = () => {
                     {/* image and text */}
                     <View className="m-5 flex-1">
                         <Image className="w-full" source={NoImage}></Image>
-                        <Text className="mx-auto py-5">What the app does and the impact of data</Text>
+                        <Text className="mx-auto py-5 font-sans text-[22px]">What the app does and the impact of data</Text>
                     </View>
 
                     {/* container for dots and buttons */}
                     <View className="flex-1 flex-col-reverse">
 
-                        
+
                         {/* buttons */}
                         <View className="m-5">
                             <TouchableOpacity className="rounded border justify-items-center">
                                 {/* onPress={handleContinuePress} */}
-                                <Text className="text-center py-3">Continue</Text>
+                                <Text className="text-center py-3 font-sans text-[22px]">Continue</Text>
                             </TouchableOpacity>
                             <TouchableOpacity className="justify-items-center">
-                                <Text className="text-center py-3">Skip</Text>
+                                <Text className="text-center py-3 font-sans text-[22px]">Skip</Text>
                             </TouchableOpacity>
                         </View>
 

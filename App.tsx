@@ -27,6 +27,24 @@ function App(): JSX.Element {
 
     </SafeAreaView>
   );
+  // below is for navigation through app. . .
+  // return (
+  //   <NavigationContainer>
+  //     <Stack.Navigator>
+  //       <Stack.Screen
+  //         name="Home"
+  //         component={Home}
+  //         options={{ headerShown: false }}
+  //       />
+  //       <Stack.Screen
+  //         name="SubmittedScreen"
+  //         component={SubmittedScreen}
+  //         options={{ headerShown: false }}
+  //       />
+  //     </Stack.Navigator>
+  //   </NavigationContainer>
+  // );
+
 }
 
 export default App;
