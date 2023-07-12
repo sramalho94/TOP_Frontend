@@ -2,7 +2,7 @@ import {createContext, useContext, useEffect, useState} from 'react';
 import {Platform} from 'react-native';
 import axios from 'axios';
 import * as Keychain from 'react-native-keychain';
-import React = require('react');
+import React from 'react';
 
 interface AuthProps {
   authState?: {token: string | null; authenticated: boolean | null};
