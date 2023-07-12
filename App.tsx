@@ -19,14 +19,14 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
-import Onboard1 from './src/screens/onboarding/Onboard1';
-import Onboard2 from './src/screens/onboarding/Onboard2';
-import Onboard3 from './src/screens/onboarding/Onboard3';
+import Onboard1 from './src/screens/Onboarding/Onboard1';
+import Onboard2 from './src/screens/Onboarding/Onboard2';
+import Onboard3 from './src/screens/Onboarding/Onboard3';
 
 
 function App(): JSX.Element {
   return <SafeAreaView>
-    <SignInPage />
+
 
   </SafeAreaView>;
 }
