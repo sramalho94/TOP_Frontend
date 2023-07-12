@@ -9,31 +9,17 @@ type Props = {
 
 const ProgressDots = ({page}: Props) => {
 
-  const [dot1, setDot1] = useState<string | undefined> ("bg-black")
-  const [dot2, setDot2] = useState<string | undefined> ("bg-gray-300")
-  const [dot3, setDot3] = useState<string | undefined> ("bg-gray-300")
-
-
-  // try to clean up and find a better solution
 
   useEffect (() => {
-    if(page === 2) {
-      setDot1("bg-gray-300")
-      setDot2("bg-black")
-    } else if(page === 3) {
-      setDot1("bg-gray-300")
-      setDot2("bg-gray-300")
-      setDot3("bg-black")
-    }
 
   }, [page])
 
   return (
     <>
       <View className="flex-row justify-center">
-          <View className={`rounded-lg ${dot1} w-3 h-3 m-1 `}></View>
-          <View className={`rounded-lg ${dot2} w-3 h-3 m-1`}></View>
-          <View className={`rounded-lg ${dot3} w-3 h-3 m-1`}></View>
+          <View className={`rounded-lg ${page === 1 ? "bg-black" : "bg-gray-300" } w-3 h-3 m-1 `}></View>
+          <View className={`rounded-lg ${page === 2 ? "bg-black" : "bg-gray-300" } w-3 h-3 m-1`}></View>
+          <View className={`rounded-lg ${page === 3 ? "bg-black" : "bg-gray-300" } w-3 h-3 m-1`}></View>
       </View>
      
     </>

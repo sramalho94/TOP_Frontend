@@ -24,7 +24,7 @@ import Onboard3 from './src/screens/onboarding/Onboard3';
 function App(): JSX.Element {
   return (
     <SafeAreaView>
-      <Onboard1/>
+      <Onboard3/>
 
     </SafeAreaView>
   );
