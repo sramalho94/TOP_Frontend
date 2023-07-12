@@ -7,8 +7,8 @@ const LandingPage = () => {
     <SafeAreaView className="mx-auto my-auto">
       <View className="border-2 border-black w-[342] h-[339] mt-auto " />
       <View className="mt-[87] space-y-[12] mb-[12]">
-        <Button text="Log In" onPress={() => {}} />
-        <Button text="Create Account" onPress={() => {}} />
+        <Button text="Log In" bgColor="bg-white" onPress={() => {}} />
+        <Button text="Create Account" bgColor="bg-white" onPress={() => {}} />
         <Button
           text="Report Without Account"
           onPress={() => {}}
