@@ -39,7 +39,7 @@ const Onboard1 = () => {
                     <View className="m-5 flex-1">
                         <Image className="w-full" source={NoImage}></Image>
                         {/* TODO: maybe? change font style? Wrote font-sans earlier but it didn't change the font*/}
-                        <Text className="mx-auto py-5 text-[22px]">What the app does and the impact of data</Text>
+                        <Text className="mx-auto py-5 font-serif text-[22px]">What the app does and the impact of data</Text>
                     </View>
 
                     {/* container for dots and buttons */}
