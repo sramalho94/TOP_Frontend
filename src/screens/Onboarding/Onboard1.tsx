@@ -58,7 +58,7 @@ const Onboard1 = () => {
 
                         {/* progress dots */}
                         
-                            <ProgressDots/>
+                            <ProgressDots page={1} />
 
                     </View>
                 </View>
