@@ -21,9 +21,11 @@ import {
 import Onboard1 from './src/screens/Onboard1';
 
 function App(): JSX.Element {
-  return <SafeAreaView>
-
-  </SafeAreaView>;
+  return (
+    <SafeAreaView>
+      <LandingPage />
+    </SafeAreaView>
+  );
 }
 
 export default App;
