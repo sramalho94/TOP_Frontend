@@ -26,7 +26,7 @@ const ProgressDots = ({page}: Props) => {
       setDot3("bg-black")
     }
 
-  }, [])
+  }, [page])
 
   return (
     <>
