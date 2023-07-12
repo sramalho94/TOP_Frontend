@@ -60,10 +60,9 @@ export default function SignInPage(props: Props) {
               />
               <TouchableOpacity
                 onPress={togglePasswordVisibility}
-                className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer"
-              >
-                <Icon className="text-gray-500" type="Ionicons" name={form.showPassword ? 'eye-off-outline' : 'eye-outline'} size={30} />
-
+                className="absolute top-10 right-4"
+                >
+                <Icon className="text-gray-500" type="Ionicons" name={form.showPassword ? 'eye-off-outline' : 'eye-outline'} size={25} />
               </TouchableOpacity>
 
             </View>
