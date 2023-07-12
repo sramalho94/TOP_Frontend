@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, Animated, Dimensions } from 'react-native'
+import { View, Text, TouchableOpacity, Animated } from 'react-native'
 import React, { useRef, useEffect, useState} from 'react'
 
 // what if I made the view circles transparent and on index z 2, and then have a 
@@ -12,6 +12,9 @@ const ProgressDots = ({page}: Props) => {
   const [dot1, setDot1] = useState<string | undefined> ("bg-black")
   const [dot2, setDot2] = useState<string | undefined> ("bg-gray-300")
   const [dot3, setDot3] = useState<string | undefined> ("bg-gray-300")
+
+
+  // try to clean up and find a better solution
 
   useEffect (() => {
     if(page === 2) {
