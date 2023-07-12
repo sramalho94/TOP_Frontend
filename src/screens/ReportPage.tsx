@@ -3,6 +3,7 @@ import React from 'react'
 import CheckBox from '@react-native-community/checkbox';
 import Icon from 'react-native-vector-icons/AntDesign'
 import DropDownPicker from 'react-native-dropdown-picker';
+import TextInputField from '../components/TextInputField';
 
 // function App() {
 //     const [open, setOpen] = useState(false);
@@ -35,11 +36,8 @@ const ReportPage = (props: Props) => {
                         </Pressable>
                     </View>
                     <View className='w-[342]'>
-                        <Text className="font-bold my-2">Zip Code*</Text>
-                        <TextInput className="border-2 border-black rounded-lg"></TextInput>
-                        <Text className="font-bold my-2">Age*</Text>
-                        <TextInput className="border-2 border-black rounded-lg"></TextInput>
-
+                        <TextInputField label="Zip Code*" />
+                        <TextInputField label="Age*" />
                         <Text className="font-bold my-2">Gender</Text>
                         <DropDownPicker className='my-2 border-2 border-black rounded-lg'
                         // open={open}
