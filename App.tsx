@@ -8,7 +8,8 @@
 import React from 'react';
 import LandingPage from './src/screens/LandingPage';
 import ReportPage from './src/screens/ReportPage';
-import ThankYouScreen from './src/screens/ThankYouScreen';
+import ThankYouScreen from './src/screens/ThankYouScreen';import SignInPage from './src/screens/SignInPage';
+
 import {
   SafeAreaView,
   ScrollView,
@@ -24,30 +25,10 @@ import Onboard3 from './src/screens/onboarding/Onboard3';
 
 
 function App(): JSX.Element {
-  return (
-    <SafeAreaView>
-      <Onboard1 />
+  return <SafeAreaView>
+    <SignInPage />
 
-    </SafeAreaView>
-  );
-  // below is for navigation through app. . .
-  // return (
-  //   <NavigationContainer>
-  //     <Stack.Navigator>
-  //       <Stack.Screen
-  //         name="Home"
-  //         component={Home}
-  //         options={{ headerShown: false }}
-  //       />
-  //       <Stack.Screen
-  //         name="SubmittedScreen"
-  //         component={SubmittedScreen}
-  //         options={{ headerShown: false }}
-  //       />
-  //     </Stack.Navigator>
-  //   </NavigationContainer>
-  // );
-
+  </SafeAreaView>;
 }
 
 export default App;
