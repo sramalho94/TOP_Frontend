@@ -19,7 +19,6 @@ import {
 import Onboard1 from './src/screens/onboarding/Onboard1';
 import Onboard2 from './src/screens/onboarding/Onboard2';
 import Onboard3 from './src/screens/onboarding/Onboard3';
-import Playground from './src/screens/onboarding/Playground'
 
 
 function App(): JSX.Element {
