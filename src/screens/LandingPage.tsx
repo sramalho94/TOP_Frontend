@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, SafeAreaView} from 'react-native';
-import Button from './components/Button';
+import Button from '../components/Button';
 
 const LandingPage = () => {
   return (
