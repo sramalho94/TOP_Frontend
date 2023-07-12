@@ -12,7 +12,7 @@ const LandingPage = () => {
         <Button
           text="Report Without Account"
           onPress={() => {}}
-          bgColor="#B4B4B4"
+          bgColor="bg-blue-500"
         />
       </View>
     </SafeAreaView>
