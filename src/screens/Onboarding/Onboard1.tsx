@@ -33,7 +33,7 @@ const Onboard1 = () => {
     return (
         <>
             <SafeAreaView className="h-screen w-screen">
-                <View className="flex-1 flex-col mb-3">
+                <View className="flex-1 flex-col mt-4 mb-3">
 
                     {/* image and text */}
                     <View className="m-5 flex-1">
