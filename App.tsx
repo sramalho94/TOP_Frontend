@@ -26,7 +26,7 @@ import Onboard3 from './src/screens/Onboarding/Onboard3';
 
 function App(): JSX.Element {
   return <SafeAreaView>
-    <SignInPage />
+
 
   </SafeAreaView>;
 }
