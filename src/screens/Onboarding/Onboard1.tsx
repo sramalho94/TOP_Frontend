@@ -27,9 +27,10 @@ const Onboard1 = () => {
     //below is not ready yet
     // const navigation = useNavigation();
 
-    // const handleContinuePress = () => {
-    //     navigation.navigate("Onboard2");
-    // }
+    const handlePress = () => {
+        // navigation.navigate("Onboard2");
+        console.log("click")
+    }
 
     return (
         <>
@@ -49,13 +50,16 @@ const Onboard1 = () => {
 
                         {/* buttons */}
                         <View className="m-5">
-
-                            <TouchableOpacity className="rounded border justify-items-center">
+                            {/* TODO: need to wait for button team to add border option. Then we need to change that prop for SKIP */}
+                            {/* TODO: need to change background color to one of the tailwind themes */}
+                            <Button bgColor='bg-blue-500' text='Continue' onPress={handlePress} />
+                            <Button bgColor='' text='Skip' onPress={handlePress} />
+                            {/* <TouchableOpacity className="rounded border justify-items-center">
                                 <Text className="text-center py-3 font-sans text-[22px]">Continue</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity className="justify-items-center">
+                            </TouchableOpacity> */}
+                            {/* <TouchableOpacity className="justify-items-center">
                                 <Text className="text-center py-3 font-sans text-[22px]">Skip</Text>
-                            </TouchableOpacity>
+                            </TouchableOpacity> */}
                         </View>
 
                         {/* progress dots */}
