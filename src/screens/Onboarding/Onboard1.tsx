@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import NoImage from '../../../assets/nopicture.png'
 import ProgressDots from '../../components/ProgressDots'
+import Button from '../../components/Button'
 // import { useNavigation } from '@react-navigation/native';
 // import Onboard2 from './Onboard2';
 // import { RootStackParamList } from '../../../App'
@@ -48,8 +49,8 @@ const Onboard1 = () => {
 
                         {/* buttons */}
                         <View className="m-5">
+
                             <TouchableOpacity className="rounded border justify-items-center">
-                                {/* onPress={handleContinuePress} */}
                                 <Text className="text-center py-3 font-sans text-[22px]">Continue</Text>
                             </TouchableOpacity>
                             <TouchableOpacity className="justify-items-center">
