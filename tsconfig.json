@@ -1,3 +1,12 @@
 {
-  "extends": "@tsconfig/react-native/tsconfig.json"
+  "extends": "@tsconfig/react-native/tsconfig.json",
+  "compilerOptions": {
+    "jsx": "react",
+    "module": "commonjs",
+    "target": "es6",
+    "lib": ["es6", "dom"],
+    "strict": true,
+    "esModuleInterop": true
+  },
+  "include": ["src", "images.d.ts", "app.d.ts", "index.d.ts"]
 }

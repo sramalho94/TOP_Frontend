@@ -1,7 +1,8 @@
+
 import { View, Text, SafeAreaView, TextInput, TouchableOpacity, Pressable, ScrollView } from 'react-native'
 import React, { useState } from 'react';
 import CheckBox from '@react-native-community/checkbox';
-import Icon from 'react-native-vector-icons/AntDesign'
+import Icon from 'react-native-vector-icons/AntDesign';
 import DropDownPicker from 'react-native-dropdown-picker';
 import TextInputField from '../components/TextInputField';
 
@@ -12,7 +13,7 @@ import TextInputField from '../components/TextInputField';
 //         { label: 'Apple', value: 'apple' },
 //         { label: 'Banana', value: 'banana' }
 //     ]);
-type Props = {}
+type Props = {};
 
 const ReportPage = (props: Props) => {
     const [zipCode, setZipCode] = useState('');
@@ -57,43 +58,5 @@ const ReportPage = (props: Props) => {
                         // setValue={setValue}
                         // setItems={setItems}
 
-                        />
-                        <Text className="font-bold my-2">Race</Text>
-                        <DropDownPicker className='my-2 border-2 border-black rounded-lg'
-                        // open={open}
-                        // value={value}
-                        // items={items}
-                        // setOpen={setOpen}
-                        // setValue={setValue}
-                        // setItems={setItems}
 
-                        />
-                        <Text className="font-bold my-2">Ethnicity</Text>
-                        <DropDownPicker className='my-2 border-2 border-black rounded-lg'
-                        // open={open}
-                        // value={value}
-                        // items={items}
-                        // setOpen={setOpen}
-                        // setValue={setValue}
-                        // setItems={setItems}
-
-                        />
-                    </View>
-                    <View className='flex-row justify-center my-6'>
-                        <CheckBox />
-                        <Text className="font-bold mt-1">I agree to share my results with the CDC</Text>
-                    </View>
-                </View>
-
-                <View className='border-t-4 border-b-4 border-slate-200 '>
-                    <TouchableOpacity className="border-4 border-black flex justify-center items-center w-[342] h-[52] rounded-lg bg-[#B4B4B4] mt-6 mb-8 mx-auto">
-                        <Text className="text-lg font-bold">Report</Text>
-                    </TouchableOpacity>
-                </View>
-            </ScrollView>
-        </SafeAreaView >
-    )
-}
-
-
-export default ReportPage
+export default ReportPage;
