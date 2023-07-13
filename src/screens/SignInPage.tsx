@@ -5,11 +5,20 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 type Props = {}
 
+type FormState = {
+  username: string;
+  password: string;
+  showPassword: boolean;
+};
+
+const initialFormState: FormState = {
+  username: '',
+  password: '',
+  showPassword: false,
+};
+
 export default function SignInPage(props: Props) {
-  const [form, setForm] = useState({
-    username: '',
-    password: '',
-  });
+  const [form, setForm] = useState<FormState>(initialFormState)
 
   const togglePasswordVisibility = () => {
     setForm((prevState) => ({
