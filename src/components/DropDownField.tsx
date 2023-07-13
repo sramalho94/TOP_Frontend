@@ -50,7 +50,7 @@ const Onboard2 = (props: Props) => {
 
     return (
         <View>
-            <DropDownPicker />
+
 
         </View>
     )
