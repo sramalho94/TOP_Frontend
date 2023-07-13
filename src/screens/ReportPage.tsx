@@ -1,5 +1,5 @@
 import { View, Text, SafeAreaView, TextInput, TouchableOpacity, Pressable, ScrollView } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react';
 import CheckBox from '@react-native-community/checkbox';
 import Icon from 'react-native-vector-icons/AntDesign'
 import DropDownPicker from 'react-native-dropdown-picker';
@@ -15,6 +15,16 @@ import TextInputField from '../components/TextInputField';
 type Props = {}
 
 const ReportPage = (props: Props) => {
+    const [zipCode, setZipCode] = useState('');
+    const [age, setAge] = useState('');
+  
+    const handleZipCodeChange = (value: string) => {
+      setZipCode(value);
+    };
+  
+    const handleAgeChange = (value: string) => {
+      setAge(value);
+    };
 
     return (
         <SafeAreaView className="">
@@ -36,8 +46,8 @@ const ReportPage = (props: Props) => {
                         </Pressable>
                     </View>
                     <View className='w-[342]'>
-                        <TextInputField label="Zip Code*" />
-                        <TextInputField label="Age*" />
+                        <TextInputField label="Zip Code*" value={zipCode} onChange={handleZipCodeChange}/>
+                        <TextInputField label="Age*" value={age} onChange={handleAgeChange} />
                         <Text className="font-bold my-2">Gender</Text>
                         <DropDownPicker className='my-2 border-2 border-black rounded-lg'
                         // open={open}
