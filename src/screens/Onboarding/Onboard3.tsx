@@ -32,12 +32,10 @@ const Onboard3 = () => {
 
                         {/* buttons */}
                         <View className="m-5">
-                            <TouchableOpacity className="rounded border justify-items-center">
-                                <Text className="text-center py-3 text-[22px]">Continue</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity className="justify-items-center">
-                                <Text className="text-center py-3 text-[22px]">Skip</Text>
-                            </TouchableOpacity>
+                            {/* TODO: need to wait for button team to add border option. Then we need to change that prop for SKIP */}
+                            {/* TODO: need to change background color to one of the tailwind themes */}
+                            <Button bgColor='bg-blue-500' text='Continue' onPress={handlePress} />
+                            <Button bgColor='' text='Skip' onPress={handlePress} />
                         </View>
 
                         <ProgressDots page={3} />
