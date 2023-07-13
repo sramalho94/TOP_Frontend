@@ -1,10 +1,6 @@
 {
   "extends": "@tsconfig/react-native/tsconfig.json",
   "compilerOptions": {
-<<<<<<< HEAD
-    "jsx": "react"
-  }
-=======
     "jsx": "react",
     "module": "commonjs",
     "target": "es6",
@@ -13,5 +9,4 @@
     "esModuleInterop": true
   },
   "include": ["src"]
->>>>>>> 9ba6e5182aadfc9da7a4f8e380f49aabee21fcdf
 }
