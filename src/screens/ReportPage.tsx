@@ -75,7 +75,7 @@ const ReportPage = (props: Props) => {
                 {label: "Americn Indian or Alaska Native", value: "americn indian or alaska native" },
                 {label: "Asian", value: "asian" },
                 {label: "Black or African American", value: "black or african american" },
-                {label: "Hispanic or Latino", value: "hisipanic or latino" },
+                {label: "Hispanic or Latino", value: "hispanic or latino" },
                 {label: "Native Hawaiian or Other Pacific Islander", value: "native hawaiian or other pacific islander" },
                 {label: "Not Specified", value: "not specified" },
                 {label: "Two or More Races/Ethnicities", value: "two or more races/ethnicities" },
