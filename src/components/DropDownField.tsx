@@ -34,6 +34,7 @@ const DropDownField = ({text, selectItems}: Props) => {
             setValue={setValue}
             setItems={setItems}
             dropDownDirection='TOP'
+            listMode="SCROLLVIEW"
             />
 
 
