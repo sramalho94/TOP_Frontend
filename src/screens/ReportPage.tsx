@@ -10,8 +10,8 @@ import {
 import React, {useState} from 'react';
 import CheckBox from '@react-native-community/checkbox';
 import Icon from 'react-native-vector-icons/AntDesign';
-import DropDownPicker from 'react-native-dropdown-picker';
 import TextInputField from '../components/TextInputField';
+import DropDownField from '../components/DropDownField';
 
 type Props = {};
 
@@ -61,16 +61,35 @@ const ReportPage = (props: Props) => {
               value={age}
               onChange={handleAgeChange}
             />
-            <Text className="font-bold my-2">Gender</Text>
-            <DropDownPicker
-              className="my-2 border-2 border-black rounded-lg"
-              // open={open}
-              // value={value}
-              // items={items}
-              // setOpen={setOpen}
-              // setValue={setValue}
-              // setItems={setItems}
+            
+            <DropDownField 
+              text="Gender" 
+              selectItems={[
+                {label: "", value: "" }
+                ]}
+              />
+            <DropDownField 
+              text="Race" 
+              selectItems={[
+                {label: "Americn Indian or Alaska Native", value: "americn indian or alaska native" },
+                {label: "Asian", value: "asian" },
+                {label: "Black or African American", value: "black or african american" },
+                {label: "Hispanic or Latino", value: "hisipanic or latino" },
+                {label: "Native Hawaiian or Other Pacific Islander", value: "native hawaiian or other pacific islander" },
+                {label: "Not Specified", value: "not specified" },
+                {label: "Two or More Races/Ethnicities", value: "two or more races/ethnicities" },
+                {label: "White or Caucasian", value: "white or caucasian" },
+                {label: "Prefer not to say", value: "prefer not to say" },
+              ]}
             />
+            <DropDownField 
+              text="Ethnicity" 
+              selectItems={[
+                {label: "Hispanic/Latino", value: "hispanic/latino" },
+                {label: "Not Hispanic/Latino", value: "not hispanic/latino"}
+              ]}
+          />
+
           </View>
         </View>
       </ScrollView>

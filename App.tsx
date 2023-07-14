@@ -22,11 +22,11 @@ import {
 import Onboard1 from './src/screens/Onboarding/Onboard1';
 import Onboard2 from './src/screens/Onboarding/Onboard2';
 import Onboard3 from './src/screens/Onboarding/Onboard3';
-
+import DropDownField from './src/components/DropDownField';
 
 function App(): JSX.Element {
   return <SafeAreaView>
-
+    <ReportPage />
 
   </SafeAreaView>;
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
     SafeAreaView,
     View,
@@ -9,9 +9,12 @@ import {
 import DropDownPicker from 'react-native-dropdown-picker';
 
 
-type Props = {}
+type Props = {
+    text: string;
+    selectItems: Object[];
+}
 
-const Onboard2 = (props: Props) => {
+const DropDownField = ({text, selectItems}: Props) => {
 
 
     // Probably should have all necessary properties as props, and pass them in a useState
@@ -46,10 +49,23 @@ const Onboard2 = (props: Props) => {
 
                         /> */}
 
-    
+                        const [open, setOpen] = useState(false);
+                        const [value, setValue] = useState(null);
+                        const [items, setItems] = useState(selectItems);
 
     return (
         <View>
+
+                        <Text className="font-bold my-2 capitalize">{text}</Text>
+                        <DropDownPicker className='my-2 border-2 border-black rounded-lg'
+                        open={open}
+                        items={items}
+                        setOpen={setOpen}
+                        setValue={setValue}
+                        setItems={setItems}
+                        dropDownDirection='TOP'
+                        />
+
 
 
         </View>
@@ -57,4 +73,4 @@ const Onboard2 = (props: Props) => {
 
 }
 
-export default Onboard2;
+export default DropDownField;
