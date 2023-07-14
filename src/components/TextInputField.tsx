@@ -17,7 +17,7 @@ const TextInputField: React.FC<TextInputFieldProps> = ({ label, value, onChange 
   const handleChange = (inputValue: string) => {
     onChange(inputValue);
   };
-  // Render the component
+
   return (
     <View>
       <Text className="font-bold my-2">{label}</Text>
@@ -31,5 +31,4 @@ const TextInputField: React.FC<TextInputFieldProps> = ({ label, value, onChange 
   );
 };
 
-// Export the TextInputField component
 export default TextInputField;

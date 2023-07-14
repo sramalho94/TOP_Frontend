@@ -15,14 +15,18 @@ import TextInputField from '../components/TextInputField';
 
 type Props = {};
 
+// Define the ReportPage component
+
 const ReportPage = (props: Props) => {
+    // Define state variables for zip code and age
     const [zipCode, setZipCode] = useState('');
     const [age, setAge] = useState('');
 
+    // Function to handle zip code changes
     const handleZipCodeChange = (value: string) => {
         setZipCode(value);
     };
-
+    // Function to handle age changes
     const handleAgeChange = (value: string) => {
         setAge(value);
     };
@@ -77,5 +81,5 @@ const ReportPage = (props: Props) => {
         </SafeAreaView>
     );
 };
-// comment for merge"
+
 export default ReportPage;
