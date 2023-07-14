@@ -12,32 +12,36 @@ import DropDownPicker from 'react-native-dropdown-picker';
 type Props = {
     text: string;
     selectItems: Object[];
+    open: boolean;
+    onOpen: any;
+    setOpen: any;
 }
 
-const DropDownField = ({text, selectItems}: Props) => {
+const DropDownField = ({text, selectItems, open, onOpen, setOpen}: Props) => {
 
 
     // Probably should have all necessary properties as props, and pass them in a useState
 
-    const [open, setOpen] = useState(false);
+        //  TODO: will need to probs ask the UX team what the official dropdown selections are
+        //  Data found from: https://www.census.gov/newsroom/blogs/random-samplings/2021/08/measuring-racial-ethnic-diversity-2020-census.html 
+
     const [value, setValue] = useState(null);
-    const [items, setItems] = useState(selectItems);
 
     return (
         <View>
 
-            <Text className="font-bold my-2 capitalize">{text}</Text>
+            <Text className="font-bold my-2 capitalize">{text} (Optional)</Text>
             <DropDownPicker className='my-2 border-2 border-black rounded-lg'
             open={open}
-            items={items}
-            setOpen={setOpen}
+            items={selectItems}
+            value={value}
+            onOpen={onOpen}
             setValue={setValue}
-            setItems={setItems}
+            setOpen={setOpen}
             dropDownDirection='TOP'
             listMode="SCROLLVIEW"
+            placeholder={`Select your ${text.toLowerCase()}`}
             />
-
-
 
         </View>
     )

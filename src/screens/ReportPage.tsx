@@ -12,12 +12,18 @@ import CheckBox from '@react-native-community/checkbox';
 import Icon from 'react-native-vector-icons/AntDesign';
 import TextInputField from '../components/TextInputField';
 import DropDownField from '../components/DropDownField';
+import Button from '../components/Button';
 
 type Props = {};
 
 const ReportPage = (props: Props) => {
-  const [zipCode, setZipCode] = useState('');
-  const [age, setAge] = useState('');
+  const [zipCode, setZipCode] = useState<string>('');
+  const [age, setAge] = useState<string>('');
+
+  // to close open dropdown selections when another is selected
+  const [genderOpen, setGenderOpen] = useState<boolean>(false);
+  const [raceOpen, setRaceOpen] = useState<boolean>(false);
+  const [ethnicityOpen, setEthnicityOpen] = useState<boolean>(false);
 
   const handleZipCodeChange = (value: string) => {
     setZipCode(value);
@@ -73,6 +79,13 @@ const ReportPage = (props: Props) => {
                 {label: "", value: "" },
                 {label: "Prefer not to say", value: "prefer not to say" },
                 ]}
+              open={genderOpen}
+              onOpen={() => {
+                setGenderOpen(true)
+                setRaceOpen(false);
+                setEthnicityOpen(false);
+              }}
+              setOpen={setGenderOpen}
               />
             <DropDownField 
               text="Race" 
@@ -87,6 +100,13 @@ const ReportPage = (props: Props) => {
                 {label: "White or Caucasian", value: "white or caucasian" },
                 {label: "Prefer not to say", value: "prefer not to say" },
               ]}
+              open={raceOpen}
+              onOpen={() => {
+                setGenderOpen(false)
+                setRaceOpen(true);
+                setEthnicityOpen(false);
+              }}
+              setOpen={setRaceOpen}
             />
             <DropDownField 
               text="Ethnicity" 
@@ -96,7 +116,16 @@ const ReportPage = (props: Props) => {
                 {label: "Non-Hispanic/Latino", value: "non-hispanic/latino"},
                 {label: "Prefer not to say", value: "prefer not to say" },
               ]}
+              open={ethnicityOpen}
+              onOpen={() => {
+                setGenderOpen(false)
+                setRaceOpen(false);
+                setEthnicityOpen(true);
+              }}
+              setOpen={setEthnicityOpen}
           />
+
+          <Button onPress={() => console.log("click")} text="Report" bgColor="" border={true} />
 
           </View>
         </View>
