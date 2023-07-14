@@ -1,7 +1,5 @@
 import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 
-
-
 <View className="mb-6">
   <Text className="w-36 h-8 flex items-center justify-center text-black font-medium">
     Password

@@ -8,5 +8,5 @@
     "strict": true,
     "esModuleInterop": true
   },
-  "include": ["src","images.d.ts"]
+  "include": ["src", "images.d.ts", "app.d.ts", "index.d.ts"]
 }
