@@ -68,17 +68,22 @@ const ReportPage = (props: Props) => {
                         <Text className="font-bold my-2">Gender</Text>
                         <DropDownPicker
                             className="my-2 border-2 border-black rounded-lg"
-                        // open={open}
-                        // value={value}
-                        // items={items}
-                        // setOpen={setOpen}
-                        // setValue={setValue}
-                        // setItems={setItems}
+                        />
+                        <Text className="font-bold my-2">Race</Text>
+                        <DropDownPicker className='my-2 border-2 border-black rounded-lg'
+                        />
+                        <Text className="font-bold my-2">Ethnicity</Text>
+                        <DropDownPicker className='my-2 border-2 border-black rounded-lg'
                         />
                     </View>
+                    <View className='flex-row justify-center my-6'>
+                        <CheckBox />
+                        <Text className="font-bold mt-1">I agree to share my results with the CDC</Text>
+                    </View>
                 </View>
+
             </ScrollView>
-        </SafeAreaView>
+        </SafeAreaView >
     );
 };
 
