@@ -65,7 +65,8 @@ const ReportPage = (props: Props) => {
             <DropDownField 
               text="Gender" 
               selectItems={[
-                {label: "", value: "" }
+                {label: "", value: "" },
+                {label: "Prefer not to say", value: "prefer not to say" },
                 ]}
               />
             <DropDownField 
@@ -86,7 +87,8 @@ const ReportPage = (props: Props) => {
               text="Ethnicity" 
               selectItems={[
                 {label: "Hispanic/Latino", value: "hispanic/latino" },
-                {label: "Not Hispanic/Latino", value: "not hispanic/latino"}
+                {label: "Not Hispanic/Latino", value: "not hispanic/latino"},
+                {label: "Prefer not to say", value: "prefer not to say" },
               ]}
           />
 
