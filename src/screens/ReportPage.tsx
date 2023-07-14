@@ -62,32 +62,27 @@ const ReportPage = (props: Props) => {
               onChange={handleAgeChange}
             />
             
+
+            {/* TODO: will need to probs ask the UX team what the official dropdown selections are */}
             <DropDownField 
               text="Gender" 
               selectItems={[
-                {label: "", value: "" },
+                {label: "WILL CONFIRM SELECTION LATER", value: "WILL CONFIRM SELECTION LATER" },
                 {label: "Prefer not to say", value: "prefer not to say" },
                 ]}
               />
             <DropDownField 
               text="Race" 
               selectItems={[
-                {label: "Americn Indian or Alaska Native", value: "americn indian or alaska native" },
-                {label: "Asian", value: "asian" },
-                {label: "Black or African American", value: "black or african american" },
-                {label: "Hispanic or Latino", value: "hispanic or latino" },
-                {label: "Native Hawaiian or Other Pacific Islander", value: "native hawaiian or other pacific islander" },
-                {label: "Not Specified", value: "not specified" },
-                {label: "Two or More Races/Ethnicities", value: "two or more races/ethnicities" },
-                {label: "White or Caucasian", value: "white or caucasian" },
+                {label: "WILL CONFIRM SELECTION LATER", value: "WILL CONFIRM SELECTION LATER" },
                 {label: "Prefer not to say", value: "prefer not to say" },
+
               ]}
             />
             <DropDownField 
               text="Ethnicity" 
               selectItems={[
-                {label: "Hispanic/Latino", value: "hispanic/latino" },
-                {label: "Not Hispanic/Latino", value: "not hispanic/latino"},
+                {label: "WILL CONFIRM SELECTION LATER", value: "WILL CONFIRM SELECTION LATER" },
                 {label: "Prefer not to say", value: "prefer not to say" },
               ]}
           />
