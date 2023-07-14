@@ -64,25 +64,36 @@ const ReportPage = (props: Props) => {
             
 
             {/* TODO: will need to probs ask the UX team what the official dropdown selections are */}
+            {/* Data found from: https://www.census.gov/newsroom/blogs/random-samplings/2021/08/measuring-racial-ethnic-diversity-2020-census.html */}
+
             <DropDownField 
               text="Gender" 
               selectItems={[
-                {label: "WILL CONFIRM SELECTION LATER", value: "WILL CONFIRM SELECTION LATER" },
+                {label: "MIGHT CHANGE BELOW SELECTION LATER", value: "MIGHT CHANGE BELOW SELECTION LATER" },
+                {label: "", value: "" },
                 {label: "Prefer not to say", value: "prefer not to say" },
                 ]}
               />
             <DropDownField 
               text="Race" 
               selectItems={[
-                {label: "WILL CONFIRM SELECTION LATER", value: "WILL CONFIRM SELECTION LATER" },
+                {label: "MIGHT CHANGE BELOW SELECTION LATER", value: "MIGHT CHANGE BELOW SELECTION LATER" },
+                {label: "American Indian or Alaska Native", value: "american indian or alaska native" },
+                {label: "Asian", value: "asian" },
+                {label: "Black or African American", value: "black or african american" },
+                {label: "Native Hawaiian or Other Pacific Islander", value: "native hawaiian or other pacific islander" },
+                {label: "Not Specified", value: "not specified" },
+                {label: "Two or More Races/Ethnicities", value: "two or more races/ethnicities" },
+                {label: "White or Caucasian", value: "white or caucasian" },
                 {label: "Prefer not to say", value: "prefer not to say" },
-
               ]}
             />
             <DropDownField 
               text="Ethnicity" 
               selectItems={[
-                {label: "WILL CONFIRM SELECTION LATER", value: "WILL CONFIRM SELECTION LATER" },
+                {label: "MIGHT CHANGE BELOW SELECTION LATER", value: "MIGHT CHANGE BELOW SELECTION LATER" },
+                {label: "Hispanic/Latino", value: "hispanic/latino" },
+                {label: "Non-Hispanic/Latino", value: "non-hispanic/latino"},
                 {label: "Prefer not to say", value: "prefer not to say" },
               ]}
           />
