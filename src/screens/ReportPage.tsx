@@ -20,7 +20,7 @@ const ReportPage = (props: Props) => {
   const [zipCode, setZipCode] = useState<string>('');
   const [age, setAge] = useState<string>('');
 
-  // to close open dropdown selections when another is selected
+  // need this so that when a user has one dropdown open and selects another, the opened dropdown will close
   const [genderOpen, setGenderOpen] = useState<boolean>(false);
   const [raceOpen, setRaceOpen] = useState<boolean>(false);
   const [ethnicityOpen, setEthnicityOpen] = useState<boolean>(false);

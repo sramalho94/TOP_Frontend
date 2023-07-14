@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 
+// This component has been implemented on Report Page, if you wanted to test
 
 type Props = {
     text: string;
@@ -25,7 +26,8 @@ const DropDownField = ({text, selectItems, open, onOpen, setOpen}: Props) => {
         //  TODO: will need to probs ask the UX team what the official dropdown selections are
         //  Data found from: https://www.census.gov/newsroom/blogs/random-samplings/2021/08/measuring-racial-ethnic-diversity-2020-census.html 
 
-    const [value, setValue] = useState(null);
+    // this sets a value when user selects an option from the dropdown
+    const [value, setValue] = useState<string | null>(null);
 
     return (
         <View>
