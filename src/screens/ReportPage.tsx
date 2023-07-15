@@ -97,7 +97,7 @@ const ReportPage = (props: Props) => {
                 {label: "Native Hawaiian or Other Pacific Islander", value: "native hawaiian or other pacific islander" },
                 {label: "Not Specified", value: "not specified" },
                 {label: "Two or More Races/Ethnicities", value: "two or more races/ethnicities" },
-                {label: "White or Caucasian", value: "white or caucasian" },
+                {label: "White", value: "white" },
                 {label: "Prefer not to say", value: "prefer not to say" },
               ]}
               open={raceOpen}
