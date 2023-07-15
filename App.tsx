@@ -8,7 +8,7 @@
 import React from 'react';
 import LandingPage from './src/screens/LandingPage';
 import ReportPage from './src/screens/ReportPage';
-import ThankYouScreen from './src/screens/ThankYouScreen';import SignInPage from './src/screens/SignInPage';
+import ThankYouScreen from './src/screens/ThankYouScreen'; import SignInPage from './src/screens/SignInPage';
 
 import {
   SafeAreaView,
@@ -26,7 +26,7 @@ import Onboard3 from './src/screens/onboarding/Onboard3';
 
 function App(): JSX.Element {
   return <SafeAreaView>
-    <SignInPage />
+    <ReportPage />
 
   </SafeAreaView>;
 }
