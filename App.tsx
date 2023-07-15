@@ -26,7 +26,7 @@ import DropDownField from './src/components/DropDownField';
 
 function App(): JSX.Element {
   return <SafeAreaView>
-    <ReportPage />
+    <Onboard1 />
 
   </SafeAreaView>;
 }
