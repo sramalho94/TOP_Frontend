@@ -7,7 +7,7 @@ const Onboard2 = () => {
   return (
     <>
       <SafeAreaView className="h-screen w-screen">
-        <View className="flex-1 flex-col mt-4">
+        <View className="flex-1 flex-col mt-4 mb-5">
           {/* image and text */}
           <View className="m-5 flex-1">
             <Image className="w-full" source={NoImage}></Image>
@@ -18,7 +18,7 @@ const Onboard2 = () => {
           </View>
 
           {/* container for dots and buttons */}
-          <View className="flex-1 flex-col-reverse">
+          <View className="flex-1 flex-col-reverse mb-3">
             {/* buttons */}
             <View className="mt-5 mx-5">
               <TouchableOpacity className="rounded border justify-items-center">
