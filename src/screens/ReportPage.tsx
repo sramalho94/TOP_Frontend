@@ -10,8 +10,9 @@ import {
 import React, { useState } from 'react';
 import CheckBox from '@react-native-community/checkbox';
 import Icon from 'react-native-vector-icons/AntDesign';
-import DropDownPicker from 'react-native-dropdown-picker';
 import TextInputField from '../components/TextInputField';
+import DropDownField from '../components/DropDownField';
+import Button from '../components/Button';
 
 type Props = {};
 
