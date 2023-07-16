@@ -5,7 +5,7 @@ import Button from '../components/Button';
 const LandingPage = () => {
   return (
     <SafeAreaView className="mx-auto my-auto">
-      <View className="border-2 border-black w-[342] h-[339] mt-[100] "></View>
+      <View className="border-2 border-black w-[342] h-[339] mt-[100] mx-auto"></View>
       <View className="mt-[87] space-y-[12] mb-[12]">
         {/* <TouchableOpacity className="border-4 border-black flex justify-center items-center w-[342] h-[52] rounded-lg ">
           <Text className="text-lg font-bold">Log In</Text>
