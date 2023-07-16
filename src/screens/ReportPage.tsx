@@ -81,9 +81,17 @@ const ReportPage = (props: Props) => {
           </View>
         </View>
         <View className="border-t-4 border-b-4 border-slate-200 ">
-          <TouchableOpacity className="border-4 border-black flex justify-center items-center w-[342] h-[52] rounded-lg bg-[#B4B4B4] mt-6 mb-8 mx-auto">
+          {/* <TouchableOpacity className="border-4 border-black flex justify-center items-center w-[342] h-[52] rounded-lg bg-[#B4B4B4] mt-6 mb-8 mx-auto">
             <Text className="text-lg font-bold">Report</Text>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
+          <Button
+            onPress={() => console.log('pressed')}
+            innerText="Report"
+            bgColor="bg-[#B4B4B4]"
+            textColor="text-black"
+            border={true}
+            borderColor="border border-4"
+          />
         </View>
       </ScrollView>
     </SafeAreaView>
