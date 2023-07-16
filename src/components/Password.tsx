@@ -9,13 +9,19 @@ type FormState = {
 };
 
 type Props = {
-  setForm: (form: FormState) => void;
+  setForm: React.Dispatch<React.SetStateAction<FormState>>;
   form: FormState;
-  togglePasswordVisibility: () => void;
 }
 
 const PasswordField = (props: Props) => {
-  const { setForm, form, togglePasswordVisibility } = props;
+  const { setForm, form } = props;
+
+  const togglePasswordVisibility = () => {
+    setForm(prevState => ({
+      ...prevState,
+      showPassword: !prevState.showPassword,
+    }));
+  };
 
   return (
     <View className="mb-6">

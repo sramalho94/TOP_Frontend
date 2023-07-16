@@ -11,7 +11,6 @@ import {
 import NoImage from '../../assets/blankimage.png';
 import Password from "../components/Password"
 
-
 type Props = {};
 
 type FormState = {
@@ -28,13 +27,6 @@ const initialFormState: FormState = {
 
 export default function SignInPage(props: Props) {
   const [form, setForm] = useState<FormState>(initialFormState);
-
-  const togglePasswordVisibility = () => {
-    setForm(prevState => ({
-      ...prevState,
-      showPassword: !prevState.showPassword,
-    }));
-  };
 
   return (
     <SafeAreaView className="w-342 m-6">
@@ -61,7 +53,7 @@ export default function SignInPage(props: Props) {
               />
             </View>
 
-            <Password setForm={setForm} form={form} togglePasswordVisibility={togglePasswordVisibility} />
+            <Password setForm={setForm} form={form} />
 
             <View className="mb-5">
               <TouchableOpacity
