@@ -2,7 +2,7 @@ import React from 'react';
 import {SafeAreaView, View, Text, TouchableOpacity, Image} from 'react-native';
 import NoImage from '../../../assets/nopicture.png';
 import ProgressDots from '../../components/ProgressDots';
-
+import Button from '../../components/Button';
 const Onboard3 = () => {
   return (
     <>
@@ -21,12 +21,28 @@ const Onboard3 = () => {
           <View className="flex-1 flex-col-reverse mb-3">
             {/* buttons */}
             <View className="mt-5 mx-5">
-              <TouchableOpacity className="rounded border justify-items-center">
+              {/* <TouchableOpacity className="rounded border justify-items-center">
                 <Text className="text-center py-3 text-[22px]">Continue</Text>
-              </TouchableOpacity>
-              <TouchableOpacity className="justify-items-center">
+              </TouchableOpacity> */}
+              <Button
+                onPress={() => console.log('pressed')}
+                innerText="Continue"
+                bgColor="bg-white"
+                textColor="text-black"
+                border={true}
+                borderColor="border border-gray"
+              />
+              {/* <TouchableOpacity className="justify-items-center">
                 <Text className="text-center py-3 text-[22px]">Skip</Text>
-              </TouchableOpacity>
+              </TouchableOpacity> */}
+              <Button
+                onPress={() => console.log('pressed')}
+                innerText="Skip"
+                bgColor="bg-white"
+                textColor="text-black"
+                border={false}
+                borderColor="border border-gray"
+              />
             </View>
 
             <ProgressDots page={3} />
