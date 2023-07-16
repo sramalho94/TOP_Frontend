@@ -3,19 +3,28 @@ import {TouchableOpacity, Text} from 'react-native';
 
 type Props = {
   onPress: () => void;
-  text: string;
+  innerText: string;
   bgColor: string;
-  border?: boolean;
+  textColor: string;
+  border: boolean;
+  borderColor: string;
 };
 
-const Button = ({onPress, text, bgColor, border}: Props) => {
+const Button = ({
+  onPress,
+  innerText,
+  bgColor,
+  border,
+  borderColor,
+  textColor,
+}: Props) => {
   return (
     <TouchableOpacity
       className={`${
-        border ? 'border-4 border-black' : ''
+        border ? `${borderColor}` : ''
       } flex justify-center items-center w-[342] h-[52] rounded-lg mb-3 ${bgColor}`}
       onPress={onPress}>
-      <Text className="text-lg font-bold">{text}</Text>
+      <Text className={`text-lg font-bold ${textColor}`}>{innerText}</Text>
     </TouchableOpacity>
   );
 };
