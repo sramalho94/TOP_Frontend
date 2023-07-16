@@ -1,4 +1,5 @@
 import { View, Text, TextInput, TouchableOpacity } from 'react-native';
+import React from 'react';
 
 <View className="mb-6">
   <Text className="w-36 h-8 flex items-center justify-center text-black font-medium">
