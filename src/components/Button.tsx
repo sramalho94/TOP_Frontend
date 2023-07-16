@@ -1,5 +1,5 @@
 import React from 'react';
-import {TouchableOpacity, Text} from 'react-native';
+import {TouchableOpacity, Text, View} from 'react-native';
 
 type Props = {
   onPress: () => void;
@@ -7,7 +7,7 @@ type Props = {
   bgColor: string;
   textColor: string;
   border: boolean;
-  borderColor: string;
+  borderColor?: string;
 };
 
 const Button = ({
@@ -19,13 +19,15 @@ const Button = ({
   textColor,
 }: Props) => {
   return (
-    <TouchableOpacity
-      className={`${
-        border ? `${borderColor}` : ''
-      } flex justify-center items-center w-[342] h-[52] rounded-lg mb-3 ${bgColor}`}
-      onPress={onPress}>
-      <Text className={`text-lg font-bold ${textColor}`}>{innerText}</Text>
-    </TouchableOpacity>
+    <View className="w-screen flex-row mx-auto">
+      <TouchableOpacity
+        className={`${
+          border ? `${borderColor}` : ''
+        } flex justify-center items-center w-[342] h-[52] rounded-lg mb-3 ${bgColor}`}
+        onPress={onPress}>
+        <Text className={`text-lg font-bold ${textColor}`}>{innerText}</Text>
+      </TouchableOpacity>
+    </View>
   );
 };
 
