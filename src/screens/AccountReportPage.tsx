@@ -63,7 +63,14 @@ const AccountReportPage = (props: Props) => {
                             onChange={handleZipCodeChange}
                         />
                     </View>
-
+                    <View className="mt-[120] space-y-[12] mb-[12]">
+                        <Button
+                            onPress={() => { }}
+                            text="Submit"
+                            bgColor=""
+                            border={true}
+                        />
+                    </View>
                 </View>
             </ScrollView>
         </SafeAreaView>
