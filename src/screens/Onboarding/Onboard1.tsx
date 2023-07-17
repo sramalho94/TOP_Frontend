@@ -2,6 +2,7 @@ import React from 'react';
 import {SafeAreaView, View, Text, TouchableOpacity, Image} from 'react-native';
 import NoImage from '../../../assets/nopicture.png';
 import ProgressDots from '../../components/ProgressDots';
+import Button from '../../components/Button';
 // import { useNavigation } from '@react-navigation/native';
 // import Onboard2 from './Onboard2';
 // import { RootStackParamList } from '../../../App'
@@ -25,7 +26,7 @@ const Onboard1 = () => {
   return (
     <>
       <SafeAreaView className="h-screen w-screen">
-        <View className="flex-1 flex-col mt-4 mb-3">
+        <View className="flex-1 flex-col mt-4 mb-5">
           {/* image and text */}
           <View className="m-5 flex-1">
             <Image className="w-full" source={NoImage}></Image>
@@ -36,20 +37,36 @@ const Onboard1 = () => {
           </View>
 
           {/* container for dots and buttons */}
-          <View className="flex-1 flex-col-reverse">
+          <View className="flex-1 flex-col-reverse mb-3">
             {/* buttons */}
-            <View className="m-5">
-              <TouchableOpacity className="rounded border justify-items-center">
-                {/* onPress={handleContinuePress} */}
+            <View className="mt-5 mx-5">
+              {/* <TouchableOpacity className="rounded border justify-items-center">
+                onPress={handleContinuePress}
                 <Text className="text-center py-3 font-sans text-[22px]">
                   Continue
                 </Text>
-              </TouchableOpacity>
-              <TouchableOpacity className="justify-items-center">
+              </TouchableOpacity> */}
+              <Button
+                onPress={() => console.log('pressed')}
+                innerText="Continue"
+                bgColor="bg-white"
+                textColor="text-black"
+                border={true}
+                borderColor="border border-gray"
+              />
+              {/* <TouchableOpacity className="justify-items-center">
                 <Text className="text-center py-3 font-sans text-[22px]">
                   Skip
                 </Text>
-              </TouchableOpacity>
+              </TouchableOpacity> */}
+              <Button
+                onPress={() => console.log('pressed')}
+                innerText="Skip"
+                bgColor="bg-white"
+                textColor="text-black"
+                border={false}
+                borderColor="border border-gray"
+              />
             </View>
 
             {/* progress dots */}
