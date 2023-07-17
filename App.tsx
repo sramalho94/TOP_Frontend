@@ -8,7 +8,9 @@
 import React from 'react';
 import LandingPage from './src/screens/LandingPage';
 import ReportPage from './src/screens/ReportPage';
-import ThankYouScreen from './src/screens/ThankYouScreen'; import SignInPage from './src/screens/SignInPage';
+import AccountReportPage from './src/screens/AccountReportPage';
+import ThankYouScreen from './src/screens/ThankYouScreen';
+import SignInPage from './src/screens/SignInPage';
 
 import {
   SafeAreaView,
@@ -26,7 +28,7 @@ import DropDownField from './src/components/DropDownField';
 
 function App(): JSX.Element {
   return <SafeAreaView>
-    <ReportPage />
+    <AccountReportPage />
 
   </SafeAreaView>;
 }
