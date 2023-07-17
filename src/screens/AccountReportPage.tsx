@@ -13,14 +13,16 @@ import Button from '../components/Button';
 type Props = {};
 
 const AccountReportPage = (props: Props) => {
-
+    // State for storing the zip code
     const [zipCode, setZipCode] = useState('');
+    // State for storing the state
     const [state, setState] = useState('');
 
+    // Update the zip code state when the input value changes
     const handleZipCodeChange = (value: string) => {
         setZipCode(value);
     };
-
+    // Update the state state when the input value changes
     const handleStateChange = (value: string) => {
         setState(value);
     };
