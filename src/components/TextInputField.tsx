@@ -13,7 +13,7 @@ const TextInputField: React.FC<TextInputFieldProps> = ({ label, value, onChange 
   };
 
   return (
-    <View>
+    <View className='my-2'>
       <Text className="font-bold my-2">{label}</Text>
       <TextInput
         className="border-2 border-black rounded-lg px-4"

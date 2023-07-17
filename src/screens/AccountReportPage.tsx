@@ -51,13 +51,14 @@ const AccountReportPage = (props: Props) => {
                             <Text>Positive</Text>
                         </Pressable>
                     </View>
-                    <View className="w-[342]">
+                    <View className="w-[342] my-12">
                         <TextInputField
                             label="State*"
                             value={state}
                             onChange={handleStateChange}
                         />
                         <TextInputField
+                            className="my-4"
                             label="Zip Code*"
                             value={zipCode}
                             onChange={handleZipCodeChange}
