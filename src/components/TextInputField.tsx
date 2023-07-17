@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, TextInput} from 'react-native';
+import { View, Text, TextInput } from 'react-native';
 
 // Define the props interface for TextInputField component
 interface TextInputFieldProps {
