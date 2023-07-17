@@ -14,6 +14,7 @@ import TextInputField from '../components/TextInputField';
 import DropDownField from '../components/DropDownField';
 import Button from '../components/Button';
 import DropDownPicker from 'react-native-dropdown-picker';
+import CircleBtn from '../components/CircleBtn';
 type Props = {};
 
 // Define the ReportPage component
@@ -53,12 +54,12 @@ const ReportPage = (props: Props) => {
             What were the results of your test?
           </Text>
           <View className="justify-center space-x-4 flex-row my-9">
-            <Pressable className="border-4 border-black flex items-center w-[125] h-[125] rounded-full justify-center">
-              <Text>Negative</Text>
-            </Pressable>
-            <Pressable className="border-4 border-black flex items-center w-[125] h-[125] rounded-full justify-center">
-              <Text>Positive</Text>
-            </Pressable>
+          <CircleBtn  text='Negative' bgColor='bg-themeLightBlue' onPress={ () => {
+            console.log("You're Clear!!")
+          }}/>
+          <CircleBtn  text='Positive' bgColor='bg-themeLightOrange' onPress={ () => {
+            console.log("You're Sick!!")
+          }}/>
           </View>
           <View className="w-[342]">
             <TextInputField
