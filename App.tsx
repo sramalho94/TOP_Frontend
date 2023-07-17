@@ -8,7 +8,8 @@
 import React from 'react';
 import LandingPage from './src/screens/LandingPage';
 import ReportPage from './src/screens/ReportPage';
-import ThankYouScreen from './src/screens/ThankYouScreen'; import SignInPage from './src/screens/SignInPage';
+import ThankYouScreen from './src/screens/ThankYouScreen';
+import SignInPage from './src/screens/SignInPage';
 
 import {
   SafeAreaView,
@@ -25,10 +26,13 @@ import Onboard3 from './src/screens/Onboarding/Onboard3';
 import DropDownField from './src/components/DropDownField';
 
 function App(): JSX.Element {
-  return <SafeAreaView>
-    <ReportPage />
-
-  </SafeAreaView>;
+  return (
+    <SafeAreaView>
+      {/* <ReportPage /> */}
+      <ReportPage />
+      {/* <SignInPage /> */}
+    </SafeAreaView>
+  );
 }
 
 export default App;
