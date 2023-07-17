@@ -55,11 +55,13 @@ const ReportPage = (props: Props) => {
                             label="Zip Code*"
                             value={zipCode}
                             onChange={handleZipCodeChange}
+                            placeholder=""
                         />
                         <TextInputField
                             label="Age*"
                             value={age}
                             onChange={handleAgeChange}
+                            placeholder=""
                         />
                         <Text className="font-bold my-2">Gender</Text>
                         <DropDownPicker

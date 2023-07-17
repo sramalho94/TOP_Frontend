@@ -4,10 +4,11 @@ import { View, Text, TextInput } from 'react-native';
 interface TextInputFieldProps {
   label: string,
   value: string,
-  onChange: (value: string) => void;
+  onChange: (value: string) => void,
+  placeholder: string;
 }
 
-const TextInputField: React.FC<TextInputFieldProps> = ({ label, value, onChange }) => {
+const TextInputField: React.FC<TextInputFieldProps> = ({ label, value, onChange, placeholder }) => {
   const handleChange = (inputValue: string) => {
     onChange(inputValue);
   };
@@ -19,7 +20,7 @@ const TextInputField: React.FC<TextInputFieldProps> = ({ label, value, onChange 
         className="border-2 border-black rounded-lg px-4"
         value={value}
         onChangeText={handleChange}
-        placeholder="Enter text"
+        placeholder={placeholder}
       />
     </View>
   );
