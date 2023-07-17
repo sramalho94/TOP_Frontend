@@ -16,6 +16,10 @@ type Props = {
 const PasswordField = (props: Props) => {
   const { setForm, form } = props;
 
+  const handlePasswordChange = (password: string) => {
+    setForm(prevState => ({ ...prevState, password }));
+  };
+
   const togglePasswordVisibility = () => {
     setForm(prevState => ({
       ...prevState,
@@ -25,13 +29,13 @@ const PasswordField = (props: Props) => {
 
   return (
     <View className="mb-6">
-      <Text className="w-36 h-8 flex items-center justify-center text-black font-medium">
+      <Text className="w-36 h-8 flex my-auto justify-center text-black font-medium">
         Password
       </Text>
 
       <TextInput
         autoCorrect={false}
-        onChangeText={password => setForm({ ...form, password })}
+        onChangeText={handlePasswordChange}
         placeholder="Enter your password"
         placeholderTextColor="#6b7280"
         className="h-11 bg-white pl-8 pr-6 rounded-lg text-base font-medium text-gray-700 border"
