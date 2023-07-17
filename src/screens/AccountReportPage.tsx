@@ -43,7 +43,7 @@ const AccountReportPage = (props: Props) => {
                     <Text className="text-lg font-bold mx-auto">
                         What were the results of your test?
                     </Text>
-                    <View className="justify-center space-x-4 flex-row my-9">
+                    <View className="justify-center space-x-4 flex-row my-12">
                         <Pressable className="border-4 border-black flex items-center w-[125] h-[125] rounded-full justify-center">
                             <Text>Negative</Text>
                         </Pressable>
@@ -63,7 +63,7 @@ const AccountReportPage = (props: Props) => {
                             onChange={handleZipCodeChange}
                         />
                     </View>
-                    <View className="mt-[120] space-y-[6] mb-10">
+                    <View className="mt-20 ">
                         <Button
                             onPress={() => { }}
                             text="Submit"
