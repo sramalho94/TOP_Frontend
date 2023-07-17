@@ -30,7 +30,7 @@ const AccountReportPage = (props: Props) => {
 
     return (
         <SafeAreaView className="">
-            <ScrollView>
+            <View>
                 <View className="h-[90] border-b-4 border-slate-200 flex-row my-6">
                     <TouchableOpacity className="mt-2 ml-4">
                         <Icon name="arrowleft" size={30} color="#000" className="" />
@@ -51,20 +51,19 @@ const AccountReportPage = (props: Props) => {
                             <Text>Positive</Text>
                         </Pressable>
                     </View>
-                    <View className="w-[342] my-12">
+                    <View className="w-[342]">
                         <TextInputField
                             label="State*"
                             value={state}
                             onChange={handleStateChange}
                         />
                         <TextInputField
-                            className="my-4"
                             label="Zip Code*"
                             value={zipCode}
                             onChange={handleZipCodeChange}
                         />
                     </View>
-                    <View className="mt-[120] space-y-[12] mb-[12]">
+                    <View className="mt-[120] space-y-[6] mb-10">
                         <Button
                             onPress={() => { }}
                             text="Submit"
@@ -73,7 +72,7 @@ const AccountReportPage = (props: Props) => {
                         />
                     </View>
                 </View>
-            </ScrollView>
+            </View>
         </SafeAreaView>
     );
 };
