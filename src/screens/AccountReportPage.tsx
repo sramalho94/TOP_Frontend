@@ -65,7 +65,7 @@ const AccountReportPage = (props: Props) => {
                             placeholder="49301"
                         />
                     </View>
-                    <View className="mt-20">
+                    <View className="my-20">
                         <Button
                             onPress={() => { }}
                             text="Submit"
