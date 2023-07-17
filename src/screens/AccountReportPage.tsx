@@ -29,7 +29,7 @@ const AccountReportPage = (props: Props) => {
     };
 
     return (
-        <SafeAreaView className="">
+        <SafeAreaView>
             <View>
                 <View className="h-[90] border-b-4 border-slate-200 flex-row my-6">
                     <TouchableOpacity className="mt-2 ml-4">
@@ -56,14 +56,16 @@ const AccountReportPage = (props: Props) => {
                             label="State*"
                             value={state}
                             onChange={handleStateChange}
+                            placeholder="Michigan"
                         />
                         <TextInputField
                             label="Zip Code*"
                             value={zipCode}
                             onChange={handleZipCodeChange}
+                            placeholder="49301"
                         />
                     </View>
-                    <View className="mt-20 ">
+                    <View className="mt-20">
                         <Button
                             onPress={() => { }}
                             text="Submit"
