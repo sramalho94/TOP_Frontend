@@ -2,21 +2,18 @@ import {
     View,
     Text,
     SafeAreaView,
-    TextInput,
     TouchableOpacity,
     Pressable,
-    ScrollView,
 } from 'react-native';
 import React, { useState } from 'react';
-import CheckBox from '@react-native-community/checkbox';
 import Icon from 'react-native-vector-icons/AntDesign';
-import DropDownPicker from 'react-native-dropdown-picker';
 import TextInputField from '../components/TextInputField';
 import Button from '../components/Button';
 
 type Props = {};
 
 const AccountReportPage = (props: Props) => {
+
     const [zipCode, setZipCode] = useState('');
     const [state, setState] = useState('');
 
