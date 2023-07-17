@@ -49,13 +49,13 @@ const ConsentPage = () => {
           </Text>
           <View className={`flex-row items-left mb-4`}>
             <View className={`w-4 h-4 bg-gray-400 mr-2`} />
-            <Text className={`text-xs`}>
+            <Text className={`text-sm`}>
               I confirm that I'm over 18 years old.
             </Text>
           </View>
           <View className={`flex-row items-center mb-4`}>
             <View className={`w-4 h-4 bg-gray-400 mr-2`} />
-            <Text className={`text-xs`}>
+            <Text className={`text-sm`}>
               I consent to the processing of my personal data (including without limitation data I provide relating to my health) as set forth in this consent and in the{' '}
               <TouchableOpacity onPress={handlePrivacyPolicyPress}>
                 <Text className={`text-blue-500 underline`}>Privacy Policy</Text>
@@ -65,7 +65,7 @@ const ConsentPage = () => {
           </View>
           <View className={`flex-row items-center mb-4`}>
             <View className={`w-4 h-4 bg-gray-400 mr-2`} />
-            <Text className={`text-xs`}>
+            <Text className={`text-sm`}>
               I have read and accept{' '}
               <TouchableOpacity onPress={handleTermsPress}>
                 <Text className={`text-blue-500 underline`}>Zoe Global's Terms of Use</Text>
