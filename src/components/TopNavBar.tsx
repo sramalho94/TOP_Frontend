@@ -11,6 +11,9 @@ type Props = {
   page?: number;
 }
 
+// Add a page prop for the progressDots component.
+// haveProgress prop is a little bit redundant because you can use page to tell whether its haveProgress is true or false but I'll just leave it for now for whoever take over topNavBar to understand/implement this component more easily. 
+
 const TopNavBar = ({ textSize, textValue, fontFamily, haveProgress, page }: Props) => {
   return (
     <View className='h-[110] flex-1 mb-6'>
