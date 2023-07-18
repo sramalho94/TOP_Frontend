@@ -4,6 +4,7 @@ import {
     SafeAreaView,
     TouchableOpacity,
     Pressable,
+    ScrollView
 } from 'react-native';
 import React, { useState } from 'react';
 import Icon from 'react-native-vector-icons/AntDesign';
@@ -29,7 +30,7 @@ const AccountReportPage = (props: Props) => {
 
     return (
         <SafeAreaView className="min-w-screen">
-            <View>
+            <ScrollView>
                 <View className="h-[90] border-b-4 border-slate-200 flex-row my-6">
                     <TouchableOpacity className="mt-2 ml-4">
                         <Icon name="arrowleft" size={30} color="#000" className="" />
@@ -74,7 +75,7 @@ const AccountReportPage = (props: Props) => {
                         />
                     </View>
                 </View>
-            </View>
+            </ScrollView>
         </SafeAreaView>
     );
 };
