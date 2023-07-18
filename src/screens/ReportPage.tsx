@@ -14,8 +14,8 @@ import TextInputField from '../components/TextInputField';
 import DropDownField from '../components/DropDownField';
 import Button from '../components/Button';
 import DropDownPicker from 'react-native-dropdown-picker';
-import TopNavBar from '../components/TopNavBar';
 import CircleBtn from '../components/CircleBtn';
+import TopNavBar from '../components/TopNavBar';
 
 type Props = {};
 
@@ -76,13 +76,11 @@ const ReportPage = (props: Props) => {
               label="Zip Code*"
               value={zipCode}
               onChange={handleZipCodeChange}
-
             />
             <TextInputField
               label="Age*"
               value={age}
               onChange={handleAgeChange}
-
             />
 
             {/* TODO: will need to probs ask the UX team what the official dropdown selections are */}
