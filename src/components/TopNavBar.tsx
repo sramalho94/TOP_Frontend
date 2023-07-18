@@ -18,11 +18,11 @@ const TopNavBar = ({ textSize, textValue, fontFamily, haveProgress, page }: Prop
         <TouchableOpacity className="mt-2 ml-4">
           <Icon name="arrowleft" size={30} color="#000" className="" />
         </TouchableOpacity>
-        <Text className={`text-${textSize} font-bold mx-auto mt-2 flex pr-12 font-${fontFamily}`}>
+        <Text className={`text-${textSize} text-slate-900 font-bold mx-auto mt-2 flex pr-12 font-${fontFamily}`}>
           {textValue}
         </Text>
       </View>
-      <View className='border-slate-200 border-b-4 pb-4'>
+      <View className='border-slate-200 border-b-4  pb-4'>
         {
           haveProgress ?
             page ?

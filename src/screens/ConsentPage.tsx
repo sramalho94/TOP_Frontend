@@ -22,27 +22,29 @@ const ConsentPage = () => {
   return (
     <SafeAreaView>
       <ScrollView>
+        {/* add topNavBar component here and pass a few props to it */}
+        {/* Still need to double check the font size and family font! */}
         <TopNavBar textSize='xl' textValue='Consent Form' fontFamily='' haveProgress={false} />
-        <View className={`flex-1 justify-center bg-white p-4 px-8`}>
+        <View className={`flex justify-center bg-white p-4 px-8 flex-1`}>
           <Text className={`text-xl font-bold text-black mb-4 text-center`}>User Consent</Text>
-          <Text className={`mb-4 text-center`}>
+          <Text className={`mb-4 text-justify`}>
             By checking the boxes below, you consent to our using the personal information we collect through your use of this app in the way we have described.
           </Text>
-          <Text className={`mb-4 text-center`}>
+          <Text className={`mb-4 text-justify`}>
             For more information about how we use and share personal information, please see our{' '}
             <TouchableOpacity onPress={handlePrivacyPolicyPress}>
               <Text className={`text-blue-500 underline`}>Privacy Policy</Text>
             </TouchableOpacity>
             {'.'}
           </Text>
-          <Text className={`mb-4`}>
+          <Text className={`mb-4 text-justify`}>
             You may withdraw your consent at any time by emailing{' '}
             <TouchableOpacity onPress={handleEmailPress}>
               <Text className={`text-blue-500 underline`}>leavecovidtracking-us@joinzoe.com</Text>
             </TouchableOpacity>
             {'.'}
           </Text>
-          <Text className={`mb-4`}>
+          <Text className={`mb-4 text-justify`}>
             Any questions may also be sent to{' '}
             <TouchableOpacity onPress={handleEmailPress}>
               <Text className={`text-blue-500 underline`}>covidtracking-us@joinzoe.com</Text>
