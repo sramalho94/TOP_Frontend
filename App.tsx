@@ -12,6 +12,8 @@ import AccountReportPage from './src/screens/AccountReportPage';
 import ThankYouScreen from './src/screens/ThankYouScreen';
 import SignInPage from './src/screens/SignInPage';
 import CreateAccount from './src/screens/CreateAccount';
+import ConsentPage from './src/screens/ConsentPage';
+
 
 import {
   SafeAreaView,
@@ -27,6 +29,7 @@ import Onboard2 from './src/screens/Onboarding/Onboard2';
 import Onboard3 from './src/screens/Onboarding/Onboard3';
 import DropDownField from './src/components/DropDownField';
 import TestScreen from './src/screens/TestScreen';
+
 function App(): JSX.Element {
   return <SafeAreaView>
     <CreateAccount />
