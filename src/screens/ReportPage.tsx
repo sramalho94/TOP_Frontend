@@ -14,7 +14,9 @@ import TextInputField from '../components/TextInputField';
 import DropDownField from '../components/DropDownField';
 import Button from '../components/Button';
 import DropDownPicker from 'react-native-dropdown-picker';
+import TopNavBar from '../components/TopNavBar';
 import CircleBtn from '../components/CircleBtn';
+
 type Props = {};
 
 // Define the ReportPage component
