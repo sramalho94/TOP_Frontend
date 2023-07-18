@@ -13,9 +13,13 @@ jobs:
     steps:
     - name: Checkout repository content
       uses: actions/checkout@v2
-    - name: Fail if package-lock.json exists
-      run: |
-        if [[ -f "package-lock.json" ]]; then
-          echo "package-lock.json file found. We are using yarn so please remove package-lock.json."
-          exit 1
-        fi
+      with:
+        fetch-depth: 0
+    - name: Use Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+    - name: Install dependencies
+      run: yarn install
+    - name: Run test script
+      run: yarn test:ci
