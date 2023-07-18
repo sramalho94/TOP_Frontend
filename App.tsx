@@ -10,6 +10,7 @@ import LandingPage from './src/screens/LandingPage';
 import ReportPage from './src/screens/ReportPage';
 import ThankYouScreen from './src/screens/ThankYouScreen';
 import SignInPage from './src/screens/SignInPage';
+import ConsentPage from './src/screens/ConsentPage';
 
 import {
   SafeAreaView,
@@ -28,7 +29,7 @@ import TestScreen from './src/screens/TestScreen';
 function App(): JSX.Element {
   return (
     <SafeAreaView>
-      <TestScreen />
+      <ConsentPage />
     </SafeAreaView>
   );
 
