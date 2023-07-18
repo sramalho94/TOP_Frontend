@@ -54,6 +54,7 @@ const ReportPage = (props: Props) => {
             What were the results of your test?
           </Text>
           <View className="justify-center space-x-4 flex-row my-9">
+            {/* Here is the CircleBtn component imported */}
           <CircleBtn  text='Negative' bgColor='bg-themeLightBlue' onPress={ () => {
             console.log("You're Clear!!")
           }}/>
