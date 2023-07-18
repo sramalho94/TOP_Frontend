@@ -7,6 +7,8 @@ type Props = {
   onPress: () => void;
 };
 
+// Can use on report page screens and homescreen
+
 const CircleBtn = ({text, bgColor, onPress}: Props) => {
   // useEffect(() => {}, [page]);
 
