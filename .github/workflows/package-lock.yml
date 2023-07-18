@@ -1,0 +1,21 @@
+# .github/workflows/package_lock_check.yml
+name: Check for package-lock.json
+
+on:
+  pull_request:
+    branches: [ main, dev ]
+    paths:
+    - '**'
+
+jobs:
+  package-lock-check:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository content
+      uses: actions/checkout@v2
+    - name: Fail if package-lock.json exists
+      run: |
+        if [[ -f "package-lock.json" ]]; then
+          echo "package-lock.json file found. We are using yarn so please remove package-lock.json."
+          exit 1
+        fi
