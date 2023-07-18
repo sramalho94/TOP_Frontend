@@ -13,7 +13,7 @@ import ThankYouScreen from './src/screens/ThankYouScreen';
 import SignInPage from './src/screens/SignInPage';
 import CreateAccount from './src/screens/CreateAccount';
 import ConsentPage from './src/screens/ConsentPage';
-import Onboarding from './src/screens/Onboarding'
+import Onboarding from './src/screens/Onboarding';
 
 
 import {
