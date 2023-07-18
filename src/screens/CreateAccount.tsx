@@ -72,12 +72,12 @@ const ReportPage = (props: Props) => {
                         />
                     </View>
                 </View>
-                <View className="mb-3 mt-40">
+                <View className="mb-3 mt-60">
                     <Button
                         onPress={() => console.log('pressed')}
-                        innerText="Report"
-                        bgColor="bg-[#B4B4B4]"
-                        textColor="text-black"
+                        innerText="Next"
+                        textColor="text-white"
+                        bgColor="bg-black"
                         border={true}
                         borderColor="border border-4"
                     />
