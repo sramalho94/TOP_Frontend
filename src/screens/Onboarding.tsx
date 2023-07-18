@@ -21,12 +21,10 @@ const Onboarding = (props: Props) => {
                                 What the app does and the impact of data
                             </Text>
                         </View>
-
                         {/* container for dots and buttons */}
                         <View className="flex-1 flex-col-reverse mb-3">
                             {/* buttons */}
                             <View className="mt-5 mx-5">
-
                                 <Button
                                     onPress={() => setCurrentPage(2)}
                                     innerText="Continue"
@@ -45,9 +43,7 @@ const Onboarding = (props: Props) => {
                                     borderColor="border border-gray"
                                 />
                             </View>
-
                             {/* progress dots */}
-
                             <ProgressDots page={1} />
                         </View>
                     </View>
@@ -59,20 +55,16 @@ const Onboarding = (props: Props) => {
                     <View className="flex-1 flex-col mt-4 mb-5">
                         {/* image and text */}
                         <View className="m-5 flex-1">
-                            {/* <Image className="w-full" source={NoImage}></Image> */}
+                            <Image className="w-full" source={NoImage}></Image>
                             {/* TODO: maybe? change font style? Wrote font-sans earlier but it didn't change the font*/}
                             <Text className="mx-auto py-5 text-[22px]">
                                 What the data is used for
                             </Text>
                         </View>
-
                         {/* container for dots and buttons */}
                         <View className="flex-1 flex-col-reverse mb-3">
                             {/* buttons */}
                             <View className="mt-5 mx-5">
-                                {/* <TouchableOpacity className="rounded border justify-items-center">
-                <Text className="text-center py-3 text-[22px]">Continue</Text>
-              </TouchableOpacity> */}
                                 <Button
                                     onPress={() => setCurrentPage(3)}
                                     innerText="Continue"
@@ -81,9 +73,6 @@ const Onboarding = (props: Props) => {
                                     border={true}
                                     borderColor="border border-gray"
                                 />
-                                {/* <TouchableOpacity className="justify-items-center">
-                <Text className="text-center py-3 text-[22px]">Skip</Text>
-              </TouchableOpacity> */}
                                 <Button
                                     onPress={() => console.log('pressed')}
                                     innerText="Skip"
@@ -106,19 +95,14 @@ const Onboarding = (props: Props) => {
                         {/* image and text */}
                         <View className="m-5 flex-1">
                             <Image className="w-full" source={NoImage}></Image>
-                            {/* TODO: maybe? change font style? Wrote font-sans earlier but it didn't change the font*/}
                             <Text className="mx-auto py-5 text-[22px]">
                                 What the data is not used for
                             </Text>
                         </View>
-
                         {/* container for dots and buttons */}
                         <View className="flex-1 flex-col-reverse mb-3">
                             {/* buttons */}
                             <View className="mt-5 mx-5">
-                                {/* <TouchableOpacity className="rounded border justify-items-center">
-                <Text className="text-center py-3 text-[22px]">Continue</Text>
-              </TouchableOpacity> */}
                                 <Button
                                     onPress={() => console.log('pressed')}
                                     innerText="Continue"
@@ -127,9 +111,6 @@ const Onboarding = (props: Props) => {
                                     border={true}
                                     borderColor="border border-gray"
                                 />
-                                {/* <TouchableOpacity className="justify-items-center">
-                <Text className="text-center py-3 text-[22px]">Skip</Text>
-              </TouchableOpacity> */}
                                 <Button
                                     onPress={() => console.log('pressed')}
                                     innerText="Skip"
@@ -139,7 +120,6 @@ const Onboarding = (props: Props) => {
                                     borderColor="border border-gray"
                                 />
                             </View>
-
                             <ProgressDots page={3} />
                         </View>
                     </View>
