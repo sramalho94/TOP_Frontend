@@ -1,5 +1,6 @@
 import React from 'react';
 import { SafeAreaView, View, Text, ScrollView, TouchableOpacity, Linking } from 'react-native';
+import TopNavBar from '../components/TopNavBar';
 
 const ConsentPage = () => {
   const handlePrivacyPolicyPress = () => {
@@ -21,6 +22,7 @@ const ConsentPage = () => {
   return (
     <SafeAreaView>
       <ScrollView>
+        <TopNavBar textSize='xl' textValue='Consent Form' fontFamily='' haveProgress={false} />
         <View className={`flex-1 justify-center bg-white p-4 px-8`}>
           <Text className={`text-xl font-bold text-black mb-4 text-center`}>User Consent</Text>
           <Text className={`mb-4 text-center`}>
