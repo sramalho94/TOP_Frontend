@@ -1,14 +1,24 @@
-import {View, Text} from 'react-native';
+import {TouchableOpacity} from 'react-native';
 import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
-type Props = {};
+type CheckBoxProps = {
+  handleCheckChanges: (value: boolean) => void;
+  isSelected: boolean;
+};
 
-const CheckBox = (props: Props) => {
+const CheckBox: React.FC<CheckBoxProps> = ({
+  handleCheckChanges,
+  isSelected,
+}) => {
+  const handleChange = {(isSelected:Boolean)=>{handleCheckChanges(isSelected)}}
   return (
-    <View>
-      <Icon name="square-outline" size={30} color="#900" />
-      <Icon name="checkbox-outline" size={30} color="#900" />
-    </View>
+    <TouchableOpacity onPress={() => handleChange(isSelected)}>
+      {!isSelected ? (
+        <Icon name="square-outline" size={30} color="#900" />
+      ) : (
+        <Icon name="checkbox-outline" size={30} color="#900" />
+      )}
+    </TouchableOpacity>
   );
 };
 

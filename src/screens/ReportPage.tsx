@@ -1,14 +1,14 @@
 import {
-    View,
-    Text,
-    SafeAreaView,
-    TextInput,
-    TouchableOpacity,
-    Pressable,
-    ScrollView,
+  View,
+  Text,
+  SafeAreaView,
+  TextInput,
+  TouchableOpacity,
+  Pressable,
+  ScrollView,
 } from 'react-native';
-import React, { useState } from 'react';
-import CheckBox from '@react-native-community/checkbox';
+import React, {useState} from 'react';
+import CheckBox from '../components/CheckBox';
 import Icon from 'react-native-vector-icons/AntDesign';
 import TextInputField from '../components/TextInputField';
 import DropDownField from '../components/DropDownField';
@@ -22,6 +22,10 @@ const ReportPage = (props: Props) => {
   // Define state variables for zip code and age
   const [zipCode, setZipCode] = useState('');
   const [age, setAge] = useState('');
+  const [isSelected, setSelection] = useState(false);
+  const handleCheckChanges = (value: boolean) => {
+    setSelection(!value);
+  };
 
   // Function to handle zip code changes
   const handleZipCodeChange = (value: string) => {
@@ -60,13 +64,13 @@ const ReportPage = (props: Props) => {
               label="Zip Code*"
               value={zipCode}
               onChange={handleZipCodeChange}
-              placeholder=''
+              placeholder=""
             />
             <TextInputField
               label="Age*"
               value={age}
               onChange={handleAgeChange}
-              placeholder=''
+              placeholder=""
             />
             <Text className="font-bold my-2">Gender</Text>
             <DropDownPicker className="my-2 border-2 border-black rounded-lg" />
@@ -76,7 +80,10 @@ const ReportPage = (props: Props) => {
             <DropDownPicker className="my-2 border-2 border-black rounded-lg" />
           </View>
           <View className="flex-row justify-center my-6">
-            <CheckBox />
+            <CheckBox
+              isSelected={isSelected}
+              handleCheckChanges={handleCheckChanges}
+            />
             <Text className="font-bold mt-1">
               I agree to share my results with the CDC
             </Text>

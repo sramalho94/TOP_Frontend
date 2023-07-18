@@ -30,7 +30,7 @@ import CheckBox from './src/components/CheckBox';
 function App(): JSX.Element {
   return (
     <SafeAreaView>
-      <AccountReportPage />
+      {/* <AccountReportPage /> */}
       <CheckBox />
     </SafeAreaView>
   );
