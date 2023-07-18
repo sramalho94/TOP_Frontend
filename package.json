@@ -7,7 +7,8 @@
     "ios": "react-native run-ios",
     "lint": "eslint .",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+    "test:ci": "node test.js && ! test -f package-lock.json"
   },
   "dependencies": {
     "@types/react-dom": "^18.2.6",
