@@ -33,7 +33,6 @@ const Onboarding = (props: Props) => {
                                     border={true}
                                     borderColor="border border-gray"
                                 />
-
                                 <Button
                                     onPress={() => console.log('pressed')}
                                     innerText="Skip"
