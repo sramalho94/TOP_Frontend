@@ -28,7 +28,7 @@ const AccountReportPage = (props: Props) => {
     };
 
     return (
-        <SafeAreaView>
+        <SafeAreaView className="min-w-screen">
             <View>
                 <View className="h-[90] border-b-4 border-slate-200 flex-row my-6">
                     <TouchableOpacity className="mt-2 ml-4">
@@ -50,7 +50,7 @@ const AccountReportPage = (props: Props) => {
                             <Text>Positive</Text>
                         </Pressable>
                     </View>
-                    <View className="w-[342]">
+                    <View className="w-[342] mx-4">
                         <TextInputField
                             label="State*"
                             value={state}
@@ -67,8 +67,9 @@ const AccountReportPage = (props: Props) => {
                     <View className="my-20">
                         <Button
                             onPress={() => { }}
-                            text="Submit"
-                            bgColor=""
+                            innerText="Submit"
+                            textColor="text-white"
+                            bgColor="bg-black"
                             border={true}
                         />
                     </View>
