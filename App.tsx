@@ -35,7 +35,6 @@ function App(): JSX.Element {
       <CreateAccount />
     </SafeAreaView>
   );
-  // comment for commit
 }
 
 export default App;
