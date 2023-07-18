@@ -36,6 +36,7 @@ function App(): JSX.Element {
     </SafeAreaView>
   );
   // comment for commit
+  // second comment for another test
 }
 
 export default App;
