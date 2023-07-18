@@ -22,9 +22,13 @@ const ReportPage = (props: Props) => {
   // Define state variables for zip code and age
   const [zipCode, setZipCode] = useState('');
   const [age, setAge] = useState('');
-  const [isSelected, setSelection] = useState(false);
-  const handleCheckChanges = (value: boolean) => {
-    setSelection(!value);
+  const [isCheckboxSelected, setCheckboxSelection] = useState(false);
+
+  console.log('Render: ', isCheckboxSelected);
+
+  const handleCheckChanges = () => {
+    setCheckboxSelection(prevState => !prevState);
+    console.log('handleCheckChanges: ', isCheckboxSelected);
   };
 
   // Function to handle zip code changes
@@ -81,7 +85,7 @@ const ReportPage = (props: Props) => {
           </View>
           <View className="flex-row justify-center my-6">
             <CheckBox
-              isSelected={isSelected}
+              isSelected={isCheckboxSelected}
               handleCheckChanges={handleCheckChanges}
             />
             <Text className="font-bold mt-1">
