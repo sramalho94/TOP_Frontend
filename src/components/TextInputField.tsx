@@ -3,33 +3,25 @@ import { View, Text, TextInput } from 'react-native';
 
 // Define the props interface for TextInputField component
 interface TextInputFieldProps {
-  // Label for the input field
-  label: string;
-  // Current value of the input field
-  value: string;
-  // Function to handle input changes
-  onChange: (value: string) => void;
+  label: string,
+  value: string,
+  onChange: (value: string) => void,
+  placeholder: string;
 }
 
-// Define the TextInputField component
-const TextInputField: React.FC<TextInputFieldProps> = ({
-  label,
-  value,
-  onChange,
-}) => {
-  // Function to handle input changes
+const TextInputField: React.FC<TextInputFieldProps> = ({ label, value, onChange, placeholder }) => {
   const handleChange = (inputValue: string) => {
     onChange(inputValue);
   };
 
   return (
-    <View>
+    <View className='my-2'>
       <Text className="font-bold my-2">{label}</Text>
       <TextInput
-        className="border-2 border-black rounded-lg px-3 h-10"
+        className="border-2 border-black rounded-lg px-4 h-12"
         value={value}
         onChangeText={handleChange}
-        placeholder="Enter text"
+        placeholder={placeholder}
       />
     </View>
   );
