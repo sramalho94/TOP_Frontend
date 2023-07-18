@@ -43,7 +43,7 @@ const AccountReportPage = (props: Props) => {
                     <Text className="text-lg font-bold mx-auto">
                         What were the results of your test?
                     </Text>
-                    <View className="justify-center space-x-4 flex-row my-12">
+                    <View className="justify-center space-x-4 flex-row my-8">
                         <Pressable className="border-4 border-black flex items-center w-[125] h-[125] rounded-full justify-center">
                             <Text>Negative</Text>
                         </Pressable>
@@ -65,7 +65,7 @@ const AccountReportPage = (props: Props) => {
                             placeholder="49301"
                         />
                     </View>
-                    <View className="my-20">
+                    <View className="my-8">
                         <Button
                             onPress={() => { }}
                             innerText="Submit"
