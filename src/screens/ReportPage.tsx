@@ -7,7 +7,7 @@ import {
   Pressable,
   ScrollView,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import CheckBox from '../components/CheckBox';
 import Icon from 'react-native-vector-icons/AntDesign';
 import TextInputField from '../components/TextInputField';
@@ -39,7 +39,9 @@ const ReportPage = (props: Props) => {
   const handleAgeChange = (value: string) => {
     setAge(value);
   };
-
+  useEffect(() => {
+    console.log('checkbox selection: ', isCheckboxSelected);
+  }, [isCheckboxSelected]);
   return (
     <SafeAreaView className="min-w-screen">
       <ScrollView>

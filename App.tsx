@@ -27,11 +27,20 @@ import Onboard3 from './src/screens/Onboarding/Onboard3';
 import DropDownField from './src/components/DropDownField';
 import TestScreen from './src/screens/TestScreen';
 import CheckBox from './src/components/CheckBox';
+import {useEffect, useState} from 'react';
 function App(): JSX.Element {
+  const [isCheckboxSelected, setCheckboxSelection] = useState(false);
+  const handleCheckChanges = () => {
+    setCheckboxSelection(prevState => !prevState);
+    console.log('handleCheckChanges: ', isCheckboxSelected);
+  };
   return (
     <SafeAreaView>
-      {/* <AccountReportPage /> */}
-      <CheckBox />
+      {/* <ReportPage /> */}
+      <CheckBox
+        handleCheckChanges={handleCheckChanges}
+        isSelected={isCheckboxSelected}
+      />
     </SafeAreaView>
   );
 }
