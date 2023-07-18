@@ -13,6 +13,8 @@ jobs:
     steps:
     - name: Checkout repository content
       uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
     - name: Fail if package-lock.json exists
       run: |
         if [[ -f "package-lock.json" ]]; then
