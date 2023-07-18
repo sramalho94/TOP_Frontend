@@ -44,13 +44,17 @@ const ConsentPage = () => {
             </TouchableOpacity>
             {'.'}
           </Text>
-          <Text className={`mb-4 text-justify`}>
-            Any questions may also be sent to{' '}
-            <TouchableOpacity onPress={handleEmailPress}>
-              <Text className={`text-blue-500 underline`}>covidtracking-us@joinzoe.com</Text>
-            </TouchableOpacity>
-            {'.'}
-          </Text>
+          <View className="flex-row justify-start">
+            <Text className={`mb-4 text-center`}>
+              Any questions may also be sent to{' '}
+              <TouchableOpacity onPress={handleEmailPress}>
+                <Text className={`text-blue-500 underline`}>
+                  covidtracking-us@joinzoe.com
+                </Text>
+              </TouchableOpacity>
+              {'.'}
+            </Text>
+          </View>
           <View className={`flex-row items-left mb-4`}>
             <View className={`w-4 h-4 bg-gray-400 mr-2`} />
             <Text className={`text-sm`}>
