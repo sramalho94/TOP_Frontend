@@ -1,13 +1,13 @@
 import {
-  View,
-  Text,
-  SafeAreaView,
-  TextInput,
-  TouchableOpacity,
-  Pressable,
-  ScrollView,
+    View,
+    Text,
+    SafeAreaView,
+    TextInput,
+    TouchableOpacity,
+    Pressable,
+    ScrollView,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import CheckBox from '@react-native-community/checkbox';
 import Icon from 'react-native-vector-icons/AntDesign';
 import TextInputField from '../components/TextInputField';
@@ -61,11 +61,13 @@ const ReportPage = (props: Props) => {
               label="Zip Code*"
               value={zipCode}
               onChange={handleZipCodeChange}
+              placeholder=''
             />
             <TextInputField
               label="Age*"
               value={age}
               onChange={handleAgeChange}
+              placeholder=''
             />
             <Text className="font-bold my-2">Gender</Text>
             <DropDownPicker className="my-2 border-2 border-black rounded-lg" />

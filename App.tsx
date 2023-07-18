@@ -8,6 +8,7 @@
 import React from 'react';
 import LandingPage from './src/screens/LandingPage';
 import ReportPage from './src/screens/ReportPage';
+import AccountReportPage from './src/screens/AccountReportPage';
 import ThankYouScreen from './src/screens/ThankYouScreen';
 import SignInPage from './src/screens/SignInPage';
 import ConsentPage from './src/screens/ConsentPage';
