@@ -14,7 +14,6 @@ import SignInPage from './src/screens/SignInPage';
 import CreateAccount from './src/screens/CreateAccount';
 import ConsentPage from './src/screens/ConsentPage';
 
-
 import {
   SafeAreaView,
   ScrollView,
@@ -31,10 +30,12 @@ import DropDownField from './src/components/DropDownField';
 import TestScreen from './src/screens/TestScreen';
 
 function App(): JSX.Element {
-  return <SafeAreaView>
-    <CreateAccount />
-  </SafeAreaView>
-
+  return (
+    <SafeAreaView>
+      <CreateAccount />
+    </SafeAreaView>
+  );
+  // comment for commit
 }
 
 export default App;
