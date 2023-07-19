@@ -7,7 +7,7 @@ import {
   Pressable,
   ScrollView,
 } from 'react-native';
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import CheckBox from '../components/CheckBox';
 import Icon from 'react-native-vector-icons/AntDesign';
 import TextInputField from '../components/TextInputField';
@@ -76,11 +76,13 @@ const ReportPage = (props: Props) => {
               label="Zip Code*"
               value={zipCode}
               onChange={handleZipCodeChange}
+              placeholder=''
             />
             <TextInputField
               label="Age*"
               value={age}
               onChange={handleAgeChange}
+              placeholder=''
             />
 
             {/* TODO: will need to probs ask the UX team what the official dropdown selections are */}
