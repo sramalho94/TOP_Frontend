@@ -16,6 +16,9 @@ type Props = {};
 // Define the ReportPage component
 
 const ReportPage = (props: Props) => {
+    // Define state for switch
+    const [currentPage, setCurrentPage] = useState<number>(1);
+
     // Define state variables for zip code and age
     const [email, setEmail] = useState('');
     const [username, setUsername] = useState('');
