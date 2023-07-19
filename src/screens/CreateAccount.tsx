@@ -3,8 +3,8 @@ import {
     Text,
     SafeAreaView,
     TouchableOpacity,
-    ScrollView,
     Modal,
+    ScrollView,
 } from 'react-native';
 import React, { useState } from 'react';
 import Icon from 'react-native-vector-icons/AntDesign';
@@ -80,139 +80,145 @@ const CreateAccount = (props: Props) => {
         case 1:
             return (
                 <SafeAreaView className="min-w-screen">
-                    <View className="h-150 border-b-4 border-slate-200 ">
-                        <View className='flex-row my-6'>
-                            <TouchableOpacity className="mt-2 ml-4">
-                                <Icon name="arrowleft" size={30} color="#000" className="" />
-                            </TouchableOpacity>
-                            <Text className="text-xl font-bold mx-auto mt-2 flex pr-12">
-                                Create Account
-                            </Text>
+                    <ScrollView>
+                        <View className="h-150 border-b-4 border-slate-200 ">
+                            <View className='flex-row my-6'>
+                                <TouchableOpacity className="mt-2 ml-4">
+                                    <Icon name="arrowleft" size={30} color="#000" className="" />
+                                </TouchableOpacity>
+                                <Text className="text-xl font-bold mx-auto mt-2 flex pr-12">
+                                    Create Account
+                                </Text>
+                            </View>
+                            <View className='mb-3'>
+                                <ProgressDots page={1} />
+                            </View>
                         </View>
-                        <View className='mb-3'>
-                            <ProgressDots page={1} />
-                        </View>
-                    </View>
-                    <View className="mx-auto my-auto mb-2">
-                        <View className="w-[342] mt-4">
-                            <TextInputField
-                                label="Email*"
-                                value={email}
-                                onChange={handleEmailChange}
-                                placeholder=''
-                            />
-                            <TextInputField
-                                label="Username*"
-                                value={username}
-                                onChange={handleUsernameChange}
-                                placeholder=''
-                            />
-                            <TextInputField
-                                label="Password*"
-                                value={password}
-                                onChange={handlePasswordChange}
-                                placeholder=''
-                            />
-                        </View>
-                    </View>
-                    <View className="mt-60">
-                        <Button
-                            onPress={handleSubmit}
-                            innerText="Next"
-                            textColor="text-white"
-                            bgColor="bg-black"
-                            border={true}
-                            borderColor="border border-4"
-                        />
-                    </View>
-                    <Modal visible={isModalVisible} transparent={true}>
-                        <View className="flex-1 justify-center items-center bg-opacity-50">
-                            <View className="bg-white p-8 rounded-lg w-72 border-4">
-                                <Text className="text-xl font-bold mb-4">Your password must include:</Text>
-                                <Text className="mb-2">- At least characters</Text>
-                                <Text className="mb-2">- One uppercase and one lowercase letter</Text>
-                                <Text className="mb-2">- One number and one special character</Text>
-                                <Button
-                                    onPress={toggleModal}
-                                    innerText="Close"
-                                    textColor=""
-                                    bgColor="bg-[#B4B4B4]"
-                                    border={true}
-                                    borderColor="border border-4"
+                        <View className="mx-auto my-auto mb-2">
+                            <View className="w-[342] mt-4">
+                                <TextInputField
+                                    label="Email*"
+                                    value={email}
+                                    onChange={handleEmailChange}
+                                    placeholder=''
+                                />
+                                <TextInputField
+                                    label="Username*"
+                                    value={username}
+                                    onChange={handleUsernameChange}
+                                    placeholder=''
+                                />
+                                <TextInputField
+                                    label="Password*"
+                                    value={password}
+                                    onChange={handlePasswordChange}
+                                    placeholder=''
                                 />
                             </View>
                         </View>
-                    </Modal>
+                        <View className="mt-60">
+                            <Button
+                                onPress={handleSubmit}
+                                innerText="Next"
+                                textColor="text-white"
+                                bgColor="bg-black"
+                                border={true}
+                                borderColor="border border-4"
+                            />
+                        </View>
+                        <Modal visible={isModalVisible} transparent={true}>
+                            <View className="flex-1 justify-center items-center bg-opacity-50">
+                                <View className="bg-white p-8 rounded-lg w-72 border-4">
+                                    <Text className="text-xl font-bold mb-4">Your password must include:</Text>
+                                    <Text className="mb-2">- At least characters</Text>
+                                    <Text className="mb-2">- One uppercase and one lowercase letter</Text>
+                                    <Text className="mb-2">- One number and one special character</Text>
+                                    <Button
+                                        onPress={toggleModal}
+                                        innerText="Close"
+                                        textColor=""
+                                        bgColor="bg-[#B4B4B4]"
+                                        border={true}
+                                        borderColor="border border-4"
+                                    />
+                                </View>
+                            </View>
+                        </Modal>
+                    </ScrollView >
                 </SafeAreaView>
+
+
             );
         case 2:
             return (
                 <SafeAreaView className="min-w-screen">
-                    <View className="h-150 border-b-4 border-slate-200">
-                        <View className='flex-row my-6'>
-                            <TouchableOpacity className="mt-2 ml-4">
-                                <Icon name="arrowleft" size={30} color="#000" className="" />
-                            </TouchableOpacity>
-                            <Text className="text-xl font-bold mx-auto mt-2 flex pr-12">
-                                Create Account
-                            </Text>
-                        </View>
-                        <View className='mb-3 flex justify-center'>
-                            <ProgressDots page={2} />
-                        </View>
-                    </View>
-                    <View className="mx-auto my-auto mb-3">
-                        <View className="w-[342]">
-                            <View className="my-4">
-                                <Button
-                                    onPress={toggleModal}
-                                    innerText="(Why do we need this information)"
-                                    bgColor=""
-                                    textColor=""
-                                    border={false}
-                                    borderColor="border border-gray"
-                                />
+                    <ScrollView>
+                        <View className="h-150 border-b-4 border-slate-200">
+                            <View className='flex-row my-6'>
+                                <TouchableOpacity className="mt-2 ml-4">
+                                    <Icon name="arrowleft" size={30} color="#000" className="" />
+                                </TouchableOpacity>
+                                <Text className="text-xl font-bold mx-auto mt-2 flex pr-12">
+                                    Create Account
+                                </Text>
                             </View>
-                            <TextInputField
-                                label="Birthday*"
-                                value={birthday}
-                                onChange={handleBirthdayChange}
-                                placeholder=''
-                            />
-                            <TextInputField
-                                label="Zip Code*"
-                                value={zipCode}
-                                onChange={handleZipCodeChange}
-                                placeholder=''
-                            />
+                            <View className='mb-3 flex justify-center'>
+                                <ProgressDots page={2} />
+                            </View>
                         </View>
-                    </View>
-                    <View className="mt-64">
-                        <Button
-                            onPress={() => setCurrentPage(3)}
-                            innerText="Next"
-                            textColor="text-white"
-                            bgColor="bg-black"
-                            border={true}
-                            borderColor="border border-4"
-                        />
-                    </View>
-                    <Modal visible={isModalVisible} transparent={true}>
-                        <View className="flex-1 justify-center items-center bg-opacity-50">
-                            <View className="bg-white p-8 rounded-lg w-72 border-4">
-                                <Text className="text-xl font-bold mb-4">Why do we need this information?</Text>
-                                <Text className="mb-2 text-lg">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur tempore beatae quasi officia error distinctio illum laboriosam ea veniam repellendus aperiam, impedit alias suscipit! Maiores sint adipisci repellendus dolor quaerat.</Text>
-                                <Button
-                                    onPress={toggleModal}
-                                    innerText="Close"
-                                    textColor=""
-                                    bgColor="bg-[#B4B4B4]"
-                                    border={true}
-                                    borderColor="border border-4"
+                        <View className="mx-auto my-auto mb-3">
+                            <View className="w-[342]">
+                                <View className="my-4">
+                                    <Button
+                                        onPress={toggleModal}
+                                        innerText="(Why do we need this information)"
+                                        bgColor=""
+                                        textColor=""
+                                        border={false}
+                                        borderColor="border border-gray"
+                                    />
+                                </View>
+                                <TextInputField
+                                    label="Birthday*"
+                                    value={birthday}
+                                    onChange={handleBirthdayChange}
+                                    placeholder=''
+                                />
+                                <TextInputField
+                                    label="Zip Code*"
+                                    value={zipCode}
+                                    onChange={handleZipCodeChange}
+                                    placeholder=''
                                 />
                             </View>
                         </View>
-                    </Modal>
+                        <View className="mt-64">
+                            <Button
+                                onPress={() => setCurrentPage(3)}
+                                innerText="Next"
+                                textColor="text-white"
+                                bgColor="bg-black"
+                                border={true}
+                                borderColor="border border-4"
+                            />
+                        </View>
+                        <Modal visible={isModalVisible} transparent={true}>
+                            <View className="flex-1 justify-center items-center bg-opacity-50">
+                                <View className="bg-white p-8 rounded-lg w-72 border-4">
+                                    <Text className="text-xl font-bold mb-4">Why do we need this information?</Text>
+                                    <Text className="mb-2 text-lg">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur tempore beatae quasi officia error distinctio illum laboriosam ea veniam repellendus aperiam, impedit alias suscipit! Maiores sint adipisci repellendus dolor quaerat.</Text>
+                                    <Button
+                                        onPress={toggleModal}
+                                        innerText="Close"
+                                        textColor=""
+                                        bgColor="bg-[#B4B4B4]"
+                                        border={true}
+                                        borderColor="border border-4"
+                                    />
+                                </View>
+                            </View>
+                        </Modal>
+                    </ScrollView>
                 </SafeAreaView >
             );
         case 3:
