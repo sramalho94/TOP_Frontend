@@ -37,6 +37,7 @@ function App(): JSX.Element {
   );
   // comment for commit
   // second comment for another test
+  // third comment for demonstration
 }
 
 export default App;
