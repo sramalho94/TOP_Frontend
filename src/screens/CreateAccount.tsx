@@ -121,6 +121,24 @@ const CreateAccount = (props: Props) => {
                                 borderColor="border border-4"
                             />
                         </View>
+                        <Modal visible={isModalVisible} transparent={true}>
+                            <View className="flex-1 justify-center items-center bg-opacity-50">
+                                <View className="bg-white p-8 rounded-lg w-72">
+                                    <Text className="text-xl font-bold mb-4">Your password must include:</Text>
+                                    <Text className="mb-2">- At least characters</Text>
+                                    <Text className="mb-2">- One uppercase and one lowercase letter</Text>
+                                    <Text className="mb-2">- One number and one special character</Text>
+                                    <Button
+                                        onPress={toggleModal}
+                                        innerText="Close"
+                                        textColor="text-white"
+                                        bgColor="bg-[#B4B4B4]"
+                                        border={true}
+                                        borderColor="border border-4"
+                                    />
+                                </View>
+                            </View>
+                        </Modal>
                     </ScrollView>
                 </SafeAreaView>
             );
@@ -145,7 +163,7 @@ const CreateAccount = (props: Props) => {
                             <View className="w-[342]">
                                 <View className="my-4">
                                     <Button
-                                        onPress={() => console.log('pressed')}
+                                        onPress={toggleModal}
                                         innerText="(Why do we need this information)"
                                         bgColor="bg-white"
                                         textColor=""
@@ -178,22 +196,23 @@ const CreateAccount = (props: Props) => {
                             />
                         </View>
                         <Modal visible={isModalVisible} transparent={true}>
-                            <View className="flex-1 justify-center items-center bg-black bg-opacity-50">
+                            <View className="flex-1 justify-center items-center bg-opacity-50 border-4">
                                 <View className="bg-white p-8 rounded-lg w-72">
-                                    <Text className="text-xl font-bold mb-4">Your password must include:</Text>
-                                    <Text className="mb-2">- One uppercase and one lowercase letter</Text>
-                                    <Text className="mb-2">- One number and one special character</Text>
-                                    <TouchableOpacity
+                                    <Text className="text-xl font-bold mb-4">Why do we need this information?</Text>
+                                    <Text className="mb-2 text-lg">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur tempore beatae quasi officia error distinctio illum laboriosam ea veniam repellendus aperiam, impedit alias suscipit! Maiores sint adipisci repellendus dolor quaerat.</Text>
+                                    <Button
                                         onPress={toggleModal}
-                                        className="bg-black text-white py-2 px-4 rounded"
-                                    >
-                                        <Text>Close</Text>
-                                    </TouchableOpacity>
+                                        innerText="Close"
+                                        textColor=""
+                                        bgColor="bg-[#B4B4B4]"
+                                        border={true}
+                                        borderColor="border border-4"
+                                    />
                                 </View>
                             </View>
                         </Modal>
                     </ScrollView>
-                </SafeAreaView>
+                </SafeAreaView >
             );
         case 3:
             return (
