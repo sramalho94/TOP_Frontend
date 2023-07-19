@@ -11,13 +11,12 @@ import TextInputField from '../components/TextInputField';
 import Button from '../components/Button';
 import ProgressDots from '../components/ProgressDots';
 
-
 type Props = {};
 
 // Define the ReportPage component
 
 const CreateAccount = (props: Props) => {
-    // Define state for switch
+    // Define switch state
     const [currentPage, setCurrentPage] = useState<number>(1);
 
     // Define state variables for zip code and age
@@ -38,22 +37,27 @@ const CreateAccount = (props: Props) => {
         setPassword(value);
     };
 
+
     switch (currentPage) {
         case 1:
             return (
                 <SafeAreaView className="min-w-screen">
                     <ScrollView>
-                        <View className="h-[90] border-b-4 border-slate-200 flex-row my-6">
-                            <TouchableOpacity className="mt-2 ml-4">
-                                <Icon name="arrowleft" size={30} color="#000" className="" />
-                            </TouchableOpacity>
-                            <Text className="text-xl font-bold mx-auto mt-2 flex pr-12">
-                                Create Account
-                            </Text>
-                            <ProgressDots page={1} />
+                        <View className="h-150 border-b-4 border-slate-200 ">
+                            <View className='flex-row my-6'>
+                                <TouchableOpacity className="mt-2 ml-4">
+                                    <Icon name="arrowleft" size={30} color="#000" className="" />
+                                </TouchableOpacity>
+                                <Text className="text-xl font-bold mx-auto mt-2 flex pr-12">
+                                    Create Account
+                                </Text>
+                            </View>
+                            <View className='mb-3'>
+                                <ProgressDots page={1} />
+                            </View>
                         </View>
                         <View className="mx-auto my-auto">
-                            <View className="w-[342]">
+                            <View className="w-[342] mt-4">
                                 <TextInputField
                                     label="Email*"
                                     value={email}
@@ -74,12 +78,12 @@ const CreateAccount = (props: Props) => {
                                 />
                             </View>
                         </View>
-                        <View className="mb-14 mt-60">
+                        <View className="mb-3 mt-60">
                             <Button
-                                onPress={() => console.log('pressed')}
-                                innerText="Report"
-                                bgColor="bg-[#B4B4B4]"
-                                textColor="text-black"
+                                onPress={() => setCurrentPage(2)}
+                                innerText="Next"
+                                textColor="text-white"
+                                bgColor="bg-black"
                                 border={true}
                                 borderColor="border border-4"
                             />
@@ -101,7 +105,7 @@ const CreateAccount = (props: Props) => {
                                 </Text>
                             </View>
                             <View className='mb-3 flex justify-center'>
-                                <ProgressDots page={1} />
+                                <ProgressDots page={2} />
                             </View>
                         </View>
                         <View className="mx-auto my-auto">
@@ -128,10 +132,10 @@ const CreateAccount = (props: Props) => {
                         </View>
                         <View className="mb-14 mt-60">
                             <Button
-                                onPress={() => console.log('pressed')}
+                                onPress={() => setCurrentPage(3)}
                                 innerText="Next"
-                                bgColor="bg-[#B4B4B4]"
-                                textColor="text-black"
+                                textColor="text-white"
+                                bgColor="bg-black"
                                 border={true}
                                 borderColor="border border-4"
                             />
@@ -143,14 +147,18 @@ const CreateAccount = (props: Props) => {
             return (
                 <SafeAreaView className="min-w-screen">
                     <ScrollView>
-                        <View className="h-[90] border-b-4 border-slate-200 flex-row my-6">
-                            <TouchableOpacity className="mt-2 ml-4">
-                                <Icon name="arrowleft" size={30} color="#000" className="" />
-                            </TouchableOpacity>
-                            <Text className="text-xl font-bold mx-auto mt-2 flex pr-12">
-                                Create Account
-                            </Text>
-                            <ProgressDots page={1} />
+                        <View className="h-150 border-b-4 border-slate-200">
+                            <View className='flex-row my-6'>
+                                <TouchableOpacity className="mt-2 ml-4">
+                                    <Icon name="arrowleft" size={30} color="#000" className="" />
+                                </TouchableOpacity>
+                                <Text className="text-xl font-bold mx-auto mt-2 flex pr-12">
+                                    Create Account
+                                </Text>
+                            </View>
+                            <View className='mb-3 flex justify-center'>
+                                <ProgressDots page={3} />
+                            </View>
                         </View>
                         <View className="mx-auto my-auto">
                             <View className="w-[342]">
@@ -176,10 +184,10 @@ const CreateAccount = (props: Props) => {
                         </View>
                         <View className="mb-14 mt-60">
                             <Button
-                                onPress={() => console.log('pressed')}
-                                innerText="Report"
-                                bgColor="bg-[#B4B4B4]"
-                                textColor="text-black"
+                                onPress={() => setCurrentPage(3)}
+                                innerText="Next"
+                                textColor="text-white"
+                                bgColor="bg-black"
                                 border={true}
                                 borderColor="border border-4"
                             />

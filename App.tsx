@@ -32,7 +32,7 @@ import TestScreen from './src/screens/TestScreen';
 
 function App(): JSX.Element {
   return <SafeAreaView>
-    <Onboarding />
+    <CreateAccount />
   </SafeAreaView>
 }
 
