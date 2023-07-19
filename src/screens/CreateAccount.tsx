@@ -11,11 +11,12 @@ import TextInputField from '../components/TextInputField';
 import Button from '../components/Button';
 import ProgressDots from '../components/ProgressDots';
 
+
 type Props = {};
 
 // Define the ReportPage component
 
-const ReportPage = (props: Props) => {
+const CreateAccount = (props: Props) => {
     // Define state for switch
     const [currentPage, setCurrentPage] = useState<number>(1);
 
@@ -37,57 +38,157 @@ const ReportPage = (props: Props) => {
         setPassword(value);
     };
 
-    return (
-        <SafeAreaView className="min-w-screen">
-            <ScrollView>
-                <View className="h-150 border-b-4 border-slate-200 ">
-                    <View className='flex-row my-6'>
-                        <TouchableOpacity className="mt-2 ml-4">
-                            <Icon name="arrowleft" size={30} color="#000" className="" />
-                        </TouchableOpacity>
-                        <Text className="text-xl font-bold mx-auto mt-2 flex pr-12">
-                            Create Account
-                        </Text>
-                    </View>
-                    <View className='mb-3'>
-                        <ProgressDots page={1} />
-                    </View>
-                </View>
-                <View className="mx-auto my-auto">
-                    <View className="w-[342] mt-4">
-                        <TextInputField
-                            label="Email*"
-                            value={email}
-                            onChange={handleEmailChange}
-                            placeholder=''
-                        />
-                        <TextInputField
-                            label="Username*"
-                            value={username}
-                            onChange={handleUsernameChange}
-                            placeholder=''
-                        />
-                        <TextInputField
-                            label="Password*"
-                            value={password}
-                            onChange={handlePasswordChange}
-                            placeholder=''
-                        />
-                    </View>
-                </View>
-                <View className="mb-3 mt-60">
-                    <Button
-                        onPress={() => console.log('pressed')}
-                        innerText="Next"
-                        textColor="text-white"
-                        bgColor="bg-black"
-                        border={true}
-                        borderColor="border border-4"
-                    />
-                </View>
-            </ScrollView>
-        </SafeAreaView>
-    );
+    switch (currentPage) {
+        case 1:
+            return (
+                <SafeAreaView className="min-w-screen">
+                    <ScrollView>
+                        <View className="h-[90] border-b-4 border-slate-200 flex-row my-6">
+                            <TouchableOpacity className="mt-2 ml-4">
+                                <Icon name="arrowleft" size={30} color="#000" className="" />
+                            </TouchableOpacity>
+                            <Text className="text-xl font-bold mx-auto mt-2 flex pr-12">
+                                Create Account
+                            </Text>
+                            <ProgressDots page={1} />
+                        </View>
+                        <View className="mx-auto my-auto">
+                            <View className="w-[342]">
+                                <TextInputField
+                                    label="Email*"
+                                    value={email}
+                                    onChange={handleEmailChange}
+                                    placeholder=''
+                                />
+                                <TextInputField
+                                    label="Username*"
+                                    value={username}
+                                    onChange={handleUsernameChange}
+                                    placeholder=''
+                                />
+                                <TextInputField
+                                    label="Password*"
+                                    value={password}
+                                    onChange={handlePasswordChange}
+                                    placeholder=''
+                                />
+                            </View>
+                        </View>
+                        <View className="mb-14 mt-60">
+                            <Button
+                                onPress={() => console.log('pressed')}
+                                innerText="Report"
+                                bgColor="bg-[#B4B4B4]"
+                                textColor="text-black"
+                                border={true}
+                                borderColor="border border-4"
+                            />
+                        </View>
+                    </ScrollView>
+                </SafeAreaView>
+            );
+        case 2:
+            return (
+                <SafeAreaView className="min-w-screen">
+                    <ScrollView>
+                        <View className="h-150 border-b-4 border-slate-200">
+                            <View className='flex-row my-6'>
+                                <TouchableOpacity className="mt-2 ml-4">
+                                    <Icon name="arrowleft" size={30} color="#000" className="" />
+                                </TouchableOpacity>
+                                <Text className="text-xl font-bold mx-auto mt-2 flex pr-12">
+                                    Create Account
+                                </Text>
+                            </View>
+                            <View className='mb-3 flex justify-center'>
+                                <ProgressDots page={1} />
+                            </View>
+                        </View>
+                        <View className="mx-auto my-auto">
+                            <View className="w-[342]">
+                                <TextInputField
+                                    label="Email*"
+                                    value={email}
+                                    onChange={handleEmailChange}
+                                    placeholder=''
+                                />
+                                <TextInputField
+                                    label="Username*"
+                                    value={username}
+                                    onChange={handleUsernameChange}
+                                    placeholder=''
+                                />
+                                <TextInputField
+                                    label="Password*"
+                                    value={password}
+                                    onChange={handlePasswordChange}
+                                    placeholder=''
+                                />
+                            </View>
+                        </View>
+                        <View className="mb-14 mt-60">
+                            <Button
+                                onPress={() => console.log('pressed')}
+                                innerText="Next"
+                                bgColor="bg-[#B4B4B4]"
+                                textColor="text-black"
+                                border={true}
+                                borderColor="border border-4"
+                            />
+                        </View>
+                    </ScrollView>
+                </SafeAreaView>
+            );
+        case 3:
+            return (
+                <SafeAreaView className="min-w-screen">
+                    <ScrollView>
+                        <View className="h-[90] border-b-4 border-slate-200 flex-row my-6">
+                            <TouchableOpacity className="mt-2 ml-4">
+                                <Icon name="arrowleft" size={30} color="#000" className="" />
+                            </TouchableOpacity>
+                            <Text className="text-xl font-bold mx-auto mt-2 flex pr-12">
+                                Create Account
+                            </Text>
+                            <ProgressDots page={1} />
+                        </View>
+                        <View className="mx-auto my-auto">
+                            <View className="w-[342]">
+                                <TextInputField
+                                    label="Email*"
+                                    value={email}
+                                    onChange={handleEmailChange}
+                                    placeholder=''
+                                />
+                                <TextInputField
+                                    label="Username*"
+                                    value={username}
+                                    onChange={handleUsernameChange}
+                                    placeholder=''
+                                />
+                                <TextInputField
+                                    label="Password*"
+                                    value={password}
+                                    onChange={handlePasswordChange}
+                                    placeholder=''
+                                />
+                            </View>
+                        </View>
+                        <View className="mb-14 mt-60">
+                            <Button
+                                onPress={() => console.log('pressed')}
+                                innerText="Report"
+                                bgColor="bg-[#B4B4B4]"
+                                textColor="text-black"
+                                border={true}
+                                borderColor="border border-4"
+                            />
+                        </View>
+                    </ScrollView>
+                </SafeAreaView>
+            );
+        default:
+            return null;
+    }
 };
-
-export default ReportPage;
+export default CreateAccount;
