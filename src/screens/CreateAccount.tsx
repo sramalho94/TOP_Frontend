@@ -25,6 +25,10 @@ const CreateAccount = (props: Props) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [isModalVisible, setIsModalVisible] = useState(false);
+    const [birthday, setBirthday] = useState('');
+    const [zipCode, setZipCode] = useState('');
+
+
 
     const toggleModal = () => {
         setIsModalVisible(!isModalVisible);
@@ -56,6 +60,15 @@ const CreateAccount = (props: Props) => {
     const handlePasswordChange = (value: string) => {
         setPassword(value);
     };
+    // Function to handle birthday changes
+    const handleBirthdayChange = (value: string) => {
+        setBirthday(value);
+    };
+    // Function to handle zip code changes
+    const handleZipCodeChange = (value: string) => {
+        setBirthday(value);
+    };
+
 
 
     switch (currentPage) {
@@ -130,22 +143,26 @@ const CreateAccount = (props: Props) => {
                         </View>
                         <View className="mx-auto my-auto">
                             <View className="w-[342]">
+                                <View className="my-4">
+                                    <Button
+                                        onPress={() => console.log('pressed')}
+                                        innerText="(Why do we need this information)"
+                                        bgColor="bg-white"
+                                        textColor=""
+                                        border={false}
+                                        borderColor="border border-gray"
+                                    />
+                                </View>
                                 <TextInputField
-                                    label="Email*"
-                                    value={email}
-                                    onChange={handleEmailChange}
+                                    label="Birthday*"
+                                    value={birthday}
+                                    onChange={handleBirthdayChange}
                                     placeholder=''
                                 />
                                 <TextInputField
-                                    label="Username*"
-                                    value={username}
-                                    onChange={handleUsernameChange}
-                                    placeholder=''
-                                />
-                                <TextInputField
-                                    label="Password*"
-                                    value={password}
-                                    onChange={handlePasswordChange}
+                                    label="Zip Code*"
+                                    value={zipCode}
+                                    onChange={handleZipCodeChange}
                                     placeholder=''
                                 />
                             </View>
