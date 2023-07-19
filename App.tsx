@@ -15,7 +15,6 @@ import CreateAccount from './src/screens/CreateAccount';
 import ConsentPage from './src/screens/ConsentPage';
 import Onboarding from './src/screens/Onboarding';
 
-
 import {
   SafeAreaView,
   ScrollView,
@@ -35,7 +34,6 @@ function App(): JSX.Element {
   return <SafeAreaView>
     <Onboarding />
   </SafeAreaView>
-
 }
 
 export default App;
