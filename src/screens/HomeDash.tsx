@@ -19,18 +19,18 @@ const HomeDash = (props: Props) => {
       <ScrollView>
         {/* View for whole screen */}
         <View className="flex flex-col w-full justify-center items-center">
-            {/* View for avatar, text and report test */}
-          <View className="flex border w-screen border-black justify-center items-center">
-              {/* View for avatar*/}
-              {/* FIXME: size={72} on avatar does not work for android, might be something with size? idk */}
-            <View className="">
+          {/* View for avatar, text and report test */}
+          <View className="flex w-screen justify-center items-center">
+            {/* View for avatar*/}
+            {/* FIXME: size={72} on avatar does not work for android, might be something with size? idk */}
+            <View className="self-end">
               <CircleBtn
                 img={FlowerImg}
                 bgColor="bg-themeLightOrange"
                 onPress={() => {
                   console.log("You're Sick!!");
                 }}
-                size={125}
+                Btnsize={72}
               />
             </View>
             {/* need giant title text */}
@@ -42,38 +42,44 @@ const HomeDash = (props: Props) => {
               onPress={() => {
                 console.log("You're Sick!!");
               }}
-              size={182}
+              Btnsize={182}
             />
           </View>
 
           {/*View for 3 mini buttons*/}
-          <View className='border-8 border-white w-screen flex justify-center items-center flex-row'>
-          <CircleBtn
-            img={FlowerImg}
-            bgColor="bg-themeLightOrange"
-            onPress={() => {
-              console.log("You're Sick!!");
-            }}
-            size={104}
-          />
+          <View className="w-screen flex justify-center flex-row">
+            <View className="-mt-2">
+              <CircleBtn
+                img={FlowerImg}
+                bgColor="bg-themeLightOrange"
+                onPress={() => {
+                  console.log("You're Sick!!");
+                }}
+                Btnsize={104}
+              />
+            </View>
 
-          <CircleBtn
-            img={FlowerImg}
-            bgColor="bg-themeLightOrange"
-            onPress={() => {
-              console.log("You're Sick!!");
-            }}
-            size={104}
-          />
+            <View className="mt-24">
+              <CircleBtn
+                img={FlowerImg}
+                bgColor="bg-themeLightOrange"
+                onPress={() => {
+                  console.log("You're Sick!!");
+                }}
+                Btnsize={104}
+              />
+            </View>
 
-          <CircleBtn
-            img={FlowerImg}
-            bgColor="bg-themeLightOrange"
-            onPress={() => {
-              console.log("You're Sick!!");
-            }}
-            size={104}
-          />
+            <View className="mt-6">
+              <CircleBtn
+                img={FlowerImg}
+                bgColor="bg-themeLightOrange"
+                onPress={() => {
+                  console.log("You're Sick!!");
+                }}
+                Btnsize={104}
+              />
+            </View>
           </View>
         </View>
       </ScrollView>
