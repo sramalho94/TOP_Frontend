@@ -7,14 +7,16 @@ import {
   Pressable,
   ScrollView,
 } from 'react-native';
-import React, { useState } from 'react';
-import CheckBox from '@react-native-community/checkbox';
+import React, {useState, useEffect} from 'react';
+import CheckBox from '../components/CheckBox';
 import Icon from 'react-native-vector-icons/AntDesign';
 import TextInputField from '../components/TextInputField';
 import DropDownField from '../components/DropDownField';
 import Button from '../components/Button';
 import DropDownPicker from 'react-native-dropdown-picker';
 import CircleBtn from '../components/CircleBtn';
+import TopNavBar from '../components/TopNavBar';
+
 type Props = {};
 
 // Define the ReportPage component
@@ -23,6 +25,14 @@ const ReportPage = (props: Props) => {
   // Define state variables for zip code and age
   const [zipCode, setZipCode] = useState('');
   const [age, setAge] = useState('');
+  const [isCheckboxSelected, setCheckboxSelection] = useState(false);
+
+  console.log('Render: ', isCheckboxSelected);
+
+  const handleCheckChanges = () => {
+    setCheckboxSelection(prevState => !prevState);
+    console.log('handleCheckChanges: ', isCheckboxSelected);
+  };
 
   // Function to handle zip code changes
   const handleZipCodeChange = (value: string) => {
@@ -130,7 +140,10 @@ const ReportPage = (props: Props) => {
 
           </View>
           <View className="flex-row justify-center my-6">
-            <CheckBox />
+            <CheckBox
+              isSelected={isCheckboxSelected}
+              handleCheckChanges={handleCheckChanges}
+            />
             <Text className="font-bold mt-1">
               I agree to share my results with the CDC
             </Text>
