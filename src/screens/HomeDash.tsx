@@ -22,14 +22,15 @@ const HomeDash = (props: Props) => {
             {/* View for avatar, text and report test */}
           <View className="flex border w-screen border-black justify-center items-center">
               {/* View for avatar*/}
-            <View className="self-end">
+              {/* FIXME: size={72} on avatar does not work for android, might be something with size? idk */}
+            <View className="">
               <CircleBtn
                 img={FlowerImg}
                 bgColor="bg-themeLightOrange"
                 onPress={() => {
                   console.log("You're Sick!!");
                 }}
-                size={72}
+                size={125}
               />
             </View>
             {/* need giant title text */}
