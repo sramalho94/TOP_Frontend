@@ -4,6 +4,7 @@ import {
     SafeAreaView,
     TouchableOpacity,
     ScrollView,
+    Modal,
 } from 'react-native';
 import React, { useState } from 'react';
 import Icon from 'react-native-vector-icons/AntDesign';
@@ -23,6 +24,25 @@ const CreateAccount = (props: Props) => {
     const [email, setEmail] = useState('');
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [isModalVisible, setIsModalVisible] = useState(false);
+
+    const toggleModal = () => {
+        setIsModalVisible(!isModalVisible);
+    };
+
+    const checkPasswordCriteria = () => {
+        const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/;
+        return passwordPattern.test(password);
+    };
+
+    const handleSubmit = () => {
+        const isPasswordValid = checkPasswordCriteria();
+        if (!isPasswordValid) {
+            toggleModal();
+        } else {
+            setCurrentPage(2);
+        }
+    };
 
     // Function to handle email changes
     const handleEmailChange = (value: string) => {
@@ -140,6 +160,21 @@ const CreateAccount = (props: Props) => {
                                 borderColor="border border-4"
                             />
                         </View>
+                        <Modal visible={isModalVisible} transparent={true}>
+                            <View className="flex-1 justify-center items-center bg-black bg-opacity-50">
+                                <View className="bg-white p-8 rounded-lg w-72">
+                                    <Text className="text-xl font-bold mb-4">Your password must include:</Text>
+                                    <Text className="mb-2">- One uppercase and one lowercase letter</Text>
+                                    <Text className="mb-2">- One number and one special character</Text>
+                                    <TouchableOpacity
+                                        onPress={toggleModal}
+                                        className="bg-black text-white py-2 px-4 rounded"
+                                    >
+                                        <Text>Close</Text>
+                                    </TouchableOpacity>
+                                </View>
+                            </View>
+                        </Modal>
                     </ScrollView>
                 </SafeAreaView>
             );
