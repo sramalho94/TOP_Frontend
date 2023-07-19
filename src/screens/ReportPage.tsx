@@ -16,7 +16,7 @@ import Button from '../components/Button';
 import DropDownPicker from 'react-native-dropdown-picker';
 import CircleBtn from '../components/CircleBtn';
 import TopNavBar from '../components/TopNavBar';
-import FlowerImg from '../../assets/orange-flower.png'
+
 
 type Props = {};
 
@@ -67,10 +67,10 @@ const ReportPage = (props: Props) => {
           <View className="justify-center space-x-4 flex-row my-9">
             <CircleBtn bgColor='bg-themeLightBlue' onPress={() => {
               console.log("You're Clear!!")
-            }} text='Negative' size={72} />
+            }} text='Negative' size={125}/>
             <CircleBtn text='Positive' bgColor='bg-themeLightOrange' onPress={() => {
               console.log("You're Sick!!")
-            }} size={72}/>
+            }} size={125}/>
           </View>
           <View className="w-[342]">
             <TextInputField

@@ -30,8 +30,7 @@ import TestScreen from './src/screens/TestScreen';
 
 function App(): JSX.Element {
   return <SafeAreaView>
-    {/* <HomeDash /> */}
-    <ReportPage />
+    <HomeDash />
   </SafeAreaView>
 }
 

@@ -30,14 +30,15 @@ type Props = {
         //   backgroundRepeat: "no-repeat",
         // }}
 
+        // Margin for Touchable opacity removed- conflicting with spacing on other screens - make sure to add margins to circles in views that it is imported
 
 const CircleBtn = ({textColor, img, size, text, bgColor, onPress}: Props)=> {
   return (
     <>
       <TouchableOpacity
         onPress={onPress}
-        className={`${bgColor} mx-3 border-2 border-black flex items-center rounded-full justify-center ${textColor}`}>
-         {img ?  <Image className={`bg-contain w-[72] h-[72] rounded-full`} source={img} />: <Text>{text}</Text>}
+        className={`${bgColor} border-2 border-black flex items-center rounded-full justify-center ${textColor} h-[${size}] w-[${size}]`}>
+         {img ?  <Image className={`bg-contain w-[${size}] h-[${size}] rounded-full`} source={img} />: <Text>{text}</Text>}
       </TouchableOpacity>
     </>
   );
