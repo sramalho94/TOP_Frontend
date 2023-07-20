@@ -202,7 +202,7 @@ const CreateAccount = (props: Props) => {
                             </View>
                             <View className="mx-auto my-auto mb-3">
                                 <View className="w-[342]">
-                                    <View className="my-4">
+                                    <View className="my-4 underline">
                                         <Button
                                             onPress={toggleModal}
                                             innerText="(Why do we need this information?)"
@@ -210,6 +210,7 @@ const CreateAccount = (props: Props) => {
                                             textColor=""
                                             border={false}
                                             borderColor="border border-gray"
+                                            textDecoration='underline'
                                         />
                                     </View>
                                     <TextInputField
@@ -281,6 +282,7 @@ const CreateAccount = (props: Props) => {
                                         textColor=""
                                         border={false}
                                         borderColor="border border-gray"
+                                        textDecoration='underline'
                                     />
                                 </View>
                                 <DropDownField
