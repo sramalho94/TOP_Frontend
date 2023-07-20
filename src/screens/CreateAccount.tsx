@@ -205,7 +205,7 @@ const CreateAccount = (props: Props) => {
                                     <View className="my-4">
                                         <Button
                                             onPress={toggleModal}
-                                            innerText="(Why do we need this information)"
+                                            innerText="(Why do we need this information?)"
                                             bgColor=""
                                             textColor=""
                                             border={false}
@@ -228,7 +228,6 @@ const CreateAccount = (props: Props) => {
                             </View>
                             <View className="mt-64">
                                 <Button
-                                    // onPress={() => setCurrentPage(3)}
                                     onPress={handleSubmitPage2}
                                     innerText="Next"
                                     textColor="text-white"
@@ -277,7 +276,7 @@ const CreateAccount = (props: Props) => {
                                 <View className="my-4">
                                     <Button
                                         onPress={toggleModal}
-                                        innerText="(Why do we need this information)"
+                                        innerText="(Why do we need this information?)"
                                         bgColor=""
                                         textColor=""
                                         border={false}
