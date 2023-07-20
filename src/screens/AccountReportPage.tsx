@@ -32,6 +32,8 @@ const AccountReportPage = (props: Props) => {
   return (
     <SafeAreaView className="min-w-screen">
       <ScrollView>
+
+        {/* Nav Bar */}
         <View className="h-[90] border-b-4 border-slate-200 flex-row my-6">
           <TouchableOpacity className="mt-2 ml-4">
             <Icon name="arrowleft" size={30} color="#000" className="" />
@@ -40,10 +42,14 @@ const AccountReportPage = (props: Props) => {
             Report COVID-19 Test Result
           </Text>
         </View>
+
+        {/* Page container */}
         <View className="mx-auto my-auto">
           <Text className="text-lg font-bold mx-auto">
             What were the results of your test?
           </Text>
+
+          {/* Result Buttons Container */}
           <View className="justify-center space-x-4 flex-row my-8">
             <View className="m-2">
               <CircleBtn
@@ -62,20 +68,24 @@ const AccountReportPage = (props: Props) => {
               />
             </View>
           </View>
-          <View className="w-[342] mx-4">
+
+          {/* Text input fields container */}
+          <View className="mx-4">
             <TextInputField
               label="State*"
               value={state}
               onChange={handleStateChange}
-              placeholder="Michigan"
+              placeholder="Enter your state"
             />
             <TextInputField
               label="Zip Code*"
               value={zipCode}
               onChange={handleZipCodeChange}
-              placeholder="49301"
+              placeholder="Enter your ZIP code"
             />
           </View>
+
+          {/* Submit button */}
           <View className="my-4">
             <Button
               onPress={() => {}}

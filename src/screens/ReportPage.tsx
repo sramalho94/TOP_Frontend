@@ -91,7 +91,7 @@ const ReportPage = (props: Props) => {
               label="Zip Code*"
               value={zipCode}
               onChange={handleZipCodeChange}
-              placeholder="Enter your zip code"
+              placeholder="Enter your ZIP code"
             />
             <TextInputField
               label="Age*"
