@@ -7,15 +7,15 @@ import {
   Pressable,
   ScrollView,
 } from 'react-native';
-import React, { useState } from 'react';
-import CheckBox from '@react-native-community/checkbox';
+import React, {useState, useEffect} from 'react';
+import CheckBox from '../components/CheckBox';
 import Icon from 'react-native-vector-icons/AntDesign';
 import TextInputField from '../components/TextInputField';
 import DropDownField from '../components/DropDownField';
 import Button from '../components/Button';
 import DropDownPicker from 'react-native-dropdown-picker';
-import TopNavBar from '../components/TopNavBar';
 import CircleBtn from '../components/CircleBtn';
+import TopNavBar from '../components/TopNavBar';
 
 type Props = {};
 
@@ -25,6 +25,14 @@ const ReportPage = (props: Props) => {
   // Define state variables for zip code and age
   const [zipCode, setZipCode] = useState('');
   const [age, setAge] = useState('');
+  const [isCheckboxSelected, setCheckboxSelection] = useState(false);
+
+  console.log('Render: ', isCheckboxSelected);
+
+  const handleCheckChanges = () => {
+    setCheckboxSelection(prevState => !prevState);
+    console.log('handleCheckChanges: ', isCheckboxSelected);
+  };
 
   // Function to handle zip code changes
   const handleZipCodeChange = (value: string) => {
@@ -43,14 +51,8 @@ const ReportPage = (props: Props) => {
   return (
     <SafeAreaView className="min-w-screen">
       <ScrollView>
-        <View className="h-[90] border-b-4 border-slate-200 flex-row my-6">
-          <TouchableOpacity className="mt-2 ml-4">
-            <Icon name="arrowleft" size={30} color="#000" className="" />
-          </TouchableOpacity>
-          <Text className="text-xl font-bold mx-auto mt-2 flex pr-12">
-            Report COVID-19 Test Result
-          </Text>
-        </View>
+      <TopNavBar textSize='xl' textValue='Report Covid-19 Results' fontFamily='' haveProgress={false} />
+
         <View className="mx-auto my-auto">
           <Text className="text-lg font-bold mx-auto">
             What were the results of your test?
@@ -132,16 +134,16 @@ const ReportPage = (props: Props) => {
 
           </View>
           <View className="flex-row justify-center my-6">
-            <CheckBox />
+            <CheckBox
+              isSelected={isCheckboxSelected}
+              handleCheckChanges={handleCheckChanges}
+            />
             <Text className="font-bold mt-1">
               I agree to share my results with the CDC
             </Text>
           </View>
         </View>
         <View className="mb-14">
-          {/* <TouchableOpacity className="border-4 border-black flex justify-center items-center w-[342] h-[52] rounded-lg bg-[#B4B4B4] mt-6 mb-8 mx-auto">
-            <Text className="text-lg font-bold">Report</Text>
-          </TouchableOpacity> */}
           <Button
             onPress={() => console.log('pressed')}
             innerText="Report"
