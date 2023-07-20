@@ -76,11 +76,13 @@ const ReportPage = (props: Props) => {
               label="Zip Code*"
               value={zipCode}
               onChange={handleZipCodeChange}
+              placeholder=''
             />
             <TextInputField
               label="Age*"
               value={age}
               onChange={handleAgeChange}
+              placeholder=''
             />
 
             {/* TODO: will need to probs ask the UX team what the official dropdown selections are */}
