@@ -1,6 +1,6 @@
 apply plugin: "com.android.application"
 apply plugin: "com.facebook.react"
-apply from: file("../../node_modules/react-native-vector-icons/fonts.gradle")
+apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
 
 react {
     // Configuration block
@@ -58,6 +58,8 @@ dependencies {
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
 
-
+project.ext.vectoricons = [
+    iconFontNames: [ 'Ionicons.ttf' ]
+]
 
 // Removed the duplicate react-native-vector-icons
