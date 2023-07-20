@@ -18,36 +18,37 @@ const HomeDash = (props: Props) => {
     <SafeAreaView className="h-screen w-screen bg-themeLightBlue">
       <ScrollView>
         {/* View for whole screen */}
-        <View className="flex flex-col w-full justify-center items-center">
+        <View className="flex flex-col w-full min-h-screen  justify-center items-center border border-red-600 py-6 px-6">
           {/* View for avatar, text and report test */}
-          <View className="flex w-screen justify-center items-center">
+          <View className="flex w-full justify-center items-center border-4 border-green-600">
             {/* View for avatar*/}
-            {/* FIXME: size={72} on avatar does not work for android, might be something with size? idk */}
-            <View className="self-end">
+            {/* FIXME: size={72} on avatar does not work for android, might be something with size? idk
+            update* it also stopped working for IOS */}
+            <View className="self-end border border-black mb-6">
               <CircleBtn
                 img={FlowerImg}
                 bgColor="bg-themeLightOrange"
                 onPress={() => {
                   console.log("You're Sick!!");
                 }}
-                Btnsize={72}
+                Btnsize={104}
               />
             </View>
-            {/* need giant title text */}
-            <Text className="text-3xl font-bold my-6 ">Community Test Lab</Text>
+            <Text className="text-3xl font-bold mb-6 text-center">Community {'\n'}Test Lab</Text>
             {/* need giant circle btn, need to refactor circle btn props? */}
             <CircleBtn
-              img={FlowerImg}
+              text={`Report \n Test`}
               bgColor="bg-themeLightOrange"
               onPress={() => {
                 console.log("You're Sick!!");
               }}
               Btnsize={182}
+            //   textSize='3xl'
             />
           </View>
 
           {/*View for 3 mini buttons*/}
-          <View className="w-screen flex justify-center flex-row">
+          <View className="w-full border border-black mb-6 flex justify-center flex-row">
             <View className="-mt-2">
               <CircleBtn
                 img={FlowerImg}

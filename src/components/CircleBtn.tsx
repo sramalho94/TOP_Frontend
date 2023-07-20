@@ -9,6 +9,7 @@ type Props = {
   Btnsize: number;
   textColor?: string;
   img?: string;
+  textSize: any,
 };
 
 // Can use on report page screens and homescreen
@@ -32,13 +33,15 @@ type Props = {
 
         // Margin for Touchable opacity removed- conflicting with spacing on other screens - make sure to add margins to circles in views that it is imported
 
-const CircleBtn = ({textColor, img, Btnsize, text, bgColor, onPress}: Props)=> {
+    // Going to need to create a prop for text sizing within the circleBtn component
+
+const CircleBtn = ({textColor, textSize, img, Btnsize, text, bgColor, onPress}: Props)=> {
   return (
     <>
       <TouchableOpacity
         onPress={onPress}
         className={`${bgColor} border-2 border-black flex items-center rounded-full justify-center ${textColor} h-[${Btnsize}] w-[${Btnsize}]`}>
-         {img ?  <Image className={`bg-contain w-[${Btnsize}] h-[${Btnsize}] rounded-full`} source={img} />: <Text>{text}</Text>}
+         {img ?  <Image className={`bg-contain w-[${Btnsize}] h-[${Btnsize}] rounded-full`} source={img} />: <Text className={`text-center text-[${textSize}]`} >{text}</Text>}
       </TouchableOpacity>
     </>
   );
