@@ -6,6 +6,8 @@ import {
   Image,
   TouchableOpacity,
   Animated,
+  NativeSyntheticEvent,
+  NativeScrollEvent,
   useWindowDimensions,
 } from 'react-native';
 import {ScrollView} from 'react-native';
@@ -54,13 +56,21 @@ const Onboarding = (props: Props) => {
     }
   };
 
+  const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+    const offsetX = event.nativeEvent.contentOffset.x;
+    const page = Math.floor(offsetX / width);
+    setCurrentPage(page);
+  };
+
   return (
     <ScrollView
       ref={scrollViewRef}
       horizontal
       pagingEnabled
       showsHorizontalScrollIndicator={false}
-      scrollEnabled={false} // Disable manual scrolling
+      scrollEnabled
+      onScroll={handleScroll} // Handle scrolling event
+      scrollEventThrottle={16} // Adjust the scroll event frequency
     >
       {pages.map((page, index) => (
         <SafeAreaView key={index} className="h-screen w-screen">
