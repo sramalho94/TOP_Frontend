@@ -51,10 +51,15 @@ const CreateAccount = (props: Props) => {
     };
     const checkPasswordCriteria = () => {
         const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/;
-        console.log(passwordPattern.test(form.password))
         return passwordPattern.test(form.password);
     };
     const handleSubmit = () => {
+        // Check if email and username are not empty
+        if (!email || !username) {
+            alert('Please fill in all mandatory fields.');
+            return; // Prevent proceeding to the next page
+          }
+
         const isPasswordValid = checkPasswordCriteria();
         if (!isPasswordValid) {
             toggleModal();
