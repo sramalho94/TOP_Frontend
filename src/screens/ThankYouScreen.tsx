@@ -1,11 +1,13 @@
 import {View, Text, SafeAreaView, TouchableOpacity} from 'react-native';
 import React from 'react';
+import TopNavBar from '../components/TopNavBar';
 
 type Props = {};
 
 const ThankYouScreen = (props: Props) => {
   return (
-    <SafeAreaView className="h-screen w-screen mx-auto my-auto ">
+    <SafeAreaView>
+        <TopNavBar textSize='xl' textValue='All Done!' fontFamily='' haveProgress={false} />
       <View className="flex-row justify-center mt-16">
         <Text className="text-4xl">Thank You!</Text>
       </View>
