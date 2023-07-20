@@ -58,8 +58,6 @@ dependencies {
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
 
-project.ext.vectoricons = [
-    iconFontNames: [ 'Ionicons.ttf' ]
-]
+
 
 // Removed the duplicate react-native-vector-icons
