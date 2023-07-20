@@ -4,12 +4,12 @@ import { Image } from 'react-native';
 
 type Props = {
   text?: string;
-  bgColor: string;
+  bgColor?: string;
   onPress: () => void;
   Btnsize: number;
   textColor?: string;
   img?: string;
-  textSize: any,
+  textSize?: string,
 };
 
 // Can use on report page screens and homescreen
@@ -19,8 +19,6 @@ type Props = {
         // small: w-[104] h-[104]
         // medium: w-[125] h-[125] 
         // large: w-[182] h-[182]
-        // text color
-        // src property for image buttons??? probs
 
     // Need to research a way to make the view/touchable opacity etc. a bg image with text on top capabilities ?
         // style={{
@@ -33,7 +31,6 @@ type Props = {
 
         // Margin for Touchable opacity removed- conflicting with spacing on other screens - make sure to add margins to circles in views that it is imported
 
-    // Going to need to create a prop for text sizing within the circleBtn component
 
 const CircleBtn = ({textColor, textSize, img, Btnsize, text, bgColor, onPress}: Props)=> {
   return (

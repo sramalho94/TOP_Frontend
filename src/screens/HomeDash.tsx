@@ -28,8 +28,7 @@ const HomeDash = (props: Props) => {
               <CircleBtn
                 img={FlowerImg}
                 bgColor="bg-themeLightOrange"
-                onPress={() => {
-                  console.log("You're Sick!!");
+                onPress={() => console.log("the avatar: master of all four elements")
                 }}
                 Btnsize={104}
               />
