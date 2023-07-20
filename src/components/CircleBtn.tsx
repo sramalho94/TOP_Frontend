@@ -4,12 +4,12 @@ import { Image } from 'react-native';
 
 type Props = {
   text?: string;
-  bgColor: string;
+  bgColor?: string;
   onPress: () => void;
   Btnsize: number;
   textColor?: string;
   img?: string;
-  textSize: any,
+  textSize?: string,
 };
 
 // Can use on report page screens and homescreen
@@ -41,7 +41,7 @@ const CircleBtn = ({textColor, textSize, img, Btnsize, text, bgColor, onPress}: 
       <TouchableOpacity
         onPress={onPress}
         className={`${bgColor} border-2 border-black flex items-center rounded-full justify-center ${textColor} h-[${Btnsize}] w-[${Btnsize}]`}>
-         {img ?  <Image className={`bg-contain w-[${Btnsize}] h-[${Btnsize}] rounded-full`} source={img} />: <Text className={`text-center text-[${textSize}]`} >{text}</Text>}
+         {img ?  <Image className={`bg-contain w-[${Btnsize}] h-[${Btnsize}] rounded-full`} source={img} />: <Text className={`text-center text-${textSize}`} >{text}</Text>}
       </TouchableOpacity>
     </>
   );
