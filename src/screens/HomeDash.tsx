@@ -31,7 +31,7 @@ const HomeDash = (props: Props) => {
                 Btnsize="72"
               />
             </View>
-            <Text className="text-3xl font-bold mb-6 text-center text-black">Community {'\n'}Test Lab</Text>
+            <Text className="text-5xl font-bold mb-6 text-center text-black">Community {'\n'}Test Lab</Text>
             
             {/* Giant Report Button */}
             <CircleBtn
