@@ -53,7 +53,9 @@ const CreateAccount = (props: Props) => {
         const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/;
         return passwordPattern.test(form.password);
     };
-    const handleSubmit = () => {
+
+    // Function to handle submitting page 1
+    const handleSubmitPage1 = () => {
         // Check if email and username are not empty
         if (!email || !username) {
             alert('Please fill in all mandatory fields.');
@@ -67,6 +69,18 @@ const CreateAccount = (props: Props) => {
             setCurrentPage(2);
         }
     };
+
+    // Function to handle submitting page 2
+    const handleSubmitPage2 = () => {
+        // Check if email and username are not empty
+        if (!birthday || !zipCode) {
+            alert('Please fill in all mandatory fields.');
+            return; // Prevent proceeding to the next page
+          } else {
+            setCurrentPage(3);
+        }
+        }
+
     // Function to handle email changes
     const handleEmailChange = (value: string) => {
         setEmail(value);
@@ -123,7 +137,7 @@ const CreateAccount = (props: Props) => {
                         </View>
                         <View className="mt-60">
                             <Button
-                                onPress={handleSubmit}
+                                onPress={handleSubmitPage1}
                                 innerText="Next"
                                 textColor="text-white"
                                 bgColor="bg-black"
@@ -198,7 +212,8 @@ const CreateAccount = (props: Props) => {
                             </View>
                             <View className="mt-64">
                                 <Button
-                                    onPress={() => setCurrentPage(3)}
+                                    // onPress={() => setCurrentPage(3)}
+                                    onPress={handleSubmitPage2}
                                     innerText="Next"
                                     textColor="text-white"
                                     bgColor="bg-black"
