@@ -35,7 +35,7 @@ const CreateAccount = (props: Props) => {
     // Define state variables for zip code and age
     const [email, setEmail] = useState('');
     const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+    const [form, setForm] = useState<FormState>(initialFormState);
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [birthday, setBirthday] = useState('');
     const [zipCode, setZipCode] = useState('');
@@ -44,12 +44,15 @@ const CreateAccount = (props: Props) => {
     const [raceOpen, setRaceOpen] = useState<boolean>(false);
     const [ethnicityOpen, setEthnicityOpen] = useState<boolean>(false);
     
+
+
     const toggleModal = () => {
         setIsModalVisible(!isModalVisible);
     };
     const checkPasswordCriteria = () => {
         const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/;
-        return passwordPattern.test(password);
+        console.log(passwordPattern.test(form.password))
+        return passwordPattern.test(form.password);
     };
     const handleSubmit = () => {
         const isPasswordValid = checkPasswordCriteria();
@@ -67,10 +70,7 @@ const CreateAccount = (props: Props) => {
     const handleUsernameChange = (value: string) => {
         setUsername(value);
     };
-    // Function to handle password changes
-    const handlePasswordChange = (value: string) => {
-        setPassword(value);
-    };
+
     // Function to handle birthday changes
     const handleBirthdayChange = (value: string) => {
         setBirthday(value);
@@ -80,7 +80,7 @@ const CreateAccount = (props: Props) => {
         setZipCode(value);
     };
 
-    const [form, setForm] = useState<FormState>(initialFormState);
+
     switch (currentPage) {
         case 1:
             return (
@@ -114,12 +114,6 @@ const CreateAccount = (props: Props) => {
                                     placeholder=''
                                 />
                                 <PasswordField setForm={setForm} form={form}/>
-                                {/* <TextInputField
-                                    label="Password*"
-                                    value={password}
-                                    onChange={handlePasswordChange}
-                                    placeholder=''
-                                /> */}
                             </View>
                         </View>
                         <View className="mt-60">
