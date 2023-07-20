@@ -28,8 +28,7 @@ const HomeDash = (props: Props) => {
               <CircleBtn
                 img={FlowerImg}
                 bgColor="bg-themeLightOrange"
-                onPress={() => console.log("the avatar: master of all four elements")
-                }}
+                onPress={() => console.log("the avatar: master of all four elements")}
                 Btnsize={104}
               />
             </View>
@@ -38,9 +37,8 @@ const HomeDash = (props: Props) => {
             <CircleBtn
               text={`Report \n Test`}
               bgColor="bg-themeLightOrange"
-              onPress={() => {
-                console.log("You're Sick!!");
-              }}
+              onPress={() => console.log("reported test")
+              }
               Btnsize={182}
             //   textSize='3xl'
             />
@@ -52,9 +50,7 @@ const HomeDash = (props: Props) => {
               <CircleBtn
                 img={FlowerImg}
                 bgColor="bg-themeLightOrange"
-                onPress={() => {
-                  console.log("You're Sick!!");
-                }}
+                onPress={() => console.log("privacy")}
                 Btnsize={104}
               />
             </View>
@@ -63,9 +59,7 @@ const HomeDash = (props: Props) => {
               <CircleBtn
                 img={FlowerImg}
                 bgColor="bg-themeLightOrange"
-                onPress={() => {
-                  console.log("You're Sick!!");
-                }}
+                onPress={() => console.log("dashboard")}
                 Btnsize={104}
               />
             </View>
@@ -74,9 +68,7 @@ const HomeDash = (props: Props) => {
               <CircleBtn
                 img={FlowerImg}
                 bgColor="bg-themeLightOrange"
-                onPress={() => {
-                  console.log("You're Sick!!");
-                }}
+                onPress={() => console.log("exchange")}
                 Btnsize={104}
               />
             </View>
