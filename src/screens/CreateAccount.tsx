@@ -60,7 +60,13 @@ const CreateAccount = (props: Props) => {
         if (!email || !username) {
             alert('Please fill in all mandatory fields.');
             return; // Prevent proceeding to the next page
-          }
+        }
+
+        // Check if the email is in the correct format
+        if (!isEmailValid(email)) {
+            alert('Please enter a valid email address.');
+            return; // Prevent proceeding to the next page
+        }  
 
         const isPasswordValid = checkPasswordCriteria();
         if (!isPasswordValid) {
@@ -85,6 +91,14 @@ const CreateAccount = (props: Props) => {
     const handleEmailChange = (value: string) => {
         setEmail(value);
     };
+
+    const isEmailValid = (email: string): boolean => {
+        // Regular expression for email validation
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailPattern.test(email);
+      };
+
+
     // Function to handle username changes
     const handleUsernameChange = (value: string) => {
         setUsername(value);
@@ -98,6 +112,8 @@ const CreateAccount = (props: Props) => {
     const handleZipCodeChange = (value: string) => {
         setZipCode(value);
     };
+
+    
 
 
     switch (currentPage) {
