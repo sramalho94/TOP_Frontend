@@ -49,55 +49,14 @@ const CreateAccount = (props: Props) => {
     const toggleModal = () => {
         setIsModalVisible(!isModalVisible);
     };
-    const checkPasswordCriteria = () => {
-        const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/;
-        return passwordPattern.test(form.password);
-    };
 
-    // Function to handle submitting page 1
-    const handleSubmitPage1 = () => {
-        // Check if email and username are not empty
-        if (!email || !username) {
-            alert('Please fill in all mandatory fields.');
-            return; // Prevent proceeding to the next page
-        }
-
-        // Check if the email is in the correct format
-        if (!isEmailValid(email)) {
-            alert('Please enter a valid email address.');
-            return; // Prevent proceeding to the next page
-        }  
-
-        const isPasswordValid = checkPasswordCriteria();
-        if (!isPasswordValid) {
-            toggleModal();
-        } else {
-            setCurrentPage(2);
-        }
-    };
-
-    // Function to handle submitting page 2
-    const handleSubmitPage2 = () => {
-        // Check if email and username are not empty
-        if (!birthday || !zipCode) {
-            alert('Please fill in all mandatory fields.');
-            return; // Prevent proceeding to the next page
-          } else {
-            setCurrentPage(3);
-        }
-        }
+    
+    // Handling input field changes:
 
     // Function to handle email changes
     const handleEmailChange = (value: string) => {
         setEmail(value);
     };
-
-    const isEmailValid = (email: string): boolean => {
-        // Regular expression for email validation
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailPattern.test(email);
-      };
-
 
     // Function to handle username changes
     const handleUsernameChange = (value: string) => {
@@ -113,8 +72,70 @@ const CreateAccount = (props: Props) => {
         setZipCode(value);
     };
 
-    
 
+    // Validations: 
+
+    // Function to check if password meets criteria
+    const checkPasswordCriteria = () => {
+        const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/;
+        return passwordPattern.test(form.password);
+    };
+
+    // Function to check if email format is correct
+    const isEmailValid = (email: string): boolean => {
+        // Regular expression for email validation
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailPattern.test(email);
+      };
+
+    // Function to check if zip code format is correct
+    const isZipCodeValid = (zipCode: string): boolean => {
+        // Regular expression for US zip code validation (5 digits)
+        const zipCodePattern = /^\d{5}$/;
+        return zipCodePattern.test(zipCode);
+      };
+
+
+   // Submitting pages:
+
+    // Function to handle submitting page 1
+    const handleSubmitPage1 = () => {
+        // Check if email and username are not empty
+        if (!email || !username) {
+            alert('Please fill in all mandatory fields.');
+            return; // Prevent proceeding to the next page
+        }
+
+        // Check if the email is in the correct format
+        if (!isEmailValid(email)) {
+            alert('Please enter a valid email address.');
+            return; // Prevent proceeding to the next page
+        } 
+
+        const isPasswordValid = checkPasswordCriteria();
+        if (!isPasswordValid) {
+            toggleModal();
+        } else {
+            setCurrentPage(2);
+        }
+    };
+
+    // Function to handle submitting page 2
+    const handleSubmitPage2 = () => {
+        // Check if email and username are not empty
+        if (!birthday || !zipCode) {
+            alert('Please fill in all mandatory fields.');
+            return; // Prevent proceeding to the next page
+          }
+
+        // Check if the zip code is in the correct format
+        if (!isZipCodeValid(zipCode)) {
+            alert('Please enter a valid zip code.');
+            return; // Prevent proceeding to the next page
+        } else {
+            setCurrentPage(3);
+        }
+    }
 
     switch (currentPage) {
         case 1:
