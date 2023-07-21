@@ -1,4 +1,3 @@
-
 import React, {useState, useRef} from 'react';
 import {
   SafeAreaView,
@@ -13,7 +12,6 @@ import {
 } from 'react-native';
 import {ScrollView} from 'react-native';
 
-
 import NoImage from './../../assets/nopicture.png';
 import ProgressDots from './../components/ProgressDots';
 import Button from './../components/Button';
@@ -21,7 +19,6 @@ import Button from './../components/Button';
 type Props = {};
 
 const Onboarding = (props: Props) => {
-
   const [currentPage, setCurrentPage] = useState<number>(0);
   const {width} = useWindowDimensions();
   const scrollViewRef = useRef<ScrollView>(null);
@@ -77,7 +74,7 @@ const Onboarding = (props: Props) => {
     >
       {pages.map((page, index) => (
         <SafeAreaView key={index} className="h-screen w-screen">
-          <View className="flex-1 flex-col mt-4 mb-5">
+          <View className="flex-1 flex-col mt-4 mb-10">
             <View className="m-5 flex-1">
               <Image className="w-full" source={page.imageSource}></Image>
               <Text className="mx-auto py-5 font-serif text-[22px]">
@@ -89,7 +86,6 @@ const Onboarding = (props: Props) => {
                 <Button
                   onPress={page.onButtonPress} // Updated this line
                   innerText={page.buttonText}
-
                   bgColor="bg-white"
                   textColor="text-black"
                   border={true}
@@ -114,7 +110,6 @@ const Onboarding = (props: Props) => {
       ))}
     </ScrollView>
   );
-
 };
 
 export default Onboarding;
