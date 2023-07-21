@@ -7,13 +7,15 @@ import {
   Pressable,
   ScrollView,
 } from 'react-native';
-import CircleBtn from '../components/CircleBtn';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import CheckBox from '../components/CheckBox';
 import Icon from 'react-native-vector-icons/AntDesign';
 import TextInputField from '../components/TextInputField';
 import DropDownField from '../components/DropDownField';
 import Button from '../components/Button';
+import DropDownPicker from 'react-native-dropdown-picker';
+import CircleBtn from '../components/CircleBtn';
+import TopNavBar from '../components/TopNavBar';
 
 type Props = {};
 
@@ -23,12 +25,13 @@ const ReportPage = (props: Props) => {
   // Define state variables for zip code and age
   const [zipCode, setZipCode] = useState('');
   const [age, setAge] = useState('');
-  const [isSelected, setSelection] = useState(false);
-  const [genderOpen, setGenderOpen] = useState(false); // state for gender dropdown
-  const [raceOpen, setRaceOpen] = useState(false); // state for race dropdown
-  const [ethnicityOpen, setEthnicityOpen] = useState(false);
+  const [isCheckboxSelected, setCheckboxSelection] = useState(false);
+
+  console.log('Render: ', isCheckboxSelected);
+
   const handleCheckChanges = () => {
-    setSelection(!isSelected);
+    setCheckboxSelection(prevState => !prevState);
+    console.log('handleCheckChanges: ', isCheckboxSelected);
   };
 
   // Function to handle zip code changes
@@ -39,6 +42,11 @@ const ReportPage = (props: Props) => {
   const handleAgeChange = (value: string) => {
     setAge(value);
   };
+
+  // need this so that when a user has one dropdown open and selects another, the opened dropdown will close
+  const [genderOpen, setGenderOpen] = useState<boolean>(false);
+  const [raceOpen, setRaceOpen] = useState<boolean>(false);
+  const [ethnicityOpen, setEthnicityOpen] = useState<boolean>(false);
 
   return (
     <SafeAreaView className="min-w-screen">
@@ -172,7 +180,7 @@ const ReportPage = (props: Props) => {
           {/* checkbox and text container */}
           <View className="flex-row justify-center my-6">
             <CheckBox
-              isSelected={isSelected}
+              isSelected={isCheckboxSelected}
               handleCheckChanges={handleCheckChanges}
             />
             <Text className="font-bold mt-1">
@@ -183,9 +191,6 @@ const ReportPage = (props: Props) => {
 
         {/* button container */}
         <View className="mb-14">
-          {/* <TouchableOpacity className="border-4 border-black flex justify-center items-center w-[342] h-[52] rounded-lg bg-[#B4B4B4] mt-6 mb-8 mx-auto">
-            <Text className="text-lg font-bold">Report</Text>
-          </TouchableOpacity> */}
           <Button
             onPress={() => console.log('pressed')}
             innerText="Report"

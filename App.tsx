@@ -29,9 +29,11 @@ import DropDownField from './src/components/DropDownField';
 import TestScreen from './src/screens/TestScreen';
 
 function App(): JSX.Element {
-  return <SafeAreaView>
-    <HomeDash />
-  </SafeAreaView>
+  return (
+    <SafeAreaView>
+      <ReportPage />
+    </SafeAreaView>
+  );
 }
 
 export default App;
