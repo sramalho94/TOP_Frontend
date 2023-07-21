@@ -86,14 +86,12 @@ const ReportPage = (props: Props) => {
           {/* Text input and dropdown fields container */}
           <View className="w-[342]">
             <TextInputField
-              placeholder=""
               label="Zip Code*"
               value={zipCode}
               onChange={handleZipCodeChange}
               placeholder="Enter your ZIP code"
             />
             <TextInputField
-              placeholder=""
               label="Age*"
               value={age}
               onChange={handleAgeChange}
