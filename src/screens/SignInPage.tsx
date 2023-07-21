@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   SafeAreaView,
   View,
@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import NoImage from '../../assets/blankimage.png';
 import Password from "../components/Password"
-
+import Button from '../components/Button';
 type Props = {};
 
 type FormState = {
@@ -29,7 +29,7 @@ export default function SignInPage(props: Props) {
   const [form, setForm] = useState<FormState>(initialFormState);
 
   return (
-    <SafeAreaView className="w-342 m-6">
+    <SafeAreaView className="w-342 m-4">
       <ScrollView>
         <View className="">
           <View className="flex flex-row justify-center align-middle">
@@ -46,7 +46,7 @@ export default function SignInPage(props: Props) {
                 autoCapitalize="none"
                 autoCorrect={false}
                 keyboardType="default"
-                onChangeText={username => setForm({...form, username})}
+                onChangeText={username => setForm({ ...form, username })}
                 placeholderTextColor="#6b7280"
                 className="h-11 bg-white pl-8 pr-6 rounded-lg text-base font-medium text-gray-700 border"
                 value={form.username}
@@ -55,38 +55,33 @@ export default function SignInPage(props: Props) {
 
             <Password setForm={setForm} form={form} />
 
-            <View className="mb-5">
-              <TouchableOpacity
-                onPress={() => {
-                  // handle onPress
-                }}
-                className="flex items-center justify-center rounded-md bg-white border border-black py-2 px-4">
-                <Text className="text-black font-semibold text-base">
-                  Log In
-                </Text>
-              </TouchableOpacity>
-            </View>
 
-            <View className="mb-5">
-              <TouchableOpacity
-                onPress={() => {
-                  // handle onPress
-                }}
-                className="flex items-center justify-center rounded-md bg-white border border-black py-2 px-4">
-                <Text className="text-black font-semibold text-base">
-                  Forgot Password
-                </Text>
-              </TouchableOpacity>
-            </View>
-
-            <TouchableOpacity
-              onPress={() => {
-                // handle link
-              }}>
-              <Text className="text-sm font-normal text-black text-center">
-                Back
-              </Text>
-            </TouchableOpacity>
+          </View>
+          <View className="mt-4">
+            <Button
+              onPress={() => console.log('pressed')}
+              innerText="Login"
+              textColor=""
+              bgColor=""
+              border={true}
+              borderColor="border border-black"
+            />
+            <Button
+              onPress={() => console.log('pressed')}
+              innerText="Forgot Password"
+              textColor=""
+              bgColor=""
+              border={true}
+              borderColor="border border-black"
+            />
+            <Button
+              onPress={() => console.log('Skip button pressed')}
+              innerText="Skip"
+              bgColor=""
+              textColor=""
+              border={false}
+              borderColor=""
+            />
           </View>
         </View>
       </ScrollView>
