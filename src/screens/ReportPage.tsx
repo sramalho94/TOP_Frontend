@@ -1,5 +1,5 @@
-import {View, Text, SafeAreaView, ScrollView} from 'react-native';
-import React, {useState} from 'react';
+import { View, Text, SafeAreaView, ScrollView } from 'react-native';
+import React, { useState } from 'react';
 import CheckBox from '../components/CheckBox';
 import TextInputField from '../components/TextInputField';
 import DropDownField from '../components/DropDownField';
@@ -95,8 +95,8 @@ const ReportPage = () => {
                   label: 'MIGHT CHANGE BELOW SELECTION LATER',
                   value: 'MIGHT CHANGE BELOW SELECTION LATER',
                 },
-                {label: '', value: ''},
-                {label: 'Prefer not to say', value: 'prefer not to say'},
+                { label: '', value: '' },
+                { label: 'Prefer not to say', value: 'prefer not to say' },
               ]}
               open={genderOpen}
               onOpen={() => {
@@ -117,7 +117,7 @@ const ReportPage = () => {
                   label: 'American Indian or Alaska Native',
                   value: 'american indian or alaska native',
                 },
-                {label: 'Asian', value: 'asian'},
+                { label: 'Asian', value: 'asian' },
                 {
                   label: 'Black or African American',
                   value: 'black or african american',
@@ -126,13 +126,13 @@ const ReportPage = () => {
                   label: 'Native Hawaiian or Other Pacific Islander',
                   value: 'native hawaiian or other pacific islander',
                 },
-                {label: 'Not Specified', value: 'not specified'},
+                { label: 'Not Specified', value: 'not specified' },
                 {
                   label: 'Two or More Races/Ethnicities',
                   value: 'two or more races/ethnicities',
                 },
-                {label: 'White', value: 'white'},
-                {label: 'Prefer not to say', value: 'prefer not to say'},
+                { label: 'White', value: 'white' },
+                { label: 'Prefer not to say', value: 'prefer not to say' },
               ]}
               open={raceOpen}
               onOpen={() => {
@@ -149,9 +149,9 @@ const ReportPage = () => {
                   label: 'MIGHT CHANGE BELOW SELECTION LATER',
                   value: 'MIGHT CHANGE BELOW SELECTION LATER',
                 },
-                {label: 'Hispanic/Latino', value: 'hispanic/latino'},
-                {label: 'Non-Hispanic/Latino', value: 'non-hispanic/latino'},
-                {label: 'Prefer not to say', value: 'prefer not to say'},
+                { label: 'Hispanic/Latino', value: 'hispanic/latino' },
+                { label: 'Non-Hispanic/Latino', value: 'non-hispanic/latino' },
+                { label: 'Prefer not to say', value: 'prefer not to say' },
               ]}
               open={ethnicityOpen}
               onOpen={() => {
@@ -169,7 +169,7 @@ const ReportPage = () => {
               isSelected={isCheckboxSelected}
               handleCheckChanges={handleCheckChanges}
             />
-            <Text className="font-bold mt-1">
+            <Text className="font-bold my-auto pl-2">
               I agree to share my results with the CDC
             </Text>
           </View>
