@@ -1,4 +1,4 @@
-import { View, Text, TextInput, TouchableOpacity } from 'react-native';
+import {View, Text, TextInput, TouchableOpacity} from 'react-native';
 import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -11,13 +11,13 @@ type FormState = {
 type Props = {
   setForm: React.Dispatch<React.SetStateAction<FormState>>;
   form: FormState;
-}
+};
 
 const PasswordField = (props: Props) => {
-  const { setForm, form } = props;
+  const {setForm, form} = props;
 
   const handlePasswordChange = (password: string) => {
-    setForm(prevState => ({ ...prevState, password }));
+    setForm(prevState => ({...prevState, password}));
   };
 
   const togglePasswordVisibility = () => {
@@ -53,9 +53,7 @@ const PasswordField = (props: Props) => {
         />
       </TouchableOpacity>
     </View>
+  );
+};
 
-  )
-}
-
-export default PasswordField
-
+export default PasswordField;
