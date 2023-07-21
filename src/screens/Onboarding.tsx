@@ -1,4 +1,6 @@
-import React, {useState, useRef} from 'react';
+
+import React, { useState, useRef } from 'react';
+
 import {
   SafeAreaView,
   View,
@@ -10,7 +12,7 @@ import {
   NativeScrollEvent,
   useWindowDimensions,
 } from 'react-native';
-import {ScrollView} from 'react-native';
+import { ScrollView } from 'react-native';
 
 import NoImage from './../../assets/nopicture.png';
 import ProgressDots from './../components/ProgressDots';
@@ -20,7 +22,7 @@ type Props = {};
 
 const Onboarding = (props: Props) => {
   const [currentPage, setCurrentPage] = useState<number>(0);
-  const {width} = useWindowDimensions();
+  const { width } = useWindowDimensions();
   const scrollViewRef = useRef<ScrollView>(null);
 
   const pages = [
@@ -51,7 +53,7 @@ const Onboarding = (props: Props) => {
 
   const handleSwipeAnimation = (page: number) => {
     if (scrollViewRef.current) {
-      scrollViewRef.current.scrollTo({x: page * width, animated: true});
+      scrollViewRef.current.scrollTo({ x: page * width, animated: true });
       setCurrentPage(page);
     }
   };
