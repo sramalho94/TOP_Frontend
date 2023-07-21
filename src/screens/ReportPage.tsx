@@ -1,27 +1,15 @@
-import {
-  View,
-  Text,
-  SafeAreaView,
-  TextInput,
-  TouchableOpacity,
-  Pressable,
-  ScrollView,
-} from 'react-native';
-import React, {useState, useEffect} from 'react';
+import {View, Text, SafeAreaView, ScrollView} from 'react-native';
+import React, {useState} from 'react';
 import CheckBox from '../components/CheckBox';
-import Icon from 'react-native-vector-icons/AntDesign';
 import TextInputField from '../components/TextInputField';
 import DropDownField from '../components/DropDownField';
 import Button from '../components/Button';
-import DropDownPicker from 'react-native-dropdown-picker';
 import CircleBtn from '../components/CircleBtn';
 import TopNavBar from '../components/TopNavBar';
 
-type Props = {};
-
 // Define the ReportPage component
 
-const ReportPage = (props: Props) => {
+const ReportPage = () => {
   // Define state variables for zip code and age
   const [zipCode, setZipCode] = useState('');
   const [age, setAge] = useState('');
