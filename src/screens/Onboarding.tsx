@@ -31,14 +31,14 @@ const Onboarding = (props: Props) => {
       title: 'What the app does and the impact of data',
       buttonText: 'Continue',
       pageIndicator: 1,
-      onButtonPress: () => handleSwipeAnimation(currentPage + 1),
+      onButtonPress: () => handleSwipeAnimation(1),
     },
     {
       imageSource: NoImage,
       title: 'What the data is used for',
       buttonText: 'Continue',
       pageIndicator: 2,
-      onButtonPress: () => handleSwipeAnimation(currentPage + 1),
+      onButtonPress: () => handleSwipeAnimation(2),
     },
     {
       imageSource: NoImage,
