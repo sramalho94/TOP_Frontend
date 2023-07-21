@@ -2,24 +2,24 @@
 name: Check for package-lock.json
 
 on:
+  push:
+    branches: [main, dev]
   pull_request:
-    branches: [ main, dev ]
-    paths:
-    - '**'
+    branches: [main, dev]
 
 jobs:
   package-lock-check:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout repository content
-      uses: actions/checkout@v2
-      with:
-        fetch-depth: 0
-    - name: Use Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '14'
-    - name: Install dependencies
-      run: yarn install
-    - name: Run test script
-      run: yarn test:ci
+      - name: Checkout repository content
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Use Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18'
+      - name: Install dependencies
+        run: yarn install
+      - name: Run test script
+        run: yarn test:ci
