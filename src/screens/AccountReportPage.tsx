@@ -43,7 +43,7 @@ const AccountReportPage = (props: Props) => {
         />
 
         {/* Page container */}
-        <View className="mx-auto my-auto">
+        <View className="justify-center mx-auto max-w-sm">
           <Text className="text-lg font-bold mx-auto">
             What were the results of your test?
           </Text>
@@ -69,7 +69,7 @@ const AccountReportPage = (props: Props) => {
           </View>
 
           {/* Text input fields container */}
-          <View className="mx-4">
+          <View className="">
             <TextInputField
               label="State*"
               value={state}

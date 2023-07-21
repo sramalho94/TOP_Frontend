@@ -1,15 +1,27 @@
-import { View, Text, SafeAreaView, ScrollView } from 'react-native';
-import React, { useState } from 'react';
+import {
+  View,
+  Text,
+  SafeAreaView,
+  TextInput,
+  TouchableOpacity,
+  Pressable,
+  ScrollView,
+} from 'react-native';
+import React, {useState, useEffect} from 'react';
 import CheckBox from '../components/CheckBox';
+import Icon from 'react-native-vector-icons/AntDesign';
 import TextInputField from '../components/TextInputField';
 import DropDownField from '../components/DropDownField';
 import Button from '../components/Button';
+import DropDownPicker from 'react-native-dropdown-picker';
 import CircleBtn from '../components/CircleBtn';
 import TopNavBar from '../components/TopNavBar';
 
+type Props = {};
+
 // Define the ReportPage component
 
-const ReportPage = () => {
+const ReportPage = (props: Props) => {
   // Define state variables for zip code and age
   const [zipCode, setZipCode] = useState('');
   const [age, setAge] = useState('');
@@ -37,18 +49,22 @@ const ReportPage = () => {
   const [ethnicityOpen, setEthnicityOpen] = useState<boolean>(false);
 
   return (
-    <SafeAreaView className="min-w-screen">
+    <SafeAreaView className="w-screen h-screen">
       <ScrollView>
         {/* NavBar */}
-        <TopNavBar
-          textSize="xl"
-          fontFamily=""
-          haveProgress={false}
-          textValue="Report COVID-19 Test Result"
-        />
+        <View className="h-[90] border-b-4 border-slate-200 flex-row my-6">
+          <TouchableOpacity className="mt-2 ml-4">
+            <Icon name="arrowleft" size={30} color="#000" className="" />
+          </TouchableOpacity>
+          <Text className="text-xl font-bold mx-auto mt-2 flex pr-12">
+            Report COVID-19 Test Result
+          </Text>
+        </View>
 
-        {/* Test Result Buttons */}
-        <View className="mx-auto my-auto">
+        {/* Page Container */}
+        <View className="w-full justify-center items-center flex-1 flex-col">
+          <View className="max-w-sm">
+          {/* Test Result Buttons */}
           <Text className="text-lg font-bold mx-auto">
             What were the results of your test?
           </Text>
@@ -72,7 +88,7 @@ const ReportPage = () => {
           </View>
 
           {/* Text input and dropdown fields container */}
-          <View className="w-[342]">
+          <View className="">
             <TextInputField
               label="Zip Code*"
               value={zipCode}
@@ -95,8 +111,8 @@ const ReportPage = () => {
                   label: 'MIGHT CHANGE BELOW SELECTION LATER',
                   value: 'MIGHT CHANGE BELOW SELECTION LATER',
                 },
-                { label: '', value: '' },
-                { label: 'Prefer not to say', value: 'prefer not to say' },
+                {label: '', value: ''},
+                {label: 'Prefer not to say', value: 'prefer not to say'},
               ]}
               open={genderOpen}
               onOpen={() => {
@@ -117,7 +133,7 @@ const ReportPage = () => {
                   label: 'American Indian or Alaska Native',
                   value: 'american indian or alaska native',
                 },
-                { label: 'Asian', value: 'asian' },
+                {label: 'Asian', value: 'asian'},
                 {
                   label: 'Black or African American',
                   value: 'black or african american',
@@ -126,13 +142,13 @@ const ReportPage = () => {
                   label: 'Native Hawaiian or Other Pacific Islander',
                   value: 'native hawaiian or other pacific islander',
                 },
-                { label: 'Not Specified', value: 'not specified' },
+                {label: 'Not Specified', value: 'not specified'},
                 {
                   label: 'Two or More Races/Ethnicities',
                   value: 'two or more races/ethnicities',
                 },
-                { label: 'White', value: 'white' },
-                { label: 'Prefer not to say', value: 'prefer not to say' },
+                {label: 'White', value: 'white'},
+                {label: 'Prefer not to say', value: 'prefer not to say'},
               ]}
               open={raceOpen}
               onOpen={() => {
@@ -149,9 +165,9 @@ const ReportPage = () => {
                   label: 'MIGHT CHANGE BELOW SELECTION LATER',
                   value: 'MIGHT CHANGE BELOW SELECTION LATER',
                 },
-                { label: 'Hispanic/Latino', value: 'hispanic/latino' },
-                { label: 'Non-Hispanic/Latino', value: 'non-hispanic/latino' },
-                { label: 'Prefer not to say', value: 'prefer not to say' },
+                {label: 'Hispanic/Latino', value: 'hispanic/latino'},
+                {label: 'Non-Hispanic/Latino', value: 'non-hispanic/latino'},
+                {label: 'Prefer not to say', value: 'prefer not to say'},
               ]}
               open={ethnicityOpen}
               onOpen={() => {
@@ -169,23 +185,26 @@ const ReportPage = () => {
               isSelected={isCheckboxSelected}
               handleCheckChanges={handleCheckChanges}
             />
-            <Text className="font-bold my-auto pl-2">
+            <Text className="font-bold mt-1">
               I agree to share my results with the CDC
             </Text>
           </View>
+
+          {/* button container */}
+          <View className="mb-14">
+            <Button
+              onPress={() => console.log('pressed')}
+              innerText="Report"
+              bgColor="bg-[#B4B4B4]"
+              textColor="text-black"
+              border={true}
+              borderColor="border border-2"
+            />
+          </View>
+          </View>
         </View>
 
-        {/* button container */}
-        <View className="mb-14">
-          <Button
-            onPress={() => console.log('pressed')}
-            innerText="Report"
-            bgColor="bg-[#B4B4B4]"
-            textColor="text-black"
-            border={true}
-            borderColor="border border-4"
-          />
-        </View>
+        
       </ScrollView>
     </SafeAreaView>
   );
