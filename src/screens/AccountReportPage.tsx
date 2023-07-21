@@ -29,11 +29,7 @@ const AccountReportPage = (props: Props) => {
   const handleStateChange = (value: string) => {
     setState(value);
   };
-
-  return (
-    
-
-
+ 
   // writing comment to push changes from earlier
 
   return (
