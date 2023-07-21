@@ -25,13 +25,14 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
+
 import DropDownField from './src/components/DropDownField';
 import TestScreen from './src/screens/TestScreen';
 
 function App(): JSX.Element {
   return (
     <SafeAreaView>
-      <ReportPage />
+      <SignInPage />
     </SafeAreaView>
   );
 }

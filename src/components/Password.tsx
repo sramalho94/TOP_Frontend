@@ -1,4 +1,4 @@
-import {View, Text, TextInput, TouchableOpacity} from 'react-native';
+import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -14,10 +14,10 @@ type Props = {
 };
 
 const PasswordField = (props: Props) => {
-  const {setForm, form} = props;
+  const { setForm, form } = props;
 
   const handlePasswordChange = (password: string) => {
-    setForm(prevState => ({...prevState, password}));
+    setForm(prevState => ({ ...prevState, password }));
   };
 
   const togglePasswordVisibility = () => {
@@ -29,7 +29,7 @@ const PasswordField = (props: Props) => {
 
   return (
     <View className="mb-6">
-      <Text className="w-36 h-8 flex my-auto justify-center text-black font-medium">
+      <Text className="w-36 h-8 flex my-auto justify-center font-medium">
         Password
       </Text>
 
@@ -38,7 +38,7 @@ const PasswordField = (props: Props) => {
         onChangeText={handlePasswordChange}
         placeholder="Enter your password"
         placeholderTextColor="#6b7280"
-        className="h-11 bg-white pl-8 pr-6 rounded-lg text-base font-medium text-gray-700 border"
+        className="h-12 bg-white pl-4 rounded-lg text-base font-medium text-gray-700 border border-black"
         secureTextEntry={!form.showPassword}
         value={form.password}
       />
