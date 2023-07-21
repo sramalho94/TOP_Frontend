@@ -26,33 +26,30 @@ const ConsentPage = () => {
         {/* Still need to double check the font size and family font! */}
         <TopNavBar textSize='xl' textValue='Consent Form' fontFamily='' haveProgress={false} />
         <View className={`flex justify-center bg-white p-4 px-8 flex-1`}>
-          <Text className={`text-xl font-bold text-black mb-4 text-center`}>User Consent</Text>
-          <Text className={`mb-4 text-justify`}>
+          <Text className={`text-xl font-bold text-black mb-5 text-center`}>User Consent</Text>
+          <Text className={`mb-4 text-auto`}>
             By checking the boxes below, you consent to our using the personal information we collect through your use of this app in the way we have described.
           </Text>
-          <Text className={`mb-4 text-justify`}>
+          <Text className={`mb-4 text-auto`}>
             For more information about how we use and share personal information, please see our{' '}
             <TouchableOpacity onPress={handlePrivacyPolicyPress}>
-              <Text className={`text-blue-500 underline`}>Privacy Policy</Text>
+              <Text className={`text-blue-500 underline`}>Privacy Policy.</Text>
             </TouchableOpacity>
-            {'.'}
           </Text>
-          <Text className={`mb-4 text-justify`}>
+          <Text className={`mb-4 text-auto`}>
             You may withdraw your consent at any time by emailing{' '}
             <TouchableOpacity onPress={handleEmailPress}>
-              <Text className={`text-blue-500 underline`}>leavecovidtracking-us@joinzoe.com</Text>
+              <Text className={`text-blue-500 underline`}>leavecovidtracking-us@joinzoe.com.</Text>
             </TouchableOpacity>
-            {'.'}
           </Text>
           <View className="flex-row justify-start">
-            <Text className={`mb-4 text-center`}>
+            <Text className={`mb-4 text-auto`}>
               Any questions may also be sent to{' '}
               <TouchableOpacity onPress={handleEmailPress}>
                 <Text className={`text-blue-500 underline`}>
-                  covidtracking-us@joinzoe.com
+                  covidtracking-us@joinzoe.com.
                 </Text>
               </TouchableOpacity>
-              {'.'}
             </Text>
           </View>
           <View className={`flex-row items-left mb-4`}>
@@ -66,9 +63,8 @@ const ConsentPage = () => {
             <Text className={`text-sm`}>
               I consent to the processing of my personal data (including without limitation data I provide relating to my health) as set forth in this consent and in the{' '}
               <TouchableOpacity onPress={handlePrivacyPolicyPress}>
-                <Text className={`text-blue-500 underline`}>Privacy Policy</Text>
+                <Text className={`text-blue-500 underline`}>Privacy Policy.</Text>
               </TouchableOpacity>
-              {'.'}
             </Text>
           </View>
           <View className={`flex-row items-center mb-4`}>
@@ -78,15 +74,13 @@ const ConsentPage = () => {
               <TouchableOpacity onPress={handleTermsPress}>
                 <Text className={`text-blue-500 underline`}>Zoe Global's Terms of Use</Text>
               </TouchableOpacity>
-              {' '}
               and{' '}
               <TouchableOpacity onPress={handlePrivacyPolicyPress}>
-                <Text className={`text-blue-500 underline`}>Privacy Policy</Text>
+                <Text className={`text-blue-500 underline`}>Privacy Policy.</Text>
               </TouchableOpacity>
-              {'.'}
             </Text>
           </View>
-          <TouchableOpacity onPress={handleAgree} className={`bg-black px-8 py-2.5 rounded-md`}>
+          <TouchableOpacity onPress={handleAgree} className={`bg-black px-8 py-2.5 rounded-md mt-6`}>
             <Text className={`text-white text-base font-bold text-center`}>I Agree to These Terms</Text>
           </TouchableOpacity>
         </View>
