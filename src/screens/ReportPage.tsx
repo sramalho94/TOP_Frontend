@@ -7,13 +7,14 @@ import {
   Pressable,
   ScrollView,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import CheckBox from '../components/CheckBox';
 import Icon from 'react-native-vector-icons/AntDesign';
 import TextInputField from '../components/TextInputField';
 import DropDownField from '../components/DropDownField';
 import Button from '../components/Button';
 import DropDownPicker from 'react-native-dropdown-picker';
+import CircleBtn from '../components/CircleBtn';
 import TopNavBar from '../components/TopNavBar';
 
 type Props = {};
@@ -24,9 +25,13 @@ const ReportPage = (props: Props) => {
   // Define state variables for zip code and age
   const [zipCode, setZipCode] = useState('');
   const [age, setAge] = useState('');
-  const [isSelected, setSelection] = useState(false);
-  const handleCheckChanges = (value: boolean) => {
-    setSelection(!isSelected);
+  const [isCheckboxSelected, setCheckboxSelection] = useState(false);
+
+  console.log('Render: ', isCheckboxSelected);
+
+  const handleCheckChanges = () => {
+    setCheckboxSelection(prevState => !prevState);
+    console.log('handleCheckChanges: ', isCheckboxSelected);
   };
 
   // Function to handle zip code changes
@@ -37,6 +42,11 @@ const ReportPage = (props: Props) => {
   const handleAgeChange = (value: string) => {
     setAge(value);
   };
+
+  // need this so that when a user has one dropdown open and selects another, the opened dropdown will close
+  const [genderOpen, setGenderOpen] = useState<boolean>(false);
+  const [raceOpen, setRaceOpen] = useState<boolean>(false);
+  const [ethnicityOpen, setEthnicityOpen] = useState<boolean>(false);
 
   return (
     <SafeAreaView className="min-w-screen">
@@ -50,7 +60,6 @@ const ReportPage = (props: Props) => {
             What were the results of your test?
           </Text>
           <View className="justify-center space-x-4 flex-row my-9">
-
             <View className="m-2">
               <CircleBtn
                 bgColor="bg-themeLightBlue"
@@ -67,7 +76,6 @@ const ReportPage = (props: Props) => {
                 Btnsize="125"
               />
             </View>
-
           </View>
 
           {/* Text input and dropdown fields container */}
@@ -77,16 +85,13 @@ const ReportPage = (props: Props) => {
               label="Zip Code*"
               value={zipCode}
               onChange={handleZipCodeChange}
-
               placeholder="Enter your ZIP code"
-
             />
             <TextInputField
               placeholder=''
               label="Age*"
               value={age}
               onChange={handleAgeChange}
-
               placeholder="Enter your age"
             />
 
@@ -165,13 +170,12 @@ const ReportPage = (props: Props) => {
               }}
               setOpen={setEthnicityOpen}
             />
-
           </View>
 
           {/* checkbox and text container */}
           <View className="flex-row justify-center my-6">
             <CheckBox
-              isSelected={isSelected}
+              isSelected={isCheckboxSelected}
               handleCheckChanges={handleCheckChanges}
             />
             <Text className="font-bold mt-1">
@@ -182,9 +186,6 @@ const ReportPage = (props: Props) => {
 
         {/* button container */}
         <View className="mb-14">
-          {/* <TouchableOpacity className="border-4 border-black flex justify-center items-center w-[342] h-[52] rounded-lg bg-[#B4B4B4] mt-6 mb-8 mx-auto">
-            <Text className="text-lg font-bold">Report</Text>
-          </TouchableOpacity> */}
           <Button
             onPress={() => console.log('pressed')}
             innerText="Report"
