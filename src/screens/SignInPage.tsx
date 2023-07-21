@@ -11,6 +11,7 @@ import {
 import NoImage from '../../assets/blankimage.png';
 import Password from "../components/Password"
 import Button from '../components/Button';
+import TextInputField from '../components/TextInputField';
 type Props = {};
 
 type FormState = {
@@ -27,6 +28,12 @@ const initialFormState: FormState = {
 
 export default function SignInPage(props: Props) {
   const [form, setForm] = useState<FormState>(initialFormState);
+  const [username, setUsername] = useState('');
+
+  const handleUsernameChange = (value: string) => {
+    setUsername(value);
+  };
+
 
   return (
     <SafeAreaView className="w-342 m-4">
@@ -35,54 +42,46 @@ export default function SignInPage(props: Props) {
           <View className="flex flex-row justify-center align-middle">
             <Image className="w-342 h-349 m-4" source={NoImage}></Image>
           </View>
-
-          <View className="m-6">
-            <View className="mb-6">
-              <Text className="w-36 h-8 flex items-center justify-center text-black font-medium">
-                Username
-              </Text>
-
-              <TextInput
-                autoCapitalize="none"
-                autoCorrect={false}
-                keyboardType="default"
-                onChangeText={username => setForm({ ...form, username })}
-                placeholderTextColor="#6b7280"
-                className="h-11 bg-white pl-8 pr-6 rounded-lg text-base font-medium text-gray-700 border"
-                value={form.username}
-              />
-            </View>
-
+          <View className="mb-6">
+            <TextInputField
+              label="Username"
+              value={form.username}
+              onChange={handleUsernameChange}
+              onChangeText={username => setForm({ ...form, username })}
+              placeholder=''
+            />
             <Password setForm={setForm} form={form} />
+          </View>
 
 
-          </View>
-          <View className="mt-4">
-            <Button
-              onPress={() => console.log('pressed')}
-              innerText="Login"
-              textColor=""
-              bgColor=""
-              border={true}
-              borderColor="border border-black"
-            />
-            <Button
-              onPress={() => console.log('pressed')}
-              innerText="Forgot Password"
-              textColor=""
-              bgColor=""
-              border={true}
-              borderColor="border border-black"
-            />
-            <Button
-              onPress={() => console.log('Skip button pressed')}
-              innerText="Skip"
-              bgColor=""
-              textColor=""
-              border={false}
-              borderColor=""
-            />
-          </View>
+
+
+        </View>
+        <View className="mt-4">
+          <Button
+            onPress={() => console.log('pressed')}
+            innerText="Login"
+            textColor=""
+            bgColor=""
+            border={true}
+            borderColor="border border-black"
+          />
+          <Button
+            onPress={() => console.log('pressed')}
+            innerText="Forgot Password"
+            textColor=""
+            bgColor=""
+            border={true}
+            borderColor="border border-black"
+          />
+          <Button
+            onPress={() => console.log('Skip button pressed')}
+            innerText="Skip"
+            bgColor=""
+            textColor=""
+            border={false}
+            borderColor=""
+          />
         </View>
       </ScrollView>
     </SafeAreaView>

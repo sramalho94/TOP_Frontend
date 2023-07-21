@@ -29,7 +29,7 @@ const PasswordField = (props: Props) => {
 
   return (
     <View className="mb-6">
-      <Text className="w-36 h-8 flex my-auto justify-center text-black font-medium">
+      <Text className="w-36 h-8 flex my-auto justify-center font-medium">
         Password
       </Text>
 
