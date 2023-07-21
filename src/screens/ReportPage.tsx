@@ -52,14 +52,7 @@ const ReportPage = (props: Props) => {
     <SafeAreaView className="min-w-screen">
       <ScrollView>
         {/* NavBar */}
-        <View className="h-[90] border-b-4 border-slate-200 flex-row my-6">
-          <TouchableOpacity className="mt-2 ml-4">
-            <Icon name="arrowleft" size={30} color="#000" className="" />
-          </TouchableOpacity>
-          <Text className="text-xl font-bold mx-auto mt-2 flex pr-12">
-            Report COVID-19 Test Result
-          </Text>
-        </View>
+        <TopNavBar textSize='xl' fontFamily='' haveProgress={false} textValue='Report COVID-19 Test Result' />
 
         {/* Test Result Buttons */}
         <View className="mx-auto my-auto">
@@ -88,12 +81,14 @@ const ReportPage = (props: Props) => {
           {/* Text input and dropdown fields container */}
           <View className="w-[342]">
             <TextInputField
+              placeholder=''
               label="Zip Code*"
               value={zipCode}
               onChange={handleZipCodeChange}
               placeholder="Enter your ZIP code"
             />
             <TextInputField
+              placeholder=''
               label="Age*"
               value={age}
               onChange={handleAgeChange}

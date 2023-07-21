@@ -10,6 +10,7 @@ import React, {useState} from 'react';
 import Icon from 'react-native-vector-icons/AntDesign';
 import TextInputField from '../components/TextInputField';
 import Button from '../components/Button';
+import TopNavBar from '../components/TopNavBar';
 import CircleBtn from '../components/CircleBtn';
 
 type Props = {};
@@ -28,23 +29,18 @@ const AccountReportPage = (props: Props) => {
   const handleStateChange = (value: string) => {
     setState(value);
   };
-
-
+ 
   // writing comment to push changes from earlier
 
   return (
     <SafeAreaView className="min-w-screen">
       <ScrollView>
-
-        {/* Nav Bar */}
-        <View className="h-[90] border-b-4 border-slate-200 flex-row my-6">
-          <TouchableOpacity className="mt-2 ml-4">
-            <Icon name="arrowleft" size={30} color="#000" className="" />
-          </TouchableOpacity>
-          <Text className="text-xl font-bold mx-auto mt-2 flex pr-12">
-            Report COVID-19 Test Result
-          </Text>
-        </View>
+        <TopNavBar
+          textSize="xl"
+          fontFamily=""
+          haveProgress={false}
+          textValue="Report COVID-19 Test Result"
+        />
 
         {/* Page container */}
         <View className="mx-auto my-auto">
