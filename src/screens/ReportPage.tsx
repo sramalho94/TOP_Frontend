@@ -7,13 +7,14 @@ import {
   Pressable,
   ScrollView,
 } from 'react-native';
+import CircleBtn from '../components/CircleBtn';
 import React, {useState} from 'react';
 import CheckBox from '../components/CheckBox';
 import Icon from 'react-native-vector-icons/AntDesign';
 import TextInputField from '../components/TextInputField';
 import DropDownField from '../components/DropDownField';
 import Button from '../components/Button';
-import DropDownPicker from 'react-native-dropdown-picker';
+
 type Props = {};
 
 // Define the ReportPage component
@@ -23,7 +24,10 @@ const ReportPage = (props: Props) => {
   const [zipCode, setZipCode] = useState('');
   const [age, setAge] = useState('');
   const [isSelected, setSelection] = useState(false);
-  const handleCheckChanges = (value: boolean) => {
+  const [genderOpen, setGenderOpen] = useState(false); // state for gender dropdown
+  const [raceOpen, setRaceOpen] = useState(false); // state for race dropdown
+  const [ethnicityOpen, setEthnicityOpen] = useState(false);
+  const handleCheckChanges = () => {
     setSelection(!isSelected);
   };
 
@@ -55,7 +59,6 @@ const ReportPage = (props: Props) => {
             What were the results of your test?
           </Text>
           <View className="justify-center space-x-4 flex-row my-9">
-
             <View className="m-2">
               <CircleBtn
                 bgColor="bg-themeLightBlue"
@@ -72,7 +75,6 @@ const ReportPage = (props: Props) => {
                 Btnsize="125"
               />
             </View>
-
           </View>
 
           {/* Text input and dropdown fields container */}
@@ -81,15 +83,12 @@ const ReportPage = (props: Props) => {
               label="Zip Code*"
               value={zipCode}
               onChange={handleZipCodeChange}
-
               placeholder="Enter your ZIP code"
-
             />
             <TextInputField
               label="Age*"
               value={age}
               onChange={handleAgeChange}
-
               placeholder="Enter your age"
             />
 
@@ -168,7 +167,6 @@ const ReportPage = (props: Props) => {
               }}
               setOpen={setEthnicityOpen}
             />
-
           </View>
 
           {/* checkbox and text container */}
