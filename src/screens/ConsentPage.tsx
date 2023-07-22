@@ -38,7 +38,7 @@ const ConsentPage = () => {
           fontFamily=""
           haveProgress={false}
         />
-        <View className={`flex justify-center bg-white p-4 px-8 flex-1`}>
+        <View className={`flex justify-center p-4 px-8 flex-1`}>
           <Text className={`text-xl font-bold text-black mb-5 text-center`}>
             User Consent
           </Text>
