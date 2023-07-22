@@ -37,13 +37,13 @@ export default function SignInPage({ navigation }: Props) {
 
 
   return (
-    <SafeAreaView className="w-342 m-4">
+    <SafeAreaView className="w-342">
       <ScrollView>
         <View className="">
           <View className="flex flex-row justify-center align-middle">
             <Image className="w-342 h-349 m-4" source={NoImage}></Image>
           </View>
-          <View className="mb-6">
+          <View className="mb-6 mx-4">
             <TextInputField
               label="Username"
               value={form.username}
