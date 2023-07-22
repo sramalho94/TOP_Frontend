@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   SafeAreaView,
   View,
@@ -10,8 +10,8 @@ import {
 } from 'react-native';
 import NoImage from '../../assets/blankimage.png';
 import Password from "../components/Password"
-import TopNavBar
- from '../components/TopNavBar';
+import Button from '../components/Button';
+import TextInputField from '../components/TextInputField';
 type Props = {};
 
 type FormState = {
@@ -28,68 +28,61 @@ const initialFormState: FormState = {
 
 export default function SignInPage(props: Props) {
   const [form, setForm] = useState<FormState>(initialFormState);
+  const [username, setUsername] = useState('');
+
+  const handleUsernameChange = (value: string) => {
+    setUsername(value);
+  };
+
 
   return (
-    <SafeAreaView className="w-342 m-6">
+    <SafeAreaView className="w-342 m-4">
       <ScrollView>
       <TopNavBar textSize='xl' textValue='Sign In' fontFamily='' haveProgress={false} />
         <View className="">
           <View className="flex flex-row justify-center align-middle">
             <Image className="w-342 h-349 m-4" source={NoImage}></Image>
           </View>
-
-          <View className="m-6">
-            <View className="mb-6">
-              <Text className="w-36 h-8 flex items-center justify-center text-black font-medium">
-                Username
-              </Text>
-
-              <TextInput
-                autoCapitalize="none"
-                autoCorrect={false}
-                keyboardType="default"
-                onChangeText={username => setForm({...form, username})}
-                placeholderTextColor="#6b7280"
-                className="h-11 bg-white pl-8 pr-6 rounded-lg text-base font-medium text-gray-700 border"
-                value={form.username}
-              />
-            </View>
-
+          <View className="mb-6">
+            <TextInputField
+              label="Username"
+              value={form.username}
+              onChange={handleUsernameChange}
+              onChangeText={username => setForm({ ...form, username })}
+              placeholder=''
+            />
             <Password setForm={setForm} form={form} />
-
-            <View className="mb-5">
-              <TouchableOpacity
-                onPress={() => {
-                  // handle onPress
-                }}
-                className="flex items-center justify-center rounded-md bg-white border border-black py-2 px-4">
-                <Text className="text-black font-semibold text-base">
-                  Log In
-                </Text>
-              </TouchableOpacity>
-            </View>
-
-            <View className="mb-5">
-              <TouchableOpacity
-                onPress={() => {
-                  // handle onPress
-                }}
-                className="flex items-center justify-center rounded-md bg-white border border-black py-2 px-4">
-                <Text className="text-black font-semibold text-base">
-                  Forgot Password
-                </Text>
-              </TouchableOpacity>
-            </View>
-
-            <TouchableOpacity
-              onPress={() => {
-                // handle link
-              }}>
-              <Text className="text-sm font-normal text-black text-center">
-                Back
-              </Text>
-            </TouchableOpacity>
           </View>
+
+
+
+
+        </View>
+        <View className="mt-4">
+          <Button
+            onPress={() => console.log('pressed')}
+            innerText="Login"
+            textColor=""
+            bgColor=""
+            border={true}
+            borderColor="border border-black"
+          />
+          <Button
+            onPress={() => console.log('pressed')}
+            innerText="Forgot Password"
+            textColor=""
+            bgColor=""
+            border={true}
+            borderColor="border border-black"
+          />
+          <Button
+            onPress={() => console.log('Skip button pressed')}
+            innerText="Skip"
+            bgColor=""
+            textColor=""
+            border={false}
+            borderColor=""
+          />
         </View>
       </ScrollView>
     </SafeAreaView>

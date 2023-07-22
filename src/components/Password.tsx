@@ -11,7 +11,7 @@ type FormState = {
 type Props = {
   setForm: React.Dispatch<React.SetStateAction<FormState>>;
   form: FormState;
-}
+};
 
 const PasswordField = (props: Props) => {
   const { setForm, form } = props;
@@ -29,7 +29,7 @@ const PasswordField = (props: Props) => {
 
   return (
     <View className="mb-6">
-      <Text className="w-36 h-8 flex my-auto justify-center text-black font-medium">
+      <Text className="w-36 h-8 flex my-auto justify-center font-medium">
         Password
       </Text>
 
@@ -38,7 +38,7 @@ const PasswordField = (props: Props) => {
         onChangeText={handlePasswordChange}
         placeholder="Enter your password"
         placeholderTextColor="#6b7280"
-        className="h-11 bg-white pl-8 pr-6 rounded-lg text-base font-medium text-gray-700 border"
+        className="h-12 bg-white pl-4 rounded-lg text-base font-medium text-gray-700 border border-black"
         secureTextEntry={!form.showPassword}
         value={form.password}
       />
@@ -53,9 +53,7 @@ const PasswordField = (props: Props) => {
         />
       </TouchableOpacity>
     </View>
+  );
+};
 
-  )
-}
-
-export default PasswordField
-
+export default PasswordField;

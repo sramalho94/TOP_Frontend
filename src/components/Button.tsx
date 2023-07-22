@@ -19,7 +19,7 @@ const Button = ({
   textColor,
 }: Props) => {
   return (
-    <View className="max-h-36 flex-row justify-center mx-2 ">
+    <View className="max-h-36 flex-row justify-center mx-6 ">
       <TouchableOpacity
         className={`${
           border ? `${borderColor}` : ''
