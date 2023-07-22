@@ -73,6 +73,18 @@ const CreateAccount = (props: Props) => {
         setZipCode(value);
     };
 
+    const handleGenderChange= (value: boolean) => {
+        setGenderOpen(value);
+    }
+
+    const handleRaceChange= (value: boolean) => {
+        setRaceOpen(value);
+    }
+
+    const handleEthnicityChange= (value: boolean) => {
+        setEthnicityOpen(value);
+    }
+
 
     // Validations: 
 
@@ -281,7 +293,6 @@ const CreateAccount = (props: Props) => {
             case 3:
                 return (
                     <SafeAreaView className="min-w-screen">
-                        <TopNavBar fontFamily='' textSize='xl' textValue='Create Account' haveProgress={true} page={1}/>
                         <View className="h-150 border-b-4 border-slate-200">
                             <View className='flex-row my-6'>
                                 <TouchableOpacity className="mt-2 ml-4">
@@ -321,7 +332,7 @@ const CreateAccount = (props: Props) => {
                                         setRaceOpen(false);
                                         setEthnicityOpen(false);
                                     }}
-                                    setOpen={setGenderOpen}
+                                    setOpen={handleGenderChange}
                                 />
                                 <DropDownField
                                     text="Race"
@@ -342,7 +353,7 @@ const CreateAccount = (props: Props) => {
                                         setRaceOpen(true);
                                         setEthnicityOpen(false);
                                     }}
-                                    setOpen={setRaceOpen}
+                                    setOpen={handleRaceChange}
                                 />
                                 <DropDownField
                                     text="Ethnicity"
@@ -358,7 +369,7 @@ const CreateAccount = (props: Props) => {
                                         setRaceOpen(false);
                                         setEthnicityOpen(true);
                                     }}
-                                    setOpen={setEthnicityOpen}
+                                    setOpen={handleEthnicityChange}
                                 />
     
                             </View>
