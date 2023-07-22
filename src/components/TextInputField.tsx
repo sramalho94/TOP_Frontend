@@ -20,10 +20,10 @@ const TextInputField: React.FC<TextInputFieldProps> = ({
   };
 
   return (
-    <View className="mx-6">
+    <View className="">
       <Text className="font-bold my-2">{label}</Text>
       <TextInput
-        className="border border-black rounded-lg px-4 h-12"
+        className="border border-black rounded-lg px-4 h-12 bg-white"
         value={value}
         onChangeText={handleChange}
         placeholder={placeholder}

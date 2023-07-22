@@ -17,10 +17,14 @@ import { ScrollView } from 'react-native';
 import NoImage from './../../assets/nopicture.png';
 import ProgressDots from './../components/ProgressDots';
 import Button from './../components/Button';
+import { NavigationProp } from '@react-navigation/native';
 
-type Props = {};
 
-const Onboarding = (props: Props) => {
+type Props = {
+  navigation: NavigationProp<any>;
+};
+
+const Onboarding = ({ navigation }: Props) => {
   const [currentPage, setCurrentPage] = useState<number>(0);
   const { width } = useWindowDimensions();
   const scrollViewRef = useRef<ScrollView>(null);
@@ -45,7 +49,7 @@ const Onboarding = (props: Props) => {
       title: 'What the data is not used for',
       buttonText: 'Continue',
       pageIndicator: 3,
-      onButtonPress: () => console.log('Finish button pressed'),
+      onButtonPress: () => navigation.navigate('LandingPage'),
     },
   ];
 
@@ -76,7 +80,7 @@ const Onboarding = (props: Props) => {
     >
       {pages.map((page, index) => (
         <SafeAreaView key={index} className="h-screen w-screen">
-          <View className="flex-1 flex-col mt-4 mb-10">
+          <View className="flex-1 flex-col mt-4 mb-25">
             <View className="m-5 flex-1">
               <Image className="w-full" source={page.imageSource}></Image>
               <Text className="mx-auto py-5 font-serif text-[22px]">
@@ -84,24 +88,24 @@ const Onboarding = (props: Props) => {
               </Text>
             </View>
             <View className="flex-1 flex-col-reverse mb-3">
-              <View className="mt-5 mx-5">
+              <View className="mt-5">
                 <Button
                   onPress={page.onButtonPress} // Updated this line
                   innerText={page.buttonText}
                   bgColor="bg-white"
-                  textColor="text-black"
+                  textColor=""
                   border={true}
-                  borderColor="border border-gray"
+                  borderColor="border"
                 />
 
                 {currentPage !== pages.length && (
                   <Button
-                    onPress={() => console.log('Skip button pressed')}
+                    onPress={() => navigation.navigate('LandingPage')}
                     innerText="Skip"
-                    bgColor="bg-white"
-                    textColor="text-black"
+                    bgColor=""
+                    textColor=""
                     border={false}
-                    borderColor="border border-gray"
+                    borderColor=""
                   />
                 )}
               </View>
