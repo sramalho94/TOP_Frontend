@@ -11,6 +11,7 @@ import Icon from 'react-native-vector-icons/AntDesign';
 import TextInputField from '../components/TextInputField';
 import Button from '../components/Button';
 import ProgressDots from '../components/ProgressDots';
+import TopNavBar from '../components/TopNavBar';
 import DropDownField from '../components/DropDownField';
 import PasswordField from '../components/Password';
 
@@ -280,6 +281,7 @@ const CreateAccount = (props: Props) => {
             case 3:
                 return (
                     <SafeAreaView className="min-w-screen">
+                        <TopNavBar fontFamily='' textSize='xl' textValue='Create Account' haveProgress={true} page={1}/>
                         <View className="h-150 border-b-4 border-slate-200">
                             <View className='flex-row my-6'>
                                 <TouchableOpacity className="mt-2 ml-4">
