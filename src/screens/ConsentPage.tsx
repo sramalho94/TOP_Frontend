@@ -22,9 +22,7 @@ const ConsentPage = () => {
   return (
     <SafeAreaView>
       <ScrollView>
-        {/* add topNavBar component here and pass a few props to it */}
         {/* Still need to double check the font size and family font! */}
-        <TopNavBar textSize='xl' textValue='Consent Form' fontFamily='' haveProgress={false} />
         <View className={`flex justify-center bg-white p-4 px-8 flex-1`}>
           <Text className={`text-xl font-bold text-black mb-4 text-center`}>User Consent</Text>
           <Text className={`mb-4 text-justify`}>
