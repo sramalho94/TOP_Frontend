@@ -72,7 +72,7 @@ export default function SignInPage({ navigation }: Props) {
             borderColor="border border-black"
           />
           <Button
-            onPress={() => navigation.navigate('LandingPage')}
+            onPress={() => navigation.navigate('Landing Page')}
             innerText="Back"
             bgColor=""
             textColor=""

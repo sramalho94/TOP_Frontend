@@ -45,10 +45,10 @@ function App(): JSX.Element {
           name="Consent Page"
           component={ConsentPage} />
         <Stack.Screen
-          name="Thank You Screen"
+          name="Thank You"
           component={ThankYouScreen} />
         <Stack.Screen
-          name="Account Report Page"
+          name="Report With Account"
           component={AccountReportPage} />
         <Stack.Screen
           name="Home"

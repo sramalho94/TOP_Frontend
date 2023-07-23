@@ -13,8 +13,12 @@ import Button from '../components/Button';
 import ProgressDots from '../components/ProgressDots';
 import DropDownField from '../components/DropDownField';
 import PasswordField from '../components/Password';
+import { NavigationProp } from '@react-navigation/native';
 
-type Props = {};
+
+type Props = {
+    navigation: NavigationProp<any>;
+};
 
 type FormState = {
     username: string;
@@ -29,7 +33,7 @@ const initialFormState: FormState = {
 };
 
 // Define the ReportPage component
-const CreateAccount = (props: Props) => {
+const CreateAccount = ({ navigation }: Props) => {
     // Define switch state
     const [currentPage, setCurrentPage] = useState<number>(1);
     // Define state variables for zip code and age
@@ -200,22 +204,14 @@ const CreateAccount = (props: Props) => {
             return (
                 <SafeAreaView className="min-w-screen">
                     <ScrollView>
-                        <View className="h-150 border-b-4 border-slate-200">
-                            <View className='flex-row my-6'>
-                                <TouchableOpacity className="mt-2 ml-4">
-                                    <Icon name="arrowleft" size={30} color="#000" className="" />
-                                </TouchableOpacity>
-                                <Text className="text-xl font-bold mx-auto mt-2 flex pr-12">
-                                    Create Account
-                                </Text>
-                            </View>
-                            <View className='mb-3 flex justify-center'>
+                        <View className="h-150">
+                            <View className='my-4 flex justify-center'>
                                 <ProgressDots page={2} />
                             </View>
                         </View>
-                        <View className="mx-auto my-auto mb-3">
+                        <View className="mx-auto my-auto mb-2">
                             <View className="w-[342]">
-                                <View className="my-4 underline">
+                                <View className="mb-4 underline">
                                     <Button
                                         onPress={toggleModal}
                                         innerText="(Why do we need this information?)"
@@ -230,8 +226,9 @@ const CreateAccount = (props: Props) => {
                                     label="Birthday*"
                                     value={birthday}
                                     onChange={handleBirthdayChange}
-                                    placeholder=''
+                                    placeholder='01/01/2000'
                                 />
+                                <Text className="my-2">(Users must be 18 to join)</Text>
                                 <TextInputField
                                     label="Zip Code*"
                                     value={zipCode}
@@ -261,7 +258,7 @@ const CreateAccount = (props: Props) => {
                                         textColor=""
                                         bgColor="bg-[#B4B4B4]"
                                         border={true}
-                                        borderColor="border border-4"
+                                        borderColor="border"
                                     />
                                 </View>
                             </View>
@@ -272,16 +269,8 @@ const CreateAccount = (props: Props) => {
         case 3:
             return (
                 <SafeAreaView className="min-w-screen">
-                    <View className="h-150 border-b-4 border-slate-200">
-                        <View className='flex-row my-6'>
-                            <TouchableOpacity className="mt-2 ml-4">
-                                <Icon name="arrowleft" size={30} color="#000" className="" />
-                            </TouchableOpacity>
-                            <Text className="text-xl font-bold mx-auto mt-2 flex pr-12">
-                                Create Account
-                            </Text>
-                        </View>
-                        <View className='mb-3 flex justify-center'>
+                    <View className="h-150">
+                        <View className='mt-4 flex justify-center'>
                             <ProgressDots page={3} />
                         </View>
                     </View>
@@ -298,64 +287,65 @@ const CreateAccount = (props: Props) => {
                                     textDecoration='underline'
                                 />
                             </View>
-                            <DropDownField
-                                text="Gender"
-                                selectItems={[
-                                    { label: "MIGHT CHANGE BELOW SELECTION LATER", value: "MIGHT CHANGE BELOW SELECTION LATER" },
-                                    { label: "", value: "" },
-                                    { label: "Prefer not to say", value: "prefer not to say" },
-                                ]}
-                                open={genderOpen}
-                                onOpen={() => {
-                                    setGenderOpen(true)
-                                    setRaceOpen(false);
-                                    setEthnicityOpen(false);
-                                }}
-                                setOpen={setGenderOpen}
-                            />
-                            <DropDownField
-                                text="Race"
-                                selectItems={[
-                                    { label: "MIGHT CHANGE BELOW SELECTION LATER", value: "MIGHT CHANGE BELOW SELECTION LATER" },
-                                    { label: "American Indian or Alaska Native", value: "american indian or alaska native" },
-                                    { label: "Asian", value: "asian" },
-                                    { label: "Black or African American", value: "black or african american" },
-                                    { label: "Native Hawaiian or Other Pacific Islander", value: "native hawaiian or other pacific islander" },
-                                    { label: "Not Specified", value: "not specified" },
-                                    { label: "Two or More Races/Ethnicities", value: "two or more races/ethnicities" },
-                                    { label: "White", value: "white" },
-                                    { label: "Prefer not to say", value: "prefer not to say" },
-                                ]}
-                                open={raceOpen}
-                                onOpen={() => {
-                                    setGenderOpen(false)
-                                    setRaceOpen(true);
-                                    setEthnicityOpen(false);
-                                }}
-                                setOpen={setRaceOpen}
-                            />
-                            <DropDownField
-                                text="Ethnicity"
-                                selectItems={[
-                                    { label: "MIGHT CHANGE BELOW SELECTION LATER", value: "MIGHT CHANGE BELOW SELECTION LATER" },
-                                    { label: "Hispanic/Latino", value: "hispanic/latino" },
-                                    { label: "Non-Hispanic/Latino", value: "non-hispanic/latino" },
-                                    { label: "Prefer not to say", value: "prefer not to say" },
-                                ]}
-                                open={ethnicityOpen}
-                                onOpen={() => {
-                                    setGenderOpen(false)
-                                    setRaceOpen(false);
-                                    setEthnicityOpen(true);
-                                }}
-                                setOpen={setEthnicityOpen}
-                            />
-
+                            <View>
+                                <DropDownField
+                                    text="Gender"
+                                    selectItems={[
+                                        { label: "MIGHT CHANGE BELOW SELECTION LATER", value: "MIGHT CHANGE BELOW SELECTION LATER" },
+                                        { label: "", value: "" },
+                                        { label: "Prefer not to say", value: "prefer not to say" },
+                                    ]}
+                                    open={genderOpen}
+                                    onOpen={() => {
+                                        setGenderOpen(true)
+                                        setRaceOpen(false);
+                                        setEthnicityOpen(false);
+                                    }}
+                                    setOpen={setGenderOpen}
+                                />
+                                <DropDownField
+                                    text="Race"
+                                    selectItems={[
+                                        { label: "MIGHT CHANGE BELOW SELECTION LATER", value: "MIGHT CHANGE BELOW SELECTION LATER" },
+                                        { label: "American Indian or Alaska Native", value: "american indian or alaska native" },
+                                        { label: "Asian", value: "asian" },
+                                        { label: "Black or African American", value: "black or african american" },
+                                        { label: "Native Hawaiian or Other Pacific Islander", value: "native hawaiian or other pacific islander" },
+                                        { label: "Not Specified", value: "not specified" },
+                                        { label: "Two or More Races/Ethnicities", value: "two or more races/ethnicities" },
+                                        { label: "White", value: "white" },
+                                        { label: "Prefer not to say", value: "prefer not to say" },
+                                    ]}
+                                    open={raceOpen}
+                                    onOpen={() => {
+                                        setGenderOpen(false)
+                                        setRaceOpen(true);
+                                        setEthnicityOpen(false);
+                                    }}
+                                    setOpen={setRaceOpen}
+                                />
+                                <DropDownField
+                                    text="Ethnicity"
+                                    selectItems={[
+                                        { label: "MIGHT CHANGE BELOW SELECTION LATER", value: "MIGHT CHANGE BELOW SELECTION LATER" },
+                                        { label: "Hispanic/Latino", value: "hispanic/latino" },
+                                        { label: "Non-Hispanic/Latino", value: "non-hispanic/latino" },
+                                        { label: "Prefer not to say", value: "prefer not to say" },
+                                    ]}
+                                    open={ethnicityOpen}
+                                    onOpen={() => {
+                                        setGenderOpen(false)
+                                        setRaceOpen(false);
+                                        setEthnicityOpen(true);
+                                    }}
+                                    setOpen={setEthnicityOpen}
+                                />
+                            </View>
                         </View>
                     </View>
                     <View className="mt-40">
                         <Button
-                            onPress={() => console.log('pressed')}
+                            onPress={() => navigation.navigate('Consent Page')}
                             innerText="Create Account"
                             textColor="text-white"
                             bgColor="bg-black"
