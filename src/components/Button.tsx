@@ -21,7 +21,7 @@ const Button = ({
   textDecoration
 }: Props) => {
   return (
-    <View className="max-h-36 flex-row justify-center mx-6 ">
+    <View className="max-h-36 flex-row justify-center mx-auto w-80">
       <TouchableOpacity
         className={`${
           border ? `${borderColor}` : ''
