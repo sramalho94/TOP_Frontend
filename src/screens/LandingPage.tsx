@@ -29,7 +29,7 @@ const LandingPage = ({ navigation }: Props) => {
           borderColor="border"
         />
         <Button
-          onPress={() => navigation.navigate('Report Page')}
+          onPress={() => navigation.navigate('Report COVID-19 Test Results Anonymously')}
           innerText="Report Without Account"
           bgColor="bg-[#B4B4B4]"
           textColor=""

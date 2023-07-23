@@ -38,7 +38,7 @@ const PasswordField = (props: Props) => {
         onChangeText={handlePasswordChange}
         placeholder="Enter your password"
         placeholderTextColor="#6b7280"
-        className="h-12 bg-white pl-4 rounded-lg text-base font-medium text-gray-700 border border-black"
+        className="h-12 bg-white pl-4 rounded-lg text-base font-medium border border-black"
         secureTextEntry={!form.showPassword}
         value={form.password}
       />

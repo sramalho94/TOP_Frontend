@@ -18,8 +18,6 @@ import HomeDash from './src/screens/HomeDash';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { SafeAreaView } from 'react-native';
-
 const Stack = createNativeStackNavigator();
 
 function App(): JSX.Element {
@@ -28,10 +26,12 @@ function App(): JSX.Element {
       <Stack.Navigator>
         <Stack.Screen
           name="Onboarding"
-          component={Onboarding} />
+          component={Onboarding}
+          options={{ headerShown: false }} />
         <Stack.Screen
           name="Landing Page"
-          component={LandingPage} />
+          component={LandingPage}
+          options={{ headerShown: false }} />
         <Stack.Screen
           name="Log In"
           component={SignInPage} />
@@ -39,16 +39,17 @@ function App(): JSX.Element {
           name="Create Account"
           component={CreateAccount} />
         <Stack.Screen
-          name="Report Page"
+          name="Report COVID-19 Test Results"
           component={ReportPage} />
         <Stack.Screen
-          name="Consent Page"
+          name="Consent Form"
           component={ConsentPage} />
         <Stack.Screen
           name="Thank You"
-          component={ThankYouScreen} />
+          component={ThankYouScreen}
+          options={{ headerShown: false }} />
         <Stack.Screen
-          name="Report With Account"
+          name="Report COVID-19 Test Results Anonymously"
           component={AccountReportPage} />
         <Stack.Screen
           name="Home"

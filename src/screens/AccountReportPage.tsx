@@ -37,15 +37,9 @@ const AccountReportPage = ({ navigation }: Props) => {
   return (
     <SafeAreaView className="min-w-screen">
       <ScrollView>
-        <TopNavBar
-          textSize="xl"
-          fontFamily=""
-          haveProgress={false}
-          textValue="Report COVID-19 Test Result"
-        />
 
         {/* Page container */}
-        <View className="justify-center mx-auto max-w-sm">
+        <View className="justify-center mx-auto max-w-sm my-6">
           <Text className="text-lg font-bold mx-auto">
             What were the results of your test?
           </Text>
@@ -71,7 +65,7 @@ const AccountReportPage = ({ navigation }: Props) => {
           </View>
 
           {/* Text input fields container */}
-          <View className="">
+          <View className="mx-4">
             <TextInputField
               label="State*"
               value={state}
@@ -87,7 +81,7 @@ const AccountReportPage = ({ navigation }: Props) => {
           </View>
 
           {/* Submit button */}
-          <View className="my-4">
+          <View className="my-64">
             <Button
               onPress={() => navigation.navigate('Thank You')}
               innerText="Submit"

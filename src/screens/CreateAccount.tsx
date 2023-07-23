@@ -118,7 +118,7 @@ const CreateAccount = ({ navigation }: Props) => {
 
         const isPasswordValid = checkPasswordCriteria();
         if (!isPasswordValid) {
-            toggleModal();
+            alert('Your password must include at least 8 characters, one uppercase and one lowercase letter, one number and one special ')
         } else {
             setCurrentPage(2);
         }
@@ -174,28 +174,10 @@ const CreateAccount = ({ navigation }: Props) => {
                                 innerText="Next"
                                 textColor="text-white"
                                 bgColor="bg-black"
-                                border={true}
-                                borderColor="border border-4"
+                                border={false}
+                                borderColor=""
                             />
                         </View>
-                        <Modal visible={isModalVisible} transparent={true}>
-                            <View className="flex-1 justify-center items-center bg-opacity-50">
-                                <View className="bg-white p-8 rounded-lg w-72 border-2">
-                                    <Text className="text-xl font-bold mb-4">Your password must include:</Text>
-                                    <Text className="mb-2">- At least 8 characters</Text>
-                                    <Text className="mb-2">- One uppercase and one lowercase letter</Text>
-                                    <Text className="mb-2">- One number and one special character</Text>
-                                    <Button
-                                        onPress={toggleModal}
-                                        innerText="Close"
-                                        textColor=""
-                                        bgColor="bg-[#B4B4B4]"
-                                        border={true}
-                                        borderColor="border"
-                                    />
-                                </View>
-                            </View>
-                        </Modal>
                     </ScrollView >
                 </SafeAreaView>
             );
@@ -205,22 +187,16 @@ const CreateAccount = ({ navigation }: Props) => {
                 <SafeAreaView className="min-w-screen">
                     <ScrollView>
                         <View className="h-150">
-                            <View className='my-4 flex justify-center'>
+                            <View className='my-4 '>
                                 <ProgressDots page={2} />
                             </View>
                         </View>
                         <View className="mx-auto my-auto mb-2">
                             <View className="w-[342]">
-                                <View className="mb-4 underline">
-                                    <Button
-                                        onPress={toggleModal}
-                                        innerText="(Why do we need this information?)"
-                                        bgColor=""
-                                        textColor=""
-                                        border={false}
-                                        borderColor="border border-gray"
-                                        textDecoration='underline'
-                                    />
+                                <View className="mb-4">
+                                    <TouchableOpacity className="mb-4 mx-auto">
+                                        <Text className='underline text-lg' onPress={toggleModal}>(Why do we need this information?)</Text>
+                                    </TouchableOpacity>
                                 </View>
                                 <TextInputField
                                     label="Birthday*"
@@ -243,13 +219,13 @@ const CreateAccount = ({ navigation }: Props) => {
                                 innerText="Next"
                                 textColor="text-white"
                                 bgColor="bg-black"
-                                border={true}
-                                borderColor="border border-4"
+                                border={false}
+                                borderColor=""
                             />
                         </View>
                         <Modal visible={isModalVisible} transparent={true}>
                             <View className="flex-1 justify-center items-center bg-opacity-50">
-                                <View className="bg-white p-8 rounded-lg w-72 border-4">
+                                <View className="bg-white p-8 rounded-lg w-72 border">
                                     <Text className="text-xl font-bold mb-4">Why do we need this information?</Text>
                                     <Text className="mb-2 text-lg">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur tempore beatae quasi officia error distinctio illum laboriosam ea veniam repellendus aperiam, impedit alias suscipit! Maiores sint adipisci repellendus dolor quaerat.</Text>
                                     <Button
@@ -345,12 +321,12 @@ const CreateAccount = ({ navigation }: Props) => {
                     </View>
                     <View className="mt-40">
                         <Button
-                            onPress={() => navigation.navigate('Consent Page')}
+                            onPress={() => navigation.navigate('Consent Form')}
                             innerText="Create Account"
                             textColor="text-white"
                             bgColor="bg-black"
-                            border={true}
-                            borderColor="border border-4"
+                            border={false}
+                            borderColor=""
                         />
                     </View>
                     <Modal visible={isModalVisible} transparent={true}>
