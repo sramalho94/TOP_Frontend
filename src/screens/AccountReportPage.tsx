@@ -2,20 +2,22 @@ import {
   View,
   Text,
   SafeAreaView,
-  TouchableOpacity,
-  Pressable,
   ScrollView,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import Icon from 'react-native-vector-icons/AntDesign';
 import TextInputField from '../components/TextInputField';
 import Button from '../components/Button';
 import TopNavBar from '../components/TopNavBar';
 import CircleBtn from '../components/CircleBtn';
+import { NavigationProp } from '@react-navigation/native';
 
-type Props = {};
 
-const AccountReportPage = (props: Props) => {
+type Props = {
+  navigation: NavigationProp<any>;
+};
+
+const AccountReportPage = ({ navigation }: Props) => {
   // State for storing the zip code
   const [zipCode, setZipCode] = useState('');
   // State for storing the state
@@ -29,7 +31,7 @@ const AccountReportPage = (props: Props) => {
   const handleStateChange = (value: string) => {
     setState(value);
   };
- 
+
   // writing comment to push changes from earlier
 
   return (
@@ -87,7 +89,7 @@ const AccountReportPage = (props: Props) => {
           {/* Submit button */}
           <View className="my-4">
             <Button
-              onPress={() => {}}
+              onPress={() => navigation.navigate('Thank You')}
               innerText="Submit"
               textColor="text-white"
               bgColor="bg-black"

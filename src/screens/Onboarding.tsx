@@ -49,7 +49,7 @@ const Onboarding = ({ navigation }: Props) => {
       title: 'What the data is not used for',
       buttonText: 'Continue',
       pageIndicator: 3,
-      onButtonPress: () => navigation.navigate('LandingPage'),
+      onButtonPress: () => navigation.navigate('Landing Page'),
     },
   ];
 
@@ -100,7 +100,7 @@ const Onboarding = ({ navigation }: Props) => {
 
                 {currentPage !== pages.length && (
                   <Button
-                    onPress={() => navigation.navigate('LandingPage')}
+                    onPress={() => navigation.navigate('Landing Page')}
                     innerText="Skip"
                     bgColor=""
                     textColor=""

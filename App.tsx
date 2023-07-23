@@ -30,28 +30,28 @@ function App(): JSX.Element {
           name="Onboarding"
           component={Onboarding} />
         <Stack.Screen
-          name="LandingPage"
+          name="Landing Page"
           component={LandingPage} />
         <Stack.Screen
-          name="SignInPage"
+          name="Log In"
           component={SignInPage} />
         <Stack.Screen
-          name="CreateAccount"
+          name="Create Account"
           component={CreateAccount} />
         <Stack.Screen
-          name="ReportPage"
+          name="Report Page"
           component={ReportPage} />
         <Stack.Screen
-          name="ConsentPage"
+          name="Consent Page"
           component={ConsentPage} />
         <Stack.Screen
-          name="ThankYouScreen"
+          name="Thank You Screen"
           component={ThankYouScreen} />
         <Stack.Screen
-          name="AccountReportPage"
+          name="Account Report Page"
           component={AccountReportPage} />
         <Stack.Screen
-          name="HomeDash"
+          name="Home"
           component={HomeDash} />
       </Stack.Navigator>
     </NavigationContainer>
