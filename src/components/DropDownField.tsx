@@ -28,10 +28,10 @@ const DropDownField = ({text, selectItems, open, onOpen, setOpen}: Props) => {
     const [value, setValue] = useState<string | null>(null);
 
     return (
-        <View className="mx-6">
+        <View className="mx-auto">
 
             <Text className="font-bold my-2 capitalize">{text} (Optional)</Text>
-            <DropDownPicker className='my-2 border-2 border-black rounded-lg'
+            <DropDownPicker className='my-2 w-80 border-2 border-black rounded-lg'
             open={open}
             items={selectItems}
             value={value}
