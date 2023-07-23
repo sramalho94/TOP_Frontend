@@ -55,7 +55,7 @@ const AccountReportPage = (props: Props) => {
                 bgColor="bg-themeLightBlue"
                 onPress={() => console.log("You're Clear!!")}
                 text="Negative"
-                Btnsize="125"
+                Btnsize={125}
               />
             </View>
             <View className="m-2">
@@ -63,7 +63,7 @@ const AccountReportPage = (props: Props) => {
                 text="Positive"
                 bgColor="bg-themeLightOrange"
                 onPress={() => console.log("You're Sick!!")}
-                Btnsize="125"
+                Btnsize={125}
               />
             </View>
           </View>
