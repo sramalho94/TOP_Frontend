@@ -155,7 +155,7 @@ const CreateAccount = (props: Props) => {
             return (
                 <SafeAreaView className="min-w-screen">
                     <ScrollView>
-                        <View className="h-150 border-b-4 border-slate-200 ">
+                        <View className="h-150 border-b-4 border-slate-200">
                             <View className='flex-row my-6'>
                                 <TouchableOpacity className="mt-2 ml-4">
                                     <Icon name="arrowleft" size={30} color="#000" className="" />
@@ -185,7 +185,7 @@ const CreateAccount = (props: Props) => {
                                 <PasswordField setForm={setForm} form={form}/>
                             </View>
                         </View>
-                        <View className="mt-60">
+                        <View className="mt-48">
                             <Button
                                 onPress={handleSubmitPage1}
                                 innerText="Next"
@@ -261,7 +261,7 @@ const CreateAccount = (props: Props) => {
                                     />
                                 </View>
                             </View>
-                            <View className="mt-64">
+                            <View className="mt-56">
                                 <Button
                                     onPress={handleSubmitPage2}
                                     innerText="Next"
