@@ -28,8 +28,8 @@ const PasswordField = (props: Props) => {
   };
 
   return (
-    <View className="mb-6">
-      <Text className="w-36 h-8 flex my-auto justify-center font-medium">
+    <View className="my-4">
+      <Text className="ml-3 w-36 h-8 flex my-auto justify-center font-medium">
         Password
       </Text>
 
@@ -38,14 +38,14 @@ const PasswordField = (props: Props) => {
         onChangeText={handlePasswordChange}
         placeholder="Enter your password"
         placeholderTextColor="#6b7280"
-        className="h-12 bg-white pl-4 rounded-lg text-base font-medium text-gray-700 border border-black"
+        className="border border-black rounded-lg px-4 h-12 w-80 mx-auto font-medium"
         secureTextEntry={!form.showPassword}
         value={form.password}
       />
 
       <TouchableOpacity
         onPress={togglePasswordVisibility}
-        className="absolute top-10 right-4">
+        className="absolute top-10 right-6">
         <Icon
           className="text-gray-500"
           name={form.showPassword ? 'eye-off-outline' : 'eye-outline'}
