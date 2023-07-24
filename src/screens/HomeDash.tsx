@@ -18,13 +18,13 @@ const HomeDash = (props: Props) => {
     <SafeAreaView className="h-screen w-screen">
       <ScrollView>
         {/* View for whole screen */}
-        <View className="flex flex-col w-full min-h-screen  justify-center items-center py-6 px-6">
+        <View className="flex flex-col w-full min-h-screen  justify-center py-6 px-6">
           {/* View for avatar, text and report test */}
           <View className="flex w-full justify-center items-center ">
             {/* View for avatar*/}
             {/* FIXME: size={72} on avatar does not work for android, might be something with size? idk
             update* it also stopped working for IOS */}
-            <View className="self-end mb-2 w-">
+            <View className="self-end mb-2">
               <CircleBtn
                 img={FlowerImg}
                 bgColor="bg-themeLightOrange"
