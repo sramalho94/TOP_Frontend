@@ -83,7 +83,7 @@ const AccountReportPage = ({ navigation }: Props) => {
           {/* Submit button */}
           <View className="my-64">
             <Button
-              onPress={() => navigation.navigate('Thank You')}
+              onPress={() => navigation.navigate('ThankYouScreen')}
               innerText="Submit"
               textColor="text-white"
               bgColor="bg-black"

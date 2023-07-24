@@ -49,7 +49,7 @@ const Onboarding = ({ navigation }: Props) => {
       title: 'What the data is not used for',
       buttonText: 'Continue',
       pageIndicator: 3,
-      onButtonPress: () => navigation.navigate('Landing Page'),
+      onButtonPress: () => navigation.navigate('LandingPage'),
     },
   ];
 

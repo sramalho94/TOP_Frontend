@@ -315,7 +315,7 @@ const CreateAccount = ({ navigation }: Props) => {
                     </View>
                     <View className="mt-40">
                         <Button
-                            onPress={() => navigation.navigate('Consent Form')}
+                            onPress={() => navigation.navigate('ConsentPage')}
                             innerText="Create Account"
                             textColor="text-white"
                             bgColor="bg-black"

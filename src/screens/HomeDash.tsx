@@ -43,7 +43,7 @@ const HomeDash = ({ navigation }: Props) => {
             <CircleBtn
               text={`Report \n Test`}
               bgColor="bg-themeLightOrange"
-              onPress={() => navigation.navigate('Report COVID-19 Test Results')}
+              onPress={() => navigation.navigate('ReportPage')}
               Btnsize={182}
               textSize='3xl'
             />

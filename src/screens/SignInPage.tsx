@@ -56,7 +56,7 @@ export default function SignInPage({ navigation }: Props) {
         </View>
         <View className="mt-4">
           <Button
-            onPress={() => navigation.navigate('Home')}
+            onPress={() => navigation.navigate('HomeDash')}
             innerText="Log In"
             textColor=""
             bgColor=""
@@ -72,7 +72,7 @@ export default function SignInPage({ navigation }: Props) {
             borderColor="border border-black"
           />
           <Button
-            onPress={() => navigation.navigate('Landing Page')}
+            onPress={() => navigation.navigate('LandingPage')}
             innerText="Back"
             bgColor=""
             textColor=""

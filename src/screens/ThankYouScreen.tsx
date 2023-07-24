@@ -27,7 +27,7 @@ const ThankYouScreen = ({ navigation }: Props) => {
         </Text>
       </View>
       <Button
-        onPress={() => navigation.navigate('Create Account')} // Updated this line
+        onPress={() => navigation.navigate('CreateAccount')} // Updated this line
         innerText="Create Account"
         bgColor="bg-white"
         textColor=""
@@ -35,7 +35,7 @@ const ThankYouScreen = ({ navigation }: Props) => {
         borderColor="border border-gray"
       />
       <Button
-        onPress={() => navigation.navigate('Landing Page')}
+        onPress={() => navigation.navigate('LandingPage')}
         innerText="Skip"
         bgColor=""
         textColor=""

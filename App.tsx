@@ -39,20 +39,20 @@ function App(): JSX.Element {
           name="CreateAccount"
           component={CreateAccount} />
         <Stack.Screen
-          name="Report COVID-19 Test Results"
+          name="ReportPage"
           component={ReportPage} />
         <Stack.Screen
-          name="Consent Form"
+          name="ConsentForm"
           component={ConsentPage} />
         <Stack.Screen
-          name="Thank You"
+          name="ThankYouScreen"
           component={ThankYouScreen}
           options={{ headerShown: false }} />
         <Stack.Screen
-          name="Report COVID-19 Test Results Anonymously"
+          name="AccountReportPage"
           component={AccountReportPage} />
         <Stack.Screen
-          name="Home"
+          name="HomeDash"
           component={HomeDash} />
       </Stack.Navigator>
     </NavigationContainer>
