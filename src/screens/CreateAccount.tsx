@@ -252,16 +252,10 @@ const CreateAccount = ({ navigation }: Props) => {
                     </View>
                     <View className="mx-auto my-auto justify-between">
                         <View className="w-[342]">
-                            <View className="my-4">
-                                <Button
-                                    onPress={toggleModal}
-                                    innerText="(Why do we need this information?)"
-                                    bgColor=""
-                                    textColor=""
-                                    border={false}
-                                    borderColor="border border-gray"
-                                    textDecoration='underline'
-                                />
+                            <View className="mb-4">
+                                <TouchableOpacity className="mb-4 mx-auto">
+                                    <Text className='underline text-lg' onPress={toggleModal}>(Why do we need this information?)</Text>
+                                </TouchableOpacity>
                             </View>
                             <View>
                                 <DropDownField

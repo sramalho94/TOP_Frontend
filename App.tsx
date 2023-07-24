@@ -29,14 +29,14 @@ function App(): JSX.Element {
           component={Onboarding}
           options={{ headerShown: false }} />
         <Stack.Screen
-          name="Landing Page"
+          name="LandingPage"
           component={LandingPage}
           options={{ headerShown: false }} />
         <Stack.Screen
-          name="Log In"
+          name="SignInPage"
           component={SignInPage} />
         <Stack.Screen
-          name="Create Account"
+          name="CreateAccount"
           component={CreateAccount} />
         <Stack.Screen
           name="Report COVID-19 Test Results"

@@ -13,7 +13,7 @@ const LandingPage = ({ navigation }: Props) => {
       <View className="border-2 border-black w-[342] h-[339] mt-[100] mx-auto"></View>
       <View className="mt-[87] space-y-[12] mb-[12]">
         <Button
-          onPress={() => navigation.navigate('Log In')}
+          onPress={() => navigation.navigate('SignInPage')}
           innerText="Log in"
           bgColor="bg-white"
           textColor=""
@@ -21,7 +21,7 @@ const LandingPage = ({ navigation }: Props) => {
           borderColor="border"
         />
         <Button
-          onPress={() => navigation.navigate('Create Account')}
+          onPress={() => navigation.navigate('CreateAccount')}
           innerText="Create Account"
           bgColor="bg-white"
           textColor=""
@@ -29,7 +29,7 @@ const LandingPage = ({ navigation }: Props) => {
           borderColor="border"
         />
         <Button
-          onPress={() => navigation.navigate('Report COVID-19 Test Results Anonymously')}
+          onPress={() => navigation.navigate('AccountReportPage')}
           innerText="Report Without Account"
           bgColor="bg-[#B4B4B4]"
           textColor=""
