@@ -6,7 +6,8 @@ type Props = {
   text?: string;
   bgColor?: string;
   onPress: () => void;
-  Btnsize: number;
+  Btnwidth: string;
+  Btnheight: string;
   textColor?: string;
   img?: any;
   textSize?: string,
@@ -16,15 +17,15 @@ type Props = {
 // Refactor tenaries in Touchable opacity/ make sure they work
 
 
-const CircleBtn = ({textColor, textSize, img, Btnsize, text, bgColor, onPress}: Props)=> {
+const CircleBtn = ({textColor, textSize, img, Btnwidth, Btnheight, text, bgColor, onPress}: Props)=> {
   return (
     <>
       <TouchableOpacity
         onPress={onPress}
-        className={`${bgColor} border-2 border-black flex items-center rounded-full justify-center ${textColor} h-[${Btnsize}px] w-[${Btnsize}px]`}>
-         {img && !text ?  <Image className={`border-2 border-black bg-contain w-[${Btnsize}px] h-[${Btnsize}px] rounded-full`} source={img} />: null }
+        className={`${bgColor} border-2 border-black flex items-center rounded-full justify-center ${textColor} ${Btnheight} ${Btnwidth}`}>
+         {img && !text ?  <Image className={`border-2 border-black bg-contain ${Btnheight} ${Btnwidth} rounded-full`} source={img} />: null }
          {text && !img ? <Text className={`text-center text-${textSize}`} >{text}</Text> : null }
-         {img && text ? <Image className={`border-2 border-black bg-contain w-[${Btnsize}px] h-[${Btnsize}px] rounded-full`} source={img} /> && <Text className={`text-center text-${textSize}`} >{text}</Text> : null }
+         {img && text ? <Image className={`border-2 border-black bg-contain ${Btnheight} ${Btnwidth} rounded-full`} source={img} /> && <Text className={`text-center text-${textSize}`} >{text}</Text> : null }
       </TouchableOpacity>
     </>
   );
