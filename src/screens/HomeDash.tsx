@@ -18,7 +18,7 @@ const HomeDash = (props: Props) => {
     <SafeAreaView className="h-screen w-screen">
       <ScrollView>
         {/* View for whole screen */}
-        <View className="flex flex-col w-full min-h-screen  justify-center py-6 px-6">
+        <View className="flex flex-col w-full min-h-screen py-6 px-6">
           {/* View for avatar, text and report test */}
           <View className="flex w-full justify-center items-center ">
             {/* View for avatar*/}
@@ -37,8 +37,8 @@ const HomeDash = (props: Props) => {
             </View>
             <Text className="text-3xl font-bold mb-2 text-center">Community {'\n'}Test Lab</Text>
             {/* need giant circle btn, need to refactor circle btn props? */}
-            <CircleBtn className=" w-"
-              text={`Report \n Test`}
+            <CircleBtn
+              text={`Report\nTest`}
               bgColor="bg-themeLightOrange"
               onPress={() => {
                 console.log("You're Sick!!");
