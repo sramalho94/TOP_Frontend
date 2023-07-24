@@ -56,8 +56,8 @@ export default function SignInPage({ navigation }: Props) {
         </View>
         <View className="mt-4">
           <Button
-            onPress={() => navigation.navigate('HomeDash')}
-            innerText="Login"
+            onPress={() => navigation.navigate('Home')}
+            innerText="Log In"
             textColor=""
             bgColor=""
             border={true}
