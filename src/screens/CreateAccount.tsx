@@ -1,16 +1,7 @@
-import {
-  View,
-  Text,
-  SafeAreaView,
-  TouchableOpacity,
-  Modal,
-  ScrollView,
-} from 'react-native';
+import {View, Text, SafeAreaView, Modal, ScrollView} from 'react-native';
 import React, {useState} from 'react';
-import Icon from 'react-native-vector-icons/AntDesign';
 import TextInputField from '../components/TextInputField';
 import Button from '../components/Button';
-import ProgressDots from '../components/ProgressDots';
 import TopNavBar from '../components/TopNavBar';
 import DropDownField from '../components/DropDownField';
 import PasswordField from '../components/Password';
