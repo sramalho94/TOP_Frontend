@@ -21,7 +21,7 @@ export default class ApiService {
   }
 
   static register(userData: any): Promise<Response> {
-    console.log("a: "+userData);
+
     return axios.post(`${BASE_URL}/auth/register`, userData)
 
     // The sideEffect takes arrowFun, which is the arrow function (res:any) => console.log(res). Also known as a lambda.
