@@ -1,27 +1,24 @@
-import { View, Text, SafeAreaView, TouchableOpacity } from 'react-native';
+import {View, Text, SafeAreaView, TouchableOpacity} from 'react-native';
 import React from 'react';
 import Button from '../components/Button';
-import { NavigationProp } from '@react-navigation/native';
-
+import {NavigationProp} from '@react-navigation/native';
 
 type Props = {
   navigation: NavigationProp<any>;
 };
 
-const ThankYouScreen = ({ navigation }: Props) => {
+const ThankYouScreen = ({navigation}: Props) => {
   return (
     <SafeAreaView className="h-screen w-screen mx-auto my-auto ">
-      <View className="flex-row justify-center mt-16">
+      <View className="flex-row justify-center mt-12">
         <Text className="text-4xl">Thank You!</Text>
       </View>
       <View className="flex-row justify-center mt-5">
-        <Text className="text-lg font-bold ">
-          Your test results have been reported.
-        </Text>
+        <Text className="text-lg ">Your test results have been reported.</Text>
       </View>
-      <View className="border-2 border-black w-[294] h-[292] my-5 mx-auto"></View>
-      <View className="flex-row justify-center mt-4 mb-16">
-        <Text className="text-lg font-bold px-10 text-center">
+      <View className="border-2 border-black w-[286] h-[276] my-4 mx-auto"></View>
+      <View className="flex-row justify-center">
+        <Text className="text-lg  px-10 text-center">
           Join our community and save time on your next reporting by making an
           account today!
         </Text>
@@ -36,7 +33,15 @@ const ThankYouScreen = ({ navigation }: Props) => {
       />
       <Button
         onPress={() => navigation.navigate('LandingPage')}
-        innerText="Skip"
+        innerText="Back"
+        bgColor=""
+        textColor=""
+        border={false}
+        borderColor=""
+      />
+      <Button
+        onPress={() => navigation.navigate('LandingPage')}
+        innerText="Take Me Home"
         bgColor=""
         textColor=""
         border={false}
