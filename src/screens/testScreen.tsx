@@ -15,7 +15,8 @@ const testScreen = () => {
 
     const handleSubmit:any = (e: any) => {
         e.preventDefault()
-        console.log("user sign up yay: " + userSignUp)
+        console.log("user sign up yay: " + userSignUp.username)
+        console.log("pw sign up yay: " + userSignUp.password)
         ApiService.register(userSignUp);
     }
 
@@ -28,13 +29,13 @@ const testScreen = () => {
         label='Username'
         value={userSignUp.username}
         onChange={(value) => handleChange('username', value)}
-        placeholder=''
+        placeholder='username'
         />
         <TextInputField 
         label='Password'
         value={userSignUp.password}
         onChange={(value) => handleChange('password', value)}
-        placeholder=''
+        placeholder='password'
         />
 
         <Button
