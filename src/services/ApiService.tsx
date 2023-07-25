@@ -7,7 +7,7 @@ export default class ApiService {
   // Still don't understand, but this allows the .then() to be returned inside this class. This also helps with readability. 
   // Another way to do this is by returning the res inside the .then(), but by putting it in the below function, it improves readilbility
   // https://gabrielctroia.medium.com/side-effects-in-js-promise-chains-7db50b6302f3
-  // Lambda is a lambda (aka: fn) and "a" is the first argument of the lambda
+  // Lambda is a lambda (aka: fn), which we call in JavaScript anonymous functions (anon arrow function below) and "a" is the first argument of the lambda
   static sideEffect = (lambda:any) => (a:any) => {
     lambda(a);    // process side-effects
     return a; // pass the data further
