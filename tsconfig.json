@@ -6,7 +6,8 @@
     "target": "es6",
     "lib": ["es6", "dom"],
     "strict": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "types": ["jest"]
   },
   "include": ["src", "images.d.ts", "app.d.ts", "index.d.ts"]
 }
