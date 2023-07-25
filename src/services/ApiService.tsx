@@ -7,10 +7,10 @@ export default class ApiService {
   // Still don't understand, but this allows the .then() to be returned inside this class. This also helps with readability. 
   // Another way to do this is by returning the res inside the .then(), but by putting it in the below function, it improves readilbility
   // https://gabrielctroia.medium.com/side-effects-in-js-promise-chains-7db50b6302f3
-  // arrowFun is a lambda (aka: fn) and thenArg is the first argument of the lambda (aka: a)
-  static sideEffect = (arrowFun:any) => (thenArg:any) => {
-    arrowFun(thenArg);    // process side-effects
-    return thenArg; // pass the data further
+  // Lambda is a lambda (aka: fn) and "a" is the first argument of the lambda
+  static sideEffect = (lambda:any) => (a:any) => {
+    lambda(a);    // process side-effects
+    return a; // pass the data further
    };
 
   // NOTE: These are NOT tested yet! Need to fix "Create Account" screen in order to test the first route: "register".
@@ -24,8 +24,8 @@ export default class ApiService {
 
     return axios.post(`${BASE_URL}/auth/register`, userData)
 
-    // The sideEffect takes arrowFun, which is the arrow function (res:any) => console.log(res). Also known as a lambda.
-    // Also, it takes thenArg, which is the response from the axios.post
+    // The sideEffect takes "lambda", which is the arrow function (res:any) => console.log(res).
+    // Also, it takes "a", which is the response from the axios.post
     .then(this.sideEffect((res: any)=> console.log(res)))
     .catch(this.sideEffect((error: any) => console.log(error)))
   }
