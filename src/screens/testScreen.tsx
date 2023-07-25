@@ -7,7 +7,7 @@ import ApiService from '../services/ApiService';
 
 const testScreen = () => {
 
-    const [userSignUp, setUserSignUp] = useState<any | undefined>({username: "", password: ""})
+    const [userSignUp, setUserSignUp] = useState<any | undefined>({username: "", password: "", DOB: "1920-01-01", state: "DL", ZIP: "11111", firstName: "asdf", gender: "M", ethnicity: "prefer not to say", race: "prefer not to say"})
 
     const handleChange:any = (field: string, value: string) => {
         setUserSignUp({...userSignUp, [field]: value})
@@ -15,9 +15,12 @@ const testScreen = () => {
 
     const handleSubmit:any = (e: any) => {
         e.preventDefault()
-        console.log("user sign up yay: " + userSignUp.username)
-        console.log("pw sign up yay: " + userSignUp.password)
-        ApiService.register(userSignUp);
+
+        ApiService.register(userSignUp)
+        .then((res) => console.log("res from posting!!: " + res))
+        .catch(error => {
+            console.log("Message: " + error);
+        });
     }
 
   return (

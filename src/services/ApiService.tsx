@@ -4,6 +4,15 @@ const BASE_URL = 'http://10.0.2.2:3001/api'; // Replace with your actual API bas
 
 export default class ApiService {
 
+  // Still don't understand, but this allows the .then() to be returned inside this class. This also helps with readability. 
+  // Another way to do this is by returning the res inside the .then(), but by putting it in the below function, it improves readilbility
+  // https://gabrielctroia.medium.com/side-effects-in-js-promise-chains-7db50b6302f3
+  // arrowFun is a lambda (aka: fn) and thenArg is the first argument of the lambda (aka: a)
+  static sideEffect = (arrowFun:any) => (thenArg:any) => {
+    arrowFun(thenArg);    // process side-effects
+    return thenArg; // pass the data further
+   };
+
   // NOTE: These are NOT tested yet! Need to fix "Create Account" screen in order to test the first route: "register".
 
     // Authentication API calls
@@ -12,7 +21,13 @@ export default class ApiService {
   }
 
   static register(userData: any): Promise<Response> {
-    return axios.post(`${BASE_URL}/auth/register`, userData);
+    console.log("a: "+userData);
+    return axios.post(`${BASE_URL}/auth/register`, userData)
+
+    // The sideEffect takes arrowFun, which is the arrow function (res:any) => console.log(res). Also known as a lambda.
+    // Also, it takes thenArg, which is the response from the axios.post
+    .then(this.sideEffect((res: any)=> console.log(res)))
+    .catch(this.sideEffect((error: any) => console.log(error)))
   }
 
   static checkSession(): Promise<Response> {
