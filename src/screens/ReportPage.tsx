@@ -199,6 +199,7 @@ const ReportPage = (props: Props) => {
               textColor="text-black"
               border={true}
               borderColor="border border-2"
+              width='80'
             />
           </View>
           </View>

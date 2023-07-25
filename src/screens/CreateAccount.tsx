@@ -174,6 +174,7 @@ const CreateAccount = (props: Props) => {
                 bgColor="bg-black"
                 border={true}
                 borderColor="border border-4"
+                width='80'
               />
             </View>
             <Modal visible={isModalVisible} transparent={true}>
@@ -196,6 +197,7 @@ const CreateAccount = (props: Props) => {
                     bgColor="bg-[#B4B4B4]"
                     border={true}
                     borderColor="border border-4"
+                    width='5/6'
                   />
                 </View>
               </View>
@@ -227,6 +229,7 @@ const CreateAccount = (props: Props) => {
                     border={false}
                     borderColor="border border-gray"
                     textDecoration="underline"
+                    width='80'
                   />
                 </View>
                 <TextInputField
@@ -251,6 +254,7 @@ const CreateAccount = (props: Props) => {
                 bgColor="bg-black"
                 border={true}
                 borderColor="border border-4"
+                width='80'
               />
             </View>
             <Modal visible={isModalVisible} transparent={true}>
@@ -272,6 +276,7 @@ const CreateAccount = (props: Props) => {
                     bgColor="bg-[#B4B4B4]"
                     border={true}
                     borderColor="border border-4"
+                    width='5/6'
                   />
                 </View>
               </View>
@@ -301,6 +306,7 @@ const CreateAccount = (props: Props) => {
                     border={false}
                     borderColor="border border-gray"
                     textDecoration="underline"
+                    width='80'
                   />
                 </View>
                 <DropDownField
@@ -389,6 +395,7 @@ const CreateAccount = (props: Props) => {
                 bgColor="bg-black"
                 border={true}
                 borderColor="border border-4"
+                width='80'
               />
             </View>
             <Modal visible={isModalVisible} transparent={true}>
@@ -410,6 +417,7 @@ const CreateAccount = (props: Props) => {
                     bgColor="bg-[#B4B4B4]"
                     border={false}
                     borderColor=""
+                    width='5/6'
                   />
                 </View>
               </View>

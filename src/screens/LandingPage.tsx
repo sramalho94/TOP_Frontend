@@ -17,6 +17,7 @@ const LandingPage = () => {
           textColor="text-black"
           border={true}
           borderColor="border border-4"
+          width='80'
         />
         {/* <TouchableOpacity className="border-4 border-black flex justify-center items-center w-[342] h-[52] rounded-lg">
           <Text className="text-lg font-bold">Create Account</Text>
@@ -28,6 +29,7 @@ const LandingPage = () => {
           textColor="text-black"
           border={true}
           borderColor="border border-4"
+          width='80'
         />
         {/* <TouchableOpacity className="border-4 border-black flex justify-center items-center w-[342] h-[52] rounded-lg bg-[#B4B4B4]">
           <Text className="text-lg font-bold">Report Without Account</Text>
@@ -39,6 +41,7 @@ const LandingPage = () => {
           textColor="text-black"
           border={true}
           borderColor="border border-4"
+          width='80'
         />
       </View>
     </SafeAreaView>
