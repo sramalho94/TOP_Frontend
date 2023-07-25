@@ -50,7 +50,6 @@ export default function SignInPage(props: Props) {
               label="Username"
               value={form.username}
               onChange={handleUsernameChange}
-              onChangeText={username => setForm({ ...form, username })}
               placeholder=''
             />
             <Password setForm={setForm} form={form} />
