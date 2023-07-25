@@ -7,20 +7,20 @@ export default class ApiService {
   // NOTE: These are NOT tested yet! Need to fix "Create Account" screen in order to test the first route: "register".
 
     // Authentication API calls
-  static async login(credentials) {
+  static login(credentials): Promise<Response> {
     return axios.post(`${BASE_URL}/auth/login`, credentials);
   }
 
-  static async register(userData) {
+  static register(userData): Promise<Response> {
     return axios.post(`${BASE_URL}/auth/register`, userData);
   }
 
-  static async checkSession() {
+  static checkSession(): Promise<Response> {
     // Add any necessary authentication headers, such as the JWT token
     return axios.get(`${BASE_URL}/auth/check-session`);
   }
 
-  static async updatePassword(username, oldPassword, newPassword) {
+  static updatePassword(username, oldPassword, newPassword): Promise<Response> {
     return axios.put(`${BASE_URL}/auth/update-password`, {
       username,
       oldPassword,
@@ -28,40 +28,40 @@ export default class ApiService {
     });
   }
     // User-related API calls
-  static async getAllUsers() {
+  static getAllUsers(): Promise<Response> {
     return axios.get(`${BASE_URL}/users`);
   }
 
-  static async getUserById(id) {
+  static getUserById(id): Promise<Response> {
     return axios.get(`${BASE_URL}/users/${id}`);
   }
 
-  static async updateUser(id, userData) {
+  static updateUser(id, userData): Promise<Response> {
     return axios.put(`${BASE_URL}/users/${id}`, userData);
   }
 
-  static async deleteUser(id) {
+  static deleteUser(id): Promise<Response> {
     return axios.delete(`${BASE_URL}/users/${id}`);
   }
 
   // Test-related API calls
-  static async getAllTests() {
+  static getAllTests(): Promise<Response> {
     return axios.get(`${BASE_URL}/tests`);
   }
 
-  static async getTestById(id) {
+  static getTestById(id): Promise<Response> {
     return axios.get(`${BASE_URL}/tests/${id}`);
   }
 
-  static async createTest(testData) {
+  static createTest(testData): Promise<Response> {
     return axios.post(`${BASE_URL}/tests`, testData);
   }
 
-  static async updateTest(id, testData) {
+  static updateTest(id, testData): Promise<Response> {
     return axios.put(`${BASE_URL}/tests/${id}`, testData);
   }
 
-  static async deleteTest(id) {
+  static deleteTest(id): Promise<Response> {
     return axios.delete(`${BASE_URL}/tests/${id}`);
   }
 
