@@ -14,6 +14,9 @@ export default class ApiService {
    };
 
   // NOTE: These are NOT tested yet! Need to fix "Create Account" screen in order to test the first route: "register".
+  // TODO: -Need to pass in authentication header in most functions below as part of the API call??
+  // TODO: -Need react native keychains?
+  // TODO: -Need to test each route, probably with a testing playground screen, since not all the screens we have will be used by each route 
 
     // Authentication API calls
   static login(credentials: any): Promise<Response> {
@@ -32,7 +35,9 @@ export default class ApiService {
 
   static checkSession(): Promise<Response> {
     // Add any necessary authentication headers, such as the JWT token
-    return axios.get(`${BASE_URL}/auth/check-session`);
+    return axios.get(`${BASE_URL}/auth/check-session`)
+    .then(this.sideEffect((res: any)=> console.log(res)))
+    .catch(this.sideEffect((error: any) => console.log(error)))
   }
 
   static updatePassword(username: string, oldPassword: string, newPassword: string): Promise<Response> {
@@ -40,44 +45,64 @@ export default class ApiService {
       username,
       oldPassword,
       newPassword,
-    });
+    })
+    .then(this.sideEffect((res: any)=> console.log(res)))
+    .catch(this.sideEffect((error: any) => console.log(error)))
   }
     // User-related API calls
   static getAllUsers(): Promise<Response> {
-    return axios.get(`${BASE_URL}/users`);
+    return axios.get(`${BASE_URL}/users`)
+    .then(this.sideEffect((res: any)=> console.log(res)))
+    .catch(this.sideEffect((error: any) => console.log(error)))
   }
 
   static getUserById(id: any): Promise<Response> {
-    return axios.get(`${BASE_URL}/users/${id}`);
+    return axios.get(`${BASE_URL}/users/${id}`)
+    .then(this.sideEffect((res: any)=> console.log(res)))
+    .catch(this.sideEffect((error: any) => console.log(error)))
   }
 
   static updateUser(id: any, userData: any): Promise<Response> {
-    return axios.put(`${BASE_URL}/users/${id}`, userData);
+    return axios.put(`${BASE_URL}/users/${id}`, userData)
+    .then(this.sideEffect((res: any)=> console.log(res)))
+    .catch(this.sideEffect((error: any) => console.log(error)))
   }
 
   static deleteUser(id: any): Promise<Response> {
-    return axios.delete(`${BASE_URL}/users/${id}`);
+    return axios.delete(`${BASE_URL}/users/${id}`)
+    .then(this.sideEffect((res: any)=> console.log(res)))
+    .catch(this.sideEffect((error: any) => console.log(error)))
   }
 
   // Test-related API calls
   static getAllTests(): Promise<Response> {
-    return axios.get(`${BASE_URL}/tests`);
+    return axios.get(`${BASE_URL}/tests`)
+    .then(this.sideEffect((res: any)=> console.log(res)))
+    .catch(this.sideEffect((error: any) => console.log(error)))
   }
 
   static getTestById(id: any): Promise<Response> {
-    return axios.get(`${BASE_URL}/tests/${id}`);
+    return axios.get(`${BASE_URL}/tests/${id}`)
+    .then(this.sideEffect((res: any)=> console.log(res)))
+    .catch(this.sideEffect((error: any) => console.log(error)))
   }
 
   static createTest(testData: any): Promise<Response> {
-    return axios.post(`${BASE_URL}/tests`, testData);
+    return axios.post(`${BASE_URL}/tests`, testData)
+    .then(this.sideEffect((res: any)=> console.log(res)))
+    .catch(this.sideEffect((error: any) => console.log(error)))
   }
 
   static updateTest(id: any, testData: any): Promise<Response> {
-    return axios.put(`${BASE_URL}/tests/${id}`, testData);
+    return axios.put(`${BASE_URL}/tests/${id}`, testData)
+    .then(this.sideEffect((res: any)=> console.log(res)))
+    .catch(this.sideEffect((error: any) => console.log(error)))
   }
 
   static deleteTest(id: any): Promise<Response> {
-    return axios.delete(`${BASE_URL}/tests/${id}`);
+    return axios.delete(`${BASE_URL}/tests/${id}`)
+    .then(this.sideEffect((res: any)=> console.log(res)))
+    .catch(this.sideEffect((error: any) => console.log(error)))
   }
 
   
