@@ -1,15 +1,23 @@
-import { View, Text, SafeAreaView, TouchableOpacity } from 'react-native';
+import {View, Text, SafeAreaView, TouchableOpacity} from 'react-native';
 import React from 'react';
 import Button from '../components/Button';
-import { NavigationProp } from '@react-navigation/native';
+import {RouteProp} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {RootStackParamList} from '../../App';
+
+type ThankYouScreenNavigationProp = NativeStackNavigationProp<
+  RootStackParamList,
+  'ThankYouScreen'
+>;
+type ThankYouScreenRouteProp = RouteProp<RootStackParamList, 'ThankYouScreen'>;
 
 type Props = {
   navigation: NavigationProp<any>;
 };
 
-const ThankYouScreen = ({ navigation }: Props) => {
+const ThankYouScreen = ({navigation}: Props) => {
   return (
-    <SafeAreaView className="h-screen w-screen mx-auto my-auto ">
+    <SafeAreaView className="h-screen w-screen mx-auto my-auto">
       <View className="flex-row justify-center mt-12">
         <Text className="text-4xl">Thank You!</Text>
       </View>
