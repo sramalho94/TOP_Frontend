@@ -191,17 +191,18 @@ const ReportPage = ({ navigation }: Props) => {
               </Text>
             </View>
 
-            {/* button container */}
-            <View className="mb-14">
-              <Button
-                onPress={() => navigation.navigate('ThankYouScreen')}
-                innerText="Report"
-                bgColor="bg-[#B4B4B4]"
-                textColor="text-black"
-                border={true}
-                borderColor="border border-2"
-              />
-            </View>
+          {/* button container */}
+          <View className="mb-14">
+            <Button
+              onPress={() => console.log('pressed')}
+              innerText="Report"
+              bgColor="bg-[#B4B4B4]"
+              textColor="text-black"
+              border={true}
+              borderColor="border border-2"
+              width='80'
+            />
+          </View>
           </View>
         </View>
 

@@ -9,11 +9,9 @@ import NoImage from '../../assets/blankimage.png';
 import Password from "../components/Password"
 import Button from '../components/Button';
 import TextInputField from '../components/TextInputField';
-import { NavigationProp } from '@react-navigation/native';
+import TopNavBar from '../components/TopNavBar';
 
-type Props = {
-  navigation: NavigationProp<any>;
-};
+type Props = {};
 
 type FormState = {
   username: string;
@@ -39,6 +37,7 @@ export default function SignInPage({ navigation }: Props) {
   return (
     <SafeAreaView className="w-342">
       <ScrollView>
+      {/* <TopNavBar textSize='xl' textValue='Sign In' fontFamily='' haveProgress={false} /> */}
         <View className="">
           <View className="flex flex-row justify-center align-middle">
             <Image className="w-342 h-349 m-4" source={NoImage}></Image>
@@ -48,7 +47,6 @@ export default function SignInPage({ navigation }: Props) {
               label="Username"
               value={form.username}
               onChange={handleUsernameChange}
-              onChangeText={username => setForm({ ...form, username })}
               placeholder=''
             />
             <Password setForm={setForm} form={form} />
@@ -62,6 +60,7 @@ export default function SignInPage({ navigation }: Props) {
             bgColor=""
             border={true}
             borderColor="border border-black"
+            width='80'
           />
           <Button
             onPress={() => console.log('pressed')}
@@ -70,6 +69,7 @@ export default function SignInPage({ navigation }: Props) {
             bgColor=""
             border={true}
             borderColor="border border-black"
+            width='80'
           />
           <Button
             onPress={() => navigation.navigate('LandingPage')}
@@ -78,6 +78,7 @@ export default function SignInPage({ navigation }: Props) {
             textColor=""
             border={false}
             borderColor=""
+            width='80'
           />
         </View>
       </ScrollView>

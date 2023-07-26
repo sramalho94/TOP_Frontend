@@ -1,9 +1,6 @@
 import {View, Text, SafeAreaView} from 'react-native';
 import React from 'react';
-import Button from '../components/Button';
-import {RouteProp} from '@react-navigation/native';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {RootStackParamList} from '../../App';
+import TopNavBar from '../components/TopNavBar';
 
 type ThankYouScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
@@ -20,8 +17,9 @@ const ThankYouScreen = ({navigation, route}: Props) => {
   const {loggIn} = route.params || {loggIn: true};
 
   return (
-    <SafeAreaView className="h-screen w-screen mx-auto my-auto">
-      <View className="flex-row justify-center mt-12">
+    <SafeAreaView>
+        <TopNavBar textSize='xl' textValue='All Done!' fontFamily='' haveProgress={false} />
+      <View className="flex-row justify-center mt-16">
         <Text className="text-4xl">Thank You!</Text>
       </View>
       <View className="flex-row justify-center mt-2">

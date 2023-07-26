@@ -18,7 +18,8 @@ const LandingPage = ({ navigation }: Props) => {
           bgColor="bg-white"
           textColor=""
           border={true}
-          borderColor="border"
+          borderColor="border border-4"
+          width='80'
         />
         <Button
           onPress={() => navigation.navigate('CreateAccount')}
@@ -26,7 +27,12 @@ const LandingPage = ({ navigation }: Props) => {
           bgColor="bg-white"
           textColor=""
           border={true}
+<<<<<<< HEAD
           borderColor="border"
+=======
+          borderColor="border border-4"
+          width='80'
+>>>>>>> dev
         />
         <Button
           onPress={() => navigation.navigate('AccountReportPage')}
@@ -34,7 +40,12 @@ const LandingPage = ({ navigation }: Props) => {
           bgColor="bg-[#B4B4B4]"
           textColor=""
           border={true}
+<<<<<<< HEAD
           borderColor="border"
+=======
+          borderColor="border border-4"
+          width='80'
+>>>>>>> dev
         />
       </View>
     </SafeAreaView>
