@@ -2,22 +2,20 @@ import {
   View,
   Text,
   SafeAreaView,
+  TouchableOpacity,
+  Pressable,
   ScrollView,
 } from 'react-native';
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import Icon from 'react-native-vector-icons/AntDesign';
 import TextInputField from '../components/TextInputField';
 import Button from '../components/Button';
 import TopNavBar from '../components/TopNavBar';
 import CircleBtn from '../components/CircleBtn';
-import { NavigationProp } from '@react-navigation/native';
 
+type Props = {};
 
-type Props = {
-  navigation: NavigationProp<any>;
-};
-
-const AccountReportPage = ({ navigation }: Props) => {
+const AccountReportPage = (props: Props) => {
   // State for storing the zip code
   const [zipCode, setZipCode] = useState('');
   // State for storing the state
@@ -31,15 +29,21 @@ const AccountReportPage = ({ navigation }: Props) => {
   const handleStateChange = (value: string) => {
     setState(value);
   };
-
+ 
   // writing comment to push changes from earlier
 
   return (
     <SafeAreaView className="min-w-screen">
       <ScrollView>
+        <TopNavBar
+          textSize="xl"
+          fontFamily=""
+          haveProgress={false}
+          textValue="Report COVID-19 Test Result"
+        />
 
         {/* Page container */}
-        <View className="justify-center mx-auto max-w-sm my-6">
+        <View className="justify-center mx-auto max-w-sm">
           <Text className="text-lg font-bold mx-auto">
             What were the results of your test?
           </Text>
@@ -51,7 +55,7 @@ const AccountReportPage = ({ navigation }: Props) => {
                 bgColor="bg-themeLightBlue"
                 onPress={() => console.log("You're Clear!!")}
                 text="Negative"
-                Btnsize="125"
+                Btnsize={125}
               />
             </View>
             <View className="m-2">
@@ -59,13 +63,13 @@ const AccountReportPage = ({ navigation }: Props) => {
                 text="Positive"
                 bgColor="bg-themeLightOrange"
                 onPress={() => console.log("You're Sick!!")}
-                Btnsize="125"
+                Btnsize={125}
               />
             </View>
           </View>
 
           {/* Text input fields container */}
-          <View className="mx-4">
+          <View className="">
             <TextInputField
               label="State*"
               value={state}
@@ -81,13 +85,14 @@ const AccountReportPage = ({ navigation }: Props) => {
           </View>
 
           {/* Submit button */}
-          <View className="my-64">
+          <View className="my-4">
             <Button
-              onPress={() => navigation.navigate('ThankYouScreen')}
+              onPress={() => {}}
               innerText="Submit"
               textColor="text-white"
               bgColor="bg-black"
               border={true}
+              width='80'
             />
           </View>
         </View>

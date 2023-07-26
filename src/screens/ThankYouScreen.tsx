@@ -11,50 +11,38 @@ type ThankYouScreenNavigationProp = NativeStackNavigationProp<
 >;
 type ThankYouScreenRouteProp = RouteProp<RootStackParamList, 'ThankYouScreen'>;
 
-type Props = {
-  navigation: NavigationProp<any>;
-};
+type Props = {};
 
 const ThankYouScreen = ({navigation}: Props) => {
   return (
-    <SafeAreaView className="h-screen w-screen mx-auto my-auto">
-      <View className="flex-row justify-center mt-12">
+    <SafeAreaView>
+      <TopNavBar
+        textSize="xl"
+        textValue="All Done!"
+        fontFamily=""
+        haveProgress={false}
+      />
+      <View className="flex-row justify-center mt-16">
         <Text className="text-4xl">Thank You!</Text>
       </View>
       <View className="flex-row justify-center mt-5">
-        <Text className="text-lg ">Your test results have been reported.</Text>
+        <Text className="text-lg font-bold ">
+          Your test results have been reported.
+        </Text>
       </View>
-      <View className="border-2 border-black w-[286] h-[276] my-4 mx-auto"></View>
-      <View className="flex-row justify-center">
-        <Text className="text-lg  px-10 text-center">
+      <View className="border-2 border-black w-[294] h-[292] my-5 mx-auto"></View>
+      <View className="flex-row justify-center mt-6 mb-20">
+        <Text className="text-lg font-bold px-10 text-center">
           Join our community and save time on your next reporting by making an
           account today!
         </Text>
       </View>
-      <Button
-        onPress={() => navigation.navigate('CreateAccount')} // Updated this line
-        innerText="Create Account"
-        bgColor="bg-white"
-        textColor=""
-        border={true}
-        borderColor="border border-gray"
-      />
-      <Button
-        onPress={() => navigation.navigate('LandingPage')}
-        innerText="Back"
-        bgColor=""
-        textColor=""
-        border={false}
-        borderColor=""
-      />
-      <Button
-        onPress={() => navigation.navigate('LandingPage')}
-        innerText="Take Me Home"
-        bgColor=""
-        textColor=""
-        border={false}
-        borderColor=""
-      />
+      <TouchableOpacity className="border-4 mx-auto border-black flex justify-center items-center w-[342] h-[52] rounded-lg ">
+        <Text className="text-lg font-bold">Create Account</Text>
+      </TouchableOpacity>
+      <TouchableOpacity className="mx-auto mt-4">
+        <Text className="text-lg font-bold">Back</Text>
+      </TouchableOpacity>
     </SafeAreaView>
   );
 };

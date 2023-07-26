@@ -18,9 +18,9 @@ const CheckBox: React.FC<CheckBoxProps> = ({
   return (
     <TouchableOpacity onPress={handleCheckChanges}>
       {!isSelected ? (
-        <Icon name="square-outline" size={30} color="" />
+        <Icon name="square-outline" size={22} color="" />
       ) : (
-        <Icon name="checkbox-outline" size={30} color="" />
+        <Icon name="checkbox-outline" size={22} color="" />
       )}
     </TouchableOpacity>
   );

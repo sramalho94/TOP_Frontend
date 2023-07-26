@@ -18,7 +18,7 @@ import HomeDash from './src/screens/HomeDash';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
-const Stack = createNativeStackNavigator();
+import DropDownField from './src/components/DropDownField';
 
 function App(): JSX.Element {
   return (

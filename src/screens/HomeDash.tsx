@@ -5,19 +5,15 @@ import {
   SafeAreaView,
   ScrollView,
 } from 'react-native';
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import Icon from 'react-native-vector-icons/AntDesign'; // might need this for the avatar?
 import CircleBtn from '../components/CircleBtn';
-import { Image } from 'react-native';
+import {Image} from 'react-native';
 import FlowerImg from '../../assets/orange-flower.png';
-import { NavigationProp } from '@react-navigation/native';
 
+type Props = {};
 
-type Props = {
-  navigation: NavigationProp<any>;
-};
-
-const HomeDash = ({ navigation }: Props) => {
+const HomeDash = (props: Props) => {
   return (
     <SafeAreaView className="h-screen w-screen">
       <ScrollView>
@@ -43,7 +39,9 @@ const HomeDash = ({ navigation }: Props) => {
             <CircleBtn
               text={`Report \n Test`}
               bgColor="bg-themeLightOrange"
-              onPress={() => navigation.navigate('ReportPage')}
+              onPress={() => {
+                console.log("You're Sick!!");
+              }}
               Btnsize={182}
               textSize='3xl'
             />
@@ -59,7 +57,7 @@ const HomeDash = ({ navigation }: Props) => {
                 }}
                 Btnsize={104}
               />
-              <Text className="text-center p-3 text-black text-base">Privacy</Text>
+                   <Text className="text-center p-3 text-black text-base">Privacy</Text>
             </View>
 
             <View className="mt-16">
@@ -70,7 +68,7 @@ const HomeDash = ({ navigation }: Props) => {
                 }}
                 Btnsize={104}
               />
-              <Text className="text-center p-3 text-black text-base">Dashboard</Text>
+                   <Text className="text-center p-3 text-black text-base">Dashboard</Text>
             </View>
 
             <View className="mt-1">
