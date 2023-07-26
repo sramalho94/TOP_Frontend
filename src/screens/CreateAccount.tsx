@@ -118,7 +118,7 @@ const CreateAccount = ({ navigation }: Props) => {
 
         const isPasswordValid = checkPasswordCriteria();
         if (!isPasswordValid) {
-            alert('Your password must include at least 8 characters, one uppercase and one lowercase letter, one number and one special ')
+            alert('Your password must include at least 8 characters, one uppercase and one lowercase letter, one number and one special character.')
         } else {
             setCurrentPage(2);
         }

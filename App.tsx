@@ -42,7 +42,7 @@ function App(): JSX.Element {
           name="ReportPage"
           component={ReportPage} />
         <Stack.Screen
-          name="ConsentForm"
+          name="ConsentPage"
           component={ConsentPage} />
         <Stack.Screen
           name="ThankYouScreen"

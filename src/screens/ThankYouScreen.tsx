@@ -8,6 +8,7 @@ type Props = {
   navigation: NavigationProp<any>;
 };
 
+
 const ThankYouScreen = ({ navigation }: Props) => {
   return (
     <SafeAreaView className="h-screen w-screen mx-auto my-auto ">
