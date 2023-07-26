@@ -1,11 +1,11 @@
 import React from 'react';
 import {View, SafeAreaView, TouchableOpacity, Text, ScrollView} from 'react-native';
-import Button from '../components/Button';
-import TextInputField from '../components/TextInputField';
+import Button from '../../components/Button';
+import TextInputField from '../../components/TextInputField';
 import { useState } from 'react';
-import ApiService from '../services/ApiService';
+import ApiService from '../../services/ApiService';
 
-const testScreen = () => {
+const testScreenRegister = () => {
 
     const [userSignUp, setUserSignUp] = useState<any | undefined>({username: "", password: "", DOB: "1920-01-01", state: "DL", ZIP: "11111", firstName: "asdf", gender: "M", ethnicity: "prefer not to say", race: "prefer not to say"})
 
@@ -17,8 +17,8 @@ const testScreen = () => {
         e.preventDefault()
 
         ApiService.register(userSignUp)
-        .then((res) => console.log("res from posting!!: " + res))
-        .catch(error => {
+        .then((res: any) => console.log("res from posting!!: " + res))
+        .catch((error: any) => {
             console.log("Message: " + error);
         });
     }
@@ -26,7 +26,9 @@ const testScreen = () => {
   return (
     <SafeAreaView className="mx-auto my-auto">
         <ScrollView>
-      <View className="border-2 border-black w-[342] h-[339] mt-[100] mx-auto"></View>
+      <View className="border-2 border-black w-[342] h-[339] mt-[100] mx-auto">
+        <Text className="m-auto text-center text-3xl">Test Screen for Registration</Text>
+      </View>
       <View className="mt-[87] space-y-[12] mb-[12]">
 
         <TextInputField 
@@ -44,7 +46,7 @@ const testScreen = () => {
 
         <Button
           onPress={handleSubmit}
-          innerText="Report Without Account"
+          innerText="Create an Account"
           bgColor="bg-[#B4B4B4]"
           textColor="text-black"
           border={true}
@@ -57,4 +59,4 @@ const testScreen = () => {
   );
 };
 
-export default testScreen;
+export default testScreenRegister;

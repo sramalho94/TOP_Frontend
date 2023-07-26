@@ -18,11 +18,16 @@ export default class ApiService {
   // TODO: -Need react native keychains?
   // TODO: -Need to test each route, probably with a testing playground screen, since not all the screens we have will be used by each route 
 
-    // Authentication API calls
+// ####################### AUTHENTICATION ####################### //
+
+  // ✅ It works
   static login(credentials: any): Promise<Response> {
-    return axios.post(`${BASE_URL}/auth/login`, credentials);
+    return axios.post(`${BASE_URL}/auth/login`, credentials)
+    .then(this.sideEffect((res: any)=> console.log("Login " + res)))
+    .catch(this.sideEffect((error: any) => console.log("Login " + error)))
   }
 
+  // ✅ It works
   static register(userData: any): Promise<Response> {
 
     return axios.post(`${BASE_URL}/auth/register`, userData)
@@ -49,17 +54,27 @@ export default class ApiService {
     .then(this.sideEffect((res: any)=> console.log(res)))
     .catch(this.sideEffect((error: any) => console.log(error)))
   }
-    // User-related API calls
+// ####################### USER ####################### //
+
+  // ❌ can't get this to work
   static getAllUsers(): Promise<Response> {
     return axios.get(`${BASE_URL}/users`)
-    .then(this.sideEffect((res: any)=> console.log(res)))
-    .catch(this.sideEffect((error: any) => console.log(error)))
+    .then(this.sideEffect((res: any)=> console.log("Users: " + res)))
+    .catch(this.sideEffect((error: any) => console.log("Users: " + error)))
   }
 
+  // ✅ It works
   static getUserById(id: any): Promise<Response> {
-    return axios.get(`${BASE_URL}/users/${id}`)
-    .then(this.sideEffect((res: any)=> console.log(res)))
-    .catch(this.sideEffect((error: any) => console.log(error)))
+
+    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJxd2VydHlAZW1haWwuY29tIiwiaWF0IjoxNjkwMzkxOTY2fQ.XQzxNqY7V23zDDkc0SC3rtsexYh-1vSalJRDGNaJed8"
+    const headers = {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    }
+
+    return axios.get(`${BASE_URL}/users/${id}`, {headers})
+    .then(this.sideEffect((res: any)=> console.log("User by id: " + res)))
+    .catch(this.sideEffect((error: any) => console.log("User by id error: " + error)))
   }
 
   static updateUser(id: any, userData: any): Promise<Response> {
@@ -74,7 +89,7 @@ export default class ApiService {
     .catch(this.sideEffect((error: any) => console.log(error)))
   }
 
-  // Test-related API calls
+// ####################### COVID TEST ####################### //
   static getAllTests(): Promise<Response> {
     return axios.get(`${BASE_URL}/tests`)
     .then(this.sideEffect((res: any)=> console.log(res)))
@@ -93,12 +108,14 @@ export default class ApiService {
     .catch(this.sideEffect((error: any) => console.log(error)))
   }
 
+  // Probably don't need???
   static updateTest(id: any, testData: any): Promise<Response> {
     return axios.put(`${BASE_URL}/tests/${id}`, testData)
     .then(this.sideEffect((res: any)=> console.log(res)))
     .catch(this.sideEffect((error: any) => console.log(error)))
   }
 
+  // Probably don't need???
   static deleteTest(id: any): Promise<Response> {
     return axios.delete(`${BASE_URL}/tests/${id}`)
     .then(this.sideEffect((res: any)=> console.log(res)))

@@ -27,12 +27,14 @@ import {
 } from 'react-native';
 
 import DropDownField from './src/components/DropDownField';
-import TestScreen from './src/screens/testScreen'
+import TestScreenRegister from './src/screens/Tests/testScreenRegister'
+import TestScreenLogin from './src/screens/Tests/testScreenLogin'
+import TestGetUsers from './src/screens/Tests/testScreenGetUsers'
 
 function App(): JSX.Element {
   return (
     <SafeAreaView>
-      <TestScreen />
+      <TestGetUsers />
     </SafeAreaView>
   );
 
