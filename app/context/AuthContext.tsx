@@ -67,7 +67,7 @@ export const AuthProvider = ({children}: any) => {
     race: string,
   ) => {
     try {
-      return await axios.post(`${API_URL}/api/auth/register`, {
+      const result = await axios.post(`${API_URL}/api/auth/register`, {
         username,
         password,
         DOB,
@@ -78,6 +78,10 @@ export const AuthProvider = ({children}: any) => {
         ethnicity,
         race,
       });
+
+      // set the auth state after successful registration
+      setAuthState({token: result.data.token, authenticated: true});
+      return result;
     } catch (e) {
       console.log(e); // Log the error here
       return {error: true, msg: (e as any).response.data.msg};
