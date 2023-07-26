@@ -189,7 +189,7 @@ const ReportPage = (props: Props) => {
               isSelected={isCheckboxSelected}
               handleCheckChanges={handleCheckChanges}
             />
-            <Text className="font-bold mt-1">
+            <Text className="font-bold mt-1 text-black">
               I agree to share my results with the CDC
             </Text>
           </View>
