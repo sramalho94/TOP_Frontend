@@ -4,11 +4,11 @@
 
 import 'react-native';
 import React from 'react';
-import { renderHook, act } from '@testing-library/react-hooks';
+import {renderHook, act} from '@testing-library/react-hooks';
 import axios from 'axios';
-import { AuthProvider, useAuth, API_URL } from '../app/context/AuthContext';
+import {AuthProvider, useAuth, API_URL} from '../app/context/AuthContext';
 
-const localHost = 'http://localhost:3001'
+const localHost = 'http://localhost:3001';
 jest.mock('axios');
 jest.mock('react-native-keychain', () => ({
   getGenericPassword: jest.fn(),
@@ -17,11 +17,11 @@ jest.mock('react-native-keychain', () => ({
 }));
 
 test('register function should send a POST request to the correct API endpoint', async () => {
-  const mockPost = jest.fn()
-  mockPost.mockResolvedValue({ data: { token: 'fake-token' } });
-  axios.post = mockPost
+  const mockPost = jest.fn();
+  mockPost.mockResolvedValue({data: {token: 'fake-token'}});
+  axios.post = mockPost;
 
-  const { result, waitForNextUpdate } = renderHook(() => useAuth(), {
+  const {result, waitForNextUpdate} = renderHook(() => useAuth(), {
     wrapper: AuthProvider,
   });
 
@@ -52,7 +52,7 @@ test('register function should send a POST request to the correct API endpoint',
       'John',
       'Male',
       'Caucasian',
-      'White'
+      'White',
     );
   });
 
@@ -72,15 +72,6 @@ test('register function should send a POST request to the correct API endpoint',
     race: 'White',
   });
 
-  expect(result.current.authState?.token).toBe('fake-token');
-  expect(result.current.authState?.authenticated).toBe(true);
+  expect(result.current.authState?.token).toEqual('fake-token');
+  expect(result.current.authState?.authenticated).toEqual(true);
 });
-
-
-
-
-
-
-
-
-
