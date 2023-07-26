@@ -35,7 +35,8 @@ const ThankYouScreen = ({navigation, route}: Props) => {
             : 'Join our community and save time on your next reporting by making an account today!'}
         </Text>
       </View>
-      <View className="flex-1 justify-center mx-auto">
+
+      <View className="flex-1 justify-center mx-6">
         {loggIn ? (
           <Button
             onPress={() => navigation.navigate('LandingPage')}

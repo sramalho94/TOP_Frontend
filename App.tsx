@@ -31,7 +31,7 @@ function App(): JSX.Element {
     <SafeAreaProvider>
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen
+          {/* <Stack.Screen
             name="Onboarding"
             component={Onboarding}
             options={{headerShown: false}}
@@ -44,17 +44,17 @@ function App(): JSX.Element {
           <Stack.Screen name="SignInPage" component={SignInPage} />
           <Stack.Screen name="CreateAccount" component={CreateAccount} />
           <Stack.Screen name="ReportPage" component={ReportPage} />
-          <Stack.Screen name="ConsentPage" component={ConsentPage} />
+          <Stack.Screen name="ConsentPage" component={ConsentPage} /> */}
           <Stack.Screen
             name="ThankYouScreen"
             component={ThankYouScreen}
             options={{headerShown: false}}
           />
-          <Stack.Screen
+          {/* <Stack.Screen
             name="AccountReportPage"
             component={AccountReportPage}
           />
-          <Stack.Screen name="HomeDash" component={HomeDash} />
+          <Stack.Screen name="HomeDash" component={HomeDash} /> */}
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>
