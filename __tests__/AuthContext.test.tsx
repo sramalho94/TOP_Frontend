@@ -8,6 +8,7 @@ import { renderHook, act } from '@testing-library/react-hooks';
 import axios from 'axios';
 import { AuthProvider, useAuth, API_URL } from '../app/context/AuthContext';
 
+const localHost = 'http://localhost:3001'
 jest.mock('axios');
 jest.mock('react-native-keychain', () => ({
   getGenericPassword: jest.fn(),
@@ -59,7 +60,7 @@ test('register function should send a POST request to the correct API endpoint',
   await waitForNextUpdate();
 
   // Assertions
-  expect(axios.post).toHaveBeenCalledWith(`${API_URL}/api/auth/register`, {
+  expect(axios.post).toHaveBeenCalledWith(`${localHost}/api/auth/register`, {
     username: 'testuser',
     password: 'testpassword',
     DOB: '1990-01-01',
