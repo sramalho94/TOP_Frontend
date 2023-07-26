@@ -28,6 +28,7 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function App(): JSX.Element {
   return (
+
     <SafeAreaProvider>
       <NavigationContainer>
         <Stack.Navigator>
@@ -58,6 +59,7 @@ function App(): JSX.Element {
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>
+
   );
 }
 
