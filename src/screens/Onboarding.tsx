@@ -95,7 +95,7 @@ const Onboarding = (props: Props) => {
                   width='80'
                 />
 
-                {currentPage !== pages.length && (
+                {page.pageIndicator !== pages.length && (
                   <Button
                     onPress={() => console.log('Skip button pressed')}
                     innerText="Skip"
