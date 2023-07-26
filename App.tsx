@@ -90,6 +90,7 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function App(): JSX.Element {
   return (
+<<<<<<< HEAD
     <SafeAreaProvider>
       <NavigationContainer>
         <Stack.Navigator>
@@ -101,6 +102,42 @@ function App(): JSX.Element {
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>
+=======
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Onboarding"
+          component={Onboarding}
+          options={{ headerShown: false }} />
+        <Stack.Screen
+          name="LandingPage"
+          component={LandingPage}
+          options={{ headerShown: false }} />
+        <Stack.Screen
+          name="SignInPage"
+          component={SignInPage} />
+        <Stack.Screen
+          name="CreateAccount"
+          component={CreateAccount} />
+        <Stack.Screen
+          name="ReportPage"
+          component={ReportPage} />
+        <Stack.Screen
+          name="ConsentPage"
+          component={ConsentPage} />
+        <Stack.Screen
+          name="ThankYouScreen"
+          component={ThankYouScreen}
+          options={{ headerShown: false }} />
+        <Stack.Screen
+          name="AccountReportPage"
+          component={AccountReportPage} />
+        <Stack.Screen
+          name="HomeDash"
+          component={HomeDash} />
+      </Stack.Navigator>
+    </NavigationContainer>
+>>>>>>> ca3d52fe80bf4c9534194de58dd09a24ffee2ff1
   );
 }
 

@@ -53,8 +53,6 @@ const Onboarding = ({ navigation }: Props) => {
     },
   ];
 
-  const swipeAnim = useRef(new Animated.Value(0)).current;
-
   const handleSwipeAnimation = (page: number) => {
     if (scrollViewRef.current) {
       scrollViewRef.current.scrollTo({ x: page * width, animated: true });
@@ -100,7 +98,7 @@ const Onboarding = ({ navigation }: Props) => {
 
                 {currentPage !== pages.length && (
                   <Button
-                    onPress={() => navigation.navigate('Landing Page')}
+                    onPress={() => navigation.navigate('LandingPage')}
                     innerText="Skip"
                     bgColor=""
                     textColor=""
