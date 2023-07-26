@@ -6,7 +6,22 @@ import TopNavBar from '../components/TopNavBar';
 import DropDownField from '../components/DropDownField';
 import PasswordField from '../components/Password';
 
-type Props = {};
+
+type Props = {
+    navigation: NavigationProp<any>;
+};
+
+type FormState = {
+    username: string;
+    password: string;
+    showPassword: boolean;
+};
+
+const initialFormState: FormState = {
+    username: '',
+    password: '',
+    showPassword: false,
+};
 
 type FormState = {
   username: string;

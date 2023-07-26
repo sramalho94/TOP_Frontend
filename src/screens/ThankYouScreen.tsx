@@ -1,34 +1,69 @@
-import { View, Text, SafeAreaView, TouchableOpacity } from 'react-native';
+import {View, Text, SafeAreaView} from 'react-native';
 import React from 'react';
 import TopNavBar from '../components/TopNavBar';
 
-type Props = {};
+type ThankYouScreenNavigationProp = NativeStackNavigationProp<
+  RootStackParamList,
+  'ThankYouScreen'
+>;
+type ThankYouScreenRouteProp = RouteProp<RootStackParamList, 'ThankYouScreen'>;
 
-const ThankYouScreen = (props: Props) => {
+type Props = {
+  navigation: ThankYouScreenNavigationProp;
+  route: ThankYouScreenRouteProp;
+};
+
+const ThankYouScreen = ({navigation, route}: Props) => {
+  const {loggIn} = route.params || {loggIn: true};
+
   return (
     <SafeAreaView>
         <TopNavBar textSize='xl' textValue='All Done!' fontFamily='' haveProgress={false} />
       <View className="flex-row justify-center mt-16">
         <Text className="text-4xl">Thank You!</Text>
       </View>
-      <View className="flex-row justify-center mt-5">
-        <Text className="text-lg font-bold ">
-          Your test results have been reported.
+      <View className="flex-row justify-center mt-2">
+        <Text className="text-lg ">Your test results have been reported.</Text>
+      </View>
+      <View className="border-2 border-black w-[286] h-[276] my-4 mx-auto"></View>
+      <View className="flex-row justify-center ">
+        <Text className="text-lg  px-10 text-center">
+          {loggIn
+            ? 'You and 1,000 others in your zip code reported results this week.'
+            : 'Join our community and save time on your next reporting by making an account today!'}
         </Text>
       </View>
-      <View className="border-2 border-black w-[294] h-[292] my-5 mx-auto"></View>
-      <View className="flex-row justify-center mt-6 mb-20">
-        <Text className="text-lg font-bold px-10 text-center">
-          Join our community and save time on your next reporting by making an
-          account today!
-        </Text>
+      <View className="flex-1 justify-center mx-auto">
+        {loggIn ? (
+          <Button
+            onPress={() => navigation.navigate('LandingPage')}
+            innerText="Take Me Home"
+            bgColor="bg-white"
+            textColor=""
+            border={true}
+            borderColor="border border-gray"
+          />
+        ) : (
+          <>
+            <Button
+              onPress={() => navigation.navigate('CreateAccount')}
+              innerText="Create Account"
+              bgColor="bg-white"
+              textColor=""
+              border={true}
+              borderColor="border border-gray"
+            />
+            <Button
+              onPress={() => navigation.navigate('LandingPage')}
+              innerText="Back"
+              bgColor=""
+              textColor=""
+              border={false}
+              borderColor=""
+            />
+          </>
+        )}
       </View>
-      <TouchableOpacity className="border-4 mx-auto border-black flex justify-center items-center w-[342] h-[52] rounded-lg ">
-        <Text className="text-lg font-bold">Create Account</Text>
-      </TouchableOpacity>
-      <TouchableOpacity className="mx-auto mt-4">
-        <Text className="text-lg font-bold">Back</Text>
-      </TouchableOpacity>
     </SafeAreaView>
   );
 };

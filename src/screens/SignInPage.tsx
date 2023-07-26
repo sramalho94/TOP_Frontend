@@ -2,9 +2,6 @@ import React, { useState } from 'react';
 import {
   SafeAreaView,
   View,
-  Text,
-  TouchableOpacity,
-  TextInput,
   Image,
   ScrollView,
 } from 'react-native';
@@ -28,7 +25,7 @@ const initialFormState: FormState = {
   showPassword: false,
 };
 
-export default function SignInPage(props: Props) {
+export default function SignInPage({ navigation }: Props) {
   const [form, setForm] = useState<FormState>(initialFormState);
   const [username, setUsername] = useState('');
 
@@ -38,14 +35,14 @@ export default function SignInPage(props: Props) {
 
 
   return (
-    <SafeAreaView className="w-342 m-4">
+    <SafeAreaView className="w-342">
       <ScrollView>
       {/* <TopNavBar textSize='xl' textValue='Sign In' fontFamily='' haveProgress={false} /> */}
         <View className="">
           <View className="flex flex-row justify-center align-middle">
             <Image className="w-342 h-349 m-4" source={NoImage}></Image>
           </View>
-          <View className="mb-6">
+          <View className="mb-6 mx-4">
             <TextInputField
               label="Username"
               value={form.username}
@@ -54,15 +51,11 @@ export default function SignInPage(props: Props) {
             />
             <Password setForm={setForm} form={form} />
           </View>
-
-
-
-
         </View>
         <View className="mt-4">
           <Button
-            onPress={() => console.log('pressed')}
-            innerText="Login"
+            onPress={() => navigation.navigate('HomeDash')}
+            innerText="Log In"
             textColor=""
             bgColor=""
             border={true}
@@ -79,8 +72,8 @@ export default function SignInPage(props: Props) {
             width='80'
           />
           <Button
-            onPress={() => console.log('Skip button pressed')}
-            innerText="Skip"
+            onPress={() => navigation.navigate('LandingPage')}
+            innerText="Back"
             bgColor=""
             textColor=""
             border={false}

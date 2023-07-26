@@ -47,7 +47,6 @@ const ConsentPage = () => {
   return (
     <SafeAreaView>
       <ScrollView>
-        {/* add topNavBar component here and pass a few props to it */}
         {/* Still need to double check the font size and family font! */}
         <TopNavBar
           textSize="xl"
@@ -111,10 +110,10 @@ const ConsentPage = () => {
               I consent to the processing of my personal data (including without
               limitation data I provide relating to my health) as set forth in
               this consent and in the{' '}
-              
+
               <Text
                 className="text-blue-500 underline"
-                onPress={handlePrivacyPolicyPress}>                  
+                onPress={handlePrivacyPolicyPress}>
                 Privacy Policy.
               </Text>
             </Text>
@@ -124,7 +123,7 @@ const ConsentPage = () => {
             handleCheckChanges={() =>
               handleCheckBoxChange('isReadAndAcceptChecked')}
             isSelected={checkBoxStates.isReadAndAcceptChecked}
-          />           
+          />
           <Text className="text-sm ml-2">
               I have read and accept{' '}
               <Text
