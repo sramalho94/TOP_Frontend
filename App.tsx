@@ -31,10 +31,9 @@ import DropDownField from './src/components/DropDownField';
 function App(): JSX.Element {
   return (
     <SafeAreaView>
-      <CreateAccount />
+      <AccountReportPage />
     </SafeAreaView>
   );
-
 }
 
 export default App;
