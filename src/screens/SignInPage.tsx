@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import {
   SafeAreaView,
   View,
+  Text,
+  TouchableOpacity,
+  TextInput,
   Image,
   ScrollView,
 } from 'react-native';
@@ -25,7 +28,7 @@ const initialFormState: FormState = {
   showPassword: false,
 };
 
-export default function SignInPage({ navigation }: Props) {
+export default function SignInPage(props: Props) {
   const [form, setForm] = useState<FormState>(initialFormState);
   const [username, setUsername] = useState('');
 
@@ -35,14 +38,14 @@ export default function SignInPage({ navigation }: Props) {
 
 
   return (
-    <SafeAreaView className="w-342">
+    <SafeAreaView className="w-342 m-4">
       <ScrollView>
       {/* <TopNavBar textSize='xl' textValue='Sign In' fontFamily='' haveProgress={false} /> */}
         <View className="">
           <View className="flex flex-row justify-center align-middle">
             <Image className="w-342 h-349 m-4" source={NoImage}></Image>
           </View>
-          <View className="mb-6 mx-4">
+          <View className="mb-6">
             <TextInputField
               label="Username"
               value={form.username}
@@ -51,11 +54,15 @@ export default function SignInPage({ navigation }: Props) {
             />
             <Password setForm={setForm} form={form} />
           </View>
+
+
+
+
         </View>
         <View className="mt-4">
           <Button
-            onPress={() => navigation.navigate('HomeDash')}
-            innerText="Log In"
+            onPress={() => console.log('pressed')}
+            innerText="Login"
             textColor=""
             bgColor=""
             border={true}
@@ -72,8 +79,8 @@ export default function SignInPage({ navigation }: Props) {
             width='80'
           />
           <Button
-            onPress={() => navigation.navigate('LandingPage')}
-            innerText="Back"
+            onPress={() => console.log('Skip button pressed')}
+            innerText="Skip"
             bgColor=""
             textColor=""
             border={false}
