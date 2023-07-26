@@ -96,6 +96,7 @@ const AccountReportPage = (props: Props) => {
               textColor="text-white"
               bgColor="bg-black"
               border={true}
+              width='80'
             />
           </View>
         </View>
