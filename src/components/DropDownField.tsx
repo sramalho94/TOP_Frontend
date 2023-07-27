@@ -31,7 +31,7 @@ const DropDownField = ({text, selectItems, open, onOpen, setOpen}: Props) => {
         <View className="mx-auto">
 
             <Text className="font-bold my-2 capitalize">{text} (Optional)</Text>
-            <DropDownPicker className='my-2 w-80 border-2 border-black rounded-lg'
+            <DropDownPicker className='my-2 w-80 border border-black rounded-lg'
             open={open}
             items={selectItems}
             value={value}
