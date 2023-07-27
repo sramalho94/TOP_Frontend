@@ -1,4 +1,4 @@
-import {View, Text, SafeAreaView, Modal, ScrollView, NativeSyntheticEvent, NativeScrollEvent, useWindowDimensions} from 'react-native';
+import {View, Text, SafeAreaView, Modal, ScrollView, Animated, NativeSyntheticEvent, NativeScrollEvent, useWindowDimensions} from 'react-native';
 import React, { useState, useRef} from 'react';
 import TextInputField from '../components/TextInputField';
 import Button from '../components/Button';
@@ -23,12 +23,15 @@ const initialFormState: FormState = {
 // Define the ReportPage component
 const CreateAccount = (props: Props) => {
   // Define switch state
-  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [currentPage, setCurrentPage] = useState<number>(0);
+  const [scrollEnabled, setScrollEnabled] = useState(false);
   // Define state variables for zip code and age
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [form, setForm] = useState<FormState>(initialFormState);
-  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isModalVisiblePage0, setIsModalVisiblePage0] = useState(false);
+  const [isModalVisiblePage1, setIsModalVisiblePage1] = useState(false);
+  const [isModalVisiblePage2, setIsModalVisiblePage2] = useState(false);
   const [birthday, setBirthday] = useState('');
   const [zipCode, setZipCode] = useState('');
   // need this so that when a user has one dropdown open and selects another, the opened dropdown will close
@@ -36,8 +39,16 @@ const CreateAccount = (props: Props) => {
   const [raceOpen, setRaceOpen] = useState<boolean>(false);
   const [ethnicityOpen, setEthnicityOpen] = useState<boolean>(false);
 
-  const toggleModal = () => {
-    setIsModalVisible(!isModalVisible);
+  const toggleModalPage0 = () => {
+    setIsModalVisiblePage0(!isModalVisiblePage0);
+  };
+  
+  const toggleModalPage1 = () => {
+    setIsModalVisiblePage1(!isModalVisiblePage1);
+  };
+  
+  const toggleModalPage2 = () => {
+    setIsModalVisiblePage2(!isModalVisiblePage2);
   };
 
   // Handling input field changes:
@@ -99,62 +110,94 @@ const CreateAccount = (props: Props) => {
 
 // Swipe animation:
 const scrollViewRef = useRef<ScrollView>(null);
-const { width, height } = useWindowDimensions();
+const { width } = useWindowDimensions();
+const swipeAnim = useRef(new Animated.Value(0)).current;
 
-const handleSwipeAnimation = (page: number) => {
-  if (scrollViewRef.current) {
-    scrollViewRef.current.scrollTo({ x: page * width, y: page * height, animated: true });
-    setCurrentPage(page);
-  }
-};
+let userScrolled = false;
 
 const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
   const offsetX = event.nativeEvent.contentOffset.x;
-  const page = Math.floor(offsetX / width);
-  setCurrentPage(page);
+  const newPage = Math.round(offsetX / width);
+
+  console.log("width: handlescroll:", width); // Debug
+  console.log("page: handlescroll:", newPage); // Debug
+  console.log("offsetX: handlescroll:", offsetX);
+
+  if (userScrolled) {
+    setScrollEnabled(false);  // Disable scrolling while validating
+    if (newPage > currentPage) {
+      // Swiping forwards
+      if (newPage === 1) {
+        if (handleSubmitPage0()) {
+          handleSwipeAnimation(1);
+        }
+      } else if (newPage === 2) {
+        if (handleSubmitPage1()) {
+          handleSwipeAnimation(2);
+        }
+      }
+    }
+    setCurrentPage(newPage); // Always update current page after the checks
+  }
+  setScrollEnabled(true);  // Enable scrolling after validating
+};
+
+const handleSwipeAnimation = (targetPage: number) => {
+  scrollViewRef.current?.scrollTo({ x: width * targetPage, animated: true });
+  userScrolled = false; // Reset the userScrolled flag
+  setCurrentPage(targetPage); // Update the current page
+};
+
+// In your touch handlers, set userScrolled to true when the user initiates a scroll
+const handleTouchStart = () => {
+  userScrolled = true;
 };
 
 
   // Submitting pages:
 
-  // Function to handle submitting page 1
-  const handleSubmitPage1 = () => {
-    // Check if email and username are not empty
-    if (!email || !username) {
-      alert('Please fill in all mandatory fields.');
-      return; // Prevent proceeding to the next page
-    }
+  // Function to handle submitting page 0
 
-    // Check if the email is in the correct format
-    if (!isEmailValid(email)) {
-      alert('Please enter a valid email address.');
-      return; // Prevent proceeding to the next page
-    }
-
-    const isPasswordValid = checkPasswordCriteria();
-    if (!isPasswordValid) {
-      toggleModal();
-    } else {
-      handleSwipeAnimation(1);
-    }
+  const handleSubmitPage0 = () => {
+    handleSwipeAnimation(1);
+    return true;
   };
 
-  // Function to handle submitting page 2
-  const handleSubmitPage2 = () => {
-    // Check if email and username are not empty
-    if (!birthday || !zipCode) {
-      alert('Please fill in all mandatory fields.');
-      return; // Prevent proceeding to the next page
-    }
+// Function to handle submitting page 1
+const handleSubmitPage1 = () => {
+  handleSwipeAnimation(2);
+  return true;
+};
 
-    // Check if the zip code is in the correct format
-    if (!isZipCodeValid(zipCode)) {
-      alert('Please enter a valid zip code.');
-      return; // Prevent proceeding to the next page
-    } else {
-      handleSwipeAnimation(2);
-    }
-  };
+const handleSubmit = () => {
+  if (!email || !username) {
+    alert('Please fill in all mandatory fields.');
+    scrollViewRef.current?.scrollTo({ x: 0, animated: true });
+    return false;
+  }
+  if (!isEmailValid(email)) {
+    alert('Please enter a valid email address.');
+    scrollViewRef.current?.scrollTo({ x: 0, animated: true });
+    return false;
+  }
+  const isPasswordValid = checkPasswordCriteria();
+  if (!isPasswordValid) {
+    toggleModalPage0();
+    scrollViewRef.current?.scrollTo({ x: 0, animated: true });
+    return false;
+  } 
+  if (!birthday || !zipCode) {
+    alert('Please fill in all mandatory fields.');
+    scrollViewRef.current?.scrollTo({ x: width, animated: true });
+    return false;
+  }
+  if (!isZipCodeValid(zipCode)) {
+    alert('Please enter a valid zip code.');
+    scrollViewRef.current?.scrollTo({ x: width, animated: true });
+    return false;
+  }
+  console.log("Successfully submitted!")
+}
 
   const pages = [
         <View key={1} className="w-screen">
@@ -186,7 +229,7 @@ const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
             </View>
             <View className="mt-48">
               <Button
-                onPress={handleSubmitPage1}
+                onPress={handleSubmitPage0}
                 innerText="Next"
                 textColor="text-white"
                 bgColor="bg-black"
@@ -195,7 +238,7 @@ const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
                 width='80'
               />
             </View>
-            <Modal visible={isModalVisible} transparent={true}>
+            <Modal visible={isModalVisiblePage0} transparent={true}>
               <View className="flex-1 justify-center items-center bg-opacity-50">
                 <View className="bg-white p-8 rounded-lg w-72 border-4">
                   <Text className="text-xl font-bold mb-4">
@@ -209,7 +252,7 @@ const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
                     - One number and one special character
                   </Text>
                   <Button
-                    onPress={toggleModal}
+                    onPress={toggleModalPage0}
                     innerText="Close"
                     textColor=""
                     bgColor="bg-[#B4B4B4]"
@@ -220,8 +263,9 @@ const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
                 </View>
               </View>
             </Modal>
-        </View>,
+          </View>,
         <View key={2} className="w-screen">
+          <View className='h-[110]'>
             <TopNavBar
               fontFamily=""
               textSize="xl"
@@ -229,12 +273,12 @@ const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
               haveProgress={true}
               page={2}
             />
-
+          </View>
             <View className="mx-auto my-auto mb-3">
               <View className="w-[342]">
                 <View className="my-4 underline">
                   <Button
-                    onPress={toggleModal}
+                    onPress={toggleModalPage1}
                     innerText="(Why do we need this information?)"
                     bgColor=""
                     textColor=""
@@ -260,7 +304,7 @@ const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
             </View>
             <View className="mt-56">
               <Button
-                onPress={handleSubmitPage2}
+                onPress={handleSubmitPage1}
                 innerText="Next"
                 textColor="text-white"
                 bgColor="bg-black"
@@ -269,7 +313,7 @@ const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
                 width='80'
               />
             </View>
-            <Modal visible={isModalVisible} transparent={true}>
+            <Modal visible={isModalVisiblePage1} transparent={true}>
               <View className="flex-1 justify-center items-center bg-opacity-50">
                 <View className="bg-white p-8 rounded-lg w-72 border-4">
                   <Text className="text-xl font-bold mb-4">
@@ -282,7 +326,7 @@ const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
                     suscipit! Maiores sint adipisci repellendus dolor quaerat.
                   </Text>
                   <Button
-                    onPress={toggleModal}
+                    onPress={toggleModalPage1}
                     innerText="Close"
                     textColor=""
                     bgColor="bg-[#B4B4B4]"
@@ -294,7 +338,8 @@ const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
               </View>
             </Modal>
           </View>, 
-          <View key={3} className="w-screen ">
+        <View key={3} className="w-screen">
+            <View className='h-[110]'>
             <TopNavBar
               fontFamily=""
               textSize="xl"
@@ -302,11 +347,12 @@ const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
               haveProgress={true}
               page={3}
             />
+            </View>
             <View className="mx-auto my-auto justify-between">
               <View className="w-[342]">
                 <View className="my-4">
                   <Button
-                    onPress={toggleModal}
+                    onPress={toggleModalPage2}
                     innerText="(Why do we need this information?)"
                     bgColor=""
                     textColor=""
@@ -396,7 +442,7 @@ const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
             </View>
             <View className="mt-40">
               <Button
-                onPress={() => console.log('pressed')}
+                onPress={handleSubmit}
                 innerText="Create Account"
                 textColor="text-white"
                 bgColor="bg-black"
@@ -405,7 +451,7 @@ const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
                 width='80'
               />
             </View>
-            <Modal visible={isModalVisible} transparent={true}>
+            <Modal visible={isModalVisiblePage2} transparent={true}>
               <View className="flex-1 justify-center items-center bg-opacity-50 border-4">
                 <View className="bg-white p-8 rounded-lg w-72">
                   <Text className="text-xl font-bold mb-4">
@@ -418,7 +464,7 @@ const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
                     suscipit! Maiores sint adipisci repellendus dolor quaerat.
                   </Text>
                   <Button
-                    onPress={toggleModal}
+                    onPress={toggleModalPage2}
                     innerText="Close"
                     textColor=""
                     bgColor="bg-[#B4B4B4]"
@@ -432,20 +478,19 @@ const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
           </View>
   ]
 
-return (
-  <SafeAreaView>
-    <ScrollView
-          ref={scrollViewRef}
-          horizontal
-          pagingEnabled
-          scrollEnabled
-          onScroll={handleScroll}
-          scrollEventThrottle={16} // Adjust the value as per your requirement
-          >
-{pages[currentPage-1]}
-          </ScrollView>
-  </SafeAreaView>
-)
-
+  return (
+    <SafeAreaView>
+      <ScrollView
+        ref={scrollViewRef}
+        horizontal
+        pagingEnabled
+        scrollEnabled
+        onScroll={handleScroll}
+        scrollEventThrottle={16}
+      >
+        {pages}
+      </ScrollView>
+    </SafeAreaView>
+  );
 };
 export default CreateAccount;
