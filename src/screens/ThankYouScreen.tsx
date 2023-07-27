@@ -1,9 +1,9 @@
-import {View, Text, SafeAreaView} from 'react-native';
+import { View, Text, SafeAreaView } from 'react-native';
 import React from 'react';
 import Button from '../components/Button';
-import {RouteProp} from '@react-navigation/native';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {RootStackParamList} from '../../App';
+import { RouteProp } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../../App';
 
 type ThankYouScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
@@ -16,8 +16,8 @@ type Props = {
   route: ThankYouScreenRouteProp;
 };
 
-const ThankYouScreen = ({navigation, route}: Props) => {
-  const {loggIn} = route.params || {loggIn: true};
+const ThankYouScreen = ({ navigation, route }: Props) => {
+  const { logIn } = route.params || { logIn: true };
 
   return (
     <SafeAreaView className="h-screen w-screen mx-auto my-auto">
@@ -30,14 +30,14 @@ const ThankYouScreen = ({navigation, route}: Props) => {
       <View className="border-2 border-black w-[286] h-[276] my-4 mx-auto"></View>
       <View className="flex-row justify-center ">
         <Text className="text-lg  px-10 text-center">
-          {loggIn
+          {logIn
             ? 'You and 1,000 others in your zip code reported results this week.'
             : 'Join our community and save time on your next reporting by making an account today!'}
         </Text>
       </View>
 
       <View className="flex-1 justify-center mx-6">
-        {loggIn ? (
+        {logIn ? (
           <Button
             onPress={() => navigation.navigate('LandingPage')}
             innerText="Take Me Home"
