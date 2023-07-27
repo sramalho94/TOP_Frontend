@@ -9,6 +9,7 @@ type Props = {
   border: boolean;
   borderColor?: string,
   textDecoration?: string;
+  width?:string;
 };
 
 const Button = ({
@@ -18,10 +19,11 @@ const Button = ({
   border,
   borderColor,
   textColor,
-  textDecoration
+  textDecoration,
+  width,
 }: Props) => {
   return (
-    <View className="max-h-36 flex-row justify-center mx-auto w-80">
+    <View className={`max-h-36 flex-row justify-center mx-auto w-${width}`}>
       <TouchableOpacity
         className={`${
           border ? `${borderColor}` : ''

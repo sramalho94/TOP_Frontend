@@ -22,7 +22,7 @@ const TopNavBar = ({
   page,
 }: Props) => {
   return (
-    <View className="h-[110] flex-1 mb-6">
+    <View className="h-[110] flex-1 mb-1">
       <View className="flex-row mt-6 mb-2">
         <TouchableOpacity className="mt-2 ml-4">
           <Icon name="arrowleft" size={30} color="#000" className="" />

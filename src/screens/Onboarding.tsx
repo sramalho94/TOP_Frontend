@@ -92,6 +92,7 @@ const Onboarding = (props: Props) => {
                   textColor="text-black"
                   border={true}
                   borderColor="border border-gray"
+                  width='80'
                 />
 
                 {currentPage !== pages.length && (
@@ -102,6 +103,7 @@ const Onboarding = (props: Props) => {
                     textColor="text-black"
                     border={false}
                     borderColor="border border-gray"
+                    width='80'
                   />
                 )}
               </View>

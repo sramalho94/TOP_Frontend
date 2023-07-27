@@ -74,7 +74,9 @@ const ReportPage = (props: Props) => {
                 bgColor="bg-themeLightBlue"
                 onPress={() => console.log("You're Clear!!")}
                 text="Negative"
-                Btnsize={125}
+                Btnwidth="w-32"
+                Btnheight="h-32"
+                textSize='base'
               />
             </View>
             <View className="m-2">
@@ -82,7 +84,9 @@ const ReportPage = (props: Props) => {
                 text="Positive"
                 bgColor="bg-themeLightOrange"
                 onPress={() => console.log("You're Sick!!")}
-                Btnsize={125}
+                Btnwidth="w-32"
+                Btnheight="h-32"
+                textSize='base'
               />
             </View>
           </View>
@@ -185,7 +189,7 @@ const ReportPage = (props: Props) => {
               isSelected={isCheckboxSelected}
               handleCheckChanges={handleCheckChanges}
             />
-            <Text className="font-bold mt-1">
+            <Text className="font-bold mt-1 text-black">
               I agree to share my results with the CDC
             </Text>
           </View>
@@ -199,6 +203,7 @@ const ReportPage = (props: Props) => {
               textColor="text-black"
               border={true}
               borderColor="border border-2"
+              width='80'
             />
           </View>
           </View>
