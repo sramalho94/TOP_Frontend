@@ -1,5 +1,5 @@
-import {View, Text, SafeAreaView, Modal, ScrollView} from 'react-native';
-import React, {useState} from 'react';
+import {View, Text, SafeAreaView, Modal, ScrollView, NativeSyntheticEvent, NativeScrollEvent, useWindowDimensions} from 'react-native';
+import React, { useState, useRef} from 'react';
 import TextInputField from '../components/TextInputField';
 import Button from '../components/Button';
 import TopNavBar from '../components/TopNavBar';
@@ -96,6 +96,25 @@ const CreateAccount = (props: Props) => {
     return zipCodePattern.test(zipCode);
   };
 
+
+// Swipe animation:
+const scrollViewRef = useRef<ScrollView>(null);
+const { width, height } = useWindowDimensions();
+
+const handleSwipeAnimation = (page: number) => {
+  if (scrollViewRef.current) {
+    scrollViewRef.current.scrollTo({ x: page * width, y: page * height, animated: true });
+    setCurrentPage(page);
+  }
+};
+
+const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+  const offsetX = event.nativeEvent.contentOffset.x;
+  const page = Math.floor(offsetX / width);
+  setCurrentPage(page);
+};
+
+
   // Submitting pages:
 
   // Function to handle submitting page 1
@@ -116,7 +135,7 @@ const CreateAccount = (props: Props) => {
     if (!isPasswordValid) {
       toggleModal();
     } else {
-      setCurrentPage(2);
+      handleSwipeAnimation(1);
     }
   };
 
@@ -133,22 +152,21 @@ const CreateAccount = (props: Props) => {
       alert('Please enter a valid zip code.');
       return; // Prevent proceeding to the next page
     } else {
-      setCurrentPage(3);
+      handleSwipeAnimation(2);
     }
   };
 
-  switch (currentPage) {
-    case 1:
-      return (
-        <SafeAreaView className="min-w-screen">
-          <ScrollView>
+  const pages = [
+        <View key={1} className="w-screen">
+          <View className='h-[110]'>
             <TopNavBar
               fontFamily=""
               textSize="xl"
               textValue="Create Account"
               haveProgress={true}
               page={1}
-            />
+              />
+              </View>
             <View className="mx-auto my-auto mb-2">
               <View className="w-[342] mt-4">
                 <TextInputField
@@ -202,14 +220,8 @@ const CreateAccount = (props: Props) => {
                 </View>
               </View>
             </Modal>
-          </ScrollView>
-        </SafeAreaView>
-      );
-
-    case 2:
-      return (
-        <SafeAreaView className="min-w-screen">
-          <ScrollView>
+        </View>,
+        <View key={2} className="w-screen">
             <TopNavBar
               fontFamily=""
               textSize="xl"
@@ -281,13 +293,8 @@ const CreateAccount = (props: Props) => {
                 </View>
               </View>
             </Modal>
-          </ScrollView>
-        </SafeAreaView>
-      );
-    case 3:
-      return (
-        <SafeAreaView className="min-w-screen">
-          <ScrollView>
+          </View>, 
+          <View key={3} className="w-screen ">
             <TopNavBar
               fontFamily=""
               textSize="xl"
@@ -422,11 +429,23 @@ const CreateAccount = (props: Props) => {
                 </View>
               </View>
             </Modal>
+          </View>
+  ]
+
+return (
+  <SafeAreaView>
+    <ScrollView
+          ref={scrollViewRef}
+          horizontal
+          pagingEnabled
+          scrollEnabled
+          onScroll={handleScroll}
+          scrollEventThrottle={16} // Adjust the value as per your requirement
+          >
+{pages[currentPage-1]}
           </ScrollView>
-        </SafeAreaView>
-      );
-    default:
-      return null;
-  }
+  </SafeAreaView>
+)
+
 };
 export default CreateAccount;
