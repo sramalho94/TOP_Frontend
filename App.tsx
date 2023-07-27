@@ -30,7 +30,7 @@ export type RootStackParamList = {
 function App(): JSX.Element {
   return (
  <SafeAreaView >
-  <ReportPage />
+  <CreateAccount />
  </SafeAreaView>
 
     // <SafeAreaProvider>

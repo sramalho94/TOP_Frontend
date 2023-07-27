@@ -23,7 +23,7 @@ const initialFormState: FormState = {
 // Define the ReportPage component
 const CreateAccount = (props: Props) => {
   // Define switch state
-  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [currentPage, setCurrentPage] = useState<number>(3);
   // Define state variables for zip code and age
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
@@ -310,81 +310,84 @@ const CreateAccount = (props: Props) => {
                   />
                 </View>
                 <DropDownField
-                  text="Gender"
-                  selectItems={[
-                    {
-                      label: 'MIGHT CHANGE BELOW SELECTION LATER',
-                      value: 'MIGHT CHANGE BELOW SELECTION LATER',
-                    },
-                    {label: '', value: ''},
-                    {label: 'Prefer not to say', value: 'prefer not to say'},
-                  ]}
-                  open={genderOpen}
-                  onOpen={() => {
-                    setGenderOpen(true);
-                    setRaceOpen(false);
-                    setEthnicityOpen(false);
-                  }}
-                  setOpen={handleGenderChange}
-                />
-                <DropDownField
-                  text="Race"
-                  selectItems={[
-                    {
-                      label: 'MIGHT CHANGE BELOW SELECTION LATER',
-                      value: 'MIGHT CHANGE BELOW SELECTION LATER',
-                    },
-                    {
-                      label: 'American Indian or Alaska Native',
-                      value: 'american indian or alaska native',
-                    },
-                    {label: 'Asian', value: 'asian'},
-                    {
-                      label: 'Black or African American',
-                      value: 'black or african american',
-                    },
-                    {
-                      label: 'Native Hawaiian or Other Pacific Islander',
-                      value: 'native hawaiian or other pacific islander',
-                    },
-                    {label: 'Not Specified', value: 'not specified'},
-                    {
-                      label: 'Two or More Races/Ethnicities',
-                      value: 'two or more races/ethnicities',
-                    },
-                    {label: 'White', value: 'white'},
-                    {label: 'Prefer not to say', value: 'prefer not to say'},
-                  ]}
-                  open={raceOpen}
-                  onOpen={() => {
-                    setGenderOpen(false);
-                    setRaceOpen(true);
-                    setEthnicityOpen(false);
-                  }}
-                  setOpen={handleRaceChange}
-                />
-                <DropDownField
-                  text="Ethnicity"
-                  selectItems={[
-                    {
-                      label: 'MIGHT CHANGE BELOW SELECTION LATER',
-                      value: 'MIGHT CHANGE BELOW SELECTION LATER',
-                    },
-                    {label: 'Hispanic/Latino', value: 'hispanic/latino'},
-                    {
-                      label: 'Non-Hispanic/Latino',
-                      value: 'non-hispanic/latino',
-                    },
-                    {label: 'Prefer not to say', value: 'prefer not to say'},
-                  ]}
-                  open={ethnicityOpen}
-                  onOpen={() => {
-                    setGenderOpen(false);
-                    setRaceOpen(false);
-                    setEthnicityOpen(true);
-                  }}
-                  setOpen={handleEthnicityChange}
-                />
+              text="Gender"
+              selectItems={[
+                {
+                  label: 'Woman',
+                  value: 'Woman',
+                },
+                {label: 'Man', value: 'Man'},
+                {label: 'Non-binary', value: 'Non-binary'},
+                {label: 'I choose not to identify', value: 'I choose not to identify'},
+              ]}
+              open={genderOpen}
+              onOpen={() => {
+                setGenderOpen(true);
+                setRaceOpen(false);
+                setEthnicityOpen(false);
+              }}
+              setOpen={setGenderOpen}
+            />
+            <DropDownField
+              text="Race"
+              selectItems={[
+                {
+                  label: 'Indigenous, American Indian or Alaska Native',
+                  value: 'Indigenous, American Indian or Alaska Native',
+                },
+                {
+                  label: 'Black or African American',
+                  value: 'Black or African American',
+                },
+                {
+                  label: 'Middle Eastern or North African',
+                  value: 'Middle Eastern or North African',
+                },
+                {label: 'East Asian', value: 'East Asian'},
+                {
+                  label: 'South Asian',
+                  value: 'South Asian',
+                },
+                {
+                  label: 'Southeast Asian',
+                  value: 'Southeast Asian',
+                },
+                {
+                  label: 'Native Hawaiian or Pacific Islander',
+                  value: 'native hawaiian or pacific islander',
+                },
+                {label: 'White or European', value: 'White or European'},
+                {
+                  label: 'Two or More Races/Ethnicities',
+                  value: 'Two or more Races/Ethnicities',
+                },
+                {label: 'Prefer not to say', value: 'prefer not to say'},
+                {label: 'I prefer to self-describe', value: 'I prefer to self-describe'},
+              ]}
+              open={raceOpen}
+              onOpen={() => {
+                setGenderOpen(false);
+                setRaceOpen(true);
+                setEthnicityOpen(false);
+              }}
+              setOpen={setRaceOpen}
+            />
+            <DropDownField
+              text="Ethnicity"
+              selectItems={[
+                {label: 'Hispanic/Latino', value: 'Hispanic/Latino'},
+                {label: 'Non-Hispanic/Latino', value: 'Non-Hispanic/latino'},
+                {label: 'I prefer to self describe', value: 'I prefer to self describe'},
+                {label: 'I choose not to identify', value: 'I choose not to identify'},
+              ]}
+              open={ethnicityOpen}
+              onOpen={() => {
+                setGenderOpen(false);
+                setRaceOpen(false);
+                setEthnicityOpen(true);
+              }}
+              setOpen={setEthnicityOpen}
+            />
               </View>
             </View>
             <View className="mt-40">
