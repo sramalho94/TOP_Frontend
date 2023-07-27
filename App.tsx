@@ -15,14 +15,14 @@ import CreateAccount from './src/screens/CreateAccount';
 import ConsentPage from './src/screens/ConsentPage';
 import Onboarding from './src/screens/Onboarding';
 import HomeDash from './src/screens/HomeDash';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {SafeAreaProvider} from 'react-native-safe-area-context';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import DropDownField from './src/components/DropDownField';
 
 export type RootStackParamList = {
-  ThankYouScreen: {loggIn: boolean};
+  ThankYouScreen: { loggIn: boolean };
 };
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -32,7 +32,7 @@ function App(): JSX.Element {
     <SafeAreaProvider>
       <NavigationContainer>
         <Stack.Navigator>
-          {/* <Stack.Screen
+          {/* {/* <Stack.Screen
             name="Onboarding"
             component={Onboarding}
             options={{headerShown: false}}
@@ -42,15 +42,15 @@ function App(): JSX.Element {
             component={LandingPage}
             options={{headerShown: false}}
           />
-          <Stack.Screen name="SignInPage" component={SignInPage} />
+          <Stack.Screen name="SignInPage" component={SignInPage} /> */}
           <Stack.Screen name="CreateAccount" component={CreateAccount} />
-          <Stack.Screen name="ReportPage" component={ReportPage} />
+          {/* <Stack.Screen name="ReportPage" component={ReportPage} />
           <Stack.Screen name="ConsentPage" component={ConsentPage} /> */}
-          <Stack.Screen
+          {/* <Stack.Screen
             name="ThankYouScreen"
             component={ThankYouScreen}
             options={{headerShown: false}}
-          />
+          /> */}
           {/* <Stack.Screen
             name="AccountReportPage"
             component={AccountReportPage}

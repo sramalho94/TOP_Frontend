@@ -1,5 +1,5 @@
-import {View, Text, SafeAreaView, Modal, ScrollView, NativeSyntheticEvent, NativeScrollEvent, useWindowDimensions} from 'react-native';
-import React, { useState, useRef} from 'react';
+import { View, Text, SafeAreaView, Modal, ScrollView, NativeSyntheticEvent, NativeScrollEvent, useWindowDimensions } from 'react-native';
+import React, { useState, useRef } from 'react';
 import TextInputField from '../components/TextInputField';
 import Button from '../components/Button';
 import TopNavBar from '../components/TopNavBar';
@@ -97,22 +97,22 @@ const CreateAccount = (props: Props) => {
   };
 
 
-// Swipe animation:
-const scrollViewRef = useRef<ScrollView>(null);
-const { width, height } = useWindowDimensions();
+  // Swipe animation:
+  const scrollViewRef = useRef<ScrollView>(null);
+  const { width, height } = useWindowDimensions();
 
-const handleSwipeAnimation = (page: number) => {
-  if (scrollViewRef.current) {
-    scrollViewRef.current.scrollTo({ x: page * width, y: page * height, animated: true });
+  const handleSwipeAnimation = (page: number) => {
+    if (scrollViewRef.current) {
+      scrollViewRef.current.scrollTo({ x: page * width, y: page * height, animated: true });
+      setCurrentPage(page);
+    }
+  };
+
+  const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+    const offsetX = event.nativeEvent.contentOffset.x;
+    const page = Math.floor(offsetX / width);
     setCurrentPage(page);
-  }
-};
-
-const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
-  const offsetX = event.nativeEvent.contentOffset.x;
-  const page = Math.floor(offsetX / width);
-  setCurrentPage(page);
-};
+  };
 
 
   // Submitting pages:
@@ -133,7 +133,7 @@ const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
 
     const isPasswordValid = checkPasswordCriteria();
     if (!isPasswordValid) {
-      toggleModal();
+      alert('Your password must include at least 8 characters, one uppercase and one lowercase letter, one number and one special.');
     } else {
       handleSwipeAnimation(1);
     }
@@ -157,295 +157,270 @@ const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
   };
 
   const pages = [
-        <View key={1} className="w-screen">
-          <View className='h-[110]'>
-            <TopNavBar
-              fontFamily=""
-              textSize="xl"
-              textValue="Create Account"
-              haveProgress={true}
-              page={1}
-              />
-              </View>
-            <View className="mx-auto my-auto mb-2">
-              <View className="w-[342] mt-4">
-                <TextInputField
-                  label="Email*"
-                  value={email}
-                  onChange={handleEmailChange}
-                  placeholder=""
-                />
-                <TextInputField
-                  label="Username*"
-                  value={username}
-                  onChange={handleUsernameChange}
-                  placeholder=""
-                />
-                <PasswordField setForm={setForm} form={form} />
-              </View>
-            </View>
-            <View className="mt-48">
-              <Button
-                onPress={handleSubmitPage1}
-                innerText="Next"
-                textColor="text-white"
-                bgColor="bg-black"
-                border={true}
-                borderColor="border border-4"
-                width='80'
-              />
-            </View>
-            <Modal visible={isModalVisible} transparent={true}>
-              <View className="flex-1 justify-center items-center bg-opacity-50">
-                <View className="bg-white p-8 rounded-lg w-72 border-4">
-                  <Text className="text-xl font-bold mb-4">
-                    Your password must include:
-                  </Text>
-                  <Text className="mb-2">- At least 8 characters</Text>
-                  <Text className="mb-2">
-                    - One uppercase and one lowercase letter
-                  </Text>
-                  <Text className="mb-2">
-                    - One number and one special character
-                  </Text>
-                  <Button
-                    onPress={toggleModal}
-                    innerText="Close"
-                    textColor=""
-                    bgColor="bg-[#B4B4B4]"
-                    border={true}
-                    borderColor="border border-4"
-                    width='5/6'
-                  />
-                </View>
-              </View>
-            </Modal>
-        </View>,
-        <View key={2} className="w-screen">
-            <TopNavBar
-              fontFamily=""
-              textSize="xl"
-              textValue="Create Account"
-              haveProgress={true}
-              page={2}
-            />
+    <View key={1} className="w-screen">
+      <View className='h-[110]'>
+        <TopNavBar
+          fontFamily=""
+          textSize="xl"
+          textValue="Create Account"
+          haveProgress={true}
+          page={1}
+        />
+      </View>
+      <View className="mx-auto my-auto mb-2">
+        <View className="w-[342] mt-4">
+          <TextInputField
+            label="Email*"
+            value={email}
+            onChange={handleEmailChange}
+            placeholder=""
+          />
+          <TextInputField
+            label="Username*"
+            value={username}
+            onChange={handleUsernameChange}
+            placeholder=""
+          />
+          <PasswordField setForm={setForm} form={form} />
+        </View>
+      </View>
+      <View className="mt-48">
+        <Button
+          onPress={handleSubmitPage1}
+          innerText="Next"
+          textColor="text-white"
+          bgColor="bg-black"
+          border={true}
+          borderColor="border border-4"
+          width='80'
+        />
+      </View>
+    </View>,
+    <View key={2} className="w-screen">
+      <TopNavBar
+        fontFamily=""
+        textSize="xl"
+        textValue="Create Account"
+        haveProgress={true}
+        page={2}
+      />
 
-            <View className="mx-auto my-auto mb-3">
-              <View className="w-[342]">
-                <View className="my-4 underline">
-                  <Button
-                    onPress={toggleModal}
-                    innerText="(Why do we need this information?)"
-                    bgColor=""
-                    textColor=""
-                    border={false}
-                    borderColor="border border-gray"
-                    textDecoration="underline"
-                    width='80'
-                  />
-                </View>
-                <TextInputField
-                  label="Birthday*"
-                  value={birthday}
-                  onChange={handleBirthdayChange}
-                  placeholder=""
-                />
-                <TextInputField
-                  label="Zip Code*"
-                  value={zipCode}
-                  onChange={handleZipCodeChange}
-                  placeholder=""
-                />
-              </View>
-            </View>
-            <View className="mt-56">
-              <Button
-                onPress={handleSubmitPage2}
-                innerText="Next"
-                textColor="text-white"
-                bgColor="bg-black"
-                border={true}
-                borderColor="border border-4"
-                width='80'
-              />
-            </View>
-            <Modal visible={isModalVisible} transparent={true}>
-              <View className="flex-1 justify-center items-center bg-opacity-50">
-                <View className="bg-white p-8 rounded-lg w-72 border-4">
-                  <Text className="text-xl font-bold mb-4">
-                    Why do we need this information?
-                  </Text>
-                  <Text className="mb-2 text-lg">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Tenetur tempore beatae quasi officia error distinctio illum
-                    laboriosam ea veniam repellendus aperiam, impedit alias
-                    suscipit! Maiores sint adipisci repellendus dolor quaerat.
-                  </Text>
-                  <Button
-                    onPress={toggleModal}
-                    innerText="Close"
-                    textColor=""
-                    bgColor="bg-[#B4B4B4]"
-                    border={true}
-                    borderColor="border border-4"
-                    width='5/6'
-                  />
-                </View>
-              </View>
-            </Modal>
-          </View>, 
-          <View key={3} className="w-screen ">
-            <TopNavBar
-              fontFamily=""
-              textSize="xl"
-              textValue="Create Account"
-              haveProgress={true}
-              page={3}
+      <View className="mx-auto my-auto mb-3">
+        <View className="w-[342]">
+          <View className="my-4 underline">
+            <Button
+              onPress={toggleModal}
+              innerText="(Why do we need this information?)"
+              bgColor=""
+              textColor=""
+              border={false}
+              borderColor="border border-gray"
+              textDecoration="underline"
+              width='80'
             />
-            <View className="mx-auto my-auto justify-between">
-              <View className="w-[342]">
-                <View className="my-4">
-                  <Button
-                    onPress={toggleModal}
-                    innerText="(Why do we need this information?)"
-                    bgColor=""
-                    textColor=""
-                    border={false}
-                    borderColor="border border-gray"
-                    textDecoration="underline"
-                    width='80'
-                  />
-                </View>
-                <DropDownField
-                  text="Gender"
-                  selectItems={[
-                    {
-                      label: 'MIGHT CHANGE BELOW SELECTION LATER',
-                      value: 'MIGHT CHANGE BELOW SELECTION LATER',
-                    },
-                    {label: '', value: ''},
-                    {label: 'Prefer not to say', value: 'prefer not to say'},
-                  ]}
-                  open={genderOpen}
-                  onOpen={() => {
-                    setGenderOpen(true);
-                    setRaceOpen(false);
-                    setEthnicityOpen(false);
-                  }}
-                  setOpen={handleGenderChange}
-                />
-                <DropDownField
-                  text="Race"
-                  selectItems={[
-                    {
-                      label: 'MIGHT CHANGE BELOW SELECTION LATER',
-                      value: 'MIGHT CHANGE BELOW SELECTION LATER',
-                    },
-                    {
-                      label: 'American Indian or Alaska Native',
-                      value: 'american indian or alaska native',
-                    },
-                    {label: 'Asian', value: 'asian'},
-                    {
-                      label: 'Black or African American',
-                      value: 'black or african american',
-                    },
-                    {
-                      label: 'Native Hawaiian or Other Pacific Islander',
-                      value: 'native hawaiian or other pacific islander',
-                    },
-                    {label: 'Not Specified', value: 'not specified'},
-                    {
-                      label: 'Two or More Races/Ethnicities',
-                      value: 'two or more races/ethnicities',
-                    },
-                    {label: 'White', value: 'white'},
-                    {label: 'Prefer not to say', value: 'prefer not to say'},
-                  ]}
-                  open={raceOpen}
-                  onOpen={() => {
-                    setGenderOpen(false);
-                    setRaceOpen(true);
-                    setEthnicityOpen(false);
-                  }}
-                  setOpen={handleRaceChange}
-                />
-                <DropDownField
-                  text="Ethnicity"
-                  selectItems={[
-                    {
-                      label: 'MIGHT CHANGE BELOW SELECTION LATER',
-                      value: 'MIGHT CHANGE BELOW SELECTION LATER',
-                    },
-                    {label: 'Hispanic/Latino', value: 'hispanic/latino'},
-                    {
-                      label: 'Non-Hispanic/Latino',
-                      value: 'non-hispanic/latino',
-                    },
-                    {label: 'Prefer not to say', value: 'prefer not to say'},
-                  ]}
-                  open={ethnicityOpen}
-                  onOpen={() => {
-                    setGenderOpen(false);
-                    setRaceOpen(false);
-                    setEthnicityOpen(true);
-                  }}
-                  setOpen={handleEthnicityChange}
-                />
-              </View>
-            </View>
-            <View className="mt-40">
-              <Button
-                onPress={() => console.log('pressed')}
-                innerText="Create Account"
-                textColor="text-white"
-                bgColor="bg-black"
-                border={true}
-                borderColor="border border-4"
-                width='80'
-              />
-            </View>
-            <Modal visible={isModalVisible} transparent={true}>
-              <View className="flex-1 justify-center items-center bg-opacity-50 border-4">
-                <View className="bg-white p-8 rounded-lg w-72">
-                  <Text className="text-xl font-bold mb-4">
-                    Why do we need this information?
-                  </Text>
-                  <Text className="mb-2 text-lg">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Tenetur tempore beatae quasi officia error distinctio illum
-                    laboriosam ea veniam repellendus aperiam, impedit alias
-                    suscipit! Maiores sint adipisci repellendus dolor quaerat.
-                  </Text>
-                  <Button
-                    onPress={toggleModal}
-                    innerText="Close"
-                    textColor=""
-                    bgColor="bg-[#B4B4B4]"
-                    border={false}
-                    borderColor=""
-                    width='5/6'
-                  />
-                </View>
-              </View>
-            </Modal>
           </View>
+          <TextInputField
+            label="Birthday*"
+            value={birthday}
+            onChange={handleBirthdayChange}
+            placeholder=""
+          />
+          <TextInputField
+            label="Zip Code*"
+            value={zipCode}
+            onChange={handleZipCodeChange}
+            placeholder=""
+          />
+        </View>
+      </View>
+      <View className="mt-56">
+        <Button
+          onPress={handleSubmitPage2}
+          innerText="Next"
+          textColor="text-white"
+          bgColor="bg-black"
+          border={true}
+          borderColor="border border-4"
+          width='80'
+        />
+      </View>
+      <Modal visible={isModalVisible} transparent={true}>
+        <View className="flex-1 justify-center items-center bg-opacity-50">
+          <View className="bg-white p-8 rounded-lg w-72 border-4">
+            <Text className="text-xl font-bold mb-4">
+              Why do we need this information?
+            </Text>
+            <Text className="mb-2 text-lg">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Tenetur tempore beatae quasi officia error distinctio illum
+              laboriosam ea veniam repellendus aperiam, impedit alias
+              suscipit! Maiores sint adipisci repellendus dolor quaerat.
+            </Text>
+            <Button
+              onPress={toggleModal}
+              innerText="Close"
+              textColor=""
+              bgColor="bg-[#B4B4B4]"
+              border={true}
+              borderColor="border border-4"
+              width='5/6'
+            />
+          </View>
+        </View>
+      </Modal>
+    </View>,
+    <View key={3} className="w-screen ">
+      <TopNavBar
+        fontFamily=""
+        textSize="xl"
+        textValue="Create Account"
+        haveProgress={true}
+        page={3}
+      />
+      <View className="mx-auto my-auto justify-between">
+        <View className="w-[342]">
+          <View className="my-4">
+            <Button
+              onPress={toggleModal}
+              innerText="(Why do we need this information?)"
+              bgColor=""
+              textColor=""
+              border={false}
+              borderColor="border border-gray"
+              textDecoration="underline"
+              width='80'
+            />
+          </View>
+          <DropDownField
+            text="Gender"
+            selectItems={[
+              {
+                label: 'MIGHT CHANGE BELOW SELECTION LATER',
+                value: 'MIGHT CHANGE BELOW SELECTION LATER',
+              },
+              { label: '', value: '' },
+              { label: 'Prefer not to say', value: 'prefer not to say' },
+            ]}
+            open={genderOpen}
+            onOpen={() => {
+              setGenderOpen(true);
+              setRaceOpen(false);
+              setEthnicityOpen(false);
+            }}
+            setOpen={handleGenderChange}
+          />
+          <DropDownField
+            text="Race"
+            selectItems={[
+              {
+                label: 'MIGHT CHANGE BELOW SELECTION LATER',
+                value: 'MIGHT CHANGE BELOW SELECTION LATER',
+              },
+              {
+                label: 'American Indian or Alaska Native',
+                value: 'american indian or alaska native',
+              },
+              { label: 'Asian', value: 'asian' },
+              {
+                label: 'Black or African American',
+                value: 'black or african american',
+              },
+              {
+                label: 'Native Hawaiian or Other Pacific Islander',
+                value: 'native hawaiian or other pacific islander',
+              },
+              { label: 'Not Specified', value: 'not specified' },
+              {
+                label: 'Two or More Races/Ethnicities',
+                value: 'two or more races/ethnicities',
+              },
+              { label: 'White', value: 'white' },
+              { label: 'Prefer not to say', value: 'prefer not to say' },
+            ]}
+            open={raceOpen}
+            onOpen={() => {
+              setGenderOpen(false);
+              setRaceOpen(true);
+              setEthnicityOpen(false);
+            }}
+            setOpen={handleRaceChange}
+          />
+          <DropDownField
+            text="Ethnicity"
+            selectItems={[
+              {
+                label: 'MIGHT CHANGE BELOW SELECTION LATER',
+                value: 'MIGHT CHANGE BELOW SELECTION LATER',
+              },
+              { label: 'Hispanic/Latino', value: 'hispanic/latino' },
+              {
+                label: 'Non-Hispanic/Latino',
+                value: 'non-hispanic/latino',
+              },
+              { label: 'Prefer not to say', value: 'prefer not to say' },
+            ]}
+            open={ethnicityOpen}
+            onOpen={() => {
+              setGenderOpen(false);
+              setRaceOpen(false);
+              setEthnicityOpen(true);
+            }}
+            setOpen={handleEthnicityChange}
+          />
+        </View>
+      </View>
+      <View className="mt-40">
+        <Button
+          onPress={() => console.log('pressed')}
+          innerText="Create Account"
+          textColor="text-white"
+          bgColor="bg-black"
+          border={true}
+          borderColor="border border-4"
+          width='80'
+        />
+      </View>
+      <Modal visible={isModalVisible} transparent={true}>
+        <View className="flex-1 justify-center items-center bg-opacity-50 border-4">
+          <View className="bg-white p-8 rounded-lg w-72">
+            <Text className="text-xl font-bold mb-4">
+              Why do we need this information?
+            </Text>
+            <Text className="mb-2 text-lg">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Tenetur tempore beatae quasi officia error distinctio illum
+              laboriosam ea veniam repellendus aperiam, impedit alias
+              suscipit! Maiores sint adipisci repellendus dolor quaerat.
+            </Text>
+            <Button
+              onPress={toggleModal}
+              innerText="Close"
+              textColor=""
+              bgColor="bg-[#B4B4B4]"
+              border={false}
+              borderColor=""
+              width='5/6'
+            />
+          </View>
+        </View>
+      </Modal>
+    </View>
   ]
 
-return (
-  <SafeAreaView>
-    <ScrollView
-          ref={scrollViewRef}
-          horizontal
-          pagingEnabled
-          scrollEnabled
-          onScroll={handleScroll}
-          scrollEventThrottle={16} // Adjust the value as per your requirement
-          >
-{pages[currentPage-1]}
-          </ScrollView>
-  </SafeAreaView>
-)
+  return (
+    <SafeAreaView>
+      <ScrollView
+        ref={scrollViewRef}
+        horizontal
+        pagingEnabled
+        scrollEnabled
+        onScroll={handleScroll}
+        scrollEventThrottle={16} // Adjust the value as per your requirement
+      >
+        {pages[currentPage - 1]}
+      </ScrollView>
+    </SafeAreaView>
+  )
 
 };
 export default CreateAccount;
