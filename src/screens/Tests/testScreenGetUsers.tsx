@@ -34,6 +34,12 @@ const testScreenGetUsers = () => {
     const handleSubmit:any = (e: any) => {
         e.preventDefault()
 
+        // ApiService.getAllUsers()
+        // .then((res: any) => setUserInfo(res.data.user))
+        // .catch(error => {
+        //     console.log("Get Users Message: " + error);
+        // });
+
         ApiService.getUserById(2)
         .then((res: any) => setUserInfo(res.data.user))
         .catch(error => {
@@ -50,7 +56,7 @@ const testScreenGetUsers = () => {
       <View className="mt-[20] space-y-[12] mb-[12]">
         <Button
           onPress={handleSubmit}
-          innerText="Print all Users"
+          innerText="Print User with id 2"
           bgColor="bg-[#B4B4B4]"
           textColor="text-black"
           border={true}

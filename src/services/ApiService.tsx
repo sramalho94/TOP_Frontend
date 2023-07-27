@@ -90,6 +90,7 @@ export default class ApiService {
   }
 
 // ####################### COVID TEST ####################### //
+
   static getAllTests(): Promise<Response> {
 
     const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJxd2VydHlAZW1haWwuY29tIiwiaWF0IjoxNjkwMzkxOTY2fQ.XQzxNqY7V23zDDkc0SC3rtsexYh-1vSalJRDGNaJed8"
@@ -110,7 +111,11 @@ export default class ApiService {
     .catch(this.sideEffect((error: any) => console.log(error)))
   }
 
+  // ❌ can't get this to work
+  // [AxiosError: Request failed with status code 404]
+  // will need to see what they did on the backend for the jest test
   static createTest(testData: any): Promise<Response> {
+
     return axios.post(`${BASE_URL}/tests`, testData)
     .then(this.sideEffect((res: any)=> console.log(res)))
     .catch(this.sideEffect((error: any) => console.log(error)))
