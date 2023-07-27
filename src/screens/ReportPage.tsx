@@ -112,11 +112,12 @@ const ReportPage = (props: Props) => {
               text="Gender"
               selectItems={[
                 {
-                  label: 'MIGHT CHANGE BELOW SELECTION LATER',
-                  value: 'MIGHT CHANGE BELOW SELECTION LATER',
+                  label: 'Woman',
+                  value: 'Woman',
                 },
-                {label: '', value: ''},
-                {label: 'Prefer not to say', value: 'prefer not to say'},
+                {label: 'Man', value: 'Man'},
+                {label: 'Non-binary', value: 'Non-binary'},
+                {label: 'I choose not to identify', value: 'I choose not to identify'},
               ]}
               open={genderOpen}
               onOpen={() => {
@@ -130,29 +131,37 @@ const ReportPage = (props: Props) => {
               text="Race"
               selectItems={[
                 {
-                  label: 'MIGHT CHANGE BELOW SELECTION LATER',
-                  value: 'MIGHT CHANGE BELOW SELECTION LATER',
+                  label: 'Indigenous, American Indian or Alaska Native',
+                  value: 'Indigenous, American Indian or Alaska Native',
                 },
-                {
-                  label: 'American Indian or Alaska Native',
-                  value: 'american indian or alaska native',
-                },
-                {label: 'Asian', value: 'asian'},
                 {
                   label: 'Black or African American',
-                  value: 'black or african american',
+                  value: 'Black or African American',
                 },
                 {
-                  label: 'Native Hawaiian or Other Pacific Islander',
-                  value: 'native hawaiian or other pacific islander',
+                  label: 'Middle Eastern or North African',
+                  value: 'Middle Eastern or North African',
                 },
-                {label: 'Not Specified', value: 'not specified'},
+                {label: 'East Asian', value: 'East Asian'},
+                {
+                  label: 'South Asian',
+                  value: 'South Asian',
+                },
+                {
+                  label: 'Southeast Asian',
+                  value: 'Southeast Asian',
+                },
+                {
+                  label: 'Native Hawaiian or Pacific Islander',
+                  value: 'native hawaiian or pacific islander',
+                },
+                {label: 'White or European', value: 'White or European'},
                 {
                   label: 'Two or More Races/Ethnicities',
-                  value: 'two or more races/ethnicities',
+                  value: 'Two or more Races/Ethnicities',
                 },
-                {label: 'White', value: 'white'},
                 {label: 'Prefer not to say', value: 'prefer not to say'},
+                {label: 'I prefer to self-describe', value: 'I prefer to self-describe'},
               ]}
               open={raceOpen}
               onOpen={() => {
@@ -165,13 +174,10 @@ const ReportPage = (props: Props) => {
             <DropDownField
               text="Ethnicity"
               selectItems={[
-                {
-                  label: 'MIGHT CHANGE BELOW SELECTION LATER',
-                  value: 'MIGHT CHANGE BELOW SELECTION LATER',
-                },
-                {label: 'Hispanic/Latino', value: 'hispanic/latino'},
-                {label: 'Non-Hispanic/Latino', value: 'non-hispanic/latino'},
-                {label: 'Prefer not to say', value: 'prefer not to say'},
+                {label: 'Hispanic/Latino', value: 'Hispanic/Latino'},
+                {label: 'Non-Hispanic/Latino', value: 'Non-Hispanic/latino'},
+                {label: 'I prefer to self describe', value: 'I prefer to self describe'},
+                {label: 'I choose not to identify', value: 'I choose not to identify'},
               ]}
               open={ethnicityOpen}
               onOpen={() => {
