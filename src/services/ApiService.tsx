@@ -56,10 +56,16 @@ export default class ApiService {
   }
 // ####################### USER ####################### //
 
-  // ❌ can't get this to work
+  // ✅ It works
   static getAllUsers(): Promise<Response> {
-    return axios.get(`${BASE_URL}/users`)
-    .then(this.sideEffect((res: any)=> console.log("Users: " + res)))
+    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJxd2VydHlAZW1haWwuY29tIiwiaWF0IjoxNjkwMzkxOTY2fQ.XQzxNqY7V23zDDkc0SC3rtsexYh-1vSalJRDGNaJed8"
+    const headers = {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    }
+
+    return axios.get(`${BASE_URL}/users`, { headers })
+    .then(this.sideEffect((res: any)=> console.log("Users: " + JSON.stringify(res.data))))
     .catch(this.sideEffect((error: any) => console.log("Users: " + error)))
   }
 
@@ -73,7 +79,7 @@ export default class ApiService {
     }
 
     return axios.get(`${BASE_URL}/users/${id}`, {headers})
-    .then(this.sideEffect((res: any)=> console.log("User by id: " + res)))
+    .then(this.sideEffect((res: any)=> console.log("User by id: " + JSON.stringify(res.data))))
     .catch(this.sideEffect((error: any) => console.log("User by id error: " + error)))
   }
 
