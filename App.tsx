@@ -30,11 +30,12 @@ import DropDownField from './src/components/DropDownField';
 import TestScreenRegister from './src/screens/Tests/testScreenRegister'
 import TestScreenLogin from './src/screens/Tests/testScreenLogin'
 import TestGetUsers from './src/screens/Tests/testScreenGetUsers'
+import TestScreenCovidTest from './src/screens/Tests/testScreenCovidTest'
 
 function App(): JSX.Element {
   return (
     <SafeAreaView>
-      <TestGetUsers />
+      <TestScreenCovidTest />
     </SafeAreaView>
   );
 

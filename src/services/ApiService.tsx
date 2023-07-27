@@ -91,7 +91,15 @@ export default class ApiService {
 
 // ####################### COVID TEST ####################### //
   static getAllTests(): Promise<Response> {
-    return axios.get(`${BASE_URL}/tests`)
+
+    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJxd2VydHlAZW1haWwuY29tIiwiaWF0IjoxNjkwMzkxOTY2fQ.XQzxNqY7V23zDDkc0SC3rtsexYh-1vSalJRDGNaJed8"
+
+    const headers = {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    }
+
+    return axios.get(`${BASE_URL}/tests`, {headers})
     .then(this.sideEffect((res: any)=> console.log(res)))
     .catch(this.sideEffect((error: any) => console.log(error)))
   }
@@ -108,14 +116,14 @@ export default class ApiService {
     .catch(this.sideEffect((error: any) => console.log(error)))
   }
 
-  // Probably don't need???
+  // TODO: Probably don't need???
   static updateTest(id: any, testData: any): Promise<Response> {
     return axios.put(`${BASE_URL}/tests/${id}`, testData)
     .then(this.sideEffect((res: any)=> console.log(res)))
     .catch(this.sideEffect((error: any) => console.log(error)))
   }
 
-  // Probably don't need???
+  // TODO: Probably don't need???
   static deleteTest(id: any): Promise<Response> {
     return axios.delete(`${BASE_URL}/tests/${id}`)
     .then(this.sideEffect((res: any)=> console.log(res)))
