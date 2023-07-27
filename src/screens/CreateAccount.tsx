@@ -1,4 +1,4 @@
-import {View, Text, SafeAreaView, Modal, ScrollView, Animated, NativeSyntheticEvent, NativeScrollEvent, useWindowDimensions} from 'react-native';
+import {View, Text, SafeAreaView, Modal, ScrollView, NativeSyntheticEvent, NativeScrollEvent, useWindowDimensions} from 'react-native';
 import React, { useState, useRef} from 'react';
 import TextInputField from '../components/TextInputField';
 import Button from '../components/Button';
@@ -22,7 +22,6 @@ const initialFormState: FormState = {
 
 // Define the ReportPage component
 const CreateAccount = (props: Props) => {
-  // Define switch state
   const [currentPage, setCurrentPage] = useState<number>(0);
   const [scrollEnabled, setScrollEnabled] = useState(false);
   // Define state variables for zip code and age
@@ -39,6 +38,8 @@ const CreateAccount = (props: Props) => {
   const [raceOpen, setRaceOpen] = useState<boolean>(false);
   const [ethnicityOpen, setEthnicityOpen] = useState<boolean>(false);
 
+
+  // Handling toggle for modals
   const toggleModalPage0 = () => {
     setIsModalVisiblePage0(!isModalVisiblePage0);
   };
@@ -108,56 +109,45 @@ const CreateAccount = (props: Props) => {
   };
 
 
-// Swipe animation:
-const scrollViewRef = useRef<ScrollView>(null);
-const { width } = useWindowDimensions();
-const swipeAnim = useRef(new Animated.Value(0)).current;
+  // Swipe animation:
+  const scrollViewRef = useRef<ScrollView>(null);
+  const { width } = useWindowDimensions();
 
-let userScrolled = false;
+  let userScrolled = false;
 
-const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
-  const offsetX = event.nativeEvent.contentOffset.x;
-  const newPage = Math.round(offsetX / width);
+  const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+    const offsetX = event.nativeEvent.contentOffset.x;
+    const newPage = Math.round(offsetX / width);
 
-  console.log("width: handlescroll:", width); // Debug
-  console.log("page: handlescroll:", newPage); // Debug
-  console.log("offsetX: handlescroll:", offsetX);
-
-  if (userScrolled) {
-    setScrollEnabled(false);  // Disable scrolling while validating
-    if (newPage > currentPage) {
-      // Swiping forwards
-      if (newPage === 1) {
-        if (handleSubmitPage0()) {
-          handleSwipeAnimation(1);
-        }
-      } else if (newPage === 2) {
-        if (handleSubmitPage1()) {
-          handleSwipeAnimation(2);
+    if (userScrolled) {
+      setScrollEnabled(false);  // Disable scrolling while validating
+      if (newPage > currentPage) {
+        // Swiping forwards
+        if (newPage === 1) {
+          if (handleSubmitPage0()) {
+            handleSwipeAnimation(1);
+          }
+        } else if (newPage === 2) {
+          if (handleSubmitPage1()) {
+            handleSwipeAnimation(2);
+          }
         }
       }
+      setCurrentPage(newPage); // Always update current page after the checks
     }
-    setCurrentPage(newPage); // Always update current page after the checks
-  }
-  setScrollEnabled(true);  // Enable scrolling after validating
-};
+    setScrollEnabled(true);  // Enable scrolling after validating
+  };
 
-const handleSwipeAnimation = (targetPage: number) => {
-  scrollViewRef.current?.scrollTo({ x: width * targetPage, animated: true });
-  userScrolled = false; // Reset the userScrolled flag
-  setCurrentPage(targetPage); // Update the current page
-};
-
-// In your touch handlers, set userScrolled to true when the user initiates a scroll
-const handleTouchStart = () => {
-  userScrolled = true;
-};
+  const handleSwipeAnimation = (targetPage: number) => {
+    scrollViewRef.current?.scrollTo({ x: width * targetPage, animated: true });
+    userScrolled = false; // Reset the userScrolled flag
+    setCurrentPage(targetPage); // Update the current page
+  };
 
 
   // Submitting pages:
 
   // Function to handle submitting page 0
-
   const handleSubmitPage0 = () => {
     handleSwipeAnimation(1);
     return true;
@@ -169,6 +159,7 @@ const handleSubmitPage1 = () => {
   return true;
 };
 
+// Function to handle submitting the entire form
 const handleSubmit = () => {
   if (!email || !username) {
     alert('Please fill in all mandatory fields.');
