@@ -23,6 +23,7 @@ import TestScreenRegister from './src/screens/Tests/testScreenRegister'
 import TestScreenLogin from './src/screens/Tests/testScreenLogin'
 import TestGetUsers from './src/screens/Tests/testScreenGetUsers'
 import TestScreenCovidTest from './src/screens/Tests/testScreenCovidTest'
+import TestScreenUpdateUser from './src/screens/Tests/testScreenUpdateUser'
 
 import DropDownField from './src/components/DropDownField';
 
@@ -34,7 +35,7 @@ import DropDownField from './src/components/DropDownField';
 function App(): JSX.Element {
   return (
     <SafeAreaView>
-      <TestScreenLogin />
+      <TestScreenUpdateUser />
     </SafeAreaView>
 
     // <SafeAreaProvider>

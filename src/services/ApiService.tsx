@@ -13,11 +13,6 @@ export default class ApiService {
     return a; // pass the data further
    };
 
-  // NOTE: These are NOT tested yet! Need to fix "Create Account" screen in order to test the first route: "register".
-  // TODO: -Need to pass in authentication header in most functions below as part of the API call??
-  // TODO: -Need react native keychains?
-  // TODO: -Need to test each route, probably with a testing playground screen, since not all the screens we have will be used by each route 
-
 // ####################### AUTHENTICATION ####################### //
 
   // ✅ It works
@@ -45,12 +40,9 @@ export default class ApiService {
     .catch(this.sideEffect((error: any) => console.log(error)))
   }
 
-  static updatePassword(username: string, oldPassword: string, newPassword: string): Promise<Response> {
-    return axios.put(`${BASE_URL}/auth/update-password`, {
-      username,
-      oldPassword,
-      newPassword,
-    })
+  static updatePassword(updatePassword: any): Promise<Response> {
+
+    return axios.put(`${BASE_URL}/auth/update-password`, updatePassword)
     .then(this.sideEffect((res: any)=> console.log(res)))
     .catch(this.sideEffect((error: any) => console.log(error)))
   }
@@ -106,37 +98,41 @@ export default class ApiService {
       'Content-Type': 'application/json',
     }
 
-    return axios.get(`${BASE_URL}/tests`, {headers})
+    return axios.get(`${BASE_URL}/test`, {headers})
     .then(this.sideEffect((res: any)=> console.log(res)))
     .catch(this.sideEffect((error: any) => console.log(error)))
   }
 
   static getTestById(id: any): Promise<Response> {
-    return axios.get(`${BASE_URL}/tests/${id}`)
+    return axios.get(`${BASE_URL}/test/${id}`)
     .then(this.sideEffect((res: any)=> console.log(res)))
     .catch(this.sideEffect((error: any) => console.log(error)))
   }
 
-  // ❌ can't get this to work
-  // [AxiosError: Request failed with status code 404]
-  // will need to see what they did on the backend for the jest test
+  // ✅ It works
   static createTest(testData: any): Promise<Response> {
+    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJxd2VydHlAZW1haWwuY29tIiwiaWF0IjoxNjkwMzkxOTY2fQ.XQzxNqY7V23zDDkc0SC3rtsexYh-1vSalJRDGNaJed8"
 
-    return axios.post(`${BASE_URL}/tests`, testData)
+    const headers = {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    }
+
+    return axios.post(`${BASE_URL}/test`, testData, { headers })
     .then(this.sideEffect((res: any)=> console.log(res)))
     .catch(this.sideEffect((error: any) => console.log(error)))
   }
 
   // TODO: Probably don't need???
   static updateTest(id: any, testData: any): Promise<Response> {
-    return axios.put(`${BASE_URL}/tests/${id}`, testData)
+    return axios.put(`${BASE_URL}/test/${id}`, testData)
     .then(this.sideEffect((res: any)=> console.log(res)))
     .catch(this.sideEffect((error: any) => console.log(error)))
   }
 
   // TODO: Probably don't need???
   static deleteTest(id: any): Promise<Response> {
-    return axios.delete(`${BASE_URL}/tests/${id}`)
+    return axios.delete(`${BASE_URL}/test/${id}`)
     .then(this.sideEffect((res: any)=> console.log(res)))
     .catch(this.sideEffect((error: any) => console.log(error)))
   }

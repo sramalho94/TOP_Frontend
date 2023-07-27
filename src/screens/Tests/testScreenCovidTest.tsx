@@ -51,13 +51,14 @@ const testScreenCovidTest = () => {
 
     const handleSubmit:any = (e: any) => {
         e.preventDefault()
+
         console.log("covidsubmit data: " + JSON.stringify(covidSubmit))
         ApiService.createTest(covidSubmit)
         .then((res: any) => setCovidInfo(res.data.user))
         .catch(error => {
-            console.log("Get Users Message: " + error);
+            console.log("Create Covid Message: " + error);
         });
-        console.log("Covid Info: " + covidInfo)
+        console.log("Covid Info: " + JSON.stringify(covidSubmit))
     }
 
     const handleGetSubmit: any = (e:any) => {
@@ -69,10 +70,6 @@ const testScreenCovidTest = () => {
         });
 
     }
-
-   
-
-
 
   return (
     <SafeAreaView className="mx-auto my-auto">
