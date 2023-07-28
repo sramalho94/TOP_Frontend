@@ -14,7 +14,7 @@ import {
 } from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
-import {AuthProvider, useAuth} from './app/context/AuthContext';
+import {AuthProvider, useAuth} from './src/context/AuthContext';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export type RootStackParamList = {
