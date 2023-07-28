@@ -24,7 +24,7 @@ import TestScreenLogin from './src/screens/Tests/testScreenLogin'
 import TestGetUsers from './src/screens/Tests/testScreenGetUsers'
 import TestScreenCovidTest from './src/screens/Tests/testScreenCovidTest'
 import TestScreenUpdateUser from './src/screens/Tests/testScreenUpdateUser'
-
+import { AuthProvider } from './src/context/AuthContext';
 import DropDownField from './src/components/DropDownField';
 
 // export type RootStackParamList = {
@@ -34,8 +34,9 @@ import DropDownField from './src/components/DropDownField';
 
 function App(): JSX.Element {
   return (
-    <SafeAreaView>
-      <TestScreenUpdateUser />
+    <SafeAreaView><AuthProvider>
+      <TestScreenRegister />
+      </AuthProvider>
     </SafeAreaView>
 
     // <SafeAreaProvider>

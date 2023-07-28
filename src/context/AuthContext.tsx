@@ -5,29 +5,28 @@ import * as Keychain from 'react-native-keychain';
 import React from 'react';
 import ApiService from '../services/ApiService';
 
+interface RegistrationData {
+  email: string;
+  username: string;
+  password: string;
+  DOB: string;
+  state: string;
+  ZIP: string;
+  firstName: string;
+  gender: string;
+  ethnicity: string;
+  race: string;
+}
+
 interface AuthProps {
   authState?: {token: string | null; authenticated: boolean | null};
-  onRegister?: (
-    email: string,
-    username: string,
-    password: string,
-    DOB: string,
-    state: string,
-    ZIP: string,
-    firstName: string,
-    gender: string,
-    ethnicity: string,
-    race: string,
-  ) => Promise<any>;
+  onRegister?: (registrationData: RegistrationData) => Promise<any>;
   onLogin?: (username: string, password: string) => Promise<any>;
   onLogout?: () => Promise<any>;
-
 }
 
 const TOKEN_KEY = 'my-jwt';
 
-export const API_URL =
-  Platform.OS === 'android' ? 'http://10.0.2.2:3001' : 'http://localhost:3001';
 const AuthContext = createContext<AuthProps>({});
 
 export const useAuth = () => {
@@ -60,30 +59,14 @@ export const AuthProvider = ({children}: any) => {
 
   const apiServiceInstance = new ApiService();
 
+
+
   const register = async (
-    email: string,
-    username: string,
-    password: string,
-    DOB: string,
-    state: string,
-    ZIP: string,
-    firstName: string,
-    gender: string,
-    ethnicity: string,
-    race: string,
+    registrationData: RegistrationData
   ) => {
     try {
       const result:any = await ApiService.register({
-        email,
-        username,
-        password,
-        DOB,
-        state,
-        ZIP,
-        firstName,
-        gender,
-        ethnicity,
-        race,
+        registrationData
       })
 
 

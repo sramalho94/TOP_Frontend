@@ -4,23 +4,37 @@ import Button from '../../components/Button';
 import TextInputField from '../../components/TextInputField';
 import { useState } from 'react';
 import ApiService from '../../services/ApiService';
+import { AuthProvider, useAuth } from '../../context/AuthContext';
 
 const testScreenRegister = () => {
 
-    const [userSignUp, setUserSignUp] = useState<any | undefined>({username: "", password: "", DOB: "1920-01-01", state: "DL", ZIP: "11111", firstName: "asdf", gender: "M", ethnicity: "prefer not to say", race: "prefer not to say"})
+    const [userSignUp, setUserSignUp] = useState<any>({email: "what@email.com", username: "", password: "", DOB: "1920-01-01", state: "DL", ZIP: "11111", firstName: "asdf", gender: "M", ethnicity: "prefer not to say", race: "prefer not to say"})
+
+    const { onRegister } = useAuth();
 
     const handleChange:any = (field: string, value: string) => {
         setUserSignUp({...userSignUp, [field]: value})
     }
 
     const handleSubmit:any = (e: any) => {
-        e.preventDefault()
-
-        ApiService.register(userSignUp)
-        .then((res: any) => console.log("res from posting!!: " + res))
-        .catch((error: any) => {
-            console.log("Message: " + error);
-        });
+      if (onRegister) {
+        console.log("onRegister exists")
+      } else {
+        console.log("onRegister does not exist")
+      }
+      e.preventDefault()
+      
+      if (onRegister) {
+        
+        console.log("woooo")
+        onRegister(userSignUp)
+          .then((res: any) => console.log("res from posting!!: " + res))
+          .catch((error: any) => {
+            console.log("Screen Register Message: " + error);
+          });
+      } else {
+        console.log("onRegister is not a function or is undefined.");
+      }
     }
 
   return (

@@ -6,9 +6,8 @@ const BASE_URL =
 
 export default class ApiService {
 
-  // Still don't understand, but this allows the .then() to be returned inside this class. This also helps with readability. 
-  // Another way to do this is by returning the res inside the .then(), but by putting it in the below function, it improves readilbility
   // https://gabrielctroia.medium.com/side-effects-in-js-promise-chains-7db50b6302f3
+  // don't want all the burden on the return, so we had a sideEffect handler?
   // Lambda is a lambda (aka: fn), which we call in JavaScript anonymous functions (anon arrow function below) and "a" is the first argument of the lambda
   static sideEffect = (lambda:any) => (a:any) => {
     lambda(a);    // process side-effects
@@ -18,6 +17,8 @@ export default class ApiService {
 // ####################### AUTHENTICATION ####################### //
 
   // ✅ It works
+
+  // TODO: Need to test
   static login(credentials: any): Promise<Response> {
 
     return axios.post(`${BASE_URL}/auth/login`, credentials)
@@ -25,14 +26,14 @@ export default class ApiService {
     .catch(this.sideEffect((error: any) => console.log("Login " + error)))
   }
 
-  // ✅ It works
+  // TODO: Need to test
   static register(userData: any): Promise<Response> {
 
     return axios.post(`${BASE_URL}/auth/register`, userData)
     // The sideEffect takes "lambda", which is the arrow function (res:any) => console.log(res).
     // Also, it takes "a", which is the response from the axios.post
-    .then(this.sideEffect((res: any)=> console.log(res)))
-    .catch(this.sideEffect((error: any) => console.log(error)))
+    .then(this.sideEffect((res: any)=> console.log("Register API service success: " + res)))
+    .catch(this.sideEffect((error: any) => console.log("Register API service error: " + error)))
   }
 
   static checkSession(): Promise<Response> {
@@ -51,7 +52,7 @@ export default class ApiService {
   }
 // ####################### USER ####################### //
 
-  // ✅ It works
+
   static getAllUsers(): Promise<Response> {
 
     return axios.get(`${BASE_URL}/users`)
@@ -59,7 +60,7 @@ export default class ApiService {
     .catch(this.sideEffect((error: any) => console.log("Users: " + error)))
   }
 
-  // ✅ It works
+
   static getUserById(id: any): Promise<Response> {
 
     return axios.get(`${BASE_URL}/users/${id}`)
@@ -97,7 +98,7 @@ export default class ApiService {
     .catch(this.sideEffect((error: any) => console.log(error)))
   }
 
-  // ✅ It works
+  // TODO: Need to test
   static createTest(testData: any): Promise<Response> {
 
     return axios.post(`${BASE_URL}/test`, testData)
@@ -105,7 +106,7 @@ export default class ApiService {
     .catch(this.sideEffect((error: any) => console.log(error)))
   }
 
-  // TODO: Probably don't need???
+  // Probably don't need???
   static updateTest(id: any, testData: any): Promise<Response> {
 
     return axios.put(`${BASE_URL}/test/${id}`, testData)
@@ -113,7 +114,7 @@ export default class ApiService {
     .catch(this.sideEffect((error: any) => console.log(error)))
   }
 
-  // TODO: Probably don't need???
+  // Probably don't need???
   static deleteTest(id: any): Promise<Response> {
 
     return axios.delete(`${BASE_URL}/test/${id}`)
