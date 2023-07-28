@@ -22,8 +22,6 @@ type OnboardingScreenProps = NativeStackScreenProps<
   'Onboarding'
 >;
 
-type Props = {};
-
 const Onboarding = (props: OnboardingScreenProps) => {
   const {navigation} = props;
   const [currentPage, setCurrentPage] = useState<number>(0);
