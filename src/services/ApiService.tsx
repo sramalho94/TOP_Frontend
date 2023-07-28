@@ -2,7 +2,7 @@ import axios from 'axios';
 import {Platform} from 'react-native';
 
 const BASE_URL =
-  Platform.OS === 'android' ? 'http://10.0.2.2:3001' : 'http://localhost:3001';
+  Platform.OS === 'android' ? 'http://10.0.2.2:3001/api' : 'http://localhost:3001/api';
 
 export default class ApiService {
 
@@ -28,11 +28,12 @@ export default class ApiService {
 
   // TODO: Need to test
   static register(userData: any): Promise<Response> {
-
+    console.log("base you r el" + BASE_URL)
     return axios.post(`${BASE_URL}/auth/register`, userData)
+    
     // The sideEffect takes "lambda", which is the arrow function (res:any) => console.log(res).
     // Also, it takes "a", which is the response from the axios.post
-    .then(this.sideEffect((res: any)=> console.log("Register API service success: " + res)))
+    .then(this.sideEffect((res: any)=> console.log("Register API service success: " + JSON.stringify(res))))
     .catch(this.sideEffect((error: any) => console.log("Register API service error: " + error)))
   }
 

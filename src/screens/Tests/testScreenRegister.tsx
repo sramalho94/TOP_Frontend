@@ -8,7 +8,7 @@ import { AuthProvider, useAuth } from '../../context/AuthContext';
 
 const testScreenRegister = () => {
 
-    const [userSignUp, setUserSignUp] = useState<any>({email: "what@email.com", username: "", password: "", DOB: "1920-01-01", state: "DL", ZIP: "11111", firstName: "asdf", gender: "M", ethnicity: "prefer not to say", race: "prefer not to say"})
+    const [userSignUp, setUserSignUp] = useState<any>({username: "", password: "", DOB: "1920-01-01", state: "DL", ZIP: "11111", firstName: "asdf", gender: "M", ethnicity: "prefer not to say", race: "prefer not to say"})
 
     const { onRegister } = useAuth();
 
@@ -27,11 +27,15 @@ const testScreenRegister = () => {
       if (onRegister) {
         
         console.log("woooo")
-        onRegister(userSignUp)
-          .then((res: any) => console.log("res from posting!!: " + res))
+        ApiService.register(userSignUp)
+        .then((res: any) => console.log("res from posting!!: " + res))
           .catch((error: any) => {
-            console.log("Screen Register Message: " + error);
-          });
+            console.log("Screen Register Message: " + error)});
+        // onRegister(userSignUp)
+        //   .then((res: any) => console.log("res from posting!!: " + res))
+        //   .catch((error: any) => {
+        //     console.log("Screen Register Message: " + error);
+        //   });
       } else {
         console.log("onRegister is not a function or is undefined.");
       }

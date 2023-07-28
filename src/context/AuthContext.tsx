@@ -6,7 +6,6 @@ import React from 'react';
 import ApiService from '../services/ApiService';
 
 interface RegistrationData {
-  email: string;
   username: string;
   password: string;
   DOB: string;
@@ -71,7 +70,7 @@ export const AuthProvider = ({children}: any) => {
 
 
       // set the auth state after successful registration
-      setAuthState({token: result.data.token, authenticated: true});
+      setAuthState({token: result.token, authenticated: true});
       return result;
     } catch (e) {
       console.log(e); // Log the error here
