@@ -21,8 +21,6 @@ type Props = {
 const DropDownField = ({text, selectItems, open, onOpen, setOpen}: Props) => {
 
 
-    // Probably should have all necessary properties as props, and pass them in a useState
-
         //  TODO: will need to probs ask the UX team what the official dropdown selections are
         //  Data found from: https://www.census.gov/newsroom/blogs/random-samplings/2021/08/measuring-racial-ethnic-diversity-2020-census.html 
 
@@ -30,10 +28,10 @@ const DropDownField = ({text, selectItems, open, onOpen, setOpen}: Props) => {
     const [value, setValue] = useState<string | null>(null);
 
     return (
-        <View>
+        <View className="mx-auto">
 
             <Text className="font-bold my-2 capitalize">{text} (Optional)</Text>
-            <DropDownPicker className='my-2 border-2 border-black rounded-lg'
+            <DropDownPicker className='my-2 w-80 border border-black rounded-lg'
             open={open}
             items={selectItems}
             value={value}

@@ -43,7 +43,7 @@ const AccountReportPage = (props: Props) => {
         />
 
         {/* Page container */}
-        <View className="mx-auto my-auto">
+        <View className="justify-center mx-auto max-w-sm">
           <Text className="text-lg font-bold mx-auto">
             What were the results of your test?
           </Text>
@@ -55,7 +55,9 @@ const AccountReportPage = (props: Props) => {
                 bgColor="bg-themeLightBlue"
                 onPress={() => console.log("You're Clear!!")}
                 text="Negative"
-                Btnsize="125"
+                Btnwidth="w-32"
+                Btnheight="h-32"
+                textSize='base'
               />
             </View>
             <View className="m-2">
@@ -63,13 +65,15 @@ const AccountReportPage = (props: Props) => {
                 text="Positive"
                 bgColor="bg-themeLightOrange"
                 onPress={() => console.log("You're Sick!!")}
-                Btnsize="125"
+                Btnwidth="w-32"
+                Btnheight="h-32"
+                textSize='base'
               />
             </View>
           </View>
 
           {/* Text input fields container */}
-          <View className="mx-4">
+          <View className="">
             <TextInputField
               label="State*"
               value={state}
@@ -92,6 +96,7 @@ const AccountReportPage = (props: Props) => {
               textColor="text-white"
               bgColor="bg-black"
               border={true}
+              width='80'
             />
           </View>
         </View>
