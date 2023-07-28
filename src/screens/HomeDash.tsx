@@ -18,7 +18,7 @@ const HomeDash = (props: Props) => {
     <SafeAreaView className="h-screen w-screen">
       <ScrollView>
         {/* View for whole screen */}
-        <View className="flex flex-col w-full min-h-screen  justify-center items-center py-6 px-6">
+        <View className="flex flex-col w-full min-h-screen p-6">
           {/* View for avatar, text and report test */}
           <View className="flex w-full justify-center items-center ">
             {/* View for avatar*/}
@@ -31,18 +31,20 @@ const HomeDash = (props: Props) => {
                 onPress={() => {
                   console.log("You're Sick!!");
                 }}
-                Btnsize={104}
+                Btnwidth="w-24"
+                Btnheight="h-24"
               />
             </View>
             <Text className="text-3xl font-bold mb-2 text-center">Community {'\n'}Test Lab</Text>
             {/* need giant circle btn, need to refactor circle btn props? */}
             <CircleBtn
-              text={`Report \n Test`}
+              text={`Report\nTest`}
               bgColor="bg-themeLightOrange"
               onPress={() => {
                 console.log("You're Sick!!");
               }}
-              Btnsize={182}
+              Btnwidth="w-60"
+              Btnheight="h-60"
               textSize='3xl'
             />
           </View>
@@ -55,7 +57,8 @@ const HomeDash = (props: Props) => {
                 onPress={() => {
                   console.log("You're Sick!!");
                 }}
-                Btnsize={104}
+                Btnwidth="w-28"
+                Btnheight="h-28"
               />
                    <Text className="text-center p-3 text-black text-base">Privacy</Text>
             </View>
@@ -66,7 +69,8 @@ const HomeDash = (props: Props) => {
                 onPress={() => {
                   console.log("You're Sick!!");
                 }}
-                Btnsize={104}
+                Btnwidth="w-28"
+                Btnheight="h-28"
               />
                    <Text className="text-center p-3 text-black text-base">Dashboard</Text>
             </View>
@@ -77,7 +81,8 @@ const HomeDash = (props: Props) => {
                 onPress={() => {
                   console.log("You're Sick!!");
                 }}
-                Btnsize={104}
+                Btnwidth="w-28"
+                Btnheight="h-28"
               />
               <Text className="text-center p-3 text-black text-base">Exchange</Text>
             </View>
