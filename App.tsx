@@ -50,6 +50,7 @@ function App(): JSX.Element {
   }, []);
 
   return (
+
     <AuthProvider>
       <AppContent navigationRef={navigationRef} firstTime={firstTime} />
     </AuthProvider>
@@ -76,6 +77,7 @@ function AppContent({
   }, [authState, firstTime, navigationRef]);
 
   return (
+
     <SafeAreaProvider>
       <NavigationContainer ref={navigationRef}>
         <Stack.Navigator>
