@@ -67,7 +67,7 @@ function AppContent({
 
   useEffect(() => {
     if (firstTime) {
-      navigationRef.current?.navigate('Onboarding');
+      navigationRef.current?.navigate('Onboarding', {navigation: Boolean});
     } else if (authState?.authenticated) {
       navigationRef.current?.navigate('HomeDash');
     } else {
