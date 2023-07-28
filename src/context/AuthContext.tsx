@@ -3,10 +3,12 @@ import {Platform} from 'react-native';
 import axios from 'axios';
 import * as Keychain from 'react-native-keychain';
 import React from 'react';
+import ApiService from '../services/ApiService';
 
 interface AuthProps {
   authState?: {token: string | null; authenticated: boolean | null};
   onRegister?: (
+    email: string,
     username: string,
     password: string,
     DOB: string,
@@ -19,6 +21,7 @@ interface AuthProps {
   ) => Promise<any>;
   onLogin?: (username: string, password: string) => Promise<any>;
   onLogout?: () => Promise<any>;
+
 }
 
 const TOKEN_KEY = 'my-jwt';
@@ -55,7 +58,10 @@ export const AuthProvider = ({children}: any) => {
     loadToken();
   }, []);
 
+  const apiServiceInstance = new ApiService();
+
   const register = async (
+    email: string,
     username: string,
     password: string,
     DOB: string,
@@ -67,7 +73,8 @@ export const AuthProvider = ({children}: any) => {
     race: string,
   ) => {
     try {
-      const result = await axios.post(`${API_URL}/api/auth/register`, {
+      const result:any = await ApiService.register({
+        email,
         username,
         password,
         DOB,
@@ -77,7 +84,8 @@ export const AuthProvider = ({children}: any) => {
         gender,
         ethnicity,
         race,
-      });
+      })
+
 
       // set the auth state after successful registration
       setAuthState({token: result.data.token, authenticated: true});
@@ -90,10 +98,11 @@ export const AuthProvider = ({children}: any) => {
 
   const login = async (username: string, password: string) => {
     try {
-      const result = await axios.post(`${API_URL}/api/auth/login`, {
+      const result: any = await ApiService.login( {
         username,
         password,
-      });
+      })
+
 
       console.log('🚀 ~ file: AuthContext.tsx:54 ~ result:', result);
 

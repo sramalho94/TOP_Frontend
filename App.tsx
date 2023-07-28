@@ -6,7 +6,6 @@ import React, {useEffect, useRef, useState} from 'react';
  * @format
  */
 import { SafeAreaView } from 'react-native';
-import React from 'react';
 import LandingPage from './src/screens/LandingPage';
 import ReportPage from './src/screens/ReportPage';
 import AccountReportPage from './src/screens/AccountReportPage';
