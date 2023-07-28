@@ -83,7 +83,7 @@ const Onboarding = (props: Props) => {
                 {page.title}
               </Text>
             </View>
-            <View className="flex-1 flex-col-reverse mb-3">
+            <View className="flex-1 flex-col-reverse mb-8">
               <View className="mt-5 mx-5">
                 <Button
                   onPress={page.onButtonPress} // Updated this line
@@ -95,7 +95,7 @@ const Onboarding = (props: Props) => {
                   width='80'
                 />
 
-                {currentPage !== pages.length && (
+                {page.pageIndicator !== pages.length && (
                   <Button
                     onPress={() => console.log('Skip button pressed')}
                     innerText="Skip"
