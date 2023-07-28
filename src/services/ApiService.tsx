@@ -1,6 +1,8 @@
 import axios from 'axios';
+import {Platform} from 'react-native';
 
-const BASE_URL = 'http://10.0.2.2:3001/api'; // Replace with your actual API base URL
+const BASE_URL =
+  Platform.OS === 'android' ? 'http://10.0.2.2:3001' : 'http://localhost:3001';
 
 export default class ApiService {
 
@@ -17,6 +19,7 @@ export default class ApiService {
 
   // ✅ It works
   static login(credentials: any): Promise<Response> {
+
     return axios.post(`${BASE_URL}/auth/login`, credentials)
     .then(this.sideEffect((res: any)=> console.log("Login " + res)))
     .catch(this.sideEffect((error: any) => console.log("Login " + error)))
@@ -26,7 +29,6 @@ export default class ApiService {
   static register(userData: any): Promise<Response> {
 
     return axios.post(`${BASE_URL}/auth/register`, userData)
-
     // The sideEffect takes "lambda", which is the arrow function (res:any) => console.log(res).
     // Also, it takes "a", which is the response from the axios.post
     .then(this.sideEffect((res: any)=> console.log(res)))
@@ -34,6 +36,7 @@ export default class ApiService {
   }
 
   static checkSession(): Promise<Response> {
+
     // Add any necessary authentication headers, such as the JWT token
     return axios.get(`${BASE_URL}/auth/check-session`)
     .then(this.sideEffect((res: any)=> console.log(res)))
@@ -50,13 +53,8 @@ export default class ApiService {
 
   // ✅ It works
   static getAllUsers(): Promise<Response> {
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJxd2VydHlAZW1haWwuY29tIiwiaWF0IjoxNjkwMzkxOTY2fQ.XQzxNqY7V23zDDkc0SC3rtsexYh-1vSalJRDGNaJed8"
-    const headers = {
-      Authorization: `Bearer ${token}`,
-      'Content-Type': 'application/json',
-    }
 
-    return axios.get(`${BASE_URL}/users`, { headers })
+    return axios.get(`${BASE_URL}/users`)
     .then(this.sideEffect((res: any)=> console.log("Users: " + JSON.stringify(res.data))))
     .catch(this.sideEffect((error: any) => console.log("Users: " + error)))
   }
@@ -64,24 +62,20 @@ export default class ApiService {
   // ✅ It works
   static getUserById(id: any): Promise<Response> {
 
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJxd2VydHlAZW1haWwuY29tIiwiaWF0IjoxNjkwMzkxOTY2fQ.XQzxNqY7V23zDDkc0SC3rtsexYh-1vSalJRDGNaJed8"
-    const headers = {
-      Authorization: `Bearer ${token}`,
-      'Content-Type': 'application/json',
-    }
-
-    return axios.get(`${BASE_URL}/users/${id}`, {headers})
+    return axios.get(`${BASE_URL}/users/${id}`)
     .then(this.sideEffect((res: any)=> console.log("User by id: " + JSON.stringify(res.data))))
     .catch(this.sideEffect((error: any) => console.log("User by id error: " + error)))
   }
 
   static updateUser(id: any, userData: any): Promise<Response> {
+
     return axios.put(`${BASE_URL}/users/${id}`, userData)
     .then(this.sideEffect((res: any)=> console.log(res)))
     .catch(this.sideEffect((error: any) => console.log(error)))
   }
 
   static deleteUser(id: any): Promise<Response> {
+
     return axios.delete(`${BASE_URL}/users/${id}`)
     .then(this.sideEffect((res: any)=> console.log(res)))
     .catch(this.sideEffect((error: any) => console.log(error)))
@@ -91,19 +85,13 @@ export default class ApiService {
 
   static getAllTests(): Promise<Response> {
 
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJxd2VydHlAZW1haWwuY29tIiwiaWF0IjoxNjkwMzkxOTY2fQ.XQzxNqY7V23zDDkc0SC3rtsexYh-1vSalJRDGNaJed8"
-
-    const headers = {
-      Authorization: `Bearer ${token}`,
-      'Content-Type': 'application/json',
-    }
-
-    return axios.get(`${BASE_URL}/test`, {headers})
+    return axios.get(`${BASE_URL}/test`)
     .then(this.sideEffect((res: any)=> console.log(res)))
     .catch(this.sideEffect((error: any) => console.log(error)))
   }
 
   static getTestById(id: any): Promise<Response> {
+
     return axios.get(`${BASE_URL}/test/${id}`)
     .then(this.sideEffect((res: any)=> console.log(res)))
     .catch(this.sideEffect((error: any) => console.log(error)))
@@ -111,20 +99,15 @@ export default class ApiService {
 
   // ✅ It works
   static createTest(testData: any): Promise<Response> {
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJxd2VydHlAZW1haWwuY29tIiwiaWF0IjoxNjkwMzkxOTY2fQ.XQzxNqY7V23zDDkc0SC3rtsexYh-1vSalJRDGNaJed8"
 
-    const headers = {
-      Authorization: `Bearer ${token}`,
-      'Content-Type': 'application/json',
-    }
-
-    return axios.post(`${BASE_URL}/test`, testData, { headers })
+    return axios.post(`${BASE_URL}/test`, testData)
     .then(this.sideEffect((res: any)=> console.log(res)))
     .catch(this.sideEffect((error: any) => console.log(error)))
   }
 
   // TODO: Probably don't need???
   static updateTest(id: any, testData: any): Promise<Response> {
+
     return axios.put(`${BASE_URL}/test/${id}`, testData)
     .then(this.sideEffect((res: any)=> console.log(res)))
     .catch(this.sideEffect((error: any) => console.log(error)))
@@ -132,6 +115,7 @@ export default class ApiService {
 
   // TODO: Probably don't need???
   static deleteTest(id: any): Promise<Response> {
+
     return axios.delete(`${BASE_URL}/test/${id}`)
     .then(this.sideEffect((res: any)=> console.log(res)))
     .catch(this.sideEffect((error: any) => console.log(error)))
