@@ -18,7 +18,7 @@ import {AuthProvider, useAuth} from './app/context/AuthContext';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export type RootStackParamList = {
-  Onboarding: {navigation: any};
+  Onboarding: undefined;
   LandingPage: undefined;
   SignInPage: undefined;
   CreateAccount: undefined;
@@ -67,7 +67,7 @@ function AppContent({
 
   useEffect(() => {
     if (firstTime) {
-      navigationRef.current?.navigate('Onboarding', {navigation: Boolean});
+      navigationRef.current?.navigate('Onboarding');
     } else if (authState?.authenticated) {
       navigationRef.current?.navigate('HomeDash');
     } else {
