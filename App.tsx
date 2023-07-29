@@ -81,7 +81,7 @@ function AppContent({
     <SafeAreaProvider>
       <NavigationContainer ref={navigationRef}>
         <Stack.Navigator>
-          <Stack.Screen
+          {/* <Stack.Screen
             name="Onboarding"
             component={Onboarding}
             options={{headerShown: false}}
@@ -90,7 +90,7 @@ function AppContent({
             name="LandingPage"
             component={LandingPage}
             options={{headerShown: false}}
-          />
+          /> */}
           <Stack.Screen name="SignInPage" component={SignInPage} />
           <Stack.Screen name="CreateAccount" component={CreateAccount} />
           <Stack.Screen name="ReportPage" component={ReportPage} />

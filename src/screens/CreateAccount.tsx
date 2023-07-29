@@ -189,7 +189,7 @@ const handleSubmit = () => {
                 <TextInputField
                   label="Email*"
                   value={userSignUp.email}
-                  onChange={value => handleChange('username', value)}
+                  onChange={value => handleChange('email', value)}
                   placeholder="Enter your email"
                 />
                 <TextInputField
@@ -199,7 +199,7 @@ const handleSubmit = () => {
                   placeholder="Enter your username"
                 />
                 {/* TODO: refactor password component */}
-                <PasswordField setForm={setForm} form={form} />
+                <PasswordField onChange={handleChange} password={userSignUp.password} showPassword={userSignUp.showPassword} />
               </View>
             </View>
             <View className="mt-48">
