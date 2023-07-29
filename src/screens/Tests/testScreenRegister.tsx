@@ -3,8 +3,9 @@ import {View, SafeAreaView, TouchableOpacity, Text, ScrollView} from 'react-nati
 import Button from '../../components/Button';
 import TextInputField from '../../components/TextInputField';
 import { useState } from 'react';
-import ApiService from '../../services/ApiService';
 import { AuthProvider, useAuth } from '../../context/AuthContext';
+
+// NOTE: for authentication to work, you need to have the screen wrapped in <AuthProvider></AuthProvider> on App.tsx?? It wouldn't work if I wrapped it in the view in this file.
 
 const testScreenRegister = () => {
 
@@ -17,20 +18,14 @@ const testScreenRegister = () => {
     }
 
     const handleSubmit:any = (e: any) => {
-      if (onRegister) {
-        console.log("onRegister exists")
-      } else {
-        console.log("onRegister does not exist")
-      }
       e.preventDefault()
       
       if (onRegister) {
-        
-        console.log("woooo")
+      
         onRegister(userSignUp)
-          .then((res: any) => console.log("res from posting!!ssss: " + res))
+          .then((res: any) => console.log("res from register!!: " + res))
           .catch((error: any) => {
-            console.log("Screen Register Messagessss: " + error);
+            console.log("Screen Register Err: " + error);
           });
       } else {
         console.log("onRegister is not a function or is undefined.");
@@ -38,6 +33,7 @@ const testScreenRegister = () => {
     }
 
   return (
+    
     <SafeAreaView className="mx-auto my-auto">
         <ScrollView>
       <View className="border-2 border-black w-[342] h-[339] mt-[100] mx-auto">

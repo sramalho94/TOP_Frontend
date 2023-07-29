@@ -10,28 +10,39 @@ import Button from '../../components/Button';
 import TextInputField from '../../components/TextInputField';
 import {useState} from 'react';
 import ApiService from '../../services/ApiService';
+import { useAuth } from '../../context/AuthContext';
+
+// NOTE: for authentication to work, you need to have the screen wrapped in <AuthProvider></AuthProvider> on App.tsx?? It wouldn't work if I wrapped it in the view in this file.
 
 const TestScreenLogin = () => {
-  const [userSignUp, setUserSignUp] = useState<any | undefined>({
+  const [userLogin, setUserLogin] = useState<any | undefined>({
     username: '',
     password: '',
   });
 
+  const { onLogin } = useAuth();
+
   const handleChange: any = (field: string, value: string) => {
-    setUserSignUp({...userSignUp, [field]: value});
+    setUserLogin({...userLogin, [field]: value});
   };
 
   const handleSubmit: any = (e: any) => {
     e.preventDefault();
 
-    ApiService.login(userSignUp)
-      .then(res => console.log('res from posting login!!!: ' + res))
-      .catch(error => {
-        console.log('Login Error Message: ' + error);
-      });
+    if (onLogin) {
+      
+      onLogin(userLogin)
+        .then((res: any) => console.log("res from login!!: " + JSON.stringify(res)))
+        .catch((error: any) => {
+          console.log("Screen Login Err: " + error);
+        });
+    } else {
+      console.log("onLogin is not a function or is undefined.");
+    }
   };
 
   return (
+    
     <SafeAreaView className="mx-auto my-auto">
       <ScrollView>
         <View className="border-2 border-black w-[342] h-[339] mt-[100] mx-auto">
@@ -42,13 +53,13 @@ const TestScreenLogin = () => {
         <View className="mt-[40] space-y-[12] mb-[12]">
           <TextInputField
             label="Username"
-            value={userSignUp.username}
+            value={userLogin.username}
             onChange={value => handleChange('username', value)}
             placeholder="username"
           />
           <TextInputField
             label="Password"
-            value={userSignUp.password}
+            value={userLogin.password}
             onChange={value => handleChange('password', value)}
             placeholder="password"
           />

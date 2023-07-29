@@ -17,10 +17,15 @@ interface RegistrationData {
   race: string;
 }
 
+interface LoginData {
+  username: string;
+  password: string;
+}
+
 interface AuthProps {
   authState?: {token: string | null; authenticated: boolean | null};
   onRegister?: (registrationData: RegistrationData) => Promise<any>;
-  onLogin?: (username: string, password: string) => Promise<any>;
+  onLogin?: (loginData: LoginData) => Promise<any>;
   onLogout?: () => Promise<any>;
 }
 
@@ -63,7 +68,6 @@ export const AuthProvider = ({children}: any) => {
   const register = async (
     registrationData: RegistrationData
   ) => {
-    console.log("Registration data in auth: " + JSON.stringify(registrationData))
     try {
       const result:any = await ApiService.register(
         registrationData
@@ -78,12 +82,11 @@ export const AuthProvider = ({children}: any) => {
     }
   };
 
-  const login = async (username: string, password: string) => {
+  const login = async (loginData: LoginData) => {
     try {
-      const result: any = await ApiService.login( {
-        username,
-        password,
-      })
+      const result: any = await ApiService.login( 
+        loginData
+      )
 
 
       console.log('🚀 ~ file: AuthContext.tsx:54 ~ result:', result);
