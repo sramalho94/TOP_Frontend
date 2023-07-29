@@ -19,7 +19,17 @@ interface RegistrationData {
 
 interface AuthProps {
   authState?: {token: string | null; authenticated: boolean | null};
-  onRegister?: (registrationData: RegistrationData) => Promise<any>;
+  onRegister?: (
+    username: string,
+    password: string,
+    DOB: string,
+    state: string,
+    ZIP: string,
+    firstName: string,
+    gender: string,
+    ethnicity: string,
+    race: string,
+  ) => Promise<any>;
   onLogin?: (username: string, password: string) => Promise<any>;
   onLogout?: () => Promise<any>;
 }
@@ -59,13 +69,29 @@ export const AuthProvider = ({children}: any) => {
   const apiServiceInstance = new ApiService();
 
 
-
+  
   const register = async (
-    registrationData: RegistrationData
+    username: string,
+    password: string,
+    DOB: string,
+    state: string,
+    ZIP: string,
+    firstName: string,
+    gender: string,
+    ethnicity: string,
+    race: string,
   ) => {
     try {
       const result:any = await ApiService.register({
-        registrationData
+        username,
+        password,
+        DOB,
+        state,
+        ZIP,
+        firstName,
+        gender,
+        ethnicity,
+        race,
       })
 
 

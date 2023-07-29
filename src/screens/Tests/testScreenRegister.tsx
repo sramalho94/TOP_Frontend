@@ -27,15 +27,11 @@ const testScreenRegister = () => {
       if (onRegister) {
         
         console.log("woooo")
-        ApiService.register(userSignUp)
-        .then((res: any) => console.log("res from posting!!: " + res))
+        onRegister(userSignUp.username, userSignUp.password, userSignUp.DOB, userSignUp.state, userSignUp.ZIP, userSignUp.firstName, userSignUp.gender, userSignUp.ethnicity, userSignUp.race)
+          .then((res: any) => console.log("res from posting!!ssss: " + res))
           .catch((error: any) => {
-            console.log("Screen Register Message: " + error)});
-        // onRegister(userSignUp)
-        //   .then((res: any) => console.log("res from posting!!: " + res))
-        //   .catch((error: any) => {
-        //     console.log("Screen Register Message: " + error);
-        //   });
+            console.log("Screen Register Messagessss: " + error);
+          });
       } else {
         console.log("onRegister is not a function or is undefined.");
       }
