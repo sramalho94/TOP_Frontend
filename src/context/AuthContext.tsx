@@ -6,6 +6,7 @@ import React from 'react';
 import ApiService from '../services/ApiService';
 
 interface RegistrationData {
+  email: string;
   username: string;
   password: string;
   DOB: string;
