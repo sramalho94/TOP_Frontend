@@ -63,15 +63,9 @@ export const AuthProvider = ({children}: any) => {
 
   const apiServiceInstance = new ApiService();
 
-
-  
-  const register = async (
-    registrationData: RegistrationData
-  ) => {
+  const register = async (registrationData: RegistrationData) => {
     try {
-      const result:any = await ApiService.register(
-        registrationData
-      )
+      const result: any = await ApiService.register(registrationData);
 
       // set the auth state after successful registration
       setAuthState({token: result.token, authenticated: true});
@@ -84,10 +78,7 @@ export const AuthProvider = ({children}: any) => {
 
   const login = async (loginData: LoginData) => {
     try {
-      const result: any = await ApiService.login( 
-        loginData
-      )
-
+      const result: any = await ApiService.login(loginData);
 
       console.log('🚀 ~ file: AuthContext.tsx:54 ~ result:', result);
 
