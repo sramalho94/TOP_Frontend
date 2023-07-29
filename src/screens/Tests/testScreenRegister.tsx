@@ -27,7 +27,7 @@ const testScreenRegister = () => {
       if (onRegister) {
         
         console.log("woooo")
-        onRegister(userSignUp.username, userSignUp.password, userSignUp.DOB, userSignUp.state, userSignUp.ZIP, userSignUp.firstName, userSignUp.gender, userSignUp.ethnicity, userSignUp.race)
+        onRegister(userSignUp)
           .then((res: any) => console.log("res from posting!!ssss: " + res))
           .catch((error: any) => {
             console.log("Screen Register Messagessss: " + error);
