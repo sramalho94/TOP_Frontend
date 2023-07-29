@@ -16,13 +16,17 @@ type Props = {
     open: boolean;
     onOpen: any;
     setOpen: any;
+    onChange: (field: string, value: string) => void;
 }
 
-const DropDownField = ({text, selectItems, open, onOpen, setOpen}: Props) => {
+const DropDownField = ({text, selectItems, open, onOpen, setOpen, onChange}: Props) => {
 
 
-        //  TODO: will need to probs ask the UX team what the official dropdown selections are
-        //  Data found from: https://www.census.gov/newsroom/blogs/random-samplings/2021/08/measuring-racial-ethnic-diversity-2020-census.html 
+    const handleValueChange = (itemValue: any) => {
+        setValue(itemValue);
+        console.log("Item value: " + JSON.stringify(itemValue.value))
+        onChange(text.toLowerCase(), itemValue.value); // Call the onChange function with the selected value
+      };
 
     // this sets a value when user selects an option from the dropdown
     const [value, setValue] = useState<string | null>(null);
@@ -38,6 +42,7 @@ const DropDownField = ({text, selectItems, open, onOpen, setOpen}: Props) => {
             onOpen={onOpen}
             setValue={setValue}
             setOpen={setOpen}
+            onSelectItem={(item) => handleValueChange(item)}
             dropDownDirection='TOP'
             listMode="SCROLLVIEW"
             placeholder={`Select your ${text.toLowerCase()}`}

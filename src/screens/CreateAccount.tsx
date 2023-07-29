@@ -52,7 +52,28 @@ const CreateAccount = (props: Props) => {
     password: '',
     DOB: '',
     ZIP: '',
+    gender: '',
+    race: '',
+    ethnicity: '',
   })
+
+  // Handling input field changes:
+  const handleChange = (field: string, value: string) => {
+    setUserSignUp({...userSignUp, [field]: value});
+  }
+
+  // TODO: Chat GPT's suggestion, move these functions into screen file. Will need to refactor password component and sign in screen with these changes
+  const handlePasswordChange = (password: string) => {
+    setUserSignUp((prevUserSignUp) => ({ ...prevUserSignUp, password }));
+  };
+
+  const togglePasswordVisibility = () => {
+    setUserSignUp((prevUserSignUp) => ({
+      ...prevUserSignUp,
+      showPassword: !prevUserSignUp.showPassword,
+    }));
+  };
+
 
   // Handling toggle for modals
   const toggleModalPage0 = () => {
@@ -65,25 +86,6 @@ const CreateAccount = (props: Props) => {
   
   const toggleModalPage2 = () => {
     setIsModalVisiblePage2(!isModalVisiblePage2);
-  };
-
-  // Handling input field changes:
-
-
-  const handleChange = (field: string, value: string) => {
-    setUserSignUp({...userSignUp, [field]: value});
-  }
-
-  const handleGenderChange = (value: boolean) => {
-    setGenderOpen(value);
-  };
-
-  const handleRaceChange = (value: boolean) => {
-    setRaceOpen(value);
-  };
-
-  const handleEthnicityChange = (value: boolean) => {
-    setEthnicityOpen(value);
   };
 
   // Validations:
@@ -110,40 +112,20 @@ const CreateAccount = (props: Props) => {
   };
 
 
+
+
+  // This is used when user clicks on button, it has swipe animation
+  // FIXME: might need to refactor
   // Swipe animation:
   const scrollViewRef = useRef<ScrollView>(null);
   const { width } = useWindowDimensions();
+  let userScrolled = false;
 
-  // FIXME: DO we need this? Will delete if not
-  // let userScrolled = false;
-
-  // const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
-  //   const offsetX = event.nativeEvent.contentOffset.x;
-  //   const newPage = Math.round(offsetX / width);
-
-  //   if (userScrolled) {
-  //     setScrollEnabled(false);  // Disable scrolling while validating
-  //     if (newPage > currentPage) {
-  //       // Swiping forwards
-  //       if (newPage === 1) {
-  //         if (handleSubmitPage0()) {
-  //           handleSwipeAnimation(1);
-  //         }
-  //       } else if (newPage === 2) {
-  //         if (handleSubmitPage1()) {
-  //           handleSwipeAnimation(2);
-  //         }
-  //       }
-  //     }
-  //     setCurrentPage(newPage); // Always update current page after the checks
-  //   }
-  //   setScrollEnabled(true);  // Enable scrolling after validating
-  // };
-  // const handleSwipeAnimation = (targetPage: number) => {
-  //   scrollViewRef.current?.scrollTo({ x: width * targetPage, animated: true });
-  //   userScrolled = false; // Reset the userScrolled flag
-  //   setCurrentPage(targetPage); // Update the current page
-  // };
+  const handleSwipeAnimation = (targetPage: number) => {
+    scrollViewRef.current?.scrollTo({ x: width * targetPage, animated: true });
+    userScrolled = false; // Reset the userScrolled flag
+    setCurrentPage(targetPage); // Update the current page
+  };
 
 
   // Submitting pages:
@@ -151,8 +133,6 @@ const CreateAccount = (props: Props) => {
   //TODO: merge both functions into on handlePageChange
   // Function to handle submitting page 0
   const handleNextPage = () => {
-
-
 
     // FIXME: might delete if not needed
     // handleSwipeAnimation(1);
@@ -193,6 +173,7 @@ const handleSubmit = () => {
 }
 
   const pages = [
+// Page 1
         <View key={1} className="w-screen">
           <View className='h-[110]'>
             <TopNavBar
@@ -259,6 +240,8 @@ const handleSubmit = () => {
               </View>
             </Modal>
           </View>,
+
+// Page 2
         <View key={2} className="w-screen">
           <View className='h-[110]'>
             <TopNavBar
@@ -333,6 +316,7 @@ const handleSubmit = () => {
               </View>
             </Modal>
           </View>, 
+// Page 3
         <View key={3} className="w-screen">
             <View className='h-[110]'>
             <TopNavBar
@@ -373,6 +357,7 @@ const handleSubmit = () => {
                     setRaceOpen(false);
                     setEthnicityOpen(false);
                   }}
+                  onChange={value => handleChange('gender', value)}
                   setOpen={handleGenderChange}
                 />
                 <DropDownField
@@ -409,6 +394,7 @@ const handleSubmit = () => {
                     setRaceOpen(true);
                     setEthnicityOpen(false);
                   }}
+                  onChange={value => handleChange('race', value)}
                   setOpen={handleRaceChange}
                 />
                 <DropDownField
@@ -431,6 +417,7 @@ const handleSubmit = () => {
                     setRaceOpen(false);
                     setEthnicityOpen(true);
                   }}
+                  onChange={value => handleChange('ethnicity', value)}
                   setOpen={handleEthnicityChange}
                 />
               </View>
