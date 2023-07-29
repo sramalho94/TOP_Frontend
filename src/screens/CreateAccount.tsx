@@ -8,36 +8,51 @@ import PasswordField from '../components/Password';
 
 type Props = {};
 
-type FormState = {
-  username: string;
-  password: string;
-  showPassword: boolean;
-};
+interface UserInfo {
+  email: string | undefined;
+  username: string | undefined;
+  password: string | undefined;
+  DOB: string | undefined;
+  ZIP: string | undefined;
+}
 
-const initialFormState: FormState = {
-  username: '',
-  password: '',
-  showPassword: false,
-};
+// interface FormState {
+//   username: string;
+//   password: string;
+//   showPassword: boolean;
+// };
+
+// FIXME: try to figure out after refactoring
+// const initialFormState: FormState = {
+//   username: '',
+//   password: '',
+//   showPassword: false,
+// };
 
 // Define the ReportPage component
 const CreateAccount = (props: Props) => {
   const [currentPage, setCurrentPage] = useState<number>(0);
   const [scrollEnabled, setScrollEnabled] = useState(false);
-  // Define state variables for zip code and age
-  const [email, setEmail] = useState('');
-  const [username, setUsername] = useState('');
-  const [form, setForm] = useState<FormState>(initialFormState);
+
+  // FIXME: figure out after refactoring
+  // const [form, setForm] = useState<FormState>(initialFormState);
   const [isModalVisiblePage0, setIsModalVisiblePage0] = useState(false);
   const [isModalVisiblePage1, setIsModalVisiblePage1] = useState(false);
   const [isModalVisiblePage2, setIsModalVisiblePage2] = useState(false);
-  const [birthday, setBirthday] = useState('');
-  const [zipCode, setZipCode] = useState('');
+
   // need this so that when a user has one dropdown open and selects another, the opened dropdown will close
   const [genderOpen, setGenderOpen] = useState<boolean>(false);
   const [raceOpen, setRaceOpen] = useState<boolean>(false);
   const [ethnicityOpen, setEthnicityOpen] = useState<boolean>(false);
 
+
+  const [userSignUp, setUserSignUp] = useState<any>({
+    email: '',
+    username: '',
+    password: '',
+    DOB: '',
+    ZIP: '',
+  })
 
   // Handling toggle for modals
   const toggleModalPage0 = () => {
@@ -54,24 +69,10 @@ const CreateAccount = (props: Props) => {
 
   // Handling input field changes:
 
-  // Function to handle email changes
-  const handleEmailChange = (value: string) => {
-    setEmail(value);
-  };
 
-  // Function to handle username changes
-  const handleUsernameChange = (value: string) => {
-    setUsername(value);
-  };
-
-  // Function to handle birthday changes
-  const handleBirthdayChange = (value: string) => {
-    setBirthday(value);
-  };
-  // Function to handle zip code changes
-  const handleZipCodeChange = (value: string) => {
-    setZipCode(value);
-  };
+  const handleChange = (field: string, value: string) => {
+    setUserSignUp({...userSignUp, [field]: value});
+  }
 
   const handleGenderChange = (value: boolean) => {
     setGenderOpen(value);
@@ -113,51 +114,52 @@ const CreateAccount = (props: Props) => {
   const scrollViewRef = useRef<ScrollView>(null);
   const { width } = useWindowDimensions();
 
-  let userScrolled = false;
+  // FIXME: DO we need this? Will delete if not
+  // let userScrolled = false;
 
-  const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
-    const offsetX = event.nativeEvent.contentOffset.x;
-    const newPage = Math.round(offsetX / width);
+  // const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+  //   const offsetX = event.nativeEvent.contentOffset.x;
+  //   const newPage = Math.round(offsetX / width);
 
-    if (userScrolled) {
-      setScrollEnabled(false);  // Disable scrolling while validating
-      if (newPage > currentPage) {
-        // Swiping forwards
-        if (newPage === 1) {
-          if (handleSubmitPage0()) {
-            handleSwipeAnimation(1);
-          }
-        } else if (newPage === 2) {
-          if (handleSubmitPage1()) {
-            handleSwipeAnimation(2);
-          }
-        }
-      }
-      setCurrentPage(newPage); // Always update current page after the checks
-    }
-    setScrollEnabled(true);  // Enable scrolling after validating
-  };
-
-  const handleSwipeAnimation = (targetPage: number) => {
-    scrollViewRef.current?.scrollTo({ x: width * targetPage, animated: true });
-    userScrolled = false; // Reset the userScrolled flag
-    setCurrentPage(targetPage); // Update the current page
-  };
+  //   if (userScrolled) {
+  //     setScrollEnabled(false);  // Disable scrolling while validating
+  //     if (newPage > currentPage) {
+  //       // Swiping forwards
+  //       if (newPage === 1) {
+  //         if (handleSubmitPage0()) {
+  //           handleSwipeAnimation(1);
+  //         }
+  //       } else if (newPage === 2) {
+  //         if (handleSubmitPage1()) {
+  //           handleSwipeAnimation(2);
+  //         }
+  //       }
+  //     }
+  //     setCurrentPage(newPage); // Always update current page after the checks
+  //   }
+  //   setScrollEnabled(true);  // Enable scrolling after validating
+  // };
+  // const handleSwipeAnimation = (targetPage: number) => {
+  //   scrollViewRef.current?.scrollTo({ x: width * targetPage, animated: true });
+  //   userScrolled = false; // Reset the userScrolled flag
+  //   setCurrentPage(targetPage); // Update the current page
+  // };
 
 
   // Submitting pages:
 
+  //TODO: merge both functions into on handlePageChange
   // Function to handle submitting page 0
-  const handleSubmitPage0 = () => {
-    handleSwipeAnimation(1);
+  const handleNextPage = () => {
+
+
+
+    // FIXME: might delete if not needed
+    // handleSwipeAnimation(1);
+    // handleSwipeAnimation(2);
     return true;
   };
 
-// Function to handle submitting page 1
-const handleSubmitPage1 = () => {
-  handleSwipeAnimation(2);
-  return true;
-};
 
 // Function to handle submitting the entire form
 const handleSubmit = () => {
@@ -205,21 +207,23 @@ const handleSubmit = () => {
               <View className="w-[342] mt-4">
                 <TextInputField
                   label="Email*"
-                  value={email}
-                  onChange={handleEmailChange}
-                  placeholder=""
+                  value={userSignUp.email}
+                  onChange={value => handleChange('username', value)}
+                  placeholder="Enter your email"
                 />
                 <TextInputField
                   label="Username*"
-                  value={username}
-                  onChange={handleUsernameChange}
-                  placeholder=""
+                  value={userSignUp.username}
+                  onChange={value => handleChange('username', value)}
+                  placeholder="Enter your username"
                 />
+                {/* TODO: refactor password component */}
                 <PasswordField setForm={setForm} form={form} />
               </View>
             </View>
             <View className="mt-48">
               <Button
+                {/* TODO: */}
                 onPress={handleSubmitPage0}
                 innerText="Next"
                 textColor="text-white"
@@ -281,14 +285,14 @@ const handleSubmit = () => {
                 </View>
                 <TextInputField
                   label="Birthday*"
-                  value={birthday}
-                  onChange={handleBirthdayChange}
+                  value={userSignUp.DOB}
+                  onChange={value => handleChange('DOB', value)}
                   placeholder=""
                 />
                 <TextInputField
                   label="Zip Code*"
-                  value={zipCode}
-                  onChange={handleZipCodeChange}
+                  value={userSignUp.ZIP}
+                  onChange={value => handleChange('ZIP', value)}
                   placeholder=""
                 />
               </View>
