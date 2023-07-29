@@ -90,6 +90,30 @@ const CreateAccount = (props: Props) => {
 
   // Validations:
 
+  const isFieldValid = (page: number, email: string, password: string, zipCode: string) => {
+    // take number as arg = page
+    // if (1) => passwordPattern & emailPattern & usernameExists (need to make)
+    // if (2)=> zipCodePattern & DOB exists (need to make)
+    
+    if (page === 1) {
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const passwordPattern =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/;
+      
+      if (emailPattern.test(email) && passwordPattern.test(password)) {
+        return true;
+      } else {
+        return false;
+      }
+    } else if (page === 2) {
+      const zipCodePattern = /^\d{5}$/;
+      if (zipCodePattern.test(zipCode)) {
+        
+      }
+    }
+
+  }
+
   // Function to check if password meets criteria
   const checkPasswordCriteria = () => {
     const passwordPattern =
@@ -111,9 +135,6 @@ const CreateAccount = (props: Props) => {
     return zipCodePattern.test(zipCode);
   };
 
-
-
-
   // This is used when user clicks on button, it has swipe animation
   // FIXME: might need to refactor
   // Swipe animation:
@@ -131,6 +152,7 @@ const CreateAccount = (props: Props) => {
   // Submitting pages:
 
   //TODO: merge both functions into on handlePageChange
+  // handleSubmitPage refactored to handleNextPage
   // Function to handle submitting page 0
   const handleNextPage = () => {
 
@@ -139,6 +161,8 @@ const CreateAccount = (props: Props) => {
     // handleSwipeAnimation(2);
     return true;
   };
+
+
 
 
 // Function to handle submitting the entire form
