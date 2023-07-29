@@ -92,7 +92,7 @@ function AppContent({
             options={{headerShown: false}}
           /> */}
           <Stack.Screen name="SignInPage" component={SignInPage} />
-          <Stack.Screen name="CreateAccount" component={CreateAccount} />
+          {/* <Stack.Screen name="CreateAccount" component={CreateAccount} />
           <Stack.Screen name="ReportPage" component={ReportPage} />
           <Stack.Screen name="ConsentPage" component={ConsentPage} />
           <Stack.Screen
@@ -104,7 +104,7 @@ function AppContent({
             name="AccountReportPage"
             component={AccountReportPage}
           />
-          <Stack.Screen name="HomeDash" component={HomeDash} />
+          <Stack.Screen name="HomeDash" component={HomeDash} /> */}
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>
