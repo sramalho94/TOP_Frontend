@@ -16,6 +16,7 @@ import DropDownField from '../../components/DropDownField';
 interface ApiResponse {
   data: {
     user: {
+      email: string,
       DOB: string;
       state: string;
       ZIP: string;

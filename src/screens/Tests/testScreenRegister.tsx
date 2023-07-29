@@ -19,6 +19,7 @@ import {AuthProvider, useAuth} from '../../context/AuthContext';
 
 const testScreenRegister = () => {
   const [userSignUp, setUserSignUp] = useState<any>({
+    email: 'email@email.com',
     username: '',
     password: '',
     DOB: '1920-01-01',
@@ -41,7 +42,7 @@ const testScreenRegister = () => {
 
     if (onRegister) {
       onRegister(userSignUp)
-        .then((res: any) => console.log('res from register!!: ' + res))
+        .then((res: any) => console.log('res from register!!: ' + JSON.stringify(res)))
         .catch((error: any) => {
           console.log('Screen Register Err: ' + error);
         });

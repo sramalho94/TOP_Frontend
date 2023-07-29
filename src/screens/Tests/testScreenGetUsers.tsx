@@ -9,6 +9,7 @@ import { type } from 'os';
 interface ApiGetAllResponse {
   data: {
     users: [{
+      email: string;
       DOB: string;
       state: string;
       ZIP: string;
@@ -27,6 +28,7 @@ interface ApiGetAllResponse {
 interface ApiByIdResponse {
   data: {
     users: {
+      email: string;
       DOB: string;
       state: string;
       ZIP: string;
