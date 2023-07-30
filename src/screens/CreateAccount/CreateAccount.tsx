@@ -1,118 +1,79 @@
-import { View, Text, SafeAreaView, Modal, ScrollView, NativeSyntheticEvent, NativeScrollEvent, useWindowDimensions } from 'react-native';
-import React, { useState, useRef } from 'react';
-import TextInputField from '../components/TextInputField';
-import Button from '../components/Button';
-import TopNavBar from '../components/TopNavBar';
-import DropDownField from '../components/DropDownField';
-import PasswordField from '../components/Password';
+import {View, Text, SafeAreaView, Modal, ScrollView} from 'react-native';
+import React, {useState} from 'react';
+import TextInputField from '../../components/TextInputField';
+import Button from '../../components/Button';
+import TopNavBar from '../../components/TopNavBar';
+import DropDownField from '../../components/DropDownField';
+import PasswordField from '../../components/Password';
 
 type Props = {};
 
-interface UserInfo {
-  email: string | undefined;
-  username: string | undefined;
-  password: string | undefined;
-  DOB: string | undefined;
-  ZIP: string | undefined;
-}
+type FormState = {
+  username: string;
+  password: string;
+  showPassword: boolean;
+};
 
-// interface FormState {
-//   username: string;
-//   password: string;
-//   showPassword: boolean;
-// };
-
-// FIXME: try to figure out after refactoring
-// const initialFormState: FormState = {
-//   username: '',
-//   password: '',
-//   showPassword: false,
-// };
+const initialFormState: FormState = {
+  username: '',
+  password: '',
+  showPassword: false,
+};
 
 // Define the ReportPage component
 const CreateAccount = (props: Props) => {
-  const [currentPage, setCurrentPage] = useState<number>(0);
-  const [scrollEnabled, setScrollEnabled] = useState(false);
-
-  // FIXME: figure out after refactoring
-  // const [form, setForm] = useState<FormState>(initialFormState);
-  const [isModalVisiblePage0, setIsModalVisiblePage0] = useState(false);
-  const [isModalVisiblePage1, setIsModalVisiblePage1] = useState(false);
-  const [isModalVisiblePage2, setIsModalVisiblePage2] = useState(false);
-
+  // Define switch state
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  // Define state variables for zip code and age
+  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
+  const [form, setForm] = useState<FormState>(initialFormState);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [birthday, setBirthday] = useState('');
+  const [zipCode, setZipCode] = useState('');
   // need this so that when a user has one dropdown open and selects another, the opened dropdown will close
   const [genderOpen, setGenderOpen] = useState<boolean>(false);
   const [raceOpen, setRaceOpen] = useState<boolean>(false);
   const [ethnicityOpen, setEthnicityOpen] = useState<boolean>(false);
 
-
-  const [userSignUp, setUserSignUp] = useState<any>({
-    email: '',
-    username: '',
-    password: '',
-    DOB: '',
-    ZIP: '',
-    gender: '',
-    race: '',
-    ethnicity: '',
-  })
+  const toggleModal = () => {
+    setIsModalVisible(!isModalVisible);
+  };
 
   // Handling input field changes:
-  const handleChange = (field: string, value: string) => {
-    setUserSignUp({...userSignUp, [field]: value});
-  }
 
-  // TODO: Chat GPT's suggestion, move these functions into screen file. Will need to refactor password component and sign in screen with these changes
-  const handlePasswordChange = (password: string) => {
-    setUserSignUp((prevUserSignUp) => ({ ...prevUserSignUp, password }));
+  // Function to handle email changes
+  const handleEmailChange = (value: string) => {
+    setEmail(value);
   };
 
-  const togglePasswordVisibility = () => {
-    setUserSignUp((prevUserSignUp) => ({
-      ...prevUserSignUp,
-      showPassword: !prevUserSignUp.showPassword,
-    }));
+  // Function to handle username changes
+  const handleUsernameChange = (value: string) => {
+    setUsername(value);
   };
 
+  // Function to handle birthday changes
+  const handleBirthdayChange = (value: string) => {
+    setBirthday(value);
+  };
+  // Function to handle zip code changes
+  const handleZipCodeChange = (value: string) => {
+    setZipCode(value);
+  };
 
-  // Handling toggle for modals
-  const toggleModalPage0 = () => {
-    setIsModalVisiblePage0(!isModalVisiblePage0);
+  const handleGenderChange = (value: boolean) => {
+    setGenderOpen(value);
   };
-  
-  const toggleModalPage1 = () => {
-    setIsModalVisiblePage1(!isModalVisiblePage1);
+
+  const handleRaceChange = (value: boolean) => {
+    setRaceOpen(value);
   };
-  
-  const toggleModalPage2 = () => {
-    setIsModalVisiblePage2(!isModalVisiblePage2);
+
+  const handleEthnicityChange = (value: boolean) => {
+    setEthnicityOpen(value);
   };
 
   // Validations:
-
-  const isFieldValid = (page: number, email: string, password: string, zipCode: string) => {
-    // take number as arg = page
-    // if (1) => passwordPattern & emailPattern & usernameExists (need to make)
-    // if (2)=> zipCodePattern & DOB exists (need to make)
-    
-    if (page === 1) {
-      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      const passwordPattern =
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/;
-      
-      if (emailPattern.test(email) && passwordPattern.test(password)) {
-        return true;
-      } else {
-        return false;
-      }
-    } else if (page === 2) {
-      const zipCodePattern = /^\d{5}$/;
-      if (zipCodePattern.test(zipCode)) {
-        
-      }
-    }
-
-  }
 
   // Function to check if password meets criteria
   const checkPasswordCriteria = () => {
@@ -135,101 +96,79 @@ const CreateAccount = (props: Props) => {
     return zipCodePattern.test(zipCode);
   };
 
-  // This is used when user clicks on button, it has swipe animation
-  // FIXME: might need to refactor
-  // Swipe animation:
-  const scrollViewRef = useRef<ScrollView>(null);
-  const { width } = useWindowDimensions();
-  let userScrolled = false;
-
-  const handleSwipeAnimation = (targetPage: number) => {
-    scrollViewRef.current?.scrollTo({ x: width * targetPage, animated: true });
-    userScrolled = false; // Reset the userScrolled flag
-    setCurrentPage(targetPage); // Update the current page
-  };
-
-
   // Submitting pages:
 
-  //TODO: merge both functions into on handlePageChange
-  // handleSubmitPage refactored to handleNextPage
-  // Function to handle submitting page 0
-  const handleNextPage = () => {
+  // Function to handle submitting page 1
+  const handleSubmitPage1 = () => {
+    // Check if email and username are not empty
+    if (!email || !username) {
+      alert('Please fill in all mandatory fields.');
+      return; // Prevent proceeding to the next page
+    }
 
-    // FIXME: might delete if not needed
-    // handleSwipeAnimation(1);
-    // handleSwipeAnimation(2);
-    return true;
+    // Check if the email is in the correct format
+    if (!isEmailValid(email)) {
+      alert('Please enter a valid email address.');
+      return; // Prevent proceeding to the next page
+    }
+
+    const isPasswordValid = checkPasswordCriteria();
+    if (!isPasswordValid) {
+      toggleModal();
+    } else {
+      setCurrentPage(2);
+    }
   };
 
+  // Function to handle submitting page 2
+  const handleSubmitPage2 = () => {
+    // Check if email and username are not empty
+    if (!birthday || !zipCode) {
+      alert('Please fill in all mandatory fields.');
+      return; // Prevent proceeding to the next page
+    }
 
+    // Check if the zip code is in the correct format
+    if (!isZipCodeValid(zipCode)) {
+      alert('Please enter a valid zip code.');
+      return; // Prevent proceeding to the next page
+    } else {
+      setCurrentPage(3);
+    }
+  };
 
-
-// Function to handle submitting the entire form
-const handleSubmit = () => {
-  if (!email || !username) {
-    alert('Please fill in all mandatory fields.');
-    scrollViewRef.current?.scrollTo({ x: 0, animated: true });
-    return false;
-  }
-  if (!isEmailValid(email)) {
-    alert('Please enter a valid email address.');
-    scrollViewRef.current?.scrollTo({ x: 0, animated: true });
-    return false;
-  }
-  const isPasswordValid = checkPasswordCriteria();
-  if (!isPasswordValid) {
-    toggleModalPage0();
-    scrollViewRef.current?.scrollTo({ x: 0, animated: true });
-    return false;
-  } 
-  if (!birthday || !zipCode) {
-    alert('Please fill in all mandatory fields.');
-    scrollViewRef.current?.scrollTo({ x: width, animated: true });
-    return false;
-  }
-  if (!isZipCodeValid(zipCode)) {
-    alert('Please enter a valid zip code.');
-    scrollViewRef.current?.scrollTo({ x: width, animated: true });
-    return false;
-  }
-  console.log("Successfully submitted!")
-}
-
-  const pages = [
-// Page 1
-        <View key={1} className="w-screen">
-          <View className='h-[110]'>
+  switch (currentPage) {
+    case 1:
+      return (
+        <SafeAreaView className="min-w-screen">
+          <ScrollView>
             <TopNavBar
               fontFamily=""
               textSize="xl"
               textValue="Create Account"
               haveProgress={true}
               page={1}
-              />
-              </View>
+            />
             <View className="mx-auto my-auto mb-2">
               <View className="w-[342] mt-4">
                 <TextInputField
                   label="Email*"
-                  value={userSignUp.email}
-                  onChange={value => handleChange('email', value)}
-                  placeholder="Enter your email"
+                  value={email}
+                  onChange={handleEmailChange}
+                  placeholder=""
                 />
                 <TextInputField
                   label="Username*"
-                  value={userSignUp.username}
-                  onChange={value => handleChange('username', value)}
-                  placeholder="Enter your username"
+                  value={username}
+                  onChange={handleUsernameChange}
+                  placeholder=""
                 />
-                {/* TODO: refactor password component */}
                 <PasswordField onChange={handleChange} password={userSignUp.password} showPassword={userSignUp.showPassword} />
               </View>
             </View>
             <View className="mt-48">
               <Button
-                {/* TODO: */}
-                onPress={handleSubmitPage0}
+                onPress={handleSubmitPage1}
                 innerText="Next"
                 textColor="text-white"
                 bgColor="bg-black"
@@ -238,7 +177,7 @@ const handleSubmit = () => {
                 width='80'
               />
             </View>
-            <Modal visible={isModalVisiblePage0} transparent={true}>
+            <Modal visible={isModalVisible} transparent={true}>
               <View className="flex-1 justify-center items-center bg-opacity-50">
                 <View className="bg-white p-8 rounded-lg w-72 border-4">
                   <Text className="text-xl font-bold mb-4">
@@ -252,7 +191,7 @@ const handleSubmit = () => {
                     - One number and one special character
                   </Text>
                   <Button
-                    onPress={toggleModalPage0}
+                    onPress={toggleModal}
                     innerText="Close"
                     textColor=""
                     bgColor="bg-[#B4B4B4]"
@@ -263,11 +202,14 @@ const handleSubmit = () => {
                 </View>
               </View>
             </Modal>
-          </View>,
+          </ScrollView>
+        </SafeAreaView>
+      );
 
-// Page 2
-        <View key={2} className="w-screen">
-          <View className='h-[110]'>
+    case 2:
+      return (
+        <SafeAreaView className="min-w-screen">
+          <ScrollView>
             <TopNavBar
               fontFamily=""
               textSize="xl"
@@ -275,12 +217,12 @@ const handleSubmit = () => {
               haveProgress={true}
               page={2}
             />
-          </View>
+
             <View className="mx-auto my-auto mb-3">
               <View className="w-[342]">
                 <View className="my-4 underline">
                   <Button
-                    onPress={toggleModalPage1}
+                    onPress={toggleModal}
                     innerText="(Why do we need this information?)"
                     bgColor=""
                     textColor=""
@@ -292,21 +234,21 @@ const handleSubmit = () => {
                 </View>
                 <TextInputField
                   label="Birthday*"
-                  value={userSignUp.DOB}
-                  onChange={value => handleChange('DOB', value)}
+                  value={birthday}
+                  onChange={handleBirthdayChange}
                   placeholder=""
                 />
                 <TextInputField
                   label="Zip Code*"
-                  value={userSignUp.ZIP}
-                  onChange={value => handleChange('ZIP', value)}
+                  value={zipCode}
+                  onChange={handleZipCodeChange}
                   placeholder=""
                 />
               </View>
             </View>
             <View className="mt-56">
               <Button
-                onPress={handleSubmitPage1}
+                onPress={handleSubmitPage2}
                 innerText="Next"
                 textColor="text-white"
                 bgColor="bg-black"
@@ -315,7 +257,7 @@ const handleSubmit = () => {
                 width='80'
               />
             </View>
-            <Modal visible={isModalVisiblePage1} transparent={true}>
+            <Modal visible={isModalVisible} transparent={true}>
               <View className="flex-1 justify-center items-center bg-opacity-50">
                 <View className="bg-white p-8 rounded-lg w-72 border-4">
                   <Text className="text-xl font-bold mb-4">
@@ -328,7 +270,7 @@ const handleSubmit = () => {
                     suscipit! Maiores sint adipisci repellendus dolor quaerat.
                   </Text>
                   <Button
-                    onPress={toggleModalPage1}
+                    onPress={toggleModal}
                     innerText="Close"
                     textColor=""
                     bgColor="bg-[#B4B4B4]"
@@ -339,10 +281,13 @@ const handleSubmit = () => {
                 </View>
               </View>
             </Modal>
-          </View>, 
-// Page 3
-        <View key={3} className="w-screen">
-            <View className='h-[110]'>
+          </ScrollView>
+        </SafeAreaView>
+      );
+    case 3:
+      return (
+        <SafeAreaView className="min-w-screen">
+          <ScrollView>
             <TopNavBar
               fontFamily=""
               textSize="xl"
@@ -350,12 +295,11 @@ const handleSubmit = () => {
               haveProgress={true}
               page={3}
             />
-            </View>
             <View className="mx-auto my-auto justify-between">
               <View className="w-[342]">
                 <View className="my-4">
                   <Button
-                    onPress={toggleModalPage2}
+                    onPress={toggleModal}
                     innerText="(Why do we need this information?)"
                     bgColor=""
                     textColor=""
@@ -381,7 +325,6 @@ const handleSubmit = () => {
                     setRaceOpen(false);
                     setEthnicityOpen(false);
                   }}
-                  onChange={value => handleChange('gender', value)}
                   setOpen={handleGenderChange}
                 />
                 <DropDownField
@@ -418,7 +361,6 @@ const handleSubmit = () => {
                     setRaceOpen(true);
                     setEthnicityOpen(false);
                   }}
-                  onChange={value => handleChange('race', value)}
                   setOpen={handleRaceChange}
                 />
                 <DropDownField
@@ -441,14 +383,13 @@ const handleSubmit = () => {
                     setRaceOpen(false);
                     setEthnicityOpen(true);
                   }}
-                  onChange={value => handleChange('ethnicity', value)}
                   setOpen={handleEthnicityChange}
                 />
               </View>
             </View>
             <View className="mt-40">
               <Button
-                onPress={handleSubmit}
+                onPress={() => console.log('pressed')}
                 innerText="Create Account"
                 textColor="text-white"
                 bgColor="bg-black"
@@ -457,7 +398,7 @@ const handleSubmit = () => {
                 width='80'
               />
             </View>
-            <Modal visible={isModalVisiblePage2} transparent={true}>
+            <Modal visible={isModalVisible} transparent={true}>
               <View className="flex-1 justify-center items-center bg-opacity-50 border-4">
                 <View className="bg-white p-8 rounded-lg w-72">
                   <Text className="text-xl font-bold mb-4">
@@ -470,7 +411,7 @@ const handleSubmit = () => {
                     suscipit! Maiores sint adipisci repellendus dolor quaerat.
                   </Text>
                   <Button
-                    onPress={toggleModalPage2}
+                    onPress={toggleModal}
                     innerText="Close"
                     textColor=""
                     bgColor="bg-[#B4B4B4]"
@@ -481,22 +422,11 @@ const handleSubmit = () => {
                 </View>
               </View>
             </Modal>
-          </View>
-  ]
-
-  return (
-    <SafeAreaView>
-      <ScrollView
-        ref={scrollViewRef}
-        horizontal
-        pagingEnabled
-        scrollEnabled
-        onScroll={handleScroll}
-        scrollEventThrottle={16}
-      >
-        {pages}
-      </ScrollView>
-    </SafeAreaView>
-  );
+          </ScrollView>
+        </SafeAreaView>
+      );
+    default:
+      return null;
+  }
 };
 export default CreateAccount;

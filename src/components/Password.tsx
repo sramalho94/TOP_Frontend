@@ -3,18 +3,11 @@ import { useState } from 'react';
 import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-type FormState = {
-  username: string;
-  password: string;
-  showPassword: boolean;
-};
-
 type Props = {
   // setForm: React.Dispatch<React.SetStateAction<FormState>>;
   // form: FormState;
   onChange: (field: string, value: string) => void;
   password:string;
-  showPassword:boolean;
 };
 
 const PasswordField = (props: Props) => {
