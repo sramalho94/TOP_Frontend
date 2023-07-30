@@ -21,11 +21,6 @@ const DropDownField = ({
   setOpen,
   onChange,
 }: Props) => {
-  const handleValueChange = (itemValue: any) => {
-    setValue(itemValue);
-    console.log('Item value: ' + JSON.stringify(itemValue.value));
-    onChange(text.toLowerCase(), itemValue.value); // Call the onChange function with the selected value
-  };
 
   // this sets a value when user selects an option from the dropdown
   const [value, setValue] = useState<string | null>(null);

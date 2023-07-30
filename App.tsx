@@ -90,7 +90,7 @@ function AppContent({
       <CreateAccountProvider>
       <NavigationContainer ref={navigationRef}>
         <Stack.Navigator>
-          {/* <Stack.Screen
+          <Stack.Screen
             name="Onboarding"
             component={Onboarding}
             options={{headerShown: false}}
@@ -99,15 +99,15 @@ function AppContent({
             name="LandingPage"
             component={LandingPage}
             options={{headerShown: false}}
-          /> */}
-          {/* <Stack.Screen name="SignInPage" component={SignInPage} /> */}
+          />
+          <Stack.Screen name="SignInPage" component={SignInPage} />
           <Stack.Screen name="CreateAccount1" component={CreateAccount1} />
           <Stack.Screen name="CreateAccount2" component={CreateAccount2} />
           <Stack.Screen name="CreateAccount3" component={CreateAccount3} />
-          {/* <Stack.Screen name="CreateAccount" component={CreateAccount} /> */}
-          {/* <Stack.Screen name="ReportPage" component={ReportPage} /> */}
+          <Stack.Screen name="CreateAccount" component={CreateAccount} />
+          <Stack.Screen name="ReportPage" component={ReportPage} />
           <Stack.Screen name="ConsentPage" component={ConsentPage} />
-          {/* <Stack.Screen
+          <Stack.Screen
             name="ThankYouScreen"
             component={ThankYouScreen}
             options={{headerShown: false}}
@@ -116,7 +116,7 @@ function AppContent({
             name="AccountReportPage"
             component={AccountReportPage}
           />
-          <Stack.Screen name="HomeDash" component={HomeDash} /> */}
+          <Stack.Screen name="HomeDash" component={HomeDash} />
         </Stack.Navigator>
       </NavigationContainer>
       </CreateAccountProvider>
