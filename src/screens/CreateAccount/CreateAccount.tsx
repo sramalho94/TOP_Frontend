@@ -1,10 +1,10 @@
 import {View, Text, SafeAreaView, Modal, ScrollView} from 'react-native';
 import React, {useState} from 'react';
-import TextInputField from '../components/TextInputField';
-import Button from '../components/Button';
-import TopNavBar from '../components/TopNavBar';
-import DropDownField from '../components/DropDownField';
-import PasswordField from '../components/Password';
+import TextInputField from '../../components/TextInputField';
+import Button from '../../components/Button';
+import TopNavBar from '../../components/TopNavBar';
+import DropDownField from '../../components/DropDownField';
+import PasswordField from '../../components/Password';
 
 type Props = {};
 
@@ -163,7 +163,7 @@ const CreateAccount = (props: Props) => {
                   onChange={handleUsernameChange}
                   placeholder=""
                 />
-                <PasswordField setForm={setForm} form={form} />
+                <PasswordField onChange={handleChange} password={userSignUp.password} showPassword={userSignUp.showPassword} />
               </View>
             </View>
             <View className="mt-48">

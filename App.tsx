@@ -4,7 +4,7 @@ import ReportPage from './src/screens/ReportPage';
 import AccountReportPage from './src/screens/AccountReportPage';
 import ThankYouScreen from './src/screens/ThankYouScreen';
 import SignInPage from './src/screens/SignInPage';
-import CreateAccount from './src/screens/CreateAccount';
+import CreateAccount from './src/screens/CreateAccount/CreateAccount';
 import ConsentPage from './src/screens/ConsentPage';
 import Onboarding from './src/screens/Onboarding';
 import HomeDash from './src/screens/HomeDash';
@@ -16,6 +16,8 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {AuthProvider, useAuth} from './src/context/AuthContext';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import CreateAccount1 from './src/screens/CreateAccount/CreateAccount1';
+import CreateAccountProvider from './src/context/CreateAccountProvider';
 
 export type RootStackParamList = {
   Onboarding: undefined;
@@ -27,6 +29,7 @@ export type RootStackParamList = {
   ThankYouScreen: {logIn: boolean};
   AccountReportPage: undefined;
   HomeDash: undefined;
+  CreateAccount1: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -79,9 +82,10 @@ function AppContent({
   return (
 
     <SafeAreaProvider>
+      <CreateAccountProvider>
       <NavigationContainer ref={navigationRef}>
         <Stack.Navigator>
-          <Stack.Screen
+          {/* <Stack.Screen
             name="Onboarding"
             component={Onboarding}
             options={{headerShown: false}}
@@ -90,9 +94,10 @@ function AppContent({
             name="LandingPage"
             component={LandingPage}
             options={{headerShown: false}}
-          />
-          <Stack.Screen name="SignInPage" component={SignInPage} />
-          <Stack.Screen name="CreateAccount" component={CreateAccount} />
+          /> */}
+          {/* <Stack.Screen name="SignInPage" component={SignInPage} /> */}
+          <Stack.Screen name="CreateAccount1" component={CreateAccount1} />
+          {/* <Stack.Screen name="CreateAccount" component={CreateAccount} />
           <Stack.Screen name="ReportPage" component={ReportPage} />
           <Stack.Screen name="ConsentPage" component={ConsentPage} />
           <Stack.Screen
@@ -104,9 +109,10 @@ function AppContent({
             name="AccountReportPage"
             component={AccountReportPage}
           />
-          <Stack.Screen name="HomeDash" component={HomeDash} />
+          <Stack.Screen name="HomeDash" component={HomeDash} /> */}
         </Stack.Navigator>
       </NavigationContainer>
+      </CreateAccountProvider>
     </SafeAreaProvider>
   );
 }

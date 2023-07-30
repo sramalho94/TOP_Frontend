@@ -28,9 +28,20 @@ const initialFormState: FormState = {
   showPassword: false,
 };
 
+
+
 export default function SignInPage(props: Props) {
   const [form, setForm] = useState<FormState>(initialFormState);
   const [username, setUsername] = useState('');
+
+  const [userSignUp, setUserSignUp] = useState<any>({
+    username: '',
+    password: '',
+  })
+  
+  const handleChange = (field: string, value: string) => {
+    setUserSignUp({...userSignUp, [field]: value});
+  }
 
   const handleUsernameChange = (value: string) => {
     setUsername(value);
@@ -52,7 +63,7 @@ export default function SignInPage(props: Props) {
               onChange={handleUsernameChange}
               placeholder=''
             />
-            <Password setForm={setForm} form={form} />
+            <Password onChange={handleChange} password={userSignUp.password} showPassword={userSignUp.showPassword} />
           </View>
 
 
