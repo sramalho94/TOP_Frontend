@@ -18,6 +18,7 @@ import {AuthProvider, useAuth} from './src/context/AuthContext';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import CreateAccount1 from './src/screens/CreateAccount/CreateAccount1';
 import CreateAccount2 from './src/screens/CreateAccount/CreateAccount2';
+import CreateAccount3 from './src/screens/CreateAccount/CreateAccount3';
 import CreateAccountProvider from './src/context/CreateAccountProvider';
 
 export type RootStackParamList = {
@@ -32,6 +33,8 @@ export type RootStackParamList = {
   HomeDash: undefined;
   CreateAccount1: undefined;
   CreateAccount2: undefined;
+  CreateAccount3: undefined;
+
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -100,10 +103,11 @@ function AppContent({
           {/* <Stack.Screen name="SignInPage" component={SignInPage} /> */}
           <Stack.Screen name="CreateAccount1" component={CreateAccount1} />
           <Stack.Screen name="CreateAccount2" component={CreateAccount2} />
-          {/* <Stack.Screen name="CreateAccount" component={CreateAccount} />
-          <Stack.Screen name="ReportPage" component={ReportPage} />
+          <Stack.Screen name="CreateAccount3" component={CreateAccount3} />
+          {/* <Stack.Screen name="CreateAccount" component={CreateAccount} /> */}
+          {/* <Stack.Screen name="ReportPage" component={ReportPage} /> */}
           <Stack.Screen name="ConsentPage" component={ConsentPage} />
-          <Stack.Screen
+          {/* <Stack.Screen
             name="ThankYouScreen"
             component={ThankYouScreen}
             options={{headerShown: false}}
