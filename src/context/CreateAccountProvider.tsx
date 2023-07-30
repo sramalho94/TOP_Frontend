@@ -10,12 +10,17 @@ const CreateAccountProvider: React.FC<CreateAccountProviderProps> = ({ children 
     username: '',
     email: '',
     password: '',
+    DOB: '',
+    ZIP: '',
+    gender: '',
+    race: '',
+    ethnicity: '',
   });
 
-  const updateFormState = (updates: Partial<FormState>) => {
-    setFormState((prevState) => ({
+  const updateFormState = (field: string, value: string) => {
+    setFormState((prevState: any) => ({
       ...prevState,
-      ...updates,
+      [field]: value,
     }));
   };
 

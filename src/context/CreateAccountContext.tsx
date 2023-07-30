@@ -1,15 +1,19 @@
 import React from 'react';
 
-interface FormState {
+export interface FormState {
   username: string;
   email: string;
   password: string;
-  // Add other form fields here
+  DOB: string;
+  ZIP: string;
+  gender: string;
+  race: string;
+  ethnicity: string;
 }
 
 interface CreateAccountContextProps {
   formState: FormState;
-  updateFormState: (updates: Partial<FormState>) => void;
+  updateFormState: (field: keyof FormState, value: string) => void;
 }
 
 const CreateAccountContext = React.createContext<CreateAccountContextProps>({
@@ -17,6 +21,11 @@ const CreateAccountContext = React.createContext<CreateAccountContextProps>({
     username: '',
     email: '',
     password: '',
+    DOB: '',
+    ZIP: '',
+    gender: '',
+    race: '',
+    ethnicity: '',
   },
   updateFormState: () => {},
 });

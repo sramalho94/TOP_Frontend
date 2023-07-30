@@ -16,6 +16,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {AuthProvider, useAuth} from './src/context/AuthContext';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import CreateAccount1 from './src/screens/CreateAccount/CreateAccount1';
 
 export type RootStackParamList = {
   Onboarding: undefined;
@@ -27,6 +28,7 @@ export type RootStackParamList = {
   ThankYouScreen: {logIn: boolean};
   AccountReportPage: undefined;
   HomeDash: undefined;
+  CreateAccount1: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -91,7 +93,8 @@ function AppContent({
             component={LandingPage}
             options={{headerShown: false}}
           /> */}
-          <Stack.Screen name="SignInPage" component={SignInPage} />
+          {/* <Stack.Screen name="SignInPage" component={SignInPage} /> */}
+          <Stack.Screen name="CreateAccount1" component={CreateAccount1} />
           {/* <Stack.Screen name="CreateAccount" component={CreateAccount} />
           <Stack.Screen name="ReportPage" component={ReportPage} />
           <Stack.Screen name="ConsentPage" component={ConsentPage} />

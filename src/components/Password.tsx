@@ -6,7 +6,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 type Props = {
   // setForm: React.Dispatch<React.SetStateAction<FormState>>;
   // form: FormState;
-  onChange: (field: string, value: string) => void;
+  onChange: (text: string) => void;
   password:string;
 };
 
@@ -29,14 +29,15 @@ const PasswordField = (props: Props) => {
         Password
       </Text>
 
+    {/* TODO: NEED TO TEST */}
       <TextInput
         autoCorrect={false}
-        onChangeText={value => props.onChange('password', value)}
+        value={props.password}
+        onChangeText={value => props.onChange( value )}
         placeholder="Enter your password"
         placeholderTextColor="#6b7280"
         className="border border-black rounded-lg px-4 h-12 w-80 mx-auto font-medium"
         secureTextEntry={!showPassword}
-        value={props.password}
       />
 
       <TouchableOpacity
