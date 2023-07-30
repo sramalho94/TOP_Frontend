@@ -43,9 +43,11 @@ const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
     if (!isPasswordValid) {
       toggleModal();
     } else {
-      navigation.navigate('Screen2');
+      navigation.navigate('CreateAccount2');
     }
   };
+
+
 
   const toggleModal = () => {
     setIsModalVisible(!isModalVisible);
