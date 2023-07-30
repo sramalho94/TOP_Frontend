@@ -17,6 +17,7 @@ import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {AuthProvider, useAuth} from './src/context/AuthContext';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import CreateAccount1 from './src/screens/CreateAccount/CreateAccount1';
+import CreateAccountProvider from './src/context/CreateAccountProvider';
 
 export type RootStackParamList = {
   Onboarding: undefined;
@@ -81,6 +82,7 @@ function AppContent({
   return (
 
     <SafeAreaProvider>
+      <CreateAccountProvider>
       <NavigationContainer ref={navigationRef}>
         <Stack.Navigator>
           {/* <Stack.Screen
@@ -110,6 +112,7 @@ function AppContent({
           <Stack.Screen name="HomeDash" component={HomeDash} /> */}
         </Stack.Navigator>
       </NavigationContainer>
+      </CreateAccountProvider>
     </SafeAreaProvider>
   );
 }
