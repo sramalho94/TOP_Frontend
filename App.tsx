@@ -8,7 +8,6 @@ import CreateAccount from './src/screens/CreateAccount';
 import ConsentPage from './src/screens/ConsentPage';
 import Onboarding from './src/screens/Onboarding';
 import HomeDash from './src/screens/HomeDash';
-import playgroundTopNav from './src/screens/playgroundTopNav'
 import {
   NavigationContainer,
   NavigationContainerRef,
@@ -28,7 +27,6 @@ export type RootStackParamList = {
   ThankYouScreen: {logIn: boolean};
   AccountReportPage: undefined;
   HomeDash: undefined;
-  playgroundTopNav: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -87,17 +85,16 @@ function AppContent({
             name="Onboarding"
             component={Onboarding}
             options={{headerShown: false}}
-          />
+          /> */}
           <Stack.Screen
             name="LandingPage"
             component={LandingPage}
             options={{headerShown: false}}
           />
-          <Stack.Screen name="SignInPage" component={SignInPage} />
+          {/* <Stack.Screen name="SignInPage" component={SignInPage} />
           <Stack.Screen name="CreateAccount" component={CreateAccount} />
           <Stack.Screen name="ReportPage" component={ReportPage} /> */}
-          <Stack.Screen name="playgroundTopNav" component={playgroundTopNav} />
-          <Stack.Screen name="ConsentPage" component={ConsentPage} />
+          <Stack.Screen name="ConsentPage" component={ConsentPage} options={{headerShown: false}} />
           {/* <Stack.Screen
             name="ThankYouScreen"
             component={ThankYouScreen}
