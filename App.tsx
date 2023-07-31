@@ -10,10 +10,10 @@ import Onboarding from './src/screens/Onboarding';
 import HomeDash from './src/screens/HomeDash';
 
 // *** FOR TESTING API CALLS ONLY *** //
-import TestScreenRegister from './src/screens/Tests/testScreenRegister'
-import TestScreenLogin from './src/screens/Tests/testScreenLogin'
-import TestGetUsers from './src/screens/Tests/testScreenGetUsers'
-import TestScreenCovidTest from './src/screens/Tests/testScreenCovidTest'
+import TestScreenRegister from './src/screens/Tests/TestScreenRegister'
+import TestScreenLogin from './src/screens/Tests/TestScreenLogin'
+import TestGetUsers from './src/screens/Tests/TestScreenGetUsers'
+import TestScreenCovidTest from './src/screens/Tests/TestScreenCovidTest'
 // *********************************** //
 
 import {
@@ -35,6 +35,7 @@ export type RootStackParamList = {
   ThankYouScreen: {logIn: boolean};
   AccountReportPage: undefined;
   HomeDash: undefined;
+  TestScreenRegister: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -87,7 +88,10 @@ function AppContent({
   return (
 
     <SafeAreaProvider>
-      <NavigationContainer ref={navigationRef}>
+      <AuthProvider>
+        <TestScreenRegister/>
+      </AuthProvider>
+      {/* <NavigationContainer ref={navigationRef}>
         <Stack.Navigator>
           <Stack.Screen
             name="Onboarding"
@@ -114,7 +118,7 @@ function AppContent({
           />
           <Stack.Screen name="HomeDash" component={HomeDash} />
         </Stack.Navigator>
-      </NavigationContainer>
+      </NavigationContainer> */}
     </SafeAreaProvider>
   );
 }

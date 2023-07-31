@@ -12,12 +12,12 @@ import {useState} from 'react';
 import {AuthProvider, useAuth} from '../../context/AuthContext';
 
 // NOTE: for authentication to work, you need to have the screen wrapped in <AuthProvider></AuthProvider> on App.tsx?? It wouldn't work if I wrapped it in the view in this file.
-// NOTE: Put something like this below in App.tsx for testing;
+// NOTE: Put something like this below in App.tsx forr testing;
 // <AuthProvider>
 //   <TestScreenRegister />
 // </AuthProvider>
 
-const testScreenRegister = () => {
+const TestScreenRegister = () => {
   const [userSignUp, setUserSignUp] = useState<any>({
     email: 'email@email.com',
     username: '',
@@ -42,7 +42,7 @@ const testScreenRegister = () => {
 
     if (onRegister) {
       onRegister(userSignUp)
-        .then((res: any) => console.log('res from register!!: ' + JSON.stringify(res)))
+        .then((res: any) => console.log('res from register!!: ' + JSON.stringify(res.data)))
         .catch((error: any) => {
           console.log('Screen Register Err: ' + error);
         });
@@ -87,4 +87,4 @@ const testScreenRegister = () => {
   );
 };
 
-export default testScreenRegister;
+export default TestScreenRegister;
