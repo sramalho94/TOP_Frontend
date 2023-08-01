@@ -33,7 +33,6 @@ export type RootStackParamList = {
   CreateAccount1: undefined;
   CreateAccount2: undefined;
   CreateAccount3: undefined;
-
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -57,7 +56,6 @@ function App(): JSX.Element {
   }, []);
 
   return (
-
     <AuthProvider>
       <AppContent navigationRef={navigationRef} firstTime={firstTime} />
     </AuthProvider>
@@ -84,39 +82,50 @@ function AppContent({
   }, [authState, firstTime, navigationRef]);
 
   return (
-
     <SafeAreaProvider>
       <CreateAccountProvider>
-      <NavigationContainer ref={navigationRef}>
-        <Stack.Navigator>
-          <Stack.Screen
-            name="Onboarding"
-            component={Onboarding}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name="LandingPage"
-            component={LandingPage}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen name="SignInPage" component={SignInPage} />
-          <Stack.Screen name="CreateAccount1" component={CreateAccount1} options={{headerShown: false}} />
-          <Stack.Screen name="CreateAccount2" component={CreateAccount2} options={{headerShown: false}} />
-          <Stack.Screen name="CreateAccount3" component={CreateAccount3} options={{headerShown: false}} />
-          <Stack.Screen name="ReportPage" component={ReportPage} />
-          <Stack.Screen name="ConsentPage" component={ConsentPage} />
-          <Stack.Screen
-            name="ThankYouScreen"
-            component={ThankYouScreen}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name="AccountReportPage"
-            component={AccountReportPage}
-          />
-          <Stack.Screen name="HomeDash" component={HomeDash} />
-        </Stack.Navigator>
-      </NavigationContainer>
+        <NavigationContainer ref={navigationRef}>
+          <Stack.Navigator>
+            <Stack.Screen
+              name="Onboarding"
+              component={Onboarding}
+              options={{headerShown: false}}
+            />
+            <Stack.Screen
+              name="LandingPage"
+              component={LandingPage}
+              options={{headerShown: false}}
+            />
+            <Stack.Screen name="SignInPage" component={SignInPage} />
+            <Stack.Screen
+              name="CreateAccount1"
+              component={CreateAccount1}
+              options={{headerShown: false}}
+            />
+            <Stack.Screen
+              name="CreateAccount2"
+              component={CreateAccount2}
+              options={{headerShown: false}}
+            />
+            <Stack.Screen
+              name="CreateAccount3"
+              component={CreateAccount3}
+              options={{headerShown: false}}
+            />
+            <Stack.Screen name="ReportPage" component={ReportPage} />
+            <Stack.Screen name="ConsentPage" component={ConsentPage} />
+            <Stack.Screen
+              name="ThankYouScreen"
+              component={ThankYouScreen}
+              options={{headerShown: false}}
+            />
+            <Stack.Screen
+              name="AccountReportPage"
+              component={AccountReportPage}
+            />
+            <Stack.Screen name="HomeDash" component={HomeDash} />
+          </Stack.Navigator>
+        </NavigationContainer>
       </CreateAccountProvider>
     </SafeAreaProvider>
   );
