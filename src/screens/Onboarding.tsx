@@ -65,7 +65,7 @@ const Onboarding = (props: OnboardingScreenProps) => {
       title: 'What the data is not used for',
       buttonText: 'Continue',
       pageIndicator: 3,
-      onButtonPress: () => console.log('Finish button pressed'),
+      onButtonPress: () => navigation.navigate('LandingPage'),
     },
   ];
 
@@ -122,7 +122,7 @@ const Onboarding = (props: OnboardingScreenProps) => {
 
                 {page.pageIndicator !== pages.length && (
                   <Button
-                    onPress={() => console.log('Skip button pressed')}
+                    onPress={() => navigation.navigate('LandingPage')}
                     innerText="Skip"
                     bgColor="bg-white"
                     textColor="text-black"
