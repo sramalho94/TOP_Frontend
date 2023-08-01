@@ -11,13 +11,15 @@ type FormState = {
 type Props = {
   setForm: React.Dispatch<React.SetStateAction<FormState>>;
   form: FormState;
+  handleChange: (field: string, value: string) => void;
 };
 
 const PasswordField = (props: Props) => {
-  const { setForm, form } = props;
+  const { setForm, form, handleChange } = props;
 
   const handlePasswordChange = (password: string) => {
     setForm(prevState => ({ ...prevState, password }));
+    handleChange('password', password);
   };
 
   const togglePasswordVisibility = () => {
