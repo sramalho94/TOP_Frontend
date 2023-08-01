@@ -4,20 +4,19 @@ import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 type Props = {
-  // setForm: React.Dispatch<React.SetStateAction<FormState>>;
-  // form: FormState;
-  onChange: (text: string) => void;
-  password:string;
+  setForm: React.Dispatch<React.SetStateAction<FormState>>;
+  form: FormState;
+  handleChange: (field: string, value: string) => void;
 };
 
 const PasswordField = (props: Props) => {
-  // const { setForm, form } = props;
+  const { setForm, form, handleChange } = props;
 
-  // const handlePasswordChange = (password: string) => {
-  //   props.onChange('password', value);
-  // };
+  const handlePasswordChange = (password: string) => {
+    setForm(prevState => ({ ...prevState, password }));
+    handleChange('password', password);
+  };
 
-  const [showPassword, setShowPassword] = useState<boolean>(false)
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword)

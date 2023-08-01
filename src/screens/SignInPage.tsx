@@ -9,10 +9,13 @@ import {
   ScrollView,
 } from 'react-native';
 import NoImage from '../../assets/blankimage.png';
-import Password from "../components/Password"
+import PasswordField from "../components/Password"
 import Button from '../components/Button';
 import TextInputField from '../components/TextInputField';
 import TopNavBar from '../components/TopNavBar';
+
+import {useAuth} from '../context/AuthContext';
+import {useNavigation, NavigationProp} from "@react-navigation/native"
 
 type Props = {};
 
@@ -28,8 +31,6 @@ const initialFormState: FormState = {
   showPassword: false,
 };
 
-
-
 export default function SignInPage(props: Props) {
   const [form, setForm] = useState<FormState>(initialFormState);
   const [username, setUsername] = useState('');
@@ -38,6 +39,9 @@ export default function SignInPage(props: Props) {
     username: '',
     password: '',
   })
+
+  const {onLogin} = useAuth();
+  const navigation: NavigationProp<any> = useNavigation();
   
   const handleChange = (field: string, value: string) => {
     setUserSignUp({...userSignUp, [field]: value});
@@ -47,6 +51,25 @@ export default function SignInPage(props: Props) {
     setUsername(value);
   };
 
+  const handleSubmit: any = (e: any) => {
+    e.preventDefault();
+
+    if (onLogin) {
+      onLogin(userSignUp)
+        .then((res: any) => {
+          console.log('res from login!!: ' + JSON.stringify(res))
+          if (res.success) {
+            navigation.navigate('HomeDash')
+          }
+        }
+        )
+        .catch((error: any) => {
+          console.log('Screen Login Err: ' + error);
+        });
+    } else {
+      console.log('onLogin is not a function or is undefined.');
+    }
+  };
 
   return (
     <SafeAreaView className="w-342 m-4">
@@ -59,11 +82,11 @@ export default function SignInPage(props: Props) {
           <View className="mb-6">
             <TextInputField
               label="Username"
-              value={form.username}
-              onChange={handleUsernameChange}
-              placeholder=''
+              value={userSignUp.username}
+              onChange={value => handleChange('username', value)}
+              placeholder='Enter your username'
             />
-            <Password onChange={handleChange} password={userSignUp.password} showPassword={userSignUp.showPassword} />
+            <PasswordField setForm={setForm} form={form} handleChange={handleChange} />
           </View>
 
 
@@ -72,7 +95,7 @@ export default function SignInPage(props: Props) {
         </View>
         <View className="mt-4">
           <Button
-            onPress={() => console.log('pressed')}
+            onPress={handleSubmit}
             innerText="Login"
             textColor=""
             bgColor=""

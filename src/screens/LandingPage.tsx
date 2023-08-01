@@ -9,7 +9,7 @@ const LandingPage: React.FC<{navigation: any}> = ({navigation})=> {
       <View className="border-2 border-black w-[342] h-[339] mt-[100] mx-auto"></View>
       <View className="mt-[87] space-y-[12] mb-[12]">
         <Button
-          onPress={() => console.log('pressed')}
+          onPress={() => navigation.navigate('SignInPage')}
           innerText="Log in"
           bgColor="bg-white"
           textColor="text-black"
