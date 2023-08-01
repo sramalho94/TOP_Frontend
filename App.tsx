@@ -89,7 +89,7 @@ function AppContent({
 
     <SafeAreaProvider>
       <AuthProvider>
-        <TestScreenRegister/>
+        <TestScreenLogin/>
       </AuthProvider>
       {/* <NavigationContainer ref={navigationRef}>
         <Stack.Navigator>
