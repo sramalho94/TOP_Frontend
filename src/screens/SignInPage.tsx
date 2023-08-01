@@ -82,11 +82,11 @@ export default function SignInPage(props: Props) {
           <View className="mb-6">
             <TextInputField
               label="Username"
-              value={username}
-              onChange={handleUsernameChange}
+              value={userSignUp.username}
+              onChange={value => handleChange('username', value)}
               placeholder='Enter your username'
             />
-            <PasswordField setForm={setForm} form={form} />
+            <PasswordField setForm={setForm} form={form} handleChange={handleChange} />
           </View>
 
 
