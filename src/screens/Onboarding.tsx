@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import {
@@ -11,21 +11,21 @@ import {
   NativeScrollEvent,
   useWindowDimensions,
 } from 'react-native';
-import { ScrollView } from 'react-native';
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import {ScrollView} from 'react-native';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import NoImage from './../../assets/nopicture.png';
 import ProgressDots from './../components/ProgressDots';
 import Button from './../components/Button';
-import { RootStackParamList } from '../../App';
+import {RootStackParamList} from '../../App';
 type OnboardingScreenProps = NativeStackScreenProps<
   RootStackParamList,
   'Onboarding'
 >;
 
 const Onboarding = (props: OnboardingScreenProps) => {
-  const { navigation } = props;
+  const {navigation} = props;
   const [currentPage, setCurrentPage] = useState<number>(0);
-  const { width } = useWindowDimensions();
+  const {width} = useWindowDimensions();
   const scrollViewRef = useRef<ScrollView>(null);
 
   useEffect(() => {
@@ -73,7 +73,7 @@ const Onboarding = (props: OnboardingScreenProps) => {
 
   const handleSwipeAnimation = (page: number) => {
     if (scrollViewRef.current) {
-      scrollViewRef.current.scrollTo({ x: page * width, animated: true });
+      scrollViewRef.current.scrollTo({x: page * width, animated: true});
       setCurrentPage(page);
 
       // When on the last page
@@ -122,7 +122,7 @@ const Onboarding = (props: OnboardingScreenProps) => {
 
                 {page.pageIndicator !== pages.length && (
                   <Button
-                    onPress={() => console.log('Skip button pressed')}
+                    onPress={() => navigation.navigate('LandingPage')}
                     innerText="Skip"
                     bgColor="bg-white"
                     textColor="text-black"
