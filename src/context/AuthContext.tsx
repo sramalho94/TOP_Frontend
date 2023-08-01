@@ -3,28 +3,35 @@ import {Platform} from 'react-native';
 import axios from 'axios';
 import * as Keychain from 'react-native-keychain';
 import React from 'react';
+import ApiService from '../services/ApiService';
+
+interface RegistrationData {
+  email: string;
+  username: string;
+  password: string;
+  DOB: string;
+  state: string;
+  ZIP: string;
+  firstName: string;
+  gender: string;
+  ethnicity: string;
+  race: string;
+}
+
+interface LoginData {
+  username: string;
+  password: string;
+}
 
 interface AuthProps {
   authState?: {token: string | null; authenticated: boolean | null};
-  onRegister?: (
-    username: string,
-    password: string,
-    DOB: string,
-    state: string,
-    ZIP: string,
-    firstName: string,
-    gender: string,
-    ethnicity: string,
-    race: string,
-  ) => Promise<any>;
-  onLogin?: (username: string, password: string) => Promise<any>;
+  onRegister?: (registrationData: RegistrationData) => Promise<any>;
+  onLogin?: (loginData: LoginData) => Promise<any>;
   onLogout?: () => Promise<any>;
 }
 
 const TOKEN_KEY = 'my-jwt';
 
-export const API_URL =
-  Platform.OS === 'android' ? 'http://10.0.2.2:3001' : 'http://localhost:3001';
 const AuthContext = createContext<AuthProps>({});
 
 export const useAuth = () => {
@@ -55,32 +62,14 @@ export const AuthProvider = ({children}: any) => {
     loadToken();
   }, []);
 
-  const register = async (
-    username: string,
-    password: string,
-    DOB: string,
-    state: string,
-    ZIP: string,
-    firstName: string,
-    gender: string,
-    ethnicity: string,
-    race: string,
-  ) => {
+  const apiServiceInstance = new ApiService();
+
+  const register = async (registrationData: RegistrationData) => {
     try {
-      const result = await axios.post(`${API_URL}/api/auth/register`, {
-        username,
-        password,
-        DOB,
-        state,
-        ZIP,
-        firstName,
-        gender,
-        ethnicity,
-        race,
-      });
+      const result: any = await ApiService.register(registrationData);
 
       // set the auth state after successful registration
-      setAuthState({token: result.data.token, authenticated: true});
+      setAuthState({token: result.token, authenticated: true});
       return result;
     } catch (e) {
       console.log(e); // Log the error here
@@ -88,12 +77,9 @@ export const AuthProvider = ({children}: any) => {
     }
   };
 
-  const login = async (username: string, password: string) => {
+  const login = async (loginData: LoginData) => {
     try {
-      const result = await axios.post(`${API_URL}/api/auth/login`, {
-        username,
-        password,
-      });
+      const result: any = await ApiService.login(loginData);
 
       console.log('🚀 ~ file: AuthContext.tsx:54 ~ result:', result);
 

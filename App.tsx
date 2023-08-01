@@ -7,6 +7,14 @@ import SignInPage from './src/screens/SignInPage';
 import ConsentPage from './src/screens/ConsentPage';
 import Onboarding from './src/screens/Onboarding';
 import HomeDash from './src/screens/HomeDash';
+
+// *** FOR TESTING API CALLS ONLY *** //
+import TestScreenRegister from './src/screens/Tests/TestScreenRegister';
+import TestScreenLogin from './src/screens/Tests/TestScreenLogin';
+import TestGetUsers from './src/screens/Tests/TestScreenGetUsers';
+import TestScreenCovidTest from './src/screens/Tests/TestScreenCovidTest';
+// *********************************** //
+
 import {
   NavigationContainer,
   NavigationContainerRef,
@@ -83,50 +91,34 @@ function AppContent({
 
   return (
     <SafeAreaProvider>
-      <CreateAccountProvider>
-        <NavigationContainer ref={navigationRef}>
-          <Stack.Navigator>
-            <Stack.Screen
-              name="Onboarding"
-              component={Onboarding}
-              options={{headerShown: false}}
-            />
-            <Stack.Screen
-              name="LandingPage"
-              component={LandingPage}
-              options={{headerShown: false}}
-            />
-            <Stack.Screen name="SignInPage" component={SignInPage} />
-            <Stack.Screen
-              name="CreateAccount1"
-              component={CreateAccount1}
-              options={{headerShown: false}}
-            />
-            <Stack.Screen
-              name="CreateAccount2"
-              component={CreateAccount2}
-              options={{headerShown: false}}
-            />
-            <Stack.Screen
-              name="CreateAccount3"
-              component={CreateAccount3}
-              options={{headerShown: false}}
-            />
-            <Stack.Screen name="ReportPage" component={ReportPage} />
-            <Stack.Screen name="ConsentPage" component={ConsentPage} />
-            <Stack.Screen
-              name="ThankYouScreen"
-              component={ThankYouScreen}
-              options={{headerShown: false}}
-            />
-            <Stack.Screen
-              name="AccountReportPage"
-              component={AccountReportPage}
-            />
-            <Stack.Screen name="HomeDash" component={HomeDash} />
-          </Stack.Navigator>
-        </NavigationContainer>
-      </CreateAccountProvider>
+      <NavigationContainer ref={navigationRef}>
+        <Stack.Navigator>
+          <Stack.Screen
+            name="Onboarding"
+            component={Onboarding}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="LandingPage"
+            component={LandingPage}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen name="SignInPage" component={SignInPage} />
+          <Stack.Screen name="CreateAccount" component={CreateAccount} />
+          <Stack.Screen name="ReportPage" component={ReportPage} />
+          <Stack.Screen name="ConsentPage" component={ConsentPage} />
+          <Stack.Screen
+            name="ThankYouScreen"
+            component={ThankYouScreen}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="AccountReportPage"
+            component={AccountReportPage}
+          />
+          <Stack.Screen name="HomeDash" component={HomeDash} />
+        </Stack.Navigator>
+      </NavigationContainer>
     </SafeAreaProvider>
   );
 }
