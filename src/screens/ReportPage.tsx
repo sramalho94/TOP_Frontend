@@ -34,6 +34,10 @@ const ReportPage = (props: Props) => {
     console.log('handleCheckChanges: ', isCheckboxSelected);
   };
 
+  const handleChange = () => {
+    // TODO: will need to refactor all the handle change functions and put them all in to one prob
+  }
+
   // Function to handle zip code changes
   const handleZipCodeChange = (value: string) => {
     setZipCode(value);
@@ -124,6 +128,7 @@ const ReportPage = (props: Props) => {
                 setRaceOpen(false);
                 setEthnicityOpen(false);
               }}
+              onChange={handleChange}
               setOpen={setGenderOpen}
             />
             <DropDownField
@@ -160,6 +165,7 @@ const ReportPage = (props: Props) => {
                 setRaceOpen(true);
                 setEthnicityOpen(false);
               }}
+              onChange={handleChange}
               setOpen={setRaceOpen}
             />
             <DropDownField
@@ -179,6 +185,7 @@ const ReportPage = (props: Props) => {
                 setRaceOpen(false);
                 setEthnicityOpen(true);
               }}
+              onChange={handleChange}
               setOpen={setEthnicityOpen}
             />
           </View>

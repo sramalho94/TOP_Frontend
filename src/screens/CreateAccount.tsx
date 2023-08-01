@@ -42,6 +42,10 @@ const CreateAccount = (props: Props) => {
 
   // Handling input field changes:
 
+  const handleChange = () => {
+    // TODO: will refactor the below functions and use just this function. 
+  }
+
   // Function to handle email changes
   const handleEmailChange = (value: string) => {
     setEmail(value);
@@ -325,6 +329,7 @@ const CreateAccount = (props: Props) => {
                     setRaceOpen(false);
                     setEthnicityOpen(false);
                   }}
+                  onChange={handleChange}
                   setOpen={handleGenderChange}
                 />
                 <DropDownField
@@ -361,6 +366,7 @@ const CreateAccount = (props: Props) => {
                     setRaceOpen(true);
                     setEthnicityOpen(false);
                   }}
+                  onChange={handleChange}
                   setOpen={handleRaceChange}
                 />
                 <DropDownField
@@ -383,6 +389,7 @@ const CreateAccount = (props: Props) => {
                     setRaceOpen(false);
                     setEthnicityOpen(true);
                   }}
+                  onChange={handleChange}
                   setOpen={handleEthnicityChange}
                 />
               </View>
