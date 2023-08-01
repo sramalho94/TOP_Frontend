@@ -1,7 +1,6 @@
 import React, {useContext, useState} from 'react';
 import {View, Text, SafeAreaView, ScrollView, Modal} from 'react-native';
 import CreateAccountContext from '../../context/CreateAccountContext';
-import TextInputField from '../../components/TextInputField';
 import Button from '../../components/Button';
 import TopNavBar from '../../components/TopNavBar';
 import DropDownField from '../../components/DropDownField';
@@ -16,7 +15,7 @@ const CreateAccount3: React.FC<{navigation: any}> = ({navigation}) => {
   const handleNext = () => {
     // Perform any necessary validation before navigating to the next screen
     navigation.navigate('ConsentPage');
-    console.log("formState", {formState})
+    console.log('formState', {formState});
   };
 
   const handleGenderChange = (value: boolean) => {
@@ -30,7 +29,6 @@ const CreateAccount3: React.FC<{navigation: any}> = ({navigation}) => {
   const handleEthnicityChange = (value: boolean) => {
     setEthnicityOpen(value);
   };
-
 
   const toggleModal = () => {
     setIsModalVisible(!isModalVisible);
@@ -77,7 +75,7 @@ const CreateAccount3: React.FC<{navigation: any}> = ({navigation}) => {
                 setEthnicityOpen(false);
               }}
               setOpen={handleGenderChange}
-              onChange={value => updateFormState("gender", value)}
+              onChange={value => updateFormState('gender', value)}
             />
             <DropDownField
               text="Race"
@@ -179,7 +177,6 @@ const CreateAccount3: React.FC<{navigation: any}> = ({navigation}) => {
       </ScrollView>
     </SafeAreaView>
   );
-
 };
 
 export default CreateAccount3;
