@@ -15,7 +15,7 @@ const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
   // Function to check if password meets criteria
   const checkPasswordCriteria = () => {
     const passwordPattern =
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/;
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
     return passwordPattern.test(formState.password);
   };
 
@@ -47,8 +47,6 @@ const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
     }
   };
 
-
-
   const toggleModal = () => {
     setIsModalVisible(!isModalVisible);
   };
@@ -68,17 +66,17 @@ const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
             <TextInputField
               label="Email*"
               value={formState.email}
-              onChange={value => updateFormState("email", value)}
+              onChange={value => updateFormState('email', value)}
               placeholder=""
             />
             <TextInputField
               label="Username*"
               value={formState.username}
-              onChange={value => updateFormState("username", value)}
+              onChange={value => updateFormState('username', value)}
               placeholder=""
             />
             <PasswordField
-              onChange={value => updateFormState("password", value)}
+              onChange={value => updateFormState('password', value)}
               password={formState.password}
             />
           </View>
