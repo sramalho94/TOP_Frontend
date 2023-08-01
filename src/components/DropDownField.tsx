@@ -10,7 +10,7 @@ type Props = {
   open: boolean;
   onOpen: any;
   setOpen: any;
-  onChange: (field: string, value: string) => void;
+  onChange: (text: any) => void;
 };
 
 const DropDownField = ({
@@ -21,12 +21,6 @@ const DropDownField = ({
   setOpen,
   onChange,
 }: Props) => {
-  const handleValueChange = (itemValue: any) => {
-    setValue(itemValue);
-    console.log('Item value: ' + JSON.stringify(itemValue.value));
-    onChange(text.toLowerCase(), itemValue.value); // Call the onChange function with the selected value
-  };
-
   // this sets a value when user selects an option from the dropdown
   const [value, setValue] = useState<string | null>(null);
 
@@ -39,9 +33,9 @@ const DropDownField = ({
         items={selectItems}
         value={value}
         onOpen={onOpen}
-        setOpen={setOpen}
         setValue={setValue}
-        onSelectItem={item => handleValueChange(item)}
+        setOpen={setOpen}
+        onSelectItem={item => onChange(item.value)}
         dropDownDirection="TOP"
         listMode="SCROLLVIEW"
         placeholder={`Select your ${text.toLowerCase()}`}
