@@ -88,10 +88,7 @@ function AppContent({
   return (
 
     <SafeAreaProvider>
-      <AuthProvider>
-        <TestScreenLogin/>
-      </AuthProvider>
-      {/* <NavigationContainer ref={navigationRef}>
+      <NavigationContainer ref={navigationRef}>
         <Stack.Navigator>
           <Stack.Screen
             name="Onboarding"
@@ -118,7 +115,7 @@ function AppContent({
           />
           <Stack.Screen name="HomeDash" component={HomeDash} />
         </Stack.Navigator>
-      </NavigationContainer> */}
+      </NavigationContainer>
     </SafeAreaProvider>
   );
 }

@@ -109,7 +109,7 @@ export default class ApiService {
   static getAllTests(): Promise<AxiosResponse> {
     return axios
       .get(`${BASE_URL}/test`)
-      .then(this.sideEffect((res: AxiosResponse) => console.log(res)))
+      .then(this.sideEffect((res: AxiosResponse) => console.log("This is getting all tests submitted: " + JSON.stringify(res.data.tests))))
       .catch(this.sideEffect((error: AxiosResponse) => console.log(error)));
   }
 
@@ -120,11 +120,12 @@ export default class ApiService {
       .catch(this.sideEffect((error: AxiosResponse) => console.log(error)));
   }
 
-  static createTest(testData: AxiosResponse): Promise<AxiosResponse> {
-    console.log("This is testData in Create Test: " + {testData})
+  // This only creates a test in our db for an anonymous user
+  static createTest(testData: {result: boolean, ZIP: string, gender: string, race: string, ethnicity: string}): Promise<AxiosResponse> {
+    console.log("This is testData in Create Test: " + JSON.stringify(testData))
     return axios
       .post(`${BASE_URL}/test`, testData)
-      .then(this.sideEffect((res: AxiosResponse) => console.log(res)))
+      .then(this.sideEffect((res: AxiosResponse) => console.log("Created Test: " + JSON.stringify(res.data))))
       .catch(this.sideEffect((error: AxiosResponse) => console.log(error)));
   }
 

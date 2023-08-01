@@ -57,7 +57,6 @@ const testScreenCovidTest = () => {
   const handleSubmit: any = (e: any) => {
     e.preventDefault();
 
-    console.log('covidsubmit data: ' + JSON.stringify(covidSubmit));
     ApiService.createTest(covidSubmit)
       .then((res: any) => setCovidInfo(res.data.user))
       .catch(error => {
@@ -69,7 +68,7 @@ const testScreenCovidTest = () => {
   const handleGetSubmit: any = (e: any) => {
     e.preventDefault();
     ApiService.getAllTests()
-      .then((res: any) => console.log(JSON.stringify(res)))
+      .then((res: any) => console.log("This is on the Covid Test Screen page" + JSON.stringify(res.data.tests)))
       .catch(error => {
         console.log('Get Users Message: ' + error);
       });
