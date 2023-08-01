@@ -1,30 +1,26 @@
 import { View, Text, TextInput, TouchableOpacity } from 'react-native';
+import { useState } from 'react';
 import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-type FormState = {
-  username: string;
-  password: string;
-  showPassword: boolean;
-};
-
 type Props = {
-  setForm: React.Dispatch<React.SetStateAction<FormState>>;
-  form: FormState;
+  // setForm: React.Dispatch<React.SetStateAction<FormState>>;
+  // form: FormState;
+  onChange: (text: string) => void;
+  password:string;
 };
 
 const PasswordField = (props: Props) => {
-  const { setForm, form } = props;
+  // const { setForm, form } = props;
 
-  const handlePasswordChange = (password: string) => {
-    setForm(prevState => ({ ...prevState, password }));
-  };
+  // const handlePasswordChange = (password: string) => {
+  //   props.onChange('password', value);
+  // };
+
+  const [showPassword, setShowPassword] = useState<boolean>(false)
 
   const togglePasswordVisibility = () => {
-    setForm(prevState => ({
-      ...prevState,
-      showPassword: !prevState.showPassword,
-    }));
+    setShowPassword(!showPassword)
   };
 
   return (
@@ -33,14 +29,15 @@ const PasswordField = (props: Props) => {
         Password
       </Text>
 
+    {/* TODO: NEED TO TEST */}
       <TextInput
         autoCorrect={false}
-        onChangeText={handlePasswordChange}
+        value={props.password}
+        onChangeText={value => props.onChange( value )}
         placeholder="Enter your password"
         placeholderTextColor="#6b7280"
         className="border border-black rounded-lg px-4 h-12 w-80 mx-auto font-medium"
-        secureTextEntry={!form.showPassword}
-        value={form.password}
+        secureTextEntry={!showPassword}
       />
 
       <TouchableOpacity
@@ -48,7 +45,7 @@ const PasswordField = (props: Props) => {
         className="absolute top-10 right-6">
         <Icon
           className="text-gray-500"
-          name={form.showPassword ? 'eye-off-outline' : 'eye-outline'}
+          name={showPassword ? 'eye-off-outline' : 'eye-outline'}
           size={25}
         />
       </TouchableOpacity>
