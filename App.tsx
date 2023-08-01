@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import LandingPage from './src/screens/LandingPage';
 import ReportPage from './src/screens/ReportPage';
 import AccountReportPage from './src/screens/AccountReportPage';
@@ -19,9 +19,9 @@ import {
   NavigationContainer,
   NavigationContainerRef,
 } from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {SafeAreaProvider} from 'react-native-safe-area-context';
-import {AuthProvider, useAuth} from './src/context/AuthContext';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { AuthProvider, useAuth } from './src/context/AuthContext';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import CreateAccount1 from './src/screens/CreateAccount/CreateAccount1';
 import CreateAccount2 from './src/screens/CreateAccount/CreateAccount2';
@@ -35,7 +35,7 @@ export type RootStackParamList = {
   CreateAccount: undefined;
   ReportPage: undefined;
   ConsentPage: undefined;
-  ThankYouScreen: {logIn: boolean};
+  ThankYouScreen: { logIn: boolean };
   AccountReportPage: undefined;
   HomeDash: undefined;
   CreateAccount1: undefined;
@@ -77,7 +77,7 @@ function AppContent({
   navigationRef: React.RefObject<NavigationContainerRef<RootStackParamList>>;
   firstTime: boolean;
 }) {
-  const {authState} = useAuth();
+  const { authState } = useAuth();
 
   useEffect(() => {
     if (firstTime) {
