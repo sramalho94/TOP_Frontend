@@ -186,7 +186,7 @@ export default class ApiService {
   }): Promise<AxiosResponse> {
     console.log('This is testData in Create Test: ' + JSON.stringify(testData));
     return axios
-      .post(`${BASE_URL}/test/anon`, testData)
+      .post(`${BASE_URL}/test/`, testData)
       .then(
         this.sideEffect((res: AxiosResponse) =>
           console.log('Created Test: ' + JSON.stringify(res.data)),
