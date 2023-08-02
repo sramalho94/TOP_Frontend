@@ -45,6 +45,8 @@ export default function SignInPage(props: Props) {
   
   const handleChange = (field: string, value: string) => {
     setUserSignUp({...userSignUp, [field]: value});
+    console.log("Username: " + userSignUp.username)
+    console.log("Password: " + userSignUp.password)
   }
 
   const handleUsernameChange = (value: string) => {
@@ -86,7 +88,7 @@ export default function SignInPage(props: Props) {
               onChange={value => handleChange('username', value)}
               placeholder='Enter your username'
             />
-            <PasswordField setForm={setForm} form={form} handleChange={handleChange} />
+            <PasswordField password={userSignUp.password} onChange={value => setUserSignUp(value)} />
           </View>
 
 
