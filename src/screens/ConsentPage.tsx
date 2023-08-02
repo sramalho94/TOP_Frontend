@@ -1,4 +1,6 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
+// import {useFormContext} from "react-hook-form";
+// import {useFormContext} from '../context/CreateAccountContext';
 import {
   SafeAreaView,
   View,
@@ -9,12 +11,18 @@ import {
 } from 'react-native';
 import TopNavBar from '../components/TopNavBar';
 import CheckBox from '../components/CheckBox';
+import {useAuth} from '../context/AuthContext';
+import CreateAccountContext from '../context/CreateAccountContext';
 
 const ConsentPage = () => {
   const handlePrivacyPolicyPress = () => {
     const privacyPolicyUrl = 'https://www.privacypolicies.com/generic/';
     Linking.openURL(privacyPolicyUrl);
   };
+  const {onRegister} = useAuth();
+  // const {formState, updateFormState} = useContext<any>(CreateAccountContext);
+  // const {formState} = useFormContext();
+  const {formState} = useContext(CreateAccountContext);
   const handleEmailPress = () => {
     const email = 'leavecovidtracking-us@joinzoe.com';
     Linking.openURL(`mailto:${email}`);
@@ -24,6 +32,7 @@ const ConsentPage = () => {
       'https://www.termsfeed.com/blog/sample-terms-of-use-template/';
     Linking.openURL(termsUrl);
   };
+
   const handleAgree = () => {
     if (
       !checkBoxStates.isOver18Checked ||
@@ -33,7 +42,20 @@ const ConsentPage = () => {
       alert('Please check all the boxes before agreeing.');
       return;
     }
-    alert('Thank you for agreeing to the terms.');
+
+    if (onRegister) {
+      console.log('Double check of formState: ' + JSON.stringify(formState));
+      onRegister(formState)
+        .then((res: any) =>
+          console.log('res from register!!: ' + JSON.stringify(res.data)),
+        )
+        .catch((error: any) => {
+          console.log('Screen Register Err: ' + error);
+        });
+    } else {
+      console.log('onRegister is not a function or is undefined.');
+    }
+    // alert('Thank you for agreeing to the terms.');
   };
 
   const [checkBoxStates, setCheckBoxStates] = useState({

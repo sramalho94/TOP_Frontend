@@ -9,6 +9,8 @@ export interface FormState {
   gender: string;
   race: string;
   ethnicity: string;
+  state: string;
+  firstName: string;
 }
 
 interface CreateAccountContextProps {
@@ -26,6 +28,8 @@ const CreateAccountContext = React.createContext<CreateAccountContextProps>({
     gender: '',
     race: '',
     ethnicity: '',
+    state: '',
+    firstName: '',
   },
   updateFormState: () => {},
 });
