@@ -24,7 +24,11 @@ interface LoginData {
 }
 
 interface AuthProps {
-  authState?: {token: string | null; authenticated: boolean | null};
+  authState?: {
+    token: string | null;
+    authenticated: boolean | null;
+    loading: boolean;
+  };
   onRegister?: (registrationData: RegistrationData) => Promise<any>;
   onLogin?: (loginData: LoginData) => Promise<any>;
   onLogout?: () => Promise<any>;
@@ -42,24 +46,28 @@ export const AuthProvider = ({children}: any) => {
   const [authState, setAuthState] = useState<{
     token: string | null;
     authenticated: boolean | null;
-  }>({token: null, authenticated: null});
+    loading: boolean;
+  }>({token: null, authenticated: null, loading: true});
 
   useEffect(() => {
-    const loadToken = async () => {
+    const fetchToken = async () => {
       const token = await Keychain.getGenericPassword();
-
       console.log('stored:', token);
-
-      if (token) {
+      if (token && token.password) {
+        // Check if the token exists and has a value
         axios.defaults.headers.common[
           'Authorization'
         ] = `Bearer ${token.password}`;
-
-        setAuthState({token: token.password, authenticated: true});
+        setAuthState({
+          token: token.password,
+          authenticated: true,
+          loading: false,
+        });
+      } else {
+        setAuthState({token: null, authenticated: false, loading: false});
       }
     };
-
-    loadToken();
+    fetchToken();
   }, []);
 
   const apiServiceInstance = new ApiService();
@@ -67,12 +75,10 @@ export const AuthProvider = ({children}: any) => {
   const register = async (registrationData: RegistrationData) => {
     try {
       const result: any = await ApiService.register(registrationData);
-
-      // set the auth state after successful registration
-      setAuthState({token: result.token, authenticated: true});
+      setAuthState({token: result.token, authenticated: true, loading: false});
       return result;
     } catch (e) {
-      console.log(e); // Log the error here
+      console.log(e);
       return {error: true, msg: (e as any).response.data.msg};
     }
   };
@@ -80,17 +86,16 @@ export const AuthProvider = ({children}: any) => {
   const login = async (loginData: LoginData) => {
     try {
       const result: any = await ApiService.login(loginData);
-
       console.log('🚀 ~ file: AuthContext.tsx:54 ~ result:', result);
-
-      setAuthState({token: result.data.token, authenticated: true});
-
+      setAuthState({
+        token: result.data.token,
+        authenticated: true,
+        loading: false,
+      });
       axios.defaults.headers.common[
         'Authorization'
       ] = `Bearer ${result.data.token}`;
-
       await Keychain.setGenericPassword(TOKEN_KEY, result.data.token);
-
       return result;
     } catch (e) {
       return {error: true, msg: (e as any).response.data.msg};
@@ -100,7 +105,7 @@ export const AuthProvider = ({children}: any) => {
   const logout = async () => {
     await Keychain.resetGenericPassword();
     axios.defaults.headers.common['Authorization'] = '';
-    setAuthState({token: null, authenticated: false});
+    setAuthState({token: null, authenticated: false, loading: false});
   };
 
   const value = {

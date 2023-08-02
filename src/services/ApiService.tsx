@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from 'axios';
+import axios, {AxiosResponse} from 'axios';
 import {Platform} from 'react-native';
 
 const BASE_URL =
@@ -14,38 +14,59 @@ export default class ApiService {
   // Lambda is a lambda (aka: fn), which we call in JavaScript anonymous functions (anon arrow function below) and "a" is the first argument of the lambda
   // T is a generic. Since there is no specific type for the below "lambda" or "a", we use the generic type "T".
 
-  static sideEffect<T> (lambda: (a:T) => void) {
-    return (a:T): T => {
+  static sideEffect<T>(lambda: (a: T) => void) {
+    return (a: T): T => {
       lambda(a); // process side-effects
       return a; // pass the data further
-    }
-  };
+    };
+  }
 
   // ####################### AUTHENTICATION ####################### //
 
-  static login(credentials: {username: string, password: string}): Promise<AxiosResponse> {
+  static login(credentials: {
+    username: string;
+    password: string;
+  }): Promise<AxiosResponse> {
     return axios
       .post(`${BASE_URL}/auth/login`, credentials)
-      .then(this.sideEffect((res: AxiosResponse) => console.log('Login successful in apiService: ' + res.data)))
-      .catch(this.sideEffect((error: AxiosResponse) => console.log('Login ' + error)));
+      .then(
+        this.sideEffect((res: AxiosResponse) =>
+          console.log('Login successful in apiService: ' + res.data),
+        ),
+      )
+      .catch(
+        this.sideEffect((error: AxiosResponse) =>
+          console.log('Login ' + error),
+        ),
+      );
   }
 
-  static register(userData: {email: string,username: string, password: string, DOB: string, state: string,ZIP: string, firstName: string, gender: string, ethnicity: string, race: string}): Promise<AxiosResponse> {
-    
-    return (
-      axios
-        .post(`${BASE_URL}/auth/register`, userData)
-        .then(
-          this.sideEffect((res: AxiosResponse) =>
-            console.log('Register API service success: ' + JSON.stringify(res.data)),
+  static register(userData: {
+    email: string;
+    username: string;
+    password: string;
+    DOB: string;
+    state: string;
+    ZIP: string;
+    firstName: string;
+    gender: string;
+    ethnicity: string;
+    race: string;
+  }): Promise<AxiosResponse> {
+    return axios
+      .post(`${BASE_URL}/auth/register`, userData)
+      .then(
+        this.sideEffect((res: AxiosResponse) =>
+          console.log(
+            'Register API service success: ' + JSON.stringify(res.data),
           ),
-        )
-        .catch(
-          this.sideEffect((error: AxiosResponse) =>
-            console.log('Register API service error: ' + error),
-          ),
-        )
-    );
+        ),
+      )
+      .catch(
+        this.sideEffect((error: AxiosResponse) =>
+          console.log('Register API service error: ' + error),
+        ),
+      );
   }
 
   static checkSession(): Promise<AxiosResponse> {
@@ -56,7 +77,11 @@ export default class ApiService {
       .catch(this.sideEffect((error: AxiosResponse) => console.log(error)));
   }
 
-  static updatePassword(updatePassword: {username: string, oldPassword: string, newPassword: string}): Promise<AxiosResponse> {
+  static updatePassword(updatePassword: {
+    username: string;
+    oldPassword: string;
+    newPassword: string;
+  }): Promise<AxiosResponse> {
     return axios
       .put(`${BASE_URL}/auth/update-password`, updatePassword)
       .then(this.sideEffect((res: AxiosResponse) => console.log(res)))
@@ -72,7 +97,11 @@ export default class ApiService {
           console.log('Users: ' + JSON.stringify(res.data)),
         ),
       )
-      .catch(this.sideEffect((error: AxiosResponse) => console.log('Users: ' + error)));
+      .catch(
+        this.sideEffect((error: AxiosResponse) =>
+          console.log('Users: ' + error),
+        ),
+      );
   }
 
   static getUserById(id: number): Promise<AxiosResponse> {
@@ -109,7 +138,14 @@ export default class ApiService {
   static getAllTests(): Promise<AxiosResponse> {
     return axios
       .get(`${BASE_URL}/test`)
-      .then(this.sideEffect((res: AxiosResponse) => console.log("This is getting all tests submitted: " + JSON.stringify(res.data.tests))))
+      .then(
+        this.sideEffect((res: AxiosResponse) =>
+          console.log(
+            'This is getting all tests submitted: ' +
+              JSON.stringify(res.data.tests),
+          ),
+        ),
+      )
       .catch(this.sideEffect((error: AxiosResponse) => console.log(error)));
   }
 
@@ -121,11 +157,21 @@ export default class ApiService {
   }
 
   // This only creates a test in our db for an anonymous user
-  static createTest(testData: {result: boolean, ZIP: string, gender: string, race: string, ethnicity: string}): Promise<AxiosResponse> {
-    console.log("This is testData in Create Test: " + JSON.stringify(testData))
+  static createTest(testData: {
+    result: boolean;
+    ZIP: string;
+    gender: string;
+    race: string;
+    ethnicity: string;
+  }): Promise<AxiosResponse> {
+    console.log('This is testData in Create Test: ' + JSON.stringify(testData));
     return axios
-      .post(`${BASE_URL}/test`, testData)
-      .then(this.sideEffect((res: AxiosResponse) => console.log("Created Test: " + JSON.stringify(res.data))))
+      .post(`${BASE_URL}/test/anon`, testData)
+      .then(
+        this.sideEffect((res: AxiosResponse) =>
+          console.log('Created Test: ' + JSON.stringify(res.data)),
+        ),
+      )
       .catch(this.sideEffect((error: AxiosResponse) => console.log(error)));
   }
 

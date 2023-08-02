@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import LandingPage from './src/screens/LandingPage';
 import ReportPage from './src/screens/ReportPage';
 import AccountReportPage from './src/screens/AccountReportPage';
@@ -7,21 +7,13 @@ import SignInPage from './src/screens/SignInPage';
 import ConsentPage from './src/screens/ConsentPage';
 import Onboarding from './src/screens/Onboarding';
 import HomeDash from './src/screens/HomeDash';
-
-// *** FOR TESTING API CALLS ONLY *** //
-import TestScreenRegister from './src/screens/Tests/TestScreenRegister';
-import TestScreenLogin from './src/screens/Tests/TestScreenLogin';
-import TestGetUsers from './src/screens/Tests/TestScreenGetUsers';
-import TestScreenCovidTest from './src/screens/Tests/TestScreenCovidTest';
-// *********************************** //
-
 import {
   NavigationContainer,
   NavigationContainerRef,
 } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { AuthProvider, useAuth } from './src/context/AuthContext';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
+import {AuthProvider, useAuth} from './src/context/AuthContext';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import CreateAccount1 from './src/screens/CreateAccount/CreateAccount1';
 import CreateAccount2 from './src/screens/CreateAccount/CreateAccount2';
@@ -35,7 +27,7 @@ export type RootStackParamList = {
   CreateAccount: undefined;
   ReportPage: undefined;
   ConsentPage: undefined;
-  ThankYouScreen: { logIn: boolean };
+  ThankYouScreen: {logIn: boolean};
   AccountReportPage: undefined;
   HomeDash: undefined;
   CreateAccount1: undefined;
@@ -45,10 +37,14 @@ export type RootStackParamList = {
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
+// ... (previous imports)
+
 function App(): JSX.Element {
   const navigationRef =
     useRef<NavigationContainerRef<RootStackParamList>>(null);
   const [firstTime, setFirstTime] = useState(true);
+
+  const {authState} = useAuth();
 
   useEffect(() => {
     (async () => {
@@ -62,6 +58,15 @@ function App(): JSX.Element {
       }
     })();
   }, []);
+
+  useEffect(() => {
+    // Check if the user is authenticated and the token is available
+    if (!firstTime && authState?.authenticated && authState?.token) {
+      navigationRef.current?.navigate('HomeDash');
+    } else if (!firstTime) {
+      navigationRef.current?.navigate('LandingPage');
+    }
+  }, [authState, firstTime]);
 
   return (
     <AuthProvider>
@@ -77,9 +82,13 @@ function AppContent({
   navigationRef: React.RefObject<NavigationContainerRef<RootStackParamList>>;
   firstTime: boolean;
 }) {
-  const { authState } = useAuth();
+  const {authState} = useAuth();
 
   useEffect(() => {
+    if (authState?.loading) {
+      return;
+    }
+
     if (firstTime) {
       navigationRef.current?.navigate('Onboarding');
     } else if (authState?.authenticated) {
@@ -88,6 +97,11 @@ function AppContent({
       navigationRef.current?.navigate('LandingPage');
     }
   }, [authState, firstTime, navigationRef]);
+
+  if (authState?.loading) {
+    // TODO: Add a loading screen here if needed
+    return null;
+  }
 
   return (
     <SafeAreaProvider>
