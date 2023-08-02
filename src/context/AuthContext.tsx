@@ -74,9 +74,10 @@ export const AuthProvider = ({children}: any) => {
     try {
       const result: any = await ApiService.register(registrationData);
       setAuthState({token: result.token, authenticated: true, loading: false});
+      console.log("This is authState in authContext: " + JSON.stringify(authState))
       return result;
     } catch (e) {
-      console.log(e);
+      console.log("ooo error in authContext register: " + e);
       return {error: true, msg: (e as any).response.data.msg};
     }
   };
