@@ -70,8 +70,6 @@ export const AuthProvider = ({children}: any) => {
     fetchToken();
   }, []);
 
-  const apiServiceInstance = new ApiService();
-
   const register = async (registrationData: RegistrationData) => {
     try {
       const result: any = await ApiService.register(registrationData);

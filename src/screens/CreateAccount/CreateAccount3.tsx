@@ -142,7 +142,7 @@ const CreateAccount3: React.FC<{navigation: any}> = ({navigation}) => {
         <View className="mt-40">
           <Button
             onPress={handleNext}
-            innerText="Create Account"
+            innerText="Next"
             textColor="text-white"
             bgColor="bg-black"
             border={true}
