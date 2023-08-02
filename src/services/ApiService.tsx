@@ -1,5 +1,5 @@
-import axios, {AxiosResponse} from 'axios';
-import {Platform} from 'react-native';
+import axios, { AxiosResponse } from 'axios';
+import { Platform } from 'react-native';
 
 const BASE_URL =
   Platform.OS === 'android'
@@ -142,7 +142,7 @@ export default class ApiService {
         this.sideEffect((res: AxiosResponse) =>
           console.log(
             'This is getting all tests submitted: ' +
-              JSON.stringify(res.data.tests),
+            JSON.stringify(res.data.tests),
           ),
         ),
       )
@@ -159,6 +159,26 @@ export default class ApiService {
   // This only creates a test in our db for an anonymous user
   static createTest(testData: {
     result: boolean;
+    ZIP: string;
+    gender: string;
+    race: string;
+    ethnicity: string;
+  }): Promise<AxiosResponse> {
+    console.log('This is testData in Create Test: ' + JSON.stringify(testData));
+    return axios
+      .post(`${BASE_URL}/test/anon`, testData)
+      .then(
+        this.sideEffect((res: AxiosResponse) =>
+          console.log('Created Test: ' + JSON.stringify(res.data)),
+        ),
+      )
+      .catch(this.sideEffect((error: AxiosResponse) => console.log(error)));
+  }
+
+  // Create test in our db for a registered user 
+  static createTestWithAccount(testData: {
+    result: boolean;
+    userId: number;
     ZIP: string;
     gender: string;
     race: string;
