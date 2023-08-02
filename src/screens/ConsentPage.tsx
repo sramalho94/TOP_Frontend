@@ -19,6 +19,8 @@ const ConsentPage = () => {
     const privacyPolicyUrl = 'https://www.privacypolicies.com/generic/';
     Linking.openURL(privacyPolicyUrl);
   };
+
+  // comment for push
   const {onRegister} = useAuth();
   // const {formState, updateFormState} = useContext<any>(CreateAccountContext);
   // const {formState} = useFormContext();
