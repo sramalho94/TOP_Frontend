@@ -20,11 +20,26 @@ import TopNavBar from '../components/TopNavBar';
 type Props = {};
 
 // Define the ReportPage component
+export interface FormState {
+  DOB: string;
+  ZIP: string;
+  gender: string;
+  race: string;
+  ethnicity: string;
+}
 
 const ReportPage = (props: Props) => {
+  const [formState, setFormState] = useState<FormState>({
+    DOB: '',
+    ZIP: '',
+    gender: '',
+    race: '',
+    ethnicity: '',
+  });
+
   // Define state variables for zip code and age
-  const [zipCode, setZipCode] = useState('');
-  const [age, setAge] = useState('');
+  // const [zipCode, setZipCode] = useState('');
+  // const [age, setAge] = useState('');
   const [isCheckboxSelected, setCheckboxSelection] = useState(false);
 
   console.log('Render: ', isCheckboxSelected);
@@ -34,18 +49,25 @@ const ReportPage = (props: Props) => {
     console.log('handleCheckChanges: ', isCheckboxSelected);
   };
 
-  const handleChange = () => {
-    // TODO: will need to refactor all the handle change functions and put them all in to one prob
-  }
+  const updateFormState = (field: string, value: string) => {
+    setFormState((prevState: any) => ({
+      ...prevState,
+      [field]: value,
+    }));
+  };
+
+  // const handleChange = () => {
+  //   // TODO: will need to refactor all the handle change functions and put them all in to one prob
+  // }
 
   // Function to handle zip code changes
-  const handleZipCodeChange = (value: string) => {
-    setZipCode(value);
-  };
-  // Function to handle age changes
-  const handleAgeChange = (value: string) => {
-    setAge(value);
-  };
+  // const handleZipCodeChange = (value: string) => {
+  //   setZipCode(value);
+  // };
+  // // Function to handle age changes
+  // const handleAgeChange = (value: string) => {
+  //   setAge(value);
+  // };
 
   // need this so that when a user has one dropdown open and selects another, the opened dropdown will close
   const [genderOpen, setGenderOpen] = useState<boolean>(false);
@@ -99,14 +121,14 @@ const ReportPage = (props: Props) => {
           <View className="">
             <TextInputField
               label="Zip Code*"
-              value={zipCode}
-              onChange={handleZipCodeChange}
+              value={formState.ZIP}
+              onChange={value => updateFormState('ZIP', value)}
               placeholder="Enter your ZIP code"
             />
             <TextInputField
               label="Age*"
-              value={age}
-              onChange={handleAgeChange}
+              value={formState.DOB}
+              onChange={value => updateFormState('DOB', value)}
               placeholder="Enter your age"
             />
 
@@ -128,7 +150,7 @@ const ReportPage = (props: Props) => {
                 setRaceOpen(false);
                 setEthnicityOpen(false);
               }}
-              onChange={handleChange}
+              onChange={value => updateFormState('gender', value)}
               setOpen={setGenderOpen}
             />
             <DropDownField
@@ -165,7 +187,7 @@ const ReportPage = (props: Props) => {
                 setRaceOpen(true);
                 setEthnicityOpen(false);
               }}
-              onChange={handleChange}
+              onChange={value => updateFormState('race', value)}
               setOpen={setRaceOpen}
             />
             <DropDownField
@@ -185,7 +207,7 @@ const ReportPage = (props: Props) => {
                 setRaceOpen(false);
                 setEthnicityOpen(true);
               }}
-              onChange={handleChange}
+              onChange={value => updateFormState('ethnicity', value)}
               setOpen={setEthnicityOpen}
             />
           </View>
@@ -204,7 +226,7 @@ const ReportPage = (props: Props) => {
           {/* button container */}
           <View className="mb-14">
             <Button
-              onPress={() => console.log('pressed')}
+              onPress={() => console.log('pressed',"formState",formState)}
               innerText="Report"
               bgColor="bg-[#B4B4B4]"
               textColor="text-black"

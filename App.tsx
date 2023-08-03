@@ -105,7 +105,8 @@ function AppContent({
 
   return (
     <SafeAreaProvider>
-      <CreateAccountProvider>
+      <ReportPage />
+      {/* <CreateAccountProvider>
         <NavigationContainer ref={navigationRef}>
           <Stack.Navigator>
             <Stack.Screen
@@ -148,7 +149,7 @@ function AppContent({
             <Stack.Screen name="HomeDash" component={HomeDash} />
           </Stack.Navigator>
         </NavigationContainer>
-      </CreateAccountProvider>
+      </CreateAccountProvider> */}
     </SafeAreaProvider>
   );
 }
