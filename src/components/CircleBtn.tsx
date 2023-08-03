@@ -5,12 +5,13 @@ import {Image} from 'react-native';
 type Props = {
   text?: string;
   bgColor?: string;
-  onPress: () => void;
+  updateForm: (field: string, value: string | boolean) => void;
   Btnwidth: string;
   Btnheight: string;
   textColor?: string;
   img?: any;
   textSize?: string;
+  value:boolean;
 };
 
 // TODO:
@@ -24,12 +25,13 @@ const CircleBtn = ({
   Btnheight,
   text,
   bgColor,
-  onPress,
+  updateForm,
+  value
 }: Props) => {
   return (
     <>
       <TouchableOpacity
-        onPress={onPress}
+        onPress={()=>updateForm("result",value)}
         className={`${bgColor} border-2 border-black flex items-center rounded-full justify-center ${textColor} ${Btnheight} ${Btnwidth}`}>
         {img && !text ? (
           <Image
