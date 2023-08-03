@@ -14,7 +14,7 @@ import CheckBox from '../components/CheckBox';
 import {useAuth} from '../context/AuthContext';
 import CreateAccountContext from '../context/CreateAccountContext';
 
-const ConsentPage = () => {
+const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
   const handlePrivacyPolicyPress = () => {
     const privacyPolicyUrl = 'https://www.privacypolicies.com/generic/';
     Linking.openURL(privacyPolicyUrl);
