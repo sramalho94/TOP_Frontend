@@ -24,7 +24,7 @@ const ConsentPage = () => {
   const {onRegister} = useAuth();
   // const {formState, updateFormState} = useContext<any>(CreateAccountContext);
   // const {formState} = useFormContext();
-  const {formState} = useContext(CreateAccountContext);
+  const {formState, resetFormState} = useContext(CreateAccountContext);
   const handleEmailPress = () => {
     const email = 'leavecovidtracking-us@joinzoe.com';
     Linking.openURL(`mailto:${email}`);
@@ -54,6 +54,7 @@ const ConsentPage = () => {
         .catch((error: any) => {
           console.log('Screen Register Err: ' + error);
         });
+        resetFormState();
     } else {
       console.log('onRegister is not a function or is undefined.');
     }
