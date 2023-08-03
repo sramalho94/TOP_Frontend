@@ -21,7 +21,7 @@ type Props = {};
 
 // Define the ReportPage component
 export interface FormState {
-  result: string;
+  result: boolean;
   DOB: string;
   ZIP: string;
   gender: string;
@@ -31,7 +31,7 @@ export interface FormState {
 
 const ReportPage = (props: Props) => {
   const [formState, setFormState] = useState<FormState>({
-    result: "false",
+    result: false,
     DOB: '',
     ZIP: '',
     gender: '',
@@ -48,7 +48,7 @@ const ReportPage = (props: Props) => {
     console.log('handleCheckChanges: ', isCheckboxSelected);
   };
 
-  const updateFormState = (field: string, value: string) => {
+  const updateFormState = (field: string, value: string | boolean) => {
     setFormState((prevState: any) => ({
       ...prevState,
       [field]: value,
@@ -89,7 +89,7 @@ const ReportPage = (props: Props) => {
                   Btnwidth="w-32"
                   Btnheight="h-32"
                   textSize="base"
-                  value="false"
+                  value={false}
                 />
               </View>
               <View className="m-2">
@@ -100,7 +100,7 @@ const ReportPage = (props: Props) => {
                   Btnwidth="w-32"
                   Btnheight="h-32"
                   textSize="base"
-                  value="true"
+                  value={true}
                 />
               </View>
             </View>

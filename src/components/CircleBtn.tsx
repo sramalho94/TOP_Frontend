@@ -5,13 +5,13 @@ import {Image} from 'react-native';
 type Props = {
   text?: string;
   bgColor?: string;
-  updateForm: (field: string, value: string) => void;
+  updateForm: (field: string, value: string | boolean) => void;
   Btnwidth: string;
   Btnheight: string;
   textColor?: string;
   img?: any;
   textSize?: string;
-  value:string;
+  value:boolean;
 };
 
 // TODO:
