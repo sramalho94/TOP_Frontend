@@ -20,11 +20,26 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
     Linking.openURL(privacyPolicyUrl);
   };
 
+  const resetFormState = () => {
+    setFormState({
+      username: '',
+      email: '',
+      password: '',
+      DOB: '',
+      ZIP: '',
+      gender: '',
+      race: '',
+      ethnicity: '',
+      state: '',
+      firstName: '',
+    });
+  };
+
   // comment for push
   const {onRegister} = useAuth();
   // const {formState, updateFormState} = useContext<any>(CreateAccountContext);
   // const {formState} = useFormContext();
-  const {formState} = useContext(CreateAccountContext);
+  const {formState, resetFormState} = useContext(CreateAccountContext);
   const handleEmailPress = () => {
     const email = 'leavecovidtracking-us@joinzoe.com';
     Linking.openURL(`mailto:${email}`);
@@ -54,6 +69,19 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
         .catch((error: any) => {
           console.log('Screen Register Err: ' + error);
         });
+        resetFormState({
+          username: '',
+          email: '',
+          password: '',
+          DOB: '',
+          ZIP: '',
+          gender: '',
+          race: '',
+          ethnicity: '',
+          state: '',
+          firstName: '',
+        });
+        console.log('it reset!' + JSON.stringify(formState));
       navigation.navigate('ThankYouScreen');
     } else {
       console.log('onRegister is not a function or is undefined.');

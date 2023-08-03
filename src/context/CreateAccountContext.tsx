@@ -17,6 +17,7 @@ export interface FormState {
 interface CreateAccountContextProps {
   formState: FormState;
   updateFormState: (field: keyof FormState, value: string) => void;
+  resetFormState: (FormState:any) => void;
 }
 
 const CreateAccountContext = React.createContext<CreateAccountContextProps>({
@@ -33,6 +34,7 @@ const CreateAccountContext = React.createContext<CreateAccountContextProps>({
     firstName: '',
   },
   updateFormState: () => {},
+  resetFormState: () => {}
 });
 
 export default CreateAccountContext;

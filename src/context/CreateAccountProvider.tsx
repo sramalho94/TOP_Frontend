@@ -15,6 +15,8 @@ const CreateAccountProvider: React.FC<CreateAccountProviderProps> = ({ children 
     gender: '',
     race: '',
     ethnicity: '',
+    state: '',
+    firstName: ''
   });
 
   const updateFormState = (field: string, value: string) => {
