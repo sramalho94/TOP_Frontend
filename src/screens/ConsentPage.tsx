@@ -75,7 +75,7 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
     isReadAndAcceptChecked: false,
   });
 
-  const handleCheckBoxChange = (checkboxName: string) => {
+  const handleCheckBoxChange = (checkboxName: keyof CheckState) => {
     setCheckBoxStates(prevState => ({
       ...prevState,
       [checkboxName]: !prevState[checkboxName],
