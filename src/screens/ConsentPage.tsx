@@ -14,6 +14,12 @@ import CheckBox from '../components/CheckBox';
 import {useAuth} from '../context/AuthContext';
 import CreateAccountContext from '../context/CreateAccountContext';
 
+interface CheckState {
+  isOver18Checked: boolean;
+  isConsentChecked: boolean;
+  isReadAndAcceptChecked: boolean;
+}
+
 const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
   const handlePrivacyPolicyPress = () => {
     const privacyPolicyUrl = 'https://www.privacypolicies.com/generic/';
@@ -54,22 +60,22 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
         .catch((error: any) => {
           console.log('Screen Register Err: ' + error);
         });
-        resetFormState();
-        navigation.navigate('ThankYouScreen')
-        console.log('reset marathon' + JSON.stringify(formState))
+      resetFormState();
+      navigation.navigate('ThankYouScreen');
+      console.log('reset marathon' + JSON.stringify(formState));
     } else {
       console.log('onRegister is not a function or is undefined.');
     }
     // alert('Thank you for agreeing to the terms.');
   };
 
-  const [checkBoxStates, setCheckBoxStates] = useState({
+  const [checkBoxStates, setCheckBoxStates] = useState<CheckState>({
     isOver18Checked: false,
     isConsentChecked: false,
     isReadAndAcceptChecked: false,
   });
 
-  const handleCheckBoxChange = checkboxName => {
+  const handleCheckBoxChange = (checkboxName: keyof CheckState) => {
     setCheckBoxStates(prevState => ({
       ...prevState,
       [checkboxName]: !prevState[checkboxName],
