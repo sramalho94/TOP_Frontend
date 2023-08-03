@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  View,
-  SafeAreaView,
-  TouchableOpacity,
-  Text,
-  ScrollView,
-} from 'react-native';
+import {View, SafeAreaView, ScrollView} from 'react-native';
 import Button from '../components/Button';
 
 const LandingPage: React.FC<{navigation: any}> = ({navigation}) => {
