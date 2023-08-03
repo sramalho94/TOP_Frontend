@@ -6,7 +6,7 @@ interface CreateAccountProviderProps {
 }
 
 const CreateAccountProvider: React.FC<CreateAccountProviderProps> = ({ children }) => {
-  const initialFormState: FormState = {
+  const [formState, setFormState] = useState<FormState>({
     username: '',
     email: '',
     password: '',
@@ -17,9 +17,20 @@ const CreateAccountProvider: React.FC<CreateAccountProviderProps> = ({ children 
     ethnicity: '',
     state: '',
     firstName: ''
-  };
+  });
 
-  const [formState, setFormState] = useState<FormState>(initialFormState);
+  const initialFormState = {
+    username: '',
+    email: '',
+    password: '',
+    DOB: '',
+    ZIP: '',
+    gender: '',
+    race: '',
+    ethnicity: '',
+    state: '',
+    firstName: ''
+  }
 
   const updateFormState = (field: string, value: string) => {
     setFormState((prevState: any) => ({
