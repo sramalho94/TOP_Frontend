@@ -85,6 +85,18 @@ const CreateAccount2: React.FC<{navigation: any}> = ({navigation}) => {
               onChange={value => updateFormState('ZIP', value)}
               placeholder=""
             />
+            <TextInputField
+              label="state"
+              value={formState.state}
+              onChange={value => updateFormState('state', value)}
+              placeholder=""
+            />
+            <TextInputField
+              label="firstName"
+              value={formState.firstName}
+              onChange={value => updateFormState('firstName', value)}
+              placeholder=""
+            />
           </View>
         </View>
         <View className="mt-56">

@@ -84,24 +84,24 @@ function AppContent({
 }) {
   const {authState} = useAuth();
 
-  useEffect(() => {
-    if (authState?.loading) {
-      return;
-    }
+  // useEffect(() => {
+  //   if (authState?.loading) {
+  //     return;
+  //   }
 
-    if (firstTime) {
-      navigationRef.current?.navigate('Onboarding');
-    } else if (authState?.authenticated) {
-      navigationRef.current?.navigate('HomeDash');
-    } else {
-      navigationRef.current?.navigate('LandingPage');
-    }
-  }, [authState, firstTime, navigationRef]);
+  //   if (firstTime) {
+  //     navigationRef.current?.navigate('Onboarding');
+  //   } else if (authState?.authenticated) {
+  //     navigationRef.current?.navigate('HomeDash');
+  //   } else {
+  //     navigationRef.current?.navigate('LandingPage');
+  //   }
+  // }, [authState, firstTime, navigationRef]);
 
-  if (authState?.loading) {
-    // TODO: Add a loading screen here if needed
-    return null;
-  }
+  // if (authState?.loading) {
+  //   // TODO: Add a loading screen here if needed
+  //   return null;
+  // }
 
   return (
     <SafeAreaProvider>
