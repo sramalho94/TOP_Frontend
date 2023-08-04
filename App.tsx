@@ -105,11 +105,10 @@ function AppContent({
 
   return (
     <SafeAreaProvider>
-      <ReportPage />
-      {/* <CreateAccountProvider>
+      <CreateAccountProvider>
         <NavigationContainer ref={navigationRef}>
           <Stack.Navigator>
-            <Stack.Screen
+            {/* <Stack.Screen
               name="Onboarding"
               component={Onboarding}
               options={{headerShown: false}}
@@ -134,22 +133,22 @@ function AppContent({
               name="CreateAccount3"
               component={CreateAccount3}
               options={{headerShown: false}}
-            />
+            /> */}
             <Stack.Screen name="ReportPage" component={ReportPage} />
-            <Stack.Screen name="ConsentPage" component={ConsentPage} />
+            {/* <Stack.Screen name="ConsentPage" component={ConsentPage} /> */}
             <Stack.Screen
               name="ThankYouScreen"
               component={ThankYouScreen}
               options={{headerShown: false}}
             />
-            <Stack.Screen
+            {/* <Stack.Screen
               name="AccountReportPage"
               component={AccountReportPage}
             />
-            <Stack.Screen name="HomeDash" component={HomeDash} />
+            <Stack.Screen name="HomeDash" component={HomeDash} /> */}
           </Stack.Navigator>
         </NavigationContainer>
-      </CreateAccountProvider> */}
+      </CreateAccountProvider>
     </SafeAreaProvider>
   );
 }

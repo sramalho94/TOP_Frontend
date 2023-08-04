@@ -18,7 +18,6 @@ import CircleBtn from '../components/CircleBtn';
 import TopNavBar from '../components/TopNavBar';
 import ApiService from '../services/ApiService';
 
-
 type Props = {};
 
 // Define the ReportPage component
@@ -31,7 +30,7 @@ export interface FormState {
   ethnicity: string;
 }
 
-const ReportPage = (props: Props) => {
+const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
   const [formState, setFormState] = useState<FormState>({
     result: false,
     DOB: '',
@@ -42,15 +41,16 @@ const ReportPage = (props: Props) => {
   });
 
   const handleReportButtonClick = () => {
-       // Call the createTest method from the ApiService
-       ApiService.createTest(formState)
-       .then((Response) => {
-        console.log("test created successfully:", Response.data)
-       })
-       .catch((Error) => {
-        console.log("Error creating test:" , Error)
-       })
-  }
+    // Call the createTest method from the ApiService
+    ApiService.createTest(formState)
+      .then(Response => {
+        navigation.navigate('ThankYouScreen');
+        console.log('test created successfully:', Response.data);
+      })
+      .catch(Error => {
+        console.log('Error creating test:', Error);
+      });
+  };
 
   const [isCheckboxSelected, setCheckboxSelection] = useState(false);
 
@@ -68,7 +68,7 @@ const ReportPage = (props: Props) => {
     }));
   };
 
-    // need this so that when a user has one dropdown open and selects another, the opened dropdown will close
+  // need this so that when a user has one dropdown open and selects another, the opened dropdown will close
   const [genderOpen, setGenderOpen] = useState<boolean>(false);
   const [raceOpen, setRaceOpen] = useState<boolean>(false);
   const [ethnicityOpen, setEthnicityOpen] = useState<boolean>(false);
