@@ -46,6 +46,14 @@ const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
       .then(Response => {
         navigation.navigate('ThankYouScreen');
         console.log('test created successfully:', Response.data);
+        setFormState({
+          result: false,
+          DOB: '',
+          ZIP: '',
+          gender: '',
+          race: '',
+          ethnicity: '',
+        });
       })
       .catch(Error => {
         console.log('Error creating test:', Error);
