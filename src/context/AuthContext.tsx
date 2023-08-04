@@ -24,7 +24,7 @@ interface LoginData {
 }
 
 interface AuthProps {
-  authState?: {
+  authState: {
     token: string | null;
     authenticated: boolean | null;
     loading: boolean;
@@ -36,7 +36,13 @@ interface AuthProps {
 
 const TOKEN_KEY = 'my-jwt';
 
-const AuthContext = createContext<AuthProps>({});
+const AuthContext = createContext<AuthProps>({
+  authState: {
+    token: null,
+    authenticated: null,
+    loading: false,
+  },
+});
 
 export const useAuth = () => {
   return useContext(AuthContext);
