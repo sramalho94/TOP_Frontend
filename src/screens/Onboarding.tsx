@@ -78,6 +78,7 @@ const Onboarding = (props: OnboardingScreenProps) => {
 
       // When on the last page
       if (page === pages.length - 1) {
+        console.log("page swipe works wooo")
         AsyncStorage.setItem('first_time', 'done');
       }
     }
