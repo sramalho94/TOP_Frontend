@@ -27,7 +27,7 @@ const LandingPage: React.FC<{navigation: any}> = ({navigation})=> {
           width='80'
         />
         <Button
-          onPress={() => navigation.navigate('ConsentPage')}
+          onPress={() => navigation.navigate('ReportPage')}
           innerText="Report Without Account"
           bgColor="bg-[#B4B4B4]"
           textColor="text-black"
