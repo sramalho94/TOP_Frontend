@@ -16,6 +16,8 @@ import Button from '../components/Button';
 import DropDownPicker from 'react-native-dropdown-picker';
 import CircleBtn from '../components/CircleBtn';
 import TopNavBar from '../components/TopNavBar';
+import ApiService from '../services/ApiService';
+
 
 type Props = {};
 
@@ -38,6 +40,17 @@ const ReportPage = (props: Props) => {
     race: '',
     ethnicity: '',
   });
+
+  const handleReportButtonClick = () => {
+       // Call the createTest method from the ApiService
+       ApiService.createTest(formState)
+       .then((Response) => {
+        console.log("test created successfully:", Response.data)
+       })
+       .catch((Error) => {
+        console.log("Error creating test:" , Error)
+       })
+  }
 
   const [isCheckboxSelected, setCheckboxSelection] = useState(false);
 
@@ -214,7 +227,7 @@ const ReportPage = (props: Props) => {
             {/* button container */}
             <View className="mb-14">
               <Button
-                onPress={() => console.log('pressed', 'formState', formState)}
+                onPress={handleReportButtonClick}
                 innerText="Report"
                 bgColor="bg-[#B4B4B4]"
                 textColor="text-black"
