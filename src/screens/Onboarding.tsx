@@ -28,23 +28,6 @@ const Onboarding = (props: OnboardingScreenProps) => {
   const {width} = useWindowDimensions();
   const scrollViewRef = useRef<ScrollView>(null);
 
-  useEffect(() => {
-    (async () => {
-      try {
-        const isFirstTime = await AsyncStorage.getItem('first_time');
-        if (isFirstTime !== null) {
-          // Not the first time, navigate accordingly
-          navigation.navigate('LandingPage'); // Replace with the correct screen name for non-first-time users
-        } else {
-          // If it is the first time
-          // No need to navigate because user is already on the Onboarding screen
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    })();
-  }, [navigation]);
-
   const pages = [
     {
       imageSource: NoImage,
@@ -65,7 +48,7 @@ const Onboarding = (props: OnboardingScreenProps) => {
       title: 'What the data is not used for',
       buttonText: 'Continue',
       pageIndicator: 3,
-      onButtonPress: () => console.log('Finish button pressed'),
+      onButtonPress: () => navigation.navigate('CreateAccount1'),
     },
   ];
 
@@ -75,11 +58,6 @@ const Onboarding = (props: OnboardingScreenProps) => {
     if (scrollViewRef.current) {
       scrollViewRef.current.scrollTo({x: page * width, animated: true});
       setCurrentPage(page);
-
-      // When on the last page
-      if (page === pages.length - 1) {
-        AsyncStorage.setItem('first_time', 'done');
-      }
     }
   };
 
@@ -122,7 +100,7 @@ const Onboarding = (props: OnboardingScreenProps) => {
 
                 {page.pageIndicator !== pages.length && (
                   <Button
-                    onPress={() => console.log('Skip button pressed')}
+                    onPress={() => navigation.navigate('CreateAccount1')}
                     innerText="Skip"
                     bgColor="bg-white"
                     textColor="text-black"

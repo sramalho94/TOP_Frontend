@@ -3,29 +3,46 @@ import {Platform} from 'react-native';
 import axios from 'axios';
 import * as Keychain from 'react-native-keychain';
 import React from 'react';
+import ApiService from '../services/ApiService';
+
+interface RegistrationData {
+  email: string;
+  username: string;
+  password: string;
+  DOB: string;
+  state: string;
+  ZIP: string;
+  firstName: string;
+  gender: string;
+  ethnicity: string;
+  race: string;
+}
+
+interface LoginData {
+  username: string;
+  password: string;
+}
 
 interface AuthProps {
-  authState?: {token: string | null; authenticated: boolean | null};
-  onRegister?: (
-    username: string,
-    password: string,
-    DOB: string,
-    state: string,
-    ZIP: string,
-    firstName: string,
-    gender: string,
-    ethnicity: string,
-    race: string,
-  ) => Promise<any>;
-  onLogin?: (username: string, password: string) => Promise<any>;
+  authState: {
+    token: string | null;
+    authenticated: boolean | null;
+    loading: boolean;
+  };
+  onRegister?: (registrationData: RegistrationData) => Promise<any>;
+  onLogin?: (loginData: LoginData) => Promise<any>;
   onLogout?: () => Promise<any>;
 }
 
 const TOKEN_KEY = 'my-jwt';
 
-export const API_URL =
-  Platform.OS === 'android' ? 'http://10.0.2.2:3001' : 'http://localhost:3001';
-const AuthContext = createContext<AuthProps>({});
+const AuthContext = createContext<AuthProps>({
+  authState: {
+    token: null,
+    authenticated: null,
+    loading: false,
+  },
+});
 
 export const useAuth = () => {
   return useContext(AuthContext);
@@ -35,76 +52,61 @@ export const AuthProvider = ({children}: any) => {
   const [authState, setAuthState] = useState<{
     token: string | null;
     authenticated: boolean | null;
-  }>({token: null, authenticated: null});
+    loading: boolean;
+  }>({token: null, authenticated: null, loading: true});
 
   useEffect(() => {
-    const loadToken = async () => {
+    const fetchToken = async () => {
       const token = await Keychain.getGenericPassword();
-
       console.log('stored:', token);
-
-      if (token) {
+      if (token && token.password) {
+        // Check if the token exists and has a value
         axios.defaults.headers.common[
           'Authorization'
         ] = `Bearer ${token.password}`;
-
-        setAuthState({token: token.password, authenticated: true});
+        setAuthState({
+          token: token.password,
+          authenticated: true,
+          loading: false,
+        });
+      } else {
+        setAuthState({token: null, authenticated: false, loading: false});
       }
     };
-
-    loadToken();
+    fetchToken();
   }, []);
 
-  const register = async (
-    username: string,
-    password: string,
-    DOB: string,
-    state: string,
-    ZIP: string,
-    firstName: string,
-    gender: string,
-    ethnicity: string,
-    race: string,
-  ) => {
+  const register = async (registrationData: RegistrationData) => {
     try {
-      const result = await axios.post(`${API_URL}/api/auth/register`, {
-        username,
-        password,
-        DOB,
-        state,
-        ZIP,
-        firstName,
-        gender,
-        ethnicity,
-        race,
-      });
-
-      // set the auth state after successful registration
-      setAuthState({token: result.data.token, authenticated: true});
+      const result: any = await ApiService.register(registrationData);
+      setAuthState({token: result.token, authenticated: true, loading: false});
+      console.log(
+        'This is authState in authContext: ' + JSON.stringify(authState),
+      );
+      axios.defaults.headers.common[
+        'Authorization'
+      ] = `Bearer ${result.data.token}`;
+      await Keychain.setGenericPassword(TOKEN_KEY, result.data.token);
       return result;
     } catch (e) {
-      console.log(e); // Log the error here
+      console.log('ooo error in authContext register: ' + e);
       return {error: true, msg: (e as any).response.data.msg};
     }
   };
 
-  const login = async (username: string, password: string) => {
+  const login = async (loginData: LoginData) => {
     try {
-      const result = await axios.post(`${API_URL}/api/auth/login`, {
-        username,
-        password,
-      });
-
+      const result: any = await ApiService.login(loginData);
       console.log('🚀 ~ file: AuthContext.tsx:54 ~ result:', result);
-
-      setAuthState({token: result.data.token, authenticated: true});
-
+      setAuthState({
+        token: result.data.token,
+        authenticated: true,
+        loading: false,
+      });
       axios.defaults.headers.common[
         'Authorization'
       ] = `Bearer ${result.data.token}`;
-
       await Keychain.setGenericPassword(TOKEN_KEY, result.data.token);
-
       return result;
     } catch (e) {
       return {error: true, msg: (e as any).response.data.msg};
@@ -114,7 +116,7 @@ export const AuthProvider = ({children}: any) => {
   const logout = async () => {
     await Keychain.resetGenericPassword();
     axios.defaults.headers.common['Authorization'] = '';
-    setAuthState({token: null, authenticated: false});
+    setAuthState({token: null, authenticated: false, loading: false});
   };
 
   const value = {
