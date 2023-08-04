@@ -19,6 +19,7 @@ import CreateAccount1 from './src/screens/CreateAccount/CreateAccount1';
 import CreateAccount2 from './src/screens/CreateAccount/CreateAccount2';
 import CreateAccount3 from './src/screens/CreateAccount/CreateAccount3';
 import CreateAccountProvider from './src/context/CreateAccountProvider';
+import LoadingPage from './src/screens/LoadingPage';
 
 export type RootStackParamList = {
   Onboarding: undefined;
@@ -36,78 +37,56 @@ export type RootStackParamList = {
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
-
-// ... (previous imports)
-
-function App(): JSX.Element {
-  const navigationRef =
-    useRef<NavigationContainerRef<RootStackParamList>>(null);
-  const [firstTime, setFirstTime] = useState(true);
-
-  const {authState} = useAuth();
-
-  useEffect(() => {
-    (async () => {
-      try {
-        const isFirstTime = await AsyncStorage.getItem('first_time');
-        if (isFirstTime !== null) {
-          setFirstTime(false);
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    })();
-  }, []);
-
-  useEffect(() => {
-    // Check if the user is authenticated and the token is available
-    if (!firstTime && authState?.authenticated && authState?.token) {
-      navigationRef.current?.navigate('HomeDash');
-    } else if (!firstTime) {
-      navigationRef.current?.navigate('LandingPage');
-    }
-  }, [authState, firstTime]);
-
-  return (
-    <AuthProvider>
-      <AppContent navigationRef={navigationRef} firstTime={firstTime} />
-    </AuthProvider>
-  );
-}
-
 function AppContent({
   navigationRef,
-  firstTime,
 }: {
   navigationRef: React.RefObject<NavigationContainerRef<RootStackParamList>>;
-  firstTime: boolean;
 }) {
   const {authState} = useAuth();
+  const [initialScreen, setInitialScreen] = useState<
+    'HomeDash' | 'LandingPage'
+  >('LandingPage');
 
-  // useEffect(() => {
-  //   if (authState?.loading) {
-  //     return;
-  //   }
+  // Determine the initial screen based on the token
+  useEffect(() => {
+    const determineInitialScreen = async () => {
+      const token = await AsyncStorage.getItem('@auth_token');
+      if (token) {
+        setInitialScreen('HomeDash');
+      } else {
+        setInitialScreen('LandingPage');
+      }
+    };
 
-  //   if (firstTime) {
-  //     navigationRef.current?.navigate('Onboarding');
-  //   } else if (authState?.authenticated) {
-  //     navigationRef.current?.navigate('HomeDash');
-  //   } else {
-  //     navigationRef.current?.navigate('LandingPage');
-  //   }
-  // }, [authState, firstTime, navigationRef]);
+    determineInitialScreen();
+  }, []);
 
-  // if (authState?.loading) {
-  //   // TODO: Add a loading screen here if needed
-  //   return null;
-  // }
+  // Handle automatic navigation upon authentication changes
+  useEffect(() => {
+    if (
+      !authState.loading &&
+      navigationRef.current?.getCurrentRoute()?.name !== 'ThankYouScreen'
+    ) {
+      if (authState.authenticated) {
+        navigationRef.current?.navigate('HomeDash');
+      } else if (!authState.authenticated) {
+        navigationRef.current?.navigate('LandingPage');
+      }
+    }
+  }, [authState, navigationRef]);
+
+  if (authState.loading) {
+    return <LoadingPage />;
+  }
 
   return (
     <SafeAreaProvider>
       <CreateAccountProvider>
         <NavigationContainer ref={navigationRef}>
-          <Stack.Navigator>
+          <Stack.Navigator
+            initialRouteName={
+              authState.authenticated ? 'HomeDash' : 'LandingPage'
+            }>
             <Stack.Screen
               name="Onboarding"
               component={Onboarding}
@@ -150,6 +129,17 @@ function AppContent({
         </NavigationContainer>
       </CreateAccountProvider>
     </SafeAreaProvider>
+  );
+}
+
+function App(): JSX.Element {
+  const navigationRef =
+    useRef<NavigationContainerRef<RootStackParamList>>(null);
+
+  return (
+    <AuthProvider>
+      <AppContent navigationRef={navigationRef} />
+    </AuthProvider>
   );
 }
 
