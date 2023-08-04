@@ -16,15 +16,50 @@ import Button from '../components/Button';
 import DropDownPicker from 'react-native-dropdown-picker';
 import CircleBtn from '../components/CircleBtn';
 import TopNavBar from '../components/TopNavBar';
+import ApiService from '../services/ApiService';
 
 type Props = {};
 
 // Define the ReportPage component
+export interface FormState {
+  result: boolean;
+  DOB: string;
+  ZIP: string;
+  gender: string;
+  race: string;
+  ethnicity: string;
+}
 
-const ReportPage = (props: Props) => {
-  // Define state variables for zip code and age
-  const [zipCode, setZipCode] = useState('');
-  const [age, setAge] = useState('');
+const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
+  const [formState, setFormState] = useState<FormState>({
+    result: false,
+    DOB: '',
+    ZIP: '',
+    gender: '',
+    race: '',
+    ethnicity: '',
+  });
+
+  const handleReportButtonClick = () => {
+    // Call the createTest method from the ApiService
+    ApiService.createTest(formState)
+      .then(Response => {
+        navigation.navigate('ThankYouScreen');
+        console.log('test created successfully:', Response.data);
+        setFormState({
+          result: false,
+          DOB: '',
+          ZIP: '',
+          gender: '',
+          race: '',
+          ethnicity: '',
+        });
+      })
+      .catch(Error => {
+        console.log('Error creating test:', Error);
+      });
+  };
+
   const [isCheckboxSelected, setCheckboxSelection] = useState(false);
 
   console.log('Render: ', isCheckboxSelected);
@@ -34,17 +69,11 @@ const ReportPage = (props: Props) => {
     console.log('handleCheckChanges: ', isCheckboxSelected);
   };
 
-  const handleChange = () => {
-    // TODO: will need to refactor all the handle change functions and put them all in to one prob
-  }
-
-  // Function to handle zip code changes
-  const handleZipCodeChange = (value: string) => {
-    setZipCode(value);
-  };
-  // Function to handle age changes
-  const handleAgeChange = (value: string) => {
-    setAge(value);
+  const updateFormState = (field: string, value: string | boolean) => {
+    setFormState((prevState: any) => ({
+      ...prevState,
+      [field]: value,
+    }));
   };
 
   // need this so that when a user has one dropdown open and selects another, the opened dropdown will close
@@ -68,155 +97,155 @@ const ReportPage = (props: Props) => {
         {/* Page Container */}
         <View className="w-full justify-center items-center flex-1 flex-col">
           <View className="max-w-sm">
-          {/* Test Result Buttons */}
-          <Text className="text-lg font-bold mx-auto">
-            What were the results of your test?
-          </Text>
-          <View className="justify-center space-x-4 flex-row my-9">
-            <View className="m-2">
-              <CircleBtn
-                bgColor="bg-themeLightBlue"
-                onPress={() => console.log("You're Clear!!")}
-                text="Negative"
-                Btnwidth="w-32"
-                Btnheight="h-32"
-                textSize='base'
-              />
-            </View>
-            <View className="m-2">
-              <CircleBtn
-                text="Positive"
-                bgColor="bg-themeLightOrange"
-                onPress={() => console.log("You're Sick!!")}
-                Btnwidth="w-32"
-                Btnheight="h-32"
-                textSize='base'
-              />
-            </View>
-          </View>
-
-          {/* Text input and dropdown fields container */}
-          <View className="">
-            <TextInputField
-              label="Zip Code*"
-              value={zipCode}
-              onChange={handleZipCodeChange}
-              placeholder="Enter your ZIP code"
-            />
-            <TextInputField
-              label="Age*"
-              value={age}
-              onChange={handleAgeChange}
-              placeholder="Enter your age"
-            />
-
-            {/* TODO: will need to probs ask the UX team what the official dropdown selections are */}
-            {/* Data found from: https://www.census.gov/newsroom/blogs/random-samplings/2021/08/measuring-racial-ethnic-diversity-2020-census.html */}
-            <DropDownField
-              text="Gender"
-              selectItems={[
-                {
-                  label: 'MIGHT CHANGE BELOW SELECTION LATER',
-                  value: 'MIGHT CHANGE BELOW SELECTION LATER',
-                },
-                {label: '', value: ''},
-                {label: 'Prefer not to say', value: 'prefer not to say'},
-              ]}
-              open={genderOpen}
-              onOpen={() => {
-                setGenderOpen(true);
-                setRaceOpen(false);
-                setEthnicityOpen(false);
-              }}
-              onChange={handleChange}
-              setOpen={setGenderOpen}
-            />
-            <DropDownField
-              text="Race"
-              selectItems={[
-                {
-                  label: 'MIGHT CHANGE BELOW SELECTION LATER',
-                  value: 'MIGHT CHANGE BELOW SELECTION LATER',
-                },
-                {
-                  label: 'American Indian or Alaska Native',
-                  value: 'american indian or alaska native',
-                },
-                {label: 'Asian', value: 'asian'},
-                {
-                  label: 'Black or African American',
-                  value: 'black or african american',
-                },
-                {
-                  label: 'Native Hawaiian or Other Pacific Islander',
-                  value: 'native hawaiian or other pacific islander',
-                },
-                {label: 'Not Specified', value: 'not specified'},
-                {
-                  label: 'Two or More Races/Ethnicities',
-                  value: 'two or more races/ethnicities',
-                },
-                {label: 'White', value: 'white'},
-                {label: 'Prefer not to say', value: 'prefer not to say'},
-              ]}
-              open={raceOpen}
-              onOpen={() => {
-                setGenderOpen(false);
-                setRaceOpen(true);
-                setEthnicityOpen(false);
-              }}
-              onChange={handleChange}
-              setOpen={setRaceOpen}
-            />
-            <DropDownField
-              text="Ethnicity"
-              selectItems={[
-                {
-                  label: 'MIGHT CHANGE BELOW SELECTION LATER',
-                  value: 'MIGHT CHANGE BELOW SELECTION LATER',
-                },
-                {label: 'Hispanic/Latino', value: 'hispanic/latino'},
-                {label: 'Non-Hispanic/Latino', value: 'non-hispanic/latino'},
-                {label: 'Prefer not to say', value: 'prefer not to say'},
-              ]}
-              open={ethnicityOpen}
-              onOpen={() => {
-                setGenderOpen(false);
-                setRaceOpen(false);
-                setEthnicityOpen(true);
-              }}
-              onChange={handleChange}
-              setOpen={setEthnicityOpen}
-            />
-          </View>
-
-          {/* checkbox and text container */}
-          <View className="flex-row justify-center my-6">
-            <CheckBox
-              isSelected={isCheckboxSelected}
-              handleCheckChanges={handleCheckChanges}
-            />
-            <Text className="font-bold mt-1 text-black">
-              I agree to share my results with the CDC
+            {/* Test Result Buttons */}
+            <Text className="text-lg font-bold mx-auto">
+              What were the results of your test?
             </Text>
-          </View>
+            <View className="justify-center space-x-4 flex-row my-9">
+              <View className="m-2">
+                <CircleBtn
+                  bgColor="bg-themeLightBlue"
+                  updateForm={updateFormState}
+                  text="Negative"
+                  Btnwidth="w-32"
+                  Btnheight="h-32"
+                  textSize="base"
+                  value={false}
+                />
+              </View>
+              <View className="m-2">
+                <CircleBtn
+                  text="Positive"
+                  bgColor="bg-themeLightOrange"
+                  updateForm={updateFormState}
+                  Btnwidth="w-32"
+                  Btnheight="h-32"
+                  textSize="base"
+                  value={true}
+                />
+              </View>
+            </View>
 
-          {/* button container */}
-          <View className="mb-14">
-            <Button
-              onPress={() => console.log('pressed')}
-              innerText="Report"
-              bgColor="bg-[#B4B4B4]"
-              textColor="text-black"
-              border={true}
-              borderColor="border border-2"
-              width='80'
-            />
-          </View>
+            {/* Text input and dropdown fields container */}
+            <View className="">
+              <TextInputField
+                label="Zip Code*"
+                value={formState.ZIP}
+                onChange={value => updateFormState('ZIP', value)}
+                placeholder="Enter your ZIP code"
+              />
+              <TextInputField
+                label="Age*"
+                value={formState.DOB}
+                onChange={value => updateFormState('DOB', value)}
+                placeholder="Enter your age"
+              />
+
+              {/* TODO: will need to probs ask the UX team what the official dropdown selections are */}
+              {/* Data found from: https://www.census.gov/newsroom/blogs/random-samplings/2021/08/measuring-racial-ethnic-diversity-2020-census.html */}
+              <DropDownField
+                text="Gender"
+                selectItems={[
+                  {
+                    label: 'MIGHT CHANGE BELOW SELECTION LATER',
+                    value: 'MIGHT CHANGE BELOW SELECTION LATER',
+                  },
+                  {label: '', value: ''},
+                  {label: 'Prefer not to say', value: 'prefer not to say'},
+                ]}
+                open={genderOpen}
+                onOpen={() => {
+                  setGenderOpen(true);
+                  setRaceOpen(false);
+                  setEthnicityOpen(false);
+                }}
+                onChange={value => updateFormState('gender', value)}
+                setOpen={setGenderOpen}
+              />
+              <DropDownField
+                text="Race"
+                selectItems={[
+                  {
+                    label: 'MIGHT CHANGE BELOW SELECTION LATER',
+                    value: 'MIGHT CHANGE BELOW SELECTION LATER',
+                  },
+                  {
+                    label: 'American Indian or Alaska Native',
+                    value: 'american indian or alaska native',
+                  },
+                  {label: 'Asian', value: 'asian'},
+                  {
+                    label: 'Black or African American',
+                    value: 'black or african american',
+                  },
+                  {
+                    label: 'Native Hawaiian or Other Pacific Islander',
+                    value: 'native hawaiian or other pacific islander',
+                  },
+                  {label: 'Not Specified', value: 'not specified'},
+                  {
+                    label: 'Two or More Races/Ethnicities',
+                    value: 'two or more races/ethnicities',
+                  },
+                  {label: 'White', value: 'white'},
+                  {label: 'Prefer not to say', value: 'prefer not to say'},
+                ]}
+                open={raceOpen}
+                onOpen={() => {
+                  setGenderOpen(false);
+                  setRaceOpen(true);
+                  setEthnicityOpen(false);
+                }}
+                onChange={value => updateFormState('race', value)}
+                setOpen={setRaceOpen}
+              />
+              <DropDownField
+                text="Ethnicity"
+                selectItems={[
+                  {
+                    label: 'MIGHT CHANGE BELOW SELECTION LATER',
+                    value: 'MIGHT CHANGE BELOW SELECTION LATER',
+                  },
+                  {label: 'Hispanic/Latino', value: 'hispanic/latino'},
+                  {label: 'Non-Hispanic/Latino', value: 'non-hispanic/latino'},
+                  {label: 'Prefer not to say', value: 'prefer not to say'},
+                ]}
+                open={ethnicityOpen}
+                onOpen={() => {
+                  setGenderOpen(false);
+                  setRaceOpen(false);
+                  setEthnicityOpen(true);
+                }}
+                onChange={value => updateFormState('ethnicity', value)}
+                setOpen={setEthnicityOpen}
+              />
+            </View>
+
+            {/* checkbox and text container */}
+            <View className="flex-row justify-center my-6">
+              <CheckBox
+                isSelected={isCheckboxSelected}
+                handleCheckChanges={handleCheckChanges}
+              />
+              <Text className="font-bold mt-1 text-black">
+                I agree to share my results with the CDC
+              </Text>
+            </View>
+
+            {/* button container */}
+            <View className="mb-14">
+              <Button
+                onPress={handleReportButtonClick}
+                innerText="Report"
+                bgColor="bg-[#B4B4B4]"
+                textColor="text-black"
+                border={true}
+                borderColor="border border-2"
+                width="80"
+              />
+            </View>
           </View>
         </View>
-
-        
       </ScrollView>
     </SafeAreaView>
   );
