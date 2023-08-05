@@ -81,7 +81,6 @@ function AppContent({
 
   return (
     <SafeAreaProvider>
-      {/* <SignInPage /> */}
       <CreateAccountProvider>
         <NavigationContainer ref={navigationRef}>
           <Stack.Navigator
@@ -97,9 +96,9 @@ function AppContent({
               name="LandingPage"
               component={LandingPage}
               options={{headerShown: false}}
-            /> */}
+            />
             <Stack.Screen name="SignInPage" component={SignInPage} />
-            {/* <Stack.Screen
+            <Stack.Screen
               name="CreateAccount1"
               component={CreateAccount1}
               options={{headerShown: false}}
@@ -120,12 +119,12 @@ function AppContent({
               name="ThankYouScreen"
               component={ThankYouScreen}
               options={{headerShown: false}}
-            /> */}
+            />
             <Stack.Screen
               name="AccountReportPage"
               component={AccountReportPage}
             />
-            {/* <Stack.Screen name="HomeDash" component={HomeDash} /> */}
+            <Stack.Screen name="HomeDash" component={HomeDash} />
           </Stack.Navigator>
         </NavigationContainer>
       </CreateAccountProvider>
