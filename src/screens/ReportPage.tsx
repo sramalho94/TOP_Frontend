@@ -14,8 +14,6 @@ import Button from '../components/Button';
 import CircleBtn from '../components/CircleBtn';
 import ApiService from '../services/ApiService';
 
-type Props = {};
-
 // Define the ReportPage component
 export interface FormState {
   result: boolean;
