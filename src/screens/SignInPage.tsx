@@ -9,13 +9,12 @@ import {
   ScrollView,
 } from 'react-native';
 import NoImage from '../../assets/blankimage.png';
-import PasswordField from "../components/Password"
+import Password from "../components/Password"
 import Button from '../components/Button';
 import TextInputField from '../components/TextInputField';
 import TopNavBar from '../components/TopNavBar';
-
-import {useAuth} from '../context/AuthContext';
-import {useNavigation, NavigationProp} from "@react-navigation/native"
+import { useAuth } from '../context/AuthContext';
+import { useNavigation } from '@react-navigation/native';
 
 type Props = {};
 
@@ -31,6 +30,8 @@ const initialFormState: FormState = {
   showPassword: false,
 };
 
+
+
 export default function SignInPage(props: Props) {
   const [form, setForm] = useState<FormState>(initialFormState);
   const [username, setUsername] = useState('');
@@ -39,9 +40,6 @@ export default function SignInPage(props: Props) {
     username: '',
     password: '',
   })
-
-  const {onLogin} = useAuth();
-  const navigation: NavigationProp<any> = useNavigation();
   
   const handleChange = (field: string, value: string) => {
     setUserSignUp({...userSignUp, [field]: value});
@@ -51,8 +49,13 @@ export default function SignInPage(props: Props) {
     setUsername(value);
   };
 
+  const {onLogin} = useAuth();
+  const navigation: any = useNavigation();
+
+
   const handleSubmit: any = (e: any) => {
     e.preventDefault();
+    console.log("userSignIn submit: ", {userSignUp})
 
     if (onLogin) {
       onLogin(userSignUp)
@@ -71,6 +74,7 @@ export default function SignInPage(props: Props) {
     }
   };
 
+
   return (
     <SafeAreaView className="w-342 m-4">
       <ScrollView>
@@ -84,9 +88,9 @@ export default function SignInPage(props: Props) {
               label="Username"
               value={userSignUp.username}
               onChange={value => handleChange('username', value)}
-              placeholder='Enter your username'
+              placeholder=''
             />
-            <PasswordField setForm={setForm} form={form} handleChange={handleChange} />
+            <Password onChange={value => handleChange('password', value)} password={userSignUp.password} />
           </View>
 
 

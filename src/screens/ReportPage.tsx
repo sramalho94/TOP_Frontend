@@ -2,20 +2,17 @@ import {
   View,
   Text,
   SafeAreaView,
-  TextInput,
   TouchableOpacity,
-  Pressable,
   ScrollView,
 } from 'react-native';
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import CheckBox from '../components/CheckBox';
 import Icon from 'react-native-vector-icons/AntDesign';
 import TextInputField from '../components/TextInputField';
 import DropDownField from '../components/DropDownField';
 import Button from '../components/Button';
-import DropDownPicker from 'react-native-dropdown-picker';
 import CircleBtn from '../components/CircleBtn';
-import TopNavBar from '../components/TopNavBar';
+import ApiService from '../services/ApiService';
 
 type Props = {};
 
@@ -29,7 +26,7 @@ export interface FormState {
   ethnicity: string;
 }
 
-const ReportPage = (props: Props) => {
+const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
   const [formState, setFormState] = useState<FormState>({
     result: false,
     DOB: '',
@@ -38,6 +35,26 @@ const ReportPage = (props: Props) => {
     race: '',
     ethnicity: '',
   });
+
+  const handleReportButtonClick = () => {
+    // Call the createTest method from the ApiService
+    ApiService.createTest(formState)
+      .then(Response => {
+        navigation.navigate('ThankYouScreen');
+        console.log('test created successfully:', Response.data);
+        setFormState({
+          result: false,
+          DOB: '',
+          ZIP: '',
+          gender: '',
+          race: '',
+          ethnicity: '',
+        });
+      })
+      .catch(Error => {
+        console.log('Error creating test:', Error);
+      });
+  };
 
   const [isCheckboxSelected, setCheckboxSelection] = useState(false);
 
@@ -55,7 +72,7 @@ const ReportPage = (props: Props) => {
     }));
   };
 
-    // need this so that when a user has one dropdown open and selects another, the opened dropdown will close
+  // need this so that when a user has one dropdown open and selects another, the opened dropdown will close
   const [genderOpen, setGenderOpen] = useState<boolean>(false);
   const [raceOpen, setRaceOpen] = useState<boolean>(false);
   const [ethnicityOpen, setEthnicityOpen] = useState<boolean>(false);
@@ -214,7 +231,7 @@ const ReportPage = (props: Props) => {
             {/* button container */}
             <View className="mb-14">
               <Button
-                onPress={() => console.log('pressed', 'formState', formState)}
+                onPress={handleReportButtonClick}
                 innerText="Report"
                 bgColor="bg-[#B4B4B4]"
                 textColor="text-black"

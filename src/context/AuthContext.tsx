@@ -24,7 +24,7 @@ interface LoginData {
 }
 
 interface AuthProps {
-  authState?: {
+  authState: {
     token: string | null;
     authenticated: boolean | null;
     loading: boolean;
@@ -38,7 +38,13 @@ interface AuthProps {
 
 const TOKEN_KEY = 'my-jwt';
 
-const AuthContext = createContext<AuthProps>({});
+const AuthContext = createContext<AuthProps>({
+  authState: {
+    token: null,
+    authenticated: null,
+    loading: false,
+  },
+});
 
 export const useAuth = () => {
   return useContext(AuthContext);
@@ -76,15 +82,20 @@ export const AuthProvider = ({children}: any) => {
     fetchToken();
   }, []);
 
-  const apiServiceInstance = new ApiService();
-
   const register = async (registrationData: RegistrationData) => {
     try {
       const result: any = await ApiService.register(registrationData);
       setAuthState({token: result.token, authenticated: true, loading: false});
+      console.log(
+        'This is authState in authContext: ' + JSON.stringify(authState),
+      );
+      axios.defaults.headers.common[
+        'Authorization'
+      ] = `Bearer ${result.data.token}`;
+      await Keychain.setGenericPassword(TOKEN_KEY, result.data.token);
       return result;
     } catch (e) {
-      console.log(e);
+      console.log('ooo error in authContext register: ' + e);
       return {error: true, msg: (e as any).response.data.msg};
     }
   };
