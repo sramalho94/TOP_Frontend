@@ -29,9 +29,11 @@ interface AuthProps {
     authenticated: boolean | null;
     loading: boolean;
   };
+  userId?: string | null ;
   onRegister?: (registrationData: RegistrationData) => Promise<any>;
   onLogin?: (loginData: LoginData) => Promise<any>;
   onLogout?: () => Promise<any>;
+  // getUserId: () => Promise<number | null>;
 }
 
 const TOKEN_KEY = 'my-jwt';
@@ -48,6 +50,10 @@ export const AuthProvider = ({children}: any) => {
     authenticated: boolean | null;
     loading: boolean;
   }>({token: null, authenticated: null, loading: true});
+
+  const [userId, setUserId] = useState<{
+    userId: string | null;
+  }>({userId: null})
 
   useEffect(() => {
     const fetchToken = async () => {
@@ -92,6 +98,7 @@ export const AuthProvider = ({children}: any) => {
         authenticated: true,
         loading: false,
       });
+      setUserId(result.data.user.id)
       axios.defaults.headers.common[
         'Authorization'
       ] = `Bearer ${result.data.token}`;
@@ -113,6 +120,7 @@ export const AuthProvider = ({children}: any) => {
     onLogin: login,
     onLogout: logout,
     authState,
+    userId
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

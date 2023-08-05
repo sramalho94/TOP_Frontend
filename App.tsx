@@ -46,27 +46,27 @@ function App(): JSX.Element {
 
   const {authState} = useAuth();
 
-  useEffect(() => {
-    (async () => {
-      try {
-        const isFirstTime = await AsyncStorage.getItem('first_time');
-        if (isFirstTime !== null) {
-          setFirstTime(false);
-        }
-      } catch (error) {
-        console.error(error);
-      }
-    })();
-  }, []);
+  // useEffect(() => {
+  //   (async () => {
+  //     try {
+  //       const isFirstTime = await AsyncStorage.getItem('first_time');
+  //       if (isFirstTime !== null) {
+  //         setFirstTime(false);
+  //       }
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   })();
+  // }, []);
 
-  useEffect(() => {
-    // Check if the user is authenticated and the token is available
-    if (!firstTime && authState?.authenticated && authState?.token) {
-      navigationRef.current?.navigate('HomeDash');
-    } else if (!firstTime) {
-      navigationRef.current?.navigate('LandingPage');
-    }
-  }, [authState, firstTime]);
+  // useEffect(() => {
+  //   // Check if the user is authenticated and the token is available
+  //   if (!firstTime && authState?.authenticated && authState?.token) {
+  //     navigationRef.current?.navigate('HomeDash');
+  //   } else if (!firstTime) {
+  //     navigationRef.current?.navigate('LandingPage');
+  //   }
+  // }, [authState, firstTime]);
 
   return (
     <AuthProvider>
@@ -90,7 +90,7 @@ function AppContent({
     }
 
     if (firstTime) {
-      navigationRef.current?.navigate('Onboarding');
+      navigationRef.current?.navigate('AccountReportPage');
     } else if (authState?.authenticated) {
       navigationRef.current?.navigate('HomeDash');
     } else {
@@ -105,11 +105,11 @@ function AppContent({
 
   return (
     <SafeAreaProvider>
-      <ReportPage />
-      {/* <CreateAccountProvider>
+      {/* <SignInPage /> */}
+      <CreateAccountProvider>
         <NavigationContainer ref={navigationRef}>
           <Stack.Navigator>
-            <Stack.Screen
+            {/* <Stack.Screen
               name="Onboarding"
               component={Onboarding}
               options={{headerShown: false}}
@@ -118,9 +118,9 @@ function AppContent({
               name="LandingPage"
               component={LandingPage}
               options={{headerShown: false}}
-            />
+            /> */}
             <Stack.Screen name="SignInPage" component={SignInPage} />
-            <Stack.Screen
+            {/* <Stack.Screen
               name="CreateAccount1"
               component={CreateAccount1}
               options={{headerShown: false}}
@@ -141,15 +141,15 @@ function AppContent({
               name="ThankYouScreen"
               component={ThankYouScreen}
               options={{headerShown: false}}
-            />
+            /> */}
             <Stack.Screen
               name="AccountReportPage"
               component={AccountReportPage}
             />
-            <Stack.Screen name="HomeDash" component={HomeDash} />
+            {/* <Stack.Screen name="HomeDash" component={HomeDash} /> */}
           </Stack.Navigator>
         </NavigationContainer>
-      </CreateAccountProvider> */}
+      </CreateAccountProvider>
     </SafeAreaProvider>
   );
 }

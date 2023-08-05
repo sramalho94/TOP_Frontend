@@ -59,7 +59,7 @@ export default function SignInPage(props: Props) {
         .then((res: any) => {
           console.log('res from login!!: ' + JSON.stringify(res))
           if (res.success) {
-            navigation.navigate('HomeDash')
+            navigation.navigate('AccountReportPage')
           }
         }
         )
