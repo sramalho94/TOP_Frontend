@@ -12,16 +12,15 @@ import TextInputField from '../components/TextInputField';
 import Button from '../components/Button';
 import TopNavBar from '../components/TopNavBar';
 import CircleBtn from '../components/CircleBtn';
-import { useAuth } from '../context/AuthContext';
+import {useAuth} from '../context/AuthContext';
 import ApiService from '../services/ApiService';
-
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 type Props = {};
 
 interface ApiResponse {
   data: {
     user: {
-      email: string,
+      email: string;
       DOB: string;
       state: string;
       ZIP: string;
@@ -39,13 +38,14 @@ interface ApiResponse {
 }
 
 const AccountReportPage = (props: Props) => {
-
   const [covidInfo, setCovidInfo] = useState<ApiResponse | null>(null);
 
-  const { userId } = useAuth();
+  const {userId: userIdState} = useAuth();
+  const actualUserId = userIdState ? userIdState.userId : null;
+
   const [formState, setFormState] = useState<any | undefined>({
     result: false,
-    userId: userId,
+    userId: actualUserId,
     ZIP: '',
     state: '',
     gender: '',
@@ -54,9 +54,8 @@ const AccountReportPage = (props: Props) => {
   });
 
   const handleChange: any = (field: string, value: string) => {
-    setFormState({...formState, [field]: value});
+    setFormState(prevState => ({...prevState, [field]: value}));
   };
-  
 
   const handleSubmit: any = (e: any) => {
     e.preventDefault();
@@ -68,8 +67,31 @@ const AccountReportPage = (props: Props) => {
       });
     console.log('Covid Info: ' + JSON.stringify(formState));
   };
- 
-  // writing comment to push changes from earlier
+
+  const getUserIdFromLocalStorage = async (): Promise<string | null> => {
+    try {
+      return await AsyncStorage.getItem('USER_ID');
+    } catch (error) {
+      console.log(
+        'Error retrieving user id from local storage in AccountReportPage: ',
+        error,
+      );
+      return null;
+    }
+  };
+
+  useEffect(() => {
+    const initUserId = async () => {
+      const id = await getUserIdFromLocalStorage();
+      if (id) setFormState(prevState => ({...prevState, userId: id}));
+    };
+
+    initUserId();
+  }, []);
+
+  useEffect(() => {
+    console.log('User ID from Context:', actualUserId);
+  });
 
   return (
     <SafeAreaView className="min-w-screen">
@@ -96,7 +118,7 @@ const AccountReportPage = (props: Props) => {
                 text="Negative"
                 Btnwidth="w-32"
                 Btnheight="h-32"
-                textSize='base'
+                textSize="base"
                 value={true}
               />
             </View>
@@ -107,7 +129,7 @@ const AccountReportPage = (props: Props) => {
                 updateForm={value => handleChange('result', true)}
                 Btnwidth="w-32"
                 Btnheight="h-32"
-                textSize='base'
+                textSize="base"
                 value={false}
               />
             </View>
@@ -137,7 +159,7 @@ const AccountReportPage = (props: Props) => {
               textColor="text-white"
               bgColor="bg-black"
               border={true}
-              width='80'
+              width="80"
             />
           </View>
         </View>
