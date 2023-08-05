@@ -36,17 +36,8 @@ const CreateAccount2: React.FC<{ navigation: any }> = ({ navigation }) => {
 
     if (age >= 18) {
       return true;
-    } else if (age === 18) {
-      const currentMonth = currentDate.getMonth();
-      const dobMonth = dobDate.getMonth();
-      const currentDay = currentDate.getDate();
-      const dobDay = dobDate.getDate();
-
-      if (currentMonth > dobMonth || (currentMonth === dobMonth && currentDay >= dobDay)) {
-        return true;
-      }
-    }
-    return false;
+    } else
+      return false;
   }
 
   // Function to check if zip code format is correct
