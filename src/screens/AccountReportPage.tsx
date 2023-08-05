@@ -37,7 +37,7 @@ interface ApiResponse {
   };
 }
 
-const AccountReportPage = (props: Props) => {
+const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
   const [covidInfo, setCovidInfo] = useState<ApiResponse | null>(null);
 
   const {userId: userIdState} = useAuth();
@@ -57,14 +57,24 @@ const AccountReportPage = (props: Props) => {
     setFormState(prevState => ({...prevState, [field]: value}));
   };
 
-  const handleSubmit: any = (e: any) => {
+  const handleSubmit: any = async (e: any) => {
     e.preventDefault();
-
-    ApiService.createTestWithAccount(formState)
-      .then((res: any) => setCovidInfo(res.data.user))
-      .catch(error => {
-        console.log('Create Covid Message: ' + error);
+    try {
+      const res = await ApiService.createTestWithAccount(formState);
+      setCovidInfo(res.data.user);
+      navigation.navigate('ThankYouScreen');
+      setFormState({
+        result: false,
+        userId: actualUserId,
+        ZIP: '',
+        state: '',
+        gender: '',
+        race: '',
+        ethnicity: '',
       });
+    } catch (error) {
+      console.log('Create Covid Message: ' + error);
+    }
     console.log('Covid Info: ' + JSON.stringify(formState));
   };
 
