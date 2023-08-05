@@ -2,23 +2,17 @@ import {
   View,
   Text,
   SafeAreaView,
-  TextInput,
   TouchableOpacity,
-  Pressable,
   ScrollView,
 } from 'react-native';
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import CheckBox from '../components/CheckBox';
 import Icon from 'react-native-vector-icons/AntDesign';
 import TextInputField from '../components/TextInputField';
 import DropDownField from '../components/DropDownField';
 import Button from '../components/Button';
-import DropDownPicker from 'react-native-dropdown-picker';
 import CircleBtn from '../components/CircleBtn';
-import TopNavBar from '../components/TopNavBar';
 import ApiService from '../services/ApiService';
-
-type Props = {};
 
 // Define the ReportPage component
 export interface FormState {
@@ -44,7 +38,7 @@ const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
     // Call the createTest method from the ApiService
     ApiService.createTest(formState)
       .then(Response => {
-        navigation.navigate('ThankYouScreen');
+        navigation.navigate('ThankYouScreen', {login: false});
         console.log('test created successfully:', Response.data);
         setFormState({
           result: false,
