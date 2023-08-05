@@ -1,19 +1,11 @@
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  SafeAreaView,
-  ScrollView,
-} from 'react-native';
-import React, { useState } from 'react';
-import Icon from 'react-native-vector-icons/AntDesign'; // might need this for the avatar?
+import {View, Text, SafeAreaView, ScrollView} from 'react-native';
+import React from 'react';
+
 import CircleBtn from '../components/CircleBtn';
-import { Image } from 'react-native';
+
 import FlowerImg from '../../assets/orange-flower.png';
 
-type Props = {};
-
-const HomeDash: React.FC<{ navigation: any }> = ({ navigation }) => {
+const HomeDash: React.FC<{navigation: any}> = ({navigation}) => {
   return (
     <SafeAreaView className="h-screen w-screen">
       <ScrollView>
@@ -35,7 +27,9 @@ const HomeDash: React.FC<{ navigation: any }> = ({ navigation }) => {
                 Btnheight="h-24"
               />
             </View>
-            <Text className="text-3xl font-bold mb-2 text-center">Community {'\n'}Test Lab</Text>
+            <Text className="text-3xl font-bold mb-2 text-center">
+              Community {'\n'}Test Lab
+            </Text>
             {/* need giant circle btn, need to refactor circle btn props? */}
             <CircleBtn
               text={`Report\nTest`}
@@ -45,7 +39,7 @@ const HomeDash: React.FC<{ navigation: any }> = ({ navigation }) => {
               }}
               Btnwidth="w-60"
               Btnheight="h-60"
-              textSize='3xl'
+              textSize="3xl"
             />
           </View>
 
@@ -60,7 +54,9 @@ const HomeDash: React.FC<{ navigation: any }> = ({ navigation }) => {
                 Btnwidth="w-28"
                 Btnheight="h-28"
               />
-              <Text className="text-center p-3 text-black text-base">Privacy</Text>
+              <Text className="text-center p-3 text-black text-base">
+                Privacy
+              </Text>
             </View>
 
             <View className="mt-16">
@@ -72,7 +68,9 @@ const HomeDash: React.FC<{ navigation: any }> = ({ navigation }) => {
                 Btnwidth="w-28"
                 Btnheight="h-28"
               />
-              <Text className="text-center p-3 text-black text-base">Dashboard</Text>
+              <Text className="text-center p-3 text-black text-base">
+                Dashboard
+              </Text>
             </View>
 
             <View className="mt-1">
@@ -84,7 +82,9 @@ const HomeDash: React.FC<{ navigation: any }> = ({ navigation }) => {
                 Btnwidth="w-28"
                 Btnheight="h-28"
               />
-              <Text className="text-center p-3 text-black text-base">Exchange</Text>
+              <Text className="text-center p-3 text-black text-base">
+                Exchange
+              </Text>
             </View>
           </View>
         </View>
