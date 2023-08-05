@@ -38,7 +38,7 @@ const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
     // Call the createTest method from the ApiService
     ApiService.createTest(formState)
       .then(Response => {
-        navigation.navigate('ThankYouScreen');
+        navigation.navigate('ThankYouScreen', {login: false});
         console.log('test created successfully:', Response.data);
         setFormState({
           result: false,
