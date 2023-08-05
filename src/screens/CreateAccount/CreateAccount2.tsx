@@ -102,7 +102,7 @@ const CreateAccount2: React.FC<{ navigation: any }> = ({ navigation }) => {
               label="Birthday*"
               value={formState.DOB}
               onChange={value => updateFormState('DOB', value)}
-              placeholder=""
+              placeholder="mm/dd/yyyy"
             />
             <TextInputField
               label="Zip Code*"
