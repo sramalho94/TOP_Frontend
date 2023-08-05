@@ -18,21 +18,15 @@ const CreateAccount2: React.FC<{ navigation: any }> = ({ navigation }) => {
 
   const isEighteenOrOlder = (birthday: string): boolean => {
     const [month, day, year] = birthday.split("/");
-    console.log("Birthday string:", birthday);
 
     // Create Date object from birthday string
     const dobDate = new Date(Number(year), Number(month) - 1, Number(day));
-    console.log("Parsed Date:", dobDate);
 
     // Create current date object
     const currentDate = new Date();
-    console.log("Current Date:", currentDate);
-
 
     // Calculate age of the user
     const age = currentDate.getFullYear() - dobDate.getFullYear();
-    console.log("Calculated Age:", age);
-
 
     if (age >= 18) {
       return true;
