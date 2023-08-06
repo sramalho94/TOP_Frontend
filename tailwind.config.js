@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./App.{js,jsx,ts,tsx}', './src/**/*.{js,jsx,ts,tsx}'],
+  content: ['./App.{js,jsx,ts,tsx}', './src/**/*.{js,jsx,ts,tsx}','./assets/Borel'],
   theme: {
     extend: {
       colors: {
@@ -10,6 +10,9 @@ module.exports = {
         themeLightOrange: "#EFAF49",
         themeWhite: "#F0F0F0", // for secondary button
       }
+    },
+    fontFamily: {
+      'mono': ['ui-monospace', 'SFMono-Regular']
     }
   },
   plugins: [],

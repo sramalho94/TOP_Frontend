@@ -64,18 +64,18 @@ function AppContent({
   // Handle automatic navigation upon authentication changes
   useEffect(() => {
     if (
-      !authState.loading &&
+      !authState?.loading &&
       navigationRef.current?.getCurrentRoute()?.name !== 'ThankYouScreen'
     ) {
-      if (authState.authenticated) {
+      if (authState?.authenticated) {
         navigationRef.current?.navigate('HomeDash');
-      } else if (!authState.authenticated) {
+      } else if (!authState?.authenticated) {
         navigationRef.current?.navigate('LandingPage');
       }
     }
   }, [authState, navigationRef]);
 
-  if (authState.loading) {
+  if (authState?.loading) {
     return <LoadingPage />;
   }
 
@@ -85,7 +85,7 @@ function AppContent({
         <NavigationContainer ref={navigationRef}>
           <Stack.Navigator
             initialRouteName={
-              authState.authenticated ? 'HomeDash' : 'LandingPage'
+              authState?.authenticated ? 'HomeDash' : 'LandingPage'
             }>
             <Stack.Screen
               name="Onboarding"

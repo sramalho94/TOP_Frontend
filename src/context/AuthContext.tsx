@@ -29,7 +29,7 @@ interface AuthProps {
     token: string | null;
     authenticated: boolean | null;
     loading: boolean;
-  };
+  } | undefined;
   userId?: {userId: string | null};
   onRegister?: (registrationData: RegistrationData) => Promise<any>;
   onLogin?: (loginData: LoginData) => Promise<any>;

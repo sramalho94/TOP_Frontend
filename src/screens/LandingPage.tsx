@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, SafeAreaView, ScrollView} from 'react-native';
+import {View, SafeAreaView, ScrollView, Text} from 'react-native';
 import Button from '../components/Button';
 
 const LandingPage: React.FC<{navigation: any}> = ({navigation}) => {
@@ -7,7 +7,10 @@ const LandingPage: React.FC<{navigation: any}> = ({navigation}) => {
     <SafeAreaView className="mx-auto my-auto">
       <ScrollView>
         <View className="border-2 border-black w-[342] h-[339] mt-[100] mx-auto"></View>
-        <View className="mt-[87] space-y-[12] mb-[12]">
+        <View className="mt-[87] space-y-[12] mb-[12] sm:bg-purple-300">
+          {/* <Text className="text-3xl font-mono" style={{
+  fontFamily: "Borel", fontWeight: "bold"}}>rwnjwkrnjk</Text>
+          <Text className="text-3xl">rwnjwkrnjk</Text> */}
           <Button
             onPress={() => navigation.navigate('SignInPage')}
             innerText="Log in"
