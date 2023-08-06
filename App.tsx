@@ -87,22 +87,22 @@ function AppContent({
             initialRouteName={
               authState.authenticated ? 'HomeDash' : 'LandingPage'
             }>
-            {/* <Stack.Screen
+            <Stack.Screen
               name="Onboarding"
               component={Onboarding}
-              options={{headerShown: false}}
+              options={{ headerShown: false }}
             />
             <Stack.Screen
               name="LandingPage"
               component={LandingPage}
-              options={{headerShown: false}}
+              options={{ headerShown: false }}
             />
-            <Stack.Screen name="SignInPage" component={SignInPage} /> */}
-            {/* <Stack.Screen
+            <Stack.Screen name="SignInPage" component={SignInPage} />
+            <Stack.Screen
               name="CreateAccount1"
               component={CreateAccount1}
               options={{ headerShown: false }}
-            /> */}
+            />
             <Stack.Screen
               name="CreateAccount2"
               component={CreateAccount2}
