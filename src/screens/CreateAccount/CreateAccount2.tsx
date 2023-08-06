@@ -26,12 +26,17 @@ const CreateAccount2: React.FC<{ navigation: any }> = ({ navigation }) => {
     const currentDate = new Date();
 
     // Calculate age of the user
-    const age = currentDate.getFullYear() - dobDate.getFullYear();
+    let age = currentDate.getFullYear() - dobDate.getFullYear();
 
-    if (age >= 18) {
-      return true;
-    } else
-      return false;
+    // Handles the case where the birthday hasn't happened yet in the current year
+    if (
+      currentDate.getMonth() < dobDate.getMonth() ||
+      (currentDate.getMonth() === dobDate.getMonth() && currentDate.getDate() < dobDate.getDate())
+    ) {
+      age--;
+    }
+
+    return age >= 18;
   }
 
   // Function to check if zip code format is correct
@@ -48,7 +53,6 @@ const CreateAccount2: React.FC<{ navigation: any }> = ({ navigation }) => {
       return; // Prevent proceeding to the next page
     }
 
-    console.log('formState.DOB:', formState.DOB);
 
     if (!isBirthdayValid(formState.DOB)) {
       alert('Please enter a valid birthday.');
