@@ -1,12 +1,12 @@
-import React, {useContext, useState} from 'react';
-import {View, Text, SafeAreaView, ScrollView, Modal} from 'react-native';
+import React, { useContext, useState } from 'react';
+import { View, Text, SafeAreaView, ScrollView, Modal } from 'react-native';
 import CreateAccountContext from '../../context/CreateAccountContext';
 import TextInputField from '../../components/TextInputField';
 import Button from '../../components/Button';
 import TopNavBar from '../../components/TopNavBar';
 
-const CreateAccount2: React.FC<{navigation: any}> = ({navigation}) => {
-  const {formState, updateFormState} = useContext(CreateAccountContext);
+const CreateAccount2: React.FC<{ navigation: any }> = ({ navigation }) => {
+  const { formState, updateFormState } = useContext(CreateAccountContext);
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   // Function to check if email format is correct
@@ -15,6 +15,29 @@ const CreateAccount2: React.FC<{navigation: any}> = ({navigation}) => {
     const birthdayPattern = /^(0[1-9]|1[0-2])\/(0[1-9]|[1-2]\d|3[0-1])\/\d{4}$/;
     return birthdayPattern.test(birthday);
   };
+
+  const isEighteenOrOlder = (birthday: string): boolean => {
+    const [month, day, year] = birthday.split("/");
+
+    // Create Date object from birthday string
+    const dobDate = new Date(Number(year), Number(month) - 1, Number(day));
+
+    // Create current date object
+    const currentDate = new Date();
+
+    // Calculate age of the user
+    let age = currentDate.getFullYear() - dobDate.getFullYear();
+
+    // Handles the case where the birthday hasn't happened yet in the current year
+    if (
+      currentDate.getMonth() < dobDate.getMonth() ||
+      (currentDate.getMonth() === dobDate.getMonth() && currentDate.getDate() < dobDate.getDate())
+    ) {
+      age--;
+    }
+
+    return age >= 18;
+  }
 
   // Function to check if zip code format is correct
   const isZipCodeValid = (zipCode: string): boolean => {
@@ -30,9 +53,15 @@ const CreateAccount2: React.FC<{navigation: any}> = ({navigation}) => {
       return; // Prevent proceeding to the next page
     }
 
+
     if (!isBirthdayValid(formState.DOB)) {
       alert('Please enter a valid birthday.');
       return; // Prevent proceeding to the next page
+    }
+
+    if (!isEighteenOrOlder(formState.DOB)) {
+      alert('You must be 18 years or older to create an account.');
+      return;
     }
 
     // Check if the zip code is in the correct format
@@ -77,7 +106,7 @@ const CreateAccount2: React.FC<{navigation: any}> = ({navigation}) => {
               label="Birthday*"
               value={formState.DOB}
               onChange={value => updateFormState('DOB', value)}
-              placeholder=""
+              placeholder="mm/dd/yyyy"
             />
             <TextInputField
               label="Zip Code*"
@@ -86,13 +115,13 @@ const CreateAccount2: React.FC<{navigation: any}> = ({navigation}) => {
               placeholder=""
             />
             <TextInputField
-              label="state"
+              label="State"
               value={formState.state}
               onChange={value => updateFormState('state', value)}
               placeholder=""
             />
             <TextInputField
-              label="firstName"
+              label="First Name"
               value={formState.firstName}
               onChange={value => updateFormState('firstName', value)}
               placeholder=""
