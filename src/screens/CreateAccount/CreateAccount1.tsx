@@ -85,7 +85,7 @@ const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
             </View>
           </View>
         </View>
-        <View className="mt-48">
+        <View className="my-auto">
           <Button
             onPress={handleNext}
             innerText="Next"

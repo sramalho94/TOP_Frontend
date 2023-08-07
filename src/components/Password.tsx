@@ -26,7 +26,7 @@ const PasswordField = (props: Props) => {
   return (
     <View className="my-4">
       <Text className="ml-3 w-36 h-8 flex my-auto justify-center font-medium">
-        Password
+        Password*
       </Text>
 
     {/* TODO: NEED TO TEST */}
