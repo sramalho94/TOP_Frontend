@@ -52,7 +52,7 @@ const ThankYouScreen = ({navigation, route}: Props) => {
           ) : (
             <>
               <Button
-                onPress={() => navigation.navigate('CreateAccount')}
+                onPress={() => navigation.navigate('CreateAccount1')}
                 innerText="Create Account"
                 bgColor="bg-white"
                 textColor=""
