@@ -115,12 +115,6 @@ const CreateAccount2: React.FC<{ navigation: any }> = ({ navigation }) => {
               placeholder=""
             />
             <TextInputField
-              label="State"
-              value={formState.state}
-              onChange={value => updateFormState('state', value)}
-              placeholder=""
-            />
-            <TextInputField
               label="First Name"
               value={formState.firstName}
               onChange={value => updateFormState('firstName', value)}
