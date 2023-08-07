@@ -1,16 +1,17 @@
-import { View, Text, SafeAreaView, ScrollView } from 'react-native';
-import React, { useState } from 'react';
+import {View, Text, SafeAreaView, ScrollView} from 'react-native';
+import React, {useState} from 'react';
 import TextInputField from '../components/TextInputField';
 import Button from '../components/Button';
 import TopNavBar from '../components/TopNavBar';
 import CircleBtn from '../components/CircleBtn';
-import { useAuth } from '../context/AuthContext';
+import {useAuth} from '../context/AuthContext';
 import ApiService from '../services/ApiService';
 
 interface FormState {
   result: boolean;
   userId: number | null;
-  DOT: string,
+  DOT: string;
+  DOB: string | null;
   ZIP: string;
   state: string;
   gender: string;
@@ -18,12 +19,13 @@ interface FormState {
   ethnicity: string;
 }
 
-const AccountReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
-  const { userId: actualUserId } = useAuth();
+const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
+  const {userId: actualUserId, DOB} = useAuth();
   const actualUserIdValue = actualUserId ?? null;
-
+  const DOBVal = DOB ?? null;
   const [formState, setFormState] = useState<FormState>({
     result: false,
+    DOB: DOBVal,
     userId: actualUserIdValue,
     DOT: '',
     ZIP: '',
@@ -34,7 +36,7 @@ const AccountReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
   });
 
   const handleChange: any = (field: string, value: string) => {
-    setFormState(prevState => ({ ...prevState, [field]: value }));
+    setFormState(prevState => ({...prevState, [field]: value}));
   };
 
   const handleSubmit: any = async (e: any) => {
@@ -62,6 +64,7 @@ const AccountReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
         gender: '',
         race: '',
         ethnicity: '',
+        DOB: DOBVal,
       });
     } catch (error) {
       console.log('Create Covid Message: ' + error);
