@@ -9,8 +9,7 @@ import PasswordError from '../../components/PasswordError';
 
 const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
   const {formState, updateFormState} = useContext(CreateAccountContext);
-  const [isModalVisible, setIsModalVisible] = useState(false);
-
+  const [showError, setShowError] = useState <string>('hidden')
   // Validations:
 
   // Function to check if password meets criteria
@@ -41,15 +40,12 @@ const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
     }
 
     const isPasswordValid = checkPasswordCriteria();
-    if (!isPasswordValid) {
-      toggleModal();
+    if (!isPasswordValid) { 
+      setShowError ('flex')
     } else {
+      setShowError ('hidden')
       navigation.navigate('CreateAccount2');
     }
-  };
-
-  const toggleModal = () => {
-    setIsModalVisible(!isModalVisible);
   };
 
   return (
@@ -80,7 +76,7 @@ const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
               onChange={value => updateFormState('password', value)}
               password={formState.password}
             />
-            <View>
+            <View className={showError}>
               <PasswordError />
             </View>
           </View>
