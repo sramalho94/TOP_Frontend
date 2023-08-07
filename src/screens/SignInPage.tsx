@@ -41,13 +41,15 @@ export default function SignInPage(props: Props) {
     password: '',
   })
   
+  const [errorMessage, setErrorMessage] = useState<string>('');
+
   const handleChange = (field: string, value: string) => {
     setUserSignUp({...userSignUp, [field]: value});
   }
 
   const handleUsernameChange = (value: string) => {
     setUsername(value);
-  };
+  }; 
 
   const {onLogin} = useAuth();
   const navigation: any = useNavigation();
@@ -57,6 +59,11 @@ export default function SignInPage(props: Props) {
     e.preventDefault();
     console.log("userSignIn submit: ", {userSignUp})
 
+    setErrorMessage('Username or Password is incorrect. Please try again or click Forgot Password.');
+
+    if(!userSignUp.username || !userSignUp.password) {
+      setErrorMessage('Username or Password is incorrect. Please try again or click Forgot Password.');
+    }
     if (onLogin) {
       onLogin(userSignUp)
         .then((res: any) => {
@@ -83,7 +90,7 @@ export default function SignInPage(props: Props) {
           <View className="flex flex-row justify-center align-middle">
             <Image className="w-342 h-349 m-4" source={NoImage}></Image>
           </View>
-          <View className="mb-6">
+          <View className="mb-1">
             <TextInputField
               label="Username"
               value={userSignUp.username}
@@ -93,8 +100,11 @@ export default function SignInPage(props: Props) {
             <Password onChange={value => handleChange('password', value)} password={userSignUp.password} />
           </View>
 
-
-
+          {errorMessage ? (
+            <View className="mt-0 p-2 bg-red-100 border border-red-500 mx-auto w-[315]">
+              <Text className="text-red-500">{errorMessage}</Text>
+            </View>
+          ) : null}
 
         </View>
         <View className="mt-4">
