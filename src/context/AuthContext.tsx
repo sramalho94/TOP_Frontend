@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import {createContext, useContext, useEffect, useState} from 'react';
 import axios from 'axios';
 import * as Keychain from 'react-native-keychain';
 import React from 'react';
@@ -29,6 +29,7 @@ interface AuthProps {
     loading: boolean;
   };
   userId?: number | null;
+  DOB?: string | null;
   onRegister?: (registrationData: RegistrationData) => Promise<any>;
   onLogin?: (loginData: LoginData) => Promise<any>;
   onLogout?: () => Promise<any>;
@@ -42,15 +43,15 @@ export const useAuth = () => {
   return useContext(AuthContext);
 };
 
-export const AuthProvider = ({ children }: any) => {
+export const AuthProvider = ({children}: any) => {
   const [authState, setAuthState] = useState<{
     token: string | null;
     authenticated: boolean | null;
     loading: boolean;
-  }>({ token: null, authenticated: null, loading: true });
+  }>({token: null, authenticated: null, loading: true});
 
   const [userId, setUserId] = useState<number | null>(null);
-
+  const [DOB, setDOB] = useState<string | null>(null);
   useEffect(() => {
     const fetchToken = async () => {
       const token = await Keychain.getGenericPassword();
@@ -66,7 +67,7 @@ export const AuthProvider = ({ children }: any) => {
           loading: false,
         });
       } else {
-        setAuthState({ token: null, authenticated: false, loading: false });
+        setAuthState({token: null, authenticated: false, loading: false});
       }
     };
     fetchToken();
@@ -90,15 +91,35 @@ export const AuthProvider = ({ children }: any) => {
     }
   };
 
+  const saveDOBToLocalStorage = async (DOB: string) => {
+    try {
+      await AsyncStorage.setItem('DOB', DOB);
+    } catch (error) {
+      console.log('Error saving DOB to local storage: ', error);
+    }
+  };
+
+  const getDOBFromLocalStorage = async (): Promise<string | null> => {
+    try {
+      const storedDOB = await AsyncStorage.getItem('DOB');
+      return storedDOB ? storedDOB : null;
+    } catch (error) {
+      console.log('Error retrieving DOB from local storage: ', error);
+      return null;
+    }
+  };
+
   const register = async (registrationData: RegistrationData) => {
     try {
       const result: any = await ApiService.register(registrationData);
-      setAuthState({ token: result.token, authenticated: true, loading: false });
+      setAuthState({token: result.token, authenticated: true, loading: false});
       console.log(
         'This is authState in authContext: ' + JSON.stringify(authState),
       );
       setUserId(result.data.user.id);
       saveUserIdToLocalStorage(result.data.user.id.toString());
+      setDOB(result.data.user.DOB);
+      saveDOBToLocalStorage(result.data.user.DOB);
       axios.defaults.headers.common[
         'Authorization'
       ] = `Bearer ${result.data.token}`;
@@ -106,7 +127,7 @@ export const AuthProvider = ({ children }: any) => {
       return result;
     } catch (e) {
       console.log('ooo error in authContext register: ' + e);
-      return { error: true, msg: (e as any).response.data.msg };
+      return {error: true, msg: (e as any).response.data.msg};
     }
   };
 
@@ -127,7 +148,7 @@ export const AuthProvider = ({ children }: any) => {
       await Keychain.setGenericPassword(TOKEN_KEY, result.data.token);
       return result;
     } catch (e) {
-      return { error: true, msg: (e as any).response.data.msg };
+      return {error: true, msg: (e as any).response.data.msg};
     }
   };
 
@@ -138,14 +159,21 @@ export const AuthProvider = ({ children }: any) => {
         setUserId(id);
       }
     };
+    const initDOB = async () => {
+      const DOB = await getDOBFromLocalStorage();
+      if (DOB) {
+        setDOB(DOB);
+      }
+    };
 
     initUserId();
+    initDOB();
   }, []);
 
   const logout = async () => {
     await Keychain.resetGenericPassword();
     axios.defaults.headers.common['Authorization'] = '';
-    setAuthState({ token: null, authenticated: false, loading: false });
+    setAuthState({token: null, authenticated: false, loading: false});
   };
 
   const value = {
@@ -154,6 +182,7 @@ export const AuthProvider = ({ children }: any) => {
     onLogout: logout,
     authState,
     userId,
+    DOB,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
