@@ -1,5 +1,5 @@
-import axios, { AxiosResponse } from 'axios';
-import { Platform } from 'react-native';
+import axios, {AxiosResponse} from 'axios';
+import {Platform} from 'react-native';
 
 const BASE_URL =
   Platform.OS === 'android'
@@ -46,7 +46,6 @@ export default class ApiService {
     username: string;
     password: string;
     DOB: string;
-    state: string;
     ZIP: string;
     firstName: string;
     gender: string;
@@ -142,7 +141,7 @@ export default class ApiService {
         this.sideEffect((res: AxiosResponse) =>
           console.log(
             'This is getting all tests submitted: ' +
-            JSON.stringify(res.data.tests),
+              JSON.stringify(res.data.tests),
           ),
         ),
       )
@@ -175,7 +174,7 @@ export default class ApiService {
       .catch(this.sideEffect((error: AxiosResponse) => console.log(error)));
   }
 
-  // Create test in our db for a registered user 
+  // Create test in our db for a registered user
   static createTestWithAccount(testData: {
     result: boolean;
     userId: number;

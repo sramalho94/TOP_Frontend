@@ -10,7 +10,6 @@ interface RegistrationData {
   username: string;
   password: string;
   DOB: string;
-  state: string;
   ZIP: string;
   firstName: string;
   gender: string;
@@ -30,6 +29,7 @@ interface AuthProps {
     loading: boolean;
   };
   userId?: number | null;
+  DOB?: string | null;
   onRegister?: (registrationData: RegistrationData) => Promise<any>;
   onLogin?: (loginData: LoginData) => Promise<any>;
   onLogout?: () => Promise<any>;
@@ -51,7 +51,7 @@ export const AuthProvider = ({children}: any) => {
   }>({token: null, authenticated: null, loading: true});
 
   const [userId, setUserId] = useState<number | null>(null);
-
+  const [DOB, setDOB] = useState<string | null>(null);
   useEffect(() => {
     const fetchToken = async () => {
       const token = await Keychain.getGenericPassword();
@@ -91,6 +91,24 @@ export const AuthProvider = ({children}: any) => {
     }
   };
 
+  const saveDOBToLocalStorage = async (DOB: string) => {
+    try {
+      await AsyncStorage.setItem('DOB', DOB);
+    } catch (error) {
+      console.log('Error saving DOB to local storage: ', error);
+    }
+  };
+
+  const getDOBFromLocalStorage = async (): Promise<string | null> => {
+    try {
+      const storedDOB = await AsyncStorage.getItem('DOB');
+      return storedDOB ? storedDOB : null;
+    } catch (error) {
+      console.log('Error retrieving DOB from local storage: ', error);
+      return null;
+    }
+  };
+
   const register = async (registrationData: RegistrationData) => {
     try {
       const result: any = await ApiService.register(registrationData);
@@ -100,6 +118,8 @@ export const AuthProvider = ({children}: any) => {
       );
       setUserId(result.data.user.id);
       saveUserIdToLocalStorage(result.data.user.id.toString());
+      setDOB(result.data.user.DOB);
+      saveDOBToLocalStorage(result.data.user.DOB);
       axios.defaults.headers.common[
         'Authorization'
       ] = `Bearer ${result.data.token}`;
@@ -139,8 +159,15 @@ export const AuthProvider = ({children}: any) => {
         setUserId(id);
       }
     };
+    const initDOB = async () => {
+      const DOB = await getDOBFromLocalStorage();
+      if (DOB) {
+        setDOB(DOB);
+      }
+    };
 
     initUserId();
+    initDOB();
   }, []);
 
   const logout = async () => {
@@ -155,6 +182,7 @@ export const AuthProvider = ({children}: any) => {
     onLogout: logout,
     authState,
     userId,
+    DOB,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
