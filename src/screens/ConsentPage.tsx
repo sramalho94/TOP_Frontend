@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, { useState, useContext } from 'react';
 // import {useFormContext} from "react-hook-form";
 // import {useFormContext} from '../context/CreateAccountContext';
 import {
@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import TopNavBar from '../components/TopNavBar';
 import CheckBox from '../components/CheckBox';
-import {useAuth} from '../context/AuthContext';
+import { useAuth } from '../context/AuthContext';
 import CreateAccountContext from '../context/CreateAccountContext';
 
 interface CheckState {
@@ -20,17 +20,18 @@ interface CheckState {
   isReadAndAcceptChecked: boolean;
 }
 
-const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
+const ConsentPage: React.FC<{ navigation: any }> = ({ navigation }) => {
   const handlePrivacyPolicyPress = () => {
     const privacyPolicyUrl = 'https://www.privacypolicies.com/generic/';
     Linking.openURL(privacyPolicyUrl);
   };
 
   // comment for push
-  const {onRegister} = useAuth();
+  const { onRegister } = useAuth();
+  const [errorMessage, setErrorMessage] = useState<string>('');
   // const {formState, updateFormState} = useContext<any>(CreateAccountContext);
   // const {formState} = useFormContext();
-  const {formState, resetFormState} = useContext(CreateAccountContext);
+  const { formState, resetFormState } = useContext(CreateAccountContext);
   const handleEmailPress = () => {
     const email = 'leavecovidtracking-us@joinzoe.com';
     Linking.openURL(`mailto:${email}`);
@@ -47,7 +48,7 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
       !checkBoxStates.isConsentChecked ||
       !checkBoxStates.isReadAndAcceptChecked
     ) {
-      alert('Please check all the boxes before agreeing.');
+      setErrorMessage('Please check all the boxes before agreeing.');
       return;
     }
 
@@ -179,6 +180,11 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
               </Text>
             </Text>
           </View>
+          {errorMessage ? (
+            <View className="mt-0 p-2 bg-red-100 border border-red-500 mx-auto w-[315]">
+              <Text className="text-red-500">{errorMessage}</Text>
+            </View>
+          ) : null}
           <TouchableOpacity
             onPress={handleAgree}
             className={`bg-black px-8 py-2.5 rounded-md mt-7`}>
