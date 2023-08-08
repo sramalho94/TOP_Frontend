@@ -3,8 +3,6 @@ import {
   SafeAreaView,
   View,
   Text,
-  TouchableOpacity,
-  TextInput,
   Image,
   ScrollView,
 } from 'react-native';
@@ -18,23 +16,7 @@ import { useNavigation } from '@react-navigation/native';
 
 type Props = {};
 
-type FormState = {
-  username: string;
-  password: string;
-  showPassword: boolean;
-};
-
-const initialFormState: FormState = {
-  username: '',
-  password: '',
-  showPassword: false,
-};
-
-
-
 export default function SignInPage(props: Props) {
-  const [form, setForm] = useState<FormState>(initialFormState);
-  const [username, setUsername] = useState('');
 
   const [userSignUp, setUserSignUp] = useState<any>({
     username: '',
@@ -46,10 +28,6 @@ export default function SignInPage(props: Props) {
   const handleChange = (field: string, value: string) => {
     setUserSignUp({...userSignUp, [field]: value});
   }
-
-  const handleUsernameChange = (value: string) => {
-    setUsername(value);
-  }; 
 
   const {onLogin} = useAuth();
   const navigation: any = useNavigation();
@@ -67,7 +45,7 @@ export default function SignInPage(props: Props) {
     if (onLogin) {
       onLogin(userSignUp)
         .then((res: any) => {
-          console.log('res from login!!: ' + JSON.stringify(res))
+          console.log('res from login!!: ' + JSON.stringify(res.data))
           if (res.success) {
             navigation.navigate('AccountReportPage')
           }
