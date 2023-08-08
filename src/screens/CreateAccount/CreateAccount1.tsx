@@ -60,6 +60,7 @@ const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
           textValue="Create Account"
           haveProgress={true}
           page={1}
+          textColor="text-themeBlue"
         />
         <View className="mx-auto my-auto mb-2">
           <View className="w-[342] mt-4">
@@ -67,13 +68,13 @@ const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
               label="Email*"
               value={formState.email}
               onChange={value => updateFormState('email', value)}
-              placeholder=""
+              placeholder="Email"
             />
             <TextInputField
               label="Username*"
               value={formState.username}
               onChange={value => updateFormState('username', value)}
-              placeholder=""
+              placeholder="Username"
             />
             <PasswordField
               onChange={value => updateFormState('password', value)}

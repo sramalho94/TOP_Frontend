@@ -118,6 +118,7 @@ function AppContent({
               name="ThankYouScreen"
               component={ThankYouScreen}
               options={{headerShown: false}}
+
             />
             <Stack.Screen
               name="ConsentFormThankYou"
