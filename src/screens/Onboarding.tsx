@@ -1,28 +1,31 @@
-
-import React, { useState, useRef } from 'react';
+import React, {useState, useRef, useEffect} from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import {
   SafeAreaView,
   View,
   Text,
   Image,
-  TouchableOpacity,
   Animated,
   NativeSyntheticEvent,
   NativeScrollEvent,
   useWindowDimensions,
 } from 'react-native';
-import { ScrollView } from 'react-native';
-
+import {ScrollView} from 'react-native';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import NoImage from './../../assets/nopicture.png';
 import ProgressDots from './../components/ProgressDots';
 import Button from './../components/Button';
+import {RootStackParamList} from '../../App';
+type OnboardingScreenProps = NativeStackScreenProps<
+  RootStackParamList,
+  'Onboarding'
+>;
 
-type Props = {};
-
-const Onboarding = (props: Props) => {
+const Onboarding = (props: OnboardingScreenProps) => {
+  const {navigation} = props;
   const [currentPage, setCurrentPage] = useState<number>(0);
-  const { width } = useWindowDimensions();
+  const {width} = useWindowDimensions();
   const scrollViewRef = useRef<ScrollView>(null);
 
   const pages = [
@@ -45,7 +48,7 @@ const Onboarding = (props: Props) => {
       title: 'What the data is not used for',
       buttonText: 'Continue',
       pageIndicator: 3,
-      onButtonPress: () => console.log('Finish button pressed'),
+      onButtonPress: () => navigation.navigate('CreateAccount1'),
     },
   ];
 
@@ -53,7 +56,7 @@ const Onboarding = (props: Props) => {
 
   const handleSwipeAnimation = (page: number) => {
     if (scrollViewRef.current) {
-      scrollViewRef.current.scrollTo({ x: page * width, animated: true });
+      scrollViewRef.current.scrollTo({x: page * width, animated: true});
       setCurrentPage(page);
     }
   };
@@ -83,27 +86,27 @@ const Onboarding = (props: Props) => {
                 {page.title}
               </Text>
             </View>
-            <View className="flex-1 flex-col-reverse mb-3">
+            <View className="flex-1 flex-col-reverse mb-8">
               <View className="mt-5 mx-5">
                 <Button
                   onPress={page.onButtonPress} // Updated this line
                   innerText={page.buttonText}
-                  bgColor="bg-white"
-                  textColor="text-black"
+                  bgColor="bg-themeBlue"
+                  textColor="text-themeWhite"
                   border={true}
-                  borderColor="border border-gray"
-                  width='80'
+                  borderColor="border border-themeBlue border-3"
+                  width="80"
                 />
 
-                {currentPage !== pages.length && (
+                {page.pageIndicator !== pages.length && (
                   <Button
-                    onPress={() => console.log('Skip button pressed')}
+                    onPress={() => navigation.navigate('CreateAccount1')}
                     innerText="Skip"
                     bgColor="bg-white"
                     textColor="text-black"
                     border={false}
                     borderColor="border border-gray"
-                    width='80'
+                    width="80"
                   />
                 )}
               </View>

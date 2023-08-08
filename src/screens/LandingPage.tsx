@@ -1,49 +1,51 @@
 import React from 'react';
-import {View, SafeAreaView, TouchableOpacity, Text} from 'react-native';
+import {View, SafeAreaView, ScrollView, Image} from 'react-native';
 import Button from '../components/Button';
+import LandingImage from './../../assets/landing_1.png';
+import WaveImage from './../../assets/topWave.png';
 
-const LandingPage = () => {
+const LandingPage: React.FC<{navigation: any}> = ({navigation}) => {
   return (
-    <SafeAreaView className="mx-auto my-auto">
-      <View className="border-2 border-black w-[342] h-[339] mt-[100] mx-auto"></View>
-      <View className="mt-[87] space-y-[12] mb-[12]">
-        {/* <TouchableOpacity className="border-4 border-black flex justify-center items-center w-[342] h-[52] rounded-lg ">
-          <Text className="text-lg font-bold">Log In</Text>
-        </TouchableOpacity> */}
-        <Button
-          onPress={() => console.log('pressed')}
-          innerText="Log in"
-          bgColor="bg-white"
-          textColor="text-black"
-          border={true}
-          borderColor="border border-4"
-          width='80'
+    <SafeAreaView className="flex-1">
+      <ScrollView>
+        <Image
+          className="absolute bg-cover bg-center right-0 left-0 "
+          source={WaveImage}
         />
-        {/* <TouchableOpacity className="border-4 border-black flex justify-center items-center w-[342] h-[52] rounded-lg">
-          <Text className="text-lg font-bold">Create Account</Text>
-        </TouchableOpacity> */}
-        <Button
-          onPress={() => console.log('pressed')}
-          innerText="Create Account"
-          bgColor="bg-white"
-          textColor="text-black"
-          border={true}
-          borderColor="border border-4"
-          width='80'
+        <Image
+          className="w-[342] h-[339] mx-auto mt-[110]"
+          source={LandingImage}
         />
-        {/* <TouchableOpacity className="border-4 border-black flex justify-center items-center w-[342] h-[52] rounded-lg bg-[#B4B4B4]">
-          <Text className="text-lg font-bold">Report Without Account</Text>
-        </TouchableOpacity> */}
-        <Button
-          onPress={() => console.log('pressed')}
-          innerText="Report Without Account"
-          bgColor="bg-[#B4B4B4]"
-          textColor="text-black"
-          border={true}
-          borderColor="border border-4"
-          width='80'
-        />
-      </View>
+        <View className=" space-y-[12]">
+          <Button
+            onPress={() => navigation.navigate('SignInPage')}
+            innerText="Log in"
+            bgColor="bg-white"
+            textColor="text-themeBlue"
+            border={true}
+            borderColor="border border-themeBlue border-3"
+            width="80"
+          />
+          <Button
+            onPress={() => navigation.navigate('Onboarding')}
+            innerText="Create Account"
+            bgColor="bg-white"
+            textColor="text-themeBlue"
+            border={true}
+            borderColor="border border-themeBlue border-3"
+            width="80"
+          />
+          <Button
+            onPress={() => navigation.navigate('ReportPage')}
+            innerText="Report Without Account"
+            bgColor="bg-themeBlue"
+            textColor="text-white"
+            border={true}
+            borderColor="border border-themeBlue border-3"
+            width="80"
+          />
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };

@@ -13,6 +13,8 @@ import Password from "../components/Password"
 import Button from '../components/Button';
 import TextInputField from '../components/TextInputField';
 import TopNavBar from '../components/TopNavBar';
+import { useAuth } from '../context/AuthContext';
+import { useNavigation } from '@react-navigation/native';
 
 type Props = {};
 
@@ -28,12 +30,48 @@ const initialFormState: FormState = {
   showPassword: false,
 };
 
+
+
 export default function SignInPage(props: Props) {
   const [form, setForm] = useState<FormState>(initialFormState);
   const [username, setUsername] = useState('');
 
+  const [userSignUp, setUserSignUp] = useState<any>({
+    username: '',
+    password: '',
+  })
+  
+  const handleChange = (field: string, value: string) => {
+    setUserSignUp({...userSignUp, [field]: value});
+  }
+
   const handleUsernameChange = (value: string) => {
     setUsername(value);
+  };
+
+  const {onLogin} = useAuth();
+  const navigation: any = useNavigation();
+
+
+  const handleSubmit: any = (e: any) => {
+    e.preventDefault();
+    console.log("userSignIn submit: ", {userSignUp})
+
+    if (onLogin) {
+      onLogin(userSignUp)
+        .then((res: any) => {
+          console.log('res from login!!: ' + JSON.stringify(res))
+          if (res.success) {
+            navigation.navigate('AccountReportPage')
+          }
+        }
+        )
+        .catch((error: any) => {
+          console.log('Screen Login Err: ' + error);
+        });
+    } else {
+      console.log('onLogin is not a function or is undefined.');
+    }
   };
 
 
@@ -48,11 +86,11 @@ export default function SignInPage(props: Props) {
           <View className="mb-6">
             <TextInputField
               label="Username"
-              value={form.username}
-              onChange={handleUsernameChange}
+              value={userSignUp.username}
+              onChange={value => handleChange('username', value)}
               placeholder=''
             />
-            <Password setForm={setForm} form={form} />
+            <Password onChange={value => handleChange('password', value)} password={userSignUp.password} />
           </View>
 
 
@@ -61,7 +99,7 @@ export default function SignInPage(props: Props) {
         </View>
         <View className="mt-4">
           <Button
-            onPress={() => console.log('pressed')}
+            onPress={handleSubmit}
             innerText="Login"
             textColor=""
             bgColor=""

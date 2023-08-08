@@ -1,36 +1,76 @@
-import {
-  View,
-  Text,
-  SafeAreaView,
-  TouchableOpacity,
-  Pressable,
-  ScrollView,
-} from 'react-native';
+import {View, Text, SafeAreaView, ScrollView} from 'react-native';
 import React, {useState} from 'react';
-import Icon from 'react-native-vector-icons/AntDesign';
 import TextInputField from '../components/TextInputField';
 import Button from '../components/Button';
 import TopNavBar from '../components/TopNavBar';
 import CircleBtn from '../components/CircleBtn';
+import {useAuth} from '../context/AuthContext';
+import ApiService from '../services/ApiService';
 
-type Props = {};
+interface FormState {
+  result: boolean;
+  userId: number | null;
+  DOT: string;
+  DOB: string | null;
+  ZIP: string;
+  state: string;
+  gender: string;
+  race: string;
+  ethnicity: string;
+}
 
-const AccountReportPage = (props: Props) => {
-  // State for storing the zip code
-  const [zipCode, setZipCode] = useState('');
-  // State for storing the state
-  const [state, setState] = useState('');
+const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
+  const {userId: actualUserId, DOB} = useAuth();
+  const actualUserIdValue = actualUserId ?? null;
+  const DOBVal = DOB ?? null;
+  const [formState, setFormState] = useState<FormState>({
+    result: false,
+    DOB: DOBVal,
+    userId: actualUserIdValue,
+    DOT: '',
+    ZIP: '',
+    state: '',
+    gender: '',
+    race: '',
+    ethnicity: '',
+  });
 
-  // Update the zip code state when the input value changes
-  const handleZipCodeChange = (value: string) => {
-    setZipCode(value);
+  const handleChange: any = (field: string, value: string) => {
+    setFormState(prevState => ({...prevState, [field]: value}));
   };
-  // Update the state state when the input value changes
-  const handleStateChange = (value: string) => {
-    setState(value);
+
+  const handleSubmit: any = async (e: any) => {
+    e.preventDefault();
+
+    // Check if userId is not null before proceeding
+    if (formState.userId === null) {
+      console.error('UserId is null. Cannot proceed with the API call.');
+      return;
+    }
+
+    try {
+      const res = await ApiService.createTestWithAccount({
+        ...formState,
+        userId: formState.userId as number,
+      });
+      console.log('res: ', res);
+      navigation.navigate('ThankYouScreen');
+      setFormState({
+        result: false,
+        userId: formState.userId,
+        DOT: '',
+        ZIP: '',
+        state: '',
+        gender: '',
+        race: '',
+        ethnicity: '',
+        DOB: DOBVal,
+      });
+    } catch (error) {
+      console.log('Create Covid Message: ' + error);
+    }
+    console.log('Covid Info: ' + JSON.stringify(formState));
   };
- 
-  // writing comment to push changes from earlier
 
   return (
     <SafeAreaView className="min-w-screen">
@@ -53,21 +93,23 @@ const AccountReportPage = (props: Props) => {
             <View className="m-2">
               <CircleBtn
                 bgColor="bg-themeLightBlue"
-                onPress={() => console.log("You're Clear!!")}
+                updateForm={() => handleChange('result', false)}
                 text="Negative"
                 Btnwidth="w-32"
                 Btnheight="h-32"
-                textSize='base'
+                textSize="base"
+                value={true}
               />
             </View>
             <View className="m-2">
               <CircleBtn
                 text="Positive"
                 bgColor="bg-themeLightOrange"
-                onPress={() => console.log("You're Sick!!")}
+                updateForm={() => handleChange('result', true)}
                 Btnwidth="w-32"
                 Btnheight="h-32"
-                textSize='base'
+                textSize="base"
+                value={false}
               />
             </View>
           </View>
@@ -75,15 +117,15 @@ const AccountReportPage = (props: Props) => {
           {/* Text input fields container */}
           <View className="">
             <TextInputField
-              label="State*"
-              value={state}
-              onChange={handleStateChange}
-              placeholder="Enter your state"
+              label="Date of Test*"
+              value={formState.DOT}
+              onChange={value => handleChange('DOT', value)}
+              placeholder="mm/dd/yyyy"
             />
             <TextInputField
               label="Zip Code*"
-              value={zipCode}
-              onChange={handleZipCodeChange}
+              value={formState.ZIP}
+              onChange={value => handleChange('ZIP', value)}
               placeholder="Enter your ZIP code"
             />
           </View>
@@ -91,12 +133,12 @@ const AccountReportPage = (props: Props) => {
           {/* Submit button */}
           <View className="my-4">
             <Button
-              onPress={() => {}}
+              onPress={handleSubmit}
               innerText="Submit"
               textColor="text-white"
-              bgColor="bg-black"
+              bgColor="bg-themeBlue"
               border={true}
-              width='80'
+              width="80"
             />
           </View>
         </View>

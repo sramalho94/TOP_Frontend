@@ -27,6 +27,7 @@ const TextInputField: React.FC<TextInputFieldProps> = ({
         value={value}
         onChangeText={handleChange}
         placeholder={placeholder}
+        autoCapitalize="none"
       />
     </View>
   );
