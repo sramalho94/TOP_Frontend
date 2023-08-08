@@ -20,7 +20,7 @@ const ThankYouScreen = ({navigation, route}: Props) => {
   const {logIn} = route.params || {logIn: true};
 
   return (
-    <SafeAreaView className="h-screen w-screen mx-auto my-auto">
+    <SafeAreaView className="h-screen w-screen mx-auto my-auto flex-1">
       <ScrollView>
         <View className="flex-row justify-center mt-12">
           <Text className="text-4xl">Thank You!</Text>
