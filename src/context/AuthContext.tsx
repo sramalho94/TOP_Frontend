@@ -58,7 +58,6 @@ export const AuthProvider = ({children}: any) => {
 
   const [usernameVal, setUsernameVal] = useState<string | null>(null);
 
-
   const [DOB, setDOB] = useState<string | null>(null);
 
   useEffect(() => {
@@ -176,6 +175,8 @@ export const AuthProvider = ({children}: any) => {
       saveUserIdToLocalStorage(result.data.user.id.toString());
       setUsernameVal(result.data.user.username);
       saveUserNameToLocalStorage(result.data.user.username);
+      setDOB(result.data.user.DOB);
+      saveDOBToLocalStorage(result.data.user.DOB);
       axios.defaults.headers.common[
         'Authorization'
       ] = `Bearer ${result.data.token}`;
@@ -211,7 +212,6 @@ export const AuthProvider = ({children}: any) => {
     initUserName();
 
     initDOB();
-
   }, []);
 
   const logout = async () => {
@@ -230,7 +230,6 @@ export const AuthProvider = ({children}: any) => {
     usernameVal,
 
     DOB,
-
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

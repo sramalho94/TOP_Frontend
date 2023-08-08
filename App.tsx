@@ -77,6 +77,10 @@ function AppContent({
     }
   }, [authState, navigationRef]);
 
+  if (authState?.loading) {
+    return null;
+  }
+
   return (
     <SafeAreaProvider>
       <CreateAccountProvider>
