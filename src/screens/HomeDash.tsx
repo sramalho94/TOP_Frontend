@@ -42,14 +42,14 @@ const HomeDash: React.FC<{navigation: any}> = ({navigation}) => {
               textSize="3xl"
             />
           </View>
-          <Button
+          {/* <Button
             onPress={() => navigation.navigate('ConsentFormThankYou')}
             innerText="Back to ConsentFormThankYou"
             bgColor="bg-themeBlue"
             textColor=""
             border={false}
             borderColor=""
-          />
+          /> */}
 
           {/*View for 3 mini buttons*/}
           <View className="w-full mb-6 flex justify-center flex-row">
