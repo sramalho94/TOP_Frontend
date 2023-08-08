@@ -8,6 +8,7 @@ import TopNavBar from '../../components/TopNavBar';
 const CreateAccount2: React.FC<{ navigation: any }> = ({ navigation }) => {
   const { formState, updateFormState } = useContext(CreateAccountContext);
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string>('');
 
   // Function to check if email format is correct
   const isBirthdayValid = (birthday: string): boolean => {
@@ -49,24 +50,24 @@ const CreateAccount2: React.FC<{ navigation: any }> = ({ navigation }) => {
   const handleNext = () => {
     // Check if email and username are not empty
     if (!formState.DOB || !formState.ZIP) {
-      alert('Please fill in all mandatory fields.');
+      setErrorMessage('Please fill in all mandatory fields.');
       return; // Prevent proceeding to the next page
     }
 
 
     if (!isBirthdayValid(formState.DOB)) {
-      alert('Please enter a valid birthday.');
+      setErrorMessage('Please enter a valid birthday.');
       return; // Prevent proceeding to the next page
     }
 
     if (!isEighteenOrOlder(formState.DOB)) {
-      alert('You must be 18 years or older to create an account.');
+      setErrorMessage('You must be 18 years or older to create an account.');
       return;
     }
 
     // Check if the zip code is in the correct format
     if (!isZipCodeValid(formState.ZIP)) {
-      alert('Please enter a valid zip code.');
+      setErrorMessage('Please enter a valid zip code.');
       return; // Prevent proceeding to the next page
     } else {
       navigation.navigate('CreateAccount3');
@@ -122,6 +123,11 @@ const CreateAccount2: React.FC<{ navigation: any }> = ({ navigation }) => {
             />
           </View>
         </View>
+        {errorMessage ? (
+          <View className="mt-0 p-2 bg-red-100 border border-red-500 mx-auto w-[315]">
+            <Text className="text-red-500">{errorMessage}</Text>
+          </View>
+        ) : null}
         <View className="mt-56">
           <Button
             onPress={handleNext}
