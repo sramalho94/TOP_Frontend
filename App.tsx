@@ -65,30 +65,23 @@ function AppContent({
   // Handle automatic navigation upon authentication changes
   useEffect(() => {
     if (
-      !authState.loading &&
+      !authState?.loading &&
       navigationRef.current?.getCurrentRoute()?.name !== 'ThankYouScreen' &&
       navigationRef.current?.getCurrentRoute()?.name !== 'ConsentFormThankYou'
     ) {
-      if (authState.authenticated) {
+      if (authState?.authenticated) {
         navigationRef.current?.navigate('HomeDash');
-      } else if (!authState.authenticated) {
+      } else if (!authState?.authenticated) {
         navigationRef.current?.navigate('LandingPage');
       }
     }
   }, [authState, navigationRef]);
 
-  if (authState.loading) {
-    return <ConsentFormThankYou />;
-  }
-
   return (
     <SafeAreaProvider>
       <CreateAccountProvider>
         <NavigationContainer ref={navigationRef}>
-          <Stack.Navigator
-            initialRouteName={
-              authState.authenticated ? 'HomeDash' : 'LandingPage'
-            }>
+          <Stack.Navigator initialRouteName={initialScreen}>
             <Stack.Screen
               name="Onboarding"
               component={Onboarding}
