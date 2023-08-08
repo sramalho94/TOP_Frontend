@@ -101,7 +101,7 @@ export default function SignInPage(props: Props) {
             bgColor=""
             border={true}
             borderColor="border border-black"
-            width='80'
+            width='full'
           />
           <Button
             onPress={() => console.log('pressed')}
@@ -110,7 +110,7 @@ export default function SignInPage(props: Props) {
             bgColor=""
             border={true}
             borderColor="border border-black"
-            width='80'
+            width='full'
           />
           <Button
             onPress={() => console.log('Skip button pressed')}
@@ -119,7 +119,7 @@ export default function SignInPage(props: Props) {
             textColor=""
             border={false}
             borderColor=""
-            width='80'
+            width='full'
           />
         </View>
       </ScrollView>

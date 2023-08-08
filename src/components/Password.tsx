@@ -1,5 +1,5 @@
-import { View, Text, TextInput, TouchableOpacity } from 'react-native';
-import { useState } from 'react';
+import {View, Text, TextInput, TouchableOpacity} from 'react-native';
+import {useState} from 'react';
 import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -7,7 +7,7 @@ type Props = {
   // setForm: React.Dispatch<React.SetStateAction<FormState>>;
   // form: FormState;
   onChange: (text: string) => void;
-  password:string;
+  password: string;
 };
 
 const PasswordField = (props: Props) => {
@@ -17,26 +17,26 @@ const PasswordField = (props: Props) => {
   //   props.onChange('password', value);
   // };
 
-  const [showPassword, setShowPassword] = useState<boolean>(false)
+  const [showPassword, setShowPassword] = useState<boolean>(false);
 
   const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword)
+    setShowPassword(!showPassword);
   };
 
   return (
-    <View className="my-4">
-      <Text className="ml-3 w-36 h-8 flex my-auto justify-center font-medium">
+    <View className="w-full flex-1 justify-center align-middle px-4 ">
+      <Text className="font-medium w-full h-8 flex my-auto justify-center align-middle">
         Password
       </Text>
 
-    {/* TODO: NEED TO TEST */}
+      {/* TODO: NEED TO TEST */}
       <TextInput
         autoCorrect={false}
         value={props.password}
-        onChangeText={value => props.onChange( value )}
+        onChangeText={value => props.onChange(value)}
         placeholder="Enter your password"
         placeholderTextColor="#6b7280"
-        className="border border-black rounded-lg px-4 h-12 w-80 mx-auto font-medium"
+        className="border border-black rounded-lg px-4 h-12 w-full mx-auto font-medium"
         secureTextEntry={!showPassword}
       />
 
