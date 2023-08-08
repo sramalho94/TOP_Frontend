@@ -9,11 +9,11 @@ const LandingPage: React.FC<{ navigation: any }> = ({ navigation }) => {
     <SafeAreaView className="flex-1">
       <ScrollView>
         <Image
-          className="absolute bg-cover bg-center right-0 left-0 "
+          className="w-full h-72 absolute bg-cover bg-center right-0 left-0 "
           source={WaveImage}
         />
         <Image
-          className="w-[342] h-[339] mx-auto mt-[110]"
+          className="w-[342] h-[339] mx-auto mt-[110] xl:mt-[1900]"
           source={LandingImage}
         />
         <View className=" space-y-[12]">
