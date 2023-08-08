@@ -98,9 +98,9 @@ function AppContent({
               name="LandingPage"
               component={LandingPage}
               options={{headerShown: false}}
-            />
+            /> */}
             <Stack.Screen name="SignInPage" component={SignInPage} />
-            <Stack.Screen
+            {/* <Stack.Screen
               name="CreateAccount1"
               component={CreateAccount1}
               options={{headerShown: false}}
@@ -115,8 +115,7 @@ function AppContent({
               component={CreateAccount3}
               options={{headerShown: false}}
             /> */}
-          <Stack.Screen name="ReportPage" component={ReportPage} />
-          {/* </Stack.Navigator> */}
+          {/* <Stack.Screen name="ReportPage" component={ReportPage} /> */}
           {/* <Stack.Screen name="ConsentPage" component={ConsentPage} />
             <Stack.Screen
               name="ThankYouScreen"

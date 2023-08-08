@@ -60,11 +60,11 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
 
   const [isCheckboxSelected, setCheckboxSelection] = useState(false);
 
-  console.log('Render: ', isCheckboxSelected);
+  // console.log('Render: ', isCheckboxSelected);
 
   const handleCheckChanges = () => {
     setCheckboxSelection(prevState => !prevState);
-    console.log('handleCheckChanges: ', isCheckboxSelected);
+    // console.log('handleCheckChanges: ', isCheckboxSelected);
   };
 
   const updateFormState = (field: string, value: string | boolean) => {
@@ -87,7 +87,7 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
 
         {/* Page Container */}
         <View className="w-full justify-center items-center flex-1 flex-col">
-          <View className="max-w-sm">
+          <View>
             {/* Test Result Buttons */}
             <Text className="text-lg font-bold mx-auto">
               What were the results of your test?
@@ -118,7 +118,7 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
             </View>
 
             {/* Text input and dropdown fields container */}
-            <View className="">
+            <View className='w-full'>
               <TextInputField
                 label="Date of Test*"
                 value={formState.DOT}
