@@ -1,5 +1,4 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {View} from 'react-native';
 import LandingPage from './src/screens/LandingPage';
 import ReportPage from './src/screens/ReportPage';
 import AccountReportPage from './src/screens/AccountReportPage';
@@ -20,7 +19,7 @@ import CreateAccount1 from './src/screens/CreateAccount/CreateAccount1';
 import CreateAccount2 from './src/screens/CreateAccount/CreateAccount2';
 import CreateAccount3 from './src/screens/CreateAccount/CreateAccount3';
 import CreateAccountProvider from './src/context/CreateAccountProvider';
-import LoadingPage from './src/screens/LoadingPage';
+import ConsentFormThankYou from './src/screens/ConsentFormThankYou';
 
 export type RootStackParamList = {
   Onboarding: undefined;
@@ -35,6 +34,7 @@ export type RootStackParamList = {
   CreateAccount1: undefined;
   CreateAccount2: undefined;
   CreateAccount3: undefined;
+  ConsentFormThankYou: {logIn: boolean};
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -65,29 +65,27 @@ function AppContent({
   // Handle automatic navigation upon authentication changes
   useEffect(() => {
     if (
-      !authState.loading &&
-      navigationRef.current?.getCurrentRoute()?.name !== 'ThankYouScreen'
+      !authState?.loading &&
+      navigationRef.current?.getCurrentRoute()?.name !== 'ThankYouScreen' &&
+      navigationRef.current?.getCurrentRoute()?.name !== 'ConsentFormThankYou'
     ) {
-      if (authState.authenticated) {
+      if (authState?.authenticated) {
         navigationRef.current?.navigate('HomeDash');
-      } else if (!authState.authenticated) {
+      } else if (!authState?.authenticated) {
         navigationRef.current?.navigate('LandingPage');
       }
     }
   }, [authState, navigationRef]);
 
-  if (authState.loading) {
-    return <LoadingPage />;
+  if (authState?.loading) {
+    return null;
   }
 
   return (
     <SafeAreaProvider>
       <CreateAccountProvider>
         <NavigationContainer ref={navigationRef}>
-          <Stack.Navigator
-            initialRouteName={
-              authState.authenticated ? 'HomeDash' : 'LandingPage'
-            }>
+          <Stack.Navigator initialRouteName={initialScreen}>
             <Stack.Screen
               name="Onboarding"
               component={Onboarding}
@@ -120,6 +118,12 @@ function AppContent({
               name="ThankYouScreen"
               component={ThankYouScreen}
               options={{headerShown: false}}
+
+            />
+            <Stack.Screen
+              name="ConsentFormThankYou"
+              component={ConsentFormThankYou}
+              options={{headerShown: false}}
             />
             <Stack.Screen
               name="AccountReportPage"
@@ -128,7 +132,6 @@ function AppContent({
             <Stack.Screen name="HomeDash" component={HomeDash} />
           </Stack.Navigator>
         </NavigationContainer>
-        {/* </View> */}
       </CreateAccountProvider>
     </SafeAreaProvider>
   );

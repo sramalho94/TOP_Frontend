@@ -136,7 +136,7 @@ const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
               onPress={handleSubmit}
               innerText="Submit"
               textColor="text-white"
-              bgColor="bg-black"
+              bgColor="bg-themeBlue"
               border={true}
               width="80"
             />

@@ -61,7 +61,7 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
           console.log('Screen Register Err: ' + error);
         });
       resetFormState();
-      navigation.navigate('ThankYouScreen');
+      navigation.navigate('ConsentFormThankYou');
       console.log('reset marathon' + JSON.stringify(formState));
     } else {
       console.log('onRegister is not a function or is undefined.');
