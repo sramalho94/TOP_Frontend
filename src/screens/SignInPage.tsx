@@ -39,6 +39,7 @@ export default function SignInPage(props: Props) {
 
     setErrorMessage('Username or Password is incorrect. Please try again or click Forgot Password.');
 
+    // this only checks if empty, move setErrorMessage to the .catch instead
     if(!userSignUp.username || !userSignUp.password) {
       setErrorMessage('Username or Password is incorrect. Please try again or click Forgot Password.');
     }
