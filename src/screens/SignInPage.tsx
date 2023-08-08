@@ -22,25 +22,25 @@ export default function SignInPage(props: Props) {
     username: '',
     password: '',
   })
-  
+
   const [errorMessage, setErrorMessage] = useState<string>('');
 
   const handleChange = (field: string, value: string) => {
-    setUserSignUp({...userSignUp, [field]: value});
+    setUserSignUp({ ...userSignUp, [field]: value });
   }
 
-  const {onLogin} = useAuth();
+  const { onLogin } = useAuth();
   const navigation: any = useNavigation();
 
 
   const handleSubmit: any = (e: any) => {
     e.preventDefault();
-    console.log("userSignIn submit: ", {userSignUp})
+    console.log("userSignIn submit: ", { userSignUp })
 
     setErrorMessage('Username or Password is incorrect. Please try again or click Forgot Password.');
 
     // this only checks if empty, move setErrorMessage to the .catch instead
-    if(!userSignUp.username || !userSignUp.password) {
+    if (!userSignUp.username || !userSignUp.password) {
       setErrorMessage('Username or Password is incorrect. Please try again or click Forgot Password.');
     }
     if (onLogin) {
@@ -64,12 +64,12 @@ export default function SignInPage(props: Props) {
   return (
     <SafeAreaView className="w-342 m-4">
       <ScrollView>
-      {/* <TopNavBar textSize='xl' textValue='Sign In' fontFamily='' haveProgress={false} /> */}
+        {/* <TopNavBar textSize='xl' textValue='Sign In' fontFamily='' haveProgress={false} /> */}
         <View className="">
           <View className="flex flex-row justify-center align-middle">
-            <Image className="w-342 h-349 m-4" source={NoImage}></Image>
+            <Image className="w-[342] h-[349] m-4" source={NoImage}></Image>
           </View>
-          <View className="mb-1">
+          <View className="mb-1 mx-auto w-[342]">
             <TextInputField
               label="Username"
               value={userSignUp.username}
@@ -94,24 +94,6 @@ export default function SignInPage(props: Props) {
             bgColor=""
             border={true}
             borderColor="border border-black"
-            width='80'
-          />
-          <Button
-            onPress={() => console.log('pressed')}
-            innerText="Forgot Password"
-            textColor=""
-            bgColor=""
-            border={true}
-            borderColor="border border-black"
-            width='80'
-          />
-          <Button
-            onPress={() => console.log('Skip button pressed')}
-            innerText="Skip"
-            bgColor=""
-            textColor=""
-            border={false}
-            borderColor=""
             width='80'
           />
         </View>
