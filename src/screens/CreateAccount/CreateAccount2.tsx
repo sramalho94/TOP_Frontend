@@ -103,22 +103,16 @@ const CreateAccount2: React.FC<{ navigation: any }> = ({ navigation }) => {
               />
             </View>
             <TextInputField
-              label="Birthday*"
+              label="Date of Birth*"
               value={formState.DOB}
               onChange={value => updateFormState('DOB', value)}
-              placeholder="mm/dd/yyyy"
+              placeholder="MM/DD/YYYY"
             />
             <TextInputField
               label="Zip Code*"
               value={formState.ZIP}
               onChange={value => updateFormState('ZIP', value)}
-              placeholder=""
-            />
-            <TextInputField
-              label="State"
-              value={formState.state}
-              onChange={value => updateFormState('state', value)}
-              placeholder=""
+              placeholder="XXXXX"
             />
             <TextInputField
               label="First Name"
