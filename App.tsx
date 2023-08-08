@@ -65,7 +65,7 @@ function AppContent({
   // Handle automatic navigation upon authentication changes
   useEffect(() => {
     if (
-      !authState.loading &&
+      !authState?.loading &&
       navigationRef.current?.getCurrentRoute()?.name !== 'ThankYouScreen' &&
       navigationRef.current?.getCurrentRoute()?.name !== 'ConsentFormThankYou'
     ) {
@@ -77,7 +77,7 @@ function AppContent({
     }
   }, [authState, navigationRef]);
 
-  if (authState.loading) {
+  if (authState?.loading) {
     return <ConsentFormThankYou />;
   }
 
