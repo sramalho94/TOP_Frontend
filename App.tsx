@@ -83,13 +83,13 @@ function AppContent({
 
   return (
     <SafeAreaProvider>
-      <CreateAccountProvider>
-        <NavigationContainer ref={navigationRef}>
-          <Stack.Navigator
+      {/* <CreateAccountProvider> */}
+      <NavigationContainer ref={navigationRef}>
+        <Stack.Navigator
             initialRouteName={
               authState?.authenticated ? 'HomeDash' : 'LandingPage'
             }>
-            <Stack.Screen
+            {/* <Stack.Screen
               name="Onboarding"
               component={Onboarding}
               options={{headerShown: false}}
@@ -114,9 +114,10 @@ function AppContent({
               name="CreateAccount3"
               component={CreateAccount3}
               options={{headerShown: false}}
-            />
-            <Stack.Screen name="ReportPage" component={ReportPage} />
-            <Stack.Screen name="ConsentPage" component={ConsentPage} />
+            /> */}
+          <Stack.Screen name="ReportPage" component={ReportPage} />
+        {/* </Stack.Navigator> */}
+        {/* <Stack.Screen name="ConsentPage" component={ConsentPage} />
             <Stack.Screen
               name="ThankYouScreen"
               component={ThankYouScreen}
@@ -131,10 +132,10 @@ function AppContent({
               name="AccountReportPage"
               component={AccountReportPage}
             />
-            <Stack.Screen name="HomeDash" component={HomeDash} />
-          </Stack.Navigator>
-        </NavigationContainer>
-      </CreateAccountProvider>
+            <Stack.Screen name="HomeDash" component={HomeDash} /> */}
+        </Stack.Navigator>
+      </NavigationContainer>
+      {/* </CreateAccountProvider> */}
     </SafeAreaProvider>
   );
 }

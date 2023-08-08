@@ -79,10 +79,10 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
   const [ethnicityOpen, setEthnicityOpen] = useState<boolean>(false);
 
   return (
-    <SafeAreaView className="w-screen h-screen">
+    <SafeAreaView className="w-screen h-screen flex-1">
       <ScrollView>
         {/* NavBar */}
-        <View className="h-[90] border-b-4 border-slate-200 flex-row my-6">
+        <View className="border-b-4 border-slate-200 flex-row my-6">
           <TouchableOpacity className="mt-2 ml-4">
             <Icon name="arrowleft" size={30} color="#000" className="" />
           </TouchableOpacity>
@@ -236,7 +236,7 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
             </View>
 
             {/* button container */}
-            <View className="mb-14">
+            <View>
               <Button
                 onPress={handleReportButtonClick}
                 innerText="Report"

@@ -76,7 +76,7 @@ export default function SignInPage(props: Props) {
 
 
   return (
-    <SafeAreaView className="w-342 m-4">
+    <SafeAreaView className="w-342 m-4 flex-1">
       <ScrollView>
       {/* <TopNavBar textSize='xl' textValue='Sign In' fontFamily='' haveProgress={false} /> */}
         <View className="">
@@ -92,10 +92,6 @@ export default function SignInPage(props: Props) {
             />
             <Password onChange={value => handleChange('password', value)} password={userSignUp.password} />
           </View>
-
-
-
-
         </View>
         <View className="mt-4">
           <Button
