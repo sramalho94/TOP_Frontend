@@ -70,6 +70,7 @@ const CreateAccount2: React.FC<{ navigation: any }> = ({ navigation }) => {
       setErrorMessage('Please enter a valid zip code.');
       return; // Prevent proceeding to the next page
     } else {
+      setErrorMessage('')
       navigation.navigate('CreateAccount3');
     }
   };
