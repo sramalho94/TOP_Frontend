@@ -7,9 +7,9 @@ type Props = {
   bgColor: string;
   textColor: string;
   border: boolean;
-  borderColor?: string,
+  borderColor?: string;
   textDecoration?: string;
-  width?:string;
+  width?: string;
 };
 
 const Button = ({
@@ -25,12 +25,15 @@ const Button = ({
   return (
     <View className={`max-h-36 flex-row justify-center mx-auto w-${width}`}>
       <TouchableOpacity
-        className={`${
-          border ? `${borderColor}` : ''
-        } 
+        className={`${border ? `${borderColor}` : ''}
          flex justify-center items-center w-full max-w-sm h-[52] rounded-lg mb-3 ${bgColor}`}
         onPress={onPress}>
-        <Text className={`text-lg font-bold ${textColor} ${textDecoration ? `${textDecoration}` : ''}`}>{innerText}</Text>
+        <Text
+          className={` text-base font-bold ${textColor} ${
+            textDecoration ? `${textDecoration}` : ''
+          }`}>
+          {innerText}
+        </Text>
       </TouchableOpacity>
     </View>
   );

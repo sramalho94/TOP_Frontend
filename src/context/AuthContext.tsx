@@ -30,6 +30,7 @@ interface AuthProps {
     loading: boolean;
   };
   userId?: number | null;
+  usernameVal?: string | null;
   onRegister?: (registrationData: RegistrationData) => Promise<any>;
   onLogin?: (loginData: LoginData) => Promise<any>;
   onLogout?: () => Promise<any>;
@@ -51,6 +52,7 @@ export const AuthProvider = ({children}: any) => {
   }>({token: null, authenticated: null, loading: true});
 
   const [userId, setUserId] = useState<number | null>(null);
+  const [usernameVal, setUsernameVal] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchToken = async () => {
@@ -90,6 +92,24 @@ export const AuthProvider = ({children}: any) => {
       return null;
     }
   };
+  // USER
+  const saveUserNameToLocalStorage = async (username: string) => {
+    try {
+      await AsyncStorage.setItem('USERNAME', username);
+    } catch (error) {
+      console.log('Error saving user name to local storage: ', error);
+    }
+  };
+
+  const getUserNameFromLocalStorage = async (): Promise<string | null> => {
+    try {
+      const storedUserName = await AsyncStorage.getItem('USERNAME');
+      return storedUserName;
+    } catch (error) {
+      console.log('Error retrieving user name from local storage: ', error);
+      return null;
+    }
+  };
 
   const register = async (registrationData: RegistrationData) => {
     try {
@@ -100,6 +120,8 @@ export const AuthProvider = ({children}: any) => {
       );
       setUserId(result.data.user.id);
       saveUserIdToLocalStorage(result.data.user.id.toString());
+      setUsernameVal(result.data.user.username);
+      saveUserNameToLocalStorage(result.data.user.username);
       axios.defaults.headers.common[
         'Authorization'
       ] = `Bearer ${result.data.token}`;
@@ -122,6 +144,8 @@ export const AuthProvider = ({children}: any) => {
       });
       setUserId(result.data.user.id);
       saveUserIdToLocalStorage(result.data.user.id.toString());
+      setUsernameVal(result.data.user.username);
+      saveUserNameToLocalStorage(result.data.user.username);
       axios.defaults.headers.common[
         'Authorization'
       ] = `Bearer ${result.data.token}`;
@@ -140,7 +164,14 @@ export const AuthProvider = ({children}: any) => {
       }
     };
 
+    const initUserName = async () => {
+      const username = await getUserNameFromLocalStorage();
+      if (username) {
+        setUsernameVal(username);
+      }
+    };
     initUserId();
+    initUserName();
   }, []);
 
   const logout = async () => {
@@ -155,6 +186,7 @@ export const AuthProvider = ({children}: any) => {
     onLogout: logout,
     authState,
     userId,
+    usernameVal,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
