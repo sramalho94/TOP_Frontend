@@ -1,10 +1,10 @@
 import React from 'react';
-import {View, SafeAreaView, ScrollView, Image} from 'react-native';
+import { View, SafeAreaView, ScrollView, Image } from 'react-native';
 import Button from '../components/Button';
 import LandingImage from './../../assets/landing_1.png';
 import WaveImage from './../../assets/topWave.png';
 
-const LandingPage: React.FC<{navigation: any}> = ({navigation}) => {
+const LandingPage: React.FC<{ navigation: any }> = ({ navigation }) => {
   return (
     <SafeAreaView className="flex-1">
       <ScrollView>
@@ -27,8 +27,8 @@ const LandingPage: React.FC<{navigation: any}> = ({navigation}) => {
             width="80"
           />
           <Button
-            onPress={() => navigation.navigate('Onboarding')}
-            innerText="Create Account"
+            onPress={() => navigation.navigate('ReportPage')}
+            innerText="Report Without Account"
             bgColor="bg-white"
             textColor="text-themeBlue"
             border={true}
@@ -36,8 +36,8 @@ const LandingPage: React.FC<{navigation: any}> = ({navigation}) => {
             width="80"
           />
           <Button
-            onPress={() => navigation.navigate('ReportPage')}
-            innerText="Report Without Account"
+            onPress={() => navigation.navigate('Onboarding')}
+            innerText="Create Account"
             bgColor="bg-themeBlue"
             textColor="text-white"
             border={true}
