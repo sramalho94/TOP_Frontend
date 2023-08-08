@@ -10,6 +10,8 @@ import ApiService from '../services/ApiService';
 interface FormState {
   result: boolean;
   userId: number | null;
+  DOT: string;
+  DOB: string | null;
   ZIP: string;
   state: string;
   gender: string;
@@ -18,12 +20,14 @@ interface FormState {
 }
 
 const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
-  const {userId: actualUserId} = useAuth();
+  const {userId: actualUserId, DOB} = useAuth();
   const actualUserIdValue = actualUserId ?? null;
-
+  const DOBVal = DOB ?? null;
   const [formState, setFormState] = useState<FormState>({
     result: false,
+    DOB: DOBVal,
     userId: actualUserIdValue,
+    DOT: '',
     ZIP: '',
     state: '',
     gender: '',
@@ -54,11 +58,13 @@ const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
       setFormState({
         result: false,
         userId: formState.userId,
+        DOT: '',
         ZIP: '',
         state: '',
         gender: '',
         race: '',
         ethnicity: '',
+        DOB: DOBVal,
       });
     } catch (error) {
       console.log('Create Covid Message: ' + error);
@@ -111,10 +117,10 @@ const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
           {/* Text input fields container */}
           <View className="">
             <TextInputField
-              label="State*"
-              value={formState.state}
-              onChange={value => handleChange('state', value)}
-              placeholder="Enter your state"
+              label="Date of Test*"
+              value={formState.DOT}
+              onChange={value => handleChange('DOT', value)}
+              placeholder="mm/dd/yyyy"
             />
             <TextInputField
               label="Zip Code*"

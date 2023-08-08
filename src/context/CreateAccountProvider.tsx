@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import CreateAccountContext, {FormState} from './CreateAccountContext';
+import React, { useState } from 'react';
+import CreateAccountContext, { FormState } from './CreateAccountContext';
 
 interface CreateAccountProviderProps {
   children: React.ReactNode;
@@ -17,7 +17,6 @@ const CreateAccountProvider: React.FC<CreateAccountProviderProps> = ({
     gender: '',
     race: '',
     ethnicity: '',
-    state: '',
     firstName: '',
   };
   const [formState, setFormState] = useState<FormState>(initialFormState);
@@ -35,7 +34,7 @@ const CreateAccountProvider: React.FC<CreateAccountProviderProps> = ({
 
   return (
     <CreateAccountContext.Provider
-      value={{formState, updateFormState, resetFormState}}>
+      value={{ formState, updateFormState, resetFormState }}>
       {children}
     </CreateAccountContext.Provider>
   );
