@@ -83,7 +83,7 @@ export default function SignInPage(props: Props) {
           <View className="flex flex-row justify-center align-middle">
             <Image className="w-342 h-349 m-4" source={NoImage}></Image>
           </View>
-          <View className="mb-6">
+          <View className="mb-6 flex items-center align-middle justify-center">
             <TextInputField
               label="Username"
               value={userSignUp.username}
@@ -93,7 +93,7 @@ export default function SignInPage(props: Props) {
             <Password onChange={value => handleChange('password', value)} password={userSignUp.password} />
           </View>
         </View>
-        <View className="mt-4">
+        <View className="mt-4 items-center">
           <Button
             onPress={handleSubmit}
             innerText="Login"

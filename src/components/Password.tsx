@@ -24,7 +24,7 @@ const PasswordField = (props: Props) => {
   };
 
   return (
-    <View className="w-full flex-1 justify-center align-middle px-4 ">
+    <View className="w-full max-w-sm flex-1 justify-center align-middle px-4">
       <Text className="font-medium w-full h-8 flex my-auto justify-center align-middle">
         Password
       </Text>

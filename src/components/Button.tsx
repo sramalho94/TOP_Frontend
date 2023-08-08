@@ -23,13 +23,14 @@ const Button = ({
   width,
 }: Props) => {
   return (
-    <View className={`max-h-36 flex-row justify-center mx-auto w-${width} px-4`}>
+    <View
+      className={`w-${width} max-w-sm flex-1 justify-center align-center px-4 max-h-36 items-center`}>
       <TouchableOpacity
         className={`${border ? `${borderColor}` : ''}
-         flex justify-center items-center w-full max-w-sm h-[52] rounded-lg mb-3 ${bgColor}`}
+         flex justify-center align-center items-center w-full h-[52] rounded-lg mb-3 ${bgColor}`}
         onPress={onPress}>
         <Text
-          className={` text-base font-bold ${textColor} ${
+          className={`text-base font-bold ${textColor} ${
             textDecoration ? `${textDecoration}` : ''
           }`}>
           {innerText}
