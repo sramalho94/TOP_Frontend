@@ -1,5 +1,4 @@
 import {createContext, useContext, useEffect, useState} from 'react';
-import {Platform} from 'react-native';
 import axios from 'axios';
 import * as Keychain from 'react-native-keychain';
 import React from 'react';
@@ -11,7 +10,6 @@ interface RegistrationData {
   username: string;
   password: string;
   DOB: string;
-  state: string;
   ZIP: string;
   firstName: string;
   gender: string;
@@ -29,12 +27,16 @@ interface AuthProps {
     token: string | null;
     authenticated: boolean | null;
     loading: boolean;
-  } | undefined;
-  userId?: {userId: string | null};
+  };
+  userId?: number | null;
+
+  usernameVal?: string | null;
+
+  DOB?: string | null;
+
   onRegister?: (registrationData: RegistrationData) => Promise<any>;
   onLogin?: (loginData: LoginData) => Promise<any>;
   onLogout?: () => Promise<any>;
-  // getUserId: () => Promise<number | null>;
 }
 
 const TOKEN_KEY = 'my-jwt';
@@ -52,9 +54,12 @@ export const AuthProvider = ({children}: any) => {
     loading: boolean;
   }>({token: null, authenticated: null, loading: true});
 
-  const [userId, setUserId] = useState<{
-    userId: string | null;
-  }>({userId: null});
+  const [userId, setUserId] = useState<number | null>(null);
+
+  const [usernameVal, setUsernameVal] = useState<string | null>(null);
+
+
+  const [DOB, setDOB] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchToken = async () => {
@@ -77,19 +82,56 @@ export const AuthProvider = ({children}: any) => {
     fetchToken();
   }, []);
 
-  const saveUserIdToLocalStorage = async (id: string) => {
+  const saveUserIdToLocalStorage = async (id: number) => {
     try {
-      await AsyncStorage.setItem('USER_ID', id);
+      await AsyncStorage.setItem('USER_ID', id.toString());
     } catch (error) {
       console.log('Error saving user id to local storage: ', error);
     }
   };
 
-  const getUserIdFromLocalStorage = async (): Promise<string | null> => {
+  const getUserIdFromLocalStorage = async (): Promise<number | null> => {
     try {
-      return await AsyncStorage.getItem('USER_ID');
+      const storedId = await AsyncStorage.getItem('USER_ID');
+      return storedId ? parseInt(storedId, 10) : null;
     } catch (error) {
       console.log('Error retrieving user id from local storage: ', error);
+      return null;
+    }
+  };
+  // USER
+  const saveUserNameToLocalStorage = async (username: string) => {
+    try {
+      await AsyncStorage.setItem('USERNAME', username);
+    } catch (error) {
+      console.log('Error saving user name to local storage: ', error);
+    }
+  };
+
+  const getUserNameFromLocalStorage = async (): Promise<string | null> => {
+    try {
+      const storedUserName = await AsyncStorage.getItem('USERNAME');
+      return storedUserName;
+    } catch (error) {
+      console.log('Error retrieving user name from local storage: ', error);
+      return null;
+    }
+  };
+
+  const saveDOBToLocalStorage = async (DOB: string) => {
+    try {
+      await AsyncStorage.setItem('DOB', DOB);
+    } catch (error) {
+      console.log('Error saving DOB to local storage: ', error);
+    }
+  };
+
+  const getDOBFromLocalStorage = async (): Promise<string | null> => {
+    try {
+      const storedDOB = await AsyncStorage.getItem('DOB');
+      return storedDOB ? storedDOB : null;
+    } catch (error) {
+      console.log('Error retrieving DOB from local storage: ', error);
       return null;
     }
   };
@@ -101,8 +143,15 @@ export const AuthProvider = ({children}: any) => {
       console.log(
         'This is authState in authContext: ' + JSON.stringify(authState),
       );
-      setUserId({userId: result.data.user.id});
+      setUserId(result.data.user.id);
       saveUserIdToLocalStorage(result.data.user.id.toString());
+
+      setUsernameVal(result.data.user.username);
+      saveUserNameToLocalStorage(result.data.user.username);
+
+      setDOB(result.data.user.DOB);
+      saveDOBToLocalStorage(result.data.user.DOB);
+
       axios.defaults.headers.common[
         'Authorization'
       ] = `Bearer ${result.data.token}`;
@@ -123,8 +172,10 @@ export const AuthProvider = ({children}: any) => {
         authenticated: true,
         loading: false,
       });
-      setUserId({userId: result.data.user.id});
+      setUserId(result.data.user.id);
       saveUserIdToLocalStorage(result.data.user.id.toString());
+      setUsernameVal(result.data.user.username);
+      saveUserNameToLocalStorage(result.data.user.username);
       axios.defaults.headers.common[
         'Authorization'
       ] = `Bearer ${result.data.token}`;
@@ -138,10 +189,29 @@ export const AuthProvider = ({children}: any) => {
   useEffect(() => {
     const initUserId = async () => {
       const id = await getUserIdFromLocalStorage();
-      if (id) setUserId({userId: id});
+      if (id) {
+        setUserId(id);
+      }
+    };
+    const initDOB = async () => {
+      const DOB = await getDOBFromLocalStorage();
+      if (DOB) {
+        setDOB(DOB);
+      }
     };
 
+    const initUserName = async () => {
+      const username = await getUserNameFromLocalStorage();
+      if (username) {
+        setUsernameVal(username);
+      }
+    };
     initUserId();
+
+    initUserName();
+
+    initDOB();
+
   }, []);
 
   const logout = async () => {
@@ -156,6 +226,11 @@ export const AuthProvider = ({children}: any) => {
     onLogout: logout,
     authState,
     userId,
+
+    usernameVal,
+
+    DOB,
+
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
