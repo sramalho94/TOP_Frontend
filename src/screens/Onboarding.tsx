@@ -1,5 +1,6 @@
 import React, {useState, useRef, useEffect} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import Onboarding1 from './../../assets/onboarding1.png';
 import Onboarding2 from './../../assets/onboarding2.png';
 import Onboarding3 from './../../assets/onboarding3.png';
@@ -16,7 +17,6 @@ import {
 } from 'react-native';
 import {ScrollView} from 'react-native';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import NoImage from './../../assets/nopicture.png';
 import ProgressDots from './../components/ProgressDots';
 import Button from './../components/Button';
 import {RootStackParamList} from '../../App';
@@ -33,22 +33,25 @@ const Onboarding = (props: OnboardingScreenProps) => {
 
   const pages = [
     {
-      imageSource: NoImage,
-      title: 'What the app does and the impact of data',
+      imageSource: Onboarding1,
+      title: 'How your data will be used',
+      text: 'Your data will only be shared with public health officials to help them better understand and respond to the spread of diseases in your area.',
       buttonText: 'Continue',
       pageIndicator: 1,
       onButtonPress: () => handleSwipeAnimation(1),
     },
     {
-      imageSource: NoImage,
-      title: 'What the data is used for',
+      imageSource: Onboarding2,
+      title: 'How your data won’t be used',
+      text: 'Your privacy matters. Shared data will be encrypted, and never used for advertising or sold to third parties',
       buttonText: 'Continue',
       pageIndicator: 2,
       onButtonPress: () => handleSwipeAnimation(2),
     },
     {
-      imageSource: NoImage,
-      title: 'What the data is not used for',
+      imageSource: Onboarding3,
+      title: 'How your data helps',
+      text: 'By sharing your data, you play a crucial role in making your community safer and more informeds',
       buttonText: 'Continue',
       pageIndicator: 3,
       onButtonPress: () => navigation.navigate('CreateAccount1'),
@@ -82,14 +85,20 @@ const Onboarding = (props: OnboardingScreenProps) => {
     >
       {pages.map((page, index) => (
         <SafeAreaView key={index} className="h-screen w-screen bg-themeWhite">
-          <View className="flex-1 flex-col mt-4 mb-10">
+          <View className="flex-1 flex-col">
             <View className="m-5 flex-1">
-              <Image className="w-full" source={page.imageSource}></Image>
-              <Text className="mx-auto py-5 font-serif text-[22px]">
+              <Image
+                className="w-[360px] h-[360px] "
+                source={page.imageSource}></Image>
+              <Text className="mx-auto  py-5 font-serif text-[25px] text-center">
                 {page.title}
               </Text>
+              <Text className="mx-auto py-5 font-serif text-[16px] text-center">
+                {page.text}
+              </Text>
             </View>
-            <View className="flex-1 flex-col-reverse mb-1">
+
+            <View className="flex-1 flex-col-reverse mb-1 ">
               <View className="mt-5 mx-5">
                 <Button
                   onPress={page.onButtonPress} // Updated this line
