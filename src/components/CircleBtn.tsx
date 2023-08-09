@@ -56,7 +56,7 @@ const CircleBtn = ({
           ? <View className='items-center gap-2'>
            <Text className={`text-center ${textSize}`}>{text}</Text>
             <Image
-                className={`bg-contain w-10 h-10`}
+                className={`bg-contain ${borderColor} w-10 h-10`}
                 source={img}
               />
           </View>

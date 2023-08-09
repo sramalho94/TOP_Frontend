@@ -123,6 +123,7 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
               </View>
               <View className="m-2">
                 <CircleBtn
+                  // textColor={posColor === "bg-themeLightOrange"}
                   borderColor="border-themeLightOrange"
                   text="Positive"
                   bgColor={posColor}
