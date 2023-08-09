@@ -28,25 +28,26 @@ const LandingPage: React.FC<{navigation: any}> = ({navigation}) => {
             bgColor="bg-white"
             textColor="text-themeBlue"
             border={true}
-            borderColor="border border-themeBlue border-3"
+            borderColor="border border-themeBlue border-2"
+            width="80"
+          />
+
+          <Button
+            onPress={() => navigation.navigate('ReportPage')}
+            innerText="Report Without Account"
+            bgColor="bg-themeWhite"
+            textColor="text-themeBlue"
+            border={true}
+            borderColor="border border-themeBlue border-2"
             width="80"
           />
           <Button
             onPress={() => navigation.navigate('Onboarding')}
             innerText="Create Account"
-            bgColor="bg-white"
-            textColor="text-themeBlue"
-            border={true}
-            borderColor="border border-themeBlue border-3"
-            width="80"
-          />
-          <Button
-            onPress={() => navigation.navigate('ReportPage')}
-            innerText="Report Without Account"
             bgColor="bg-themeBlue"
-            textColor="text-white"
+            textColor="text-themeWhite"
             border={true}
-            borderColor="border border-themeBlue border-3"
+            borderColor="border border-themeBlue border-2"
             width="80"
           />
         </View>
