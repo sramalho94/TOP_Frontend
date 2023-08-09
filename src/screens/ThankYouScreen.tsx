@@ -26,7 +26,7 @@ const ThankYouScreen = ({navigation, route}: Props) => {
   };
 
   return (
-    <SafeAreaView className="h-screen w-screen mx-auto my-auto flex-1 justify-between">
+    <SafeAreaView className="h-screen w-screen mx-auto my-auto flex-1 justify-between align-middle items-center">
       {/* <ScrollView className='flex-1'> */}
       <View className="flex-row justify-center mt-12">
         <Text className="text-4xl">Thank You!</Text>
@@ -60,6 +60,7 @@ const ThankYouScreen = ({navigation, route}: Props) => {
         textColor=""
         border={true}
         borderColor="border border-gray"
+        width='full'
       />
       {/* {logIn ? (
             <Button
