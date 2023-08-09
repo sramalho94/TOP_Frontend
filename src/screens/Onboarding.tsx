@@ -78,7 +78,7 @@ const Onboarding = (props: OnboardingScreenProps) => {
       scrollEventThrottle={16} // Adjust the scroll event frequency
     >
       {pages.map((page, index) => (
-        <SafeAreaView key={index} className="h-screen w-screen">
+        <SafeAreaView key={index} className="h-screen w-screen items-center bg-red-400 pb-4">
           <View className="flex-1 flex-col mt-4 mb-10">
             <View className="m-5 flex-1">
               <Image className="w-full" source={page.imageSource}></Image>
@@ -87,7 +87,7 @@ const Onboarding = (props: OnboardingScreenProps) => {
               </Text>
             </View>
             <View className="flex-1 flex-col-reverse mb-8">
-              <View className="mt-5 mx-5">
+              <View className="mt-5 mx-5 items-center">
                 <Button
                   onPress={page.onButtonPress} // Updated this line
                   innerText={page.buttonText}
