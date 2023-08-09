@@ -7,7 +7,6 @@ import {useNavigation} from '@react-navigation/native';
 type Props = {
   textSize: string;
   textValue: string;
-  textColor: string;
   fontFamily: string;
   haveProgress: boolean;
   page?: number;
@@ -19,7 +18,6 @@ type Props = {
 const TopNavBar = ({
   textSize,
   textValue,
-  textColor,
   fontFamily,
   haveProgress,
   page,

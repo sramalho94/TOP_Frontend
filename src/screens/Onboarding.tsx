@@ -1,13 +1,9 @@
 import React, {useState, useRef, useEffect} from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import Onboarding1 from './../../assets/onboarding1.png';
-import Onboarding2 from './../../assets/onboarding2.png';
-import Onboarding3 from './../../assets/onboarding3.png';
 import onboardingAll_1 from './../../assets/onboardingAll_1.png';
 import onboardingAll_2 from './../../assets/onboardingAll_2.png';
 import onboardingAll_3 from './../../assets/onboardingAll_3.png';
-import WaveImage from './../../assets/topWave.png';
+
 
 import {
   SafeAreaView,
@@ -91,7 +87,7 @@ const Onboarding = (props: OnboardingScreenProps) => {
         <SafeAreaView key={index} className="h-screen w-screen bg-themeWhite">
           <View className="flex-1 flex-col">
             {/* <Image className="absolute bg-cover bg-center" source={WaveImage} /> */}
-            <View className="">
+            <View>
               <Image
                 className="w-[400px] h-[510px] mb-5 bg-cover bg-center"
                 source={page.imageSource}

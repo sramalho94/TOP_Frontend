@@ -1,10 +1,11 @@
 import React, {useContext, useState} from 'react';
-import {View, Text, SafeAreaView, ScrollView, Modal} from 'react-native';
+import {View, Text, SafeAreaView, ScrollView, Modal, Image} from 'react-native';
 import CreateAccountContext from '../../context/CreateAccountContext';
 import TextInputField from '../../components/TextInputField';
 import Button from '../../components/Button';
 import TopNavBar from '../../components/TopNavBar';
 import PasswordField from '../../components/Password';
+import CreateAccount from '../../../assets/testNew.jpg';
 
 const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
   const {formState, updateFormState} = useContext(CreateAccountContext);
@@ -52,7 +53,7 @@ const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
   };
 
   return (
-    <SafeAreaView className="min-w-screen">
+    <SafeAreaView className="min-w-screen bg-themeWhite">
       <ScrollView>
         <TopNavBar
           fontFamily=""
@@ -60,15 +61,21 @@ const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
           textValue="Create Account"
           haveProgress={true}
           page={1}
-          textColor="text-themeBlue"
         />
         <View className="mx-auto my-auto mb-2">
           <View className="w-[342] mt-4">
+            <View>
+              <Image
+                className="mx-auto w-[217px] h-[217px] mb-5 "
+                source={CreateAccount}
+              />
+            </View>
             <TextInputField
               label="Email*"
               value={formState.email}
               onChange={value => updateFormState('email', value)}
               placeholder="Email"
+              bgColor="bg-themeLightGray"
             />
             <TextInputField
               label="Username*"
@@ -85,11 +92,11 @@ const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
         <View className="mt-48">
           <Button
             onPress={handleNext}
-            innerText="Next"
+            innerText="Continue"
             textColor="text-white"
-            bgColor="bg-black"
+            bgColor="bg-themeBlue"
             border={true}
-            borderColor="border border-4"
+            borderColor="border border-themeBlue border-2"
             width="80"
           />
         </View>
