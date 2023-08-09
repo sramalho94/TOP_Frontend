@@ -1,10 +1,10 @@
-import {View, Text, SafeAreaView, ScrollView, Image} from 'react-native';
+import { View, Text, SafeAreaView, ScrollView, Image } from 'react-native';
 import React from 'react';
 import Button from '../components/Button';
-import {RouteProp} from '@react-navigation/native';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {RootStackParamList} from '../../App';
-import {useAuth} from '../context/AuthContext';
+import { RouteProp } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../../App';
+import { useAuth } from '../context/AuthContext';
 import jumpImg from './../../assets/jump.png';
 
 type ConsentFormThankYouNavigationProp = NativeStackNavigationProp<
@@ -20,8 +20,8 @@ type Props = {
   route: ConsentFormThankYouRouteProp;
 };
 
-const ConsentFormThankYou = ({navigation}: Props) => {
-  const {usernameVal} = useAuth();
+const ConsentFormThankYou = ({ navigation }: Props) => {
+  const { usernameVal } = useAuth();
   return (
     <SafeAreaView className="h-screen w-screen mx-auto my-auto">
       <ScrollView>
@@ -54,6 +54,9 @@ const ConsentFormThankYou = ({navigation}: Props) => {
             border={false}
             borderColor=""
             className="text-xs"
+            accessible={true}
+            accessibilityLabel="Get started"
+            accessibilityHint="Navigates to the dashboard"
           />
         </View>
       </ScrollView>
