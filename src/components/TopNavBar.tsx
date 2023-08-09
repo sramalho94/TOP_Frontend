@@ -33,15 +33,15 @@ const TopNavBar = ({
         <TouchableOpacity
           className="mt-2 ml-4"
           onPress={() => navigation.goBack()}>
-          <Icon name="arrowleft" size={30} color="#000" className="" />
+          <Icon name="arrowleft" size={30} color="blue" className="" />
         </TouchableOpacity>
         <Text
           className={`text-${textSize}  text-themeBlue font-bold mx-auto mt-2 flex pr-12 font-${fontFamily}`}>
           {textValue}
         </Text>
       </View>
-      <View className="border-slate-200 border-b-2 pb-4 bg-border-gradient-to-r from-blue-500 to-red-500">
-        {haveProgress ? page ? <ProgressDots page={page} /> : null : null}
+      <View className="border-slate-200 border-b-4  pb-4">
+        {/* {haveProgress ? page ? <ProgressDots page={page} /> : null : null} */}
       </View>
     </View>
   );

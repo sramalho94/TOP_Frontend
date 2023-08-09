@@ -118,14 +118,14 @@ const CreateAccount2: React.FC<{navigation: any}> = ({navigation}) => {
               label="First Name"
               value={formState.firstName}
               onChange={value => updateFormState('firstName', value)}
-              placeholder=""
+              placeholder="Your First Name"
             />
           </View>
         </View>
         <View className="mt-20">
           <Button
             onPress={handleNext}
-            innerText="Next"
+            innerText="Continue"
             textColor="text-white"
             bgColor="bg-themeBlue"
             border={true}

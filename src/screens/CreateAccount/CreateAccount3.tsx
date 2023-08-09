@@ -35,7 +35,7 @@ const CreateAccount3: React.FC<{navigation: any}> = ({navigation}) => {
   };
 
   return (
-    <SafeAreaView className="min-w-screen">
+    <SafeAreaView className="h-screen w-screen bg-themeWhite">
       <ScrollView>
         <TopNavBar
           fontFamily=""
@@ -142,11 +142,11 @@ const CreateAccount3: React.FC<{navigation: any}> = ({navigation}) => {
         <View className="mt-40">
           <Button
             onPress={handleNext}
-            innerText="Next"
+            innerText="Continue"
             textColor="text-white"
-            bgColor="bg-black"
+            bgColor="bg-themeBlue"
             border={true}
-            borderColor="border border-4"
+            borderColor="border border-themeBlue border-2"
             width="80"
           />
         </View>
