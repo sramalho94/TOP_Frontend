@@ -1,8 +1,6 @@
 import React from 'react';
 import {View, SafeAreaView, ScrollView, Image} from 'react-native';
 import Button from '../components/Button';
-import LandingImage from './../../assets/landing_1.png';
-import WaveImage from './../../assets/topWave.png';
 import LandingGroupImg from './../../assets/landingGroupImg.png';
 
 const LandingPage: React.FC<{navigation: any}> = ({navigation}) => {
@@ -10,18 +8,11 @@ const LandingPage: React.FC<{navigation: any}> = ({navigation}) => {
     <SafeAreaView className="flex-1 bg-themeWhite">
       <ScrollView>
         <Image
-          className="w-[390] h-[500] mb-20 bg-cover bg-center "
+          className="w-[390] h-[500] mb-12 bg-cover bg-center "
           source={LandingGroupImg}
         />
-        {/* <Image
-          className="absolute bg-cover bg-center right-0 left-0 "
-          source={WaveImage}
-        /> */}
-        {/* <Image
-          className="w-[342] h-[339] mx-auto mt-[110]"
-          source={LandingImage}
-        /> */}
-        <View className=" space-y-[12]">
+
+        <View className="mb-2">
           <Button
             onPress={() => navigation.navigate('SignInPage')}
             innerText="Log in"
@@ -31,7 +22,8 @@ const LandingPage: React.FC<{navigation: any}> = ({navigation}) => {
             borderColor="border border-themeBlue border-2"
             width="80"
           />
-
+        </View>
+        <View className="mb-2">
           <Button
             onPress={() => navigation.navigate('ReportPage')}
             innerText="Report Without Account"
@@ -41,16 +33,16 @@ const LandingPage: React.FC<{navigation: any}> = ({navigation}) => {
             borderColor="border border-themeBlue border-2"
             width="80"
           />
-          <Button
-            onPress={() => navigation.navigate('Onboarding')}
-            innerText="Create Account"
-            bgColor="bg-themeBlue"
-            textColor="text-themeWhite"
-            border={true}
-            borderColor="border border-themeBlue border-2"
-            width="80"
-          />
         </View>
+        <Button
+          onPress={() => navigation.navigate('Onboarding')}
+          innerText="Create Account"
+          bgColor="bg-themeBlue"
+          textColor="text-themeWhite"
+          border={true}
+          borderColor="border border-themeBlue border-2"
+          width="80"
+        />
       </ScrollView>
     </SafeAreaView>
   );
