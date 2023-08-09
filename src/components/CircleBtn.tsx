@@ -4,6 +4,7 @@ import React from 'react';
 type Props = {
   text?: string;
   bgColor?: string;
+  borderColor: string;
   updateForm?: (field: string, value: string | boolean) => void; // Make this optional
   onPress?: () => void; // Add custom onPress prop
   Btnwidth: string;
@@ -16,6 +17,7 @@ type Props = {
 
 const CircleBtn = ({
   textColor,
+  borderColor,
   textSize,
   img,
   Btnwidth,
@@ -40,7 +42,7 @@ const CircleBtn = ({
     <>
       <TouchableOpacity
         onPress={handlePress}
-        className={`${bgColor} border-2 border-black flex items-center rounded-full justify-center ${textColor} ${Btnheight} ${Btnwidth}`}>
+        className={`${bgColor} border-2 ${borderColor} flex items-center rounded-full justify-center ${textColor} ${Btnheight} ${Btnwidth}`}>
         {img && !text ? (
           <Image
             className={`bg-contain ${Btnheight} ${Btnwidth} rounded-full`}
@@ -52,7 +54,7 @@ const CircleBtn = ({
         ) : null}
         {img && text
           ? <View className='items-center gap-2'>
-           <Text className={`text-center text-${textSize}`}>{text}</Text>
+           <Text className={`text-center ${textSize}`}>{text}</Text>
             <Image
                 className={`bg-contain w-10 h-10`}
                 source={img}

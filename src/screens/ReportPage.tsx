@@ -29,6 +29,8 @@ export interface FormState {
 }
 
 const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
+  const [negColor, setNegColor] = useState<string>("bg-themeWhite")
+  const [posColor, setPosColor] = useState<string>("bg-themeWhite")
   const [formState, setFormState] = useState<FormState>({
     result: false,
     DOB: '',
@@ -104,24 +106,34 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
             <View className="justify-center space-x-4 flex-row my-9">
               <View className="m-2">
                 <CircleBtn
-                  bgColor="bg-themeLightBlue"
-                  updateForm={updateFormState}
+                  bgColor={negColor}
+                  borderColor="border-themeLightBlue"
+                  updateForm={() => {
+                    updateFormState
+                    setNegColor("bg-themeLightBlue")
+                    setPosColor("bg-themeWhite")
+                  }}
                   text="Negative"
                   Btnwidth="w-32"
                   Btnheight="h-32"
-                  textSize="base"
+                  textSize="text-xl"
                   value={false}
                   img={NegTest}
                 />
               </View>
               <View className="m-2">
                 <CircleBtn
+                  borderColor="border-themeLightOrange"
                   text="Positive"
-                  bgColor="bg-themeLightOrange"
-                  updateForm={updateFormState}
+                  bgColor={posColor}
+                  updateForm={() => {
+                    updateFormState
+                    setNegColor("bg-themeWhite")
+                    setPosColor("bg-themeLightOrange")
+                  }}
                   Btnwidth="w-32"
                   Btnheight="h-32"
-                  textSize="base"
+                  textSize="text-xl"
                   value={true}
                   img={PosTest}
                 />
