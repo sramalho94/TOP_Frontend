@@ -134,14 +134,14 @@ const AccountReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
           <View className="my-4">
             <Button
               onPress={handleSubmit}
-              innerText="Submit"
+              innerText="Report"
               textColor="text-white"
               bgColor="bg-themeBlue"
               border={true}
               width="80"
               accessible={true}
-              accessibilityLabel="Submit"
-              accessibilityHint="Submit test results"
+              accessibilityLabel="Report"
+              accessibilityHint="Report test results"
             />
           </View>
         </View>
