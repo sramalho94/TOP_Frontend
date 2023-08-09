@@ -55,11 +55,14 @@ const CircleBtn = ({
         {img && text
           ? <View className='items-center gap-2'>
            <Text className={`text-center ${textSize} ${textColor}`}>{text}</Text>
+            <View className={`${borderColor} border rounded-lg`}>
             <Image
-                className={`bg-contain border-themeLightBlue w-10 h-10`}
+                className={`bg-contain w-10 h-10`}
                 source={img}
               />
+              </View>
           </View>
+          
           : null}
       </TouchableOpacity>
     </>
