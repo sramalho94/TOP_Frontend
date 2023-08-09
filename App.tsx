@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import LandingPage from './src/screens/LandingPage';
 import ReportPage from './src/screens/ReportPage';
 import AccountReportPage from './src/screens/AccountReportPage';
@@ -11,9 +11,9 @@ import {
   NavigationContainer,
   NavigationContainerRef,
 } from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {SafeAreaProvider} from 'react-native-safe-area-context';
-import {AuthProvider, useAuth} from './src/context/AuthContext';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { AuthProvider, useAuth } from './src/context/AuthContext';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import CreateAccount1 from './src/screens/CreateAccount/CreateAccount1';
 import CreateAccount2 from './src/screens/CreateAccount/CreateAccount2';
@@ -21,6 +21,7 @@ import CreateAccount3 from './src/screens/CreateAccount/CreateAccount3';
 import CreateAccountProvider from './src/context/CreateAccountProvider';
 import ConsentFormThankYou from './src/screens/ConsentFormThankYou';
 import Loading from './src/screens/Loading';
+import DataDashboard from './src/screens/DataDashboard';
 
 export type RootStackParamList = {
   Onboarding: undefined;
@@ -29,14 +30,15 @@ export type RootStackParamList = {
   CreateAccount: undefined;
   ReportPage: undefined;
   ConsentPage: undefined;
-  ThankYouScreen: {logIn: boolean};
+  ThankYouScreen: { logIn: boolean };
   AccountReportPage: undefined;
   HomeDash: undefined;
   CreateAccount1: undefined;
   CreateAccount2: undefined;
   CreateAccount3: undefined;
-  ConsentFormThankYou: {logIn: boolean};
+  ConsentFormThankYou: { logIn: boolean };
   Loading: undefined;
+  DataDashboard: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -45,7 +47,7 @@ function AppContent({
 }: {
   navigationRef: React.RefObject<NavigationContainerRef<RootStackParamList>>;
 }) {
-  const {authState} = useAuth();
+  const { authState } = useAuth();
   const [initialScreen, setInitialScreen] = useState<
     'HomeDash' | 'LandingPage'
   >('LandingPage');
@@ -91,40 +93,40 @@ function AppContent({
             <Stack.Screen
               name="Onboarding"
               component={Onboarding}
-              options={{headerShown: false}}
+              options={{ headerShown: false }}
             />
             <Stack.Screen
               name="LandingPage"
               component={LandingPage}
-              options={{headerShown: false}}
+              options={{ headerShown: false }}
             />
             <Stack.Screen name="SignInPage" component={SignInPage} />
             <Stack.Screen
               name="CreateAccount1"
               component={CreateAccount1}
-              options={{headerShown: false}}
+              options={{ headerShown: false }}
             />
             <Stack.Screen
               name="CreateAccount2"
               component={CreateAccount2}
-              options={{headerShown: false}}
+              options={{ headerShown: false }}
             />
             <Stack.Screen
               name="CreateAccount3"
               component={CreateAccount3}
-              options={{headerShown: false}}
+              options={{ headerShown: false }}
             />
             <Stack.Screen name="ReportPage" component={ReportPage} />
             <Stack.Screen name="ConsentPage" component={ConsentPage} />
             <Stack.Screen
               name="ThankYouScreen"
               component={ThankYouScreen}
-              options={{headerShown: false}}
+              options={{ headerShown: false }}
             />
             <Stack.Screen
               name="ConsentFormThankYou"
               component={ConsentFormThankYou}
-              options={{headerShown: false}}
+              options={{ headerShown: false }}
             />
             <Stack.Screen
               name="AccountReportPage"
@@ -132,6 +134,7 @@ function AppContent({
             />
             <Stack.Screen name="HomeDash" component={HomeDash} />
             <Stack.Screen name="Loading" component={Loading} />
+            <Stack.Screen name="DataDashboard" component={DataDashboard} />
           </Stack.Navigator>
         </NavigationContainer>
       </CreateAccountProvider>
