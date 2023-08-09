@@ -91,7 +91,7 @@ export default function SignInPage(props: Props) {
               placeholder='Username'
             />
             <Password onChange={value => handleChange('password', value)} password={userSignUp.password} />
-            <View className='w-full max-w-sm px-4 mt-2 '><Text className='text-start underline underline-offset-8'>Forgot Password</Text></View>
+            <View className='w-full max-w-sm px-8 mt-2 '><Text className='text-start underline underline-offset-8'>Forgot Password</Text></View>
           </View>
         </View>
         <View className="mt-4 items-center">

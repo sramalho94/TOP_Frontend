@@ -90,7 +90,7 @@ const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
         textColor=""
       />
 
-      <ScrollView className='flex-1'>
+      <ScrollView className="flex-1">
         {/* Page Container */}
         <View className="w-full justify-center items-center flex-1 flex-col">
           <View>
@@ -99,7 +99,7 @@ const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
               style={{
                 fontFamily: 'Baskerville-BoldItalic',
               }}
-              className="text-lg font-bold mt-20 mx-auto">
+              className="text-lg font-bold mt-10 mx-auto">
               What were the results of your test?
             </Text>
             <View className="justify-center space-x-4 flex-row my-9">
@@ -128,7 +128,7 @@ const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
             </View>
 
             {/* Text input and dropdown fields container */}
-            <View className="w-full">
+            <View className="w-screen items-center ">
               <TextInputField
                 label="Date of Test*"
                 value={formState.DOT}
@@ -148,7 +148,6 @@ const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
                 placeholder="mm/dd/yyyy"
               />
 
-              {/* TODO: will need to probs ask the UX team what the official dropdown selections are */}
               {/* Data found from: https://www.census.gov/newsroom/blogs/random-samplings/2021/08/measuring-racial-ethnic-diversity-2020-census.html */}
               <DropDownField
                 text="Gender"
@@ -238,19 +237,18 @@ const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
                 I agree to share my results with the CDC
               </Text>
             </View>
-
-            {/* button container */}
-            <View>
-              <Button
-                onPress={handleReportButtonClick}
-                innerText="Report"
-                bgColor="bg-[#B4B4B4]"
-                textColor="text-black"
-                border={true}
-                borderColor="border border-2"
-                width="80"
-              />
-            </View>
+          </View>
+          {/* button container */}
+          <View className="flex items-center">
+            <Button
+              onPress={handleReportButtonClick}
+              innerText="Report"
+              bgColor="bg-[#B4B4B4]"
+              textColor="text-black"
+              border={true}
+              borderColor="border border-2"
+              width="80"
+            />
           </View>
         </View>
       </ScrollView>
