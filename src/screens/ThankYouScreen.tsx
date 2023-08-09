@@ -62,7 +62,7 @@ const ThankYouScreen = ({ navigation, route }: Props) => {
         borderColor="border border-gray"
         width='full'
         accessLabel='Go to Homescreen'
-        accessHint='This button takes you the to homescreen'
+        accessHint='Navigates you the to homescreen'
       />
       {/* {logIn ? (
             <Button
