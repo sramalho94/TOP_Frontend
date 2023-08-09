@@ -95,7 +95,7 @@ const Onboarding = (props: OnboardingScreenProps) => {
                   textColor="text-themeWhite"
                   border={true}
                   borderColor="border border-themeBlue border-3"
-                  width="80"
+                  width="full"
                 />
 
                 {page.pageIndicator !== pages.length && (
@@ -106,7 +106,7 @@ const Onboarding = (props: OnboardingScreenProps) => {
                     textColor="text-black"
                     border={false}
                     borderColor="border border-gray"
-                    width="80"
+                    width="full"
                   />
                 )}
               </View>
