@@ -119,6 +119,9 @@ const CreateAccount2: React.FC<{ navigation: any }> = ({ navigation }) => {
             border={true}
             borderColor="border border-4"
             width="80"
+            accessible={true}
+            accessibilityLabel="Next"
+            accessibilityHint="Navigates to the next screen"
           />
         </View>
         <Modal visible={isModalVisible} transparent={true}>
@@ -141,6 +144,9 @@ const CreateAccount2: React.FC<{ navigation: any }> = ({ navigation }) => {
                 border={true}
                 borderColor="border border-4"
                 width="5/6"
+                accessible={true}
+                accessibilityLabel="Close"
+                accessibilityHint="Closes popup screen"
               />
             </View>
           </View>
