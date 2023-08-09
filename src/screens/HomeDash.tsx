@@ -25,6 +25,9 @@ const HomeDash: React.FC<{ navigation: any }> = ({ navigation }) => {
                 }}
                 Btnwidth="w-24"
                 Btnheight="h-24"
+                borderColor='border-themeBlue'
+                accessLabel='Profile Image Button'
+                accessHint='This is a button that displays your profile picture.'
               />
             </View>
             <Text className="text-3xl font-bold mb-2 text-center">

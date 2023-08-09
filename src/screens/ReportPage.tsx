@@ -126,9 +126,8 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
                   Btnheight="h-32"
                   textSize="text-xl"
                   value={false}
-                  accessible={true}
-                  accessibilityLabel="Negative"
-                  accessibilityHint="Touch if your test results are negative"
+                  accessLabel="Negative"
+                  accessHint="Touch if your test results are negative"
                   img={NegTest}
                 />
               </View>
@@ -149,9 +148,8 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
                   Btnheight="h-32"
                   textSize="text-xl"
                   value={true}
-                  accessible={true}
-                  accessibilityLabel="Positive"
-                  accessibilityHint="Touch if your test results are positive"
+                  accessLabel="Positive"
+                  accessHint="Touch if your test results are positive"
                   img={PosTest}
                 />
               </View>
@@ -279,9 +277,8 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
                 border={true}
                 borderColor="border border-2"
                 width="80"
-                accessible={true}
-                accessibilityLabel="Report"
-                accessibilityHint="Reports test results"
+                accessLabel="Report"
+                accessHint="Reports test results"
               />
             </View>
           </View>

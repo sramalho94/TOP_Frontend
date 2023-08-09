@@ -10,7 +10,6 @@ type Props = {
   borderColor?: string;
   textDecoration?: string;
   width?: string;
-  access: boolean;
   accessLabel: string;
   accessHint: string;
 
@@ -26,7 +25,6 @@ const Button = ({
   textColor,
   textDecoration,
   width,
-  access,
   accessLabel,
   accessHint,
 }: Props) => {
@@ -37,7 +35,7 @@ const Button = ({
         className={`${border ? `${borderColor}` : ''}
          flex justify-center items-center w-full max-w-sm h-[52] rounded-lg mb-3 ${bgColor}`}
         onPress={onPress}
-        accessible={access}
+        accessible={true}
         accessibilityLabel={accessLabel}
         accessibilityHint={accessHint}
         accessibilityRole='button'
