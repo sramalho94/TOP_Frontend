@@ -5,7 +5,7 @@ import {
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import CheckBox from '../components/CheckBox';
 import Icon from 'react-native-vector-icons/AntDesign';
 import TextInputField from '../components/TextInputField';
@@ -26,7 +26,7 @@ export interface FormState {
   ethnicity: string;
 }
 
-const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
+const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
   const [formState, setFormState] = useState<FormState>({
     result: false,
     DOB: '',
@@ -41,7 +41,7 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
     // Call the createTest method from the ApiService
     ApiService.createTest(formState)
       .then(Response => {
-        navigation.navigate('ThankYouScreen', { login: false });
+        navigation.navigate('ThankYouScreen', {login: false});
         console.log('test created successfully:', Response.data);
         setFormState({
           result: false,
@@ -81,19 +81,25 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
 
   return (
     <SafeAreaView className="w-screen h-screen flex-1">
-      <ScrollView>
-        {/* NavBar */}
-        <TopNavBar textValue='Report COVID-19 Test Result' fontFamily='' textSize='xl' haveProgress={false} textColor='' />
+      {/* NavBar */}
+      <TopNavBar
+        textValue="Report COVID-19 Test Result"
+        fontFamily=""
+        textSize="xl"
+        haveProgress={false}
+        textColor=""
+      />
 
+      <ScrollView className='flex-1'>
         {/* Page Container */}
         <View className="w-full justify-center items-center flex-1 flex-col">
           <View>
             {/* Test Result Buttons */}
             <Text
-            style={{
-              fontFamily: "Baskerville-BoldItalic",
-            }}
-             className="text-lg font-bold mx-auto">
+              style={{
+                fontFamily: 'Baskerville-BoldItalic',
+              }}
+              className="text-lg font-bold mt-20 mx-auto">
               What were the results of your test?
             </Text>
             <View className="justify-center space-x-4 flex-row my-9">
@@ -122,7 +128,7 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
             </View>
 
             {/* Text input and dropdown fields container */}
-            <View className='w-full'>
+            <View className="w-full">
               <TextInputField
                 label="Date of Test*"
                 value={formState.DOT}
@@ -151,8 +157,8 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
                     label: 'MIGHT CHANGE BELOW SELECTION LATER',
                     value: 'MIGHT CHANGE BELOW SELECTION LATER',
                   },
-                  { label: '', value: '' },
-                  { label: 'Prefer not to say', value: 'prefer not to say' },
+                  {label: '', value: ''},
+                  {label: 'Prefer not to say', value: 'prefer not to say'},
                 ]}
                 open={genderOpen}
                 onOpen={() => {
@@ -174,7 +180,7 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
                     label: 'American Indian or Alaska Native',
                     value: 'american indian or alaska native',
                   },
-                  { label: 'Asian', value: 'asian' },
+                  {label: 'Asian', value: 'asian'},
                   {
                     label: 'Black or African American',
                     value: 'black or african american',
@@ -183,13 +189,13 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
                     label: 'Native Hawaiian or Other Pacific Islander',
                     value: 'native hawaiian or other pacific islander',
                   },
-                  { label: 'Not Specified', value: 'not specified' },
+                  {label: 'Not Specified', value: 'not specified'},
                   {
                     label: 'Two or More Races/Ethnicities',
                     value: 'two or more races/ethnicities',
                   },
-                  { label: 'White', value: 'white' },
-                  { label: 'Prefer not to say', value: 'prefer not to say' },
+                  {label: 'White', value: 'white'},
+                  {label: 'Prefer not to say', value: 'prefer not to say'},
                 ]}
                 open={raceOpen}
                 onOpen={() => {
@@ -207,9 +213,9 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
                     label: 'MIGHT CHANGE BELOW SELECTION LATER',
                     value: 'MIGHT CHANGE BELOW SELECTION LATER',
                   },
-                  { label: 'Hispanic/Latino', value: 'hispanic/latino' },
-                  { label: 'Non-Hispanic/Latino', value: 'non-hispanic/latino' },
-                  { label: 'Prefer not to say', value: 'prefer not to say' },
+                  {label: 'Hispanic/Latino', value: 'hispanic/latino'},
+                  {label: 'Non-Hispanic/Latino', value: 'non-hispanic/latino'},
+                  {label: 'Prefer not to say', value: 'prefer not to say'},
                 ]}
                 open={ethnicityOpen}
                 onOpen={() => {

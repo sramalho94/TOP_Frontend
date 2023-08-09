@@ -112,13 +112,16 @@ function AppContent({
               component={CreateAccount3}
               options={{headerShown: false}}
             />
-          <Stack.Screen name="ReportPage" component={ReportPage} />
-          <Stack.Screen name="ConsentPage" component={ConsentPage} />
+            <Stack.Screen
+              name="ReportPage"
+              component={ReportPage}
+              options={{headerShown: false}}
+            />
+            <Stack.Screen name="ConsentPage" component={ConsentPage} />
             <Stack.Screen
               name="ThankYouScreen"
               component={ThankYouScreen}
               options={{headerShown: false}}
-
             />
             <Stack.Screen
               name="ConsentFormThankYou"
@@ -130,8 +133,8 @@ function AppContent({
               component={AccountReportPage}
             />
             <Stack.Screen name="HomeDash" component={HomeDash} />
-        </Stack.Navigator>
-      </NavigationContainer>
+          </Stack.Navigator>
+        </NavigationContainer>
       </CreateAccountProvider>
     </SafeAreaProvider>
   );

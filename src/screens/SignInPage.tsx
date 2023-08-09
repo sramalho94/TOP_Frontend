@@ -76,10 +76,10 @@ export default function SignInPage(props: Props) {
 
 
   return (
-    <SafeAreaView className="w-342 m-4 flex-1">
-      <ScrollView className=''>
+    <SafeAreaView className="w-screen h-screen flex-1">
+      <ScrollView>
       {/* <TopNavBar textSize='xl' textValue='Sign In' fontFamily='' haveProgress={false} /> */}
-        <View className="">
+        <View>
           <View className="flex flex-row justify-center align-middle">
             <Image className="w-342 h-349 m-4" source={NoImage}></Image>
           </View>
