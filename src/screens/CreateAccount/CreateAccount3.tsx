@@ -7,7 +7,6 @@ import DropDownField from '../../components/DropDownField';
 
 const CreateAccount3: React.FC<{ navigation: any }> = ({ navigation }) => {
   const { formState, updateFormState } = useContext(CreateAccountContext);
-  const [isModalVisible, setIsModalVisible] = useState(false);
   const [genderOpen, setGenderOpen] = useState<boolean>(false);
   const [raceOpen, setRaceOpen] = useState<boolean>(false);
   const [ethnicityOpen, setEthnicityOpen] = useState<boolean>(false);
@@ -28,10 +27,6 @@ const CreateAccount3: React.FC<{ navigation: any }> = ({ navigation }) => {
 
   const handleEthnicityChange = (value: boolean) => {
     setEthnicityOpen(value);
-  };
-
-  const toggleModal = () => {
-    setIsModalVisible(!isModalVisible);
   };
 
   return (
