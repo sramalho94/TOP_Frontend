@@ -89,7 +89,11 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
         <View className="w-full justify-center items-center flex-1 flex-col">
           <View>
             {/* Test Result Buttons */}
-            <Text className="text-lg font-bold mx-auto">
+            <Text
+            style={{
+              fontFamily: "Baskerville-BoldItalic",
+            }}
+             className="text-lg font-bold mx-auto">
               What were the results of your test?
             </Text>
             <View className="justify-center space-x-4 flex-row my-9">
