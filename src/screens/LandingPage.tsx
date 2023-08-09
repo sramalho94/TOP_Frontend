@@ -6,7 +6,7 @@ import WaveImage from './../../assets/topWave.png';
 
 const LandingPage: React.FC<{navigation: any}> = ({navigation}) => {
   return (
-    <SafeAreaView className="flex-1">
+    <SafeAreaView className="flex-1 bg-themeWhite">
       <ScrollView>
         <Image
           className="absolute bg-cover bg-center right-0 left-0 "

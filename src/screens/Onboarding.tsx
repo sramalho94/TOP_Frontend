@@ -1,5 +1,8 @@
 import React, {useState, useRef, useEffect} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Onboarding1 from './../../assets/onboarding1.png';
+import Onboarding2 from './../../assets/onboarding2.png';
+import Onboarding3 from './../../assets/onboarding3.png';
 
 import {
   SafeAreaView,
@@ -78,7 +81,7 @@ const Onboarding = (props: OnboardingScreenProps) => {
       scrollEventThrottle={16} // Adjust the scroll event frequency
     >
       {pages.map((page, index) => (
-        <SafeAreaView key={index} className="h-screen w-screen">
+        <SafeAreaView key={index} className="h-screen w-screen bg-themeWhite">
           <View className="flex-1 flex-col mt-4 mb-10">
             <View className="m-5 flex-1">
               <Image className="w-full" source={page.imageSource}></Image>
@@ -86,7 +89,7 @@ const Onboarding = (props: OnboardingScreenProps) => {
                 {page.title}
               </Text>
             </View>
-            <View className="flex-1 flex-col-reverse mb-8">
+            <View className="flex-1 flex-col-reverse mb-1">
               <View className="mt-5 mx-5">
                 <Button
                   onPress={page.onButtonPress} // Updated this line
