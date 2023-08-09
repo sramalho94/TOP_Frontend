@@ -123,7 +123,7 @@ const CreateAccount2: React.FC<{ navigation: any }> = ({ navigation }) => {
             />
           </View>
         </View>
-              </ScrollView>
+              
         <View className="flex-1 flex-col-reverse">
           <Button
             onPress={handleNext}
@@ -159,7 +159,7 @@ const CreateAccount2: React.FC<{ navigation: any }> = ({ navigation }) => {
             </View>
           </View>
         </Modal>
-
+        </ScrollView>
     </SafeAreaView>
   );
 };
