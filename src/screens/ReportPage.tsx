@@ -13,6 +13,7 @@ import DropDownField from '../components/DropDownField';
 import Button from '../components/Button';
 import CircleBtn from '../components/CircleBtn';
 import ApiService from '../services/ApiService';
+import TopNavBar from '../components/TopNavBar';
 
 // Define the ReportPage component
 export interface FormState {
@@ -59,11 +60,11 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
 
   const [isCheckboxSelected, setCheckboxSelection] = useState(false);
 
-  console.log('Render: ', isCheckboxSelected);
+  // console.log('Render: ', isCheckboxSelected);
 
   const handleCheckChanges = () => {
     setCheckboxSelection(prevState => !prevState);
-    console.log('handleCheckChanges: ', isCheckboxSelected);
+    // console.log('handleCheckChanges: ', isCheckboxSelected);
   };
 
   const updateFormState = (field: string, value: string | boolean) => {
@@ -79,21 +80,14 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
   const [ethnicityOpen, setEthnicityOpen] = useState<boolean>(false);
 
   return (
-    <SafeAreaView className="w-screen h-screen">
+    <SafeAreaView className="w-screen h-screen flex-1">
       <ScrollView>
         {/* NavBar */}
-        <View className="h-[90] border-b-4 border-slate-200 flex-row my-6">
-          <TouchableOpacity className="mt-2 ml-4">
-            <Icon name="arrowleft" size={30} color="#000" className="" />
-          </TouchableOpacity>
-          <Text className="text-xl font-bold mx-auto mt-2 flex pr-12">
-            Report COVID-19 Test Result
-          </Text>
-        </View>
+        <TopNavBar textValue='Report COVID-19 Test Result' fontFamily='' textSize='xl' haveProgress={false} />
 
         {/* Page Container */}
         <View className="w-full justify-center items-center flex-1 flex-col">
-          <View className="max-w-sm">
+          <View>
             {/* Test Result Buttons */}
             <Text className="text-lg font-bold mx-auto">
               What were the results of your test?
@@ -124,7 +118,7 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
             </View>
 
             {/* Text input and dropdown fields container */}
-            <View className="">
+            <View className='w-full'>
               <TextInputField
                 label="Date of Test*"
                 value={formState.DOT}
@@ -236,7 +230,7 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
             </View>
 
             {/* button container */}
-            <View className="mb-14">
+            <View>
               <Button
                 onPress={handleReportButtonClick}
                 innerText="Report"

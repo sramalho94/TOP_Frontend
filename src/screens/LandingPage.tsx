@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, SafeAreaView, ScrollView, Image } from 'react-native';
+import {View, SafeAreaView, ScrollView, Text} from 'react-native';
 import Button from '../components/Button';
 import LandingImage from './../../assets/landing_1.png';
 import WaveImage from './../../assets/topWave.png';
@@ -8,15 +8,11 @@ const LandingPage: React.FC<{ navigation: any }> = ({ navigation }) => {
   return (
     <SafeAreaView className="flex-1">
       <ScrollView>
-        <Image
-          className="w-full h-72 absolute bg-cover bg-center right-0 left-0 "
-          source={WaveImage}
-        />
-        <Image
-          className="w-[342] h-[339] mx-auto mt-[110] xl:mt-[1900]"
-          source={LandingImage}
-        />
-        <View className=" space-y-[12]">
+        <View className="border-2 border-black w-[342] h-[339] mt-[100] mx-auto"></View>
+        <View className="mt-[87] space-y-[12] mb-[12] sm:bg-purple-300">
+          {/* <Text className="text-3xl font-mono" style={{
+  fontFamily: "Borel", fontWeight: "bold"}}>rwnjwkrnjk</Text>
+          <Text className="text-3xl">rwnjwkrnjk</Text> */}
           <Button
             onPress={() => navigation.navigate('SignInPage')}
             innerText="Log in"

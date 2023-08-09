@@ -71,27 +71,23 @@ export default function SignInPage(props: Props) {
   };
 
   return (
-    <SafeAreaView className="flex-1 w-342 m-4">
+    <SafeAreaView className="w-342 m-4 flex-1">
       <ScrollView>
         {/* <TopNavBar textSize='xl' textValue='Sign In' fontFamily='' haveProgress={false} /> */}
         <View className="">
           <View className="flex flex-row justify-center align-middle">
             <Image className="w-342 h-349 m-4" source={NoImage}></Image>
           </View>
-          <View className="mb-6">
+          <View className="mb-6 flex items-center align-middle justify-center">
             <TextInputField
               label="Username"
               value={userSignUp.username}
               onChange={value => handleChange('username', value)}
-              placeholder=""
-            />
-            <Password
-              onChange={value => handleChange('password', value)}
-              password={userSignUp.password}
+              placeholder=''
             />
           </View>
         </View>
-        <View className="mt-4">
+        <View className="mt-4 items-center">
           <Button
             onPress={handleSubmit}
             innerText="Login"
@@ -99,7 +95,7 @@ export default function SignInPage(props: Props) {
             bgColor=""
             border={true}
             borderColor="border border-black"
-            width="80"
+            width='full'
           />
           <Button
             onPress={() => console.log('pressed')}
@@ -108,7 +104,7 @@ export default function SignInPage(props: Props) {
             bgColor=""
             border={true}
             borderColor="border border-black"
-            width="80"
+            width='full'
           />
           <Button
             onPress={() => console.log('Skip button pressed')}
@@ -117,7 +113,7 @@ export default function SignInPage(props: Props) {
             textColor=""
             border={false}
             borderColor=""
-            width="80"
+            width='full'
           />
         </View>
       </ScrollView>
