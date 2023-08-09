@@ -140,7 +140,7 @@ const CreateAccount3: React.FC<{navigation: any}> = ({navigation}) => {
             />
           </View>
         </View>
-        <View className="mt-40">
+        <View className="flex-1 mt-4">
           <Button
             onPress={handleNext}
             innerText="Next"
