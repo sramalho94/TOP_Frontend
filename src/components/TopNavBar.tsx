@@ -38,7 +38,7 @@ const TopNavBar = ({
           accessible={true}
           accessibilityLabel="Back"
           accessibilityHint="Navigates to the previous screen"
-          accessibilityRole="button">
+          >
           
           <Icon name="arrowleft" size={30} color="#000" className="" />
         </TouchableOpacity>

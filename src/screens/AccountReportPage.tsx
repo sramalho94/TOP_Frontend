@@ -167,9 +167,9 @@ const AccountReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
               bgColor="bg-themeBlue"
               border={true}
               width="80"
-              accessible={true}
-              accessibilityLabel="Report"
-              accessibilityHint="Report test results"
+              access={true}
+              accessLabel="Report"
+              accessHint="Report test results"
             />
           </View>
         </View>

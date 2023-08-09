@@ -25,9 +25,8 @@ const LandingPage: React.FC<{ navigation: any }> = ({ navigation }) => {
             border={true}
             borderColor="border border-themeBlue border-3"
             width="80"
-            accessible={true}
-            accessibilityLabel="Login"
-            accessibilityHint="Navigates to the login screen"
+            accessLabel="Login"
+            accessHint="Navigates to the login screen"
           />
           <Button
             onPress={() => navigation.navigate('Onboarding')}
