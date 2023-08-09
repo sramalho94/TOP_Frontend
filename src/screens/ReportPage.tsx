@@ -83,7 +83,7 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
     <SafeAreaView className="w-screen h-screen flex-1">
       <ScrollView>
         {/* NavBar */}
-        <TopNavBar textValue='Report COVID-19 Test Result' fontFamily='' textSize='xl' haveProgress={false} />
+        <TopNavBar textValue='Report COVID-19 Test Result' fontFamily='' textSize='xl' haveProgress={false} textColor='' />
 
         {/* Page Container */}
         <View className="w-full justify-center items-center flex-1 flex-col">
