@@ -53,7 +53,7 @@ const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
   };
 
   return (
-    <SafeAreaView className="min-w-screen bg-themeWhite">
+    <SafeAreaView className="h-screen w-screen bg-themeWhite">
       <ScrollView>
         <TopNavBar
           fontFamily=""
@@ -75,7 +75,6 @@ const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
               value={formState.email}
               onChange={value => updateFormState('email', value)}
               placeholder="Email"
-              bgColor="bg-themeLightGray"
             />
             <TextInputField
               label="Username*"

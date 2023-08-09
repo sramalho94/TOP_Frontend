@@ -1,12 +1,12 @@
-import React, { useContext, useState } from 'react';
-import { View, Text, SafeAreaView, ScrollView, Modal } from 'react-native';
+import React, {useContext, useState} from 'react';
+import {View, Text, SafeAreaView, ScrollView, Modal} from 'react-native';
 import CreateAccountContext from '../../context/CreateAccountContext';
 import TextInputField from '../../components/TextInputField';
 import Button from '../../components/Button';
 import TopNavBar from '../../components/TopNavBar';
 
-const CreateAccount2: React.FC<{ navigation: any }> = ({ navigation }) => {
-  const { formState, updateFormState } = useContext(CreateAccountContext);
+const CreateAccount2: React.FC<{navigation: any}> = ({navigation}) => {
+  const {formState, updateFormState} = useContext(CreateAccountContext);
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   // Function to check if email format is correct
@@ -17,7 +17,7 @@ const CreateAccount2: React.FC<{ navigation: any }> = ({ navigation }) => {
   };
 
   const isEighteenOrOlder = (birthday: string): boolean => {
-    const [month, day, year] = birthday.split("/");
+    const [month, day, year] = birthday.split('/');
 
     // Create Date object from birthday string
     const dobDate = new Date(Number(year), Number(month) - 1, Number(day));
@@ -31,13 +31,14 @@ const CreateAccount2: React.FC<{ navigation: any }> = ({ navigation }) => {
     // Handles the case where the birthday hasn't happened yet in the current year
     if (
       currentDate.getMonth() < dobDate.getMonth() ||
-      (currentDate.getMonth() === dobDate.getMonth() && currentDate.getDate() < dobDate.getDate())
+      (currentDate.getMonth() === dobDate.getMonth() &&
+        currentDate.getDate() < dobDate.getDate())
     ) {
       age--;
     }
 
     return age >= 18;
-  }
+  };
 
   // Function to check if zip code format is correct
   const isZipCodeValid = (zipCode: string): boolean => {
@@ -52,7 +53,6 @@ const CreateAccount2: React.FC<{ navigation: any }> = ({ navigation }) => {
       alert('Please fill in all mandatory fields.');
       return; // Prevent proceeding to the next page
     }
-
 
     if (!isBirthdayValid(formState.DOB)) {
       alert('Please enter a valid birthday.');
@@ -78,7 +78,7 @@ const CreateAccount2: React.FC<{ navigation: any }> = ({ navigation }) => {
   };
 
   return (
-    <SafeAreaView className="min-w-screen">
+    <SafeAreaView className="h-screen w-screen bg-themeWhite">
       <ScrollView>
         <TopNavBar
           fontFamily=""
@@ -122,14 +122,14 @@ const CreateAccount2: React.FC<{ navigation: any }> = ({ navigation }) => {
             />
           </View>
         </View>
-        <View className="mt-56">
+        <View className="mt-20">
           <Button
             onPress={handleNext}
             innerText="Next"
             textColor="text-white"
-            bgColor="bg-black"
+            bgColor="bg-themeBlue"
             border={true}
-            borderColor="border border-4"
+            borderColor="border border-themeBlue border-2"
             width="80"
           />
         </View>

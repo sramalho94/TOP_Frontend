@@ -4,7 +4,6 @@ import onboardingAll_1 from './../../assets/onboardingAll_1.png';
 import onboardingAll_2 from './../../assets/onboardingAll_2.png';
 import onboardingAll_3 from './../../assets/onboardingAll_3.png';
 
-
 import {
   SafeAreaView,
   View,
@@ -101,7 +100,7 @@ const Onboarding = (props: OnboardingScreenProps) => {
             </View>
 
             <View className="flex-col-reverse mt-1 ">
-              <View className="flex justify-cente">
+              <View className="flex justify-center">
                 <View className="mb-2">
                   <ProgressDots page={page.pageIndicator} />
                 </View>
