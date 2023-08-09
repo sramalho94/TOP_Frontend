@@ -76,6 +76,7 @@ const CreateAccount2: React.FC<{ navigation: any }> = ({ navigation }) => {
     <SafeAreaView className="min-w-screen">
       <ScrollView>
         <TopNavBar
+          textColor='text-themeBlue'
           fontFamily=""
           textSize="xl"
           textValue="Create Account"

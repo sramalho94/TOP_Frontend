@@ -13,6 +13,9 @@ import DropDownField from '../components/DropDownField';
 import Button from '../components/Button';
 import CircleBtn from '../components/CircleBtn';
 import ApiService from '../services/ApiService';
+import NegTest from './../../assets/NegativeCovidTest.png'
+import PosTest from './../../assets/PositiveCovidTest.png'
+
 
 // Define the ReportPage component
 export interface FormState {
@@ -26,6 +29,10 @@ export interface FormState {
 }
 
 const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
+  const [negColor, setNegColor] = useState<string>("bg-themeWhite")
+  const [posColor, setPosColor] = useState<string>("bg-themeWhite")
+  const [negTextColor, setNegTextColor] = useState<string>("text-black")
+  const [posTextColor, setPosTextColor] = useState<string>("text-black")
   const [formState, setFormState] = useState<FormState>({
     result: false,
     DOB: '',
@@ -101,30 +108,48 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
             <View className="justify-center space-x-4 flex-row my-9">
               <View className="m-2">
                 <CircleBtn
-                  bgColor="bg-themeLightBlue"
-                  updateForm={updateFormState}
+                  textColor={negTextColor}
+                  bgColor={negColor}
+                  borderColor="border-themeLightBlue"
+                  updateForm={() => {
+                    updateFormState
+                    setNegColor("bg-themeLightBlue")
+                    setPosColor("bg-themeWhite")
+                    setNegTextColor("text-white")
+                    setPosTextColor("text-black")
+                  }}
                   text="Negative"
                   Btnwidth="w-32"
                   Btnheight="h-32"
-                  textSize="base"
+                  textSize="text-xl"
                   value={false}
                   accessible={true}
                   accessibilityLabel="Negative"
                   accessibilityHint="Touch if your test results are negative"
+                  img={NegTest}
                 />
               </View>
               <View className="m-2">
                 <CircleBtn
+                  textColor={posTextColor}
+                  borderColor="border-themeLightOrange"
                   text="Positive"
-                  bgColor="bg-themeLightOrange"
-                  updateForm={updateFormState}
+                  bgColor={posColor}
+                  updateForm={() => {
+                    updateFormState
+                    setNegColor("bg-themeWhite")
+                    setPosColor("bg-themeLightOrange")
+                    setNegTextColor("text-black")
+                    setPosTextColor("text-white")
+                  }}
                   Btnwidth="w-32"
                   Btnheight="h-32"
-                  textSize="base"
+                  textSize="text-xl"
                   value={true}
                   accessible={true}
                   accessibilityLabel="Positive"
                   accessibilityHint="Touch if your test results are positive"
+                  img={PosTest}
                 />
               </View>
             </View>
@@ -156,11 +181,15 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
                 text="Gender"
                 selectItems={[
                   {
-                    label: 'MIGHT CHANGE BELOW SELECTION LATER',
-                    value: 'MIGHT CHANGE BELOW SELECTION LATER',
+                    label: 'Woman',
+                    value: 'Woman',
                   },
-                  { label: '', value: '' },
-                  { label: 'Prefer not to say', value: 'prefer not to say' },
+                  {
+                    label: 'Man',
+                    value: 'Man',
+                  },
+                  {label: 'Non-binary', value: 'Non-binary'},
+                  {label: 'I prefer not to answer', value: 'I prefer not to answer'},
                 ]}
                 open={genderOpen}
                 onOpen={() => {
@@ -174,30 +203,28 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
               <DropDownField
                 text="Race"
                 selectItems={[
+                  {label: 'White or European', value: 'White or European'},
                   {
-                    label: 'MIGHT CHANGE BELOW SELECTION LATER',
-                    value: 'MIGHT CHANGE BELOW SELECTION LATER',
+                    label: 'Black or of African descent',
+                    value: 'Black or of African descent',
                   },
+                  {label: 'Middle Eastern or North African', value: 'Middle Eastern or North African'},
                   {
-                    label: 'American Indian or Alaska Native',
-                    value: 'american indian or alaska native',
-                  },
-                  { label: 'Asian', value: 'asian' },
-                  {
-                    label: 'Black or African American',
-                    value: 'black or african american',
+                    label: 'Indigenous, American Indian or Alaska Native',
+                    value: 'Indigenous, American Indian or Alaska Native',
                   },
                   {
                     label: 'Native Hawaiian or Other Pacific Islander',
                     value: 'native hawaiian or other pacific islander',
                   },
-                  { label: 'Not Specified', value: 'not specified' },
+                  {label: 'East Asian', value: 'East Asian'},
+                  {label: 'Southeast Asian', value: 'Southeast Asian'},
+                  {label: 'South Asian', value: 'South Asian'},
                   {
                     label: 'Two or More Races/Ethnicities',
                     value: 'two or more races/ethnicities',
                   },
-                  { label: 'White', value: 'white' },
-                  { label: 'Prefer not to say', value: 'prefer not to say' },
+                  {label: "I prefer not to answer", value: "I prefer not to answer"},
                 ]}
                 open={raceOpen}
                 onOpen={() => {
@@ -211,13 +238,12 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
               <DropDownField
                 text="Ethnicity"
                 selectItems={[
+                  {label: 'Hispanic/Latino', value: 'hispanic/latino'},
                   {
-                    label: 'MIGHT CHANGE BELOW SELECTION LATER',
-                    value: 'MIGHT CHANGE BELOW SELECTION LATER',
+                    label: 'Non-Hispanic/Latino',
+                    value: 'Non-hispanic/latino',
                   },
-                  { label: 'Hispanic/Latino', value: 'hispanic/latino' },
-                  { label: 'Non-Hispanic/Latino', value: 'non-hispanic/latino' },
-                  { label: 'Prefer not to say', value: 'prefer not to say' },
+                  {label: 'I prefer not to answer', value: 'I prefer not to answer'},
                 ]}
                 open={ethnicityOpen}
                 onOpen={() => {
