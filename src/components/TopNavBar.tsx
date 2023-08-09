@@ -30,7 +30,7 @@ const TopNavBar = ({
   };
 
   return (
-    <View className="">
+    <View className="h-1/8 mb-1">
       <View className="flex-row mt-6 mb-2">
         <TouchableOpacity
           className="mt-2 ml-4 "

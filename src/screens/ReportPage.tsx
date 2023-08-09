@@ -5,7 +5,7 @@ import {
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import CheckBox from '../components/CheckBox';
 import Icon from 'react-native-vector-icons/AntDesign';
 import TextInputField from '../components/TextInputField';
@@ -26,7 +26,7 @@ export interface FormState {
   ethnicity: string;
 }
 
-const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
+const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
   const [formState, setFormState] = useState<FormState>({
     result: false,
     DOB: '',
@@ -41,7 +41,7 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
     // Call the createTest method from the ApiService
     ApiService.createTest(formState)
       .then(Response => {
-        navigation.navigate('ThankYouScreen', { login: false });
+        navigation.navigate('ThankYouScreen', {login: false});
         console.log('test created successfully:', Response.data);
         setFormState({
           result: false,
@@ -81,15 +81,25 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
 
   return (
     <SafeAreaView className="w-screen h-screen flex-1">
-      <ScrollView>
-        {/* NavBar */}
-        <TopNavBar textValue='Report COVID-19 Test Result' fontFamily='' textSize='xl' haveProgress={false} />
+      {/* NavBar */}
+      <TopNavBar
+        textValue="Report COVID-19 Test Result"
+        fontFamily=""
+        textSize="xl"
+        haveProgress={false}
+        textColor=""
+      />
 
+      <ScrollView className="flex-1">
         {/* Page Container */}
         <View className="w-full justify-center items-center flex-1 flex-col">
           <View>
             {/* Test Result Buttons */}
-            <Text className="text-lg font-bold mx-auto">
+            <Text
+              style={{
+                fontFamily: 'Baskerville-BoldItalic',
+              }}
+              className="text-lg md:text-2xl font-bold mt-10 mx-auto underline">
               What were the results of your test?
             </Text>
             <View className="justify-center space-x-4 flex-row my-9">
@@ -118,7 +128,7 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
             </View>
 
             {/* Text input and dropdown fields container */}
-            <View className='w-full'>
+            <View className="w-screen items-center ">
               <TextInputField
                 label="Date of Test*"
                 value={formState.DOT}
@@ -138,7 +148,6 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
                 placeholder="mm/dd/yyyy"
               />
 
-              {/* TODO: will need to probs ask the UX team what the official dropdown selections are */}
               {/* Data found from: https://www.census.gov/newsroom/blogs/random-samplings/2021/08/measuring-racial-ethnic-diversity-2020-census.html */}
               <DropDownField
                 text="Gender"
@@ -147,8 +156,8 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
                     label: 'MIGHT CHANGE BELOW SELECTION LATER',
                     value: 'MIGHT CHANGE BELOW SELECTION LATER',
                   },
-                  { label: '', value: '' },
-                  { label: 'Prefer not to say', value: 'prefer not to say' },
+                  {label: '', value: ''},
+                  {label: 'Prefer not to say', value: 'prefer not to say'},
                 ]}
                 open={genderOpen}
                 onOpen={() => {
@@ -170,7 +179,7 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
                     label: 'American Indian or Alaska Native',
                     value: 'american indian or alaska native',
                   },
-                  { label: 'Asian', value: 'asian' },
+                  {label: 'Asian', value: 'asian'},
                   {
                     label: 'Black or African American',
                     value: 'black or african american',
@@ -179,13 +188,13 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
                     label: 'Native Hawaiian or Other Pacific Islander',
                     value: 'native hawaiian or other pacific islander',
                   },
-                  { label: 'Not Specified', value: 'not specified' },
+                  {label: 'Not Specified', value: 'not specified'},
                   {
                     label: 'Two or More Races/Ethnicities',
                     value: 'two or more races/ethnicities',
                   },
-                  { label: 'White', value: 'white' },
-                  { label: 'Prefer not to say', value: 'prefer not to say' },
+                  {label: 'White', value: 'white'},
+                  {label: 'Prefer not to say', value: 'prefer not to say'},
                 ]}
                 open={raceOpen}
                 onOpen={() => {
@@ -203,9 +212,9 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
                     label: 'MIGHT CHANGE BELOW SELECTION LATER',
                     value: 'MIGHT CHANGE BELOW SELECTION LATER',
                   },
-                  { label: 'Hispanic/Latino', value: 'hispanic/latino' },
-                  { label: 'Non-Hispanic/Latino', value: 'non-hispanic/latino' },
-                  { label: 'Prefer not to say', value: 'prefer not to say' },
+                  {label: 'Hispanic/Latino', value: 'hispanic/latino'},
+                  {label: 'Non-Hispanic/Latino', value: 'non-hispanic/latino'},
+                  {label: 'Prefer not to say', value: 'prefer not to say'},
                 ]}
                 open={ethnicityOpen}
                 onOpen={() => {
@@ -228,19 +237,18 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
                 I agree to share my results with the CDC
               </Text>
             </View>
-
-            {/* button container */}
-            <View>
-              <Button
-                onPress={handleReportButtonClick}
-                innerText="Report"
-                bgColor="bg-[#B4B4B4]"
-                textColor="text-black"
-                border={true}
-                borderColor="border border-2"
-                width="80"
-              />
-            </View>
+          </View>
+          {/* button container */}
+          <View className="flex items-center">
+            <Button
+              onPress={handleReportButtonClick}
+              innerText="Report"
+              bgColor="bg-[#B4B4B4]"
+              textColor="text-black"
+              border={true}
+              borderColor="border border-2"
+              width="80"
+            />
           </View>
         </View>
       </ScrollView>

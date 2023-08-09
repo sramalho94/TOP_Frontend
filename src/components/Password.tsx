@@ -24,9 +24,9 @@ const PasswordField = (props: Props) => {
   };
 
   return (
-    <View className="w-full max-w-sm flex-1 justify-center align-middle px-4">
+    <View className="w-full max-w-sm flex-1 justify-center align-middle px-8">
       <Text className="font-medium w-full h-8 flex my-auto justify-center align-middle">
-        Password
+        Password*
       </Text>
 
       {/* TODO: NEED TO TEST */}
@@ -34,7 +34,7 @@ const PasswordField = (props: Props) => {
         autoCorrect={false}
         value={props.password}
         onChangeText={value => props.onChange(value)}
-        placeholder="Enter your password"
+        placeholder="Password"
         placeholderTextColor="#6b7280"
         className="border border-black rounded-lg px-4 h-12 w-full mx-auto font-medium"
         secureTextEntry={!showPassword}

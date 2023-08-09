@@ -71,20 +71,22 @@ export default function SignInPage(props: Props) {
   };
 
   return (
-    <SafeAreaView className="w-342 m-4 flex-1">
+    <SafeAreaView className="w-screen h-screen flex-1">
       <ScrollView>
-        {/* <TopNavBar textSize='xl' textValue='Sign In' fontFamily='' haveProgress={false} /> */}
-        <View className="">
+      {/* <TopNavBar textSize='xl' textValue='Sign In' fontFamily='' haveProgress={false} /> */}
+        <View>
           <View className="flex flex-row justify-center align-middle">
             <Image className="w-342 h-349 m-4" source={NoImage}></Image>
           </View>
           <View className="mb-6 flex items-center align-middle justify-center">
             <TextInputField
-              label="Username"
+              label="Username*"
               value={userSignUp.username}
               onChange={value => handleChange('username', value)}
-              placeholder=''
+              placeholder='Username'
             />
+            <Password onChange={value => handleChange('password', value)} password={userSignUp.password} />
+            <View className='w-full max-w-sm px-8 mt-2 '><Text className='text-start underline underline-offset-8'>Forgot Password</Text></View>
           </View>
         </View>
         <View className="mt-4 items-center">
@@ -97,7 +99,7 @@ export default function SignInPage(props: Props) {
             borderColor="border border-black"
             width='full'
           />
-          <Button
+          {/* <Button
             onPress={() => console.log('pressed')}
             innerText="Forgot Password"
             textColor=""
@@ -105,16 +107,7 @@ export default function SignInPage(props: Props) {
             border={true}
             borderColor="border border-black"
             width='full'
-          />
-          <Button
-            onPress={() => console.log('Skip button pressed')}
-            innerText="Skip"
-            bgColor=""
-            textColor=""
-            border={false}
-            borderColor=""
-            width='full'
-          />
+          /> */}
         </View>
       </ScrollView>
     </SafeAreaView>
