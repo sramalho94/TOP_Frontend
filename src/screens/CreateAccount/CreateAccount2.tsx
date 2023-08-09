@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { View, Text, SafeAreaView, ScrollView, Modal } from 'react-native';
+import { View, SafeAreaView, ScrollView, } from 'react-native';
 import CreateAccountContext from '../../context/CreateAccountContext';
 import TextInputField from '../../components/TextInputField';
 import Button from '../../components/Button';
@@ -7,7 +7,6 @@ import TopNavBar from '../../components/TopNavBar';
 
 const CreateAccount2: React.FC<{ navigation: any }> = ({ navigation }) => {
   const { formState, updateFormState } = useContext(CreateAccountContext);
-  const [isModalVisible, setIsModalVisible] = useState(false);
 
   // Function to check if email format is correct
   const isBirthdayValid = (birthday: string): boolean => {
@@ -71,10 +70,6 @@ const CreateAccount2: React.FC<{ navigation: any }> = ({ navigation }) => {
     } else {
       navigation.navigate('CreateAccount3');
     }
-  };
-
-  const toggleModal = () => {
-    setIsModalVisible(!isModalVisible);
   };
 
   return (
