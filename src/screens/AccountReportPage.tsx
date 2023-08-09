@@ -1,10 +1,10 @@
-import {View, Text, SafeAreaView, ScrollView} from 'react-native';
-import React, {useState} from 'react';
+import { View, Text, SafeAreaView, ScrollView } from 'react-native';
+import React, { useState } from 'react';
 import TextInputField from '../components/TextInputField';
 import Button from '../components/Button';
 import TopNavBar from '../components/TopNavBar';
 import CircleBtn from '../components/CircleBtn';
-import {useAuth} from '../context/AuthContext';
+import { useAuth } from '../context/AuthContext';
 import ApiService from '../services/ApiService';
 
 interface FormState {
@@ -19,8 +19,8 @@ interface FormState {
   ethnicity: string;
 }
 
-const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
-  const {userId: actualUserId, DOB} = useAuth();
+const AccountReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
+  const { userId: actualUserId, DOB } = useAuth();
   const actualUserIdValue = actualUserId ?? null;
   const DOBVal = DOB ?? null;
   const [formState, setFormState] = useState<FormState>({
@@ -36,7 +36,7 @@ const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
   });
 
   const handleChange: any = (field: string, value: string) => {
-    setFormState(prevState => ({...prevState, [field]: value}));
+    setFormState(prevState => ({ ...prevState, [field]: value }));
   };
 
   const handleSubmit: any = async (e: any) => {
@@ -139,6 +139,9 @@ const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
               bgColor="bg-themeBlue"
               border={true}
               width="80"
+              accessible={true}
+              accessibilityLabel="Submit"
+              accessibilityHint="Submit test results"
             />
           </View>
         </View>
