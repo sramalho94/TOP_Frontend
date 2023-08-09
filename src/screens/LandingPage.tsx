@@ -3,19 +3,24 @@ import {View, SafeAreaView, ScrollView, Image} from 'react-native';
 import Button from '../components/Button';
 import LandingImage from './../../assets/landing_1.png';
 import WaveImage from './../../assets/topWave.png';
+import LandingGroupImg from './../../assets/landingGroupImg.png';
 
 const LandingPage: React.FC<{navigation: any}> = ({navigation}) => {
   return (
     <SafeAreaView className="flex-1 bg-themeWhite">
       <ScrollView>
         <Image
+          className="w-[390] h-[500] mb-20 bg-cover bg-center "
+          source={LandingGroupImg}
+        />
+        {/* <Image
           className="absolute bg-cover bg-center right-0 left-0 "
           source={WaveImage}
-        />
-        <Image
+        /> */}
+        {/* <Image
           className="w-[342] h-[339] mx-auto mt-[110]"
           source={LandingImage}
-        />
+        /> */}
         <View className=" space-y-[12]">
           <Button
             onPress={() => navigation.navigate('SignInPage')}

@@ -4,6 +4,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import Onboarding1 from './../../assets/onboarding1.png';
 import Onboarding2 from './../../assets/onboarding2.png';
 import Onboarding3 from './../../assets/onboarding3.png';
+import WaveImage from './../../assets/topWave.png';
 
 import {
   SafeAreaView,
@@ -86,11 +87,13 @@ const Onboarding = (props: OnboardingScreenProps) => {
       {pages.map((page, index) => (
         <SafeAreaView key={index} className="h-screen w-screen bg-themeWhite">
           <View className="flex-1 flex-col">
+            <Image className="absolute bg-cover bg-center" source={WaveImage} />
             <View className="m-5 flex-1">
               <Image
-                className="w-[360px] h-[360px] "
-                source={page.imageSource}></Image>
-              <Text className="mx-auto  py-5 font-serif text-[25px] text-center">
+                className="w-[340px] h-[340px]"
+                source={page.imageSource}
+              />
+              <Text className="mx-auto   font-serif text-[25px] text-center">
                 {page.title}
               </Text>
               <Text className="mx-auto py-5 font-serif text-[16px] text-center">
