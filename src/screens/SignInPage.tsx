@@ -40,22 +40,22 @@ export default function SignInPage(props: Props) {
     username: '',
     password: '',
   })
-  
+
   const handleChange = (field: string, value: string) => {
-    setUserSignUp({...userSignUp, [field]: value});
+    setUserSignUp({ ...userSignUp, [field]: value });
   }
 
   const handleUsernameChange = (value: string) => {
     setUsername(value);
   };
 
-  const {onLogin} = useAuth();
+  const { onLogin } = useAuth();
   const navigation: any = useNavigation();
 
 
   const handleSubmit: any = (e: any) => {
     e.preventDefault();
-    console.log("userSignIn submit: ", {userSignUp})
+    console.log("userSignIn submit: ", { userSignUp })
 
     if (onLogin) {
       onLogin(userSignUp)
@@ -78,7 +78,7 @@ export default function SignInPage(props: Props) {
   return (
     <SafeAreaView className="w-342 m-4">
       <ScrollView>
-      {/* <TopNavBar textSize='xl' textValue='Sign In' fontFamily='' haveProgress={false} /> */}
+        {/* <TopNavBar textSize='xl' textValue='Sign In' fontFamily='' haveProgress={false} /> */}
         <View className="">
           <View className="flex flex-row justify-center align-middle">
             <Image className="w-342 h-349 m-4" source={NoImage}></Image>
@@ -106,24 +106,9 @@ export default function SignInPage(props: Props) {
             border={true}
             borderColor="border border-black"
             width='80'
-          />
-          <Button
-            onPress={() => console.log('pressed')}
-            innerText="Forgot Password"
-            textColor=""
-            bgColor=""
-            border={true}
-            borderColor="border border-black"
-            width='80'
-          />
-          <Button
-            onPress={() => console.log('Skip button pressed')}
-            innerText="Skip"
-            bgColor=""
-            textColor=""
-            border={false}
-            borderColor=""
-            width='80'
+            accessible={true}
+            accessibilityLabel="Login"
+            accessibilityHint="Navigates to the login screen"
           />
         </View>
       </ScrollView>
