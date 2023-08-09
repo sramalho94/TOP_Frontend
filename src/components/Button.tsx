@@ -1,5 +1,5 @@
 import React from 'react';
-import {TouchableOpacity, Text, View} from 'react-native';
+import { TouchableOpacity, Text, View } from 'react-native';
 
 type Props = {
   onPress: () => void;
@@ -10,6 +10,11 @@ type Props = {
   borderColor?: string;
   textDecoration?: string;
   width?: string;
+  accessible: boolean;
+  accessibilityLabel: string;
+  accessibilityHint: string;
+
+
 };
 
 const Button = ({
@@ -29,9 +34,8 @@ const Button = ({
          flex justify-center items-center w-full max-w-sm h-[52] rounded-lg mb-3 ${bgColor}`}
         onPress={onPress}>
         <Text
-          className={`text-base font-semibold ${textColor} ${
-            textDecoration ? `${textDecoration}` : ''
-          }`}>
+          className={`text-base font-semibold ${textColor} ${textDecoration ? `${textDecoration}` : ''
+            }`}>
           {innerText}
         </Text>
       </TouchableOpacity>
