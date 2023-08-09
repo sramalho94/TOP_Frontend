@@ -70,9 +70,7 @@ const HomeDash: React.FC<{navigation: any}> = ({navigation}) => {
             <View className="mt-16">
               <CircleBtn
                 img={FlowerImg}
-                onPress={() => {
-                  console.log("You're Sick!!");
-                }}
+                onPress={() => navigation.navigate('DataDashboard')}
                 Btnwidth="w-28"
                 Btnheight="h-28"
               />
@@ -82,14 +80,7 @@ const HomeDash: React.FC<{navigation: any}> = ({navigation}) => {
             </View>
 
             <View className="mt-1">
-              <CircleBtn
-                img={FlowerImg}
-                onPress={() => {
-                  console.log("You're Sick!!");
-                }}
-                Btnwidth="w-28"
-                Btnheight="h-28"
-              />
+              <CircleBtn img={FlowerImg} Btnwidth="w-28" Btnheight="h-28" />
               <Text className="text-center p-3 text-black text-base">
                 Exchange
               </Text>
