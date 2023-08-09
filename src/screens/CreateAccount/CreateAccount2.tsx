@@ -90,18 +90,6 @@ const CreateAccount2: React.FC<{ navigation: any }> = ({ navigation }) => {
 
         <View className="mx-auto my-auto mb-3">
           <View className="w-[342]">
-            <View className="my-4 underline">
-              <Button
-                onPress={toggleModal}
-                innerText="(Why do we need this information?)"
-                bgColor=""
-                textColor=""
-                border={false}
-                borderColor="border border-gray"
-                textDecoration="underline"
-                width="80"
-              />
-            </View>
             <TextInputField
               label="Date of Birth*"
               value={formState.DOB}

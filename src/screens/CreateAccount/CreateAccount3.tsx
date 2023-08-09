@@ -1,12 +1,12 @@
-import React, {useContext, useState} from 'react';
-import {View, Text, SafeAreaView, ScrollView, Modal} from 'react-native';
+import React, { useContext, useState } from 'react';
+import { View, Text, SafeAreaView, ScrollView, Modal } from 'react-native';
 import CreateAccountContext from '../../context/CreateAccountContext';
 import Button from '../../components/Button';
 import TopNavBar from '../../components/TopNavBar';
 import DropDownField from '../../components/DropDownField';
 
-const CreateAccount3: React.FC<{navigation: any}> = ({navigation}) => {
-  const {formState, updateFormState} = useContext(CreateAccountContext);
+const CreateAccount3: React.FC<{ navigation: any }> = ({ navigation }) => {
+  const { formState, updateFormState } = useContext(CreateAccountContext);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [genderOpen, setGenderOpen] = useState<boolean>(false);
   const [raceOpen, setRaceOpen] = useState<boolean>(false);
@@ -15,7 +15,7 @@ const CreateAccount3: React.FC<{navigation: any}> = ({navigation}) => {
   const handleNext = () => {
     // Perform any necessary validation before navigating to the next screen
     navigation.navigate('ConsentPage');
-    console.log('formState', {formState});
+    console.log('formState', { formState });
   };
 
   const handleGenderChange = (value: boolean) => {
@@ -46,18 +46,6 @@ const CreateAccount3: React.FC<{navigation: any}> = ({navigation}) => {
         />
         <View className="mx-auto my-auto justify-between">
           <View className="w-[342]">
-            <View className="my-4">
-              <Button
-                onPress={toggleModal}
-                innerText="(Why do we need this information?)"
-                bgColor=""
-                textColor=""
-                border={false}
-                borderColor="border border-gray"
-                textDecoration="underline"
-                width="80"
-              />
-            </View>
             <DropDownField
               text="Gender"
               selectItems={[
@@ -65,8 +53,8 @@ const CreateAccount3: React.FC<{navigation: any}> = ({navigation}) => {
                   label: 'MIGHT CHANGE BELOW SELECTION LATER',
                   value: 'MIGHT CHANGE BELOW SELECTION LATER',
                 },
-                {label: '', value: ''},
-                {label: 'Prefer not to say', value: 'prefer not to say'},
+                { label: '', value: '' },
+                { label: 'Prefer not to say', value: 'prefer not to say' },
               ]}
               open={genderOpen}
               onOpen={() => {
@@ -88,7 +76,7 @@ const CreateAccount3: React.FC<{navigation: any}> = ({navigation}) => {
                   label: 'American Indian or Alaska Native',
                   value: 'american indian or alaska native',
                 },
-                {label: 'Asian', value: 'asian'},
+                { label: 'Asian', value: 'asian' },
                 {
                   label: 'Black or African American',
                   value: 'black or african american',
@@ -97,13 +85,13 @@ const CreateAccount3: React.FC<{navigation: any}> = ({navigation}) => {
                   label: 'Native Hawaiian or Other Pacific Islander',
                   value: 'native hawaiian or other pacific islander',
                 },
-                {label: 'Not Specified', value: 'not specified'},
+                { label: 'Not Specified', value: 'not specified' },
                 {
                   label: 'Two or More Races/Ethnicities',
                   value: 'two or more races/ethnicities',
                 },
-                {label: 'White', value: 'white'},
-                {label: 'Prefer not to say', value: 'prefer not to say'},
+                { label: 'White', value: 'white' },
+                { label: 'Prefer not to say', value: 'prefer not to say' },
               ]}
               open={raceOpen}
               onOpen={() => {
@@ -121,12 +109,12 @@ const CreateAccount3: React.FC<{navigation: any}> = ({navigation}) => {
                   label: 'MIGHT CHANGE BELOW SELECTION LATER',
                   value: 'MIGHT CHANGE BELOW SELECTION LATER',
                 },
-                {label: 'Hispanic/Latino', value: 'hispanic/latino'},
+                { label: 'Hispanic/Latino', value: 'hispanic/latino' },
                 {
                   label: 'Non-Hispanic/Latino',
                   value: 'non-hispanic/latino',
                 },
-                {label: 'Prefer not to say', value: 'prefer not to say'},
+                { label: 'Prefer not to say', value: 'prefer not to say' },
               ]}
               open={ethnicityOpen}
               onOpen={() => {
