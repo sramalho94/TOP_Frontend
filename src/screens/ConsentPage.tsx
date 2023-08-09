@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, { useState, useContext } from 'react';
 // import {useFormContext} from "react-hook-form";
 // import {useFormContext} from '../context/CreateAccountContext';
 import {
@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import TopNavBar from '../components/TopNavBar';
 import CheckBox from '../components/CheckBox';
-import {useAuth} from '../context/AuthContext';
+import { useAuth } from '../context/AuthContext';
 import CreateAccountContext from '../context/CreateAccountContext';
 
 interface CheckState {
@@ -20,17 +20,17 @@ interface CheckState {
   isReadAndAcceptChecked: boolean;
 }
 
-const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
+const ConsentPage: React.FC<{ navigation: any }> = ({ navigation }) => {
   const handlePrivacyPolicyPress = () => {
     const privacyPolicyUrl = 'https://www.privacypolicies.com/generic/';
     Linking.openURL(privacyPolicyUrl);
   };
 
   // comment for push
-  const {onRegister} = useAuth();
+  const { onRegister } = useAuth();
   // const {formState, updateFormState} = useContext<any>(CreateAccountContext);
   // const {formState} = useFormContext();
-  const {formState, resetFormState} = useContext(CreateAccountContext);
+  const { formState, resetFormState } = useContext(CreateAccountContext);
   const handleEmailPress = () => {
     const email = 'leavecovidtracking-us@joinzoe.com';
     Linking.openURL(`mailto:${email}`);
@@ -181,7 +181,10 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
           </View>
           <TouchableOpacity
             onPress={handleAgree}
-            className={`bg-black px-8 py-2.5 rounded-md mt-7`}>
+            className={`bg-black px-8 py-2.5 rounded-md mt-7`}
+            accessible={true}
+            accessibilityLabel="I agree to these terms"
+            accessibilityHint="Agrees to terms">
             <Text className={`text-white text-base font-bold text-center`}>
               I Agree to These Terms
             </Text>
