@@ -86,7 +86,7 @@ const Onboarding = (props: OnboardingScreenProps) => {
                 {page.title}
               </Text>
             </View>
-            <View className="flex-1 flex-col-reverse mb-8">
+            <View className="flex-1 flex-col-reverse mb-3">
               <View className="mt-5 mx-5">
                 <Button
                   onPress={page.onButtonPress} // Updated this line

@@ -53,7 +53,7 @@ const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
 
   return (
     <SafeAreaView className="flex-1 w-screen h-screen">
-      <ScrollView>
+      <ScrollView className="flex-1">
         <TopNavBar
           fontFamily=""
           textSize="xl"
@@ -62,8 +62,10 @@ const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
           page={1}
           textColor="text-themeBlue"
         />
-        <View className="flex-1 mx-auto mb-2">
-          <View className="flex-1 w-[342] mt-4">
+        
+        <View className="flex-1">
+        
+          <View className="flex-1 mx-auto w-[342] mt-4">
             <TextInputField
               label="Email*"
               value={formState.email}
@@ -81,9 +83,9 @@ const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
               password={formState.password}
             />
           </View>
-        </View>
-        </ScrollView>
-          <View className="flex-1 flex-col-reverse mb-3">
+        
+        
+          <View className="mt-4 flex-col-reverse mb-3">
             <Button
               onPress={handleNext}
               innerText="Next"
@@ -94,7 +96,7 @@ const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
               width="80"
             />
           </View>
-
+          </View>
         <Modal visible={isModalVisible} transparent={true}>
           <View className="flex-1 justify-center items-center bg-opacity-50">
             <View className="bg-white p-8 rounded-lg w-72 border-4">
@@ -120,7 +122,7 @@ const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
             </View>
           </View>
         </Modal>
-      
+        </ScrollView>
     </SafeAreaView>
   );
 };

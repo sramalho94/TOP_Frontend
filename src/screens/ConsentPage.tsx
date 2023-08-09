@@ -13,6 +13,7 @@ import TopNavBar from '../components/TopNavBar';
 import CheckBox from '../components/CheckBox';
 import {useAuth} from '../context/AuthContext';
 import CreateAccountContext from '../context/CreateAccountContext';
+import Button from '../components/Button';
 
 interface CheckState {
   isOver18Checked: boolean;
@@ -82,112 +83,120 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
     }));
   };
   return (
-    <SafeAreaView>
-      <ScrollView>
-        {/* add topNavBar component here and pass a few props to it */}
-        {/* Still need to double check the font size and family font! */}
-        <TopNavBar
-          textSize="xl"
-          textValue="Consent Form"
-          fontFamily=""
-          haveProgress={false}
-        />
-        <View className={`flex justify-center p-4 px-8 flex-1`}>
-          <Text className={`text-xl font-bold text-black mb-5 text-center`}>
-            User Consent
-          </Text>
-          <Text className={`mb-4 text-auto`}>
-            By checking the boxes below, you consent to our using the personal
-            information we collect through your use of this app in the way we
-            have described.
-          </Text>
-          <View className={`flex-row items-center`}>
-            <Text className="flex content-center">
-              For more information about how we use and share personal
-              information, please see our{' '}
-              <Text
-                className={`text-blue-500 underline`}
-                onPress={handlePrivacyPolicyPress}>
-                Privacy Policy.
+    <SafeAreaView className="flex-1 min-w-screen min-h-screen">
+      {/* add topNavBar component here and pass a few props to it */}
+      {/* Still need to double check the font size and family font! */}
+      <TopNavBar
+        textColor="text-themeBlue"
+        textSize="xl"
+        textValue="Consent Form"
+        fontFamily=""
+        haveProgress={false}
+      />
+
+      <View className="justify-center p-4 px-8 flex-1">
+        <ScrollView>
+          <View className="flex-1">
+            <Text className={`text-xl font-bold text-black mb-5 text-center`}>
+              User Consent
+            </Text>
+            <Text className={`mb-4 text-auto`}>
+              By checking the boxes below, you consent to our using the personal
+              information we collect through your use of this app in the way we
+              have described.
+            </Text>
+            <View className={`flex-row items-center`}>
+              <Text className="flex content-center">
+                For more information about how we use and share personal
+                information, please see our{' '}
+                <Text
+                  className={`text-blue-500 underline`}
+                  onPress={handlePrivacyPolicyPress}>
+                  Privacy Policy.
+                </Text>
               </Text>
-            </Text>
-          </View>
-          <Text className={`mb-4 text-auto`}>
-            You may withdraw your consent at any time by emailing{' '}
-            <Text
-              className={`text-blue-500 underline`}
-              onPress={handleEmailPress}>
-              leavecovidtracking-us@joinzoe.com.
-            </Text>
-          </Text>
-          <View className="flex-row justify-start">
-            <Text className={`mb-7 text-auto`}>
-              Any questions may also be sent to{' '}
+            </View>
+            <Text className={`mb-4 text-auto`}>
+              You may withdraw your consent at any time by emailing{' '}
               <Text
                 className={`text-blue-500 underline`}
                 onPress={handleEmailPress}>
-                covidtracking-us@joinzoe.com.
+                leavecovidtracking-us@joinzoe.com.
               </Text>
             </Text>
-          </View>
-          <View className={`flex-row items-left mb-3`}>
-            <CheckBox
-              handleCheckChanges={() => handleCheckBoxChange('isOver18Checked')}
-              isSelected={checkBoxStates.isOver18Checked}
-            />
-            <Text className={`text-sm ml-2`}>
-              I confirm that I'm over 18 years old.
-            </Text>
-          </View>
-          <View className={`flex-row items-center mb-4`}>
-            <CheckBox
-              handleCheckChanges={() =>
-                handleCheckBoxChange('isConsentChecked')
-              }
-              isSelected={checkBoxStates.isConsentChecked}
-            />
-            <Text className={`text-sm ml-2`}>
-              I consent to the processing of my personal data (including without
-              limitation data I provide relating to my health) as set forth in
-              this consent and in the{' '}
-              <Text
-                className={`text-blue-500 underline`}
-                onPress={handlePrivacyPolicyPress}>
-                Privacy Policy.
+            <View className="flex-row justify-start">
+              <Text className={`mb-7 text-auto`}>
+                Any questions may also be sent to{' '}
+                <Text
+                  className={`text-blue-500 underline`}
+                  onPress={handleEmailPress}>
+                  covidtracking-us@joinzoe.com.
+                </Text>
               </Text>
-            </Text>
-          </View>
-          <View className={`flex-row items-center mb-4`}>
-            <CheckBox
-              handleCheckChanges={() =>
-                handleCheckBoxChange('isReadAndAcceptChecked')
-              }
-              isSelected={checkBoxStates.isReadAndAcceptChecked}
-            />
-            <Text className={`text-sm ml-2`}>
-              I have read and accept{' '}
-              <Text
-                className={`text-blue-500 underline`}
-                onPress={handleTermsPress}>
-                Zoe Global's Terms of Use
-              </Text>{' '}
-              and{' '}
-              <Text
-                className={`text-blue-500 underline`}
-                onPress={handlePrivacyPolicyPress}>
-                Privacy Policy.
+            </View>
+            <View className={`flex-row items-left mb-3`}>
+              <CheckBox
+                handleCheckChanges={() =>
+                  handleCheckBoxChange('isOver18Checked')
+                }
+                isSelected={checkBoxStates.isOver18Checked}
+              />
+              <Text className={`text-sm ml-2`}>
+                I confirm that I'm over 18 years old.
               </Text>
-            </Text>
+            </View>
+            <View className={`flex-row items-center mb-4`}>
+              <CheckBox
+                handleCheckChanges={() =>
+                  handleCheckBoxChange('isConsentChecked')
+                }
+                isSelected={checkBoxStates.isConsentChecked}
+              />
+              <Text className={`text-sm ml-2`}>
+                I consent to the processing of my personal data (including
+                without limitation data I provide relating to my health) as set
+                forth in this consent and in the{' '}
+                <Text
+                  className={`text-blue-500 underline`}
+                  onPress={handlePrivacyPolicyPress}>
+                  Privacy Policy.
+                </Text>
+              </Text>
+            </View>
+            <View className={`flex-row items-center mb-4`}>
+              <CheckBox
+                handleCheckChanges={() =>
+                  handleCheckBoxChange('isReadAndAcceptChecked')
+                }
+                isSelected={checkBoxStates.isReadAndAcceptChecked}
+              />
+              <Text className="text-sm ml-2">
+                I have read and accept{' '}
+                <Text
+                  className={`text-blue-500 underline`}
+                  onPress={handleTermsPress}>
+                  Zoe Global's Terms of Use
+                </Text>{' '}
+                and{' '}
+                <Text
+                  className={`text-blue-500 underline`}
+                  onPress={handlePrivacyPolicyPress}>
+                  Privacy Policy.
+                </Text>
+              </Text>
+            </View>
           </View>
-          <TouchableOpacity
+        </ScrollView>
+        <View className="flex-1">
+          <Button 
+            innerText='I Agree to These Terms'
+            bgColor='bg-black'
+            border={true}
+            textColor='text-white'
             onPress={handleAgree}
-            className={`bg-black px-8 py-2.5 rounded-md mt-7`}>
-            <Text className={`text-white text-base font-bold text-center`}>
-              I Agree to These Terms
-            </Text>
-          </TouchableOpacity>
+          />
         </View>
-      </ScrollView>
+      </View>
     </SafeAreaView>
   );
 };

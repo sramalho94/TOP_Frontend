@@ -119,12 +119,12 @@ const CreateAccount2: React.FC<{ navigation: any }> = ({ navigation }) => {
               label="First Name"
               value={formState.firstName}
               onChange={value => updateFormState('firstName', value)}
-              placeholder=""
+              placeholder="Enter your first name"
             />
           </View>
         </View>
-              </ScrollView>
-        <View className="flex-1 flex-col-reverse">
+              
+        <View className="flex-1 mt-4 flex-col-reverse">
           <Button
             onPress={handleNext}
             innerText="Next"
@@ -159,7 +159,7 @@ const CreateAccount2: React.FC<{ navigation: any }> = ({ navigation }) => {
             </View>
           </View>
         </Modal>
-
+        </ScrollView>
     </SafeAreaView>
   );
 };
