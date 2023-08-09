@@ -1,4 +1,4 @@
-import {Text, TouchableOpacity, Image} from 'react-native';
+import {Text, TouchableOpacity, Image, View} from 'react-native';
 import React from 'react';
 
 type Props = {
@@ -51,12 +51,13 @@ const CircleBtn = ({
           <Text className={`text-center text-${textSize}`}>{text}</Text>
         ) : null}
         {img && text
-          ? (
-              <Image
-                className={`bg-contain ${Btnheight} ${Btnwidth} rounded-full`}
+          ? <View className='items-center gap-2'>
+           <Text className={`text-center text-${textSize}`}>{text}</Text>
+            <Image
+                className={`bg-contain w-10 h-10`}
                 source={img}
               />
-            ) && <Text className={`text-center text-${textSize}`}>{text}</Text>
+          </View>
           : null}
       </TouchableOpacity>
     </>
