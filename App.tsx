@@ -51,20 +51,17 @@ function AppContent({
   const [initialScreen, setInitialScreen] = useState<
     'HomeDash' | 'LandingPage'
   >('LandingPage');
+  const [isTokenChecked, setIsTokenChecked] = useState(false);
 
   // Determine the initial screen based on the token
   useEffect(() => {
-    const determineInitialScreen = async () => {
-      const token = await AsyncStorage.getItem('@auth_token');
-      if (token) {
-        setInitialScreen('HomeDash');
-      } else {
-        setInitialScreen('LandingPage');
-      }
-    };
-
-    determineInitialScreen();
-  }, []);
+    if (authState?.token) {
+      setInitialScreen('HomeDash');
+    } else {
+      setInitialScreen('LandingPage');
+    }
+    setIsTokenChecked(true);
+  }, [authState?.token]);
 
   // Handle automatic navigation upon authentication changes
   useEffect(() => {
@@ -81,8 +78,8 @@ function AppContent({
     }
   }, [authState, navigationRef]);
 
-  if (authState?.loading) {
-    return Loading;
+  if (!isTokenChecked) {
+    return <Loading />;
   }
 
   return (
