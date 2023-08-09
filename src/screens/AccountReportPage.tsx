@@ -73,9 +73,10 @@ const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
   };
 
   return (
-    <SafeAreaView className="min-w-screen">
+    <SafeAreaView className="flex-1 min-w-screen">
       <ScrollView>
         <TopNavBar
+          textColor="text-themeBlue"
           textSize="xl"
           fontFamily=""
           haveProgress={false}

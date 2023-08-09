@@ -78,9 +78,10 @@ const CreateAccount2: React.FC<{ navigation: any }> = ({ navigation }) => {
   };
 
   return (
-    <SafeAreaView className="min-w-screen">
+    <SafeAreaView className="flex-1 w-screen h-screen">
       <ScrollView>
         <TopNavBar
+          textColor="text-themeBlue"
           fontFamily=""
           textSize="xl"
           textValue="Create Account"
@@ -88,7 +89,7 @@ const CreateAccount2: React.FC<{ navigation: any }> = ({ navigation }) => {
           page={2}
         />
 
-        <View className="mx-auto my-auto mb-3">
+        <View className="flex-1 mx-auto my-auto mb-3">
           <View className="w-[342]">
             <View className="my-4 underline">
               <Button
@@ -122,7 +123,8 @@ const CreateAccount2: React.FC<{ navigation: any }> = ({ navigation }) => {
             />
           </View>
         </View>
-        <View className="mt-56">
+              </ScrollView>
+        <View className="flex-1 flex-col-reverse">
           <Button
             onPress={handleNext}
             innerText="Next"
@@ -157,7 +159,7 @@ const CreateAccount2: React.FC<{ navigation: any }> = ({ navigation }) => {
             </View>
           </View>
         </Modal>
-      </ScrollView>
+
     </SafeAreaView>
   );
 };
