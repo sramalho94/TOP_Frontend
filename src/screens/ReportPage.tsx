@@ -13,6 +13,9 @@ import DropDownField from '../components/DropDownField';
 import Button from '../components/Button';
 import CircleBtn from '../components/CircleBtn';
 import ApiService from '../services/ApiService';
+import NegTest from './../../assets/NegativeCovidTest.png'
+import PosTest from './../../assets/PositiveCovidTest.png'
+
 
 // Define the ReportPage component
 export interface FormState {
@@ -108,6 +111,7 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
                   Btnheight="h-32"
                   textSize="base"
                   value={false}
+                  img={NegTest}
                 />
               </View>
               <View className="m-2">
@@ -119,6 +123,7 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
                   Btnheight="h-32"
                   textSize="base"
                   value={true}
+                  img={PosTest}
                 />
               </View>
             </View>
