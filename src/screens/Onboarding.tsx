@@ -95,15 +95,11 @@ const Onboarding = (props: OnboardingScreenProps) => {
                   textColor="text-themeWhite"
                   border={true}
                   borderColor="border border-themeBlue border-3"
-<<<<<<< HEAD
-                  width="full"
-=======
                   width="80"
-                  accessible={true}
-                  accessibilityLabel="Continue"
-                  accessibilityHint="Navigates to the next screen"
+                
+                  accessLabel="Continue"
+                  accessHint="Navigates to the next screen"
 
->>>>>>> 4a2d604ec6e58f1be6f5f5b3a9c7eff22675b49b
                 />
 
                 {page.pageIndicator !== pages.length && (
@@ -114,14 +110,10 @@ const Onboarding = (props: OnboardingScreenProps) => {
                     textColor="text-black"
                     border={false}
                     borderColor="border border-gray"
-<<<<<<< HEAD
-                    width="full"
-=======
                     width="80"
-                    accessible={true}
-                    accessibilityLabel="Skip"
-                    accessibilityHint="Navigates to the create account screen"
->>>>>>> 4a2d604ec6e58f1be6f5f5b3a9c7eff22675b49b
+                 
+                    accessLabel="Skip"
+                    accessHint="Navigates to the create account screen"
                   />
                 )}
               </View>

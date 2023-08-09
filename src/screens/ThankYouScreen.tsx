@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import {View, Text, SafeAreaView, ScrollView, Linking} from 'react-native';
-=======
 import { View, Text, SafeAreaView, ScrollView } from 'react-native';
->>>>>>> 4a2d604ec6e58f1be6f5f5b3a9c7eff22675b49b
 import React from 'react';
 import Button from '../components/Button';
 import { RouteProp } from '@react-navigation/native';
@@ -24,9 +20,9 @@ const ThankYouScreen = ({ navigation, route }: Props) => {
   const { logIn } = route.params || { logIn: true };
 
   const handleInfoPress = () => {
-    const infoUrl =
-      'https://www.cdc.gov/coronavirus/2019-ncov/your-health/isolation.html';
-    Linking.openURL(infoUrl);
+    // const infoUrl =
+    //   'https://www.cdc.gov/coronavirus/2019-ncov/your-health/isolation.html';
+    // Linking.openURL(infoUrl);
   };
 
   return (
@@ -65,6 +61,9 @@ const ThankYouScreen = ({ navigation, route }: Props) => {
         border={true}
         borderColor="border border-gray"
         width='full'
+        accessLabel=''
+        accessHint=''
+        // TODO: do this
       />
       {/* {logIn ? (
             <Button
