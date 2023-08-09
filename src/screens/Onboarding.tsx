@@ -4,6 +4,9 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import Onboarding1 from './../../assets/onboarding1.png';
 import Onboarding2 from './../../assets/onboarding2.png';
 import Onboarding3 from './../../assets/onboarding3.png';
+import onboardingAll_1 from './../../assets/onboardingAll_1.png';
+import onboardingAll_2 from './../../assets/onboardingAll_2.png';
+import onboardingAll_3 from './../../assets/onboardingAll_3.png';
 import WaveImage from './../../assets/topWave.png';
 
 import {
@@ -34,7 +37,7 @@ const Onboarding = (props: OnboardingScreenProps) => {
 
   const pages = [
     {
-      imageSource: Onboarding1,
+      imageSource: onboardingAll_1,
       title: 'How your data will be used',
       text: 'Your data will only be shared with public health officials to help them better understand and respond to the spread of diseases in your area.',
       buttonText: 'Continue',
@@ -42,7 +45,7 @@ const Onboarding = (props: OnboardingScreenProps) => {
       onButtonPress: () => handleSwipeAnimation(1),
     },
     {
-      imageSource: Onboarding2,
+      imageSource: onboardingAll_2,
       title: 'How your data won’t be used',
       text: 'Your privacy matters. Shared data will be encrypted, and never used for advertising or sold to third parties',
       buttonText: 'Continue',
@@ -50,7 +53,7 @@ const Onboarding = (props: OnboardingScreenProps) => {
       onButtonPress: () => handleSwipeAnimation(2),
     },
     {
-      imageSource: Onboarding3,
+      imageSource: onboardingAll_3,
       title: 'How your data helps',
       text: 'By sharing your data, you play a crucial role in making your community safer and more informeds',
       buttonText: 'Continue',
@@ -87,24 +90,27 @@ const Onboarding = (props: OnboardingScreenProps) => {
       {pages.map((page, index) => (
         <SafeAreaView key={index} className="h-screen w-screen bg-themeWhite">
           <View className="flex-1 flex-col">
-            <Image className="absolute bg-cover bg-center" source={WaveImage} />
-            <View className="m-5 flex-1">
+            {/* <Image className="absolute bg-cover bg-center" source={WaveImage} /> */}
+            <View className="">
               <Image
-                className="w-[340px] h-[340px]"
+                className="w-[400px] h-[510px] mb-5 bg-cover bg-center"
                 source={page.imageSource}
               />
-              <Text className="mx-auto   font-serif text-[25px] text-center">
+              <Text className="mx-auto font-serif text-[25px] text-center">
                 {page.title}
               </Text>
-              <Text className="mx-auto py-5 font-serif text-[16px] text-center">
+              <Text className="mx-10 py-5 font-serif text-[14px] text-center leading-5 font-light">
                 {page.text}
               </Text>
             </View>
 
-            <View className="flex-1 flex-col-reverse mb-1 ">
-              <View className="mt-5 mx-5">
+            <View className="flex-col-reverse mt-1 ">
+              <View className="flex justify-cente">
+                <View className="mb-2">
+                  <ProgressDots page={page.pageIndicator} />
+                </View>
                 <Button
-                  onPress={page.onButtonPress} // Updated this line
+                  onPress={page.onButtonPress}
                   innerText={page.buttonText}
                   bgColor="bg-themeBlue"
                   textColor="text-themeWhite"
@@ -125,7 +131,6 @@ const Onboarding = (props: OnboardingScreenProps) => {
                   />
                 )}
               </View>
-              <ProgressDots page={page.pageIndicator} />
             </View>
           </View>
         </SafeAreaView>
