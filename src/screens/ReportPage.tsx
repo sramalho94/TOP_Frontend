@@ -245,6 +245,9 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
                 border={true}
                 borderColor="border border-2"
                 width="80"
+                accessible={true}
+                accessibilityLabel="Report"
+                accessibilityHint="Reports test results"
               />
             </View>
           </View>
