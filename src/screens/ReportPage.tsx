@@ -31,6 +31,8 @@ export interface FormState {
 const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
   const [negColor, setNegColor] = useState<string>("bg-themeWhite")
   const [posColor, setPosColor] = useState<string>("bg-themeWhite")
+  const [negTextColor, setNegTextColor] = useState<string>("text-black")
+  const [posTextColor, setPosTextColor] = useState<string>("text-black")
   const [formState, setFormState] = useState<FormState>({
     result: false,
     DOB: '',
@@ -106,12 +108,15 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
             <View className="justify-center space-x-4 flex-row my-9">
               <View className="m-2">
                 <CircleBtn
+                  textColor={negTextColor}
                   bgColor={negColor}
                   borderColor="border-themeLightBlue"
                   updateForm={() => {
                     updateFormState
                     setNegColor("bg-themeLightBlue")
                     setPosColor("bg-themeWhite")
+                    setNegTextColor("text-white")
+                    setPosTextColor("text-black")
                   }}
                   text="Negative"
                   Btnwidth="w-32"
@@ -123,7 +128,7 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
               </View>
               <View className="m-2">
                 <CircleBtn
-                  // textColor={posColor === "bg-themeLightOrange"}
+                  textColor={posTextColor}
                   borderColor="border-themeLightOrange"
                   text="Positive"
                   bgColor={posColor}
@@ -131,6 +136,8 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
                     updateFormState
                     setNegColor("bg-themeWhite")
                     setPosColor("bg-themeLightOrange")
+                    setNegTextColor("text-black")
+                    setPosTextColor("text-white")
                   }}
                   Btnwidth="w-32"
                   Btnheight="h-32"
