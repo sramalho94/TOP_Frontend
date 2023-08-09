@@ -138,30 +138,6 @@ const CreateAccount3: React.FC<{ navigation: any }> = ({ navigation }) => {
             width="80"
           />
         </View>
-        <Modal visible={isModalVisible} transparent={true}>
-          <View className="flex-1 justify-center items-center bg-opacity-50 border-4">
-            <View className="bg-white p-8 rounded-lg w-72">
-              <Text className="text-xl font-bold mb-4">
-                Why do we need this information?
-              </Text>
-              <Text className="mb-2 text-lg">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
-                tempore beatae quasi officia error distinctio illum laboriosam
-                ea veniam repellendus aperiam, impedit alias suscipit! Maiores
-                sint adipisci repellendus dolor quaerat.
-              </Text>
-              <Button
-                onPress={toggleModal}
-                innerText="Close"
-                textColor=""
-                bgColor="bg-[#B4B4B4]"
-                border={false}
-                borderColor=""
-                width="5/6"
-              />
-            </View>
-          </View>
-        </Modal>
       </ScrollView>
     </SafeAreaView>
   );
