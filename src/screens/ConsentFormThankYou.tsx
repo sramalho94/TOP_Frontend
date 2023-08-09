@@ -53,9 +53,8 @@ const ConsentFormThankYou = ({ navigation }: Props) => {
             textColor="text-themeWhite"
             border={false}
             borderColor=""
-            accessible={true}
-            accessibilityLabel="Get started"
-            accessibilityHint="Navigates to the dashboard"
+            accessLabel="Get started"
+            accessHint="Navigates to the dashboard"
           />
         </View>
       </ScrollView>

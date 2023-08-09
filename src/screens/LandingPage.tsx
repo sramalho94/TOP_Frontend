@@ -36,9 +36,8 @@ const LandingPage: React.FC<{ navigation: any }> = ({ navigation }) => {
             border={true}
             borderColor="border border-themeBlue border-3"
             width="80"
-            accessible={true}
-            accessibilityLabel="Create account"
-            accessibilityHint="Navigates to the create account screen"
+            accessLabel="Create account"
+            accessHint="Navigates to the create account screen"
           />
           <Button
             onPress={() => navigation.navigate('ReportPage')}
@@ -48,9 +47,8 @@ const LandingPage: React.FC<{ navigation: any }> = ({ navigation }) => {
             border={true}
             borderColor="border border-themeBlue border-3"
             width="80"
-            accessible={true}
-            accessibilityLabel="Report without account"
-            accessibilityHint="Navigates to report without account"
+            accessLabel="Report without account"
+            accessHint="Navigates to report without account"
           />
         </View>
       </ScrollView>

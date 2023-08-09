@@ -94,7 +94,6 @@ const ConsentPage: React.FC<{ navigation: any }> = ({ navigation }) => {
           textValue="Consent Form"
           fontFamily=""
           haveProgress={false}
-          textColor=''
         />
         <View className={`flex justify-center p-4 px-8 flex-1`}>
           <Text className={`text-xl font-bold text-black mb-5 text-center`}>
@@ -191,9 +190,8 @@ const ConsentPage: React.FC<{ navigation: any }> = ({ navigation }) => {
             border={true}
             borderColor="border border-themeBlue border-3"
             width="80"
-            accessible={true}
-            accessibilityLabel="I agree to these terms"
-            accessibilityHint="Creates user account"
+            accessLabel="I agree to these terms"
+            accessHint="Creates user account"
           />
         </View>
       </ScrollView>
