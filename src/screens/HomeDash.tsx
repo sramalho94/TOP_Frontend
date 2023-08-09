@@ -1,11 +1,11 @@
-import {View, Text, SafeAreaView, ScrollView} from 'react-native';
+import { View, Text, SafeAreaView, ScrollView } from 'react-native';
 import React from 'react';
 import Button from '../components/Button';
 import CircleBtn from '../components/CircleBtn';
 
 import FlowerImg from '../../assets/orange-flower.png';
 
-const HomeDash: React.FC<{navigation: any}> = ({navigation}) => {
+const HomeDash: React.FC<{ navigation: any }> = ({ navigation }) => {
   return (
     <SafeAreaView className="h-screen w-screen">
       <ScrollView>
@@ -61,6 +61,9 @@ const HomeDash: React.FC<{navigation: any}> = ({navigation}) => {
                 }}
                 Btnwidth="w-28"
                 Btnheight="h-28"
+                accessible={true}
+                accessibilityLabel="Privacy"
+                accessibilityHint="Navigates to privacy screen"
               />
               <Text className="text-center p-3 text-black text-base">
                 Privacy
@@ -73,6 +76,9 @@ const HomeDash: React.FC<{navigation: any}> = ({navigation}) => {
                 onPress={() => navigation.navigate('DataDashboard')}
                 Btnwidth="w-28"
                 Btnheight="h-28"
+                accessible={true}
+                accessibilityLabel="Dashboard"
+                accessibilityHint="Navigates to dashboard"
               />
               <Text className="text-center p-3 text-black text-base">
                 Dashboard
@@ -80,7 +86,13 @@ const HomeDash: React.FC<{navigation: any}> = ({navigation}) => {
             </View>
 
             <View className="mt-1">
-              <CircleBtn img={FlowerImg} Btnwidth="w-28" Btnheight="h-28" />
+              <CircleBtn
+                img={FlowerImg}
+                Btnwidth="w-28"
+                Btnheight="h-28"
+                accessible={true}
+                accessibilityLabel="Exchange"
+                accessibilityHint="Navigates to data exchange screen" />
               <Text className="text-center p-3 text-black text-base">
                 Exchange
               </Text>
