@@ -1,4 +1,4 @@
-import {Text, TouchableOpacity, Image} from 'react-native';
+import { Text, TouchableOpacity, Image } from 'react-native';
 import React from 'react';
 
 type Props = {
@@ -12,6 +12,9 @@ type Props = {
   img?: any;
   textSize?: string;
   value?: boolean; // Make this optional
+  accessible: boolean;
+  accessibilityLabel: string;
+  accessibilityHint: string;
 };
 
 const CircleBtn = ({
@@ -52,11 +55,11 @@ const CircleBtn = ({
         ) : null}
         {img && text
           ? (
-              <Image
-                className={`bg-contain ${Btnheight} ${Btnwidth} rounded-full`}
-                source={img}
-              />
-            ) && <Text className={`text-center text-${textSize}`}>{text}</Text>
+            <Image
+              className={`bg-contain ${Btnheight} ${Btnwidth} rounded-full`}
+              source={img}
+            />
+          ) && <Text className={`text-center text-${textSize}`}>{text}</Text>
           : null}
       </TouchableOpacity>
     </>
