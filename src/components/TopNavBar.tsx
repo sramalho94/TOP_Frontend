@@ -40,7 +40,7 @@ const TopNavBar = ({
           {textValue}
         </Text>
       </View>
-      <View className="border-slate-200 border-b-4  pb-4">
+      <View className="border-slate-200 border-b-2 pb-4 bg-border-gradient-to-r from-blue-500 to-red-500">
         {haveProgress ? page ? <ProgressDots page={page} /> : null : null}
       </View>
     </View>

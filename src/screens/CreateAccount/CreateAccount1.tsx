@@ -63,10 +63,10 @@ const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
           page={1}
         />
         <View className="mx-auto my-auto mb-2">
-          <View className="w-[342] mt-4">
+          <View className="w-[342]">
             <View>
               <Image
-                className="mx-auto w-[217px] h-[217px] mb-5 "
+                className="mx-auto w-[217px] h-[217px] "
                 source={CreateAccount}
               />
             </View>
@@ -89,7 +89,7 @@ const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
             />
           </View>
         </View>
-        <View className="mt-48">
+        <View className="mt-5">
           <Button
             onPress={handleNext}
             innerText="Continue"
