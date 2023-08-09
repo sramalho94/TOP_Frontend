@@ -94,6 +94,7 @@ const ConsentPage: React.FC<{ navigation: any }> = ({ navigation }) => {
           textValue="Consent Form"
           fontFamily=""
           haveProgress={false}
+          textColor=''
         />
         <View className={`flex justify-center p-4 px-8 flex-1`}>
           <Text className={`text-xl font-bold text-black mb-5 text-center`}>

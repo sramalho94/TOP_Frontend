@@ -5,7 +5,7 @@ import {
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import CheckBox from '../components/CheckBox';
 import Icon from 'react-native-vector-icons/AntDesign';
 import TextInputField from '../components/TextInputField';
@@ -47,7 +47,7 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
     // Call the createTest method from the ApiService
     ApiService.createTest(formState)
       .then(Response => {
-        navigation.navigate('ThankYouScreen', { login: false });
+        navigation.navigate('ThankYouScreen', {login: false});
         console.log('test created successfully:', Response.data);
         setFormState({
           result: false,
@@ -66,11 +66,11 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
 
   const [isCheckboxSelected, setCheckboxSelection] = useState(false);
 
-  console.log('Render: ', isCheckboxSelected);
+  // console.log('Render: ', isCheckboxSelected);
 
   const handleCheckChanges = () => {
     setCheckboxSelection(prevState => !prevState);
-    console.log('handleCheckChanges: ', isCheckboxSelected);
+    // console.log('handleCheckChanges: ', isCheckboxSelected);
   };
 
   const updateFormState = (field: string, value: string | boolean) => {
@@ -86,23 +86,26 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
   const [ethnicityOpen, setEthnicityOpen] = useState<boolean>(false);
 
   return (
-    <SafeAreaView className="w-screen h-screen">
-      <ScrollView>
-        {/* NavBar */}
-        <View className="h-[90] border-b-4 border-slate-200 flex-row my-6">
-          <TouchableOpacity className="mt-2 ml-4">
-            <Icon name="arrowleft" size={30} color="#000" className="" />
-          </TouchableOpacity>
-          <Text className="text-xl font-bold mx-auto mt-2 flex pr-12">
-            Report COVID-19 Test Result
-          </Text>
-        </View>
+    <SafeAreaView className="w-screen h-screen flex-1">
+      {/* NavBar */}
+      <TopNavBar
+        textValue="Report COVID-19 Test Result"
+        fontFamily=""
+        textSize="xl"
+        haveProgress={false}
+        textColor=""
+      />
 
+      <ScrollView className="flex-1">
         {/* Page Container */}
         <View className="w-full justify-center items-center flex-1 flex-col">
-          <View className="max-w-sm">
+          <View>
             {/* Test Result Buttons */}
-            <Text className="text-lg font-bold mx-auto">
+            <Text
+              style={{
+                fontFamily: 'Baskerville-BoldItalic',
+              }}
+              className="text-lg md:text-2xl font-bold mt-10 mx-auto underline">
               What were the results of your test?
             </Text>
             <View className="justify-center space-x-4 flex-row my-9">
@@ -123,9 +126,8 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
                   Btnheight="h-32"
                   textSize="text-xl"
                   value={false}
-                  accessible={true}
-                  accessibilityLabel="Negative"
-                  accessibilityHint="Touch if your test results are negative"
+                  accessLabel="Negative"
+                  accessHint="Touch if your test results are negative"
                   img={NegTest}
                 />
               </View>
@@ -146,16 +148,15 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
                   Btnheight="h-32"
                   textSize="text-xl"
                   value={true}
-                  accessible={true}
-                  accessibilityLabel="Positive"
-                  accessibilityHint="Touch if your test results are positive"
+                  accessLabel="Positive"
+                  accessHint="Touch if your test results are positive"
                   img={PosTest}
                 />
               </View>
             </View>
 
             {/* Text input and dropdown fields container */}
-            <View className="">
+            <View className="w-screen items-center ">
               <TextInputField
                 label="Date of Test*"
                 value={formState.DOT}
@@ -175,7 +176,6 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
                 placeholder="mm/dd/yyyy"
               />
 
-              {/* TODO: will need to probs ask the UX team what the official dropdown selections are */}
               {/* Data found from: https://www.census.gov/newsroom/blogs/random-samplings/2021/08/measuring-racial-ethnic-diversity-2020-census.html */}
               <DropDownField
                 text="Gender"
@@ -277,9 +277,8 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
                 border={true}
                 borderColor="border border-2"
                 width="80"
-                accessible={true}
-                accessibilityLabel="Report"
-                accessibilityHint="Reports test results"
+                accessLabel="Report"
+                accessHint="Reports test results"
               />
             </View>
           </View>
