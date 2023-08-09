@@ -3,12 +3,12 @@ import React from 'react';
 
 type Props = {};
 
-const LoadingPage = (props: Props) => {
+const Loading = (props: Props) => {
   return (
     <View>
-      <Text>LoadingPage</Text>
+      <Text>Loading</Text>
     </View>
   );
 };
 
-export default LoadingPage;
+export default Loading;

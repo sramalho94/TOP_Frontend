@@ -19,7 +19,9 @@ import CreateAccount1 from './src/screens/CreateAccount/CreateAccount1';
 import CreateAccount2 from './src/screens/CreateAccount/CreateAccount2';
 import CreateAccount3 from './src/screens/CreateAccount/CreateAccount3';
 import CreateAccountProvider from './src/context/CreateAccountProvider';
-import LoadingPage from './src/screens/LoadingPage';
+import ConsentFormThankYou from './src/screens/ConsentFormThankYou';
+import Loading from './src/screens/Loading';
+import DataDashboard from './src/screens/DataDashboard';
 
 export type RootStackParamList = {
   Onboarding: undefined;
@@ -34,6 +36,9 @@ export type RootStackParamList = {
   CreateAccount1: undefined;
   CreateAccount2: undefined;
   CreateAccount3: undefined;
+  ConsentFormThankYou: {logIn: boolean};
+  Loading: undefined;
+  DataDashboard: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -46,47 +51,42 @@ function AppContent({
   const [initialScreen, setInitialScreen] = useState<
     'HomeDash' | 'LandingPage'
   >('LandingPage');
+  const [isTokenChecked, setIsTokenChecked] = useState(false);
 
   // Determine the initial screen based on the token
   useEffect(() => {
-    const determineInitialScreen = async () => {
-      const token = await AsyncStorage.getItem('@auth_token');
-      if (token) {
-        setInitialScreen('HomeDash');
-      } else {
-        setInitialScreen('LandingPage');
-      }
-    };
-
-    determineInitialScreen();
-  }, []);
+    if (authState?.token) {
+      setInitialScreen('HomeDash');
+    } else {
+      setInitialScreen('LandingPage');
+    }
+    setIsTokenChecked(true);
+  }, [authState?.token]);
 
   // Handle automatic navigation upon authentication changes
   useEffect(() => {
     if (
-      !authState.loading &&
-      navigationRef.current?.getCurrentRoute()?.name !== 'ThankYouScreen'
+      !authState?.loading &&
+      navigationRef.current?.getCurrentRoute()?.name !== 'ThankYouScreen' &&
+      navigationRef.current?.getCurrentRoute()?.name !== 'ConsentFormThankYou'
     ) {
-      if (authState.authenticated) {
+      if (authState?.authenticated) {
         navigationRef.current?.navigate('HomeDash');
-      } else if (!authState.authenticated) {
+      } else if (!authState?.authenticated) {
         navigationRef.current?.navigate('LandingPage');
       }
     }
   }, [authState, navigationRef]);
 
-  if (authState.loading) {
-    return <LoadingPage />;
+  if (!isTokenChecked) {
+    return <Loading />;
   }
 
   return (
     <SafeAreaProvider>
       <CreateAccountProvider>
         <NavigationContainer ref={navigationRef}>
-          <Stack.Navigator
-            initialRouteName={
-              authState.authenticated ? 'HomeDash' : 'LandingPage'
-            }>
+          <Stack.Navigator initialRouteName={initialScreen}>
             <Stack.Screen
               name="Onboarding"
               component={Onboarding}
@@ -121,10 +121,25 @@ function AppContent({
               options={{headerShown: false}}
             />
             <Stack.Screen
+              name="ConsentFormThankYou"
+              component={ConsentFormThankYou}
+              options={{headerShown: false}}
+            />
+            <Stack.Screen
               name="AccountReportPage"
               component={AccountReportPage}
             />
-            <Stack.Screen name="HomeDash" component={HomeDash} />
+            <Stack.Screen
+              name="HomeDash"
+              component={HomeDash}
+              options={{headerShown: false, title: 'Home'}}
+            />
+            <Stack.Screen name="Loading" component={Loading} />
+            <Stack.Screen
+              name="DataDashboard"
+              component={DataDashboard}
+              options={{title: 'Data Dashboard', headerBackTitle: 'Home'}}
+            />
           </Stack.Navigator>
         </NavigationContainer>
       </CreateAccountProvider>

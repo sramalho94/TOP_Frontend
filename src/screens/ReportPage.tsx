@@ -5,7 +5,7 @@ import {
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import CheckBox from '../components/CheckBox';
 import Icon from 'react-native-vector-icons/AntDesign';
 import TextInputField from '../components/TextInputField';
@@ -18,16 +18,18 @@ import ApiService from '../services/ApiService';
 export interface FormState {
   result: boolean;
   DOB: string;
+  DOT: string;
   ZIP: string;
   gender: string;
   race: string;
   ethnicity: string;
 }
 
-const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
+const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
   const [formState, setFormState] = useState<FormState>({
     result: false,
     DOB: '',
+    DOT: '',
     ZIP: '',
     gender: '',
     race: '',
@@ -38,11 +40,12 @@ const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
     // Call the createTest method from the ApiService
     ApiService.createTest(formState)
       .then(Response => {
-        navigation.navigate('ThankYouScreen', {login: false});
+        navigation.navigate('ThankYouScreen', { login: false });
         console.log('test created successfully:', Response.data);
         setFormState({
           result: false,
           DOB: '',
+          DOT: '',
           ZIP: '',
           gender: '',
           race: '',
@@ -123,16 +126,22 @@ const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
             {/* Text input and dropdown fields container */}
             <View className="">
               <TextInputField
+                label="Date of Test*"
+                value={formState.DOT}
+                onChange={value => updateFormState('DOT', value)}
+                placeholder="mm/dd/yyyy"
+              />
+              <TextInputField
                 label="Zip Code*"
                 value={formState.ZIP}
                 onChange={value => updateFormState('ZIP', value)}
                 placeholder="Enter your ZIP code"
               />
               <TextInputField
-                label="Age*"
+                label="Date of Birth*"
                 value={formState.DOB}
                 onChange={value => updateFormState('DOB', value)}
-                placeholder="Enter your age"
+                placeholder="mm/dd/yyyy"
               />
 
               {/* TODO: will need to probs ask the UX team what the official dropdown selections are */}
@@ -144,8 +153,8 @@ const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
                     label: 'MIGHT CHANGE BELOW SELECTION LATER',
                     value: 'MIGHT CHANGE BELOW SELECTION LATER',
                   },
-                  {label: '', value: ''},
-                  {label: 'Prefer not to say', value: 'prefer not to say'},
+                  { label: '', value: '' },
+                  { label: 'Prefer not to say', value: 'prefer not to say' },
                 ]}
                 open={genderOpen}
                 onOpen={() => {
@@ -167,7 +176,7 @@ const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
                     label: 'American Indian or Alaska Native',
                     value: 'american indian or alaska native',
                   },
-                  {label: 'Asian', value: 'asian'},
+                  { label: 'Asian', value: 'asian' },
                   {
                     label: 'Black or African American',
                     value: 'black or african american',
@@ -176,13 +185,13 @@ const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
                     label: 'Native Hawaiian or Other Pacific Islander',
                     value: 'native hawaiian or other pacific islander',
                   },
-                  {label: 'Not Specified', value: 'not specified'},
+                  { label: 'Not Specified', value: 'not specified' },
                   {
                     label: 'Two or More Races/Ethnicities',
                     value: 'two or more races/ethnicities',
                   },
-                  {label: 'White', value: 'white'},
-                  {label: 'Prefer not to say', value: 'prefer not to say'},
+                  { label: 'White', value: 'white' },
+                  { label: 'Prefer not to say', value: 'prefer not to say' },
                 ]}
                 open={raceOpen}
                 onOpen={() => {
@@ -200,9 +209,9 @@ const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
                     label: 'MIGHT CHANGE BELOW SELECTION LATER',
                     value: 'MIGHT CHANGE BELOW SELECTION LATER',
                   },
-                  {label: 'Hispanic/Latino', value: 'hispanic/latino'},
-                  {label: 'Non-Hispanic/Latino', value: 'non-hispanic/latino'},
-                  {label: 'Prefer not to say', value: 'prefer not to say'},
+                  { label: 'Hispanic/Latino', value: 'hispanic/latino' },
+                  { label: 'Non-Hispanic/Latino', value: 'non-hispanic/latino' },
+                  { label: 'Prefer not to say', value: 'prefer not to say' },
                 ]}
                 open={ethnicityOpen}
                 onOpen={() => {
