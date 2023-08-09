@@ -20,6 +20,7 @@ import CreateAccount2 from './src/screens/CreateAccount/CreateAccount2';
 import CreateAccount3 from './src/screens/CreateAccount/CreateAccount3';
 import CreateAccountProvider from './src/context/CreateAccountProvider';
 import ConsentFormThankYou from './src/screens/ConsentFormThankYou';
+import Loading from './src/screens/Loading';
 
 export type RootStackParamList = {
   Onboarding: undefined;
@@ -35,6 +36,7 @@ export type RootStackParamList = {
   CreateAccount2: undefined;
   CreateAccount3: undefined;
   ConsentFormThankYou: {logIn: boolean};
+  Loading: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -78,7 +80,7 @@ function AppContent({
   }, [authState, navigationRef]);
 
   if (authState?.loading) {
-    return null;
+    return Loading;
   }
 
   return (
@@ -118,7 +120,6 @@ function AppContent({
               name="ThankYouScreen"
               component={ThankYouScreen}
               options={{headerShown: false}}
-
             />
             <Stack.Screen
               name="ConsentFormThankYou"
@@ -130,6 +131,7 @@ function AppContent({
               component={AccountReportPage}
             />
             <Stack.Screen name="HomeDash" component={HomeDash} />
+            <Stack.Screen name="Loading" component={Loading} />
           </Stack.Navigator>
         </NavigationContainer>
       </CreateAccountProvider>
