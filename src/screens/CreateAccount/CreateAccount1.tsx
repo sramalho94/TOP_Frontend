@@ -1,13 +1,13 @@
-import React, {useContext, useState} from 'react';
-import {View, Text, SafeAreaView, ScrollView, Modal} from 'react-native';
+import React, { useContext, useState } from 'react';
+import { View, Text, SafeAreaView, ScrollView, Modal } from 'react-native';
 import CreateAccountContext from '../../context/CreateAccountContext';
 import TextInputField from '../../components/TextInputField';
 import Button from '../../components/Button';
 import TopNavBar from '../../components/TopNavBar';
 import PasswordField from '../../components/Password';
 
-const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
-  const {formState, updateFormState} = useContext(CreateAccountContext);
+const CreateAccount1: React.FC<{ navigation: any }> = ({ navigation }) => {
+  const { formState, updateFormState } = useContext(CreateAccountContext);
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   // Validations:
@@ -91,6 +91,9 @@ const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
             border={true}
             borderColor="border border-4"
             width="80"
+            accessible={true}
+            accessibilityLabel="Next"
+            accessibilityHint="Navigates to the next screen"
           />
         </View>
         <Modal visible={isModalVisible} transparent={true}>
@@ -114,6 +117,9 @@ const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
                 border={true}
                 borderColor="border border-4"
                 width="5/6"
+                accessible={true}
+                accessibilityLabel="Close"
+                accessibilityHint="Closes popup screen"
               />
             </View>
           </View>

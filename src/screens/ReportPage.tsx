@@ -5,7 +5,7 @@ import {
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import CheckBox from '../components/CheckBox';
 import Icon from 'react-native-vector-icons/AntDesign';
 import TextInputField from '../components/TextInputField';
@@ -13,6 +13,9 @@ import DropDownField from '../components/DropDownField';
 import Button from '../components/Button';
 import CircleBtn from '../components/CircleBtn';
 import ApiService from '../services/ApiService';
+import NegTest from './../../assets/NegativeCovidTest.png'
+import PosTest from './../../assets/PositiveCovidTest.png'
+
 
 // Define the ReportPage component
 export interface FormState {
@@ -26,6 +29,10 @@ export interface FormState {
 }
 
 const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
+  const [negColor, setNegColor] = useState<string>("bg-themeWhite")
+  const [posColor, setPosColor] = useState<string>("bg-themeWhite")
+  const [negTextColor, setNegTextColor] = useState<string>("text-black")
+  const [posTextColor, setPosTextColor] = useState<string>("text-black")
   const [formState, setFormState] = useState<FormState>({
     result: false,
     DOB: '',
@@ -40,7 +47,7 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
     // Call the createTest method from the ApiService
     ApiService.createTest(formState)
       .then(Response => {
-        navigation.navigate('ThankYouScreen', { login: false });
+        navigation.navigate('ThankYouScreen', {login: false});
         console.log('test created successfully:', Response.data);
         setFormState({
           result: false,
@@ -59,11 +66,11 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
 
   const [isCheckboxSelected, setCheckboxSelection] = useState(false);
 
-  console.log('Render: ', isCheckboxSelected);
+  // console.log('Render: ', isCheckboxSelected);
 
   const handleCheckChanges = () => {
     setCheckboxSelection(prevState => !prevState);
-    console.log('handleCheckChanges: ', isCheckboxSelected);
+    // console.log('handleCheckChanges: ', isCheckboxSelected);
   };
 
   const updateFormState = (field: string, value: string | boolean) => {
@@ -79,52 +86,77 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
   const [ethnicityOpen, setEthnicityOpen] = useState<boolean>(false);
 
   return (
-    <SafeAreaView className="w-screen h-screen">
-      <ScrollView>
-        {/* NavBar */}
-        <View className="h-[90] border-b-4 border-slate-200 flex-row my-6">
-          <TouchableOpacity className="mt-2 ml-4">
-            <Icon name="arrowleft" size={30} color="#000" className="" />
-          </TouchableOpacity>
-          <Text className="text-xl font-bold mx-auto mt-2 flex pr-12">
-            Report COVID-19 Test Result
-          </Text>
-        </View>
+    <SafeAreaView className="w-screen h-screen flex-1">
+      {/* NavBar */}
+      <TopNavBar
+        textValue="Report COVID-19 Test Result"
+        fontFamily=""
+        textSize="xl"
+        haveProgress={false}
+        textColor=""
+      />
 
+      <ScrollView className="flex-1">
         {/* Page Container */}
         <View className="w-full justify-center items-center flex-1 flex-col">
-          <View className="max-w-sm">
+          <View>
             {/* Test Result Buttons */}
-            <Text className="text-lg font-bold mx-auto">
+            <Text
+              style={{
+                fontFamily: 'Baskerville-BoldItalic',
+              }}
+              className="text-lg md:text-2xl font-bold mt-10 mx-auto underline">
               What were the results of your test?
             </Text>
             <View className="justify-center space-x-4 flex-row my-9">
               <View className="m-2">
                 <CircleBtn
-                  bgColor="bg-themeLightBlue"
-                  updateForm={updateFormState}
+                  textColor={negTextColor}
+                  bgColor={negColor}
+                  borderColor="border-themeLightBlue"
+                  updateForm={() => {
+                    updateFormState
+                    setNegColor("bg-themeLightBlue")
+                    setPosColor("bg-themeWhite")
+                    setNegTextColor("text-white")
+                    setPosTextColor("text-black")
+                  }}
                   text="Negative"
                   Btnwidth="w-32"
                   Btnheight="h-32"
-                  textSize="base"
+                  textSize="text-xl"
                   value={false}
+                  accessLabel="Negative"
+                  accessHint="Touch if your test results are negative"
+                  img={NegTest}
                 />
               </View>
               <View className="m-2">
                 <CircleBtn
+                  textColor={posTextColor}
+                  borderColor="border-themeLightOrange"
                   text="Positive"
-                  bgColor="bg-themeLightOrange"
-                  updateForm={updateFormState}
+                  bgColor={posColor}
+                  updateForm={() => {
+                    updateFormState
+                    setNegColor("bg-themeWhite")
+                    setPosColor("bg-themeLightOrange")
+                    setNegTextColor("text-black")
+                    setPosTextColor("text-white")
+                  }}
                   Btnwidth="w-32"
                   Btnheight="h-32"
-                  textSize="base"
+                  textSize="text-xl"
                   value={true}
+                  accessLabel="Positive"
+                  accessHint="Touch if your test results are positive"
+                  img={PosTest}
                 />
               </View>
             </View>
 
             {/* Text input and dropdown fields container */}
-            <View className="">
+            <View className="w-screen items-center ">
               <TextInputField
                 label="Date of Test*"
                 value={formState.DOT}
@@ -144,17 +176,20 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
                 placeholder="mm/dd/yyyy"
               />
 
-              {/* TODO: will need to probs ask the UX team what the official dropdown selections are */}
               {/* Data found from: https://www.census.gov/newsroom/blogs/random-samplings/2021/08/measuring-racial-ethnic-diversity-2020-census.html */}
               <DropDownField
                 text="Gender"
                 selectItems={[
                   {
-                    label: 'MIGHT CHANGE BELOW SELECTION LATER',
-                    value: 'MIGHT CHANGE BELOW SELECTION LATER',
+                    label: 'Woman',
+                    value: 'Woman',
                   },
-                  { label: '', value: '' },
-                  { label: 'Prefer not to say', value: 'prefer not to say' },
+                  {
+                    label: 'Man',
+                    value: 'Man',
+                  },
+                  {label: 'Non-binary', value: 'Non-binary'},
+                  {label: 'I prefer not to answer', value: 'I prefer not to answer'},
                 ]}
                 open={genderOpen}
                 onOpen={() => {
@@ -168,30 +203,28 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
               <DropDownField
                 text="Race"
                 selectItems={[
+                  {label: 'White or European', value: 'White or European'},
                   {
-                    label: 'MIGHT CHANGE BELOW SELECTION LATER',
-                    value: 'MIGHT CHANGE BELOW SELECTION LATER',
+                    label: 'Black or of African descent',
+                    value: 'Black or of African descent',
                   },
+                  {label: 'Middle Eastern or North African', value: 'Middle Eastern or North African'},
                   {
-                    label: 'American Indian or Alaska Native',
-                    value: 'american indian or alaska native',
-                  },
-                  { label: 'Asian', value: 'asian' },
-                  {
-                    label: 'Black or African American',
-                    value: 'black or african american',
+                    label: 'Indigenous, American Indian or Alaska Native',
+                    value: 'Indigenous, American Indian or Alaska Native',
                   },
                   {
                     label: 'Native Hawaiian or Other Pacific Islander',
                     value: 'native hawaiian or other pacific islander',
                   },
-                  { label: 'Not Specified', value: 'not specified' },
+                  {label: 'East Asian', value: 'East Asian'},
+                  {label: 'Southeast Asian', value: 'Southeast Asian'},
+                  {label: 'South Asian', value: 'South Asian'},
                   {
                     label: 'Two or More Races/Ethnicities',
                     value: 'two or more races/ethnicities',
                   },
-                  { label: 'White', value: 'white' },
-                  { label: 'Prefer not to say', value: 'prefer not to say' },
+                  {label: "I prefer not to answer", value: "I prefer not to answer"},
                 ]}
                 open={raceOpen}
                 onOpen={() => {
@@ -205,13 +238,12 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
               <DropDownField
                 text="Ethnicity"
                 selectItems={[
+                  {label: 'Hispanic/Latino', value: 'hispanic/latino'},
                   {
-                    label: 'MIGHT CHANGE BELOW SELECTION LATER',
-                    value: 'MIGHT CHANGE BELOW SELECTION LATER',
+                    label: 'Non-Hispanic/Latino',
+                    value: 'Non-hispanic/latino',
                   },
-                  { label: 'Hispanic/Latino', value: 'hispanic/latino' },
-                  { label: 'Non-Hispanic/Latino', value: 'non-hispanic/latino' },
-                  { label: 'Prefer not to say', value: 'prefer not to say' },
+                  {label: 'I prefer not to answer', value: 'I prefer not to answer'},
                 ]}
                 open={ethnicityOpen}
                 onOpen={() => {
@@ -245,6 +277,8 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
                 border={true}
                 borderColor="border border-2"
                 width="80"
+                accessLabel="Report"
+                accessHint="Reports test results"
               />
             </View>
           </View>

@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { View, Text, SafeAreaView, ScrollView, Modal } from 'react-native';
+import { View, SafeAreaView, ScrollView, } from 'react-native';
 import CreateAccountContext from '../../context/CreateAccountContext';
 import TextInputField from '../../components/TextInputField';
 import Button from '../../components/Button';
@@ -7,7 +7,6 @@ import TopNavBar from '../../components/TopNavBar';
 
 const CreateAccount2: React.FC<{ navigation: any }> = ({ navigation }) => {
   const { formState, updateFormState } = useContext(CreateAccountContext);
-  const [isModalVisible, setIsModalVisible] = useState(false);
 
   // Function to check if email format is correct
   const isBirthdayValid = (birthday: string): boolean => {
@@ -73,14 +72,11 @@ const CreateAccount2: React.FC<{ navigation: any }> = ({ navigation }) => {
     }
   };
 
-  const toggleModal = () => {
-    setIsModalVisible(!isModalVisible);
-  };
-
   return (
     <SafeAreaView className="min-w-screen">
       <ScrollView>
         <TopNavBar
+          textColor='text-themeBlue'
           fontFamily=""
           textSize="xl"
           textValue="Create Account"
@@ -90,18 +86,6 @@ const CreateAccount2: React.FC<{ navigation: any }> = ({ navigation }) => {
 
         <View className="mx-auto my-auto mb-3">
           <View className="w-[342]">
-            <View className="my-4 underline">
-              <Button
-                onPress={toggleModal}
-                innerText="(Why do we need this information?)"
-                bgColor=""
-                textColor=""
-                border={false}
-                borderColor="border border-gray"
-                textDecoration="underline"
-                width="80"
-              />
-            </View>
             <TextInputField
               label="Date of Birth*"
               value={formState.DOB}
@@ -131,32 +115,11 @@ const CreateAccount2: React.FC<{ navigation: any }> = ({ navigation }) => {
             border={true}
             borderColor="border border-4"
             width="80"
+            accessible={true}
+            accessibilityLabel="Next"
+            accessibilityHint="Navigates to the next screen"
           />
         </View>
-        <Modal visible={isModalVisible} transparent={true}>
-          <View className="flex-1 justify-center items-center bg-opacity-50">
-            <View className="bg-white p-8 rounded-lg w-72 border-4">
-              <Text className="text-xl font-bold mb-4">
-                Why do we need this information?
-              </Text>
-              <Text className="mb-2 text-lg">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
-                tempore beatae quasi officia error distinctio illum laboriosam
-                ea veniam repellendus aperiam, impedit alias suscipit! Maiores
-                sint adipisci repellendus dolor quaerat.
-              </Text>
-              <Button
-                onPress={toggleModal}
-                innerText="Close"
-                textColor=""
-                bgColor="bg-[#B4B4B4]"
-                border={true}
-                borderColor="border border-4"
-                width="5/6"
-              />
-            </View>
-          </View>
-        </Modal>
       </ScrollView>
     </SafeAreaView>
   );

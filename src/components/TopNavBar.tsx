@@ -1,8 +1,8 @@
-import {View, Text, TouchableOpacity} from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import React from 'react';
 import Icon from 'react-native-vector-icons/AntDesign';
 import ProgressDots from './ProgressDots';
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 
 type Props = {
   textSize: string;
@@ -30,11 +30,16 @@ const TopNavBar = ({
   };
 
   return (
-    <View className="h-[110] flex-1 mb-1">
+    <View className="h-1/8 mb-1">
       <View className="flex-row mt-6 mb-2">
         <TouchableOpacity
           className="mt-2 ml-4"
-          onPress={() => navigation.goBack()}>
+          onPress={() => navigation.goBack()}
+          accessible={true}
+          accessibilityLabel="Back"
+          accessibilityHint="Navigates to the previous screen"
+          accessibilityRole="button">
+          
           <Icon name="arrowleft" size={30} color="#000" className="" />
         </TouchableOpacity>
         <Text
