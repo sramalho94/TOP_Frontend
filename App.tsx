@@ -141,7 +141,7 @@ function AppContent({
             <Stack.Screen
               name="DataDashboard"
               component={DataDashboard}
-              options={{title: 'Data Dashboard'}}
+              options={{title: 'Data Dashboard', headerBackTitle: 'Home'}}
             />
           </Stack.Navigator>
         </NavigationContainer>
