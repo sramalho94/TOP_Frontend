@@ -13,6 +13,8 @@ import TopNavBar from '../components/TopNavBar';
 import CheckBox from '../components/CheckBox';
 import { useAuth } from '../context/AuthContext';
 import CreateAccountContext from '../context/CreateAccountContext';
+import Button from '../components/Button';
+
 
 interface CheckState {
   isOver18Checked: boolean;
@@ -179,16 +181,18 @@ const ConsentPage: React.FC<{ navigation: any }> = ({ navigation }) => {
               </Text>
             </Text>
           </View>
-          <TouchableOpacity
+          <Button
             onPress={handleAgree}
-            className={`bg-black px-8 py-2.5 rounded-md mt-7`}
+            innerText="I agree to these terms"
+            bgColor="bg-themeBlue"
+            textColor="text-white"
+            border={true}
+            borderColor="border border-themeBlue border-3"
+            width="80"
             accessible={true}
             accessibilityLabel="I agree to these terms"
-            accessibilityHint="Agrees to terms">
-            <Text className={`text-white text-base font-bold text-center`}>
-              I Agree to These Terms
-            </Text>
-          </TouchableOpacity>
+            accessibilityHint="Creates user account"
+          />
         </View>
       </ScrollView>
     </SafeAreaView>

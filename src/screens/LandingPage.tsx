@@ -48,7 +48,8 @@ const LandingPage: React.FC<{ navigation: any }> = ({ navigation }) => {
             textColor="text-white"
             border={true}
             borderColor="border border-themeBlue border-3"
-            width="80" accessible={true}
+            width="80"
+            accessible={true}
             accessibilityLabel="Report without account"
             accessibilityHint="Navigates to report without account"
           />
