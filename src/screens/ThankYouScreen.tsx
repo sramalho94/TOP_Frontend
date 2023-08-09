@@ -1,4 +1,4 @@
-import {View, Text, SafeAreaView, ScrollView} from 'react-native';
+import {View, Text, SafeAreaView, ScrollView, Linking} from 'react-native';
 import React from 'react';
 import Button from '../components/Button';
 import {RouteProp} from '@react-navigation/native';
@@ -19,28 +19,49 @@ type Props = {
 const ThankYouScreen = ({navigation, route}: Props) => {
   const {logIn} = route.params || {logIn: true};
 
-  return (
-    <SafeAreaView className="h-screen w-screen mx-auto my-auto flex-1">
-      <ScrollView>
-        <View className="flex-row justify-center mt-12">
-          <Text className="text-4xl">Thank You!</Text>
-        </View>
-        <View className="flex-row justify-center mt-2">
-          <Text className="text-lg ">
-            Your test results have been reported.
-          </Text>
-        </View>
-        <View className="border-2 border-black w-[286] h-[276] my-4 mx-auto"></View>
-        <View className="flex-row justify-center ">
-          <Text className="text-lg  px-10 text-center">
-            {logIn
-              ? 'You and 1,000 others in your zip code reported results this week.'
-              : 'Join our community and save time on your next reporting by making an account today!'}
-          </Text>
-        </View>
+  const handleInfoPress = () => {
+    const infoUrl =
+      'https://www.cdc.gov/coronavirus/2019-ncov/your-health/isolation.html';
+    Linking.openURL(infoUrl);
+  };
 
-        <View className="flex-1 justify-center mx-6">
+  return (
+    <SafeAreaView className="h-screen w-screen mx-auto my-auto flex-1 justify-between">
+      {/* <ScrollView className='flex-1'> */}
+      <View className="flex-row justify-center mt-12">
+        <Text className="text-4xl">Thank You!</Text>
+      </View>
+      <View className="flex-row justify-center mt-2 px-8">
+        <Text className="text-lg text-center">
+          Your test has been reported. We hope you feel better soon.
+        </Text>
+      </View>
+      <View className="border-2 border-black w-[286] h-[276] my-4 mx-auto"></View>
+      <View className="flex-row justify-center">
+        <Text className="text-lg px-10 text-center">
           {logIn ? (
+            'You and 1,000 others in your zip code reported results this week.'
+          ) : (
+            <Text>
+              Keep your community safe! Check the CDC for
+              <Text onPress={handleInfoPress}>
+                more information about isolation and precautions
+              </Text>
+              or call 1-800-CDC-INFO.
+            </Text>
+          )}
+        </Text>
+      </View>
+
+      <Button
+        onPress={() => navigation.navigate('HomeDash')}
+        innerText="Take Me Home"
+        bgColor="bg-white"
+        textColor=""
+        border={true}
+        borderColor="border border-gray"
+      />
+      {/* {logIn ? (
             <Button
               onPress={() => navigation.navigate('HomeDash')}
               innerText="Take Me Home"
@@ -68,9 +89,8 @@ const ThankYouScreen = ({navigation, route}: Props) => {
                 borderColor=""
               />
             </>
-          )}
-        </View>
-      </ScrollView>
+          )} */}
+      {/* </ScrollView> */}
     </SafeAreaView>
   );
 };

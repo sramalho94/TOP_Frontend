@@ -86,7 +86,7 @@ function AppContent({
       <CreateAccountProvider>
         <NavigationContainer ref={navigationRef}>
           <Stack.Navigator initialRouteName={initialScreen}>
-            <Stack.Screen
+            {/* <Stack.Screen
               name="Onboarding"
               component={Onboarding}
               options={{headerShown: false}}
@@ -117,13 +117,13 @@ function AppContent({
               component={ReportPage}
               options={{headerShown: false}}
             />
-            <Stack.Screen name="ConsentPage" component={ConsentPage} />
+            <Stack.Screen name="ConsentPage" component={ConsentPage} /> */}
             <Stack.Screen
               name="ThankYouScreen"
               component={ThankYouScreen}
               options={{headerShown: false}}
             />
-            <Stack.Screen
+            {/* <Stack.Screen
               name="ConsentFormThankYou"
               component={ConsentFormThankYou}
               options={{headerShown: false}}
@@ -132,7 +132,7 @@ function AppContent({
               name="AccountReportPage"
               component={AccountReportPage}
             />
-            <Stack.Screen name="HomeDash" component={HomeDash} />
+            <Stack.Screen name="HomeDash" component={HomeDash} /> */}
           </Stack.Navigator>
         </NavigationContainer>
       </CreateAccountProvider>
