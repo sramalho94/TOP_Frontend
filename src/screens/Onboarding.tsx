@@ -1,4 +1,4 @@
-import React, {useState, useRef, useEffect} from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import {
@@ -11,21 +11,21 @@ import {
   NativeScrollEvent,
   useWindowDimensions,
 } from 'react-native';
-import {ScrollView} from 'react-native';
-import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import { ScrollView } from 'react-native';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import NoImage from './../../assets/nopicture.png';
 import ProgressDots from './../components/ProgressDots';
 import Button from './../components/Button';
-import {RootStackParamList} from '../../App';
+import { RootStackParamList } from '../../App';
 type OnboardingScreenProps = NativeStackScreenProps<
   RootStackParamList,
   'Onboarding'
 >;
 
 const Onboarding = (props: OnboardingScreenProps) => {
-  const {navigation} = props;
+  const { navigation } = props;
   const [currentPage, setCurrentPage] = useState<number>(0);
-  const {width} = useWindowDimensions();
+  const { width } = useWindowDimensions();
   const scrollViewRef = useRef<ScrollView>(null);
 
   const pages = [
@@ -56,7 +56,7 @@ const Onboarding = (props: OnboardingScreenProps) => {
 
   const handleSwipeAnimation = (page: number) => {
     if (scrollViewRef.current) {
-      scrollViewRef.current.scrollTo({x: page * width, animated: true});
+      scrollViewRef.current.scrollTo({ x: page * width, animated: true });
       setCurrentPage(page);
     }
   };
@@ -95,7 +95,15 @@ const Onboarding = (props: OnboardingScreenProps) => {
                   textColor="text-themeWhite"
                   border={true}
                   borderColor="border border-themeBlue border-3"
+<<<<<<< HEAD
                   width="full"
+=======
+                  width="80"
+                  accessible={true}
+                  accessibilityLabel="Continue"
+                  accessibilityHint="Navigates to the next screen"
+
+>>>>>>> 4a2d604ec6e58f1be6f5f5b3a9c7eff22675b49b
                 />
 
                 {page.pageIndicator !== pages.length && (
@@ -106,7 +114,14 @@ const Onboarding = (props: OnboardingScreenProps) => {
                     textColor="text-black"
                     border={false}
                     borderColor="border border-gray"
+<<<<<<< HEAD
                     width="full"
+=======
+                    width="80"
+                    accessible={true}
+                    accessibilityLabel="Skip"
+                    accessibilityHint="Navigates to the create account screen"
+>>>>>>> 4a2d604ec6e58f1be6f5f5b3a9c7eff22675b49b
                   />
                 )}
               </View>

@@ -1,10 +1,10 @@
-import {View, Text, SafeAreaView, ScrollView} from 'react-native';
-import React, {useState} from 'react';
+import { View, Text, SafeAreaView, ScrollView } from 'react-native';
+import React, { useState } from 'react';
 import TextInputField from '../components/TextInputField';
 import Button from '../components/Button';
 import TopNavBar from '../components/TopNavBar';
 import CircleBtn from '../components/CircleBtn';
-import {useAuth} from '../context/AuthContext';
+import { useAuth } from '../context/AuthContext';
 import ApiService from '../services/ApiService';
 
 interface FormState {
@@ -19,10 +19,14 @@ interface FormState {
   ethnicity: string;
 }
 
-const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
-  const {userId: actualUserId, DOB} = useAuth();
+const AccountReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
+  const { userId: actualUserId, DOB } = useAuth();
   const actualUserIdValue = actualUserId ?? null;
   const DOBVal = DOB ?? null;
+  const [negColor, setNegColor] = useState<string>("bg-themeWhite")
+  const [posColor, setPosColor] = useState<string>("bg-themeWhite")
+  const [negTextColor, setNegTextColor] = useState<string>("text-black")
+  const [posTextColor, setPosTextColor] = useState<string>("text-black")
   const [formState, setFormState] = useState<FormState>({
     result: false,
     DOB: DOBVal,
@@ -36,7 +40,7 @@ const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
   });
 
   const handleChange: any = (field: string, value: string) => {
-    setFormState(prevState => ({...prevState, [field]: value}));
+    setFormState(prevState => ({ ...prevState, [field]: value }));
   };
 
   const handleSubmit: any = async (e: any) => {
@@ -76,6 +80,7 @@ const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
     <SafeAreaView className="min-w-screen">
       <ScrollView>
         <TopNavBar
+        textColor='text-themeBlue'
           textSize="xl"
           fontFamily=""
           haveProgress={false}
@@ -92,24 +97,47 @@ const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
           <View className="justify-center space-x-4 flex-row my-8">
             <View className="m-2">
               <CircleBtn
-                bgColor="bg-themeLightBlue"
-                updateForm={() => handleChange('result', false)}
+                bgColor={negColor}
+                textColor={negTextColor}
+                borderColor="border-themeLigthBlue"
+                updateForm={
+                  () => {
+                    handleChange('result', false)
+                    setNegColor("bg-themeLightBlue")
+                    setPosColor("bg-themeWhite")
+                    setNegTextColor("text-white")
+                    setPosTextColor("text-black")
+                  }}
                 text="Negative"
                 Btnwidth="w-32"
                 Btnheight="h-32"
                 textSize="base"
                 value={true}
+                accessible={true}
+                accessibilityLabel="Negative"
+                accessibilityHint="Touch if your test results are negative"
               />
             </View>
             <View className="m-2">
               <CircleBtn
+                borderColor='border-themeLightOrange'
                 text="Positive"
-                bgColor="bg-themeLightOrange"
-                updateForm={() => handleChange('result', true)}
+                textColor={posTextColor}
+                bgColor={posColor}
+                updateForm={() => {
+                  handleChange('result', true)
+                  setNegColor("bg-themeWhite")
+                  setPosColor("bg-themeLightOrange")
+                  setNegTextColor("text-black")
+                  setPosTextColor("text-white")
+                }}
                 Btnwidth="w-32"
                 Btnheight="h-32"
                 textSize="base"
                 value={false}
+                accessible={true}
+                accessibilityLabel="Positive"
+                accessibilityHint="Touch if your test results are positive"
               />
             </View>
           </View>
@@ -134,11 +162,14 @@ const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
           <View className="my-4">
             <Button
               onPress={handleSubmit}
-              innerText="Submit"
+              innerText="Report"
               textColor="text-white"
               bgColor="bg-themeBlue"
               border={true}
               width="80"
+              accessible={true}
+              accessibilityLabel="Report"
+              accessibilityHint="Report test results"
             />
           </View>
         </View>

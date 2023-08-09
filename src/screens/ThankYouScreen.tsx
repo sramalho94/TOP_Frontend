@@ -1,9 +1,13 @@
+<<<<<<< HEAD
 import {View, Text, SafeAreaView, ScrollView, Linking} from 'react-native';
+=======
+import { View, Text, SafeAreaView, ScrollView } from 'react-native';
+>>>>>>> 4a2d604ec6e58f1be6f5f5b3a9c7eff22675b49b
 import React from 'react';
 import Button from '../components/Button';
-import {RouteProp} from '@react-navigation/native';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {RootStackParamList} from '../../App';
+import { RouteProp } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../../App';
 
 type ThankYouScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
@@ -16,8 +20,8 @@ type Props = {
   route: ThankYouScreenRouteProp;
 };
 
-const ThankYouScreen = ({navigation, route}: Props) => {
-  const {logIn} = route.params || {logIn: true};
+const ThankYouScreen = ({ navigation, route }: Props) => {
+  const { logIn } = route.params || { logIn: true };
 
   const handleInfoPress = () => {
     const infoUrl =
@@ -70,6 +74,10 @@ const ThankYouScreen = ({navigation, route}: Props) => {
               textColor=""
               border={true}
               borderColor="border border-gray"
+              accessible={true}
+              accessibilityLabel="Take me home"
+              accessibilityHint="Navigates to the home screen"
+
             />
           ) : (
             <>
@@ -80,6 +88,9 @@ const ThankYouScreen = ({navigation, route}: Props) => {
                 textColor=""
                 border={true}
                 borderColor="border border-gray"
+                accessible={true}
+                accessibilityLabel="Create account"
+                accessibilityHint="Navigates to the create account screen"
               />
               <Button
                 onPress={() => navigation.navigate('LandingPage')}
@@ -88,6 +99,9 @@ const ThankYouScreen = ({navigation, route}: Props) => {
                 textColor=""
                 border={false}
                 borderColor=""
+                accessible={true}
+                accessibilityLabel="Back"
+                accessibilityHint="Navigates to the previous screen"
               />
             </>
           )} */}

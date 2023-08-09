@@ -40,22 +40,22 @@ export default function SignInPage(props: Props) {
     username: '',
     password: '',
   })
-  
+
   const handleChange = (field: string, value: string) => {
-    setUserSignUp({...userSignUp, [field]: value});
+    setUserSignUp({ ...userSignUp, [field]: value });
   }
 
   const handleUsernameChange = (value: string) => {
     setUsername(value);
   };
 
-  const {onLogin} = useAuth();
+  const { onLogin } = useAuth();
   const navigation: any = useNavigation();
 
 
   const handleSubmit: any = (e: any) => {
     e.preventDefault();
-    console.log("userSignIn submit: ", {userSignUp})
+    console.log("userSignIn submit: ", { userSignUp })
 
     if (onLogin) {
       onLogin(userSignUp)
@@ -78,8 +78,13 @@ export default function SignInPage(props: Props) {
   return (
     <SafeAreaView className="w-screen h-screen flex-1">
       <ScrollView>
+<<<<<<< HEAD
       {/* <TopNavBar textSize='xl' textValue='Sign In' fontFamily='' haveProgress={false} /> */}
         <View>
+=======
+        {/* <TopNavBar textSize='xl' textValue='Sign In' fontFamily='' haveProgress={false} /> */}
+        <View className="">
+>>>>>>> 4a2d604ec6e58f1be6f5f5b3a9c7eff22675b49b
           <View className="flex flex-row justify-center align-middle">
             <Image className="w-342 h-349 m-4" source={NoImage}></Image>
           </View>
@@ -102,6 +107,7 @@ export default function SignInPage(props: Props) {
             bgColor=""
             border={true}
             borderColor="border border-black"
+<<<<<<< HEAD
             width='full'
           />
           {/* <Button
@@ -113,6 +119,13 @@ export default function SignInPage(props: Props) {
             borderColor="border border-black"
             width='full'
           /> */}
+=======
+            width='80'
+            accessible={true}
+            accessibilityLabel="Login"
+            accessibilityHint="Navigates to the login screen"
+          />
+>>>>>>> 4a2d604ec6e58f1be6f5f5b3a9c7eff22675b49b
         </View>
       </ScrollView>
     </SafeAreaView>

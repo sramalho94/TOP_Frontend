@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, { useState, useContext } from 'react';
 // import {useFormContext} from "react-hook-form";
 // import {useFormContext} from '../context/CreateAccountContext';
 import {
@@ -11,8 +11,10 @@ import {
 } from 'react-native';
 import TopNavBar from '../components/TopNavBar';
 import CheckBox from '../components/CheckBox';
-import {useAuth} from '../context/AuthContext';
+import { useAuth } from '../context/AuthContext';
 import CreateAccountContext from '../context/CreateAccountContext';
+import Button from '../components/Button';
+
 
 interface CheckState {
   isOver18Checked: boolean;
@@ -20,17 +22,17 @@ interface CheckState {
   isReadAndAcceptChecked: boolean;
 }
 
-const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
+const ConsentPage: React.FC<{ navigation: any }> = ({ navigation }) => {
   const handlePrivacyPolicyPress = () => {
     const privacyPolicyUrl = 'https://www.privacypolicies.com/generic/';
     Linking.openURL(privacyPolicyUrl);
   };
 
   // comment for push
-  const {onRegister} = useAuth();
+  const { onRegister } = useAuth();
   // const {formState, updateFormState} = useContext<any>(CreateAccountContext);
   // const {formState} = useFormContext();
-  const {formState, resetFormState} = useContext(CreateAccountContext);
+  const { formState, resetFormState } = useContext(CreateAccountContext);
   const handleEmailPress = () => {
     const email = 'leavecovidtracking-us@joinzoe.com';
     Linking.openURL(`mailto:${email}`);
@@ -87,6 +89,7 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
         {/* add topNavBar component here and pass a few props to it */}
         {/* Still need to double check the font size and family font! */}
         <TopNavBar
+        textColor='text-themeBlue'
           textSize="xl"
           textValue="Consent Form"
           fontFamily=""
@@ -180,13 +183,18 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
               </Text>
             </Text>
           </View>
-          <TouchableOpacity
+          <Button
             onPress={handleAgree}
-            className={`bg-black px-8 py-2.5 rounded-md mt-7`}>
-            <Text className={`text-white text-base font-bold text-center`}>
-              I Agree to These Terms
-            </Text>
-          </TouchableOpacity>
+            innerText="I agree to these terms"
+            bgColor="bg-themeBlue"
+            textColor="text-white"
+            border={true}
+            borderColor="border border-themeBlue border-3"
+            width="80"
+            accessible={true}
+            accessibilityLabel="I agree to these terms"
+            accessibilityHint="Creates user account"
+          />
         </View>
       </ScrollView>
     </SafeAreaView>
