@@ -108,6 +108,9 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
                   Btnheight="h-32"
                   textSize="base"
                   value={false}
+                  accessible={true}
+                  accessibilityLabel="Negative"
+                  accessibilityHint="Touch if your test results are negative"
                 />
               </View>
               <View className="m-2">
@@ -119,6 +122,9 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
                   Btnheight="h-32"
                   textSize="base"
                   value={true}
+                  accessible={true}
+                  accessibilityLabel="Positive"
+                  accessibilityHint="Touch if your test results are positive"
                 />
               </View>
             </View>
