@@ -58,7 +58,6 @@ export const AuthProvider = ({children}: any) => {
 
   const [usernameVal, setUsernameVal] = useState<string | null>(null);
 
-
   const [DOB, setDOB] = useState<string | null>(null);
 
   useEffect(() => {
@@ -120,18 +119,21 @@ export const AuthProvider = ({children}: any) => {
 
   const saveDOBToLocalStorage = async (DOB: string) => {
     try {
-      await AsyncStorage.setItem('DOB', DOB);
+      await Keychain.setGenericPassword('DOB', DOB);
     } catch (error) {
-      console.log('Error saving DOB to local storage: ', error);
+      console.log('Error saving DOB to keychain: ', error);
     }
   };
 
-  const getDOBFromLocalStorage = async (): Promise<string | null> => {
+  const getDOBFromKeychain = async (): Promise<string | null> => {
     try {
-      const storedDOB = await AsyncStorage.getItem('DOB');
-      return storedDOB ? storedDOB : null;
+      const storedDOB = await Keychain.getGenericPassword();
+      if (storedDOB && storedDOB.username === 'DOB') {
+        return storedDOB.password;
+      }
+      return null;
     } catch (error) {
-      console.log('Error retrieving DOB from local storage: ', error);
+      console.log('Error retrieving DOB from keychain: ', error);
       return null;
     }
   };
@@ -176,6 +178,8 @@ export const AuthProvider = ({children}: any) => {
       saveUserIdToLocalStorage(result.data.user.id.toString());
       setUsernameVal(result.data.user.username);
       saveUserNameToLocalStorage(result.data.user.username);
+      setDOB(result.data.user.DOB);
+      saveDOBToLocalStorage(result.data.user.DOB);
       axios.defaults.headers.common[
         'Authorization'
       ] = `Bearer ${result.data.token}`;
@@ -194,9 +198,9 @@ export const AuthProvider = ({children}: any) => {
       }
     };
     const initDOB = async () => {
-      const DOB = await getDOBFromLocalStorage();
-      if (DOB) {
-        setDOB(DOB);
+      const DOBVal = await getDOBFromKeychain();
+      if (DOBVal) {
+        setDOB(DOBVal);
       }
     };
 
@@ -211,7 +215,6 @@ export const AuthProvider = ({children}: any) => {
     initUserName();
 
     initDOB();
-
   }, []);
 
   const logout = async () => {
@@ -230,7 +233,6 @@ export const AuthProvider = ({children}: any) => {
     usernameVal,
 
     DOB,
-
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

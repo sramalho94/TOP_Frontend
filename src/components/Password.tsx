@@ -34,7 +34,7 @@ const PasswordField = (props: Props) => {
         autoCorrect={false}
         value={props.password}
         onChangeText={value => props.onChange(value)}
-        placeholder="Password"
+        placeholder="Enter your password"
         placeholderTextColor="#6b7280"
         className="border border-black rounded-lg px-4 h-12 w-full mx-auto font-medium"
         secureTextEntry={!showPassword}

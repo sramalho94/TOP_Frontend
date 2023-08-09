@@ -78,18 +78,15 @@ function AppContent({
   }, [authState, navigationRef]);
 
   if (authState?.loading) {
-    return <ConsentFormThankYou />;
+    return null;
   }
 
   return (
     <SafeAreaProvider>
-      {/* <CreateAccountProvider> */}
-      <NavigationContainer ref={navigationRef}>
-        <Stack.Navigator
-          initialRouteName={
-            authState?.authenticated ? 'HomeDash' : 'LandingPage'
-          }>
-          {/* <Stack.Screen
+      <CreateAccountProvider>
+        <NavigationContainer ref={navigationRef}>
+          <Stack.Navigator initialRouteName={initialScreen}>
+            <Stack.Screen
               name="Onboarding"
               component={Onboarding}
               options={{headerShown: false}}
@@ -98,9 +95,9 @@ function AppContent({
               name="LandingPage"
               component={LandingPage}
               options={{headerShown: false}}
-            /> */}
+            />
             <Stack.Screen name="SignInPage" component={SignInPage} />
-            {/* <Stack.Screen
+            <Stack.Screen
               name="CreateAccount1"
               component={CreateAccount1}
               options={{headerShown: false}}
@@ -114,13 +111,14 @@ function AppContent({
               name="CreateAccount3"
               component={CreateAccount3}
               options={{headerShown: false}}
-            /> */}
-          {/* <Stack.Screen name="ReportPage" component={ReportPage} /> */}
-          {/* <Stack.Screen name="ConsentPage" component={ConsentPage} />
+            />
+          <Stack.Screen name="ReportPage" component={ReportPage} />
+          <Stack.Screen name="ConsentPage" component={ConsentPage} />
             <Stack.Screen
               name="ThankYouScreen"
               component={ThankYouScreen}
               options={{headerShown: false}}
+
             />
             <Stack.Screen
               name="ConsentFormThankYou"
@@ -131,10 +129,10 @@ function AppContent({
               name="AccountReportPage"
               component={AccountReportPage}
             />
-            <Stack.Screen name="HomeDash" component={HomeDash} /> */}
+            <Stack.Screen name="HomeDash" component={HomeDash} />
         </Stack.Navigator>
       </NavigationContainer>
-      {/* </CreateAccountProvider> */}
+      </CreateAccountProvider>
     </SafeAreaProvider>
   );
 }
