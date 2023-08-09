@@ -99,7 +99,7 @@ const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
               style={{
                 fontFamily: 'Baskerville-BoldItalic',
               }}
-              className="text-lg font-bold mt-10 mx-auto">
+              className="text-lg font-bold mt-10 mx-auto underline">
               What were the results of your test?
             </Text>
             <View className="justify-center space-x-4 flex-row my-9">
