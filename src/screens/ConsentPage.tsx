@@ -94,7 +94,7 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
         haveProgress={false}
       />
 
-      <View className="justify-center p-4 px-8 flex-1">
+      <View className="flex-1 p-4 px-8">
         <ScrollView>
           <View className="flex-1">
             <Text className={`text-xl font-bold text-black mb-5 text-center`}>
@@ -187,13 +187,14 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
             </View>
           </View>
         </ScrollView>
-        <View className="flex-1">
+        <View className=" bg-pink-300 w-full">
           <Button 
             innerText='I Agree to These Terms'
             bgColor='bg-black'
             border={true}
             textColor='text-white'
             onPress={handleAgree}
+            width='5/6'
           />
         </View>
       </View>
