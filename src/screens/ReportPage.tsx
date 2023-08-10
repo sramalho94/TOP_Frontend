@@ -200,6 +200,8 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
                 }}
                 onChange={value => updateFormState('gender', value)}
                 setOpen={setGenderOpen}
+                accessLabel='gender menu'
+                accessHint='Drop down options to select your gender'
               />
               <DropDownField
                 text="Race"
@@ -235,6 +237,8 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
                 }}
                 onChange={value => updateFormState('race', value)}
                 setOpen={setRaceOpen}
+                accessLabel='race menu'
+                accessHint='Drop down options to select your race'
               />
               <DropDownField
                 text="Ethnicity"
@@ -254,6 +258,8 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
                 }}
                 onChange={value => updateFormState('ethnicity', value)}
                 setOpen={setEthnicityOpen}
+                accessLabel='ethnicity menu'
+                accessHint='Drop down options to select your ethnicity'
               />
             </View>
 
