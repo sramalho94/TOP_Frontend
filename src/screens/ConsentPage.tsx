@@ -137,6 +137,7 @@ const ConsentPage: React.FC<{ navigation: any }> = ({ navigation }) => {
             <CheckBox
               handleCheckChanges={() => handleCheckBoxChange('isOver18Checked')}
               isSelected={checkBoxStates.isOver18Checked}
+              accessHint='If checked, you confirm that you are over 18 years old.'
             />
             <Text className={`text-sm ml-2`}>
               I confirm that I'm over 18 years old.
@@ -148,6 +149,9 @@ const ConsentPage: React.FC<{ navigation: any }> = ({ navigation }) => {
                 handleCheckBoxChange('isConsentChecked')
               }
               isSelected={checkBoxStates.isConsentChecked}
+              accessHint='If checked, you will consent processing of your personal data (including without
+                limitation data I provide relating to my health) as set forth in
+                this consent and in the Privacy Policy.'
             />
             <Text className={`text-sm ml-2`}>
               I consent to the processing of my personal data (including without
@@ -166,6 +170,7 @@ const ConsentPage: React.FC<{ navigation: any }> = ({ navigation }) => {
                 handleCheckBoxChange('isReadAndAcceptChecked')
               }
               isSelected={checkBoxStates.isReadAndAcceptChecked}
+              accessHint="I have read and accept Zoe Global's Terms of Use and Privacy Policy"
             />
             <Text className={`text-sm ml-2`}>
               I have read and accept{' '}
