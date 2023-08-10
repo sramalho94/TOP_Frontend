@@ -12,7 +12,7 @@ const ProgressDots = ({page}: Props) => {
 
   return (
     <>
-      <View className="flex-row justify-center" accessibilityLabel="Progress Markers" accessibilityHint="progress markers for 3 pages">
+      <View className="flex-row justify-center" accessibilityLabel="Progress Markers" accessibilityHint="Shows progress through pages on swipe or button press">
         <View
           className={`rounded-lg ${
             page === 1 ? 'bg-themeBlue' : 'bg-themeLightBlue'
