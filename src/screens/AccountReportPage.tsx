@@ -95,7 +95,7 @@ const AccountReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
         />
 
         {/* Page container */}
-        <View className="justify-center mx-auto max-w-sm" accessible={true} accessibilityLabel='' accessibilityHint='' accessibilityRole='header'>
+        <View className="justify-center mx-auto max-w-sm" accessible={true} accessibilityLabel='Report Covid Test with Account Page' accessibilityHint='Report Covid Test with an Account Page' accessibilityRole='header'>
           <Text className="text-lg font-bold mx-auto">
             What were the results of your test?
           </Text>
