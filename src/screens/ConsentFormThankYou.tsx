@@ -23,40 +23,35 @@ type Props = {
 const ConsentFormThankYou = ({navigation}: Props) => {
   const {usernameVal} = useAuth();
   return (
-    <SafeAreaView className="h-screen w-screen mx-auto my-auto">
-      <ScrollView>
-        <View className="flex flex-col w-full min-h-screen p-5">
+    <SafeAreaView className="flex-1 bg-themeWhite">
+      <View className="flex-1 mx-auto my-auto mb-20 justify-center">
+        <View className="w-[342]">
+          <Text className="text-5xl color-black body-font font-poetsen text-center mt-20 mx-6">
+            Thanks for joining our community, {usernameVal}!
+          </Text>
+          <Text className="mx-auto py-2 font-serif text-[14px]">
+            Your account has been created.
+          </Text>
           <View>
-            <Text className="text-5xl color-black body-font font-poetsen text-center">
-              Thanks for joining our community, {usernameVal}!
-            </Text>
-            <View>
-              <Text className="mx-auto py-2 font-serif text-[14px]">
-                Your account has been created.
-              </Text>
-            </View>
-          </View>
-          <View className="m-2 flex-1">
             <Image
-              className="mx-auto my-0"
-              style={{
-                width: 280,
-                height: 330,
-              }}
-              source={jumpImg}></Image>
+              className="mx-auto my-0 h-[370px] w-[300px]"
+              source={jumpImg}
+            />
           </View>
-
-          <Button
-            onPress={() => navigation.navigate('HomeDash')}
-            innerText="Get Started!"
-            bgColor="bg-themeBlue"
-            textColor="text-themeWhite"
-            border={false}
-            borderColor=""
-            className="text-xs"
-          />
+          <View className="flex-1 justify-end mt-4">
+            <Button
+              onPress={() => navigation.navigate('HomeDash')}
+              innerText="Get Started!"
+              bgColor="bg-themeBlue"
+              textColor="text-themeWhite"
+              border={false}
+              borderColor=""
+              width="80"
+              // className="text-xs"
+            />
+          </View>
         </View>
-      </ScrollView>
+      </View>
     </SafeAreaView>
   );
 };

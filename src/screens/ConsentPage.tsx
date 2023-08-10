@@ -169,7 +169,7 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
               <Text
                 className={`text-blue-500 underline`}
                 onPress={handleTermsPress}>
-                Zoe Global's Terms of Use
+                Terms of Use
               </Text>{' '}
               and{' '}
               <Text
