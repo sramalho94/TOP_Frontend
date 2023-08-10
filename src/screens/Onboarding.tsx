@@ -88,7 +88,7 @@ const Onboarding = (props: OnboardingScreenProps) => {
             {/* <Image className="absolute bg-cover bg-center" source={WaveImage} /> */}
             <View>
               <Image
-                className="w-[400px] h-[510px] mb-5 bg-cover bg-center"
+                className="w-[400px] h-[500px] max-h-full mb-5 bg-contain bg-center"
                 source={page.imageSource}
               />
               <Text className="mx-auto font-serif text-[25px] text-center">

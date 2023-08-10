@@ -8,7 +8,7 @@ const LandingPage: React.FC<{navigation: any}> = ({navigation}) => {
     <SafeAreaView className="flex-1 bg-themeWhite">
       <ScrollView>
         <Image
-          className="w-[390] h-[500] mb-12 bg-cover bg-center "
+          className="w-full h-[500] mb-12 bg-cover bg-center "
           source={LandingGroupImg}
         />
 

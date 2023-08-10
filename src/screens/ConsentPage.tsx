@@ -182,8 +182,8 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
           </View>
           <TouchableOpacity
             onPress={handleAgree}
-            className={`bg-black px-8 py-2.5 rounded-md mt-7`}>
-            <Text className={`text-white text-base font-bold text-center`}>
+            className={`bg-themeBlue px-8 py-2.5 rounded-md mt-7`}>
+            <Text className={`text-themeWhite text-base font-bold text-center`}>
               I Agree to These Terms
             </Text>
           </TouchableOpacity>
