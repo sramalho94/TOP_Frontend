@@ -10,7 +10,7 @@ const HomeDash: React.FC<{ navigation: any }> = ({ navigation }) => {
     <SafeAreaView className="h-screen w-screen">
       <ScrollView>
         {/* View for whole screen */}
-        <View className="flex flex-col w-full min-h-screen p-6">
+        <View className="flex flex-col w-full min-h-screen p-6" accessibilityLabel='Home Page' accessibilityHint='The home page for your account. Allows you to submit a Covid Test, view data, privacy, or exchange data for research' accessibilityRole='header'>
           {/* View for avatar, text and report test */}
           <View className="flex w-full justify-center items-center ">
             {/* View for avatar*/}

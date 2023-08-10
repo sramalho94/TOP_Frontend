@@ -79,7 +79,7 @@ const Onboarding = (props: OnboardingScreenProps) => {
     >
       {pages.map((page, index) => (
         <SafeAreaView key={index} className="h-screen w-screen items-center bg-red-400 pb-4">
-          <View className="flex-1 flex-col mt-4 mb-10">
+          <View className="flex-1 flex-col mt-4 mb-10" accessibilityLabel='Onboarding Info Page' accessibilityHint='Informs you how your data will be used and not be used' accessibilityRole='header'>
             <View className="m-5 flex-1">
               <Image className="w-full" source={page.imageSource}></Image>
               <Text className="mx-auto py-5 font-serif text-[22px]">

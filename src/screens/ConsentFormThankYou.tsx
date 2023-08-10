@@ -25,7 +25,7 @@ const ConsentFormThankYou = ({ navigation }: Props) => {
   return (
     <SafeAreaView className="h-screen w-screen mx-auto my-auto">
       <ScrollView>
-        <View className="flex flex-col w-full min-h-screen p-5">
+        <View className="flex flex-col w-full min-h-screen p-5" accessibilityLabel='Thank You Page' accessibilityHint='Thank you for creating an account' accessibilityRole='header'>
           <View>
             <Text className="text-5xl color-black body-font font-poetsen text-center">
               Thanks for joining our community, {usernameVal}!
