@@ -133,7 +133,7 @@ function AppContent({
               component={AccountReportPage}
               options={{headerShown: false}}
             />
-            <Stack.Screen name="HomeDash" component={HomeDash} />
+            <Stack.Screen name="HomeDash" component={HomeDash} options={{headerShown: false}}/>
           </Stack.Navigator>
         </NavigationContainer>
       </CreateAccountProvider>
