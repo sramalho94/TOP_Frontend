@@ -40,8 +40,8 @@ const TopNavBar = ({
           {textValue}
         </Text>
       </View>
-      <View className="shadow shadow-red-500/40 md:shadow-red-500/40">
-        <View className="border-slate-200 border-b-4  pb-4">
+      <View className="shadow shadow-black ">
+        <View className="border-gray-200 border-b-2  pb-4">
           {/* <View className="shadow shadow-red-500/40 md:shadow-red-500/40"> */}
           {/* {haveProgress ? page ? <ProgressDots page={page} /> : null : null} */}
         </View>

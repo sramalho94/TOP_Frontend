@@ -20,6 +20,7 @@ import CreateAccount2 from './src/screens/CreateAccount/CreateAccount2';
 import CreateAccount3 from './src/screens/CreateAccount/CreateAccount3';
 import CreateAccountProvider from './src/context/CreateAccountProvider';
 import ConsentFormThankYou from './src/screens/ConsentFormThankYou';
+import {StatusBar} from 'react-native';
 
 export type RootStackParamList = {
   Onboarding: undefined;
