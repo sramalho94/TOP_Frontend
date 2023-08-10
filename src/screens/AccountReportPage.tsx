@@ -84,13 +84,13 @@ const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
         />
 
         {/* Page container */}
-        <View className="justify-center mx-auto max-w-sm">
+        <View className="flex-1 justify-center mx-auto max-w-sm">
           <Text className="text-lg font-bold mx-auto">
             What were the results of your test?
           </Text>
 
           {/* Result Buttons Container */}
-          <View className="justify-center space-x-4 flex-row my-8">
+          <View className="flex-1 justify-center space-x-4 flex-row my-8">
             <View className="m-2">
               <CircleBtn
                 bgColor="bg-themeLightBlue"
@@ -116,7 +116,7 @@ const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
           </View>
 
           {/* Text input fields container */}
-          <View className="">
+          <View className="flex-1">
             <TextInputField
               label="Date of Test*"
               value={formState.DOT}
@@ -132,7 +132,7 @@ const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
           </View>
 
           {/* Submit button */}
-          <View className="my-4">
+          <View className="my-4 flex-1">
             <Button
               onPress={handleSubmit}
               innerText="Submit"
