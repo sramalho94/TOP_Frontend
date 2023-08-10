@@ -85,7 +85,7 @@ const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
           </View>
         
         
-          <View className="mt-4 flex-col-reverse mb-3">
+          <View className="mt-4 flex-col-reverse mb-3 bg-purple-400">
             <Button
               onPress={handleNext}
               innerText="Next"

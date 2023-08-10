@@ -24,7 +24,7 @@ const Button = ({
 }: Props) => {
   return (
     <View
-      className={`w-${width} max-w-sm mx-auto align-center px-8 items-center`}>
+      className={`w-${width} max-w-sm mx-auto align-center px-4 items-center`}>
       <TouchableOpacity
         className={`${border ? `${borderColor}` : ''}
          flex justify-center align-center items-center w-full h-[52] rounded-lg mb-3 ${bgColor}`}
