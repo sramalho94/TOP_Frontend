@@ -28,7 +28,7 @@ const LandingPage: React.FC<{navigation: any}> = ({navigation}) => {
             source={LandingGroupImg}
           />
 
-          <View className="mb-3">
+          <View className="mb-3 flex-1 justify-end">
             <Button
               onPress={() => navigation.navigate('SignInPage')}
               innerText="Log in"

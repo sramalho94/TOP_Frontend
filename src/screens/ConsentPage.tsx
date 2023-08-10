@@ -182,7 +182,7 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
           <View className="flex-1 justify-end ">
             <TouchableOpacity
               onPress={handleAgree}
-              className={`bg-themeBlue px-8 py-[14] rounded-md `}>
+              className={'bg-themeBlue px-8 py-[14] rounded-md'}>
               <Text
                 className={`text-themeWhite text-base font-bold text-center`}>
                 Create Account
