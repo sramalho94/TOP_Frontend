@@ -20,8 +20,13 @@ const HomeDash: React.FC<{navigation: any}> = ({navigation}) => {
               <CircleBtn
                 img={FlowerImg}
                 bgColor="bg-themeLightOrange"
+                text="Logout"
                 onPress={() => {
-                  console.log("You're Sick!!");
+                  if (onLogout) {
+                    onLogout();
+                  } else {
+                    console.error('onLogout function is not provided');
+                  }
                 }}
                 Btnwidth="w-24"
                 Btnheight="h-24"
