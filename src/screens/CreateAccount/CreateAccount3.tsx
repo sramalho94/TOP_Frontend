@@ -64,6 +64,8 @@ const CreateAccount3: React.FC<{ navigation: any }> = ({ navigation }) => {
               }}
               setOpen={handleGenderChange}
               onChange={value => updateFormState('gender', value)}
+              accessLabel='gender menu'
+              accessHint='Drop down options to select your gender'
             />
             <DropDownField
               text="Race"
@@ -100,6 +102,8 @@ const CreateAccount3: React.FC<{ navigation: any }> = ({ navigation }) => {
               }}
               setOpen={handleRaceChange}
               onChange={value => updateFormState('race', value)}
+              accessLabel='race menu'
+              accessHint='Drop down options to select your race'
             />
             <DropDownField
               text="Ethnicity"
@@ -119,6 +123,8 @@ const CreateAccount3: React.FC<{ navigation: any }> = ({ navigation }) => {
               }}
               setOpen={handleEthnicityChange}
               onChange={value => updateFormState('ethnicity', value)}
+              accessLabel='ethnicity menu'
+              accessHint='Drop down options to select your ethnicity'
             />
           </View>
         </View>
