@@ -35,6 +35,7 @@ const HomeDash: React.FC<{ navigation: any }> = ({ navigation }) => {
             </Text>
             {/* need giant circle btn, need to refactor circle btn props? */}
             <CircleBtn
+              borderColor='themeBlue'
               text={`Report\nTest`}
               bgColor="bg-themeLightOrange"
               onPress={() => {
@@ -43,6 +44,8 @@ const HomeDash: React.FC<{ navigation: any }> = ({ navigation }) => {
               Btnwidth="w-60"
               Btnheight="h-60"
               textSize="3xl"
+              accessLabel='Report Test Button'
+              accessHint='This is a button that you can click on to report your Covid test results.'
             />
           </View>
           {/* <Button
@@ -58,15 +61,15 @@ const HomeDash: React.FC<{ navigation: any }> = ({ navigation }) => {
           <View className="w-full mb-6 flex justify-center flex-row">
             <View className="-mt-5">
               <CircleBtn
+                borderColor='themeBlue'
                 img={FlowerImg}
                 onPress={() => {
                   console.log("You're Sick!!");
                 }}
                 Btnwidth="w-28"
                 Btnheight="h-28"
-                accessible={true}
-                accessibilityLabel="Privacy"
-                accessibilityHint="Navigates to privacy screen"
+                accessLabel="Privacy"
+                accessHint="This button navigates to privacy screen"
               />
               <Text className="text-center p-3 text-black text-base">
                 Privacy
@@ -75,13 +78,13 @@ const HomeDash: React.FC<{ navigation: any }> = ({ navigation }) => {
 
             <View className="mt-16">
               <CircleBtn
+                borderColor='themeBlue'
                 img={FlowerImg}
                 onPress={() => navigation.navigate('DataDashboard')}
                 Btnwidth="w-28"
                 Btnheight="h-28"
-                accessible={true}
-                accessibilityLabel="Dashboard"
-                accessibilityHint="Navigates to dashboard"
+                accessLabel="Dashboard"
+                accessHint="Navigates to dashboard"
               />
               <Text className="text-center p-3 text-black text-base">
                 Dashboard
@@ -90,12 +93,12 @@ const HomeDash: React.FC<{ navigation: any }> = ({ navigation }) => {
 
             <View className="mt-1">
               <CircleBtn
+                borderColor='themeBlue'
                 img={FlowerImg}
                 Btnwidth="w-28"
                 Btnheight="h-28"
-                accessible={true}
-                accessibilityLabel="Exchange"
-                accessibilityHint="Navigates to data exchange screen" />
+                accessLabel="Exchange"
+                accessHint="This button navigates to data exchange screen" />
               <Text className="text-center p-3 text-black text-base">
                 Exchange
               </Text>
