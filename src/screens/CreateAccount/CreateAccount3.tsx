@@ -131,9 +131,8 @@ const CreateAccount3: React.FC<{ navigation: any }> = ({ navigation }) => {
             border={true}
             borderColor="border border-4"
             width="80"
-            accessible={true}
-            accessibilityLabel="Next"
-            accessibilityHint="Navigates to the next screen"
+            accessLabel="Next"
+            accessHint="Navigates to the next screen"
           />
         </View>
       </ScrollView>

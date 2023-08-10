@@ -15,6 +15,7 @@ import CircleBtn from '../components/CircleBtn';
 import ApiService from '../services/ApiService';
 import NegTest from './../../assets/NegativeCovidTest.png'
 import PosTest from './../../assets/PositiveCovidTest.png'
+import TopNavBar from '../components/TopNavBar';
 
 
 // Define the ReportPage component
@@ -89,11 +90,11 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
     <SafeAreaView className="w-screen h-screen flex-1">
       {/* NavBar */}
       <TopNavBar
+        textColor="text-themeBlue"
         textValue="Report COVID-19 Test Result"
         fontFamily=""
         textSize="xl"
         haveProgress={false}
-        textColor=""
       />
 
       <ScrollView className="flex-1">

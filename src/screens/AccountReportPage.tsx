@@ -113,9 +113,8 @@ const AccountReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
                 Btnheight="h-32"
                 textSize="base"
                 value={true}
-                accessible={true}
-                accessibilityLabel="Negative"
-                accessibilityHint="Touch if your test results are negative"
+                accessLabel="Negative"
+                accessHint="Touch if your test results are negative"
               />
             </View>
             <View className="m-2">
@@ -135,9 +134,8 @@ const AccountReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
                 Btnheight="h-32"
                 textSize="base"
                 value={false}
-                accessible={true}
-                accessibilityLabel="Positive"
-                accessibilityHint="Touch if your test results are positive"
+                accessLabel="Positive"
+                accessHint="Touch if your test results are positive"
               />
             </View>
           </View>
@@ -167,7 +165,6 @@ const AccountReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
               bgColor="bg-themeBlue"
               border={true}
               width="80"
-              access={true}
               accessLabel="Report"
               accessHint="Report test results"
             />

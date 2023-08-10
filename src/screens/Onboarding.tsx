@@ -96,7 +96,6 @@ const Onboarding = (props: OnboardingScreenProps) => {
                   border={true}
                   borderColor="border border-themeBlue border-3"
                   width="80"
-                
                   accessLabel="Continue"
                   accessHint="Navigates to the next screen"
 
@@ -111,7 +110,6 @@ const Onboarding = (props: OnboardingScreenProps) => {
                     border={false}
                     borderColor="border border-gray"
                     width="80"
-                 
                     accessLabel="Skip"
                     accessHint="Navigates to the create account screen"
                   />
