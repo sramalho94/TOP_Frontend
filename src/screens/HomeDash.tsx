@@ -1,11 +1,11 @@
 import { View, Text, SafeAreaView, ScrollView } from 'react-native';
 import React from 'react';
-import Button from '../components/Button';
 import CircleBtn from '../components/CircleBtn';
-
+import {useAuth} from '../context/AuthContext';
 import FlowerImg from '../../assets/orange-flower.png';
 
-const HomeDash: React.FC<{ navigation: any }> = ({ navigation }) => {
+const HomeDash: React.FC<{navigation: any}> = ({navigation}) => {
+  const {onLogout} = useAuth();
   return (
     <SafeAreaView className="h-screen w-screen">
       <ScrollView>
@@ -21,8 +21,13 @@ const HomeDash: React.FC<{ navigation: any }> = ({ navigation }) => {
                 borderColor='border-themeBlue'
                 img={FlowerImg}
                 bgColor="bg-themeLightOrange"
+                text="Logout"
                 onPress={() => {
-                  
+                  if (onLogout) {
+                    onLogout();
+                  } else {
+                    console.error('onLogout function is not provided');
+                  }
                 }}
                 Btnwidth="w-24"
                 Btnheight="h-24"
@@ -48,14 +53,6 @@ const HomeDash: React.FC<{ navigation: any }> = ({ navigation }) => {
               accessHint='This is a button that you can click on to report your Covid test results.'
             />
           </View>
-          {/* <Button
-            onPress={() => navigation.navigate('ConsentFormThankYou')}
-            innerText="Back to ConsentFormThankYou"
-            bgColor="bg-themeBlue"
-            textColor=""
-            border={false}
-            borderColor=""
-          /> */}
 
           {/*View for 3 mini buttons*/}
           <View className="w-full mb-6 flex justify-center flex-row">
