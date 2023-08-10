@@ -6,6 +6,7 @@ import TopNavBar from '../components/TopNavBar';
 import CircleBtn from '../components/CircleBtn';
 import { useAuth } from '../context/AuthContext';
 import ApiService from '../services/ApiService';
+import CheckBox from '../components/CheckBox';
 
 interface FormState {
   result: boolean;
@@ -27,6 +28,7 @@ const AccountReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
   const [posColor, setPosColor] = useState<string>("bg-themeWhite")
   const [negTextColor, setNegTextColor] = useState<string>("text-black")
   const [posTextColor, setPosTextColor] = useState<string>("text-black")
+  const [isCheckboxSelected, setCheckboxSelection] = useState(false);
   const [formState, setFormState] = useState<FormState>({
     result: false,
     DOB: DOBVal,
@@ -41,6 +43,11 @@ const AccountReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
 
   const handleChange: any = (field: string, value: string) => {
     setFormState(prevState => ({ ...prevState, [field]: value }));
+  };
+
+  const handleCheckChanges = () => {
+    setCheckboxSelection(prevState => !prevState);
+    // console.log('handleCheckChanges: ', isCheckboxSelected);
   };
 
   const handleSubmit: any = async (e: any) => {
@@ -155,6 +162,17 @@ const AccountReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
               placeholder="Enter your ZIP code"
             />
           </View>
+          {/* checkbox and text container */}
+          <View className="flex-row justify-center my-6">
+              <CheckBox
+                isSelected={isCheckboxSelected}
+                handleCheckChanges={handleCheckChanges}
+                accessHint='If you click in this box, you will agree to share results with CDC'
+              />
+              <Text className="font-bold mt-1 text-black">
+                I agree to share my results with the CDC
+              </Text>
+            </View>
 
           {/* Submit button */}
           <View className="my-4">
