@@ -62,38 +62,40 @@ const CreateAccount1: React.FC<{ navigation: any }> = ({ navigation }) => {
           page={1}
           textColor="text-themeBlue"
         />
-        <View className="mx-auto my-auto mb-2">
-          <View className="w-[342] mt-4">
-            <TextInputField
-              label="Email*"
-              value={formState.email}
-              onChange={value => updateFormState('email', value)}
-              placeholder="Email"
-            />
-            <TextInputField
-              label="Username*"
-              value={formState.username}
-              onChange={value => updateFormState('username', value)}
-              placeholder="Username"
-            />
-            <PasswordField
-              onChange={value => updateFormState('password', value)}
-              password={formState.password}
+        <View className="mx-auto">
+          <View className="my-auto  mb-2">
+            <View className="w-[342] mt-4">
+              <TextInputField
+                label="Email*"
+                value={formState.email}
+                onChange={value => updateFormState('email', value)}
+                placeholder="Email"
+              />
+              <TextInputField
+                label="Username*"
+                value={formState.username}
+                onChange={value => updateFormState('username', value)}
+                placeholder="Username"
+              />
+              <PasswordField
+                onChange={value => updateFormState('password', value)}
+                password={formState.password}
+              />
+            </View>
+          </View>
+          <View className="w-full mt-48">
+            <Button
+              onPress={handleNext}
+              innerText="Next"
+              textColor="text-white"
+              bgColor="bg-black"
+              border={true}
+              borderColor="border border-4"
+              width="80"
+              accessLabel="Next"
+              accessHint="Navigates to the next screen"
             />
           </View>
-        </View>
-        <View className="mt-48">
-          <Button
-            onPress={handleNext}
-            innerText="Next"
-            textColor="text-white"
-            bgColor="bg-black"
-            border={true}
-            borderColor="border border-4"
-            width="80"
-            accessLabel="Next"
-            accessHint="Navigates to the next screen"
-          />
         </View>
         <Modal visible={isModalVisible} transparent={true}>
           <View className="flex-1 justify-center items-center bg-opacity-50">
