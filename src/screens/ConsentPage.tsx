@@ -82,21 +82,20 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
     }));
   };
   return (
-    <SafeAreaView className="h-screen w-screen bg-themeWhite">
-      <ScrollView>
-        {/* add topNavBar component here and pass a few props to it */}
-        {/* Still need to double check the font size and family font! */}
+    <>
+      <SafeAreaView className="flex-1 h-screen w-screen bg-themeWhite">
         <TopNavBar
           textSize="xl"
           textValue="Create Account"
           fontFamily=""
           haveProgress={false}
         />
-        <View className={`flex justify-center p-4 px-8 flex-1`}>
-          {/* <Text className={`text-xl font-bold text-black mb-5 text-center`}>
-            User Consent
-          </Text> */}
-          <Text className={`mb-4 text-auto leading-5 font-light`}>
+
+        {/* <ScrollView> */}
+        {/* add topNavBar component here and pass a few props to it */}
+        {/* Still need to double check the font size and family font! */}
+        <View className={`flex-1 justify-center p-4 px-8`}>
+          <Text className={`mb-4 text-auto leading-5 font-light -mt-[220px]`}>
             By checking the boxes below, you consent to our using the personal
             information we collect through your use of this app in the way we
             have described.
@@ -130,7 +129,7 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
               </Text>
             </Text>
           </View> */}
-          <View className="border-slate-200 border-b-2 mb-16 pb-4"></View>
+          {/* <View className="border-slate-200 border-b-2 mb-16 pb-4"></View> */}
           <View className={`flex-row items-left mb-3`}>
             <CheckBox
               handleCheckChanges={() => handleCheckBoxChange('isOver18Checked')}
@@ -180,16 +179,20 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
               </Text>
             </Text>
           </View>
-          <TouchableOpacity
-            onPress={handleAgree}
-            className={`bg-themeBlue px-8 py-2.5 rounded-md mt-7`}>
-            <Text className={`text-themeWhite text-base font-bold text-center`}>
-              I Agree to These Terms
-            </Text>
-          </TouchableOpacity>
+          <View className="flex-1 justify-end ">
+            <TouchableOpacity
+              onPress={handleAgree}
+              className={`bg-themeBlue px-8 py-[14] rounded-md `}>
+              <Text
+                className={`text-themeWhite text-base font-bold text-center`}>
+                Create Account
+              </Text>
+            </TouchableOpacity>
+          </View>
         </View>
-      </ScrollView>
-    </SafeAreaView>
+        {/* </ScrollView> */}
+      </SafeAreaView>
+    </>
   );
 };
 
