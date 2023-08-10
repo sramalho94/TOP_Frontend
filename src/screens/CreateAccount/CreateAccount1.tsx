@@ -62,7 +62,7 @@ const CreateAccount1: React.FC<{ navigation: any }> = ({ navigation }) => {
           page={1}
           textColor="text-themeBlue"
         />
-        <View className="mx-auto">
+        <View className="mx-auto" accessibilityLabel='Create Account for login Page 1' accessibilityHint='First page in creating a new account. IT asks you to create an email, username, and password' accessibilityRole='header'>
           <View className="my-auto  mb-2">
             <View className="w-[342] mt-4">
               <TextInputField

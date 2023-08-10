@@ -84,6 +84,7 @@ const CreateAccount2: React.FC<{ navigation: any }> = ({ navigation }) => {
           page={2}
         />
 
+        <View accessibilityLabel='Create Account for login Page 2' accessibilityHint='Second page in creating a new account. It asks for your date of birth, zip code, and first name' accessibilityRole='header'>
         <View className="mx-auto my-auto mb-3">
           <View className="w-[342]">
             <TextInputField
@@ -118,6 +119,7 @@ const CreateAccount2: React.FC<{ navigation: any }> = ({ navigation }) => {
             accessLabel="Next"
             accessHint="Navigates to the next screen"
           />
+        </View>
         </View>
       </ScrollView>
     </SafeAreaView>

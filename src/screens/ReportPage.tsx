@@ -99,7 +99,7 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
 
       <ScrollView className="flex-1">
         {/* Page Container */}
-        <View className="w-full justify-center items-center flex-1 flex-col">
+        <View className="w-full justify-center items-center flex-1 flex-col" accessibilityLabel='Report Covid Test Page without an Account' accessibilityHint='Covid Test Reporting without an Account or anonymously' accessibilityRole='header'>
           <View>
             {/* Test Result Buttons */}
             <Text

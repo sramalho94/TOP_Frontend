@@ -28,6 +28,7 @@ const ThankYouScreen = ({ navigation, route }: Props) => {
   return (
     <SafeAreaView className="h-screen w-screen mx-auto my-auto flex-1 justify-between align-middle items-center">
       {/* <ScrollView className='flex-1'> */}
+      <View accessibilityLabel='Thank you for Reporting your Covid Test' accessibilityHint='Thanking you for submitting you Covid Test' accessibilityRole='header'>
       <View className="flex-row justify-center mt-12">
         <Text className="text-4xl">Thank You!</Text>
       </View>
@@ -103,6 +104,7 @@ const ThankYouScreen = ({ navigation, route }: Props) => {
               />
             </>
           )} */}
+          </View>
       {/* </ScrollView> */}
     </SafeAreaView>
   );

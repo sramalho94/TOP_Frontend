@@ -40,6 +40,7 @@ const CreateAccount3: React.FC<{ navigation: any }> = ({ navigation }) => {
           haveProgress={true}
           page={3}
         />
+        <View accessibilityHint='Second page in creating a new account. It asks for your date of birth, zip code, and first name' accessibilityRole='header'>
         <View className="mx-auto my-auto justify-between">
           <View className="w-[342]">
             <DropDownField
@@ -134,6 +135,7 @@ const CreateAccount3: React.FC<{ navigation: any }> = ({ navigation }) => {
             accessLabel="Next"
             accessHint="Navigates to the next screen"
           />
+        </View>        
         </View>
       </ScrollView>
     </SafeAreaView>

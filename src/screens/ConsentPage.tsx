@@ -95,7 +95,7 @@ const ConsentPage: React.FC<{ navigation: any }> = ({ navigation }) => {
           fontFamily=""
           haveProgress={false}
         />
-        <View className={`flex justify-center p-4 px-8 flex-1`}>
+        <View className={`flex justify-center p-4 px-8 flex-1`} accessibilityLabel='Consent Page' accessibilityHint='Informing you of how your data will be shared and processed. You need to click the three checkboxes to proceed to the next screen' accessibilityRole='header'>
           <Text className={`text-xl font-bold text-black mb-5 text-center`}>
             User Consent
           </Text>

@@ -8,6 +8,7 @@ const LandingPage: React.FC<{ navigation: any }> = ({ navigation }) => {
   return (
     <SafeAreaView className="flex-1">
       <ScrollView>
+        <View accessibilityLabel='Landing Page' accessibilityHint='Options include create account, report a test anonymously, or log in' accessibilityRole='header'>
         <Image
           className="absolute bg-cover bg-center right-0 left-0 "
           source={WaveImage}
@@ -50,6 +51,7 @@ const LandingPage: React.FC<{ navigation: any }> = ({ navigation }) => {
             accessLabel="Report without account"
             accessHint="Navigates to report without account"
           />
+        </View>
         </View>
       </ScrollView>
     </SafeAreaView>

@@ -95,7 +95,7 @@ const AccountReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
         />
 
         {/* Page container */}
-        <View className="justify-center mx-auto max-w-sm">
+        <View className="justify-center mx-auto max-w-sm" accessible={true} accessibilityLabel='' accessibilityHint='' accessibilityRole='header'>
           <Text className="text-lg font-bold mx-auto">
             What were the results of your test?
           </Text>
