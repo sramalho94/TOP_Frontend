@@ -55,7 +55,7 @@ const CircleBtn = ({
         >
         {img && !text ? (
           <Image
-            className={`bg-contain ${Btnheight} ${Btnwidth} rounded-full`}
+            className={`bg-contain ${Btnheight} ${Btnwidth} rounded-full border ${borderColor}`}
             source={img}
           />
         ) : null}

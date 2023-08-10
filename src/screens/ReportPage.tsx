@@ -262,6 +262,7 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
               <CheckBox
                 isSelected={isCheckboxSelected}
                 handleCheckChanges={handleCheckChanges}
+                accessHint="This affirms you agree to share your results with the CDC"
               />
               <Text className="font-bold mt-1 text-black">
                 I agree to share my results with the CDC

@@ -18,13 +18,16 @@ const HomeDash: React.FC<{ navigation: any }> = ({ navigation }) => {
             update* it also stopped working for IOS */}
             <View className="self-end mb-2">
               <CircleBtn
+                borderColor='border-themeBlue'
                 img={FlowerImg}
                 bgColor="bg-themeLightOrange"
                 onPress={() => {
-                  console.log("You're Sick!!");
+                  
                 }}
                 Btnwidth="w-24"
                 Btnheight="h-24"
+                accessLabel='User profile image'
+                accessHint='This is a button that displays your profile image.'
               />
             </View>
             <Text className="text-3xl font-bold mb-2 text-center">
@@ -32,7 +35,7 @@ const HomeDash: React.FC<{ navigation: any }> = ({ navigation }) => {
             </Text>
             {/* need giant circle btn, need to refactor circle btn props? */}
             <CircleBtn
-              borderColor='themeBlue'
+              borderColor='border-themeBlue'
               text={`Report\nTest`}
               bgColor="bg-themeLightOrange"
               onPress={() => {
@@ -58,7 +61,7 @@ const HomeDash: React.FC<{ navigation: any }> = ({ navigation }) => {
           <View className="w-full mb-6 flex justify-center flex-row">
             <View className="-mt-5">
               <CircleBtn
-                borderColor='themeBlue'
+                borderColor='border-themeBlue'
                 img={FlowerImg}
                 onPress={() => {
                   console.log("You're Sick!!");
@@ -75,13 +78,13 @@ const HomeDash: React.FC<{ navigation: any }> = ({ navigation }) => {
 
             <View className="mt-16">
               <CircleBtn
-                borderColor='themeBlue'
+                borderColor='border-themeBlue'
                 img={FlowerImg}
                 onPress={() => navigation.navigate('DataDashboard')}
                 Btnwidth="w-28"
                 Btnheight="h-28"
                 accessLabel="Dashboard"
-                accessHint="Navigates to dashboard"
+                accessHint="This button navigates to dashboard"
               />
               <Text className="text-center p-3 text-black text-base">
                 Dashboard
@@ -90,7 +93,7 @@ const HomeDash: React.FC<{ navigation: any }> = ({ navigation }) => {
 
             <View className="mt-1">
               <CircleBtn
-                borderColor='themeBlue'
+                borderColor='border-themeBlue'
                 img={FlowerImg}
                 Btnwidth="w-28"
                 Btnheight="h-28"
