@@ -1,10 +1,10 @@
 import React from 'react';
-import { View, SafeAreaView, ScrollView, Image } from 'react-native';
+import {View, SafeAreaView, ScrollView, Image} from 'react-native';
 import Button from '../components/Button';
 import LandingImage from './../../assets/landing_1.png';
 import WaveImage from './../../assets/topWave.png';
 
-const LandingPage: React.FC<{ navigation: any }> = ({ navigation }) => {
+const LandingPage: React.FC<{navigation: any}> = ({navigation}) => {
   return (
     <SafeAreaView className="flex-1">
       <ScrollView>
