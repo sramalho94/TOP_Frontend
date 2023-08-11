@@ -1,19 +1,26 @@
 import React from 'react';
-import { View, SafeAreaView, ScrollView, Image } from 'react-native';
-import Button from '../components/Button';
-import LandingImage from './../../assets/landing_1.png';
-import WaveImage from './../../assets/topWave.png';
+import {
+   View,
+  SafeAreaView,
+  ScrollView,
+  Image,
+  StatusBar,
+  useColorScheme,
+ } from 'react-native';
 
-const LandingPage: React.FC<{ navigation: any }> = ({ navigation }) => {
+import Button from '../components/Button';
+import LandingGroupImg from './../../assets/landingGroupImg.png';
+
+const LandingPage: React.FC<{navigation: any}> = ({navigation}) => {
   return (
     <SafeAreaView className="flex-1">
       <ScrollView>
         <Image
-          className="w-full h-72 absolute bg-cover bg-center right-0 left-0 "
+          className="absolute bg-cover bg-center right-0 left-0 "
           source={WaveImage}
         />
         <Image
-          className="w-[342] h-[339] mx-auto mt-[110] xl:mt-[1900]"
+          className="w-[342] h-[339] mx-auto mt-[110]"
           source={LandingImage}
         />
         <View className=" space-y-[12]">
@@ -27,8 +34,8 @@ const LandingPage: React.FC<{ navigation: any }> = ({ navigation }) => {
             width="80"
           />
           <Button
-            onPress={() => navigation.navigate('ReportPage')}
-            innerText="Report Without Account"
+            onPress={() => navigation.navigate('Onboarding')}
+            innerText="Create Account"
             bgColor="bg-white"
             textColor="text-themeBlue"
             border={true}
@@ -36,17 +43,17 @@ const LandingPage: React.FC<{ navigation: any }> = ({ navigation }) => {
             width="80"
           />
           <Button
-            onPress={() => navigation.navigate('Onboarding')}
-            innerText="Create Account"
+            onPress={() => navigation.navigate('ReportPage')}
+            innerText="Report Without Account"
             bgColor="bg-themeBlue"
-            textColor="text-white"
+            textColor="text-themeWhite"
             border={true}
-            borderColor="border border-themeBlue border-3"
+            borderColor="border border-themeBlue border-2"
             width="80"
           />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+        </ScrollView>
+      </SafeAreaView>
+    </>
   );
 };
 

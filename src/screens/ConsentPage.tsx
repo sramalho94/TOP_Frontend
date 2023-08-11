@@ -76,27 +76,27 @@ const ConsentPage: React.FC<{ navigation: any }> = ({ navigation }) => {
     }));
   };
   return (
-    <SafeAreaView>
-      <ScrollView>
-        {/* add topNavBar component here and pass a few props to it */}
-        {/* Still need to double check the font size and family font! */}
+    <>
+      <SafeAreaView className="flex-1 h-screen w-screen bg-themeWhite">
         <TopNavBar
+        textColor='text-themeBlue'
           textSize="xl"
-          textValue="Consent Form"
+          textValue="Create Account"
           fontFamily=""
           haveProgress={false}
         />
-        <View className={`flex justify-center p-4 px-8 flex-1`}>
-          <Text className={`text-xl font-bold text-black mb-5 text-center`}>
-            User Consent
-          </Text>
-          <Text className={`mb-4 text-auto`}>
+
+        {/* <ScrollView> */}
+        {/* add topNavBar component here and pass a few props to it */}
+        {/* Still need to double check the font size and family font! */}
+        <View className={`flex-1 justify-center p-4 px-8`}>
+          <Text className={`mb-4 text-auto leading-5 font-light -mt-[220px]`}>
             By checking the boxes below, you consent to our using the personal
             information we collect through your use of this app in the way we
             have described.
           </Text>
-          <View className={`flex-row items-center`}>
-            <Text className="flex content-center">
+          <View className={`flex-row items-center text-center`}>
+            <Text className="flex content-center leading-5 font-light mb-10">
               For more information about how we use and share personal
               information, please see our{' '}
               <Text
@@ -106,15 +106,15 @@ const ConsentPage: React.FC<{ navigation: any }> = ({ navigation }) => {
               </Text>
             </Text>
           </View>
-          <Text className={`mb-4 text-auto`}>
+          {/* <Text className={`mb-4 text-auto`}>
             You may withdraw your consent at any time by emailing{' '}
             <Text
               className={`text-blue-500 underline`}
               onPress={handleEmailPress}>
               leavecovidtracking-us@joinzoe.com.
             </Text>
-          </Text>
-          <View className="flex-row justify-start">
+          </Text> */}
+          {/* <View className="flex-row justify-start">
             <Text className={`mb-7 text-auto`}>
               Any questions may also be sent to{' '}
               <Text
@@ -123,7 +123,8 @@ const ConsentPage: React.FC<{ navigation: any }> = ({ navigation }) => {
                 covidtracking-us@joinzoe.com.
               </Text>
             </Text>
-          </View>
+          </View> */}
+          {/* <View className="border-slate-200 border-b-2 mb-16 pb-4"></View> */}
           <View className={`flex-row items-left mb-3`}>
             <CheckBox
               handleCheckChanges={() => handleCheckBoxChange('isOver18Checked')}
@@ -163,7 +164,7 @@ const ConsentPage: React.FC<{ navigation: any }> = ({ navigation }) => {
               <Text
                 className={`text-blue-500 underline`}
                 onPress={handleTermsPress}>
-                Zoe Global's Terms of Use
+                Terms of Use
               </Text>{' '}
               and{' '}
               <Text

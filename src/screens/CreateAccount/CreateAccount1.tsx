@@ -1,10 +1,11 @@
 import React, {useContext, useState} from 'react';
-import {View, Text, SafeAreaView, ScrollView, Modal} from 'react-native';
+import {View, Text, SafeAreaView, ScrollView, Modal, Image} from 'react-native';
 import CreateAccountContext from '../../context/CreateAccountContext';
 import TextInputField from '../../components/TextInputField';
 import Button from '../../components/Button';
 import TopNavBar from '../../components/TopNavBar';
 import PasswordField from '../../components/Password';
+import CreateAccount from '../../../assets/testNew.jpg';
 import PasswordError from '../../components/PasswordError';
 
 const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
@@ -77,12 +78,9 @@ const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
               onChange={value => updateFormState('password', value)}
               password={formState.password}
             />
-            <View className={showError}>
-              <PasswordError />
-            </View>
           </View>
         </View>
-        <View className="my-auto">
+        <View className="mt-48">
           <Button
             onPress={handleNext}
             innerText="Next"
@@ -93,7 +91,31 @@ const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
             width="80"
           />
         </View>
-        
+        <Modal visible={isModalVisible} transparent={true}>
+          <View className="flex-1 justify-center items-center bg-opacity-50">
+            <View className="bg-white p-8 rounded-lg w-72 border-4">
+              <Text className="text-xl font-bold mb-4">
+                Your password must include:
+              </Text>
+              <Text className="mb-2">- At least 8 characters</Text>
+              <Text className="mb-2">
+                - One uppercase and one lowercase letter
+              </Text>
+              <Text className="mb-2">
+                - One number and one special character
+              </Text>
+              <Button
+                onPress={toggleModal}
+                innerText="Close"
+                textColor=""
+                bgColor="bg-[#B4B4B4]"
+                border={true}
+                borderColor="border border-4"
+                width="5/6"
+              />
+            </View>
+          </View>
+        </Modal>
       </ScrollView>
     </SafeAreaView>
   );
