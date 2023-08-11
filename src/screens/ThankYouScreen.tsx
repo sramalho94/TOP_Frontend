@@ -1,9 +1,10 @@
-import {View, Text, SafeAreaView, ScrollView} from 'react-native';
+import {View, Text, SafeAreaView, ScrollView, Image} from 'react-native';
 import React from 'react';
 import Button from '../components/Button';
 import {RouteProp} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../../App';
+import CelebrateImage from './../../assets/mega-creator_jump.png'
 
 type ThankYouScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
@@ -30,7 +31,11 @@ const ThankYouScreen = ({navigation, route}: Props) => {
             Your test results have been reported.
           </Text>
         </View>
-        <View className="border-2 border-black w-[286] h-[276] my-4 mx-auto"></View>
+        <Image 
+          className="mx-auto"
+          source={CelebrateImage}
+        />
+        {/* <View className="border-2 border-black w-[286] h-[276] my-4 mx-auto"></View> */}
         <View className="flex-row justify-center ">
           <Text className="text-lg  px-10 text-center">
             {logIn
