@@ -87,6 +87,7 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
         {/* add topNavBar component here and pass a few props to it */}
         {/* Still need to double check the font size and family font! */}
         <TopNavBar
+        textColor='text-themeBlue'
           textSize="xl"
           textValue="Consent Form"
           fontFamily=""
