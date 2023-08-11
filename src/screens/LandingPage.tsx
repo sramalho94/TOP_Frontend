@@ -1,56 +1,69 @@
 import React from 'react';
-import {View, SafeAreaView, ScrollView, Image} from 'react-native';
+import {
+  View,
+  SafeAreaView,
+  ScrollView,
+  Image,
+  StatusBar,
+  useColorScheme,
+} from 'react-native';
+
 import Button from '../components/Button';
-import LandingImage from './../../assets/landing_1.png';
-import WaveImage from './../../assets/topWave.png';
+import LandingGroupImg from './../../assets/landingGroupImg.png';
 
 const LandingPage: React.FC<{navigation: any}> = ({navigation}) => {
+  // const {colors} = useTheme();
+  const theme = useColorScheme();
   return (
-    <SafeAreaView className="w-screen h-screen flex-1">
-      <ScrollView className="">
-        {/* page view */}
-        <View className="w-full justify-center items-center flex-1 flex-col">
-          <View className="">
-            <Image
-              className="bg-cover bg-center right-0 left-0 "
-              source={WaveImage}
-            />
+    <>
+      <SafeAreaView className="w-screen h-screen flex-1 bg-themeWhite">
+        {/* <StatusBar backgroundColor="black" barStyle="dark-content" /> */}
+        <StatusBar
+          backgroundColor="green"
+          barStyle={theme === 'dark' ? 'light-content' : 'default'}
+        />
+        <ScrollView>
+        <View className="w-full justify-center items-center flex-1 flex-col"> 
+          <Image
+            className="w-full h-[500] mb-12 bg-cover bg-center "
+            source={LandingGroupImg}
+          />
           </View>
-          <View className=''>
-            <Image className="mx-auto" source={LandingImage} />
-          </View>
-          <View className="w-full flex-1">
+
+          <View className="mb-3 flex-1 justify-end">
             <Button
               onPress={() => navigation.navigate('SignInPage')}
               innerText="Log in"
               bgColor="bg-white"
               textColor="text-themeBlue"
               border={true}
-              borderColor="border border-themeBlue border-3"
-              width="full"
+              borderColor="border border-themeBlue border-2"
+              width="80"
             />
+          </View>
+          <View className="mb-2">
             <Button
               onPress={() => navigation.navigate('ReportPage')}
               innerText="Report Without Account"
-              bgColor="bg-white"
+              bgColor="bg-themeWhite"
               textColor="text-themeBlue"
               border={true}
-              borderColor="border border-themeBlue border-3"
-              width="full"
-            />
-            <Button
-              onPress={() => navigation.navigate('Onboarding')}
-              innerText="Create Account"
-              bgColor="bg-themeBlue"
-              textColor="text-white"
-              border={true}
-              borderColor="border border-themeBlue border-3"
-              width="full"
+              borderColor="border border-themeBlue border-2"
+              width="80"
             />
           </View>
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+          <Button
+            onPress={() => navigation.navigate('Onboarding')}
+            innerText="Create Account"
+            bgColor="bg-themeBlue"
+            textColor="text-themeWhite"
+            border={true}
+            borderColor="border border-themeBlue border-2"
+            width="80"
+          />
+        </ScrollView>
+      </SafeAreaView>
+    </>
   );
 };
 

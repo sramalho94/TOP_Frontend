@@ -1,5 +1,8 @@
 import React, {useState, useRef, useEffect} from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+
+import onboardingAll_1 from './../../assets/onboardingAll_1.png';
+import onboardingAll_2 from './../../assets/onboardingAll_2.png';
+import onboardingAll_3 from './../../assets/onboardingAll_3.png';
 
 import {
   SafeAreaView,
@@ -13,7 +16,6 @@ import {
 } from 'react-native';
 import {ScrollView} from 'react-native';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import NoImage from './../../assets/nopicture.png';
 import ProgressDots from './../components/ProgressDots';
 import Button from './../components/Button';
 import {RootStackParamList} from '../../App';
@@ -30,22 +32,25 @@ const Onboarding = (props: OnboardingScreenProps) => {
 
   const pages = [
     {
-      imageSource: NoImage,
-      title: 'What the app does and the impact of data',
+      imageSource: onboardingAll_1,
+      title: 'How your data will be used',
+      text: 'Your data will only be shared with public health officials to help them better understand and respond to the spread of diseases in your area.',
       buttonText: 'Continue',
       pageIndicator: 1,
       onButtonPress: () => handleSwipeAnimation(1),
     },
     {
-      imageSource: NoImage,
-      title: 'What the data is used for',
+      imageSource: onboardingAll_2,
+      title: 'How your data won’t be used',
+      text: 'Your privacy matters. Shared data will be encrypted, and never used for advertising or sold to third parties',
       buttonText: 'Continue',
       pageIndicator: 2,
       onButtonPress: () => handleSwipeAnimation(2),
     },
     {
-      imageSource: NoImage,
-      title: 'What the data is not used for',
+      imageSource: onboardingAll_3,
+      title: 'How your data helps',
+      text: 'By sharing your data, you play a crucial role in making your community safer and more informeds',
       buttonText: 'Continue',
       pageIndicator: 3,
       onButtonPress: () => navigation.navigate('CreateAccount1'),
@@ -81,15 +86,22 @@ const Onboarding = (props: OnboardingScreenProps) => {
         <SafeAreaView key={index} className="h-screen w-screen items-center pb-4">
           <View className="flex-1 flex-col mt-4 mb-10">
             <View className="m-5 w-screen">
-              <Image className="m-5 w-full" source={page.imageSource}></Image>
+              <Image className="w-[400px] h-[500px] max-h-full mb-5 bg-contain bg-center" source={page.imageSource}></Image>
               <Text className="justify-content text-center m-5 py-5 font-serif text-[22px]">
                 {page.title}
               </Text>
+              <Text className="mx-10 py-5 font-serif text-[14px] text-center leading-5 font-light">
+                {page.text}
+              </Text>
             </View>
-            <View className="flex-1 flex-col-reverse mb-3">
-              <View className="mt-5 mx-5">
+
+            <View className="flex-1 flex-col-reverse mt-1 ">
+              <View className="flex justify-center mt-5 mx-5">
+                <View className="mb-2">
+                  <ProgressDots page={page.pageIndicator} />
+                </View>
                 <Button
-                  onPress={page.onButtonPress} // Updated this line
+                  onPress={page.onButtonPress}
                   innerText={page.buttonText}
                   bgColor="bg-themeBlue"
                   textColor="text-themeWhite"
@@ -110,7 +122,6 @@ const Onboarding = (props: OnboardingScreenProps) => {
                   />
                 )}
               </View>
-              <ProgressDots page={page.pageIndicator} />
             </View>
           </View>
         </SafeAreaView>

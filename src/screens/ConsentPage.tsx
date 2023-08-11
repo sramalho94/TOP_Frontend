@@ -83,41 +83,47 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
     }));
   };
   return (
-    <SafeAreaView className="flex-1 min-w-screen min-h-screen">
-      {/* add topNavBar component here and pass a few props to it */}
-      {/* Still need to double check the font size and family font! */}
-      <TopNavBar
-        textColor="text-themeBlue"
-        textSize="xl"
-        textValue="Consent Form"
-        fontFamily=""
-        haveProgress={false}
-      />
+<>
+      <SafeAreaView className="flex-1 min-w-screen min-h-screen bg-themeWhite">
+        <TopNavBar
+          textColor="text-themeBlue"
+          textSize="xl"
+          textValue="Consent Form"
+          fontFamily=""
+          haveProgress={false}
+        />
 
-      <View className="flex-1 max-w-lg mx-auto p-4 px-8">
-        <ScrollView>
-          <View className="flex-1">
-            <Text className={`text-xl font-bold text-black mb-5 text-center`}>
-              User Consent
-            </Text>
-            <Text className={`mb-4 text-auto`}>
-              By checking the boxes below, you consent to our using the personal
-              information we collect through your use of this app in the way we
-              have described.
-            </Text>
-            <View className={`flex-row items-center`}>
-              <Text className="flex content-center">
-                For more information about how we use and share personal
-                information, please see our{' '}
-                <Text
-                  className={`text-blue-500 underline`}
-                  onPress={handlePrivacyPolicyPress}>
-                  Privacy Policy.
-                </Text>
+        {/* <ScrollView> */}
+
+        <View className={`flex-1 max-w-lg mx-auto p-4 px-8`}>
+          <Text className={`mb-4 text-auto leading-5 font-light -mt-[220px]`}>
+            By checking the boxes below, you consent to our using the personal
+            information we collect through your use of this app in the way we
+            have described.
+          </Text>
+          <View className={`flex-row items-center text-center`}>
+            <Text className="flex content-center leading-5 font-light mb-10">
+              For more information about how we use and share personal
+              information, please see our{' '}
+              <Text
+                className={`text-blue-500 underline`}
+                onPress={handlePrivacyPolicyPress}>
+                Privacy Policy.
               </Text>
-            </View>
-            <Text className={`mb-4 text-auto`}>
-              You may withdraw your consent at any time by emailing{' '}
+            </Text>
+          </View>
+          {/* might need to comment out  */}
+          <Text className={`mb-4 text-auto`}>
+            You may withdraw your consent at any time by emailing{' '}
+            <Text
+              className={`text-blue-500 underline`}
+              onPress={handleEmailPress}>
+              leavecovidtracking-us@joinzoe.com.
+            </Text>
+          </Text>
+          <View className="flex-row justify-start">
+            <Text className={`mb-7 text-auto`}>
+              Any questions may also be sent to{' '}
               <Text
                 className={`text-blue-500 underline`}
                 onPress={handleEmailPress}>
@@ -186,11 +192,10 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
               </Text>
             </View>
           </View>
-        </ScrollView>
         <View className=" bg-pink-300 mx-auto">
           <Button 
-            innerText='I Agree to These Terms'
-            bgColor='bg-black'
+            innerText='Create Account'
+            bgColor='bg-themeBlue'
             border={true}
             textColor='text-white'
             onPress={handleAgree}
@@ -199,6 +204,7 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
         </View>
       </View>
     </SafeAreaView>
+    </>
   );
 };
 
