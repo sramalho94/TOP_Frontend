@@ -70,6 +70,7 @@ const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
               source={CreateAccount}
             />
           </View>
+          <View className="flex-1">
           <TextInputField
             label="Email*"
             value={formState.email}
@@ -86,9 +87,10 @@ const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
             onChange={value => updateFormState('password', value)}
             password={formState.password}
           />
+          </View>
         </View>
       </View>
-      <View className="mt-4 flex-col-reverse mb-3">
+      <View className="flex-1 mt-4 flex-col-reverse mb-3">
         <Button
           onPress={handleNext}
           innerText="Continue"
