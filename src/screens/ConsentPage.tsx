@@ -93,27 +93,27 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
           haveProgress={false}
         />
 
-        {/* <ScrollView> */}
+        <ScrollView>
 
         <View className={`flex-1 max-w-lg mx-auto p-4 px-8`}>
-          <Text className={`mb-4 text-auto leading-5 font-light -mt-[220px]`}>
+          <Text className={`flex-1 mb-4 text-auto leading-5 font-light `}>
             By checking the boxes below, you consent to our using the personal
             information we collect through your use of this app in the way we
             have described.
           </Text>
-          <View className={`flex-row items-center text-center`}>
+          <View className={`flex-1 flex-row items-center text-center`}>
             <Text className="flex content-center leading-5 font-light mb-10">
               For more information about how we use and share personal
               information, please see our{' '}
               <Text
-                className={`text-blue-500 underline`}
+                className={`flex-1 text-blue-500 underline`}
                 onPress={handlePrivacyPolicyPress}>
                 Privacy Policy.
               </Text>
             </Text>
           </View>
           {/* might need to comment out  */}
-          <Text className={`mb-4 text-auto`}>
+          <Text className={` flex-1 mb-4 text-auto`}>
             You may withdraw your consent at any time by emailing{' '}
             <Text
               className={`text-blue-500 underline`}
@@ -121,7 +121,7 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
               leavecovidtracking-us@joinzoe.com.
             </Text>
           </Text>
-          <View className="flex-row justify-start">
+          <View className="flex-1 flex-row justify-start">
             <Text className={`mb-7 text-auto`}>
               Any questions may also be sent to{' '}
               <Text
@@ -130,7 +130,7 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
                 leavecovidtracking-us@joinzoe.com.
               </Text>
             </Text>
-            <View className="flex-row justify-start">
+            <View className="flex-1 flex-row justify-start">
               <Text className={`mb-7 text-auto`}>
                 Any questions may also be sent to{' '}
                 <Text
@@ -140,7 +140,7 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
                 </Text>
               </Text>
             </View>
-            <View className={`flex-row items-left mb-3`}>
+            <View className={`flex-1 flex-row items-left mb-3`}>
               <CheckBox
                 handleCheckChanges={() =>
                   handleCheckBoxChange('isOver18Checked')
@@ -151,7 +151,7 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
                 I confirm that I'm over 18 years old.
               </Text>
             </View>
-            <View className={`flex-row bg-purple-300 items-center mb-4`}>
+            <View className={`flex-1 flex-row bg-purple-300 items-center mb-4`}>
               <CheckBox
                 handleCheckChanges={() =>
                   handleCheckBoxChange('isConsentChecked')
@@ -169,7 +169,7 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
                 </Text>
               </Text>
             </View>
-            <View className={`flex-row items-center mb-4`}>
+            <View className={`flex-1 flex-row items-center mb-4`}>
               <CheckBox
                 handleCheckChanges={() =>
                   handleCheckBoxChange('isReadAndAcceptChecked')
@@ -192,7 +192,8 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
               </Text>
             </View>
           </View>
-        <View className=" bg-pink-300 mx-auto">
+          
+        <View className="flex-1 bg-pink-300 mx-auto">
           <Button 
             innerText='Create Account'
             bgColor='bg-themeBlue'
@@ -203,6 +204,7 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
           />
         </View>
       </View>
+      </ScrollView>
     </SafeAreaView>
     </>
   );

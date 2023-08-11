@@ -73,10 +73,11 @@ const Onboarding = (props: OnboardingScreenProps) => {
   };
 
   return (
+<>
     <ScrollView
       ref={scrollViewRef}
-      horizontal
       pagingEnabled
+      horizontal
       showsHorizontalScrollIndicator={false}
       scrollEnabled
       onScroll={handleScroll} // Handle scrolling event
@@ -84,20 +85,21 @@ const Onboarding = (props: OnboardingScreenProps) => {
     >
       {pages.map((page, index) => (
         <SafeAreaView key={index} className="h-screen w-screen items-center pb-4">
-          <View className="flex-1 flex-col mt-4 mb-10">
-            <View className="m-5 w-screen">
-              <Image className="w-[400px] h-[500px] max-h-full mb-5 bg-contain bg-center" source={page.imageSource}></Image>
-              <Text className="justify-content text-center m-5 py-5 font-serif text-[22px]">
+          
+          <View className="flex-1 flex-col max-w-md mb-10">
+            <View className="w-screen max-w-md">
+              <Image className="w-screen max-w-md h-[500px] max-h-full mb-3 bg-contain bg-center" source={page.imageSource}></Image>
+              <Text className="justify-content text-center py-5 font-serif text-[22px]">
                 {page.title}
               </Text>
-              <Text className="mx-10 py-5 font-serif text-[14px] text-center leading-5 font-light">
+              <Text className="mx-10 pb-5 font-serif text-[14px] text-center leading-5 font-light">
                 {page.text}
               </Text>
             </View>
 
             <View className="flex-1 flex-col-reverse mt-1 ">
-              <View className="flex justify-center mt-5 mx-5">
-                <View className="mb-2">
+              <View className="flex-1 justify-center mt-5 mx-5">
+                <View className="m-5">
                   <ProgressDots page={page.pageIndicator} />
                 </View>
                 <Button
@@ -124,9 +126,11 @@ const Onboarding = (props: OnboardingScreenProps) => {
               </View>
             </View>
           </View>
+          
         </SafeAreaView>
       ))}
-    </ScrollView>
+      </ScrollView>
+    </>
   );
 };
 
