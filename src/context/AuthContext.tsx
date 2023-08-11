@@ -218,9 +218,20 @@ export const AuthProvider = ({children}: any) => {
   }, []);
 
   const logout = async () => {
+    // Clear Keychain data (both token and DOB)
     await Keychain.resetGenericPassword();
+
+    // Clear Async Storage data
+    await AsyncStorage.multiRemove(['USER_ID', 'USERNAME']);
+
+    // Clear axios default headers for authorization
     axios.defaults.headers.common['Authorization'] = '';
+
+    // Reset state
     setAuthState({token: null, authenticated: false, loading: false});
+    setUserId(null);
+    setUsernameVal(null);
+    setDOB(null);
   };
 
   const value = {

@@ -58,5 +58,10 @@
   },
   "engines": {
     "node": ">=16"
+  },
+  "rnpm": {
+    "assets": [
+      "./assets/fonts/"
+    ]
   }
 }
