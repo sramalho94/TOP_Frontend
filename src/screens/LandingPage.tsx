@@ -4,22 +4,22 @@ import Button from '../components/Button';
 import LandingImage from './../../assets/landing_1.png';
 import WaveImage from './../../assets/topWave.png';
 
-const LandingPage: React.FC<{ navigation: any }> = ({ navigation }) => {
+const LandingPage: React.FC<{navigation: any}> = ({navigation}) => {
   return (
-    <SafeAreaView className="flex-1 min-w-screen min-h-screen">
-      <ScrollView>
-
+    <SafeAreaView className="w-screen h-screen flex-1">
+      <ScrollView className="">
         {/* page view */}
-        <View className="w-screen h-screen">
-          <Image
-            className="absolute bg-cover bg-center right-0 left-0 "
-            source={WaveImage}
-          />
-          <Image
-            className="w-[342] h-[339] mx-auto mt-[110]"
-            source={LandingImage}
-          />
-          <View className="w-screen space-y-[12]">
+        <View className="w-full justify-center items-center flex-1 flex-col">
+          <View className="">
+            <Image
+              className="bg-cover bg-center right-0 left-0 "
+              source={WaveImage}
+            />
+          </View>
+          <View className=''>
+            <Image className="mx-auto" source={LandingImage} />
+          </View>
+          <View className="w-full flex-1">
             <Button
               onPress={() => navigation.navigate('SignInPage')}
               innerText="Log in"
@@ -27,7 +27,7 @@ const LandingPage: React.FC<{ navigation: any }> = ({ navigation }) => {
               textColor="text-themeBlue"
               border={true}
               borderColor="border border-themeBlue border-3"
-              width="80"
+              width="full"
             />
             <Button
               onPress={() => navigation.navigate('ReportPage')}
@@ -36,7 +36,7 @@ const LandingPage: React.FC<{ navigation: any }> = ({ navigation }) => {
               textColor="text-themeBlue"
               border={true}
               borderColor="border border-themeBlue border-3"
-              width="80"
+              width="full"
             />
             <Button
               onPress={() => navigation.navigate('Onboarding')}
@@ -45,7 +45,7 @@ const LandingPage: React.FC<{ navigation: any }> = ({ navigation }) => {
               textColor="text-white"
               border={true}
               borderColor="border border-themeBlue border-3"
-              width="80"
+              width="full"
             />
           </View>
         </View>
