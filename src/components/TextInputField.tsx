@@ -28,6 +28,7 @@ const TextInputField: React.FC<TextInputFieldProps> = ({
         onChangeText={handleChange}
         placeholder={placeholder}
         autoCapitalize="none"
+        accessible={true}
         accessibilityLabel={label}
         accessibilityLabelledBy="formLabel"
       />

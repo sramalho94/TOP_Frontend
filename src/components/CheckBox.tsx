@@ -25,6 +25,7 @@ const CheckBox: React.FC<CheckBoxProps> = ({
       accessibilityHint={accessHint}
       accessibilityRole='checkbox'
       aria-checked={isSelected}
+      accessibilityState={{ selected: isSelected }}
       >
       {!isSelected ? (
         <Icon name="square-outline" size={22} color="#000000" />
