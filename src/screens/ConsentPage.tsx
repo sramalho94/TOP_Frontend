@@ -85,6 +85,7 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
     <>
       <SafeAreaView className="flex-1 h-screen w-screen bg-themeWhite">
         <TopNavBar
+        textColor='text-themeBlue'
           textSize="xl"
           textValue="Create Account"
           fontFamily=""

@@ -36,7 +36,6 @@ const CreateAccount3: React.FC<{navigation: any}> = ({navigation}) => {
 
   return (
     <SafeAreaView className="flex-1 h-screen w-screen bg-themeWhite">
-      {/* <ScrollView> */}
       <TopNavBar
         fontFamily=""
         textSize="xl"
@@ -174,7 +173,6 @@ const CreateAccount3: React.FC<{navigation: any}> = ({navigation}) => {
           </View>
         </View>
       </Modal>
-      {/* </ScrollView> */}
     </SafeAreaView>
   );
 };

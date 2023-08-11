@@ -2,8 +2,16 @@
   "migIndex": 1,
   "data": [
     {
-      "path": "assets/fonts/PoetsenOne-Regular.ttf",
-      "sha1": "d8336933e7532ca58d8846ca22f4cbf5c18f0914"
+      "path": "assets/fonts/Carter One.ttf",
+      "sha1": "088987baf523ac206b1d9b9e350bc72bf3949bd3"
+    },
+    {
+      "path": "assets/fonts/Inter Light.ttf",
+      "sha1": "dd9ec1ae67dd85143bacf7a3cb37e9f0ac979843"
+    },
+    {
+      "path": "assets/fonts/Inter Regular.ttf",
+      "sha1": "7237d9cf55f177702066a28a4dde1e4c7e8ab576"
     }
   ]
 }

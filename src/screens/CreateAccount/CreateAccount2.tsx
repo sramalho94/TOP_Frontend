@@ -1,5 +1,5 @@
 import React, {useContext, useState} from 'react';
-import {View, Text, SafeAreaView, ScrollView, Modal} from 'react-native';
+import {View, Text, SafeAreaView, Modal} from 'react-native';
 import CreateAccountContext from '../../context/CreateAccountContext';
 import TextInputField from '../../components/TextInputField';
 import Button from '../../components/Button';
@@ -79,7 +79,6 @@ const CreateAccount2: React.FC<{navigation: any}> = ({navigation}) => {
 
   return (
     <SafeAreaView className="flex-1 h-screen w-screen bg-themeWhite">
-      {/* <ScrollView> */}
       <TopNavBar
         fontFamily=""
         textSize="xl"
@@ -158,7 +157,6 @@ const CreateAccount2: React.FC<{navigation: any}> = ({navigation}) => {
           </View>
         </View>
       </Modal>
-      {/* </ScrollView> */}
     </SafeAreaView>
   );
 };

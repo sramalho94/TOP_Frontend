@@ -14,13 +14,13 @@ import {
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {AuthProvider, useAuth} from './src/context/AuthContext';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import CreateAccount1 from './src/screens/CreateAccount/CreateAccount1';
 import CreateAccount2 from './src/screens/CreateAccount/CreateAccount2';
 import CreateAccount3 from './src/screens/CreateAccount/CreateAccount3';
 import CreateAccountProvider from './src/context/CreateAccountProvider';
 import ConsentFormThankYou from './src/screens/ConsentFormThankYou';
-import {StatusBar} from 'react-native';
+import Loading from './src/screens/Loading';
+import DataDashboard from './src/screens/DataDashboard';
 
 export type RootStackParamList = {
   Onboarding: undefined;
@@ -36,6 +36,8 @@ export type RootStackParamList = {
   CreateAccount2: undefined;
   CreateAccount3: undefined;
   ConsentFormThankYou: {logIn: boolean};
+  Loading: undefined;
+  DataDashboard: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -48,20 +50,17 @@ function AppContent({
   const [initialScreen, setInitialScreen] = useState<
     'HomeDash' | 'LandingPage'
   >('LandingPage');
+  const [isTokenChecked, setIsTokenChecked] = useState(false);
 
   // Determine the initial screen based on the token
   useEffect(() => {
-    const determineInitialScreen = async () => {
-      const token = await AsyncStorage.getItem('@auth_token');
-      if (token) {
-        setInitialScreen('HomeDash');
-      } else {
-        setInitialScreen('LandingPage');
-      }
-    };
-
-    determineInitialScreen();
-  }, []);
+    if (authState?.token) {
+      setInitialScreen('HomeDash');
+    } else {
+      setInitialScreen('LandingPage');
+    }
+    setIsTokenChecked(true);
+  }, [authState?.token]);
 
   // Handle automatic navigation upon authentication changes
   useEffect(() => {
@@ -78,8 +77,8 @@ function AppContent({
     }
   }, [authState, navigationRef]);
 
-  if (authState?.loading) {
-    return null;
+  if (!isTokenChecked) {
+    return <Loading />;
   }
 
   return (
@@ -141,7 +140,17 @@ function AppContent({
               name="AccountReportPage"
               component={AccountReportPage}
             />
-            <Stack.Screen name="HomeDash" component={HomeDash} />
+            <Stack.Screen
+              name="HomeDash"
+              component={HomeDash}
+              options={{headerShown: false, title: 'Home'}}
+            />
+            <Stack.Screen name="Loading" component={Loading} />
+            <Stack.Screen
+              name="DataDashboard"
+              component={DataDashboard}
+              options={{title: 'Data Dashboard', headerBackTitle: 'Home'}}
+            />
           </Stack.Navigator>
         </NavigationContainer>
       </CreateAccountProvider>
