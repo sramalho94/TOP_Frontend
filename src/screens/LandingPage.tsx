@@ -1,27 +1,27 @@
 import React from 'react';
 import {
-   View,
+  View,
   SafeAreaView,
   ScrollView,
   Image,
   StatusBar,
   useColorScheme,
- } from 'react-native';
+} from 'react-native';
 
 import Button from '../components/Button';
 import LandingGroupImg from './../../assets/landingGroupImg.png';
-
+import topWave from './../../assets/topWave.png';
 const LandingPage: React.FC<{navigation: any}> = ({navigation}) => {
   return (
     <SafeAreaView className="flex-1">
       <ScrollView>
         <Image
           className="absolute bg-cover bg-center right-0 left-0 "
-          source={WaveImage}
+          source={topWave}
         />
         <Image
           className="w-[342] h-[339] mx-auto mt-[110]"
-          source={LandingImage}
+          source={LandingGroupImg}
         />
         <View className=" space-y-[12]">
           <Button
@@ -51,9 +51,9 @@ const LandingPage: React.FC<{navigation: any}> = ({navigation}) => {
             borderColor="border border-themeBlue border-2"
             width="80"
           />
-        </ScrollView>
-      </SafeAreaView>
-    </>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
