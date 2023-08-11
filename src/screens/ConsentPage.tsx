@@ -94,7 +94,7 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
         haveProgress={false}
       />
 
-      <View className="flex-1 p-4 px-8">
+      <View className="flex-1 max-w-lg mx-auto p-4 px-8">
         <ScrollView>
           <View className="flex-1">
             <Text className={`text-xl font-bold text-black mb-5 text-center`}>
@@ -145,7 +145,7 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
                 I confirm that I'm over 18 years old.
               </Text>
             </View>
-            <View className={`flex-row items-center mb-4`}>
+            <View className={`flex-row bg-purple-300 items-center mb-4`}>
               <CheckBox
                 handleCheckChanges={() =>
                   handleCheckBoxChange('isConsentChecked')
@@ -187,7 +187,7 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
             </View>
           </View>
         </ScrollView>
-        <View className=" bg-pink-300 w-full">
+        <View className=" bg-pink-300 mx-auto">
           <Button 
             innerText='I Agree to These Terms'
             bgColor='bg-black'
