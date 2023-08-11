@@ -119,18 +119,21 @@ export const AuthProvider = ({children}: any) => {
 
   const saveDOBToLocalStorage = async (DOB: string) => {
     try {
-      await AsyncStorage.setItem('DOB', DOB);
+      await Keychain.setGenericPassword('DOB', DOB);
     } catch (error) {
-      console.log('Error saving DOB to local storage: ', error);
+      console.log('Error saving DOB to keychain: ', error);
     }
   };
 
-  const getDOBFromLocalStorage = async (): Promise<string | null> => {
+  const getDOBFromKeychain = async (): Promise<string | null> => {
     try {
-      const storedDOB = await AsyncStorage.getItem('DOB');
-      return storedDOB ? storedDOB : null;
+      const storedDOB = await Keychain.getGenericPassword();
+      if (storedDOB && storedDOB.username === 'DOB') {
+        return storedDOB.password;
+      }
+      return null;
     } catch (error) {
-      console.log('Error retrieving DOB from local storage: ', error);
+      console.log('Error retrieving DOB from keychain: ', error);
       return null;
     }
   };
@@ -195,9 +198,9 @@ export const AuthProvider = ({children}: any) => {
       }
     };
     const initDOB = async () => {
-      const DOB = await getDOBFromLocalStorage();
-      if (DOB) {
-        setDOB(DOB);
+      const DOBVal = await getDOBFromKeychain();
+      if (DOBVal) {
+        setDOB(DOBVal);
       }
     };
 
@@ -215,9 +218,20 @@ export const AuthProvider = ({children}: any) => {
   }, []);
 
   const logout = async () => {
+    // Clear Keychain data (both token and DOB)
     await Keychain.resetGenericPassword();
+
+    // Clear Async Storage data
+    await AsyncStorage.multiRemove(['USER_ID', 'USERNAME']);
+
+    // Clear axios default headers for authorization
     axios.defaults.headers.common['Authorization'] = '';
+
+    // Reset state
     setAuthState({token: null, authenticated: false, loading: false});
+    setUserId(null);
+    setUsernameVal(null);
+    setDOB(null);
   };
 
   const value = {
