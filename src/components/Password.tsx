@@ -42,7 +42,7 @@ const PasswordField = (props: Props) => {
 
       <TouchableOpacity
         onPress={togglePasswordVisibility}
-        className="absolute top-10 right-10">
+        className="absolute top-4 right-10">
         <Icon
           className="text-gray-500"
           name={showPassword ? 'eye-outline' : 'eye-off-outline'}

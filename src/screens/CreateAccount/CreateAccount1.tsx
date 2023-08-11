@@ -53,7 +53,7 @@ const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
   };
 
   return (
-    <SafeAreaView className="flex-1 h-screen w-screen bg-themeWhite">
+    <SafeAreaView className="flex-1 min-h-screen w-screen bg-themeWhite">
       {/* <ScrollView className="flex-1"> */}
       <TopNavBar
         fontFamily=""
@@ -62,7 +62,7 @@ const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
         haveProgress={true}
         page={1}
       />
-      <View className="flex-1">
+      <View className="flex-1 min-h-[300px] bg-green-300">
         <View className="flex-1 mx-auto w-[342] mt-4">
           <View>
             <Image
@@ -70,27 +70,27 @@ const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
               source={CreateAccount}
             />
           </View>
-          <View className="flex-1">
-          <TextInputField
-            label="Email*"
-            value={formState.email}
-            onChange={value => updateFormState('email', value)}
-            placeholder="Email"
-          />
-          <TextInputField
-            label="Username*"
-            value={formState.username}
-            onChange={value => updateFormState('username', value)}
-            placeholder="Username"
-          />
-          <PasswordField
-            onChange={value => updateFormState('password', value)}
-            password={formState.password}
-          />
+          <View className="flex-1 mt-5">
+            <TextInputField
+              label="Email*"
+              value={formState.email}
+              onChange={value => updateFormState('email', value)}
+              placeholder="Email"
+            />
+            <TextInputField
+              label="Username*"
+              value={formState.username}
+              onChange={value => updateFormState('username', value)}
+              placeholder="Username"
+            />
+            <PasswordField
+              onChange={value => updateFormState('password', value)}
+              password={formState.password}
+            />
           </View>
         </View>
       </View>
-      <View className="flex-1 mt-4 flex-col-reverse mb-3">
+      <View className="flex-1 mt-4 bg-blue-300 flex-col-reverse mb-3">
         <Button
           onPress={handleNext}
           innerText="Continue"
