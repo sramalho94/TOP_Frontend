@@ -30,6 +30,9 @@
 		D8FDA1FB2A5F3C2D0031DA21 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D8FDA1EB2A5F3C2C0031DA21 /* EvilIcons.ttf */; };
 		D8FDA1FC2A5F3C2D0031DA21 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D8FDA1EC2A5F3C2C0031DA21 /* SimpleLineIcons.ttf */; };
 		D8FDA1FD2A5F3C2D0031DA21 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D8FDA1ED2A5F3C2C0031DA21 /* MaterialIcons.ttf */; };
+		D7331B95C15A4E01AB972FFF /* Carter One.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C687EB9F61F647C694CD6BE2 /* Carter One.ttf */; };
+		468CB2239E704E31BF4E35F3 /* Inter Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 35F5880BDADF4D2DA452499F /* Inter Light.ttf */; };
+		EF6450B3BF864B77B9E47396 /* Inter Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D9838F26D50E4508B578B3FE /* Inter Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +79,9 @@
 		D8FDA1EC2A5F3C2C0031DA21 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SimpleLineIcons.ttf; sourceTree = "<group>"; };
 		D8FDA1ED2A5F3C2C0031DA21 /* MaterialIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MaterialIcons.ttf; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		C687EB9F61F647C694CD6BE2 /* Carter One.ttf */ = {isa = PBXFileReference; name = "Carter One.ttf"; path = "../assets/fonts/Carter One.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		35F5880BDADF4D2DA452499F /* Inter Light.ttf */ = {isa = PBXFileReference; name = "Inter Light.ttf"; path = "../assets/fonts/Inter Light.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		D9838F26D50E4508B578B3FE /* Inter Regular.ttf */ = {isa = PBXFileReference; name = "Inter Regular.ttf"; path = "../assets/fonts/Inter Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +161,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				38258034EB5C4008AFA15913 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -204,6 +211,17 @@
 			name = Fonts;
 			path = "../node_modules/react-native-vector-icons/Fonts";
 			sourceTree = "<group>";
+		};
+		38258034EB5C4008AFA15913 /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				C687EB9F61F647C694CD6BE2 /* Carter One.ttf */,
+				35F5880BDADF4D2DA452499F /* Inter Light.ttf */,
+				D9838F26D50E4508B578B3FE /* Inter Regular.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -317,6 +335,9 @@
 				D8FDA1F72A5F3C2C0031DA21 /* FontAwesome5_Solid.ttf in Resources */,
 				D8FDA1F32A5F3C2C0031DA21 /* MaterialCommunityIcons.ttf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				D7331B95C15A4E01AB972FFF /* Carter One.ttf in Resources */,
+				468CB2239E704E31BF4E35F3 /* Inter Light.ttf in Resources */,
+				EF6450B3BF864B77B9E47396 /* Inter Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
