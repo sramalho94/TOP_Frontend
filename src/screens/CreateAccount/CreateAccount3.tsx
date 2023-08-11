@@ -7,7 +7,6 @@ import DropDownField from '../../components/DropDownField';
 
 const CreateAccount3: React.FC<{navigation: any}> = ({navigation}) => {
   const {formState, updateFormState} = useContext(CreateAccountContext);
-  const [isModalVisible, setIsModalVisible] = useState(false);
   const [genderOpen, setGenderOpen] = useState<boolean>(false);
   const [raceOpen, setRaceOpen] = useState<boolean>(false);
   const [ethnicityOpen, setEthnicityOpen] = useState<boolean>(false);
@@ -30,10 +29,6 @@ const CreateAccount3: React.FC<{navigation: any}> = ({navigation}) => {
     setEthnicityOpen(value);
   };
 
-  const toggleModal = () => {
-    setIsModalVisible(!isModalVisible);
-  };
-
   return (
     <SafeAreaView className="flex-1 min-w-screen">
       <ScrollView>
@@ -46,19 +41,7 @@ const CreateAccount3: React.FC<{navigation: any}> = ({navigation}) => {
           page={3}
         />
         <View className="mx-auto my-auto justify-between">
-          <View className="w-[342]">
-            <View className="my-4">
-              <Button
-                onPress={toggleModal}
-                innerText="(Why do we need this information?)"
-                bgColor=""
-                textColor=""
-                border={false}
-                borderColor="border border-gray"
-                textDecoration="underline"
-                width="80"
-              />
-            </View>
+          <View className="max-w-lg mt-10">
             <DropDownField
               text="Gender"
               selectItems={[
@@ -151,30 +134,6 @@ const CreateAccount3: React.FC<{navigation: any}> = ({navigation}) => {
             width="80"
           />
         </View>
-        <Modal visible={isModalVisible} transparent={true}>
-          <View className="flex-1 justify-center items-center bg-opacity-50 border-4">
-            <View className="bg-white p-8 rounded-lg w-72">
-              <Text className="text-xl font-bold mb-4">
-                Why do we need this information?
-              </Text>
-              <Text className="mb-2 text-lg">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
-                tempore beatae quasi officia error distinctio illum laboriosam
-                ea veniam repellendus aperiam, impedit alias suscipit! Maiores
-                sint adipisci repellendus dolor quaerat.
-              </Text>
-              <Button
-                onPress={toggleModal}
-                innerText="Close"
-                textColor=""
-                bgColor="bg-[#B4B4B4]"
-                border={false}
-                borderColor=""
-                width="5/6"
-              />
-            </View>
-          </View>
-        </Modal>
       </ScrollView>
     </SafeAreaView>
   );
