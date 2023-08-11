@@ -32,34 +32,25 @@ export default function SignInPage(props: Props) {
   const { onLogin } = useAuth();
   const navigation: any = useNavigation();
 
-
   const handleSubmit: any = (e: any) => {
     e.preventDefault();
-    console.log("userSignIn submit: ", { userSignUp })
 
-    setErrorMessage('Username or Password is incorrect. Please try again or click Forgot Password.');
-
-    // this only checks if empty, move setErrorMessage to the .catch instead
-    if (!userSignUp.username || !userSignUp.password) {
-      setErrorMessage('Username or Password is incorrect. Please try again or click Forgot Password.');
-    }
     if (onLogin) {
       onLogin(userSignUp)
-        .then((res: any) => {
-          console.log('res from login!!: ' + JSON.stringify(res.data))
-          if (res.success) {
-            navigation.navigate('AccountReportPage')
-          }
+      .then((res: any) => {
+        if (res.success) {
+          navigation.navigate('AccountReportPage')
         }
-        )
-        .catch((error: any) => {
+      }
+      )
+      .catch((error: any) => {
+          setErrorMessage('Username or Password is incorrect. Please try again or click Forgot Password.');
           console.log('Screen Login Err: ' + error);
         });
     } else {
       console.log('onLogin is not a function or is undefined.');
     }
   };
-
 
   return (
     <SafeAreaView className="w-342 m-4">
