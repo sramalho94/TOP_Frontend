@@ -1,51 +1,37 @@
-import {
-  View,
-  Text,
-  SafeAreaView,
-  TouchableOpacity,
-  Pressable,
-  ScrollView,
-} from 'react-native';
-import React, {useState, useEffect} from 'react';
-import Icon from 'react-native-vector-icons/AntDesign';
+import {View, Text, SafeAreaView, ScrollView} from 'react-native';
+import React, {useState} from 'react';
 import TextInputField from '../components/TextInputField';
 import Button from '../components/Button';
 import TopNavBar from '../components/TopNavBar';
 import CircleBtn from '../components/CircleBtn';
 import {useAuth} from '../context/AuthContext';
 import ApiService from '../services/ApiService';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-type Props = {};
 
-interface ApiResponse {
-  data: {
-    user: {
-      email: string;
-      DOB: string;
-      state: string;
-      ZIP: string;
-      firstName: string;
-      gender: string;
-      ethnicity: string;
-      race: string;
-      id: number;
-      username: string;
-      passwordDigest: string;
-      createdAt: string;
-      updatedAt: string;
-    };
-  };
+interface FormState {
+  result: boolean;
+  userId: number | null;
+  DOT: string;
+  DOB: string | null;
+  ZIP: string;
+  state: string;
+  gender: string;
+  race: string;
+  ethnicity: string;
 }
 
 const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
-  const [covidInfo, setCovidInfo] = useState<ApiResponse | null>(null);
-
-  const {userId: userIdState} = useAuth();
-  const actualUserId = userIdState ? userIdState.userId : null;
-
-  const [formState, setFormState] = useState<any | undefined>({
+  const {userId: actualUserId, DOB} = useAuth();
+  const actualUserIdValue = actualUserId ?? null;
+  const DOBVal = DOB ?? null;
+  const [negColor, setNegColor] = useState<string>("bg-themeWhite")
+  const [posColor, setPosColor] = useState<string>("bg-themeWhite")
+  const [negTextColor, setNegTextColor] = useState<string>("text-black")
+  const [posTextColor, setPosTextColor] = useState<string>("text-black")
+  const [formState, setFormState] = useState<FormState>({
     result: false,
-    userId: actualUserId,
+    DOB: DOBVal,
+    userId: actualUserIdValue,
+    DOT: '',
     ZIP: '',
     state: '',
     gender: '',
@@ -59,18 +45,30 @@ const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
 
   const handleSubmit: any = async (e: any) => {
     e.preventDefault();
+
+    // Check if userId is not null before proceeding
+    if (formState.userId === null) {
+      console.error('UserId is null. Cannot proceed with the API call.');
+      return;
+    }
+
     try {
-      const res = await ApiService.createTestWithAccount(formState);
-      setCovidInfo(res.data.user);
+      const res = await ApiService.createTestWithAccount({
+        ...formState,
+        userId: formState.userId as number,
+      });
+      console.log('res: ', res);
       navigation.navigate('ThankYouScreen');
       setFormState({
         result: false,
-        userId: actualUserId,
+        userId: formState.userId,
+        DOT: '',
         ZIP: '',
         state: '',
         gender: '',
         race: '',
         ethnicity: '',
+        DOB: DOBVal,
       });
     } catch (error) {
       console.log('Create Covid Message: ' + error);
@@ -78,35 +76,11 @@ const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
     console.log('Covid Info: ' + JSON.stringify(formState));
   };
 
-  const getUserIdFromLocalStorage = async (): Promise<string | null> => {
-    try {
-      return await AsyncStorage.getItem('USER_ID');
-    } catch (error) {
-      console.log(
-        'Error retrieving user id from local storage in AccountReportPage: ',
-        error,
-      );
-      return null;
-    }
-  };
-
-  useEffect(() => {
-    const initUserId = async () => {
-      const id = await getUserIdFromLocalStorage();
-      if (id) setFormState(prevState => ({...prevState, userId: id}));
-    };
-
-    initUserId();
-  }, []);
-
-  useEffect(() => {
-    console.log('User ID from Context:', actualUserId);
-  });
-
   return (
     <SafeAreaView className="min-w-screen">
       <ScrollView>
         <TopNavBar
+        textColor='text-themeBlue'
           textSize="xl"
           fontFamily=""
           haveProgress={false}
@@ -123,8 +97,17 @@ const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
           <View className="justify-center space-x-4 flex-row my-8">
             <View className="m-2">
               <CircleBtn
-                bgColor="bg-themeLightBlue"
-                updateForm={value => handleChange('result', false)}
+                bgColor={negColor}
+                textColor={negTextColor}
+                borderColor="border-themeLigthBlue"
+                updateForm={
+                  () => {
+                    handleChange('result', false)
+                    setNegColor("bg-themeLightBlue")
+                    setPosColor("bg-themeWhite")
+                    setNegTextColor("text-white")
+                    setPosTextColor("text-black")
+                  }}
                 text="Negative"
                 Btnwidth="w-32"
                 Btnheight="h-32"
@@ -134,9 +117,17 @@ const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
             </View>
             <View className="m-2">
               <CircleBtn
+                borderColor='border-themeLightOrange'
                 text="Positive"
-                bgColor="bg-themeLightOrange"
-                updateForm={value => handleChange('result', true)}
+                textColor={posTextColor}
+                bgColor={posColor}
+                updateForm={() => {
+                  handleChange('result', true)
+                  setNegColor("bg-themeWhite")
+                  setPosColor("bg-themeLightOrange")
+                  setNegTextColor("text-black")
+                  setPosTextColor("text-white")
+                }}
                 Btnwidth="w-32"
                 Btnheight="h-32"
                 textSize="base"
@@ -148,10 +139,10 @@ const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
           {/* Text input fields container */}
           <View className="">
             <TextInputField
-              label="State*"
-              value={formState.state}
-              onChange={value => handleChange('state', value)}
-              placeholder="Enter your state"
+              label="Date of Test*"
+              value={formState.DOT}
+              onChange={value => handleChange('DOT', value)}
+              placeholder="mm/dd/yyyy"
             />
             <TextInputField
               label="Zip Code*"
@@ -167,7 +158,7 @@ const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
               onPress={handleSubmit}
               innerText="Submit"
               textColor="text-white"
-              bgColor="bg-black"
+              bgColor="bg-themeBlue"
               border={true}
               width="80"
             />

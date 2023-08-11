@@ -91,10 +91,10 @@ const Onboarding = (props: OnboardingScreenProps) => {
                 <Button
                   onPress={page.onButtonPress} // Updated this line
                   innerText={page.buttonText}
-                  bgColor="bg-white"
-                  textColor="text-black"
+                  bgColor="bg-themeBlue"
+                  textColor="text-themeWhite"
                   border={true}
-                  borderColor="border border-gray"
+                  borderColor="border border-themeBlue border-3"
                   width="80"
                 />
 

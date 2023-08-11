@@ -1,11 +1,11 @@
 import {View, Text, SafeAreaView, ScrollView} from 'react-native';
 import React from 'react';
-
 import CircleBtn from '../components/CircleBtn';
-
+import {useAuth} from '../context/AuthContext';
 import FlowerImg from '../../assets/orange-flower.png';
 
 const HomeDash: React.FC<{navigation: any}> = ({navigation}) => {
+  const {onLogout} = useAuth();
   return (
     <SafeAreaView className="h-screen w-screen">
       <ScrollView>
@@ -20,8 +20,13 @@ const HomeDash: React.FC<{navigation: any}> = ({navigation}) => {
               <CircleBtn
                 img={FlowerImg}
                 bgColor="bg-themeLightOrange"
+                text="Logout"
                 onPress={() => {
-                  console.log("You're Sick!!");
+                  if (onLogout) {
+                    onLogout();
+                  } else {
+                    console.error('onLogout function is not provided');
+                  }
                 }}
                 Btnwidth="w-24"
                 Btnheight="h-24"
@@ -62,9 +67,7 @@ const HomeDash: React.FC<{navigation: any}> = ({navigation}) => {
             <View className="mt-16">
               <CircleBtn
                 img={FlowerImg}
-                onPress={() => {
-                  console.log("You're Sick!!");
-                }}
+                onPress={() => navigation.navigate('DataDashboard')}
                 Btnwidth="w-28"
                 Btnheight="h-28"
               />
@@ -74,14 +77,7 @@ const HomeDash: React.FC<{navigation: any}> = ({navigation}) => {
             </View>
 
             <View className="mt-1">
-              <CircleBtn
-                img={FlowerImg}
-                onPress={() => {
-                  console.log("You're Sick!!");
-                }}
-                Btnwidth="w-28"
-                Btnheight="h-28"
-              />
+              <CircleBtn img={FlowerImg} Btnwidth="w-28" Btnheight="h-28" />
               <Text className="text-center p-3 text-black text-base">
                 Exchange
               </Text>

@@ -15,15 +15,15 @@ const ProgressDots = ({page}: Props) => {
       <View className="flex-row justify-center">
         <View
           className={`rounded-lg ${
-            page === 1 ? 'bg-black' : 'bg-gray-300'
+            page === 1 ? 'bg-themeBlue' : 'bg-themeLightBlue'
           } w-3 h-3 m-1`}></View>
         <View
           className={`rounded-lg ${
-            page === 2 ? 'bg-black' : 'bg-gray-300'
+            page === 2 ? 'bg-themeBlue' : 'bg-themeLightBlue'
           } w-3 h-3 m-1`}></View>
         <View
           className={`rounded-lg ${
-            page === 3 ? 'bg-black' : 'bg-gray-300'
+            page === 3 ? 'bg-themeBlue' : 'bg-themeLightBlue'
           } w-3 h-3 m-1`}></View>
       </View>
     </>
