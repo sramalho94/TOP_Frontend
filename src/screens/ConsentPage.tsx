@@ -1,6 +1,4 @@
 import React, { useState, useContext } from 'react';
-// import {useFormContext} from "react-hook-form";
-// import {useFormContext} from '../context/CreateAccountContext';
 import {
   SafeAreaView,
   View,
@@ -26,11 +24,8 @@ const ConsentPage: React.FC<{ navigation: any }> = ({ navigation }) => {
     Linking.openURL(privacyPolicyUrl);
   };
 
-  // comment for push
   const { onRegister } = useAuth();
   const [errorMessage, setErrorMessage] = useState<string>('');
-  // const {formState, updateFormState} = useContext<any>(CreateAccountContext);
-  // const {formState} = useFormContext();
   const { formState, resetFormState } = useContext(CreateAccountContext);
   const handleEmailPress = () => {
     const email = 'leavecovidtracking-us@joinzoe.com';
@@ -55,19 +50,17 @@ const ConsentPage: React.FC<{ navigation: any }> = ({ navigation }) => {
     if (onRegister) {
       console.log('Double check of formState: ' + JSON.stringify(formState));
       onRegister(formState)
-        .then((res: any) =>
-          console.log('res from register!!: ' + JSON.stringify(res.data)),
-        )
+        .then((res: any) => {
+        resetFormState();
+        navigation.navigate('ConsentFormThankYou');
+          console.log('res from register!!: ' + JSON.stringify(res.data))
+        })
         .catch((error: any) => {
           console.log('Screen Register Err: ' + error);
         });
-      resetFormState();
-      navigation.navigate('ConsentFormThankYou');
-      console.log('reset marathon' + JSON.stringify(formState));
     } else {
       console.log('onRegister is not a function or is undefined.');
     }
-    // alert('Thank you for agreeing to the terms.');
   };
 
   const [checkBoxStates, setCheckBoxStates] = useState<CheckState>({
