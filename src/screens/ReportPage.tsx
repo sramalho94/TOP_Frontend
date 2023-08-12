@@ -86,10 +86,10 @@ const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
   const [ethnicityOpen, setEthnicityOpen] = useState<boolean>(false);
 
   return (
-    <SafeAreaView className="w-screen h-screen">
+    <SafeAreaView className="flex-1 w-screen h-screen">
       <ScrollView>
         {/* NavBar */}
-        <View className="h-[90] border-b-4 border-slate-200 flex-row my-6">
+        <View className="flex-1 h-[90] border-b-4 border-slate-200 flex-row my-6">
           <TouchableOpacity className="mt-2 ml-4">
             <Icon name="arrowleft" size={30} color="#000" className="" />
           </TouchableOpacity>
@@ -99,13 +99,13 @@ const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
         </View>
 
         {/* Page Container */}
-        <View className="w-full justify-center items-center flex-1 flex-col" accessibilityLabel='Report Covid Test Page without an Account' accessibilityHint='Covid Test Reporting without an Account or anonymously' accessibilityRole='header'>
+        <View className="flex-1 w-full justify-center items-center flex-col" accessibilityLabel='Report Covid Test Page without an Account' accessibilityHint='Covid Test Reporting without an Account or anonymously' accessibilityRole='header'>
           <View>
             {/* Test Result Buttons */}
             <Text className="text-lg font-bold mx-auto">
               What were the results of your test?
             </Text>
-            <View className="justify-center space-x-4 flex-row my-9">
+            <View className="flex-1 justify-center space-x-4 flex-row my-9">
               <View className="m-2">
                 <CircleBtn
                   textColor={negTextColor}
@@ -153,7 +153,7 @@ const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
             </View>
 
             {/* Text input and dropdown fields container */}
-            <View className="">
+            <View className="flex-1">
               <TextInputField
                 label="Date of Test*"
                 value={formState.DOT}
@@ -172,9 +172,6 @@ const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
                 onChange={value => updateFormState('DOB', value)}
                 placeholder="mm/dd/yyyy"
               />
-
-              {/* TODO: will need to probs ask the UX team what the official dropdown selections are */}
-              {/* Data found from: https://www.census.gov/newsroom/blogs/random-samplings/2021/08/measuring-racial-ethnic-diversity-2020-census.html */}
               <DropDownField
                 text="Gender"
                 selectItems={[
@@ -273,7 +270,7 @@ const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
             </View>
 
             {/* checkbox and text container */}
-            <View className="flex-row justify-center my-6">
+            <View className="flex-1 flex-row justify-center my-6">
               <CheckBox
                 isSelected={isCheckboxSelected}
                 handleCheckChanges={handleCheckChanges}
@@ -285,7 +282,7 @@ const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
             </View>
 
             {/* button container */}
-            <View className="mb-14 mx-auto">
+            <View className="flex-1 mb-14 mx-auto">
               <Button
                 onPress={handleReportButtonClick}
                 innerText="Report"

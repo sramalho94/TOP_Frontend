@@ -85,16 +85,16 @@ const CreateAccount2: React.FC<{navigation: any}> = ({navigation}) => {
           page={2}
         />
 
-    <View accessibilityLabel='Create Account for login Page 2' accessibilityHint='Second page in creating a new account. It asks for your date of birth, zip code, and first name' accessibilityRole='header'>
-      <View className="flex-1 mx-auto my-auto mb-3">
-        <View className="w-[342] min-h-[300px] mt-10">
+    <View className="flex-1" accessibilityLabel='Create Account for login Page 2' accessibilityHint='Second page in creating a new account. It asks for your date of birth, zip code, and first name' accessibilityRole='header'>
+      <View className="flex-1 mx-auto mb-3">
+        <View className="flex-1 w-[342] min-h-[300px] mt-10">
 
         {errorMessage ? (
           <View className="mt-0 p-2 bg-red-100 border border-red-500 mx-auto w-[315]">
             <Text className="text-red-500">{errorMessage}</Text>
           </View>
         ) : null}
-        <View className="">
+        <View className="flex-1">
           <TextInputField
             label="Date of Birth*"
             value={formState.DOB}
@@ -116,7 +116,7 @@ const CreateAccount2: React.FC<{navigation: any}> = ({navigation}) => {
         </View>
       </View>
       </View>
-      <View className="flex-1 mb-5 justify-end ">
+      <View className="flex-1 mb-3 justify-end ">
         <Button
           onPress={handleNext}
           innerText="Continue"

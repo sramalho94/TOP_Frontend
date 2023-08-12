@@ -60,7 +60,7 @@ const CircleBtn = ({
           />
         ) : null}
         {text && !img ? (
-          <Text className={`text-center text-${textSize}`}>{text}</Text>
+          <Text className={`text-center ${textSize}`}>{text}</Text>
         ) : null}
         {img && text
           ? <View className='items-center gap-2'>

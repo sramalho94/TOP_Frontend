@@ -11,6 +11,7 @@ import TopNavBar from '../components/TopNavBar';
 import CheckBox from '../components/CheckBox';
 import { useAuth } from '../context/AuthContext';
 import CreateAccountContext from '../context/CreateAccountContext';
+import Button from '../components/Button';
 
 interface CheckState {
   isOver18Checked: boolean;
@@ -105,15 +106,15 @@ const ConsentPage: React.FC<{ navigation: any }> = ({ navigation }) => {
               </Text>
             </Text>
           </View>
-          {/* <Text className={`mb-4 text-auto`}>
+          <Text className={`mb-4 text-auto`}>
             You may withdraw your consent at any time by emailing{' '}
             <Text
               className={`text-blue-500 underline`}
               onPress={handleEmailPress}>
               leavecovidtracking-us@joinzoe.com.
             </Text>
-          </Text> */}
-          {/* <View className="flex-row justify-start">
+          </Text>
+          <View className="flex-row justify-start">
             <Text className={`mb-7 text-auto`}>
               Any questions may also be sent to{' '}
               <Text
