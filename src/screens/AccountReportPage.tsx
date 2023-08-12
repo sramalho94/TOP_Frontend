@@ -23,6 +23,10 @@ const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
   const {userId: actualUserId, DOB} = useAuth();
   const actualUserIdValue = actualUserId ?? null;
   const DOBVal = DOB ?? null;
+  const [negColor, setNegColor] = useState<string>('bg-themeWhite');
+  const [posColor, setPosColor] = useState<string>('bg-themeWhite');
+  const [negTextColor, setNegTextColor] = useState<string>('text-black');
+  const [posTextColor, setPosTextColor] = useState<string>('text-black');
   const [formState, setFormState] = useState<FormState>({
     result: false,
     DOB: DOBVal,
@@ -93,8 +97,16 @@ const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
           <View className="justify-center space-x-4 flex-row my-8">
             <View className="m-2">
               <CircleBtn
-                bgColor="bg-themeLightBlue"
-                updateForm={() => handleChange('result', false)}
+                bgColor={negColor}
+                textColor={negTextColor}
+                borderColor="border-themeLigthBlue"
+                updateForm={() => {
+                  handleChange('result', false);
+                  setNegColor('bg-themeLightBlue');
+                  setPosColor('bg-themeWhite');
+                  setNegTextColor('text-white');
+                  setPosTextColor('text-black');
+                }}
                 text="Negative"
                 Btnwidth="w-32"
                 Btnheight="h-32"
@@ -104,9 +116,17 @@ const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
             </View>
             <View className="m-2">
               <CircleBtn
+                borderColor="border-themeLightOrange"
                 text="Positive"
-                bgColor="bg-themeLightOrange"
-                updateForm={() => handleChange('result', true)}
+                textColor={posTextColor}
+                bgColor={posColor}
+                updateForm={() => {
+                  handleChange('result', true);
+                  setNegColor('bg-themeWhite');
+                  setPosColor('bg-themeLightOrange');
+                  setNegTextColor('text-black');
+                  setPosTextColor('text-white');
+                }}
                 Btnwidth="w-32"
                 Btnheight="h-32"
                 textSize="base"
