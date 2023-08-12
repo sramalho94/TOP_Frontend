@@ -11,6 +11,7 @@ import TopNavBar from '../components/TopNavBar';
 import CheckBox from '../components/CheckBox';
 import { useAuth } from '../context/AuthContext';
 import CreateAccountContext from '../context/CreateAccountContext';
+import Button from '../components/Button';
 
 interface CheckState {
   isOver18Checked: boolean;
@@ -84,12 +85,12 @@ const ConsentPage: React.FC<{ navigation: any }> = ({ navigation }) => {
           fontFamily=""
           haveProgress={false}
         />
+        <View className={`flex justify-center p-4 px-8 flex-1`} accessibilityLabel='Consent Page' accessibilityHint='Informing you of how your data will be shared and processed. You need to click the three checkboxes to proceed to the next screen' accessibilityRole='header'>
 
         {/* <ScrollView> */}
-        {/* add topNavBar component here and pass a few props to it */}
-        {/* Still need to double check the font size and family font! */}
-        <View className={`flex-1 justify-center p-4 px-8`}>
-          <Text className={`mb-4 text-auto leading-5 font-light`}>
+
+        <View className={`flex-1 max-w-lg mx-auto p-4 px-8`}>
+          <Text className={`flex-1 mb-4 text-auto leading-5 font-light `}>
             By checking the boxes below, you consent to our using the personal
             information we collect through your use of this app in the way we
             have described.
@@ -105,15 +106,15 @@ const ConsentPage: React.FC<{ navigation: any }> = ({ navigation }) => {
               </Text>
             </Text>
           </View>
-          {/* <Text className={`mb-4 text-auto`}>
+          <Text className={`mb-4 text-auto`}>
             You may withdraw your consent at any time by emailing{' '}
             <Text
               className={`text-blue-500 underline`}
               onPress={handleEmailPress}>
               leavecovidtracking-us@joinzoe.com.
             </Text>
-          </Text> */}
-          {/* <View className="flex-row justify-start">
+          </Text>
+          <View className="flex-row justify-start">
             <Text className={`mb-7 text-auto`}>
               Any questions may also be sent to{' '}
               <Text
@@ -122,12 +123,13 @@ const ConsentPage: React.FC<{ navigation: any }> = ({ navigation }) => {
                 covidtracking-us@joinzoe.com.
               </Text>
             </Text>
-          </View> */}
+          </View>
           <View className="flex-1">
           <View className={`flex-1 flex-row items-left mb-3`}>
             <CheckBox
               handleCheckChanges={() => handleCheckBoxChange('isOver18Checked')}
               isSelected={checkBoxStates.isOver18Checked}
+              accessHint='If checked, you confirm that you are over 18 years old.'
             />
             <Text className={`text-sm ml-2`}>
               I confirm that I'm over 18 years old.
@@ -139,6 +141,9 @@ const ConsentPage: React.FC<{ navigation: any }> = ({ navigation }) => {
                 handleCheckBoxChange('isConsentChecked')
               }
               isSelected={checkBoxStates.isConsentChecked}
+              accessHint='If checked, you will consent processing of your personal data (including without
+                limitation data I provide relating to my health) as set forth in
+                this consent and in the Privacy Policy.'
             />
             <Text className={`text-sm ml-2`}>
               I consent to the processing of my personal data (including without
@@ -157,6 +162,7 @@ const ConsentPage: React.FC<{ navigation: any }> = ({ navigation }) => {
                 handleCheckBoxChange('isReadAndAcceptChecked')
               }
               isSelected={checkBoxStates.isReadAndAcceptChecked}
+              accessHint="I have read and accept Zoe Global's Terms of Use and Privacy Policy"
             />
             <Text className={`text-sm ml-2`}>
               I have read and accept{' '}
@@ -173,6 +179,7 @@ const ConsentPage: React.FC<{ navigation: any }> = ({ navigation }) => {
               </Text>
             </Text>
           </View>
+
           </View>
           {errorMessage ? (
             <View className="mt-0 p-2 bg-red-100 border border-red-500 mx-auto w-[315]">
@@ -180,19 +187,24 @@ const ConsentPage: React.FC<{ navigation: any }> = ({ navigation }) => {
             </View>
           ) : null}
           
-          <View className="flex-1 justify-end ">
-            <TouchableOpacity
+          <View className="flex-1 mx-auto">
+            <Button
               onPress={handleAgree}
-              className={'bg-themeBlue px-8 py-[14] rounded-md'}>
-              <Text
-                className={`text-themeWhite text-base font-bold text-center`}>
-                Create Account
-              </Text>
-            </TouchableOpacity>
+              innerText="I agree to these terms"
+              bgColor="bg-themeBlue"
+              textColor="text-white"
+              border={true}
+              borderColor="border border-themeBlue border-3"
+              width="80"
+              accessLabel="I agree to these terms"
+              accessHint="Creates user account"
+            />
           </View>
-        </View>
-        {/* </ScrollView> */}
-      </SafeAreaView>
+          </View>
+          </View>
+       
+      {/* </ScrollView> */}
+    </SafeAreaView>
     </>
   );
 };

@@ -1,5 +1,5 @@
 import React, {useContext, useState} from 'react';
-import {View, Text, SafeAreaView, ScrollView, Modal, Image} from 'react-native';
+import {View, Text, SafeAreaView, ScrollView, Image} from 'react-native';
 import CreateAccountContext from '../../context/CreateAccountContext';
 import TextInputField from '../../components/TextInputField';
 import Button from '../../components/Button';
@@ -59,7 +59,8 @@ const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
         haveProgress={true}
         page={1}
       />
-      <View className="flex-1 mx-auto mb-2">
+      <View className="flex-1 min-h-[300px] bg-green-300" accessibilityLabel='Create Account for login Page 1' accessibilityHint='First page in creating a new account. IT asks you to create an email, username, and password' accessibilityRole='header'>
+      <View className="flex-1 mx-auto mb-2" >
         <View className="w-[342]">
           <View>
             <Image
@@ -97,7 +98,10 @@ const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
           border={true}
           borderColor="border border-themeBlue border-2"
           width="80"
+          accessLabel='Continue to Next Page'
+          accessHint='Continues to Account Page 2 for date of birth, zip code, and optional first name input'
         />
+      </View>
       </View>
       </ScrollView>
     </SafeAreaView>
