@@ -1,12 +1,12 @@
-import React, { useContext, useState } from 'react';
-import { View, Text, SafeAreaView, ScrollView, Modal } from 'react-native';
+import React, {useContext, useState} from 'react';
+import {View, Text, SafeAreaView, ScrollView, Modal} from 'react-native';
 import CreateAccountContext from '../../context/CreateAccountContext';
 import TextInputField from '../../components/TextInputField';
 import Button from '../../components/Button';
 import TopNavBar from '../../components/TopNavBar';
 
-const CreateAccount2: React.FC<{ navigation: any }> = ({ navigation }) => {
-  const { formState, updateFormState } = useContext(CreateAccountContext);
+const CreateAccount2: React.FC<{navigation: any}> = ({navigation}) => {
+  const {formState, updateFormState} = useContext(CreateAccountContext);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string>('');
 
@@ -18,7 +18,7 @@ const CreateAccount2: React.FC<{ navigation: any }> = ({ navigation }) => {
   };
 
   const isEighteenOrOlder = (birthday: string): boolean => {
-    const [month, day, year] = birthday.split("/");
+    const [month, day, year] = birthday.split('/');
 
     // Create Date object from birthday string
     const dobDate = new Date(Number(year), Number(month) - 1, Number(day));
@@ -32,13 +32,14 @@ const CreateAccount2: React.FC<{ navigation: any }> = ({ navigation }) => {
     // Handles the case where the birthday hasn't happened yet in the current year
     if (
       currentDate.getMonth() < dobDate.getMonth() ||
-      (currentDate.getMonth() === dobDate.getMonth() && currentDate.getDate() < dobDate.getDate())
+      (currentDate.getMonth() === dobDate.getMonth() &&
+        currentDate.getDate() < dobDate.getDate())
     ) {
       age--;
     }
 
     return age >= 18;
-  }
+  };
 
   // Function to check if zip code format is correct
   const isZipCodeValid = (zipCode: string): boolean => {
@@ -53,7 +54,6 @@ const CreateAccount2: React.FC<{ navigation: any }> = ({ navigation }) => {
       setErrorMessage('Please fill in all mandatory fields.');
       return; // Prevent proceeding to the next page
     }
-
 
     if (!isBirthdayValid(formState.DOB)) {
       setErrorMessage('Please enter a valid birthday.');
@@ -70,7 +70,7 @@ const CreateAccount2: React.FC<{ navigation: any }> = ({ navigation }) => {
       setErrorMessage('Please enter a valid zip code.');
       return; // Prevent proceeding to the next page
     } else {
-      setErrorMessage('')
+      setErrorMessage('');
       navigation.navigate('CreateAccount3');
     }
   };

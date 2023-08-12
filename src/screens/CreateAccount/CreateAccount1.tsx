@@ -9,7 +9,7 @@ import PasswordError from '../../components/PasswordError';
 
 const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
   const {formState, updateFormState} = useContext(CreateAccountContext);
-  const [showError, setShowError] = useState <string>('hidden')
+  const [showError, setShowError] = useState<string>('hidden');
   // Validations:
 
   // Function to check if password meets criteria
@@ -40,10 +40,10 @@ const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
     }
 
     const isPasswordValid = checkPasswordCriteria();
-    if (!isPasswordValid) { 
-      setShowError ('flex')
+    if (!isPasswordValid) {
+      setShowError('flex');
     } else {
-      setShowError ('hidden')
+      setShowError('hidden');
       navigation.navigate('CreateAccount2');
     }
   };
@@ -93,7 +93,6 @@ const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
             width="80"
           />
         </View>
-        
       </ScrollView>
     </SafeAreaView>
   );
