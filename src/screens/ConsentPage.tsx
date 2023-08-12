@@ -1,6 +1,4 @@
-import React, {useState, useContext} from 'react';
-// import {useFormContext} from "react-hook-form";
-// import {useFormContext} from '../context/CreateAccountContext';
+import React, { useState, useContext } from 'react';
 import {
   SafeAreaView,
   View,
@@ -11,7 +9,7 @@ import {
 } from 'react-native';
 import TopNavBar from '../components/TopNavBar';
 import CheckBox from '../components/CheckBox';
-import {useAuth} from '../context/AuthContext';
+import { useAuth } from '../context/AuthContext';
 import CreateAccountContext from '../context/CreateAccountContext';
 
 interface CheckState {
@@ -20,17 +18,15 @@ interface CheckState {
   isReadAndAcceptChecked: boolean;
 }
 
-const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
+const ConsentPage: React.FC<{ navigation: any }> = ({ navigation }) => {
   const handlePrivacyPolicyPress = () => {
     const privacyPolicyUrl = 'https://www.privacypolicies.com/generic/';
     Linking.openURL(privacyPolicyUrl);
   };
 
-  // comment for push
-  const {onRegister} = useAuth();
-  // const {formState, updateFormState} = useContext<any>(CreateAccountContext);
-  // const {formState} = useFormContext();
-  const {formState, resetFormState} = useContext(CreateAccountContext);
+  const { onRegister } = useAuth();
+  const [errorMessage, setErrorMessage] = useState<string>('');
+  const { formState, resetFormState } = useContext(CreateAccountContext);
   const handleEmailPress = () => {
     const email = 'leavecovidtracking-us@joinzoe.com';
     Linking.openURL(`mailto:${email}`);
@@ -47,26 +43,24 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
       !checkBoxStates.isConsentChecked ||
       !checkBoxStates.isReadAndAcceptChecked
     ) {
-      alert('Please check all the boxes before agreeing.');
+      setErrorMessage('Please check all the boxes before agreeing.');
       return;
     }
 
     if (onRegister) {
       console.log('Double check of formState: ' + JSON.stringify(formState));
       onRegister(formState)
-        .then((res: any) =>
-          console.log('res from register!!: ' + JSON.stringify(res.data)),
-        )
+        .then((res: any) => {
+        resetFormState();
+        navigation.navigate('ConsentFormThankYou');
+          console.log('res from register!!: ' + JSON.stringify(res.data))
+        })
         .catch((error: any) => {
           console.log('Screen Register Err: ' + error);
         });
-      resetFormState();
-      navigation.navigate('ConsentFormThankYou');
-      console.log('reset marathon' + JSON.stringify(formState));
     } else {
       console.log('onRegister is not a function or is undefined.');
     }
-    // alert('Thank you for agreeing to the terms.');
   };
 
   const [checkBoxStates, setCheckBoxStates] = useState<CheckState>({
@@ -82,27 +76,26 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
     }));
   };
   return (
-    <SafeAreaView>
-      <ScrollView>
-        {/* add topNavBar component here and pass a few props to it */}
-        {/* Still need to double check the font size and family font! */}
+    <>
+      <SafeAreaView className="flex-1 min-h-screen min-w-screen bg-themeWhite">
         <TopNavBar
           textSize="xl"
-          textValue="Consent Form"
+          textValue="Create Account"
           fontFamily=""
           haveProgress={false}
         />
-        <View className={`flex justify-center p-4 px-8 flex-1`}>
-          <Text className={`text-xl font-bold text-black mb-5 text-center`}>
-            User Consent
-          </Text>
-          <Text className={`mb-4 text-auto`}>
+
+        {/* <ScrollView> */}
+        {/* add topNavBar component here and pass a few props to it */}
+        {/* Still need to double check the font size and family font! */}
+        <View className={`flex-1 justify-center p-4 px-8`}>
+          <Text className={`mb-4 text-auto leading-5 font-light`}>
             By checking the boxes below, you consent to our using the personal
             information we collect through your use of this app in the way we
             have described.
           </Text>
-          <View className={`flex-row items-center`}>
-            <Text className="flex content-center">
+          <View className={`flex-row  items-center text-center`}>
+            <Text className="flex content-center leading-5 font-light mb-10">
               For more information about how we use and share personal
               information, please see our{' '}
               <Text
@@ -112,15 +105,15 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
               </Text>
             </Text>
           </View>
-          <Text className={`mb-4 text-auto`}>
+          {/* <Text className={`mb-4 text-auto`}>
             You may withdraw your consent at any time by emailing{' '}
             <Text
               className={`text-blue-500 underline`}
               onPress={handleEmailPress}>
               leavecovidtracking-us@joinzoe.com.
             </Text>
-          </Text>
-          <View className="flex-row justify-start">
+          </Text> */}
+          {/* <View className="flex-row justify-start">
             <Text className={`mb-7 text-auto`}>
               Any questions may also be sent to{' '}
               <Text
@@ -129,8 +122,9 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
                 covidtracking-us@joinzoe.com.
               </Text>
             </Text>
-          </View>
-          <View className={`flex-row items-left mb-3`}>
+          </View> */}
+          <View className="flex-1">
+          <View className={`flex-1 flex-row items-left mb-3`}>
             <CheckBox
               handleCheckChanges={() => handleCheckBoxChange('isOver18Checked')}
               isSelected={checkBoxStates.isOver18Checked}
@@ -139,7 +133,7 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
               I confirm that I'm over 18 years old.
             </Text>
           </View>
-          <View className={`flex-row items-center mb-4`}>
+          <View className={`flex-1 flex-row mb-4`}>
             <CheckBox
               handleCheckChanges={() =>
                 handleCheckBoxChange('isConsentChecked')
@@ -157,7 +151,7 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
               </Text>
             </Text>
           </View>
-          <View className={`flex-row items-center mb-4`}>
+          <View className={`flex-1 flex-row items-center mb-4`}>
             <CheckBox
               handleCheckChanges={() =>
                 handleCheckBoxChange('isReadAndAcceptChecked')
@@ -169,7 +163,7 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
               <Text
                 className={`text-blue-500 underline`}
                 onPress={handleTermsPress}>
-                Zoe Global's Terms of Use
+                Terms of Use
               </Text>{' '}
               and{' '}
               <Text
@@ -179,16 +173,27 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
               </Text>
             </Text>
           </View>
-          <TouchableOpacity
-            onPress={handleAgree}
-            className={`bg-black px-8 py-2.5 rounded-md mt-7`}>
-            <Text className={`text-white text-base font-bold text-center`}>
-              I Agree to These Terms
-            </Text>
-          </TouchableOpacity>
+          </View>
+          {errorMessage ? (
+            <View className="mt-0 p-2 bg-red-100 border border-red-500 mx-auto w-[315]">
+              <Text className="text-red-500">{errorMessage}</Text>
+            </View>
+          ) : null}
+          
+          <View className="flex-1 justify-end ">
+            <TouchableOpacity
+              onPress={handleAgree}
+              className={'bg-themeBlue px-8 py-[14] rounded-md'}>
+              <Text
+                className={`text-themeWhite text-base font-bold text-center`}>
+                Create Account
+              </Text>
+            </TouchableOpacity>
+          </View>
         </View>
-      </ScrollView>
-    </SafeAreaView>
+        {/* </ScrollView> */}
+      </SafeAreaView>
+    </>
   );
 };
 
