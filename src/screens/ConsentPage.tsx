@@ -120,7 +120,9 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
               leavecovidtracking-us@joinzoe.com.
             </Text>
           </Text>
-          <View className="flex-1 flex-row justify-start">
+
+          
+          <View className="flex-1 min-w-md pr-5">
             <Text className={`mb-7 text-auto`}>
               Any questions may also be sent to{' '}
               <Text
@@ -139,7 +141,8 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
                 </Text>
               </Text>
             </View>
-            <View className={`flex-1 flex-row items-left mb-3`}>
+          
+            <View className={`flex-row  items-left mb-3`}>
               <CheckBox
                 handleCheckChanges={() =>
                   handleCheckBoxChange('isOver18Checked')
@@ -150,7 +153,7 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
                 I confirm that I'm over 18 years old.
               </Text>
             </View>
-            <View className={`flex-1 flex-row bg-purple-300 items-center mb-4`}>
+            <View className={`flex-row  items-center mb-4`}>
               <CheckBox
                 handleCheckChanges={() =>
                   handleCheckBoxChange('isConsentChecked')
@@ -168,7 +171,7 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
                 </Text>
               </Text>
             </View>
-            <View className={`flex-1 flex-row items-center mb-4`}>
+            <View className={`flex-row items-center mb-4`}>
               <CheckBox
                 handleCheckChanges={() =>
                   handleCheckBoxChange('isReadAndAcceptChecked')
@@ -191,8 +194,9 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
               </Text>
             </View>
           </View>
+          </View>
           
-        <View className="flex-1 bg-pink-300 mx-auto">
+        <View className="flex-1 mx-auto">
           <Button 
             innerText='Create Account'
             bgColor='bg-themeBlue'
@@ -202,7 +206,6 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
             width='5/6'
           />
         </View>
-      </View>
       </ScrollView>
     </SafeAreaView>
     </>
