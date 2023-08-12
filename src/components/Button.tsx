@@ -27,7 +27,7 @@ const Button = ({
       className={`w-${width} max-w-sm mx-auto align-center px-5 items-center`}>
       <TouchableOpacity
         className={`${border ? `${borderColor}` : ''}
-         flex justify-center px-6 align-center items-center w-full h-[52] rounded-lg mb-3 ${bgColor}`}
+         flex justify-center px-6 align-center items-center w-full h-[52] rounded-lg mb-2 ${bgColor}`}
         onPress={onPress}>
         <Text
           className={`text-base font-bold ${textColor} ${
