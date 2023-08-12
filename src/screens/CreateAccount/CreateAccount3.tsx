@@ -66,11 +66,11 @@ const CreateAccount3: React.FC<{navigation: any}> = ({navigation}) => {
           <DropDownField
             text="Race"
             selectItems={[
-              {label: 'White or European', value: 'White or European'},
               {
                 label: 'Black or of African descent',
                 value: 'Black or of African descent',
               },
+              {label: 'White or European', value: 'White or European'},
               {label: 'Middle Eastern or North African', value: 'Middle Eastern or North African'},
               {
                 label: 'Indigenous, American Indian or Alaska Native',
@@ -97,16 +97,12 @@ const CreateAccount3: React.FC<{navigation: any}> = ({navigation}) => {
           <DropDownField
             text="Ethnicity"
             selectItems={[
-              {
-                label: 'MIGHT CHANGE BELOW SELECTION LATER',
-                value: 'MIGHT CHANGE BELOW SELECTION LATER',
-              },
               {label: 'Hispanic/Latino', value: 'hispanic/latino'},
               {
                 label: 'Non-Hispanic/Latino',
-                value: 'non-hispanic/latino',
+                value: 'Non-hispanic/latino',
               },
-              {label: 'Prefer not to say', value: 'prefer not to say'},
+              {label: 'I prefer not to answer', value: 'I prefer not to answer'},
             ]}
             open={ethnicityOpen}
             onOpen={() => {
