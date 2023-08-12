@@ -22,7 +22,7 @@ const HomeDash: React.FC<{navigation: any}> = ({navigation}) => {
             className="w-full h-[200] mb-2 bg-cover bg-center "
             source={CTL}
           />
-            <View className="flex flex-row space-between mb-2 pl-5">
+            <View className="flex flex-row self-start mb-2 pl-5">
               <CircleBtn
                 img={Avatar}
                 borderColor="border-themeWhite"
@@ -36,7 +36,9 @@ const HomeDash: React.FC<{navigation: any}> = ({navigation}) => {
                 Btnwidth="w-20"
                 Btnheight="h-20"
               />
-              <Text>Welcome back, {usernameVal}!</Text>
+              {/* FIXME: Need to dynamically bring in logged in username to display on screen! */}
+              <Text
+              className='pt-6'>Welcome back, Username{usernameVal}!</Text>
             </View>
             {/* need giant circle btn, need to refactor circle btn props? */}
             <CircleBtn
@@ -53,7 +55,7 @@ const HomeDash: React.FC<{navigation: any}> = ({navigation}) => {
 
           {/*View for 3 mini buttons*/}
           <View className="w-full mb-6 flex justify-center flex-row">
-            <View className="-mt-5">
+            <View>
               <CircleBtn
                 img={FlowerImg}
                 text="Privacy"
@@ -65,7 +67,7 @@ const HomeDash: React.FC<{navigation: any}> = ({navigation}) => {
               />
             </View>
 
-            <View className="mt-16">
+            <View className="mt-20">
               <CircleBtn
                 text='Dashboard'
                 img={FlowerImg}
@@ -75,7 +77,7 @@ const HomeDash: React.FC<{navigation: any}> = ({navigation}) => {
               />
             </View>
 
-            <View className="mt-1">
+            <View>
               <CircleBtn 
               text='Exchange'
               img={FlowerImg} 
