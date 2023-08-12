@@ -44,11 +44,15 @@ const CreateAccount3: React.FC<{navigation: any}> = ({navigation}) => {
             text="Gender"
             selectItems={[
               {
-                label: 'MIGHT CHANGE BELOW SELECTION LATER',
-                value: 'MIGHT CHANGE BELOW SELECTION LATER',
+                label: 'Woman',
+                value: 'Woman',
               },
-              {label: '', value: ''},
-              {label: 'Prefer not to say', value: 'prefer not to say'},
+              {
+                label: 'Man',
+                value: 'Man',
+              },
+              {label: 'Non-binary', value: 'Non-binary'},
+              {label: 'I prefer not to answer', value: 'I prefer not to answer'},
             ]}
             open={genderOpen}
             onOpen={() => {
