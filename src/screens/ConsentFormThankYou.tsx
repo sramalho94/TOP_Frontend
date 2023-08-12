@@ -23,17 +23,17 @@ type Props = {
 const ConsentFormThankYou = ({navigation}: Props) => {
   const {usernameVal} = useAuth();
   return (
-    <SafeAreaView className="flex-1 w-screen h-screen bg-themeWhite">
+    <SafeAreaView className="flex-1 w-screen h-screen max-w-md  bg-themeWhite self-center">
       <View className="flex flex-1 w-full h-full items-center">
         <View className="justify-around w-full h-full">
           <View>
             <View className='mb-2'>
-              <Text className="text-5xl color-black body-font font-poetsen text-center mt-2 mx-6">
+              <Text className="text-5xl md:text-6xl color-black body-font font-poetsen text-center mt-2 mx-6">
                 Thanks for joining our community, {usernameVal}!
               </Text>
             </View>
             <View>
-              <Text className="color-black mx-auto font-serif text-[14px]">
+              <Text className="color-black mx-auto font-serif text-[14px] md:text-xl">
                 Your account has been created.
               </Text>
             </View>
