@@ -49,7 +49,7 @@ const HomeDash: React.FC<{navigation: any}> = ({navigation}) => {
                 }}
                 Btnwidth="w-60"
                 Btnheight="h-60"
-                textSize="3xl"
+                textSize="text-3xl"
                 borderColor=""
               />
             </View>
