@@ -82,6 +82,7 @@ const ConsentPage: React.FC<{ navigation: any }> = ({ navigation }) => {
         {/* Still need to double check the font size and family font! */}
         <TopNavBar
           textSize="xl"
+          textColor='text-themeBlue'
           textValue="Consent Form"
           fontFamily=""
           haveProgress={false}

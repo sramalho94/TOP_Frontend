@@ -84,6 +84,7 @@ const CreateAccount2: React.FC<{ navigation: any }> = ({ navigation }) => {
       <ScrollView>
         <TopNavBar
           fontFamily=""
+          textColor='text-themeBlue'
           textSize="xl"
           textValue="Create Account"
           haveProgress={true}

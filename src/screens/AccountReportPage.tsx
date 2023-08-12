@@ -77,6 +77,7 @@ const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
       <ScrollView>
         <TopNavBar
           textSize="xl"
+          textColor='text-themeBlue'
           fontFamily=""
           haveProgress={false}
           textValue="Report COVID-19 Test Result"

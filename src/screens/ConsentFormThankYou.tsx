@@ -53,7 +53,6 @@ const ConsentFormThankYou = ({navigation}: Props) => {
             textColor="text-themeWhite"
             border={false}
             borderColor=""
-            className="text-xs"
           />
         </View>
       </ScrollView>

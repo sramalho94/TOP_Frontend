@@ -40,6 +40,7 @@ const CreateAccount3: React.FC<{navigation: any}> = ({navigation}) => {
         <TopNavBar
           fontFamily=""
           textSize="xl"
+          textColor='text-themeBlue'
           textValue="Create Account"
           haveProgress={true}
           page={3}
