@@ -90,39 +90,39 @@ const CreateAccount2: React.FC<{navigation: any}> = ({navigation}) => {
           page={2}
         />
 
-        <View className="mx-auto my-auto mb-3">
-          <View className="w-[342]">
-            <View className="my-4 underline">
-              <Button
-                onPress={toggleModal}
-                innerText="(Why do we need this information?)"
-                bgColor=""
-                textColor=""
-                border={false}
-                borderColor="border border-gray"
-                textDecoration="underline"
-                width="80"
-              />
-            </View>
-            <TextInputField
-              label="Date of Birth*"
-              value={formState.DOB}
-              onChange={value => updateFormState('DOB', value)}
-              placeholder="MM/DD/YYYY"
-            />
-            <TextInputField
-              label="Zip Code*"
-              value={formState.ZIP}
-              onChange={value => updateFormState('ZIP', value)}
-              placeholder="XXXXX"
-            />
-            <TextInputField
-              label="First Name"
-              value={formState.firstName}
-              onChange={value => updateFormState('firstName', value)}
-              placeholder=""
+      <View className="mx-auto my-auto mb-3">
+        <View className="w-[342]">
+          <View className="my-4 underline">
+            <Button
+              onPress={toggleModal}
+              innerText="(Why do we need this information?)"
+              bgColor=""
+              textColor=""
+              border={false}
+              borderColor="border border-gray"
+              textDecoration="underline"
+              width="80"
             />
           </View>
+<<<<<<<<< Temporary merge branch 1
+          <TextInputField
+            label="Date of Birth*"
+            value={formState.DOB}
+            onChange={value => updateFormState('DOB', value)}
+            placeholder="MM/DD/YYYY"
+          />
+          <TextInputField
+            label="Zip Code*"
+            value={formState.ZIP}
+            onChange={value => updateFormState('ZIP', value)}
+            placeholder="XXXXX"
+          />
+          <TextInputField
+            label="First Name"
+            value={formState.firstName}
+            onChange={value => updateFormState('firstName', value)}
+            placeholder="Your First Name"
+=========
         </View>
         {errorMessage ? (
           <View className="mt-0 p-2 bg-red-100 border border-red-500 mx-auto w-[315]">
