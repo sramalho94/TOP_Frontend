@@ -26,12 +26,18 @@ const ConsentFormThankYou = ({navigation}: Props) => {
     <SafeAreaView className="flex-1 w-screen h-screen bg-themeWhite">
       <View className="flex flex-1 w-full h-full items-center">
         <View className="justify-around w-full h-full">
-          <Text className="text-5xl color-black body-font font-poetsen text-center mt-2 mx-6">
-            Thanks for joining our community, {usernameVal}!
-          </Text>
-          <Text className="mx-auto font-serif text-[14px]">
-            Your account has been created.
-          </Text>
+          <View>
+            <View className='mb-2'>
+              <Text className="text-5xl color-black body-font font-poetsen text-center mt-2 mx-6">
+                Thanks for joining our community, {usernameVal}!
+              </Text>
+            </View>
+            <View>
+              <Text className="color-black mx-auto font-serif text-[14px]">
+                Your account has been created.
+              </Text>
+            </View>
+          </View>
           <View>
             <Image className="mx-auto h-[370px] w-[300px]" source={jumpImg} />
           </View>
@@ -43,7 +49,7 @@ const ConsentFormThankYou = ({navigation}: Props) => {
             textColor="text-themeWhite"
             border={false}
             borderColor=""
-            width='full'
+            width="full"
           />
         </View>
       </View>
