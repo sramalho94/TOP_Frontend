@@ -18,16 +18,16 @@ import {ScrollView} from 'react-native';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import ProgressDots from './../components/ProgressDots';
 import Button from './../components/Button';
-import {RootStackParamList} from '../../App';
+import { RootStackParamList } from '../../App';
 type OnboardingScreenProps = NativeStackScreenProps<
   RootStackParamList,
   'Onboarding'
 >;
 
 const Onboarding = (props: OnboardingScreenProps) => {
-  const {navigation} = props;
+  const { navigation } = props;
   const [currentPage, setCurrentPage] = useState<number>(0);
-  const {width} = useWindowDimensions();
+  const { width } = useWindowDimensions();
   const scrollViewRef = useRef<ScrollView>(null);
 
   const pages = [
@@ -61,7 +61,7 @@ const Onboarding = (props: OnboardingScreenProps) => {
 
   const handleSwipeAnimation = (page: number) => {
     if (scrollViewRef.current) {
-      scrollViewRef.current.scrollTo({x: page * width, animated: true});
+      scrollViewRef.current.scrollTo({ x: page * width, animated: true });
       setCurrentPage(page);
     }
   };
@@ -83,27 +83,29 @@ const Onboarding = (props: OnboardingScreenProps) => {
       scrollEventThrottle={16} // Adjust the scroll event frequency
     >
       {pages.map((page, index) => (
-        <SafeAreaView key={index} className="h-screen w-screen bg-themeWhite">
-          <View className="flex-1 flex-col">
-            {/* <Image className="absolute bg-cover bg-center" source={WaveImage} /> */}
-            <View>
+        <SafeAreaView key={index} className="bg-themeWhite h-screen w-screen items-center pb-4">
+          <View className="flex-1 flex-col max-w-md mb-10" accessibilityLabel='Onboarding Info Page' accessibilityHint='Informs you how your data will be used and not be used' accessibilityRole='header'>
+            <View className="">
               <Image
-                className="w-[400px] h-[500px] max-h-full mb-5 bg-contain bg-center"
+                className="w-full h-[500px] max-h-full mb-5 bg-contain bg-center"
                 source={page.imageSource}
               />
-              <Text className="mx-auto font-serif text-[25px] text-center">
-                {page.title}
-              </Text>
-              <Text className="mx-10 py-5 font-serif text-[14px] text-center leading-5 font-light">
-                {page.text}
-              </Text>
+              <View>
+                <Text className="mx-auto font-serif text-[25px] text-center">
+                  {page.title}
+                </Text>
+                <Text className="mx-10 py-5 font-serif text-[14px] text-center leading-5 font-light">
+                  {page.text}
+                </Text>
+              </View>
             </View>
 
-            <View className="flex-col-reverse mt-1 ">
-              <View className="flex justify-center">
-                <View className="mb-2">
+            <View className="flex-1 flex-col-reverse mt-1 ">
+              <View className="flex-1 mt-8 justify-center">
+                <View className="flex-1 mb-2">
                   <ProgressDots page={page.pageIndicator} />
                 </View>
+                <View className="mx-auto mt-7">
                 <Button
                   onPress={page.onButtonPress}
                   innerText={page.buttonText}
@@ -112,8 +114,11 @@ const Onboarding = (props: OnboardingScreenProps) => {
                   border={true}
                   borderColor="border border-themeBlue border-3"
                   width="80"
-                />
+                  accessLabel="Continue"
+                  accessHint="Navigates to the next screen"
 
+                />
+              
                 {page.pageIndicator !== pages.length && (
                   <Button
                     onPress={() => navigation.navigate('CreateAccount1')}
@@ -123,8 +128,11 @@ const Onboarding = (props: OnboardingScreenProps) => {
                     border={false}
                     borderColor="border border-gray"
                     width="80"
+                    accessLabel="Skip"
+                    accessHint="Navigates to the create account screen"
                   />
                 )}
+                </View>
               </View>
             </View>
           </View>

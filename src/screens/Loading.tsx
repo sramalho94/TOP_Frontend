@@ -5,7 +5,7 @@ type Props = {};
 
 const Loading = (props: Props) => {
   return (
-    <View>
+    <View accessibilityLabel='Loading Page' accessibilityHint='Screen while destination page is loading' accessibilityRole='header'>
       <Text>Loading</Text>
     </View>
   );

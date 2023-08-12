@@ -15,6 +15,7 @@ import CircleBtn from '../components/CircleBtn';
 import ApiService from '../services/ApiService';
 import NegTest from './../../assets/NegativeCovidTest.png';
 import PosTest from './../../assets/PositiveCovidTest.png';
+import TopNavBar from '../components/TopNavBar';
 
 // Define the ReportPage component
 export interface FormState {
@@ -98,8 +99,8 @@ const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
         </View>
 
         {/* Page Container */}
-        <View className="w-full justify-center items-center flex-1 flex-col">
-          <View className="max-w-sm">
+        <View className="w-full justify-center items-center flex-1 flex-col" accessibilityLabel='Report Covid Test Page without an Account' accessibilityHint='Covid Test Reporting without an Account or anonymously' accessibilityRole='header'>
+          <View>
             {/* Test Result Buttons */}
             <Text className="text-lg font-bold mx-auto">
               What were the results of your test?
@@ -122,6 +123,8 @@ const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
                   Btnheight="h-32"
                   textSize="text-xl"
                   value={false}
+                  accessLabel="Negative"
+                  accessHint="Touch if your test results are negative"
                   img={NegTest}
                 />
               </View>
@@ -142,6 +145,8 @@ const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
                   Btnheight="h-32"
                   textSize="text-xl"
                   value={true}
+                  accessLabel="Positive"
+                  accessHint="Touch if your test results are positive"
                   img={PosTest}
                 />
               </View>
@@ -195,6 +200,8 @@ const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
                 }}
                 onChange={value => updateFormState('gender', value)}
                 setOpen={setGenderOpen}
+                accessLabel='gender menu'
+                accessHint='Drop down options to select your gender'
               />
               <DropDownField
                 text="Race"
@@ -236,6 +243,8 @@ const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
                 }}
                 onChange={value => updateFormState('race', value)}
                 setOpen={setRaceOpen}
+                accessLabel='race menu'
+                accessHint='Drop down options to select your race'
               />
               <DropDownField
                 text="Ethnicity"
@@ -258,6 +267,8 @@ const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
                 }}
                 onChange={value => updateFormState('ethnicity', value)}
                 setOpen={setEthnicityOpen}
+                accessLabel='ethnicity menu'
+                accessHint='Drop down options to select your ethnicity'
               />
             </View>
 
@@ -266,6 +277,7 @@ const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
               <CheckBox
                 isSelected={isCheckboxSelected}
                 handleCheckChanges={handleCheckChanges}
+                accessHint='If you click in this box, you will agree to share results with CDC'
               />
               <Text className="font-bold mt-1 text-black">
                 I agree to share my results with the CDC
@@ -273,7 +285,7 @@ const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
             </View>
 
             {/* button container */}
-            <View className="mb-14">
+            <View className="mb-14 mx-auto">
               <Button
                 onPress={handleReportButtonClick}
                 innerText="Report"
@@ -282,6 +294,8 @@ const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
                 border={true}
                 borderColor="border border-2"
                 width="80"
+                accessLabel="Report"
+                accessHint="Reports test results"
               />
             </View>
           </View>

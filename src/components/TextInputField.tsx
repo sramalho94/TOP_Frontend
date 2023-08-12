@@ -20,14 +20,17 @@ const TextInputField: React.FC<TextInputFieldProps> = ({
   };
 
   return (
-    <View className="my-4">
-      <Text className="font-medium ml-3 w-36 h-8 flex my-auto justify-center">{label}</Text>
+    <View className="my-4 w-full max-w-sm flex-1 justify-center align-middle px-8">
+      <Text nativeID="formLabel" className="font-medium md:text-xl w-full h-8 flex my-auto justify-center align-middle">{label}</Text>
       <TextInput
         className="border border-black rounded-lg px-4 h-12 w-80 mx-auto font-medium"
         value={value}
         onChangeText={handleChange}
         placeholder={placeholder}
         autoCapitalize="none"
+        accessible={true}
+        accessibilityLabel={label}
+        accessibilityLabelledBy="formLabel"
       />
     </View>
   );
