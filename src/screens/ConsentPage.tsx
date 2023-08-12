@@ -1,6 +1,4 @@
-import React, {useState, useContext} from 'react';
-// import {useFormContext} from "react-hook-form";
-// import {useFormContext} from '../context/CreateAccountContext';
+import React, { useState, useContext } from 'react';
 import {
   SafeAreaView,
   View,
@@ -11,7 +9,7 @@ import {
 } from 'react-native';
 import TopNavBar from '../components/TopNavBar';
 import CheckBox from '../components/CheckBox';
-import {useAuth} from '../context/AuthContext';
+import { useAuth } from '../context/AuthContext';
 import CreateAccountContext from '../context/CreateAccountContext';
 
 interface CheckState {
@@ -20,17 +18,15 @@ interface CheckState {
   isReadAndAcceptChecked: boolean;
 }
 
-const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
+const ConsentPage: React.FC<{ navigation: any }> = ({ navigation }) => {
   const handlePrivacyPolicyPress = () => {
     const privacyPolicyUrl = 'https://www.privacypolicies.com/generic/';
     Linking.openURL(privacyPolicyUrl);
   };
 
-  // comment for push
-  const {onRegister} = useAuth();
-  // const {formState, updateFormState} = useContext<any>(CreateAccountContext);
-  // const {formState} = useFormContext();
-  const {formState, resetFormState} = useContext(CreateAccountContext);
+  const { onRegister } = useAuth();
+  const [errorMessage, setErrorMessage] = useState<string>('');
+  const { formState, resetFormState } = useContext(CreateAccountContext);
   const handleEmailPress = () => {
     const email = 'leavecovidtracking-us@joinzoe.com';
     Linking.openURL(`mailto:${email}`);
@@ -47,26 +43,24 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
       !checkBoxStates.isConsentChecked ||
       !checkBoxStates.isReadAndAcceptChecked
     ) {
-      alert('Please check all the boxes before agreeing.');
+      setErrorMessage('Please check all the boxes before agreeing.');
       return;
     }
 
     if (onRegister) {
       console.log('Double check of formState: ' + JSON.stringify(formState));
       onRegister(formState)
-        .then((res: any) =>
-          console.log('res from register!!: ' + JSON.stringify(res.data)),
-        )
+        .then((res: any) => {
+        resetFormState();
+        navigation.navigate('ConsentFormThankYou');
+          console.log('res from register!!: ' + JSON.stringify(res.data))
+        })
         .catch((error: any) => {
           console.log('Screen Register Err: ' + error);
         });
-      resetFormState();
-      navigation.navigate('ConsentFormThankYou');
-      console.log('reset marathon' + JSON.stringify(formState));
     } else {
       console.log('onRegister is not a function or is undefined.');
     }
-    // alert('Thank you for agreeing to the terms.');
   };
 
   const [checkBoxStates, setCheckBoxStates] = useState<CheckState>({
@@ -83,9 +77,8 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
   };
   return (
     <>
-      <SafeAreaView className="flex-1 h-screen w-screen bg-themeWhite">
+      <SafeAreaView className="flex-1 min-h-screen min-w-screen bg-themeWhite">
         <TopNavBar
-        textColor='text-themeBlue'
           textSize="xl"
           textValue="Create Account"
           fontFamily=""
@@ -96,12 +89,12 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
         {/* add topNavBar component here and pass a few props to it */}
         {/* Still need to double check the font size and family font! */}
         <View className={`flex-1 justify-center p-4 px-8`}>
-          <Text className={`mb-4 text-auto leading-5 font-light -mt-[220px]`}>
+          <Text className={`mb-4 text-auto leading-5 font-light`}>
             By checking the boxes below, you consent to our using the personal
             information we collect through your use of this app in the way we
             have described.
           </Text>
-          <View className={`flex-row items-center text-center`}>
+          <View className={`flex-row  items-center text-center`}>
             <Text className="flex content-center leading-5 font-light mb-10">
               For more information about how we use and share personal
               information, please see our{' '}
@@ -130,8 +123,8 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
               </Text>
             </Text>
           </View> */}
-          {/* <View className="border-slate-200 border-b-2 mb-16 pb-4"></View> */}
-          <View className={`flex-row items-left mb-3`}>
+          <View className="flex-1">
+          <View className={`flex-1 flex-row items-left mb-3`}>
             <CheckBox
               handleCheckChanges={() => handleCheckBoxChange('isOver18Checked')}
               isSelected={checkBoxStates.isOver18Checked}
@@ -140,7 +133,7 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
               I confirm that I'm over 18 years old.
             </Text>
           </View>
-          <View className={`flex-row items-center mb-4`}>
+          <View className={`flex-1 flex-row mb-4`}>
             <CheckBox
               handleCheckChanges={() =>
                 handleCheckBoxChange('isConsentChecked')
@@ -158,7 +151,7 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
               </Text>
             </Text>
           </View>
-          <View className={`flex-row items-center mb-4`}>
+          <View className={`flex-1 flex-row items-center mb-4`}>
             <CheckBox
               handleCheckChanges={() =>
                 handleCheckBoxChange('isReadAndAcceptChecked')
@@ -180,6 +173,13 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
               </Text>
             </Text>
           </View>
+          </View>
+          {errorMessage ? (
+            <View className="mt-0 p-2 bg-red-100 border border-red-500 mx-auto w-[315]">
+              <Text className="text-red-500">{errorMessage}</Text>
+            </View>
+          ) : null}
+          
           <View className="flex-1 justify-end ">
             <TouchableOpacity
               onPress={handleAgree}
