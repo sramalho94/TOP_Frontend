@@ -5,9 +5,9 @@ import {useAuth} from '../context/AuthContext';
 import FlowerImg from '../../assets/orange-flower.png';
 
 const HomeDash: React.FC<{navigation: any}> = ({navigation}) => {
-  const {onLogout} = useAuth();
+  const {onLogout, usernameVal} = useAuth();
   return (
-    <SafeAreaView className="h-screen w-screen">
+    <SafeAreaView className="h-screen w-screen max-w-md self-center">
       <ScrollView>
         {/* View for whole screen */}
         <View className="flex flex-col w-full min-h-screen p-6">
@@ -20,7 +20,7 @@ const HomeDash: React.FC<{navigation: any}> = ({navigation}) => {
               <CircleBtn
                 img={FlowerImg}
                 bgColor="bg-themeWhite"
-                borderColor='border-themeBlue'
+                borderColor="border-themeBlue"
                 text="Logout"
                 onPress={() => {
                   if (onLogout) {
@@ -33,19 +33,25 @@ const HomeDash: React.FC<{navigation: any}> = ({navigation}) => {
                 Btnheight="h-24"
               />
             </View>
+            <View className="self-start">
+              {/* // TODO: Add a potrait image here!!!! */}
+              <Text className="color-black text-lg">
+                Welcome back, {usernameVal}!
+              </Text>
+            </View>
             {/* need giant circle btn, need to refactor circle btn props? */}
             <View className="mt-10">
-            <CircleBtn
-              text={`Report\nTest`}
-              bgColor="bg-themeLightOrange"
-              onPress={() => {
-                navigation.navigate('AccountReportPage');
-              }}
-              Btnwidth="w-60"
-              Btnheight="h-60"
-              textSize="3xl"
-              borderColor=''
-            />
+              <CircleBtn
+                text={`Report\nTest`}
+                bgColor="bg-themeLightOrange"
+                onPress={() => {
+                  navigation.navigate('AccountReportPage');
+                }}
+                Btnwidth="w-60"
+                Btnheight="h-60"
+                textSize="3xl"
+                borderColor=""
+              />
             </View>
           </View>
 
@@ -59,7 +65,7 @@ const HomeDash: React.FC<{navigation: any}> = ({navigation}) => {
                 }}
                 Btnwidth="w-28"
                 Btnheight="h-28"
-                borderColor=''
+                borderColor=""
               />
               <Text className="text-center p-3 text-black text-base">
                 Privacy
@@ -72,7 +78,7 @@ const HomeDash: React.FC<{navigation: any}> = ({navigation}) => {
                 onPress={() => navigation.navigate('DataDashboard')}
                 Btnwidth="w-28"
                 Btnheight="h-28"
-                borderColor=''
+                borderColor=""
               />
               <Text className="text-center p-3 text-black text-base">
                 Dashboard
@@ -80,7 +86,12 @@ const HomeDash: React.FC<{navigation: any}> = ({navigation}) => {
             </View>
 
             <View className="mt-1">
-              <CircleBtn img={FlowerImg} Btnwidth="w-28" Btnheight="h-28" borderColor='' />
+              <CircleBtn
+                img={FlowerImg}
+                Btnwidth="w-28"
+                Btnheight="h-28"
+                borderColor=""
+              />
               <Text className="text-center p-3 text-black text-base">
                 Exchange
               </Text>
