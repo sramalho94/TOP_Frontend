@@ -1,8 +1,9 @@
-import {View, Text, SafeAreaView, ScrollView} from 'react-native';
+import {View, Text, SafeAreaView, ScrollView, Image} from 'react-native';
 import React from 'react';
 import CircleBtn from '../components/CircleBtn';
 import {useAuth} from '../context/AuthContext';
 import FlowerImg from '../../assets/orange-flower.png';
+import CTL from '../../assets/communityTestLab.png';
 
 const HomeDash: React.FC<{navigation: any}> = ({navigation}) => {
   const {onLogout} = useAuth();
@@ -10,17 +11,20 @@ const HomeDash: React.FC<{navigation: any}> = ({navigation}) => {
     <SafeAreaView className="h-screen w-screen">
       <ScrollView>
         {/* View for whole screen */}
-        <View className="flex flex-col w-full min-h-screen p-6">
+        <View className="flex flex-col w-full min-h-screen bg-slate-500">
           {/* View for avatar, text and report test */}
-          <View className="flex w-full justify-center items-center ">
+          <View className="flex w-full justify-center items-center">
             {/* View for avatar*/}
             {/* FIXME: size={72} on avatar does not work for android, might be something with size? idk
             update* it also stopped working for IOS */}
-            <View className="self-end mb-2">
+              <Image
+            className="w-full h-[200] mb-2 bg-cover bg-center "
+            source={CTL}
+          />
+            <View className="self-start mb-2 pl-5">
               <CircleBtn
                 img={FlowerImg}
                 bgColor="bg-themeLightOrange"
-                text="Logout"
                 onPress={() => {
                   if (onLogout) {
                     onLogout();
@@ -28,8 +32,8 @@ const HomeDash: React.FC<{navigation: any}> = ({navigation}) => {
                     console.error('onLogout function is not provided');
                   }
                 }}
-                Btnwidth="w-24"
-                Btnheight="h-24"
+                Btnwidth="w-14"
+                Btnheight="h-14"
               />
             </View>
             <Text className="text-3xl font-bold mb-2 text-center">
