@@ -23,11 +23,11 @@ const LandingPage: React.FC<{navigation: any}> = ({navigation}) => {
           barStyle={theme === 'dark' ? 'light-content' : 'default'}
         />
         <ScrollView>
-        <View className="w-full justify-center items-center flex-1 flex-col"> 
-          <Image
-            className="w-full h-[500] mb-12 bg-cover bg-center "
-            source={LandingGroupImg}
-          />
+          <View className="w-full justify-center items-center flex-1 flex-col">
+            <Image
+              className="w-full h-[500] max-w-sm mb-12 bg-cover bg-center "
+              source={LandingGroupImg}
+            />
           </View>
 
           <View className="mb-3 flex-1 justify-end">
