@@ -30,7 +30,7 @@ const LandingPage: React.FC<{ navigation: any }> = ({ navigation }) => {
             source={LandingGroupImg}
           />
 
-          <View className="mb-3 flex-1 justify-end">
+          <View className="mb-3 flex-1 justify-end mx-auto">
             <Button
               onPress={() => navigation.navigate('SignInPage')}
               innerText="Log in"
@@ -43,7 +43,7 @@ const LandingPage: React.FC<{ navigation: any }> = ({ navigation }) => {
               accessHint="Navigates to the login screen"
             />
           </View>
-          <View className="mb-2">
+          <View className="mb-2 mx-auto">
             <Button
               onPress={() => navigation.navigate('ReportPage')}
               innerText="Report Without Account"
@@ -58,18 +58,19 @@ const LandingPage: React.FC<{ navigation: any }> = ({ navigation }) => {
           </View>
 
           {/* FIXME: Might need to put in a view */}
-          <Button
-            onPress={() => navigation.navigate('Onboarding')}
-            innerText="Create Account"
-            bgColor="bg-white"
-            textColor="text-themeBlue"
-            border={true}
-            borderColor="border border-themeBlue border-3"
-            width="80"
-            accessLabel="Create account"
-            accessHint="Navigates to the create account screen"
-          />
-
+          <View className="mx-auto">
+            <Button
+              onPress={() => navigation.navigate('Onboarding')}
+              innerText="Create Account"
+              bgColor="bg-themeBlue"
+              textColor="text-themeWhite"
+              border={true}
+              borderColor="border border-themeBlue border-2"
+              width="80"
+              accessLabel="Create account"
+              accessHint="Navigates to the create account screen"
+            />
+          </View>
         </View>
         
       </ScrollView>

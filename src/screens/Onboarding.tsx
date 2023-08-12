@@ -83,26 +83,29 @@ const Onboarding = (props: OnboardingScreenProps) => {
       scrollEventThrottle={16} // Adjust the scroll event frequency
     >
       {pages.map((page, index) => (
-        <SafeAreaView key={index} className="h-screen w-screen items-center bg-themeWhite pb-4">
-          <View className="flex-1 flex-col mt-4 mb-10" accessibilityLabel='Onboarding Info Page' accessibilityHint='Informs you how your data will be used and not be used' accessibilityRole='header'>
-            <View className="m-5 flex-1">
-            <Image
-                className="w-[400px] h-[500px] max-h-full mb-5 bg-contain bg-center"
+        <SafeAreaView key={index} className="h-screen w-screen bg-themeWhite pb-4">
+          <View className="flex-1 flex-col mb-10" accessibilityLabel='Onboarding Info Page' accessibilityHint='Informs you how your data will be used and not be used' accessibilityRole='header'>
+            <View className="">
+              <Image
+                className="w-full h-[500px] max-h-full mb-5 bg-contain bg-center"
                 source={page.imageSource}
               />
-              <Text className="mx-auto font-serif text-[25px] text-center">
-                {page.title}
-              </Text>
-              <Text className="mx-10 py-5 font-serif text-[14px] text-center leading-5 font-light">
-                {page.text}
-              </Text>
+              <View>
+                <Text className="mx-auto font-serif text-[25px] text-center">
+                  {page.title}
+                </Text>
+                <Text className="mx-10 py-5 font-serif text-[14px] text-center leading-5 font-light">
+                  {page.text}
+                </Text>
+              </View>
             </View>
 
             <View className="flex-1 flex-col-reverse mt-1 ">
-              <View className="flex justify-center">
-                <View className="mb-2">
+              <View className="flex-1 mt-8 justify-center">
+                <View className="flex-1 mb-2">
                   <ProgressDots page={page.pageIndicator} />
                 </View>
+                <View className="mx-auto mt-7">
                 <Button
                   onPress={page.onButtonPress}
                   innerText={page.buttonText}
@@ -115,7 +118,7 @@ const Onboarding = (props: OnboardingScreenProps) => {
                   accessHint="Navigates to the next screen"
 
                 />
-
+              
                 {page.pageIndicator !== pages.length && (
                   <Button
                     onPress={() => navigation.navigate('CreateAccount1')}
@@ -129,6 +132,7 @@ const Onboarding = (props: OnboardingScreenProps) => {
                     accessHint="Navigates to the create account screen"
                   />
                 )}
+                </View>
               </View>
             </View>
           </View>

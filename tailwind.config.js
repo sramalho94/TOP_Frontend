@@ -9,7 +9,8 @@ module.exports = {
         themeLightBlue: "#88A7F5",
         themeOrange: "#EF8C44", // for tertiary button
         themeLightOrange: "#EFAF49",
-        themeWhite: "#F0F0F0", // for secondary button
+        themeLightGray: "#F0F0F0",
+        themeWhite: "#FFFFFF", // for secondary button
       }
     },
     fontFamily: {
