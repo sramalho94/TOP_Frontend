@@ -62,7 +62,7 @@ const TestScreenLogin = () => {
             placeholder="username"
           />
           <TextInputField
-            label="Password"
+            label="Password*"
             value={userLogin.password}
             onChange={value => handleChange('password', value)}
             placeholder="password"

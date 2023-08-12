@@ -23,10 +23,10 @@ const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
   const {userId: actualUserId, DOB} = useAuth();
   const actualUserIdValue = actualUserId ?? null;
   const DOBVal = DOB ?? null;
-  const [negColor, setNegColor] = useState<string>("bg-themeWhite")
-  const [posColor, setPosColor] = useState<string>("bg-themeWhite")
-  const [negTextColor, setNegTextColor] = useState<string>("text-black")
-  const [posTextColor, setPosTextColor] = useState<string>("text-black")
+  const [negColor, setNegColor] = useState<string>('bg-themeWhite');
+  const [posColor, setPosColor] = useState<string>('bg-themeWhite');
+  const [negTextColor, setNegTextColor] = useState<string>('text-black');
+  const [posTextColor, setPosTextColor] = useState<string>('text-black');
   const [formState, setFormState] = useState<FormState>({
     result: false,
     DOB: DOBVal,
@@ -80,7 +80,6 @@ const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
     <SafeAreaView className="min-w-screen">
       <ScrollView>
         <TopNavBar
-        textColor='text-themeBlue'
           textSize="xl"
           fontFamily=""
           haveProgress={false}
@@ -100,14 +99,13 @@ const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
                 bgColor={negColor}
                 textColor={negTextColor}
                 borderColor="border-themeLigthBlue"
-                updateForm={
-                  () => {
-                    handleChange('result', false)
-                    setNegColor("bg-themeLightBlue")
-                    setPosColor("bg-themeWhite")
-                    setNegTextColor("text-white")
-                    setPosTextColor("text-black")
-                  }}
+                updateForm={() => {
+                  handleChange('result', false);
+                  setNegColor('bg-themeLightBlue');
+                  setPosColor('bg-themeWhite');
+                  setNegTextColor('text-white');
+                  setPosTextColor('text-black');
+                }}
                 text="Negative"
                 Btnwidth="w-32"
                 Btnheight="h-32"
@@ -117,16 +115,16 @@ const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
             </View>
             <View className="m-2">
               <CircleBtn
-                borderColor='border-themeLightOrange'
+                borderColor="border-themeLightOrange"
                 text="Positive"
                 textColor={posTextColor}
                 bgColor={posColor}
                 updateForm={() => {
-                  handleChange('result', true)
-                  setNegColor("bg-themeWhite")
-                  setPosColor("bg-themeLightOrange")
-                  setNegTextColor("text-black")
-                  setPosTextColor("text-white")
+                  handleChange('result', true);
+                  setNegColor('bg-themeWhite');
+                  setPosColor('bg-themeLightOrange');
+                  setNegTextColor('text-black');
+                  setPosTextColor('text-white');
                 }}
                 Btnwidth="w-32"
                 Btnheight="h-32"
