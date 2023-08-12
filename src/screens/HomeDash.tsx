@@ -44,6 +44,7 @@ const HomeDash: React.FC<{navigation: any}> = ({navigation}) => {
               Btnwidth="w-60"
               Btnheight="h-60"
               textSize="3xl"
+              borderColor=''
             />
             </View>
           </View>
@@ -58,6 +59,7 @@ const HomeDash: React.FC<{navigation: any}> = ({navigation}) => {
                 }}
                 Btnwidth="w-28"
                 Btnheight="h-28"
+                borderColor=''
               />
               <Text className="text-center p-3 text-black text-base">
                 Privacy
@@ -70,6 +72,7 @@ const HomeDash: React.FC<{navigation: any}> = ({navigation}) => {
                 onPress={() => navigation.navigate('DataDashboard')}
                 Btnwidth="w-28"
                 Btnheight="h-28"
+                borderColor=''
               />
               <Text className="text-center p-3 text-black text-base">
                 Dashboard
@@ -77,7 +80,7 @@ const HomeDash: React.FC<{navigation: any}> = ({navigation}) => {
             </View>
 
             <View className="mt-1">
-              <CircleBtn img={FlowerImg} Btnwidth="w-28" Btnheight="h-28" />
+              <CircleBtn img={FlowerImg} Btnwidth="w-28" Btnheight="h-28" borderColor='' />
               <Text className="text-center p-3 text-black text-base">
                 Exchange
               </Text>
