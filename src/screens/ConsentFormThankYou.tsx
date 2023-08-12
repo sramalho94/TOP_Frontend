@@ -6,6 +6,7 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../../App';
 import {useAuth} from '../context/AuthContext';
 import jumpImg from './../../assets/jump.png';
+import CarterOne from '../../assets/fonts/Carter One.ttf';
 
 type ConsentFormThankYouNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
@@ -24,9 +25,11 @@ const ConsentFormThankYou = ({navigation}: Props) => {
   const {usernameVal} = useAuth();
   return (
     <SafeAreaView className="flex-1 bg-themeWhite">
-      <View className="flex-1 mx-auto mb-20  justify-center">
+      <View className="flex-1 mx-auto mb-20 mt-10  justify-center">
         <View className="w-[342]">
-          <Text className="text-5xl color-black body-font font-poetsen text-center mt-20 mx-6">
+          <Text
+            style={{fontFamily: 'CarterOne'}}
+            className=" text-4xl  text-center mt-10 mx-6 pt-10">
             Thanks for joining our community, {usernameVal}!
           </Text>
           <Text className="mx-auto py-2 font-serif text-[14px]">

@@ -85,7 +85,7 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
     <>
       <SafeAreaView className="flex-1 h-screen w-screen bg-themeWhite">
         <TopNavBar
-        textColor='text-themeBlue'
+          textColor="text-themeBlue"
           textSize="xl"
           textValue="Create Account"
           fontFamily=""
@@ -112,6 +112,9 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
               </Text>
             </Text>
           </View>
+          <View className="shadow shadow-black ">
+            <View className="border-gray-200 border-b-2  pb-3 mb-5"></View>
+          </View>
           {/* <Text className={`mb-4 text-auto`}>
             You may withdraw your consent at any time by emailing{' '}
             <Text
@@ -131,54 +134,58 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
             </Text>
           </View> */}
           {/* <View className="border-slate-200 border-b-2 mb-16 pb-4"></View> */}
-          <View className={`flex-row items-left mb-3`}>
-            <CheckBox
-              handleCheckChanges={() => handleCheckBoxChange('isOver18Checked')}
-              isSelected={checkBoxStates.isOver18Checked}
-            />
-            <Text className={`text-sm ml-2`}>
-              I confirm that I'm over 18 years old.
-            </Text>
-          </View>
-          <View className={`flex-row items-center mb-4`}>
-            <CheckBox
-              handleCheckChanges={() =>
-                handleCheckBoxChange('isConsentChecked')
-              }
-              isSelected={checkBoxStates.isConsentChecked}
-            />
-            <Text className={`text-sm ml-2`}>
-              I consent to the processing of my personal data (including without
-              limitation data I provide relating to my health) as set forth in
-              this consent and in the{' '}
-              <Text
-                className={`text-blue-500 underline`}
-                onPress={handlePrivacyPolicyPress}>
-                Privacy Policy.
+          <View className="mt-10">
+            <View className={`flex-row items-left mb-3`}>
+              <CheckBox
+                handleCheckChanges={() =>
+                  handleCheckBoxChange('isOver18Checked')
+                }
+                isSelected={checkBoxStates.isOver18Checked}
+              />
+              <Text className={`text-sm ml-2`}>
+                I confirm that I'm over 18 years old.
               </Text>
-            </Text>
-          </View>
-          <View className={`flex-row items-center mb-4`}>
-            <CheckBox
-              handleCheckChanges={() =>
-                handleCheckBoxChange('isReadAndAcceptChecked')
-              }
-              isSelected={checkBoxStates.isReadAndAcceptChecked}
-            />
-            <Text className={`text-sm ml-2`}>
-              I have read and accept{' '}
-              <Text
-                className={`text-blue-500 underline`}
-                onPress={handleTermsPress}>
-                Terms of Use
-              </Text>{' '}
-              and{' '}
-              <Text
-                className={`text-blue-500 underline`}
-                onPress={handlePrivacyPolicyPress}>
-                Privacy Policy.
+            </View>
+            <View className={`flex-row items-center mb-4`}>
+              <CheckBox
+                handleCheckChanges={() =>
+                  handleCheckBoxChange('isConsentChecked')
+                }
+                isSelected={checkBoxStates.isConsentChecked}
+              />
+              <Text className={`text-sm ml-2`}>
+                I consent to the processing of my personal data (including
+                without limitation data I provide relating to my health) as set
+                forth in this consent and in the{' '}
+                <Text
+                  className={`text-blue-500 underline`}
+                  onPress={handlePrivacyPolicyPress}>
+                  Privacy Policy.
+                </Text>
               </Text>
-            </Text>
+            </View>
+            <View className={`flex-row items-center mb-4`}>
+              <CheckBox
+                handleCheckChanges={() =>
+                  handleCheckBoxChange('isReadAndAcceptChecked')
+                }
+                isSelected={checkBoxStates.isReadAndAcceptChecked}
+              />
+              <Text className={`text-sm ml-2`}>
+                I have read and accept{' '}
+                <Text
+                  className={`text-blue-500 underline`}
+                  onPress={handleTermsPress}>
+                  Terms of Use
+                </Text>{' '}
+                and{' '}
+                <Text
+                  className={`text-blue-500 underline`}
+                  onPress={handlePrivacyPolicyPress}>
+                  Privacy Policy.
+                </Text>
+              </Text>
+            </View>
           </View>
           <View className="flex-1 justify-end ">
             <TouchableOpacity
