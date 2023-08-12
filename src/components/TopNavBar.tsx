@@ -28,7 +28,7 @@ const TopNavBar = ({
   };
 
   return (
-    <View className="h-[110] flex-1">
+    <View className="">
       <View className="flex-row mt-6 mb-2">
         <TouchableOpacity
           className="mt-2 ml-4"

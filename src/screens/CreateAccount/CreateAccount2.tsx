@@ -80,7 +80,7 @@ const CreateAccount2: React.FC<{navigation: any}> = ({navigation}) => {
   };
 
   return (
-    <SafeAreaView className="min-w-screen">
+    <SafeAreaView className="bg-white min-w-screen min-h-screen">
       {/* <ScrollView> */}
         <TopNavBar
           fontFamily=""
@@ -90,7 +90,7 @@ const CreateAccount2: React.FC<{navigation: any}> = ({navigation}) => {
           page={2}
         />
 
-      <View className="mx-auto my-auto mb-3">
+      <View className="mx-auto mb-3 mt-10">
         <View className="w-[342]">
 
         {errorMessage ? (
@@ -98,7 +98,7 @@ const CreateAccount2: React.FC<{navigation: any}> = ({navigation}) => {
             <Text className="text-red-500">{errorMessage}</Text>
           </View>
         ) : null}
-        <View className="mt-56">
+        <View className="">
           <TextInputField
             label="Date of Birth*"
             value={formState.DOB}
@@ -120,7 +120,7 @@ const CreateAccount2: React.FC<{navigation: any}> = ({navigation}) => {
         </View>
       </View>
       </View>
-      <View className="flex-1 justify-end ">
+      <View className="flex-1 mb-5 justify-end ">
         <Button
           onPress={handleNext}
           innerText="Continue"

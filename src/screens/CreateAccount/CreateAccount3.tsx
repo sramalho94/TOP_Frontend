@@ -38,7 +38,7 @@ const CreateAccount3: React.FC<{navigation: any}> = ({navigation}) => {
         haveProgress={true}
         page={3}
       />
-      <View className="mx-auto my-auto mb-6">
+      <View className="mx-auto my-auto mt-5 mb-6">
         <View className="w-[342]">
           <DropDownField
             text="Gender"
@@ -121,7 +121,7 @@ const CreateAccount3: React.FC<{navigation: any}> = ({navigation}) => {
           />
         </View>
       </View>
-      <View className="flex-1 justify-end ">
+      <View className="flex-1 mb-5 justify-end ">
         <Button
           onPress={handleNext}
           innerText="Continue"

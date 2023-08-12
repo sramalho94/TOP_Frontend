@@ -6,8 +6,9 @@ type Props = {
 const PasswordError = (props: Props) => {
   return (
     <View className="my-4 w-80 mx-auto">
-        <View className="flex-1 justify-center items-center bg-opacity-50">
-            <View className="bg-white p-5 rounded-lg border-2 border-red-500">
+        <View className=" justify-center items-center ">
+          
+            <View className="bg-red-100 p-5 rounded-lg border-2 border-red-500">
                 <Text className="text-15 font-bold mb-4 text-red-500">
                 Error! Password must include:
                 </Text>

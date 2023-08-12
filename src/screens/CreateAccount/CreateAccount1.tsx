@@ -30,13 +30,13 @@ const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
   const handleNext = () => {
     // Check if email and username are not empty
     if (!formState.email || !formState.username || !formState.password) {
-      alert('Please fill in all mandatory fields.');
+      // alert('Please fill in all mandatory fields.');
       return; // Prevent proceeding to the next page
     }
 
     // Check if the email is in the correct format
     if (!isEmailValid(formState.email)) {
-      alert('Please enter a valid email address.');
+      // alert('Please enter a valid email address.');
       return; // Prevent proceeding to the next page
     }
 
@@ -50,8 +50,8 @@ const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
   };
 
   return (
-    <SafeAreaView className="h-screen w-screen bg-themeWhite">
-      {/* <ScrollView> */}
+    <SafeAreaView className="flex-1 h-screen w-screen bg-themeWhite">
+      <ScrollView>
       <TopNavBar
         fontFamily=""
         textSize="xl"
@@ -59,7 +59,7 @@ const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
         haveProgress={true}
         page={1}
       />
-      <View className="mx-auto my-auto mb-2">
+      <View className="flex-1 mx-auto mb-2">
         <View className="w-[342]">
           <View>
             <Image
@@ -88,7 +88,7 @@ const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
           />
         </View>
       </View>
-      <View className="mt-5">
+      <View className="my-7">
         <Button
           onPress={handleNext}
           innerText="Continue"
@@ -99,7 +99,7 @@ const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
           width="80"
         />
       </View>
-      {/* </ScrollView> */}
+      </ScrollView>
     </SafeAreaView>
   );
 };

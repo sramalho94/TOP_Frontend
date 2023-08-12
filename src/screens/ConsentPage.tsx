@@ -77,7 +77,7 @@ const ConsentPage: React.FC<{ navigation: any }> = ({ navigation }) => {
   };
   return (
     <>
-      <SafeAreaView className="flex-1 h-screen w-screen bg-themeWhite">
+      <SafeAreaView className="flex-1 min-h-screen min-w-screen bg-themeWhite">
         <TopNavBar
           textSize="xl"
           textValue="Create Account"
@@ -89,12 +89,12 @@ const ConsentPage: React.FC<{ navigation: any }> = ({ navigation }) => {
         {/* add topNavBar component here and pass a few props to it */}
         {/* Still need to double check the font size and family font! */}
         <View className={`flex-1 justify-center p-4 px-8`}>
-          <Text className={`mb-4 text-auto leading-5 font-light -mt-[220px]`}>
+          <Text className={`mb-4 text-auto leading-5 font-light`}>
             By checking the boxes below, you consent to our using the personal
             information we collect through your use of this app in the way we
             have described.
           </Text>
-          <View className={`flex-row items-center text-center`}>
+          <View className={`flex-row  items-center text-center`}>
             <Text className="flex content-center leading-5 font-light mb-10">
               For more information about how we use and share personal
               information, please see our{' '}
@@ -123,8 +123,8 @@ const ConsentPage: React.FC<{ navigation: any }> = ({ navigation }) => {
               </Text>
             </Text>
           </View> */}
-          {/* <View className="border-slate-200 border-b-2 mb-16 pb-4"></View> */}
-          <View className={`flex-row items-left mb-3`}>
+          <View className="flex-1">
+          <View className={`flex-1 flex-row items-left mb-3`}>
             <CheckBox
               handleCheckChanges={() => handleCheckBoxChange('isOver18Checked')}
               isSelected={checkBoxStates.isOver18Checked}
@@ -133,7 +133,7 @@ const ConsentPage: React.FC<{ navigation: any }> = ({ navigation }) => {
               I confirm that I'm over 18 years old.
             </Text>
           </View>
-          <View className={`flex-row items-center mb-4`}>
+          <View className={`flex-1 flex-row mb-4`}>
             <CheckBox
               handleCheckChanges={() =>
                 handleCheckBoxChange('isConsentChecked')
@@ -151,7 +151,7 @@ const ConsentPage: React.FC<{ navigation: any }> = ({ navigation }) => {
               </Text>
             </Text>
           </View>
-          <View className={`flex-row items-center mb-4`}>
+          <View className={`flex-1 flex-row items-center mb-4`}>
             <CheckBox
               handleCheckChanges={() =>
                 handleCheckBoxChange('isReadAndAcceptChecked')
@@ -172,6 +172,7 @@ const ConsentPage: React.FC<{ navigation: any }> = ({ navigation }) => {
                 Privacy Policy.
               </Text>
             </Text>
+          </View>
           </View>
           {errorMessage ? (
             <View className="mt-0 p-2 bg-red-100 border border-red-500 mx-auto w-[315]">
