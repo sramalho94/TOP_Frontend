@@ -90,7 +90,6 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
     <SafeAreaView className="w-screen h-screen flex-1">
       {/* NavBar */}
       <TopNavBar
-        textColor="text-themeBlue"
         textValue="Report COVID-19 Test Result"
         fontFamily=""
         textSize="xl"
@@ -116,7 +115,7 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
                   bgColor={negColor}
                   borderColor="border-themeLightBlue"
                   updateForm={() => {
-                    updateFormState
+                    updateFormState("results", false)
                     setNegColor("bg-themeLightBlue")
                     setPosColor("bg-themeWhite")
                     setNegTextColor("text-white")
@@ -139,7 +138,7 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
                   text="Positive"
                   bgColor={posColor}
                   updateForm={() => {
-                    updateFormState
+                    updateFormState("results", true)
                     setNegColor("bg-themeWhite")
                     setPosColor("bg-themeLightOrange")
                     setNegTextColor("text-black")
@@ -276,7 +275,7 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
             </View>
 
             {/* button container */}
-            <View className="mb-14">
+            <View className="mb-14 mx-auto">
               <Button
                 onPress={handleReportButtonClick}
                 innerText="Report"

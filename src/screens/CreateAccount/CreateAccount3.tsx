@@ -128,7 +128,7 @@ const CreateAccount3: React.FC<{navigation: any}> = ({navigation}) => {
             />
           </View>
         </View>
-        <View className="mt-40">
+        <View className="mt-40 mx-auto">
           <Button
             onPress={handleNext}
             innerText="Next"

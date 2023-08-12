@@ -139,6 +139,7 @@ function AppContent({
             <Stack.Screen
               name="AccountReportPage"
               component={AccountReportPage}
+              options={{ headerShown: false }}
             />
             <Stack.Screen
               name="HomeDash"

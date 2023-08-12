@@ -84,7 +84,7 @@ const AccountReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
   };
 
   return (
-    <SafeAreaView className="min-w-screen">
+    <SafeAreaView className="flex-1 min-w-screen">
       <ScrollView>
         <TopNavBar
           textSize="xl"
@@ -94,13 +94,13 @@ const AccountReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
         />
 
         {/* Page container */}
-        <View className="justify-center mx-auto max-w-sm" accessible={true} accessibilityLabel='Report Covid Test with Account Page' accessibilityHint='Report Covid Test with an Account Page' accessibilityRole='header'>
+        <View className="flex-1 justify-center mx-auto max-w-sm" accessible={true} accessibilityLabel='Report Covid Test with Account Page' accessibilityHint='Report Covid Test with an Account Page' accessibilityRole='header'>
           <Text className="text-lg font-bold mx-auto">
             What were the results of your test?
           </Text>
 
           {/* Result Buttons Container */}
-          <View className="justify-center space-x-4 flex-row my-8">
+          <View className="flex-1 justify-center space-x-4 flex-row my-8">
             <View className="m-2">
               <CircleBtn
                 bgColor={negColor}
@@ -122,7 +122,7 @@ const AccountReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
                 accessHint="Touch if your test results are negative"
               />
             </View>
-            <View className="m-2">
+            <View className="flex-1 m-2">
               <CircleBtn
                 borderColor="border-themeLightOrange"
                 text="Positive"
@@ -146,7 +146,7 @@ const AccountReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
           </View>
 
           {/* Text input fields container */}
-          <View className="">
+          <View className="flex-1 ">
             <TextInputField
               label="Date of Test*"
               value={formState.DOT}
