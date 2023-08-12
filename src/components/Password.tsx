@@ -26,6 +26,9 @@ const PasswordField = (props: Props) => {
   return (
     <View className="w-full max-w-sm flex-1 justify-center align-middle px-8">
       <Text nativeID="formLabel" className="font-medium w-full h-8 flex my-auto justify-center align-middle">
+        {/* might need instead of above styling */}
+    {/* <View className="my-4">
+      <Text className="ml-3 w-36 h-8 flex my-auto justify-center font-medium"> */}
         Password*
       </Text>
 
@@ -53,7 +56,7 @@ const PasswordField = (props: Props) => {
         >
         <Icon
           className="text-gray-500"
-          name={showPassword ? 'eye-off-outline' : 'eye-outline'}
+          name={showPassword ? 'eye-outline' : 'eye-off-outline'}
           size={25}
         />
       </TouchableOpacity>

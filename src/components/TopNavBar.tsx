@@ -7,7 +7,6 @@ import { useNavigation } from '@react-navigation/native';
 type Props = {
   textSize: string;
   textValue: string;
-  textColor: string;
   fontFamily: string;
   haveProgress: boolean;
   page?: number;
@@ -19,7 +18,6 @@ type Props = {
 const TopNavBar = ({
   textSize,
   textValue,
-  textColor,
   fontFamily,
   haveProgress,
   page,
@@ -43,12 +41,15 @@ const TopNavBar = ({
           <Icon name="arrowleft" size={30} color="#000" className="" />
         </TouchableOpacity>
         <Text
-          className={`text-${textSize}  text-themeBlue font-bold mx-auto mt-2 flex pr-12 font-${fontFamily}`}>
+          className={`text-${textSize}  text-themeBlue font-bold mx-auto mt-2 pr-12 font-${fontFamily}`}>
           {textValue}
         </Text>
       </View>
-      <View className="border-slate-200 border-b-4  pb-4">
-        {haveProgress ? page ? <ProgressDots page={page} /> : null : null}
+      <View className="shadow shadow-black ">
+        <View className="border-gray-200 border-b-2  pb-4">
+          {/* <View className="shadow shadow-red-500/40 md:shadow-red-500/40"> */}
+          {/* {haveProgress ? page ? <ProgressDots page={page} /> : null : null} */}
+        </View>
       </View>
     </View>
   );

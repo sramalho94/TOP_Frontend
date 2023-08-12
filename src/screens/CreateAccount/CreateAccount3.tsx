@@ -5,8 +5,8 @@ import Button from '../../components/Button';
 import TopNavBar from '../../components/TopNavBar';
 import DropDownField from '../../components/DropDownField';
 
-const CreateAccount3: React.FC<{ navigation: any }> = ({ navigation }) => {
-  const { formState, updateFormState } = useContext(CreateAccountContext);
+const CreateAccount3: React.FC<{navigation: any}> = ({navigation}) => {
+  const {formState, updateFormState} = useContext(CreateAccountContext);
   const [genderOpen, setGenderOpen] = useState<boolean>(false);
   const [raceOpen, setRaceOpen] = useState<boolean>(false);
   const [ethnicityOpen, setEthnicityOpen] = useState<boolean>(false);
@@ -33,7 +33,6 @@ const CreateAccount3: React.FC<{ navigation: any }> = ({ navigation }) => {
     <SafeAreaView className="min-w-screen">
       <ScrollView>
         <TopNavBar
-          textColor='text-themeBlue'
           fontFamily=""
           textSize="xl"
           textValue="Create Account"

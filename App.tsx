@@ -96,7 +96,11 @@ function AppContent({
               component={LandingPage}
               options={{ headerShown: false }}
             />
-            <Stack.Screen name="SignInPage" component={SignInPage} />
+            <Stack.Screen
+              name="SignInPage"
+              component={SignInPage}
+              options={{headerShown: false}}
+            />
             <Stack.Screen
               name="CreateAccount1"
               component={CreateAccount1}

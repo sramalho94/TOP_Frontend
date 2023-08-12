@@ -42,7 +42,9 @@ const TestScreenRegister = () => {
 
     if (onRegister) {
       onRegister(userSignUp)
-        .then((res: any) => console.log('res from register!!: ' + JSON.stringify(res.data)))
+        .then((res: any) =>
+          console.log('res from register!!: ' + JSON.stringify(res.data)),
+        )
         .catch((error: any) => {
           console.log('Screen Register Err: ' + error);
         });
@@ -67,7 +69,7 @@ const TestScreenRegister = () => {
             placeholder="username"
           />
           <TextInputField
-            label="Password"
+            label="Password*"
             value={userSignUp.password}
             onChange={value => handleChange('password', value)}
             placeholder="password"
