@@ -88,7 +88,7 @@ const CreateAccount2: React.FC<{navigation: any}> = ({navigation}) => {
       />
 
       <View className="flex-1 mx-auto my-auto mb-3">
-        <View className="w-[342] mt-10">
+        <View className="w-[342] min-h-[300px] mt-10">
           <TextInputField
             label="Date of Birth*"
             value={formState.DOB}

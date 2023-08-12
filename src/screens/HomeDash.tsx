@@ -19,7 +19,8 @@ const HomeDash: React.FC<{navigation: any}> = ({navigation}) => {
             <View className="self-end mb-2">
               <CircleBtn
                 img={FlowerImg}
-                bgColor="bg-themeLightOrange"
+                bgColor="bg-themeWhite"
+                borderColor='border-themeBlue'
                 text="Logout"
                 onPress={() => {
                   if (onLogout) {
@@ -32,10 +33,8 @@ const HomeDash: React.FC<{navigation: any}> = ({navigation}) => {
                 Btnheight="h-24"
               />
             </View>
-            <Text className="text-3xl font-bold mb-2 text-center">
-              Community {'\n'}Test Lab
-            </Text>
             {/* need giant circle btn, need to refactor circle btn props? */}
+            <View className="mt-10">
             <CircleBtn
               text={`Report\nTest`}
               bgColor="bg-themeLightOrange"
@@ -46,6 +45,7 @@ const HomeDash: React.FC<{navigation: any}> = ({navigation}) => {
               Btnheight="h-60"
               textSize="3xl"
             />
+            </View>
           </View>
 
           {/*View for 3 mini buttons*/}
