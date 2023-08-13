@@ -3,8 +3,6 @@ import {
   SafeAreaView,
   View,
   Text,
-  TouchableOpacity,
-  TextInput,
   Image,
   ScrollView,
 } from 'react-native';
@@ -18,55 +16,35 @@ import { useNavigation } from '@react-navigation/native';
 
 type Props = {};
 
-type FormState = {
-  username: string;
-  password: string;
-  showPassword: boolean;
-};
-
-const initialFormState: FormState = {
-  username: '',
-  password: '',
-  showPassword: false,
-};
-
-
-
 export default function SignInPage(props: Props) {
-  const [form, setForm] = useState<FormState>(initialFormState);
-  const [username, setUsername] = useState('');
 
   const [userSignUp, setUserSignUp] = useState<any>({
     username: '',
     password: '',
   })
-  
+
+  const [errorMessage, setErrorMessage] = useState<string>('');
+
   const handleChange = (field: string, value: string) => {
-    setUserSignUp({...userSignUp, [field]: value});
+    setUserSignUp({ ...userSignUp, [field]: value });
   }
 
-  const handleUsernameChange = (value: string) => {
-    setUsername(value);
-  };
-
-  const {onLogin} = useAuth();
+  const { onLogin } = useAuth();
   const navigation: any = useNavigation();
-
 
   const handleSubmit: any = (e: any) => {
     e.preventDefault();
-    console.log("userSignIn submit: ", {userSignUp})
 
     if (onLogin) {
       onLogin(userSignUp)
-        .then((res: any) => {
-          console.log('res from login!!: ' + JSON.stringify(res))
-          if (res.success) {
-            navigation.navigate('AccountReportPage')
-          }
+      .then((res: any) => {
+        if (res.success) {
+          navigation.navigate('AccountReportPage')
         }
-        )
-        .catch((error: any) => {
+      }
+      )
+      .catch((error: any) => {
+          setErrorMessage('Username or Password is incorrect. Please try again or click Forgot Password.');
           console.log('Screen Login Err: ' + error);
         });
     } else {
@@ -74,16 +52,15 @@ export default function SignInPage(props: Props) {
     }
   };
 
-
   return (
-    <SafeAreaView className="w-342 m-4">
+    <SafeAreaView className="w-screen h-screen flex-1">
       <ScrollView>
-      {/* <TopNavBar textSize='xl' textValue='Sign In' fontFamily='' haveProgress={false} /> */}
-        <View className="">
+        {/* <TopNavBar textSize='xl' textValue='Sign In' fontFamily='' haveProgress={false} /> */}
+        <View className="" accessibilityLabel='Sign in to Account' accessibilityHint='Sign into an account' accessibilityRole='header'>
           <View className="flex flex-row justify-center align-middle">
-            <Image className="w-342 h-349 m-4" source={NoImage}></Image>
+            <Image className="w-[342] h-[349] m-4" source={NoImage}></Image>
           </View>
-          <View className="mb-6">
+          <View className="mb-1 mx-auto w-[342]">
             <TextInputField
               label="Username"
               value={userSignUp.username}
@@ -93,8 +70,11 @@ export default function SignInPage(props: Props) {
             <Password onChange={value => handleChange('password', value)} password={userSignUp.password} />
           </View>
 
-
-
+          {errorMessage ? (
+            <View className="mt-0 p-2 bg-red-100 border border-red-500 mx-auto w-[315]">
+              <Text className="text-red-500">{errorMessage}</Text>
+            </View>
+          ) : null}
 
         </View>
         <View className="mt-4">
@@ -106,25 +86,10 @@ export default function SignInPage(props: Props) {
             border={true}
             borderColor="border border-black"
             width='80'
+            accessLabel="Login"
+            accessHint="Navigates to the login screen"
           />
-          <Button
-            onPress={() => console.log('pressed')}
-            innerText="Forgot Password"
-            textColor=""
-            bgColor=""
-            border={true}
-            borderColor="border border-black"
-            width='80'
-          />
-          <Button
-            onPress={() => console.log('Skip button pressed')}
-            innerText="Skip"
-            bgColor=""
-            textColor=""
-            border={false}
-            borderColor=""
-            width='80'
-          />
+
         </View>
       </ScrollView>
     </SafeAreaView>

@@ -1,16 +1,16 @@
 import React, {useContext, useState} from 'react';
-import {View, Text, SafeAreaView, ScrollView, Modal, Image} from 'react-native';
+import {View, Text, SafeAreaView, ScrollView, Image} from 'react-native';
 import CreateAccountContext from '../../context/CreateAccountContext';
 import TextInputField from '../../components/TextInputField';
 import Button from '../../components/Button';
 import TopNavBar from '../../components/TopNavBar';
 import PasswordField from '../../components/Password';
+import PasswordError from '../../components/PasswordError';
 import CreateAccount from '../../../assets/testNew.jpg';
 
 const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
   const {formState, updateFormState} = useContext(CreateAccountContext);
-  const [isModalVisible, setIsModalVisible] = useState(false);
-
+  const [showError, setShowError] = useState <string>('hidden')
   // Validations:
 
   // Function to check if password meets criteria
@@ -30,31 +30,28 @@ const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
   const handleNext = () => {
     // Check if email and username are not empty
     if (!formState.email || !formState.username || !formState.password) {
-      alert('Please fill in all mandatory fields.');
+      // alert('Please fill in all mandatory fields.');
       return; // Prevent proceeding to the next page
     }
 
     // Check if the email is in the correct format
     if (!isEmailValid(formState.email)) {
-      alert('Please enter a valid email address.');
+      // alert('Please enter a valid email address.');
       return; // Prevent proceeding to the next page
     }
 
     const isPasswordValid = checkPasswordCriteria();
-    if (!isPasswordValid) {
-      toggleModal();
+    if (!isPasswordValid) { 
+      setShowError ('flex')
     } else {
+      setShowError ('hidden')
       navigation.navigate('CreateAccount2');
     }
   };
 
-  const toggleModal = () => {
-    setIsModalVisible(!isModalVisible);
-  };
-
   return (
-    <SafeAreaView className="h-screen w-screen bg-themeWhite">
-      {/* <ScrollView> */}
+    <SafeAreaView className="flex-1 h-screen w-screen bg-themeWhite">
+      <ScrollView>
       <TopNavBar
         fontFamily=""
         textSize="xl"
@@ -62,13 +59,17 @@ const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
         haveProgress={true}
         page={1}
       />
-      <View className="mx-auto my-auto mb-2">
+      <View className="flex-1 min-h-[300px] bg-green-300" accessibilityLabel='Create Account for login Page 1' accessibilityHint='First page in creating a new account. IT asks you to create an email, username, and password' accessibilityRole='header'>
+      <View className="flex-1 mx-auto mb-2" >
         <View className="w-[342]">
           <View>
             <Image
               className="mx-auto w-[217px] h-[217px] "
               source={CreateAccount}
             />
+            <View className={showError}>
+              <PasswordError />
+            </View>
           </View>
           <TextInputField
             label="Email*"
@@ -88,7 +89,7 @@ const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
           />
         </View>
       </View>
-      <View className="mt-5">
+      <View className="my-7">
         <Button
           onPress={handleNext}
           innerText="Continue"
@@ -97,34 +98,12 @@ const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
           border={true}
           borderColor="border border-themeBlue border-2"
           width="80"
+          accessLabel='Continue to Next Page'
+          accessHint='Continues to Account Page 2 for date of birth, zip code, and optional first name input'
         />
       </View>
-      <Modal visible={isModalVisible} transparent={true}>
-        <View className="flex-1 justify-center items-center bg-opacity-50">
-          <View className="bg-white p-8 rounded-lg w-72 border-4">
-            <Text className="text-xl font-bold mb-4">
-              Your password must include:
-            </Text>
-            <Text className="mb-2">- At least 8 characters</Text>
-            <Text className="mb-2">
-              - One uppercase and one lowercase letter
-            </Text>
-            <Text className="mb-2">- One number and one special character</Text>
-            <View className="flex-1 justify-end ">
-              <Button
-                onPress={toggleModal}
-                innerText="Close"
-                textColor=""
-                bgColor="bg-[#B4B4B4]"
-                border={true}
-                borderColor="border border-4"
-                width="5/6"
-              />
-            </View>
-          </View>
-        </View>
-      </Modal>
-      {/* </ScrollView> */}
+      </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };

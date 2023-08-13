@@ -5,18 +5,28 @@ import Icon from 'react-native-vector-icons/Ionicons';
 interface CheckBoxProps {
   handleCheckChanges: () => void;
   isSelected: boolean;
+  accessHint: string;
 }
 
 const CheckBox: React.FC<CheckBoxProps> = ({
   handleCheckChanges,
   isSelected,
+  accessHint,
 }) => {
   useEffect(() => {
     console.log('checkbox selection component: ', isSelected);
   }, [isSelected]);
 
   return (
-    <TouchableOpacity onPress={handleCheckChanges}>
+    <TouchableOpacity 
+      onPress={handleCheckChanges} 
+      accessible={true}
+      accessibilityLabel='checkbox'
+      accessibilityHint={accessHint}
+      accessibilityRole='checkbox'
+      aria-checked={isSelected}
+      accessibilityState={{ selected: isSelected }}
+      >
       {!isSelected ? (
         <Icon name="square-outline" size={22} color="#000000" />
       ) : (
