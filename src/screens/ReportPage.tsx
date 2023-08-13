@@ -17,6 +17,7 @@ import NegTest from './../../assets/NegativeCovidTest.png';
 import PosTest from './../../assets/PositiveCovidTest.png';
 import TopNavBar from '../components/TopNavBar';
 
+
 // Define the ReportPage component
 export interface FormState {
   result: boolean;
@@ -47,7 +48,12 @@ const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
     // Call the createTest method from the ApiService
     ApiService.createTest(formState)
       .then(Response => {
-        navigation.navigate('ThankYouScreen', {login: false});
+        console.log('createTestResponse', Response);
+        navigation.navigate('PositiveThankYouScreen', {
+          login: false,
+          result: formState.result,
+        });
+
         console.log('test created successfully:', Response.data);
         setFormState({
           result: false,
