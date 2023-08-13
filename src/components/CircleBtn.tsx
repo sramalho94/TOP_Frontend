@@ -31,7 +31,7 @@ const CircleBtn = ({
   onPress,
   value,
   accessLabel,
-  accessHint
+  accessHint,
 }: Props) => {
   const handlePress = () => {
     if (onPress) {
@@ -51,8 +51,7 @@ const CircleBtn = ({
         accessible={true}
         accessibilityLabel={accessLabel}
         accessibilityHint={accessHint}
-        accessibilityRole="button"
-        >
+        accessibilityRole="button">
         {img && !text ? (
           <Image
             className={`bg-contain ${Btnheight} ${Btnwidth} rounded-full border ${borderColor}`}
@@ -62,18 +61,16 @@ const CircleBtn = ({
         {text && !img ? (
           <Text className={`text-center ${textSize}`}>{text}</Text>
         ) : null}
-        {img && text
-          ? <View className='items-center gap-2'>
-           <Text className={`text-center ${textSize} ${textColor}`}>{text}</Text>
+        {img && text ? (
+          <View className="items-center gap-2">
+            <Text className={`text-center ${textSize} ${textColor}`}>
+              {text}
+            </Text>
             <View className={`${borderColor} border rounded-lg`}>
-            <Image
-                className={`bg-contain w-10 h-10`}
-                source={img}
-              />
-              </View>
+              <Image className={`bg-contain w-10 h-10`} source={img} />
+            </View>
           </View>
-          
-          : null}
+        ) : null}
       </TouchableOpacity>
     </>
   );
