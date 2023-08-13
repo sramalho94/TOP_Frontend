@@ -1,24 +1,19 @@
-import {
-  View,
-  Text,
-  SafeAreaView,
-  Image,
-  TouchableOpacity,
-  Linking,
-} from 'react-native';
+import {View, Text, SafeAreaView, Image} from 'react-native';
 import React from 'react';
 import Button from '../components/Button';
 import {RouteProp} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../../App';
 import jumpImg from './../../assets/jump.png';
-import positiveImg from './../../assets/positiveImg.png';
 
 type ThankYouScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
-  'ThankYouScreen'
+  'PositiveThankYouScreen'
 >;
-type ThankYouScreenRouteProp = RouteProp<RootStackParamList, 'ThankYouScreen'>;
+type ThankYouScreenRouteProp = RouteProp<
+  RootStackParamList,
+  'PositiveThankYouScreen'
+>;
 
 type Props = {
   navigation: ThankYouScreenNavigationProp;
@@ -26,77 +21,34 @@ type Props = {
 };
 
 const ThankYouScreen = ({navigation, route}: Props) => {
+  console.log('PositiveThankYouScreen', navigation);
   const {logIn, resultState} = route.params || {
     logIn: true,
     resultState: false,
   };
-
-  console.log('ThankYouScreen', route, logIn, resultState);
-
-  const handleInfoPress = () => {
-    const termsUrl =
-      'https://www.cdc.gov/coronavirus/2019-ncov/your-health/isolation.html';
-    Linking.openURL(termsUrl);
-  };
-
-  const handleCallPress = () => {
-    Linking.openURL('tel:1-800-CDC-INFO');
-  };
-
   return (
     <SafeAreaView className="h-screen w-screen mx-auto my-auto flex-1 bg-themeWhite">
       <View className="flex-1 mx-auto  justify-center">
         <Text
           style={{fontFamily: 'CarterOne'}}
           className=" text-5xl  text-center pt-10">
-          Thank You!
+          Positive Thank You!
         </Text>
       </View>
-      <View className="flex-row justify-center  ">
-        <Text className="  font-serif text-[18px] font-medium text-center px-5 mb-10">
+      <View className="flex-row justify-center ">
+        <Text className="  font-serif text-[18px] font-semibold">
+          {/* Your test results have been reported. */}
           {resultState
-            ? 'Your test has been reported. We hope you feel better soon.'
-            : 'Your test results have been reported.'}
+            ? 'Your positive test has been reported. We hope you feel better soon.'
+            : 'Your negative test results have been reported.'}
         </Text>
       </View>
-
-      <Image
-        style={{
-          alignSelf: 'center',
-          height: resultState ? 200 : 370,
-          width: resultState ? 300 : 300,
-          marginBottom: resultState ? 100 : 0,
-        }}
-        source={resultState ? positiveImg : jumpImg}
-      />
-
-      <View className="flex-row text-justify ">
-        {/* <Text className="text-lg  px-10 text-center">
+      <Image className="mx-auto h-[370px] w-[300px]" source={jumpImg} />
+      <View className="flex-row justify-center ">
+        <Text className="text-lg  px-10 text-center">
           {logIn
             ? 'You and 1,000 others in your zip code reported results this week.'
             : 'Join our community and save time on your next reporting by making an account today!'}
-        </Text> */}
-        <Text className="text-lg  px-8 text-justify">
-          {resultState ? (
-            <Text>
-              Keep your community safe! Check the CDC for{' '}
-              <Text
-                className={`text-blue-500 underline`}
-                onPress={handleInfoPress}>
-                more information about isolation and precautions{' '}
-              </Text>
-              or call{' '}
-              <TouchableOpacity onPress={handleCallPress}>
-                <Text
-                  className={`text-blue-500 underline text-[18px] ml-8`}
-                  href="tel:1-800-CDC-INFO">
-                  1-800-CDC-INFO
-                </Text>
-              </TouchableOpacity>
-            </Text>
-          ) : (
-            'You and 1,000 others in your zip code reported results this week.'
-          )}
         </Text>
       </View>
 

@@ -3,6 +3,7 @@ import LandingPage from './src/screens/LandingPage';
 import ReportPage from './src/screens/ReportPage';
 import AccountReportPage from './src/screens/AccountReportPage';
 import ThankYouScreen from './src/screens/ThankYouScreen';
+import PositiveThankYouScreen from './src/screens/PositiveThankYouScreen';
 import SignInPage from './src/screens/SignInPage';
 import ConsentPage from './src/screens/ConsentPage';
 import Onboarding from './src/screens/Onboarding';
@@ -130,6 +131,11 @@ function AppContent({
               name="ThankYouScreen"
               component={ThankYouScreen}
               options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="PositiveThankYouScreen"
+              component={PositiveThankYouScreen}
+              options={{headerShown: false}}
             />
             <Stack.Screen
               name="ConsentFormThankYou"
