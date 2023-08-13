@@ -25,11 +25,13 @@ const PasswordField = (props: Props) => {
 
   return (
     <View className="w-full max-w-sm my-4 flex-1 justify-center align-middle px-8">
-      <Text className="font-medium w-full h-8 flex my-auto justify-center align-middle">
+      <Text nativeID="formLabel" className="font-medium w-full h-8 flex my-auto justify-center align-middle">
+        {/* FIXME: might need instead of above styling */}
+    {/* <View className="my-4">
+      <Text className="ml-3 w-36 h-8 flex my-auto justify-center font-medium"> */}
         Password*
       </Text>
 
-      {/* TODO: NEED TO TEST */}
       <TextInput
         autoCorrect={false}
         value={props.password}
@@ -38,11 +40,19 @@ const PasswordField = (props: Props) => {
         placeholderTextColor="#6b7280"
         className="border border-black rounded-lg px-4 h-12 w-full mx-auto font-medium"
         secureTextEntry={!showPassword}
+        accessibilityLabel="Password"
+        accessibilityLabelledBy="formLabel"
       />
 
       <TouchableOpacity
         onPress={togglePasswordVisibility}
-        className="absolute top-4 right-10">
+        className="absolute top-4 right-10"
+        accessible={true}
+        accessibilityLabel="Show or Hide Password"
+        accessibilityHint="This button toggles to show or hide your password"
+        accessibilityRole='togglebutton'
+        accessibilityState={{selected: showPassword}}
+        >
         <Icon
           className="text-gray-500"
           name={showPassword ? 'eye-outline' : 'eye-off-outline'}

@@ -11,6 +11,8 @@ type Props = {
   onOpen: any;
   setOpen: any;
   onChange: (text: any) => void;
+  accessLabel: string;
+  accessHint: string;
 };
 
 const DropDownField = ({
@@ -20,6 +22,8 @@ const DropDownField = ({
   onOpen,
   setOpen,
   onChange,
+  accessLabel,
+  accessHint
 }: Props) => {
   // this sets a value when user selects an option from the dropdown
   const [value, setValue] = useState<string | null>(null);
@@ -39,6 +43,10 @@ const DropDownField = ({
         dropDownDirection="TOP"
         listMode="SCROLLVIEW"
         placeholder={`Select your ${text.toLowerCase()}`}
+        accessible={true}
+        accessibilityLabel={accessLabel}
+        accessibilityHint={accessHint}
+        accessibilityRole="menu"
       />
     </View>
   );

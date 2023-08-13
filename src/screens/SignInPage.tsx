@@ -54,9 +54,9 @@ export default function SignInPage(props: Props) {
 
   return (
     <SafeAreaView className="w-screen h-screen flex-1">
-      {/* <ScrollView> */}
-      {/* <TopNavBar textSize='xl' textValue='Sign In' fontFamily='' haveProgress={false} /> */}
-        <View>
+      <ScrollView>
+        <TopNavBar textSize='xl' textValue='Sign In' fontFamily='' haveProgress={false} />
+        <View className="" accessibilityLabel='Sign in to Account' accessibilityHint='Sign into an account' accessibilityRole='header'>
           <View className="flex flex-row justify-center align-middle">
             <Image className="w-[342] h-[349] m-4" source={NoImage}></Image>
           </View>
@@ -86,19 +86,13 @@ export default function SignInPage(props: Props) {
             bgColor=""
             border={true}
             borderColor="border border-black"
-            width='full'
+            width='80'
+            accessLabel="Login"
+            accessHint="Navigates to the login screen"
           />
-          {/* <Button
-            onPress={() => console.log('pressed')}
-            innerText="Forgot Password"
-            textColor=""
-            bgColor=""
-            border={true}
-            borderColor="border border-black"
-            width='full'
-          /> */}
+
         </View>
-      {/* </ScrollView> */}
+      </ScrollView>
     </SafeAreaView>
   );
 }

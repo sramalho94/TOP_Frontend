@@ -85,6 +85,7 @@ const ConsentPage: React.FC<{ navigation: any }> = ({ navigation }) => {
           fontFamily=""
           haveProgress={false}
         />
+        <View className={`flex justify-center p-4 px-8 flex-1`} accessibilityLabel='Consent Page' accessibilityHint='Informing you of how your data will be shared and processed. You need to click the three checkboxes to proceed to the next screen' accessibilityRole='header'>
 
         <ScrollView>
 
@@ -125,82 +126,88 @@ const ConsentPage: React.FC<{ navigation: any }> = ({ navigation }) => {
                 leavecovidtracking-us@joinzoe.com.
               </Text>
             </Text>
-            <View className="flex-1 flex-row justify-start">
-              <Text className={`mb-7 text-auto`}>
-                Any questions may also be sent to{' '}
-                <Text
-                  className={`text-blue-500 underline`}
-                  onPress={handleEmailPress}>
-                  covidtracking-us@joinzoe.com.
-                </Text>
+          </View>
+          <View className="flex-1">
+          <View className={`flex-1 flex-row items-left mb-3`}>
+            <CheckBox
+              handleCheckChanges={() => handleCheckBoxChange('isOver18Checked')}
+              isSelected={checkBoxStates.isOver18Checked}
+              accessHint='If checked, you confirm that you are over 18 years old.'
+            />
+            <Text className={`text-sm ml-2`}>
+              I confirm that I'm over 18 years old.
+            </Text>
+          </View>
+          <View className={`flex-1 flex-row mb-4`}>
+            <CheckBox
+              handleCheckChanges={() =>
+                handleCheckBoxChange('isConsentChecked')
+              }
+              isSelected={checkBoxStates.isConsentChecked}
+              accessHint='If checked, you will consent processing of your personal data (including without
+                limitation data I provide relating to my health) as set forth in
+                this consent and in the Privacy Policy.'
+            />
+            <Text className={`text-sm ml-2`}>
+              I consent to the processing of my personal data (including without
+              limitation data I provide relating to my health) as set forth in
+              this consent and in the{' '}
+              <Text
+                className={`text-blue-500 underline`}
+                onPress={handlePrivacyPolicyPress}>
+                Privacy Policy.
               </Text>
-            </View>
-          
-            <View className={`flex-row  items-left mb-3`}>
-              <CheckBox
-                handleCheckChanges={() =>
-                  handleCheckBoxChange('isOver18Checked')
-                }
-                isSelected={checkBoxStates.isOver18Checked}
-              />
-              <Text className={`text-sm ml-2`}>
-                I confirm that I'm over 18 years old.
+            </Text>
+          </View>
+          <View className={`flex-1 flex-row items-center mb-4`}>
+            <CheckBox
+              handleCheckChanges={() =>
+                handleCheckBoxChange('isReadAndAcceptChecked')
+              }
+              isSelected={checkBoxStates.isReadAndAcceptChecked}
+              accessHint="I have read and accept Zoe Global's Terms of Use and Privacy Policy"
+            />
+            <Text className={`text-sm ml-2`}>
+              I have read and accept{' '}
+              <Text
+                className={`text-blue-500 underline`}
+                onPress={handleTermsPress}>
+                Terms of Use
+              </Text>{' '}
+              and{' '}
+              <Text
+                className={`text-blue-500 underline`}
+                onPress={handlePrivacyPolicyPress}>
+                Privacy Policy.
               </Text>
+            </Text>
+          </View>
+
+          </View>
+          {errorMessage ? (
+            <View className="mt-0 p-2 bg-red-100 border border-red-500 mx-auto w-[315]">
+              <Text className="text-red-500">{errorMessage}</Text>
             </View>
-            <View className={`flex-row  items-center mb-4`}>
-              <CheckBox
-                handleCheckChanges={() =>
-                  handleCheckBoxChange('isConsentChecked')
-                }
-                isSelected={checkBoxStates.isConsentChecked}
-              />
-              <Text className={`text-sm ml-2`}>
-                I consent to the processing of my personal data (including
-                without limitation data I provide relating to my health) as set
-                forth in this consent and in the{' '}
-                <Text
-                  className={`text-blue-500 underline`}
-                  onPress={handlePrivacyPolicyPress}>
-                  Privacy Policy.
-                </Text>
-              </Text>
-            </View>
-            <View className={`flex-row items-center mb-4`}>
-              <CheckBox
-                handleCheckChanges={() =>
-                  handleCheckBoxChange('isReadAndAcceptChecked')
-                }
-                isSelected={checkBoxStates.isReadAndAcceptChecked}
-              />
-              <Text className="text-sm ml-2">
-                I have read and accept{' '}
-                <Text
-                  className={`text-blue-500 underline`}
-                  onPress={handleTermsPress}>
-                  Zoe Global's Terms of Use
-                </Text>{' '}
-                and{' '}
-                <Text
-                  className={`text-blue-500 underline`}
-                  onPress={handlePrivacyPolicyPress}>
-                  Privacy Policy.
-                </Text>
-              </Text>
-            </View>
+          ) : null}
+
+          <View className="flex-1 mx-auto">
+            <Button
+              onPress={handleAgree}
+              innerText="I agree to these terms"
+              bgColor="bg-themeBlue"
+              textColor="text-white"
+              border={true}
+              borderColor="border border-themeBlue border-3"
+              width="80"
+              accessLabel="I agree to these terms"
+              accessHint="Creates user account"
+            />
           </View>
           </View>
-          
-        <View className="flex-1 mx-auto">
-          <Button 
-            innerText='Create Account'
-            bgColor='bg-themeBlue'
-            border={true}
-            textColor='text-white'
-            onPress={handleAgree}
-            width='5/6'
-          />
-        </View>
-      </ScrollView>
+          </ScrollView>
+          </View>
+       
+      
     </SafeAreaView>
     </>
   );
