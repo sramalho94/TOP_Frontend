@@ -43,7 +43,7 @@ const ThankYouScreen = ({navigation, route}: Props) => {
         </Text>
       </View>
 
-      <View className="flex-1 justify-center mx-6">
+      <View className="flex-1 justify-end mt-4">
         {logIn ? (
           <Button
             onPress={() => navigation.navigate('HomeDash')}
@@ -52,24 +52,27 @@ const ThankYouScreen = ({navigation, route}: Props) => {
             textColor="text-themeWhite"
             border={false}
             borderColor="border border-gray"
+            width="80"
           />
         ) : (
           <>
             <Button
               onPress={() => navigation.navigate('Onboarding')}
               innerText="Create Account"
-              bgColor="bg-white"
-              textColor=""
-              border={true}
+              bgColor="bg-themeBlue"
+              textColor="text-themeWhite"
+              border={false}
               borderColor="border border-gray"
+              width="80"
             />
             <Button
               onPress={() => navigation.navigate('LandingPage')}
               innerText="Back"
-              bgColor=""
-              textColor=""
+              bgColor="bg-themeBlue"
+              textColor="text-themeWhite"
               border={false}
               borderColor=""
+              width="80"
             />
           </>
         )}
