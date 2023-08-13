@@ -33,6 +33,16 @@ const ThankYouScreen = ({navigation, route}: Props) => {
 
   console.log('ThankYouScreen', route, logIn, resultState);
 
+  const handleInfoPress = () => {
+    const termsUrl =
+      'https://www.cdc.gov/coronavirus/2019-ncov/your-health/isolation.html';
+    Linking.openURL(termsUrl);
+  };
+
+  const handleCallPress = () => {
+    Linking.openURL('tel:1-800-CDC-INFO');
+  };
+
   return (
     <SafeAreaView className="h-screen w-screen mx-auto my-auto flex-1 bg-themeWhite">
       <View className="flex-1 mx-auto  justify-center">
@@ -60,34 +70,29 @@ const ThankYouScreen = ({navigation, route}: Props) => {
         source={resultState ? positiveImg : jumpImg}
       />
 
-      <View className="flex-row justify-center ">
+      <View className="flex-row text-justify ">
         {/* <Text className="text-lg  px-10 text-center">
           {logIn
             ? 'You and 1,000 others in your zip code reported results this week.'
             : 'Join our community and save time on your next reporting by making an account today!'}
         </Text> */}
-        <Text className="text-lg  px-8 text-center">
+        <Text className="text-lg  px-8 text-justify">
           {resultState ? (
             <Text>
-              Keep your community safe! Check the CDC for more information about
-              isolation and precautions or call 1-800-CDC-INFO.
-              {/* <TouchableOpacity
-                className="text-lg  px-8 text-center"
-                onPress={() =>
-                  Linking.openURL(
-                    'https://www.cdc.gov/coronavirus/2019-ncov/your-health/isolation.html',
-                  )
-                }>
+              Keep your community safe! Check the CDC for{' '}
+              <Text
+                className={`text-blue-500 underline`}
+                onPress={handleInfoPress}>
+                more information about isolation and precautions{' '}
+              </Text>
+              or call{' '}
+              <TouchableOpacity onPress={handleCallPress}>
                 <Text
-                  style={{
-                    textDecorationLine: 'underline',
-                    color: 'blue',
-                    fontSize: 18,
-                  }}>
-                  more information about isolation and precautions{' '}
+                  className={`text-blue-500 underline text-[18px] ml-8`}
+                  href="tel:1-800-CDC-INFO">
+                  1-800-CDC-INFO
                 </Text>
-              </TouchableOpacity>{' '} */}
-              {/* or call 1-800-CDC-INFO. */}
+              </TouchableOpacity>
             </Text>
           ) : (
             'You and 1,000 others in your zip code reported results this week.'
