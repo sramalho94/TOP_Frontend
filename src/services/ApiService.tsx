@@ -176,7 +176,7 @@ export default class ApiService {
 
   // Create test in our db for a registered user
   static createTestWithAccount(testData: {
-    result: boolean;
+    result: boolean | null;
     userId: number;
     ZIP: string;
     gender: string;

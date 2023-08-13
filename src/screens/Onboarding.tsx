@@ -73,10 +73,11 @@ const Onboarding = (props: OnboardingScreenProps) => {
   };
 
   return (
+<>
     <ScrollView
       ref={scrollViewRef}
-      horizontal
       pagingEnabled
+      horizontal
       showsHorizontalScrollIndicator={false}
       scrollEnabled
       onScroll={handleScroll} // Handle scrolling event
@@ -136,9 +137,11 @@ const Onboarding = (props: OnboardingScreenProps) => {
               </View>
             </View>
           </View>
+          
         </SafeAreaView>
       ))}
-    </ScrollView>
+      </ScrollView>
+    </>
   );
 };
 

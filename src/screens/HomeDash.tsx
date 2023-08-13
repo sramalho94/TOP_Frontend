@@ -5,17 +5,18 @@ import {useAuth} from '../context/AuthContext';
 import FlowerImg from '../../assets/orange-flower.png';
 
 const HomeDash: React.FC<{navigation: any}> = ({navigation}) => {
-  const {onLogout} = useAuth();
+  const {onLogout, usernameVal} = useAuth();
   return (
-    <SafeAreaView className="h-screen w-screen">
+    <SafeAreaView className="h-screen w-screen max-w-md self-center">
       <ScrollView>
+        
         {/* View for whole screen */}
         <View className="flex flex-col w-full min-h-screen p-6" accessibilityLabel='Home Page' accessibilityHint='The home page for your account. Allows you to submit a Covid Test, view data, privacy, or exchange data for research' accessibilityRole='header'>
+         
           {/* View for avatar, text and report test */}
           <View className="flex w-full justify-center items-center ">
+            
             {/* View for avatar*/}
-            {/* FIXME: size={72} on avatar does not work for android, might be something with size? idk
-            update* it also stopped working for IOS */}
             <View className="self-end mb-2">
               <CircleBtn
                 borderColor='border-themeBlue'
@@ -35,9 +36,12 @@ const HomeDash: React.FC<{navigation: any}> = ({navigation}) => {
                 accessHint='This is a button that displays your profile image.'
               />
             </View>
-            <Text className="text-3xl font-bold mb-2 text-center">
-              Community {'\n'}Test Lab
-            </Text>
+            <View className="self-start">
+              {/* // TODO: Add a potrait image here!!!! */}
+              <Text className="color-black text-lg">
+                Welcome back, {usernameVal}!
+              </Text>
+            </View>
             {/* need giant circle btn, need to refactor circle btn props? */}
           <View className="mt-10">
             <CircleBtn

@@ -26,13 +26,13 @@ type Props = {
 };
 
 const ThankYouScreen = ({navigation, route}: Props) => {
-  const {logIn, resultState} = route.params || {
+  const {logIn} = route.params || {
     logIn: true,
-    resultState: false,
   };
 
-  console.log('ThankYouScreen', route, logIn, resultState);
+  console.log('ThankYouScreen', route, logIn);
 
+  // FIXME: do we need below function? I have a feeling we do...
   const handleInfoPress = () => {
     const termsUrl =
       'https://www.cdc.gov/coronavirus/2019-ncov/your-health/isolation.html';
@@ -45,6 +45,7 @@ const ThankYouScreen = ({navigation, route}: Props) => {
 
   return (
     <SafeAreaView className="h-screen w-screen mx-auto my-auto flex-1 bg-themeWhite">
+    <View accessibilityLabel='Thank you for Reporting your Covid Test' accessibilityHint='Thanking you for submitting you Covid Test' accessibilityRole='header'>
       <View className="flex-1 mx-auto  justify-center">
         <Text
           style={{fontFamily: 'CarterOne'}}
@@ -61,11 +62,10 @@ const ThankYouScreen = ({navigation, route}: Props) => {
       <Image
         style={{
           alignSelf: 'center',
-          height: resultState ? 200 : 370,
-          width: resultState ? 300 : 300,
-          marginBottom: resultState ? 100 : 0,
+          height: 370,
+          width: 300,
         }}
-        source={resultState ? positiveImg : jumpImg}
+        source={jumpImg}
       />
 
       <View className="flex-row text-justify ">
@@ -75,26 +75,7 @@ const ThankYouScreen = ({navigation, route}: Props) => {
             : 'Join our community and save time on your next reporting by making an account today!'}
         </Text> */}
         <Text className="text-lg  px-8 text-justify">
-          {resultState ? (
-            <Text>
-              Keep your community safe! Check the CDC for{' '}
-              <Text
-                className={`text-blue-500 underline`}
-                onPress={handleInfoPress}>
-                more information about isolation and precautions{' '}
-              </Text>
-              or call{' '}
-              <TouchableOpacity onPress={handleCallPress}>
-                <Text
-                  className={`text-blue-500 underline text-[18px] ml-8`}
-                  href="tel:1-800-CDC-INFO">
-                  1-800-CDC-INFO
-                </Text>
-              </TouchableOpacity>
-            </Text>
-          ) : (
-            'You and 1,000 others in your zip code reported results this week.'
-          )}
+          You and 1,000 others in your zip code reported results this week.
         </Text>
       </View>
 
@@ -108,6 +89,8 @@ const ThankYouScreen = ({navigation, route}: Props) => {
             border={false}
             borderColor="border border-gray"
             width="80"
+            accessLabel="Account Home Screen"
+            accessHint="Navigates to the account home screen"
           />
         ) : (
           <>
@@ -119,6 +102,8 @@ const ThankYouScreen = ({navigation, route}: Props) => {
               border={false}
               borderColor="border border-gray"
               width="80"
+              accessLabel="Create account"
+              accessHint="Navigates to the create account screen"
             />
             <Button
               onPress={() => navigation.navigate('LandingPage')}
@@ -128,9 +113,12 @@ const ThankYouScreen = ({navigation, route}: Props) => {
               border={false}
               borderColor=""
               width="80"
+              accessLabel="Back"
+              accessHint="Navigates to the previous screen"
             />
           </>
         )}
+      </View>
       </View>
     </SafeAreaView>
   );

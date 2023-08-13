@@ -59,6 +59,8 @@ const ThankYouScreen = ({navigation, route}: Props) => {
             border={false}
             borderColor="border border-gray"
             width="80"
+            accessLabel="Account Home Screen"
+            accessHint="Navigates to the account home screen"
           />
         ) : (
           <>
@@ -70,6 +72,8 @@ const ThankYouScreen = ({navigation, route}: Props) => {
               border={false}
               borderColor="border border-gray"
               width="80"
+              accessLabel="Create account"
+              accessHint="Navigates to the create account screen"
             />
             <Button
               onPress={() => navigation.navigate('LandingPage')}
@@ -79,6 +83,8 @@ const ThankYouScreen = ({navigation, route}: Props) => {
               border={false}
               borderColor=""
               width="80"
+              accessLabel="Back"
+              accessHint="Navigates to the previous screen"
             />
           </>
         )}

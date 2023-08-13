@@ -30,7 +30,7 @@ const DropDownField = ({
 
   return (
     <View className="mx-auto">
-      <Text className="font-bold my-2 capitalize">{text} (Optional)</Text>
+      <Text className="font-bold md:text-xl my-2 capitalize">{text} (Optional)</Text>
       <DropDownPicker
         className="my-2 w-80 border border-black rounded-lg"
         open={open}

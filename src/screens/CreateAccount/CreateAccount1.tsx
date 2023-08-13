@@ -71,25 +71,27 @@ const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
               <PasswordError />
             </View>
           </View>
-          <TextInputField
-            label="Email*"
-            value={formState.email}
-            onChange={value => updateFormState('email', value)}
-            placeholder="Email"
-          />
-          <TextInputField
-            label="Username*"
-            value={formState.username}
-            onChange={value => updateFormState('username', value)}
-            placeholder="Username"
-          />
-          <PasswordField
-            onChange={value => updateFormState('password', value)}
-            password={formState.password}
-          />
+          <View className="flex-1 mt-5">
+            <TextInputField
+              label="Email*"
+              value={formState.email}
+              onChange={value => updateFormState('email', value)}
+              placeholder="Email"
+            />
+            <TextInputField
+              label="Username*"
+              value={formState.username}
+              onChange={value => updateFormState('username', value)}
+              placeholder="Username"
+            />
+            <PasswordField
+              onChange={value => updateFormState('password', value)}
+              password={formState.password}
+            />
+          </View>
         </View>
       </View>
-      <View className="my-7">
+      <View className="flex-1 mt-4 bg-blue-300 flex-col-reverse mb-3">
         <Button
           onPress={handleNext}
           innerText="Continue"

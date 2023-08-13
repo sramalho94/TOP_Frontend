@@ -83,26 +83,29 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
   };
   return (
     <>
-      <SafeAreaView className="flex-1 h-screen w-screen bg-themeWhite">
+      <SafeAreaView className="flex-1 h-screen w-screen">
         <TopNavBar
-          textColor="text-themeBlue"
           textSize="xl"
-          textValue="Create Account"
+          textValue="Consent Form"
           fontFamily=""
           haveProgress={false}
         />
 
+
+        {/* Might need this one or the one below or both?*/}
+        <View className={`flex-1 max-w-lg mx-auto mt-6 p-4 px-8`}>
+          <Text className={`mb-4 text-auto leading-5 text-black font-light `}>
+        
+        
+        {/* <View className={`flex-1 justify-center p-4  px-8`}> */}
         {/* <ScrollView> */}
-        {/* add topNavBar component here and pass a few props to it */}
-        {/* Still need to double check the font size and family font! */}
-        <View className={`flex-1 justify-center p-4 px-8`}>
-          <Text className={`mb-4 text-auto leading-5 font-light -mt-[220px]`}>
+          {/* <Text className={`flex-1 mb-4 text-auto leading-5 font-light -mt-[220px]`}> */}
             By checking the boxes below, you consent to our using the personal
             information we collect through your use of this app in the way we
             have described.
           </Text>
           <View className={`flex-row items-center text-center`}>
-            <Text className="flex content-center leading-5 font-light mb-10">
+            <Text className="flex content-center leading-5 text-black font-light mb-10">
               For more information about how we use and share personal
               information, please see our{' '}
               <Text
@@ -112,24 +115,18 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
               </Text>
             </Text>
           </View>
+          {/* might need to comment out  */}
+          {/* <Text className={` flex-1 mb-4 text-auto`}> */}
           <View className="shadow shadow-black ">
-            <View className="border-gray-200 border-b-2  pb-3 mb-5"></View>
+            <View className="border-gray-200 border-b-2 pb-3 mb-5"></View>
           </View>
-          {/* <Text className={`mb-4 text-auto`}>
-            You may withdraw your consent at any time by emailing{' '}
-            <Text
-              className={`text-blue-500 underline`}
-              onPress={handleEmailPress}>
-              leavecovidtracking-us@joinzoe.com.
-            </Text>
-          </Text> */}
           {/* <View className="flex-row justify-start">
             <Text className={`mb-7 text-auto`}>
               Any questions may also be sent to{' '}
               <Text
                 className={`text-blue-500 underline`}
                 onPress={handleEmailPress}>
-                covidtracking-us@joinzoe.com.
+                leavecovidtracking-us@joinzoe.com.
               </Text>
             </Text>
           </View> */}
@@ -141,6 +138,7 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
                   handleCheckBoxChange('isOver18Checked')
                 }
                 isSelected={checkBoxStates.isOver18Checked}
+                accessHint='If checked, you confirm that you are over 18 years old.'
               />
               <Text className={`text-sm ml-2`}>
                 I confirm that I'm over 18 years old.
@@ -152,6 +150,7 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
                   handleCheckBoxChange('isConsentChecked')
                 }
                 isSelected={checkBoxStates.isConsentChecked}
+                accessHint='If checked, you will consent processing of your personal data (including without limitation data I provide relating to my health) as set forth in this consent and in the Privacy Policy.'
               />
               <Text className={`text-sm ml-2`}>
                 I consent to the processing of my personal data (including
@@ -170,6 +169,7 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
                   handleCheckBoxChange('isReadAndAcceptChecked')
                 }
                 isSelected={checkBoxStates.isReadAndAcceptChecked}
+                accessHint="I have read and accept Zoe Global's Terms of Use and Privacy Policy"
               />
               <Text className={`text-sm ml-2`}>
                 I have read and accept{' '}
@@ -187,7 +187,8 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
               </Text>
             </View>
           </View>
-          <View className="flex-1 justify-end ">
+          {/* </ScrollView> */}
+          <View className="flex-1 justify-end">
             <TouchableOpacity
               onPress={handleAgree}
               className={'bg-themeBlue px-8 py-[14] rounded-md'}>
@@ -198,7 +199,7 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
             </TouchableOpacity>
           </View>
         </View>
-        {/* </ScrollView> */}
+        
       </SafeAreaView>
     </>
   );

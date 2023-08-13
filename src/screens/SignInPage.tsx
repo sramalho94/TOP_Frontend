@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   SafeAreaView,
   View,
@@ -7,12 +7,12 @@ import {
   ScrollView,
 } from 'react-native';
 import NoImage from '../../assets/blankimage.png';
-import Password from "../components/Password"
+import Password from '../components/Password';
 import Button from '../components/Button';
 import TextInputField from '../components/TextInputField';
 import TopNavBar from '../components/TopNavBar';
-import { useAuth } from '../context/AuthContext';
-import { useNavigation } from '@react-navigation/native';
+import {useAuth} from '../context/AuthContext';
+import {useNavigation} from '@react-navigation/native';
 
 type Props = {};
 
@@ -55,19 +55,20 @@ export default function SignInPage(props: Props) {
   return (
     <SafeAreaView className="w-screen h-screen flex-1">
       <ScrollView>
-        {/* <TopNavBar textSize='xl' textValue='Sign In' fontFamily='' haveProgress={false} /> */}
+        <TopNavBar textSize='xl' textValue='Sign In' fontFamily='' haveProgress={false} />
         <View className="" accessibilityLabel='Sign in to Account' accessibilityHint='Sign into an account' accessibilityRole='header'>
           <View className="flex flex-row justify-center align-middle">
             <Image className="w-[342] h-[349] m-4" source={NoImage}></Image>
           </View>
-          <View className="mb-1 mx-auto w-[342]">
+          <View className="mb-6 flex items-center align-middle justify-center">
             <TextInputField
-              label="Username"
+              label="Username*"
               value={userSignUp.username}
               onChange={value => handleChange('username', value)}
-              placeholder=''
+              placeholder='Username'
             />
             <Password onChange={value => handleChange('password', value)} password={userSignUp.password} />
+            <View className='w-full max-w-sm px-8 mt-2 '><Text className='text-start underline underline-offset-8'>Forgot Password</Text></View>
           </View>
 
           {errorMessage ? (
@@ -77,7 +78,7 @@ export default function SignInPage(props: Props) {
           ) : null}
 
         </View>
-        <View className="mt-4">
+        <View className="mt-4 items-center">
           <Button
             onPress={handleSubmit}
             innerText="Login"

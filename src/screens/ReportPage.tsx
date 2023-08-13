@@ -51,10 +51,8 @@ const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
         console.log('createTestResponse', Response.data);
 
         if(Response.data.test.result === true) {
-          console.log('go to positive screen pls' + Response.data.test.result)
           navigation.navigate('PositiveThankYouScreen', {logIn: false});
         } else {
-          console.log('go to negative screen pls' + Response.data.test.result)
           navigation.navigate('ThankYouScreen');
         }
         
@@ -79,7 +77,7 @@ const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
 
   const handleCheckChanges = () => {
     setCheckboxSelection(prevState => !prevState);
-    console.log('handleCheckChanges: ', isCheckboxSelected);
+    // console.log('handleCheckChanges: ', isCheckboxSelected);
   };
 
   const updateFormState = (field: string, value: string | boolean) => {
@@ -95,23 +93,22 @@ const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
   const [ethnicityOpen, setEthnicityOpen] = useState<boolean>(false);
 
   return (
-    <SafeAreaView className="flex-1 w-screen h-screen">
-      <ScrollView>
-        {/* NavBar */}
-        <View className="flex-1 h-[90] border-b-4 border-slate-200 flex-row my-6">
-          <TouchableOpacity className="mt-2 ml-4">
-            <Icon name="arrowleft" size={30} color="#000" className="" />
-          </TouchableOpacity>
-          <Text className="text-xl font-bold mx-auto mt-2 flex pr-12">
-            Report COVID-19 Test Result
-          </Text>
-        </View>
+    <SafeAreaView className="w-screen h-screen flex-1">
+      {/* NavBar */}
+      <TopNavBar
+        textValue="Report COVID-19 Test Result"
+        fontFamily=""
+        textSize="xl"
+        haveProgress={false}
+      />
 
+      <ScrollView className="flex-1">
         {/* Page Container */}
         <View className="flex-1 w-full justify-center items-center flex-col" accessibilityLabel='Report Covid Test Page without an Account' accessibilityHint='Covid Test Reporting without an Account or anonymously' accessibilityRole='header'>
           <View>
             {/* Test Result Buttons */}
-            <Text className="text-lg font-bold mx-auto">
+            <Text
+              className="text-lg md:text-2xl font-bold mt-10 mx-auto underline">
               What were the results of your test?
             </Text>
             <View className="flex-1 justify-center space-x-4 flex-row my-9">
@@ -162,7 +159,7 @@ const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
             </View>
 
             {/* Text input and dropdown fields container */}
-            <View className="flex-1">
+            <View className="w-screen items-center ">
               <TextInputField
                 label="Date of Test*"
                 value={formState.DOT}
