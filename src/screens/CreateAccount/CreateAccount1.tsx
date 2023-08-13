@@ -66,7 +66,7 @@ const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
         accessibilityRole='header'
       >
       <View className="flex-1 mx-auto mb-2" >
-        <View className="w-[342]">
+        <View className="w-screen ">
           <View>
             <Image
               className="mx-auto mt-5 w-[217px] h-[217px] "
@@ -76,7 +76,7 @@ const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
               <PasswordError />
             </View>
           </View>
-          <View className="flex-1 mt-5">
+          <View className="flex-1 w-screen items-center mt-5">
             <TextInputField
               label="Email*"
               value={formState.email}
