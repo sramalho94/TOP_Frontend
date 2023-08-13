@@ -9,6 +9,7 @@ import Lock from '../../assets/lock.png';
 import Exchange from '../../assets/exchange.png';
 import Submit from '../../assets/submit.png';
 import DashButton from '../components/DashButton';
+import Magnify from '../../assets/magnify.png';
 
 const HomeDash: React.FC<{navigation: any}> = ({navigation}) => {
   const {onLogout, usernameVal} = useAuth();
@@ -45,6 +46,8 @@ const HomeDash: React.FC<{navigation: any}> = ({navigation}) => {
                 Btnheight="h-20"
                 accessLabel="User profile image"
                 accessHint="This is a button that displays your profile image."
+                imgHeight="h-12"
+                imgWidth="h-12"
               />
               {/* FIXME: Need to dynamically bring in logged in username to display on screen! */}
               <Text className="pt-6">Welcome back, Username{usernameVal}!</Text>
@@ -82,6 +85,8 @@ const HomeDash: React.FC<{navigation: any}> = ({navigation}) => {
                 Btnheight="h-28"
                 accessLabel="Privacy"
                 accessHint="This button navigates to privacy screen"
+                imgHeight="h-12"
+                imgWidth="h-12"
               />
             </View>
 
@@ -89,12 +94,14 @@ const HomeDash: React.FC<{navigation: any}> = ({navigation}) => {
               <CircleBtn
                 borderColor="border-themeBlue"
                 text="Dashboard"
-                img={FlowerImg}
+                img={Magnify}
                 onPress={() => navigation.navigate('DataDashboard')}
                 Btnwidth="w-28"
                 Btnheight="h-28"
                 accessLabel="Dashboard"
                 accessHint="This button navigates to dashboard"
+                imgHeight="h-12"
+                imgWidth="h-12"
               />
             </View>
 
@@ -107,6 +114,8 @@ const HomeDash: React.FC<{navigation: any}> = ({navigation}) => {
                 Btnheight="h-28"
                 accessLabel="Exchange"
                 accessHint="This button navigates to data exchange screen"
+                imgHeight="h-12"
+                imgWidth="h-12"
               />
             </View>
           </View>

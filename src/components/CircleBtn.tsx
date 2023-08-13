@@ -16,6 +16,8 @@ type Props = {
   value?: boolean; // Make this optional
   accessLabel: string;
   accessHint: string;
+  imgWidth?: string;
+  imgHeight?: string;
 };
 
 const CircleBtn = ({
@@ -32,6 +34,8 @@ const CircleBtn = ({
   value,
   accessLabel,
   accessHint,
+  imgWidth,
+  imgHeight,
 }: Props) => {
   const handlePress = () => {
     if (onPress) {
@@ -67,7 +71,10 @@ const CircleBtn = ({
               {text}
             </Text>
             <View className={` rounded-lg`}>
-              <Image className={`bg-contain w-10 h-10`} source={img} />
+              <Image
+                className={`bg-contain ${imgWidth} ${imgHeight}`}
+                source={img}
+              />
             </View>
           </View>
         ) : null}
