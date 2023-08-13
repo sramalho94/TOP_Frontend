@@ -54,9 +54,7 @@ const ThankYouScreen = ({navigation, route}: Props) => {
       </View>
       <View className="flex-row justify-center  ">
         <Text className="  font-serif text-[18px] font-medium text-center px-5 mb-10">
-          {resultState
-            ? 'Your test has been reported. We hope you feel better soon.'
-            : 'Your test results have been reported.'}
+            Your test results have been reported.
         </Text>
       </View>
 

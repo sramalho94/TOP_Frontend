@@ -22,25 +22,22 @@ type Props = {
 
 const ThankYouScreen = ({navigation, route}: Props) => {
   console.log('PositiveThankYouScreen', navigation);
-  const {logIn, resultState} = route.params || {
-    logIn: true,
-    resultState: false,
+  const {logIn} = route.params || {
+    logIn: false
   };
   return (
-    <SafeAreaView className="h-screen w-screen mx-auto my-auto flex-1 bg-themeWhite">
+    <SafeAreaView className="h-screen w-screen bg-yellow-500 mx-auto my-auto flex-1">
       <View className="flex-1 mx-auto  justify-center">
         <Text
           style={{fontFamily: 'CarterOne'}}
           className=" text-5xl  text-center pt-10">
-          Positive Thank You!
+          Thank You!
         </Text>
       </View>
       <View className="flex-row justify-center ">
-        <Text className="  font-serif text-[18px] font-semibold">
+        <Text className=" mx-5 font-serif text-[18px] font-semibold">
           {/* Your test results have been reported. */}
-          {resultState
-            ? 'Your positive test has been reported. We hope you feel better soon.'
-            : 'Your negative test results have been reported.'}
+          Your positive test has been reported. We hope you feel better soon.
         </Text>
       </View>
       <Image className="mx-auto h-[370px] w-[300px]" source={jumpImg} />
