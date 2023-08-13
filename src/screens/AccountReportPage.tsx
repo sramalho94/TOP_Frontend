@@ -59,12 +59,12 @@ const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
       });
       console.log('res: ', res);
 
-      if(res.data.test.result === true) {
-          navigation.navigate('PositiveThankYouScreen', {logIn: false});
-        } else {
-          navigation.navigate('ThankYouScreen');
-        }
-        
+      if (res.data.test.result === true) {
+        navigation.navigate('PositiveThankYouScreen', {logIn: true});
+      } else {
+        navigation.navigate('ThankYouScreen');
+      }
+
       setFormState({
         result: null,
         userId: formState.userId,
