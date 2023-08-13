@@ -29,8 +29,8 @@ const DropDownField = ({
   const [value, setValue] = useState<string | null>(null);
 
   return (
-    <View className="  w-full max-w-sm px-12">
-      <Text className="font-bold  my-2 capitalize">{text} (Optional)</Text>
+    <View className="w-full max-w-sm px-8">
+      <Text className="font-bold my-2 capitalize">{text} (Optional)</Text>
       <DropDownPicker
         className="my-2 border border-black rounded-lg"
         open={open}
