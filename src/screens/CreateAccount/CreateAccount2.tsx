@@ -85,7 +85,7 @@ const CreateAccount2: React.FC<{navigation: any}> = ({navigation}) => {
           page={2}
         />
 
-    <View className="flex-1" accessibilityLabel='Create Account for login Page 2' accessibilityHint='Second page in creating a new account. It asks for your date of birth, zip code, and first name' accessibilityRole='header'>
+    <View className="flex-1 mb-5" accessibilityLabel='Create Account for login Page 2' accessibilityHint='Second page in creating a new account. It asks for your date of birth, zip code, and first name' accessibilityRole='header'>
       <View className="flex-1 mx-auto mb-3">
         <View className="flex-1 w-[342] min-h-[300px] mt-10">
 

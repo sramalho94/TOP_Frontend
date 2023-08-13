@@ -42,9 +42,9 @@ const ConsentFormThankYou = ({navigation}: Props) => {
             Your account has been created.
           </Text>
           <View>
-            <Image className="mx-auto h-[370px] w-[300px]" source={jumpImg} />
+            <Image className="mx-auto mt-5 h-[370px] w-[300px]" source={jumpImg} />
           </View>
-          <View className="flex-1 justify-end mt-4">
+          <View className="flex-1 justify-end mb-4">
             <Button
               onPress={() => navigation.navigate('HomeDash')}
               innerText="Get Started!"
@@ -52,6 +52,7 @@ const ConsentFormThankYou = ({navigation}: Props) => {
               textColor="text-themeWhite"
               border={false}
               borderColor=""
+              width="80"
               accessLabel="Get started"
               accessHint="Navigates to the dashboard"
             />

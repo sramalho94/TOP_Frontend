@@ -59,7 +59,12 @@ const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
         haveProgress={true}
         page={1}
       />
-      <View className="flex-1 min-h-[300px] bg-green-300" accessibilityLabel='Create Account for login Page 1' accessibilityHint='First page in creating a new account. IT asks you to create an email, username, and password' accessibilityRole='header'>
+      <View 
+        className="flex-1 min-h-[300px] bg-green-300" 
+        accessibilityLabel='Create Account for login Page 1' 
+        accessibilityHint='First page in creating a new account. IT asks you to create an email, username, and password' 
+        accessibilityRole='header'
+      >
       <View className="flex-1 mx-auto mb-2" >
         <View className="w-[342]">
           <View>
