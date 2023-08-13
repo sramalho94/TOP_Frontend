@@ -39,9 +39,9 @@ const CreateAccount3: React.FC<{navigation: any}> = ({navigation}) => {
           haveProgress={true}
           page={3}
         />
-        <View className="flex-1" accessibilityHint='Second page in creating a new account. It asks for your date of birth, zip code, and first name' accessibilityRole='header'>
-        <View className="flex-1 mx-auto my-auto justify-between">
-          <View className="flex-1 max-w-lg mt-10">
+        <View accessibilityHint='Second page in creating a new account. It asks for your date of birth, zip code, and first name' accessibilityRole='header'>
+        <View className="mx-auto my-auto justify-between">
+          <View className="max-w-lg mt-10">
             <DropDownField
               text="Gender"
               selectItems={[
