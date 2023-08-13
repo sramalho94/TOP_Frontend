@@ -93,23 +93,23 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
 
 
         {/* Might need this one or the one below or both?*/}
-        {/* <View className={`flex-1 max-w-lg mx-auto p-4 px-8`}>
-          <Text className={`flex-1 mb-4 text-auto leading-5 font-light `}> */}
+        <View className={`flex-1 max-w-lg mx-auto mt-6 p-4 px-8`}>
+          <Text className={`mb-4 text-auto leading-5 text-black font-light `}>
         
         
-        <View className={`flex-1 justify-center p-4  px-8`}>
-        <ScrollView>
-          <Text className={`flex-1 mb-4 text-auto leading-5 font-light -mt-[220px]`}>
+        {/* <View className={`flex-1 justify-center p-4  px-8`}> */}
+        {/* <ScrollView> */}
+          {/* <Text className={`flex-1 mb-4 text-auto leading-5 font-light -mt-[220px]`}> */}
             By checking the boxes below, you consent to our using the personal
             information we collect through your use of this app in the way we
             have described.
           </Text>
-          <View className={`flex-1 flex-row items-center text-center`}>
-            <Text className="flex content-center leading-5 font-light mb-10">
+          <View className={`flex-row items-center text-center`}>
+            <Text className="flex content-center leading-5 text-black font-light mb-10">
               For more information about how we use and share personal
               information, please see our{' '}
               <Text
-                className={`flex-1 text-blue-500 underline`}
+                className={`text-blue-500 underline`}
                 onPress={handlePrivacyPolicyPress}>
                 Privacy Policy.
               </Text>
@@ -118,7 +118,7 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
           {/* might need to comment out  */}
           {/* <Text className={` flex-1 mb-4 text-auto`}> */}
           <View className="shadow shadow-black ">
-            <View className="border-gray-200 border-b-2  pb-3 mb-5"></View>
+            <View className="border-gray-200 border-b-2 pb-3 mb-5"></View>
           </View>
           {/* <View className="flex-row justify-start">
             <Text className={`mb-7 text-auto`}>
@@ -187,7 +187,7 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
               </Text>
             </View>
           </View>
-          </ScrollView>
+          {/* </ScrollView> */}
           <View className="flex-1 justify-end">
             <TouchableOpacity
               onPress={handleAgree}

@@ -74,12 +74,18 @@ const Onboarding = (props: OnboardingScreenProps) => {
 
   return (
 <>
-    
+    <ScrollView
+      ref={scrollViewRef}
+      pagingEnabled
+      horizontal
+      showsHorizontalScrollIndicator={false}
+      scrollEnabled
+      onScroll={handleScroll} // Handle scrolling event
+      scrollEventThrottle={16} // Adjust the scroll event frequency
+    >
       {pages.map((page, index) => (
         <SafeAreaView key={index} className="bg-themeWhite h-screen w-screen items-center pb-4">
-          <ScrollView>
           <View className="flex-1 flex-col max-w-md mb-10" accessibilityLabel='Onboarding Info Page' accessibilityHint='Informs you how your data will be used and not be used' accessibilityRole='header'>
-          
             <View className="">
               <Image
                 className="w-full h-[500px] max-h-full mb-5 bg-contain bg-center"
@@ -126,16 +132,15 @@ const Onboarding = (props: OnboardingScreenProps) => {
                     accessLabel="Skip"
                     accessHint="Navigates to the create account screen"
                   />
-                  
                 )}
                 </View>
               </View>
             </View>
           </View>
-          </ScrollView>
+          
         </SafeAreaView>
       ))}
-      
+      </ScrollView>
     </>
   );
 };
