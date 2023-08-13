@@ -1,11 +1,9 @@
 import {Text, TouchableOpacity, Image, View} from 'react-native';
 import React from 'react';
-import Button from './Button';
 
 type Props = {
   text?: string;
   bgColor?: string;
-  borderColor: string;
   updateForm?: (field: string, value: string | boolean) => void; // Make this optional
   onPress?: () => void; // Add custom onPress prop
   Btnwidth: string;
@@ -16,13 +14,10 @@ type Props = {
   value?: boolean; // Make this optional
   accessLabel: string;
   accessHint: string;
-  imgWidth?: string;
-  imgHeight?: string;
 };
 
-const CircleBtn = ({
+const DashButton = ({
   textColor,
-  borderColor,
   textSize,
   img,
   Btnwidth,
@@ -34,8 +29,6 @@ const CircleBtn = ({
   value,
   accessLabel,
   accessHint,
-  imgWidth,
-  imgHeight,
 }: Props) => {
   const handlePress = () => {
     if (onPress) {
@@ -51,36 +44,23 @@ const CircleBtn = ({
     <>
       <TouchableOpacity
         onPress={handlePress}
-        className={`${bgColor} border-2 ${borderColor} flex items-center rounded-full justify-center ${textColor} ${Btnheight} ${Btnwidth}`}
+        className={`border-2 border-themeBlue ${bgColor}  flex items-center rounded-full justify-center ${textColor} ${Btnheight} ${Btnwidth} `}
         accessible={true}
         accessibilityLabel={accessLabel}
         accessibilityHint={accessHint}
         accessibilityRole="button">
-        {img && !text ? (
-          <Image
-            className={`bg-contain ${Btnheight} ${Btnwidth} rounded-full`}
-            source={img}
-          />
-        ) : null}
-        {text && !img ? (
-          <Text className={`text-center ${textSize}`}>{text}</Text>
-        ) : null}
-        {img && text ? (
-          <View className="items-center gap-2">
-            <Text className={`text-center ${textSize} ${textColor}`}>
-              {text}
-            </Text>
-            <View className={` rounded-lg`}>
-              <Image
-                className={`bg-contain ${imgWidth} ${imgHeight}`}
-                source={img}
-              />
-            </View>
+        <View className="items-center relative">
+          <View className="rounded-lg">
+            <Image className="bg-contain w-18 h-18 z-10 mb-14" source={img} />
           </View>
-        ) : null}
+          <Text
+            className={`text-center ${textSize} ${textColor} absolute top-28`}>
+            {text}
+          </Text>
+        </View>
       </TouchableOpacity>
     </>
   );
 };
 
-export default CircleBtn;
+export default DashButton;

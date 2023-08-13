@@ -13,10 +13,9 @@ import DropDownField from '../components/DropDownField';
 import Button from '../components/Button';
 import CircleBtn from '../components/CircleBtn';
 import ApiService from '../services/ApiService';
-import NegTest from './../../assets/NegativeCovidTest.png';
+import NegTest from './../../assets/Negresult.png';
 import PosTest from './../../assets/PositiveCovidTest.png';
 import TopNavBar from '../components/TopNavBar';
-
 
 // Define the ReportPage component
 export interface FormState {
@@ -50,12 +49,11 @@ const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
       .then(Response => {
         console.log('createTestResponse', Response.data);
 
-        if(Response.data.test.result === true) {
+        if (Response.data.test.result === true) {
           navigation.navigate('PositiveThankYouScreen', {logIn: false});
         } else {
           navigation.navigate('ThankYouScreen');
         }
-        
 
         console.log('test created successfully:', Response.data);
         setFormState({
@@ -104,11 +102,14 @@ const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
 
       <ScrollView className="flex-1">
         {/* Page Container */}
-        <View className="flex-1 w-full justify-center items-center flex-col" accessibilityLabel='Report Covid Test Page without an Account' accessibilityHint='Covid Test Reporting without an Account or anonymously' accessibilityRole='header'>
+        <View
+          className="flex-1 w-full justify-center items-center flex-col"
+          accessibilityLabel="Report Covid Test Page without an Account"
+          accessibilityHint="Covid Test Reporting without an Account or anonymously"
+          accessibilityRole="header">
           <View>
             {/* Test Result Buttons */}
-            <Text
-              className="text-lg md:text-2xl font-bold mt-10 mx-auto underline">
+            <Text className="text-lg md:text-2xl font-bold mt-10 mx-auto underline">
               What were the results of your test?
             </Text>
             <View className="flex-1 justify-center space-x-4 flex-row my-9">
@@ -203,8 +204,8 @@ const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
                 }}
                 onChange={value => updateFormState('gender', value)}
                 setOpen={setGenderOpen}
-                accessLabel='gender menu'
-                accessHint='Drop down options to select your gender'
+                accessLabel="gender menu"
+                accessHint="Drop down options to select your gender"
               />
               <DropDownField
                 text="Race"
@@ -246,8 +247,8 @@ const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
                 }}
                 onChange={value => updateFormState('race', value)}
                 setOpen={setRaceOpen}
-                accessLabel='race menu'
-                accessHint='Drop down options to select your race'
+                accessLabel="race menu"
+                accessHint="Drop down options to select your race"
               />
               <DropDownField
                 text="Ethnicity"
@@ -270,8 +271,8 @@ const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
                 }}
                 onChange={value => updateFormState('ethnicity', value)}
                 setOpen={setEthnicityOpen}
-                accessLabel='ethnicity menu'
-                accessHint='Drop down options to select your ethnicity'
+                accessLabel="ethnicity menu"
+                accessHint="Drop down options to select your ethnicity"
               />
             </View>
 
@@ -280,7 +281,7 @@ const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
               <CheckBox
                 isSelected={isCheckboxSelected}
                 handleCheckChanges={handleCheckChanges}
-                accessHint='If you click in this box, you will agree to share results with CDC'
+                accessHint="If you click in this box, you will agree to share results with CDC"
               />
               <Text className="font-bold mt-1 text-black">
                 I agree to share my results with the CDC
