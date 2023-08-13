@@ -157,7 +157,7 @@ export default class ApiService {
 
   // This only creates a test in our db for an anonymous user
   static createTest(testData: {
-    result: boolean;
+    result: boolean | null;
     ZIP: string;
     gender: string;
     race: string;

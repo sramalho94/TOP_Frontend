@@ -20,7 +20,7 @@ import TopNavBar from '../components/TopNavBar';
 
 // Define the ReportPage component
 export interface FormState {
-  result: boolean;
+  result: boolean | null;
   DOB: string;
   DOT: string;
   ZIP: string;
@@ -35,7 +35,7 @@ const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
   const [negTextColor, setNegTextColor] = useState<string>('text-black');
   const [posTextColor, setPosTextColor] = useState<string>('text-black');
   const [formState, setFormState] = useState<FormState>({
-    result: false,
+    result: null,
     DOB: '',
     DOT: '',
     ZIP: '',
@@ -48,15 +48,20 @@ const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
     // Call the createTest method from the ApiService
     ApiService.createTest(formState)
       .then(Response => {
-        console.log('createTestResponse', Response);
-        navigation.navigate('PositiveThankYouScreen', {
-          login: false,
-          result: formState.result,
-        });
+        console.log('createTestResponse', Response.data);
+
+        if(Response.data.test.result === true) {
+          console.log('go to positive screen pls' + Response.data.test.result)
+          navigation.navigate('PositiveThankYouScreen', {logIn: false});
+        } else {
+          console.log('go to negative screen pls' + Response.data.test.result)
+          navigation.navigate('ThankYouScreen');
+        }
+        
 
         console.log('test created successfully:', Response.data);
         setFormState({
-          result: false,
+          result: null,
           DOB: '',
           DOT: '',
           ZIP: '',
@@ -71,8 +76,6 @@ const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
   };
 
   const [isCheckboxSelected, setCheckboxSelection] = useState(false);
-
-  console.log('Render: ', isCheckboxSelected);
 
   const handleCheckChanges = () => {
     setCheckboxSelection(prevState => !prevState);
