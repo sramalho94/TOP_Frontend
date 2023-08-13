@@ -5,12 +5,12 @@ import TextInputField from '../../components/TextInputField';
 import Button from '../../components/Button';
 import TopNavBar from '../../components/TopNavBar';
 import PasswordField from '../../components/Password';
+import PasswordError from '../../components/PasswordError';
 import CreateAccount from '../../../assets/testNew.jpg';
 
 const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
   const {formState, updateFormState} = useContext(CreateAccountContext);
-  const [isModalVisible, setIsModalVisible] = useState(false);
-
+  const [showError, setShowError] = useState <string>('hidden')
   // Validations:
 
   // Function to check if password meets criteria
@@ -30,31 +30,29 @@ const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
   const handleNext = () => {
     // Check if email and username are not empty
     if (!formState.email || !formState.username || !formState.password) {
-      alert('Please fill in all mandatory fields.');
+      // alert('Please fill in all mandatory fields.');
       return; // Prevent proceeding to the next page
     }
 
     // Check if the email is in the correct format
     if (!isEmailValid(formState.email)) {
-      alert('Please enter a valid email address.');
+      // alert('Please enter a valid email address.');
       return; // Prevent proceeding to the next page
     }
 
     const isPasswordValid = checkPasswordCriteria();
-    if (!isPasswordValid) {
-      toggleModal();
+    if (!isPasswordValid) { 
+      setShowError ('flex')
     } else {
+      setShowError ('hidden')
       navigation.navigate('CreateAccount2');
     }
   };
 
-  const toggleModal = () => {
-    setIsModalVisible(!isModalVisible);
-  };
-
   return (
     <SafeAreaView className="flex-1 min-h-screen w-screen bg-themeWhite">
-      {/* <ScrollView className="flex-1"> */}
+    <SafeAreaView className="flex-1 h-screen w-screen bg-themeWhite">
+      <ScrollView>
       <TopNavBar
         fontFamily=""
         textSize="xl"
@@ -69,6 +67,9 @@ const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
               className="mx-auto w-[217px] h-[217px] "
               source={CreateAccount}
             />
+            <View className={showError}>
+              <PasswordError />
+            </View>
           </View>
           <View className="flex-1 mt-5">
             <TextInputField
@@ -101,8 +102,7 @@ const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
           width="80"
         />
       </View>
-      
-      {/* </ScrollView> */}
+      </ScrollView>
     </SafeAreaView>
   );
 };

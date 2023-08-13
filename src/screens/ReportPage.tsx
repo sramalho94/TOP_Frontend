@@ -17,7 +17,6 @@ import TopNavBar from '../components/TopNavBar';
 import NegTest from './../../assets/NegativeCovidTest.png'
 import PosTest from './../../assets/PositiveCovidTest.png'
 
-
 // Define the ReportPage component
 export interface FormState {
   result: boolean;
@@ -29,11 +28,11 @@ export interface FormState {
   ethnicity: string;
 }
 
-const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
-  const [negColor, setNegColor] = useState<string>("bg-themeWhite")
-  const [posColor, setPosColor] = useState<string>("bg-themeWhite")
-  const [negTextColor, setNegTextColor] = useState<string>("text-black")
-  const [posTextColor, setPosTextColor] = useState<string>("text-black")
+const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
+  const [negColor, setNegColor] = useState<string>('bg-themeWhite');
+  const [posColor, setPosColor] = useState<string>('bg-themeWhite');
+  const [negTextColor, setNegTextColor] = useState<string>('text-black');
+  const [posTextColor, setPosTextColor] = useState<string>('text-black');
   const [formState, setFormState] = useState<FormState>({
     result: false,
     DOB: '',
@@ -115,11 +114,11 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
                   bgColor={negColor}
                   borderColor="border-themeLightBlue"
                   updateForm={() => {
-                    updateFormState
-                    setNegColor("bg-themeLightBlue")
-                    setPosColor("bg-themeWhite")
-                    setNegTextColor("text-white")
-                    setPosTextColor("text-black")
+                    updateFormState('result', false);
+                    setNegColor('bg-themeLightBlue');
+                    setPosColor('bg-themeWhite');
+                    setNegTextColor('text-white');
+                    setPosTextColor('text-black');
                   }}
                   text="Negative"
                   Btnwidth="w-32"
@@ -136,11 +135,11 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
                   text="Positive"
                   bgColor={posColor}
                   updateForm={() => {
-                    updateFormState
-                    setNegColor("bg-themeWhite")
-                    setPosColor("bg-themeLightOrange")
-                    setNegTextColor("text-black")
-                    setPosTextColor("text-white")
+                    updateFormState('result', true);
+                    setNegColor('bg-themeWhite');
+                    setPosColor('bg-themeLightOrange');
+                    setNegTextColor('text-black');
+                    setPosTextColor('text-white');
                   }}
                   Btnwidth="w-32"
                   Btnheight="h-32"
@@ -185,7 +184,10 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
                     value: 'Man',
                   },
                   {label: 'Non-binary', value: 'Non-binary'},
-                  {label: 'I prefer not to answer', value: 'I prefer not to answer'},
+                  {
+                    label: 'I prefer not to answer',
+                    value: 'I prefer not to answer',
+                  },
                 ]}
                 open={genderOpen}
                 onOpen={() => {
@@ -204,7 +206,10 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
                     label: 'Black or of African descent',
                     value: 'Black or of African descent',
                   },
-                  {label: 'Middle Eastern or North African', value: 'Middle Eastern or North African'},
+                  {
+                    label: 'Middle Eastern or North African',
+                    value: 'Middle Eastern or North African',
+                  },
                   {
                     label: 'Indigenous, American Indian or Alaska Native',
                     value: 'Indigenous, American Indian or Alaska Native',
@@ -220,7 +225,10 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
                     label: 'Two or More Races/Ethnicities',
                     value: 'two or more races/ethnicities',
                   },
-                  {label: "I prefer not to answer", value: "I prefer not to answer"},
+                  {
+                    label: 'I prefer not to answer',
+                    value: 'I prefer not to answer',
+                  },
                 ]}
                 open={raceOpen}
                 onOpen={() => {
@@ -239,7 +247,10 @@ const ReportPage: React.FC<{ navigation: any }> = ({ navigation }) => {
                     label: 'Non-Hispanic/Latino',
                     value: 'Non-hispanic/latino',
                   },
-                  {label: 'I prefer not to answer', value: 'I prefer not to answer'},
+                  {
+                    label: 'I prefer not to answer',
+                    value: 'I prefer not to answer',
+                  },
                 ]}
                 open={ethnicityOpen}
                 onOpen={() => {

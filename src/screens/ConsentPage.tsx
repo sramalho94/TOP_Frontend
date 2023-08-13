@@ -1,6 +1,4 @@
-import React, {useState, useContext} from 'react';
-// import {useFormContext} from "react-hook-form";
-// import {useFormContext} from '../context/CreateAccountContext';
+import React, { useState, useContext } from 'react';
 import {
   SafeAreaView,
   View,
@@ -11,7 +9,7 @@ import {
 } from 'react-native';
 import TopNavBar from '../components/TopNavBar';
 import CheckBox from '../components/CheckBox';
-import {useAuth} from '../context/AuthContext';
+import { useAuth } from '../context/AuthContext';
 import CreateAccountContext from '../context/CreateAccountContext';
 import Button from '../components/Button';
 
@@ -21,17 +19,15 @@ interface CheckState {
   isReadAndAcceptChecked: boolean;
 }
 
-const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
+const ConsentPage: React.FC<{ navigation: any }> = ({ navigation }) => {
   const handlePrivacyPolicyPress = () => {
     const privacyPolicyUrl = 'https://www.privacypolicies.com/generic/';
     Linking.openURL(privacyPolicyUrl);
   };
 
-  // comment for push
-  const {onRegister} = useAuth();
-  // const {formState, updateFormState} = useContext<any>(CreateAccountContext);
-  // const {formState} = useFormContext();
-  const {formState, resetFormState} = useContext(CreateAccountContext);
+  const { onRegister } = useAuth();
+  const [errorMessage, setErrorMessage] = useState<string>('');
+  const { formState, resetFormState } = useContext(CreateAccountContext);
   const handleEmailPress = () => {
     const email = 'leavecovidtracking-us@joinzoe.com';
     Linking.openURL(`mailto:${email}`);
@@ -48,26 +44,24 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
       !checkBoxStates.isConsentChecked ||
       !checkBoxStates.isReadAndAcceptChecked
     ) {
-      alert('Please check all the boxes before agreeing.');
+      setErrorMessage('Please check all the boxes before agreeing.');
       return;
     }
 
     if (onRegister) {
       console.log('Double check of formState: ' + JSON.stringify(formState));
       onRegister(formState)
-        .then((res: any) =>
-          console.log('res from register!!: ' + JSON.stringify(res.data)),
-        )
+        .then((res: any) => {
+        resetFormState();
+        navigation.navigate('ConsentFormThankYou');
+          console.log('res from register!!: ' + JSON.stringify(res.data))
+        })
         .catch((error: any) => {
           console.log('Screen Register Err: ' + error);
         });
-      resetFormState();
-      navigation.navigate('ConsentFormThankYou');
-      console.log('reset marathon' + JSON.stringify(formState));
     } else {
       console.log('onRegister is not a function or is undefined.');
     }
-    // alert('Thank you for agreeing to the terms.');
   };
 
   const [checkBoxStates, setCheckBoxStates] = useState<CheckState>({
@@ -83,8 +77,8 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
     }));
   };
   return (
-<>
-      <SafeAreaView className="flex-1 min-w-screen min-h-screen bg-themeWhite">
+    <>
+      <SafeAreaView className="flex-1 min-h-screen min-w-screen bg-themeWhite">
         <TopNavBar
           textSize="xl"
           textValue="Consent Form"

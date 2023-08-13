@@ -121,7 +121,7 @@ const CreateAccount3: React.FC<{navigation: any}> = ({navigation}) => {
           />
         </View>
       </View>
-      <View className="flex-1 justify-end ">
+      <View className="flex-1 mb-5 justify-end ">
         <Button
           onPress={handleNext}
           innerText="Continue"

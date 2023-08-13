@@ -8,6 +8,7 @@ import TopNavBar from '../../components/TopNavBar';
 const CreateAccount2: React.FC<{navigation: any}> = ({navigation}) => {
   const {formState, updateFormState} = useContext(CreateAccountContext);
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string>('');
 
   // Function to check if email format is correct
   const isBirthdayValid = (birthday: string): boolean => {
@@ -50,25 +51,26 @@ const CreateAccount2: React.FC<{navigation: any}> = ({navigation}) => {
   const handleNext = () => {
     // Check if email and username are not empty
     if (!formState.DOB || !formState.ZIP) {
-      alert('Please fill in all mandatory fields.');
+      setErrorMessage('Please fill in all mandatory fields.');
       return; // Prevent proceeding to the next page
     }
 
     if (!isBirthdayValid(formState.DOB)) {
-      alert('Please enter a valid birthday.');
+      setErrorMessage('Please enter a valid birthday.');
       return; // Prevent proceeding to the next page
     }
 
     if (!isEighteenOrOlder(formState.DOB)) {
-      alert('You must be 18 years or older to create an account.');
+      setErrorMessage('You must be 18 years or older to create an account.');
       return;
     }
 
     // Check if the zip code is in the correct format
     if (!isZipCodeValid(formState.ZIP)) {
-      alert('Please enter a valid zip code.');
+      setErrorMessage('Please enter a valid zip code.');
       return; // Prevent proceeding to the next page
     } else {
+      setErrorMessage('')
       navigation.navigate('CreateAccount3');
     }
   };
@@ -78,17 +80,25 @@ const CreateAccount2: React.FC<{navigation: any}> = ({navigation}) => {
   };
 
   return (
-    <SafeAreaView className="flex-1 h-screen w-screen bg-themeWhite">
-      <TopNavBar
-        fontFamily=""
-        textSize="xl"
-        textValue="Create Account"
-        haveProgress={true}
-        page={2}
-      />
+    <SafeAreaView className="bg-white min-w-screen min-h-screen">
+      {/* <ScrollView> */}
+        <TopNavBar
+          fontFamily=""
+          textSize="xl"
+          textValue="Create Account"
+          haveProgress={true}
+          page={2}
+        />
 
+        {errorMessage ? (
+          <View className="mt-0 p-2 bg-red-100 border border-red-500 mx-auto w-[315]">
+            <Text className="text-red-500">{errorMessage}</Text>
+          </View>
+        ) : null}
+        <View className="">
       <View className="flex-1 mx-auto my-auto mb-3">
         <View className="w-[342] min-h-[300px] mt-10">
+
           <TextInputField
             label="Date of Birth*"
             value={formState.DOB}
@@ -109,8 +119,8 @@ const CreateAccount2: React.FC<{navigation: any}> = ({navigation}) => {
           />
         </View>
       </View>
-
-      <View className="flex-1 mt-4 flex-col-reverse ">
+      </View>
+      <View className="flex-1 mb-5 justify-end ">
         <Button
           onPress={handleNext}
           innerText="Continue"
