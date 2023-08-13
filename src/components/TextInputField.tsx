@@ -21,7 +21,7 @@ const TextInputField: React.FC<TextInputFieldProps> = ({
 
   return (
     <View className="my-4 w-full max-w-sm justify-center align-middle px-8">
-      <Text nativeID="formLabel" className="font-medium md:text-xl w-full h-8 flex my-auto justify-center align-middle">{label}</Text>
+      <Text nativeID="formLabel" className="font-medium w-full h-8 flex my-auto justify-center align-middle">{label}</Text>
       <TextInput
         className="border border-black bg-white rounded-lg h-12 w-full font-medium px-4"
         value={value}

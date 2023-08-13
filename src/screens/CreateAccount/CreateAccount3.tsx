@@ -30,7 +30,7 @@ const CreateAccount3: React.FC<{navigation: any}> = ({navigation}) => {
   };
 
   return (
-    <SafeAreaView className="flex-1 h-screen w-screen bg-themeWhite">
+    <SafeAreaView className="min-h-screen min-w-screen bg-themeWhite">
       <ScrollView>
         <TopNavBar
           fontFamily=""
@@ -39,9 +39,9 @@ const CreateAccount3: React.FC<{navigation: any}> = ({navigation}) => {
           haveProgress={true}
           page={3}
         />
-        <View accessibilityHint='Second page in creating a new account. It asks for your date of birth, zip code, and first name' accessibilityRole='header'>
-        <View className="mx-auto my-auto justify-between">
-          <View className="max-w-lg mt-10">
+        <View className="flex-1" accessibilityHint='Second page in creating a new account. It asks for your date of birth, zip code, and first name' accessibilityRole='header'>
+        <View className="flex-1 mx-auto my-auto justify-between">
+          <View className="flex-1 max-w-lg mt-10">
             <DropDownField
               text="Gender"
               selectItems={[
@@ -128,7 +128,7 @@ const CreateAccount3: React.FC<{navigation: any}> = ({navigation}) => {
             />
           </View>
         </View>
-        <View className="mt-40 mx-auto">
+        <View className="flex-1 bg-red-300 justify-end mx-auto">
           <Button
             onPress={handleNext}
             innerText="Next"
