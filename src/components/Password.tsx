@@ -46,7 +46,7 @@ const PasswordField = (props: Props) => {
 
       <TouchableOpacity
         onPress={togglePasswordVisibility}
-        className="absolute top-4 right-10"
+        className="absolute top-11 right-10"
         accessible={true}
         accessibilityLabel="Show or Hide Password"
         accessibilityHint="This button toggles to show or hide your password"
