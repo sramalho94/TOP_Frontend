@@ -64,7 +64,7 @@ const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
         <View className="w-[342]">
           <View>
             <Image
-              className="mx-auto w-[217px] h-[217px] "
+              className="mx-auto mt-5 w-[217px] h-[217px] "
               source={CreateAccount}
             />
             <View className={showError}>
