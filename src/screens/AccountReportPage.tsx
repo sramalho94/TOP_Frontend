@@ -58,7 +58,10 @@ const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
         userId: formState.userId as number,
       });
       console.log('res: ', res);
-      navigation.navigate('ThankYouScreen');
+      navigation.navigate('ThankYouScreen', {
+        logIn: true,
+        resultState: formState.result,
+      });
       setFormState({
         result: false,
         userId: formState.userId,
