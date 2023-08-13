@@ -108,9 +108,6 @@ const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
           <View>
             {/* Test Result Buttons */}
             <Text
-              style={{
-                fontFamily: 'Baskerville-BoldItalic',
-              }}
               className="text-lg md:text-2xl font-bold mt-10 mx-auto underline">
               What were the results of your test?
             </Text>
