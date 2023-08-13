@@ -60,7 +60,7 @@ const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
         page={1}
       />
       <View 
-        className="flex-1 min-h-[300px] bg-green-300" 
+        className="flex-1 min-h-[300px]" 
         accessibilityLabel='Create Account for login Page 1' 
         accessibilityHint='First page in creating a new account. IT asks you to create an email, username, and password' 
         accessibilityRole='header'
@@ -72,11 +72,17 @@ const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
               className="mx-auto mt-5 w-[217px] h-[217px] "
               source={CreateAccount}
             />
+            
+
             <View className={showError}>
               <PasswordError />
             </View>
           </View>
           <View className="flex-1 w-screen items-center mt-5">
+          <View className="text-left">
+              <Text className="">Already have an account? <Text className="text-themeBlue underline">Log in.</Text></Text>
+              
+            </View>
             <TextInputField
               label="Email*"
               value={formState.email}
@@ -96,7 +102,7 @@ const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
           </View>
         </View>
       </View>
-      <View className="flex-1 mt-4 bg-blue-300 flex-col-reverse mb-3">
+      <View className="flex-1 mt-4 flex-col-reverse mb-3">
         <Button
           onPress={handleNext}
           innerText="Continue"
