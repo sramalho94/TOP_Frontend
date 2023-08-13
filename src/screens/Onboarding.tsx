@@ -103,9 +103,9 @@ const Onboarding = (props: OnboardingScreenProps) => {
 
             <View className="flex-1 flex-col-reverse mt-1 ">
               <View className="flex-1 mt-8 justify-center">
-                {/* <View className="flex-1 mt-2 mb-2">
+                <View className="flex-1 mt-2 mb-2">
                   <ProgressDots page={page.pageIndicator} />
-                </View> */}
+                </View>
                 <View className="mx-auto mt-7">
                 <Button
                   onPress={page.onButtonPress}
