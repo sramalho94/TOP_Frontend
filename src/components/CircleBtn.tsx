@@ -54,7 +54,7 @@ const CircleBtn = ({
         accessibilityRole="button">
         {img && !text ? (
           <Image
-            className={`bg-contain ${Btnheight} ${Btnwidth} rounded-full border ${borderColor}`}
+            className={`bg-contain ${Btnheight} ${Btnwidth} rounded-full`}
             source={img}
           />
         ) : null}
@@ -66,7 +66,7 @@ const CircleBtn = ({
             <Text className={`text-center ${textSize} ${textColor}`}>
               {text}
             </Text>
-            <View className={`${borderColor} border rounded-lg`}>
+            <View className={` rounded-lg`}>
               <Image className={`bg-contain w-10 h-10`} source={img} />
             </View>
           </View>

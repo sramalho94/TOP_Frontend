@@ -44,12 +44,12 @@ const DashButton = ({
     <>
       <TouchableOpacity
         onPress={handlePress}
-        className={`${bgColor} flex items-center rounded-full justify-center ${textColor} ${Btnheight} ${Btnwidth}`}
+        className={`border-2 border-themeBlue ${bgColor}  flex items-center rounded-full justify-center ${textColor} ${Btnheight} ${Btnwidth} `}
         accessible={true}
         accessibilityLabel={accessLabel}
         accessibilityHint={accessHint}
         accessibilityRole="button">
-        <View className="items-center  relative">
+        <View className="items-center relative">
           <View className="rounded-lg">
             <Image className="bg-contain w-18 h-18 z-10 mb-14" source={img} />
           </View>

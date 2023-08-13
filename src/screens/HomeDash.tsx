@@ -59,8 +59,8 @@ const HomeDash: React.FC<{navigation: any}> = ({navigation}) => {
                 onPress={() => {
                   navigation.navigate('AccountReportPage');
                 }}
-                Btnwidth="w-48"
-                Btnheight="h-48"
+                Btnwidth="w-52"
+                Btnheight="h-52"
                 textSize="text-3xl"
                 accessLabel="Report Test Button"
                 accessHint="This is a button that you can click on to report your Covid test results."
