@@ -6,7 +6,6 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../../App';
 import {useAuth} from '../context/AuthContext';
 import jumpImg from './../../assets/jump.png';
-import CarterOne from '../../assets/fonts/Carter One.ttf';
 
 type ConsentFormThankYouNavigationProp = NativeStackNavigationProp<
   RootStackParamList,

@@ -83,7 +83,7 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
   };
   return (
     <>
-      <SafeAreaView className="flex-1 h-screen w-screen bg-themeWhite">
+      <SafeAreaView className="flex-1 h-screen w-screen">
         <TopNavBar
           textSize="xl"
           textValue="Consent Form"
@@ -95,9 +95,10 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
         {/* Might need this one or the one below or both?*/}
         {/* <View className={`flex-1 max-w-lg mx-auto p-4 px-8`}>
           <Text className={`flex-1 mb-4 text-auto leading-5 font-light `}> */}
-        <ScrollView>
         
-        <View className={`flex-1 justify-center p-4 px-8`}>
+        
+        <View className={`flex-1 justify-center p-4  px-8`}>
+        <ScrollView>
           <Text className={`flex-1 mb-4 text-auto leading-5 font-light -mt-[220px]`}>
             By checking the boxes below, you consent to our using the personal
             information we collect through your use of this app in the way we
@@ -186,7 +187,8 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
               </Text>
             </View>
           </View>
-          <View className="flex-1 justify-end ">
+          </ScrollView>
+          <View className="flex-1 justify-end">
             <TouchableOpacity
               onPress={handleAgree}
               className={'bg-themeBlue px-8 py-[14] rounded-md'}>
@@ -197,7 +199,7 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
             </TouchableOpacity>
           </View>
         </View>
-        </ScrollView>
+        
       </SafeAreaView>
     </>
   );

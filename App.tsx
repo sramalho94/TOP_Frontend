@@ -39,6 +39,9 @@ export type RootStackParamList = {
   ConsentFormThankYou: { logIn: boolean };
   Loading: undefined;
   DataDashboard: undefined;
+  PositiveThankYouScreen: {
+    logIn: false,
+  };
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();

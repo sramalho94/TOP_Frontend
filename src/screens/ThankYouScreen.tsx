@@ -55,20 +55,17 @@ const ThankYouScreen = ({navigation, route}: Props) => {
       </View>
       <View className="flex-row justify-center  ">
         <Text className="  font-serif text-[18px] font-medium text-center px-5 mb-10">
-          {resultState
-            ? 'Your test has been reported. We hope you feel better soon.'
-            : 'Your test results have been reported.'}
+            Your test results have been reported.
         </Text>
       </View>
 
       <Image
         style={{
           alignSelf: 'center',
-          height: resultState ? 200 : 370,
-          width: resultState ? 300 : 300,
-          marginBottom: resultState ? 100 : 0,
+          height: 370,
+          width: 300,
         }}
-        source={resultState ? positiveImg : jumpImg}
+        source={jumpImg}
       />
 
       <View className="flex-row text-justify ">
@@ -78,26 +75,7 @@ const ThankYouScreen = ({navigation, route}: Props) => {
             : 'Join our community and save time on your next reporting by making an account today!'}
         </Text> */}
         <Text className="text-lg  px-8 text-justify">
-          {resultState ? (
-            <Text>
-              Keep your community safe! Check the CDC for{' '}
-              <Text
-                className={`text-blue-500 underline`}
-                onPress={handleInfoPress}>
-                more information about isolation and precautions{' '}
-              </Text>
-              or call{' '}
-              <TouchableOpacity onPress={handleCallPress}>
-                <Text
-                  className={`text-blue-500 underline text-[18px] ml-8`}
-                  href="tel:1-800-CDC-INFO">
-                  1-800-CDC-INFO
-                </Text>
-              </TouchableOpacity>
-            </Text>
-          ) : (
-            'You and 1,000 others in your zip code reported results this week.'
-          )}
+          You and 1,000 others in your zip code reported results this week.
         </Text>
       </View>
 

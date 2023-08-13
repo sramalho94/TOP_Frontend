@@ -8,7 +8,7 @@ import {useAuth} from '../context/AuthContext';
 import ApiService from '../services/ApiService';
 
 interface FormState {
-  result: boolean;
+  result: boolean | null;
   userId: number | null;
   DOT: string;
   DOB: string | null;
@@ -28,7 +28,7 @@ const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
   const [negTextColor, setNegTextColor] = useState<string>('text-black');
   const [posTextColor, setPosTextColor] = useState<string>('text-black');
   const [formState, setFormState] = useState<FormState>({
-    result: false,
+    result: null,
     DOB: DOBVal,
     userId: actualUserIdValue,
     DOT: '',
@@ -58,12 +58,15 @@ const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
         userId: formState.userId as number,
       });
       console.log('res: ', res);
-      navigation.navigate('ThankYouScreen', {
-        logIn: true,
-        resultState: formState.result,
-      });
+
+      if(res.data.test.result === true) {
+          navigation.navigate('PositiveThankYouScreen', {logIn: false});
+        } else {
+          navigation.navigate('ThankYouScreen');
+        }
+        
       setFormState({
-        result: false,
+        result: null,
         userId: formState.userId,
         DOT: '',
         ZIP: '',
@@ -114,6 +117,8 @@ const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
                 Btnheight="h-32"
                 textSize="base"
                 value={true}
+                accessLabel="Negative"
+                accessHint="Touch if your test results are negative"
               />
             </View>
             <View className="m-2">
@@ -133,6 +138,8 @@ const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
                 Btnheight="h-32"
                 textSize="base"
                 value={false}
+                accessLabel="Positive"
+                accessHint="Touch if your test results are positive"
               />
             </View>
           </View>
@@ -162,6 +169,8 @@ const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
               bgColor="bg-themeBlue"
               border={true}
               width="80"
+              accessLabel="Report"
+              accessHint="Reports test results"
             />
           </View>
         </View>

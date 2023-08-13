@@ -157,7 +157,7 @@ export default class ApiService {
 
   // This only creates a test in our db for an anonymous user
   static createTest(testData: {
-    result: boolean;
+    result: boolean | null;
     ZIP: string;
     gender: string;
     race: string;
@@ -176,7 +176,7 @@ export default class ApiService {
 
   // Create test in our db for a registered user
   static createTestWithAccount(testData: {
-    result: boolean;
+    result: boolean | null;
     userId: number;
     ZIP: string;
     gender: string;
