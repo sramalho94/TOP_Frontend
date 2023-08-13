@@ -6,6 +6,8 @@ import TopNavBar from '../components/TopNavBar';
 import CircleBtn from '../components/CircleBtn';
 import {useAuth} from '../context/AuthContext';
 import ApiService from '../services/ApiService';
+import NegTest from './../../assets/NegativeCovidTest.png';
+import PosTest from './../../assets/PositiveCovidTest.png';
 
 interface FormState {
   result: boolean | null;
@@ -101,46 +103,48 @@ const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
           {/* Result Buttons Container */}
           <View className="flex-1 justify-center space-x-4 flex-row my-8">
             <View className="m-2">
-              <CircleBtn
-                bgColor={negColor}
-                textColor={negTextColor}
-                borderColor="border-themeLigthBlue"
-                updateForm={() => {
-                  handleChange('result', false);
-                  setNegColor('bg-themeLightBlue');
-                  setPosColor('bg-themeWhite');
-                  setNegTextColor('text-white');
-                  setPosTextColor('text-black');
-                }}
-                text="Negative"
-                Btnwidth="w-32"
-                Btnheight="h-32"
-                textSize="base"
-                value={true}
-                accessLabel="Negative"
-                accessHint="Touch if your test results are negative"
-              />
+             <CircleBtn
+                  textColor={negTextColor}
+                  bgColor={negColor}
+                  borderColor="border-themeLightBlue"
+                  updateForm={() => {
+                    handleChange('result', false);
+                    setNegColor('bg-themeLightBlue');
+                    setPosColor('bg-themeWhite');
+                    setNegTextColor('text-white');
+                    setPosTextColor('text-black');
+                  }}
+                  text="Negative"
+                  Btnwidth="w-32"
+                  Btnheight="h-32"
+                  textSize="text-xl"
+                  value={false}
+                  accessLabel="Negative"
+                  accessHint="Touch if your test results are negative"
+                  img={NegTest}
+                />
             </View>
             <View className="m-2">
-              <CircleBtn
-                borderColor="border-themeLightOrange"
-                text="Positive"
-                textColor={posTextColor}
-                bgColor={posColor}
-                updateForm={() => {
-                  handleChange('result', true);
-                  setNegColor('bg-themeWhite');
-                  setPosColor('bg-themeLightOrange');
-                  setNegTextColor('text-black');
-                  setPosTextColor('text-white');
-                }}
-                Btnwidth="w-32"
-                Btnheight="h-32"
-                textSize="base"
-                value={false}
-                accessLabel="Positive"
-                accessHint="Touch if your test results are positive"
-              />
+            <CircleBtn
+                  textColor={posTextColor}
+                  borderColor="border-themeLightOrange"
+                  text="Positive"
+                  bgColor={posColor}
+                  updateForm={() => {
+                    handleChange('result', true);
+                    setNegColor('bg-themeWhite');
+                    setPosColor('bg-themeLightOrange');
+                    setNegTextColor('text-black');
+                    setPosTextColor('text-white');
+                  }}
+                  Btnwidth="w-32"
+                  Btnheight="h-32"
+                  textSize="text-xl"
+                  value={true}
+                  accessLabel="Positive"
+                  accessHint="Touch if your test results are positive"
+                  img={PosTest}
+                />
             </View>
           </View>
 

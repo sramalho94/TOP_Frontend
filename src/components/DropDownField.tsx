@@ -31,8 +31,14 @@ const DropDownField = ({
   return (
     <View className="mx-auto">
       <Text className="font-bold md:text-xl my-2 capitalize">{text} (Optional)</Text>
+      <View 
+      className="my-2 w-80 rounded-lg"
+      accessible={true}
+      accessibilityLabel={accessLabel}
+      accessibilityHint={accessHint}
+      >
       <DropDownPicker
-        className="my-2 w-80 border border-black rounded-lg"
+        
         open={open}
         items={selectItems}
         value={value}
@@ -43,11 +49,9 @@ const DropDownField = ({
         dropDownDirection="TOP"
         listMode="SCROLLVIEW"
         placeholder={`Select your ${text.toLowerCase()}`}
-        accessible={true}
-        accessibilityLabel={accessLabel}
-        accessibilityHint={accessHint}
-        accessibilityRole="menu"
+
       />
+      </View>
     </View>
   );
 };
