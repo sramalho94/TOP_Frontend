@@ -91,7 +91,7 @@ const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
   const [ethnicityOpen, setEthnicityOpen] = useState<boolean>(false);
 
   return (
-    <SafeAreaView className="w-screen h-screen flex-1">
+    <SafeAreaView className="bg-themeWhite w-screen h-screen flex-1">
       {/* NavBar */}
       <TopNavBar
         textValue="Report COVID-19 Test Result"
@@ -296,10 +296,10 @@ const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
               <Button
                 onPress={handleReportButtonClick}
                 innerText="Report"
-                bgColor="bg-[#B4B4B4]"
-                textColor="text-black"
+                bgColor="bg-themeBlue"
+                textColor="text-themeWhite"
                 border={true}
-                borderColor="border border-2"
+                borderColor="border border-themeBlue"
                 width="80"
                 accessLabel="Report"
                 accessHint="Reports test results"
