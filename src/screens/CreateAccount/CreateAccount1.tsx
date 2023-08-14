@@ -10,7 +10,7 @@ import CreateAccount from '../../../assets/testNew.jpg';
 
 const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
   const {formState, updateFormState} = useContext(CreateAccountContext);
-  const [showError, setShowError] = useState <string>('hidden')
+  const [showError, setShowError] = useState<string>('hidden');
   // Validations:
 
   // Function to check if password meets criteria
@@ -41,10 +41,10 @@ const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
     }
 
     const isPasswordValid = checkPasswordCriteria();
-    if (!isPasswordValid) { 
-      setShowError ('flex')
+    if (!isPasswordValid) {
+      setShowError('flex');
     } else {
-      setShowError ('hidden')
+      setShowError('hidden');
       navigation.navigate('CreateAccount2');
     }
   };
@@ -52,59 +52,63 @@ const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
   return (
     <SafeAreaView className="flex-1 h-screen w-screen bg-themeWhite">
       <ScrollView>
-      <TopNavBar
-        fontFamily=""
-        textSize="xl"
-        textValue="Create Account"
-        haveProgress={true}
-        page={1}
-      />
-      <View className="flex-1 min-h-[300px] bg-green-300" accessibilityLabel='Create Account for login Page 1' accessibilityHint='First page in creating a new account. IT asks you to create an email, username, and password' accessibilityRole='header'>
-      <View className="flex-1 mx-auto mb-2" >
-        <View className="w-[342]">
-          <View>
-            <Image
-              className="mx-auto w-[217px] h-[217px] "
-              source={CreateAccount}
-            />
-            <View className={showError}>
-              <PasswordError />
+        <TopNavBar
+          fontFamily=""
+          textSize="xl"
+          textValue="Create Account"
+          haveProgress={true}
+          page={1}
+        />
+        <View
+          className="flex-1 min-h-[300px]"
+          accessibilityLabel="Create Account for login Page 1"
+          accessibilityHint="First page in creating a new account. IT asks you to create an email, username, and password"
+          accessibilityRole="header">
+          <View className="flex-1 mx-auto mb-2">
+            <View className="w-[342]">
+              <View>
+                <Image
+                  className="mx-auto w-[217px] h-[217px] "
+                  source={CreateAccount}
+                />
+                <View className={showError}>
+                  <PasswordError />
+                </View>
+              </View>
+              <View className="flex-1 mt-5">
+                <TextInputField
+                  label="Email*"
+                  value={formState.email}
+                  onChange={value => updateFormState('email', value)}
+                  placeholder="Email"
+                />
+                <TextInputField
+                  label="Username*"
+                  value={formState.username}
+                  onChange={value => updateFormState('username', value)}
+                  placeholder="Username"
+                />
+                <PasswordField
+                  onChange={value => updateFormState('password', value)}
+                  password={formState.password}
+                />
+              </View>
             </View>
           </View>
-          <View className="flex-1 mt-5">
-            <TextInputField
-              label="Email*"
-              value={formState.email}
-              onChange={value => updateFormState('email', value)}
-              placeholder="Email"
-            />
-            <TextInputField
-              label="Username*"
-              value={formState.username}
-              onChange={value => updateFormState('username', value)}
-              placeholder="Username"
-            />
-            <PasswordField
-              onChange={value => updateFormState('password', value)}
-              password={formState.password}
+          <View className="flex-1 mt-4 bg-blue-300 flex-col-reverse mb-3">
+            <Button
+              onPress={handleNext}
+              innerText="Continue"
+              textColor="text-white"
+              bgColor="bg-themeBlue"
+              border={true}
+              borderColor="border border-themeBlue border-2"
+              width="80"
+              accessLabel="Continue to Next Page"
+              accessHint="Continues to Account Page 2 for date of birth, zip code, and optional first name input"
             />
           </View>
         </View>
-      </View>
-      <View className="flex-1 mt-4 bg-blue-300 flex-col-reverse mb-3">
-        <Button
-          onPress={handleNext}
-          innerText="Continue"
-          textColor="text-white"
-          bgColor="bg-themeBlue"
-          border={true}
-          borderColor="border border-themeBlue border-2"
-          width="80"
-          accessLabel='Continue to Next Page'
-          accessHint='Continues to Account Page 2 for date of birth, zip code, and optional first name input'
-        />
-      </View>
-      </View>
       </ScrollView>
     </SafeAreaView>
   );

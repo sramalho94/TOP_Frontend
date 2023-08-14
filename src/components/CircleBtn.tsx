@@ -10,6 +10,7 @@ type Props = {
   Btnwidth: string;
   Btnheight: string;
   textColor?: string;
+  borderColor: string;
   img?: any;
   textSize?: string;
   value?: boolean; // Make this optional
@@ -21,6 +22,7 @@ type Props = {
 
 const CircleBtn = ({
   textColor,
+  borderColor,
   textSize,
   img,
   Btnwidth,
@@ -49,7 +51,7 @@ const CircleBtn = ({
     <>
       <TouchableOpacity
         onPress={handlePress}
-        className={`${bgColor}  flex items-center rounded-full justify-center ${textColor} ${Btnheight} ${Btnwidth}`}>
+        className={`${bgColor} ${borderColor}  flex items-center rounded-full justify-center ${textColor} ${Btnheight} ${Btnwidth}`}>
         {img && !text ? (
           <Image
             className={`bg-contain ${Btnheight} ${Btnwidth} rounded-full`}

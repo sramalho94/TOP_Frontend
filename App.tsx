@@ -3,7 +3,7 @@ import LandingPage from './src/screens/LandingPage';
 import ReportPage from './src/screens/ReportPage';
 import AccountReportPage from './src/screens/AccountReportPage';
 import ThankYouScreen from './src/screens/ThankYouScreen';
-import PositiveThankYouScreen from './src/screens/PositiveThankYouScreen';
+// import PositiveThankYouScreen from './src/screens/PositiveThankYouScreen';
 import SignInPage from './src/screens/SignInPage';
 import ConsentPage from './src/screens/ConsentPage';
 import Onboarding from './src/screens/Onboarding';
@@ -39,9 +39,9 @@ export type RootStackParamList = {
   ConsentFormThankYou: {logIn: boolean};
   Loading: undefined;
   DataDashboard: undefined;
-  PositiveThankYouScreen: {
-    logIn: false;
-  };
+  // PositiveThankYouScreen: {
+  //   logIn: false;
+  // };
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -135,11 +135,11 @@ function AppContent({
               component={ThankYouScreen}
               options={{headerShown: false}}
             />
-            <Stack.Screen
+            {/* <Stack.Screen
               name="PositiveThankYouScreen"
               component={PositiveThankYouScreen}
               options={{headerShown: false}}
-            />
+            /> */}
             <Stack.Screen
               name="ConsentFormThankYou"
               component={ConsentFormThankYou}
