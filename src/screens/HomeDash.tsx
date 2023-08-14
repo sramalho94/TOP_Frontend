@@ -2,12 +2,16 @@ import {View, Text, SafeAreaView, ScrollView} from 'react-native';
 import React from 'react';
 import CircleBtn from '../components/CircleBtn';
 import {useAuth} from '../context/AuthContext';
-import FlowerImg from '../../assets/orange-flower.png';
+import HomePageImg from '../../assets/homePageImg.png';
+import HomePrivacyImg from '../../assets/homePrivacyImg.png';
+import HomeDashboard from '../../assets/homeDashboard.png';
+import HomeExchange from '../../assets/homeExchange.png';
+import Avatar from '../../assets/Avatar.png';
 
 const HomeDash: React.FC<{navigation: any}> = ({navigation}) => {
   const {onLogout} = useAuth();
   return (
-    <SafeAreaView className="h-screen w-screen">
+    <SafeAreaView className="h-screen w-screen bg-white">
       <ScrollView>
         {/* View for whole screen */}
         <View className="flex flex-col w-full min-h-screen p-6">
@@ -16,11 +20,11 @@ const HomeDash: React.FC<{navigation: any}> = ({navigation}) => {
             {/* View for avatar*/}
             {/* FIXME: size={72} on avatar does not work for android, might be something with size? idk
             update* it also stopped working for IOS */}
-            <View className="self-end mb-2">
+            <View className="self-end mb-2 ">
               <CircleBtn
-                img={FlowerImg}
-                bgColor="bg-themeLightOrange"
-                text="Logout"
+                img={Avatar}
+                // bgColor="bg-themeLightOrange"
+                // text="Logout"
                 onPress={() => {
                   if (onLogout) {
                     onLogout();
@@ -28,8 +32,8 @@ const HomeDash: React.FC<{navigation: any}> = ({navigation}) => {
                     console.error('onLogout function is not provided');
                   }
                 }}
-                Btnwidth="w-24"
-                Btnheight="h-24"
+                Btnwidth="w-10"
+                Btnheight="h-10"
               />
             </View>
             <Text className="text-3xl font-bold mb-2 text-center">
@@ -37,14 +41,15 @@ const HomeDash: React.FC<{navigation: any}> = ({navigation}) => {
             </Text>
             {/* need giant circle btn, need to refactor circle btn props? */}
             <CircleBtn
-              text={`Report\nTest`}
-              bgColor="bg-themeLightOrange"
+              // text={`Report\nTest`}
+              img={HomePageImg}
+              // bgColor="bg-themeLightOrange"
               onPress={() => {
                 navigation.navigate('AccountReportPage');
               }}
-              Btnwidth="w-60"
-              Btnheight="h-60"
-              textSize="3xl"
+              Btnwidth="w-[182px]"
+              Btnheight="h-[182px]"
+              // textSize="3xl"
             />
           </View>
 
@@ -52,35 +57,35 @@ const HomeDash: React.FC<{navigation: any}> = ({navigation}) => {
           <View className="w-full mb-6 flex justify-center flex-row">
             <View className="-mt-5">
               <CircleBtn
-                img={FlowerImg}
+                img={HomePrivacyImg}
                 onPress={() => {
                   console.log("You're Sick!!");
                 }}
                 Btnwidth="w-28"
                 Btnheight="h-28"
               />
-              <Text className="text-center p-3 text-black text-base">
+              {/* <Text className="text-center p-3 text-black text-base">
                 Privacy
-              </Text>
+              </Text> */}
             </View>
 
             <View className="mt-16">
               <CircleBtn
-                img={FlowerImg}
+                img={HomeDashboard}
                 onPress={() => navigation.navigate('DataDashboard')}
                 Btnwidth="w-28"
                 Btnheight="h-28"
               />
-              <Text className="text-center p-3 text-black text-base">
+              {/* <Text className="text-center p-3 text-black text-base">
                 Dashboard
-              </Text>
+              </Text> */}
             </View>
 
             <View className="mt-1">
-              <CircleBtn img={FlowerImg} Btnwidth="w-28" Btnheight="h-28" />
-              <Text className="text-center p-3 text-black text-base">
+              <CircleBtn img={HomeExchange} Btnwidth="w-28" Btnheight="h-28" />
+              {/* <Text className="text-center p-3 text-black text-base">
                 Exchange
-              </Text>
+              </Text> */}
             </View>
           </View>
         </View>
