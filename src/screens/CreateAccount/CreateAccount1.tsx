@@ -49,6 +49,10 @@ const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
     }
   };
 
+  const handleLoginClick = () => {
+    navigation.navigate('SignInPage');
+  }
+
   return (
     <SafeAreaView className="flex-1 h-screen w-screen bg-themeWhite">
       <ScrollView>
@@ -80,7 +84,7 @@ const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
           </View>
           <View className="flex-1 w-screen items-center mt-5">
           <View className="text-left">
-              <Text className="">Already have an account? <Text className="text-themeBlue underline">Log in.</Text></Text>
+              <Text className="text-lg">Already have an account? <Text className="text-themeBlue underline" onPress={handleLoginClick}>Log in.</Text></Text>
               
             </View>
             <TextInputField
