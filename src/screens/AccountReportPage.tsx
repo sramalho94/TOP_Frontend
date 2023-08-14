@@ -6,9 +6,11 @@ import TopNavBar from '../components/TopNavBar';
 import CircleBtn from '../components/CircleBtn';
 import {useAuth} from '../context/AuthContext';
 import ApiService from '../services/ApiService';
+import NegTest from './../../assets/Negresult.png';
+import PosTest from './../../assets/PositiveCovidTest.png';
 
 interface FormState {
-  result: boolean;
+  result: boolean | null;
   userId: number | null;
   DOT: string;
   DOB: string | null;
@@ -28,7 +30,7 @@ const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
   const [negTextColor, setNegTextColor] = useState<string>('text-black');
   const [posTextColor, setPosTextColor] = useState<string>('text-black');
   const [formState, setFormState] = useState<FormState>({
-    result: false,
+    result: null,
     DOB: DOBVal,
     userId: actualUserIdValue,
     DOT: '',
@@ -58,12 +60,21 @@ const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
         userId: formState.userId as number,
       });
       console.log('res: ', res);
-      navigation.navigate('ThankYouScreen', {
-        logIn: true,
-        resultState: formState.result,
-      });
+
+      if (res.data.test.result === true) {
+        navigation.navigate('ThankYouScreen', {
+          logIn: true,
+          resultState: true,
+        });
+      } else {
+        navigation.navigate('ThankYouScreen', {
+          logIn: true,
+          resultState: false,
+        });
+      }
+
       setFormState({
-        result: false,
+        result: null,
         userId: formState.userId,
         DOT: '',
         ZIP: '',
@@ -80,7 +91,7 @@ const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
   };
 
   return (
-    <SafeAreaView className="min-w-screen">
+    <SafeAreaView className="bg-themeWhite flex-1 min-w-screen">
       <ScrollView>
         <TopNavBar
           textSize="xl"
@@ -90,18 +101,18 @@ const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
         />
 
         {/* Page container */}
-        <View className="justify-center mx-auto max-w-sm">
-          <Text className="text-lg font-bold mx-auto">
+        <View className="justify-center mx-auto max-w-sm mt-8">
+          <Text className="text-xl mx-auto">
             What were the results of your test?
           </Text>
 
           {/* Result Buttons Container */}
-          <View className="justify-center space-x-4 flex-row my-8">
+          <View className="flex-1 justify-center space-x-4 flex-row my-8">
             <View className="m-2">
               <CircleBtn
-                bgColor={negColor}
                 textColor={negTextColor}
-                borderColor="border-themeLigthBlue"
+                bgColor={negColor}
+                borderColor="border-themeLightBlue"
                 updateForm={() => {
                   handleChange('result', false);
                   setNegColor('bg-themeLightBlue');
@@ -112,15 +123,18 @@ const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
                 text="Negative"
                 Btnwidth="w-32"
                 Btnheight="h-32"
-                textSize="base"
-                value={true}
+                textSize="text-xl"
+                value={false}
+                accessLabel="Negative"
+                accessHint="Touch if your test results are negative"
+                img={NegTest}
               />
             </View>
             <View className="m-2">
               <CircleBtn
+                textColor={posTextColor}
                 borderColor="border-themeLightOrange"
                 text="Positive"
-                textColor={posTextColor}
                 bgColor={posColor}
                 updateForm={() => {
                   handleChange('result', true);
@@ -131,14 +145,17 @@ const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
                 }}
                 Btnwidth="w-32"
                 Btnheight="h-32"
-                textSize="base"
-                value={false}
+                textSize="text-xl"
+                value={true}
+                accessLabel="Positive"
+                accessHint="Touch if your test results are positive"
+                img={PosTest}
               />
             </View>
           </View>
 
           {/* Text input fields container */}
-          <View className="">
+          <View className="w-screen ">
             <TextInputField
               label="Date of Test*"
               value={formState.DOT}
@@ -154,7 +171,7 @@ const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
           </View>
 
           {/* Submit button */}
-          <View className="my-4">
+          <View className="my-4 flex-1">
             <Button
               onPress={handleSubmit}
               innerText="Submit"
@@ -162,6 +179,8 @@ const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
               bgColor="bg-themeBlue"
               border={true}
               width="80"
+              accessLabel="Report"
+              accessHint="Reports test results"
             />
           </View>
         </View>
