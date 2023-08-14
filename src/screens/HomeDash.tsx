@@ -14,7 +14,7 @@ import Magnify from '../../assets/magnify.png';
 const HomeDash: React.FC<{navigation: any}> = ({navigation}) => {
   const {onLogout, usernameVal} = useAuth();
   return (
-    <SafeAreaView className="h-screen w-screen max-w-md self-center">
+    <SafeAreaView className="bg-themeWhite h-screen w-screen max-w-md self-center">
       <ScrollView>
         {/* View for whole screen */}
         <View
