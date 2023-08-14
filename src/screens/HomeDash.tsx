@@ -40,9 +40,7 @@ const HomeDash: React.FC<{navigation: any}> = ({navigation}) => {
             Btnheight="h-10"
           />
         </View>
-        <Text className="text-3xl font-bold mb-2 text-center">
-          Community {'\n'}Test Lab
-        </Text>
+        <Text className=" font-bold mb-2 text-center">Welcome back, !</Text>
         {/* need giant circle btn, need to refactor circle btn props? */}
         <CircleBtn
           // text={`Report\nTest`}
