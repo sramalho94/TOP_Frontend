@@ -51,7 +51,7 @@ const ThankYouScreen = ({navigation, route}: Props) => {
           accessibilityHint="Thanking you for submitting you Covid Test"
           accessibilityRole="header">
           <Text
-            style={{fontFamily: 'CarterOne'}}
+            style={{fontFamily: 'Carter One'}}
             className=" text-5xl  text-center pt-10">
             Thank You!
           </Text>

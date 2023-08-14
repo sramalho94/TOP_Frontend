@@ -52,9 +52,15 @@ const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
         console.log('createTestResponse', Response.data);
 
         if (Response.data.test.result === true) {
-          navigation.navigate('ThankYouScreen', {logIn: false});
+          navigation.navigate('ThankYouScreen', {
+            logIn: false,
+            resultState: true,
+          });
         } else {
-          navigation.navigate('ThankYouScreen');
+          navigation.navigate('ThankYouScreen', {
+            logIn: false,
+            resultState: false,
+          });
         }
 
         console.log('test created successfully:', Response.data);
