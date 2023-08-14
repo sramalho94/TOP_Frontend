@@ -53,7 +53,7 @@ export default function SignInPage(props: Props) {
   };
 
   return (
-    <SafeAreaView className="w-screen h-screen flex-1">
+    <SafeAreaView className="bg-themeWhite w-screen h-screen flex-1">
       <ScrollView>
         <TopNavBar textSize='xl' textValue='Sign In' fontFamily='' haveProgress={false} />
         <View className="" accessibilityLabel='Sign in to Account' accessibilityHint='Sign into an account' accessibilityRole='header'>
@@ -82,10 +82,10 @@ export default function SignInPage(props: Props) {
           <Button
             onPress={handleSubmit}
             innerText="Login"
-            textColor=""
-            bgColor=""
+            textColor="text-themeWhite"
+            bgColor="bg-themeBlue"
             border={true}
-            borderColor="border border-black"
+            borderColor="border border-themeBlue"
             width='80'
             accessLabel="Login"
             accessHint="Navigates to the login screen"

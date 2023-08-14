@@ -26,9 +26,6 @@ const PasswordField = (props: Props) => {
   return (
     <View className="w-full max-w-sm my-4 flex-1 justify-center align-middle px-8">
       <Text nativeID="formLabel" className="font-medium w-full h-8 flex my-auto justify-center align-middle">
-        {/* FIXME: might need instead of above styling */}
-    {/* <View className="my-4">
-      <Text className="ml-3 w-36 h-8 flex my-auto justify-center font-medium"> */}
         Password*
       </Text>
 
@@ -37,7 +34,6 @@ const PasswordField = (props: Props) => {
         value={props.password}
         onChangeText={value => props.onChange(value)}
         placeholder="Password"
-        placeholderTextColor="#6b7280"
         className="border border-black rounded-lg px-4 h-12 w-full mx-auto font-medium"
         secureTextEntry={!showPassword}
         accessibilityLabel="Password"
