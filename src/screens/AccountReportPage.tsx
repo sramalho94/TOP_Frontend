@@ -6,7 +6,7 @@ import TopNavBar from '../components/TopNavBar';
 import CircleBtn from '../components/CircleBtn';
 import {useAuth} from '../context/AuthContext';
 import ApiService from '../services/ApiService';
-import NegTest from './../../assets/NegativeCovidTest.png';
+import NegTest from './../../assets/Negresult.png';
 import PosTest from './../../assets/PositiveCovidTest.png';
 
 interface FormState {
@@ -85,7 +85,7 @@ const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
   };
 
   return (
-    <SafeAreaView className="flex-1 min-w-screen">
+    <SafeAreaView className="bg-themeWhite flex-1 min-w-screen">
       <ScrollView>
         <TopNavBar
           textSize="xl"
@@ -95,8 +95,8 @@ const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
         />
 
         {/* Page container */}
-        <View className="justify-center mx-auto max-w-sm">
-          <Text className="text-lg font-bold mx-auto">
+        <View className="justify-center mx-auto max-w-sm mt-8">
+          <Text className="text-xl mx-auto">
             What were the results of your test?
           </Text>
 
@@ -149,7 +149,7 @@ const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
           </View>
 
           {/* Text input fields container */}
-          <View className="">
+          <View className="w-screen ">
             <TextInputField
               label="Date of Test*"
               value={formState.DOT}
