@@ -91,7 +91,7 @@ const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
   const [ethnicityOpen, setEthnicityOpen] = useState<boolean>(false);
 
   return (
-    <SafeAreaView className="w-screen h-screen flex-1">
+    <SafeAreaView className="bg-themeWhite w-screen h-screen flex-1">
       {/* NavBar */}
       <TopNavBar
         textValue="Report COVID-19 Test Result"
@@ -109,7 +109,7 @@ const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
           accessibilityRole="header">
           <View>
             {/* Test Result Buttons */}
-            <Text className="text-lg md:text-2xl font-bold mt-10 mx-auto underline">
+            <Text className="text-xl text-black mt-10 mx-auto" >
               What were the results of your test?
             </Text>
             <View className="flex-1 justify-center space-x-4 flex-row my-9">
@@ -161,24 +161,27 @@ const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
 
             {/* Text input and dropdown fields container */}
             <View className="w-screen items-center ">
-              <TextInputField
-                label="Date of Test*"
-                value={formState.DOT}
-                onChange={value => updateFormState('DOT', value)}
-                placeholder="mm/dd/yyyy"
-              />
-              <TextInputField
-                label="Zip Code*"
-                value={formState.ZIP}
-                onChange={value => updateFormState('ZIP', value)}
-                placeholder="Enter your ZIP code"
-              />
-              <TextInputField
-                label="Date of Birth*"
-                value={formState.DOB}
-                onChange={value => updateFormState('DOB', value)}
-                placeholder="mm/dd/yyyy"
-              />
+              
+                <TextInputField
+                  label="Date of Test*"
+                  value={formState.DOT}
+                  onChange={value => updateFormState('DOT', value)}
+                  placeholder="mm/dd/yyyy"
+                />
+                <TextInputField
+                  label="Zip Code*"
+                  value={formState.ZIP}
+                  onChange={value => updateFormState('ZIP', value)}
+                  placeholder="Enter your ZIP code"
+                />
+                <TextInputField
+                  label="Date of Birth*"
+                  value={formState.DOB}
+                  onChange={value => updateFormState('DOB', value)}
+                  placeholder="mm/dd/yyyy"
+                />
+
+
               <DropDownField
                 text="Gender"
                 selectItems={[
@@ -274,8 +277,8 @@ const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
                 accessLabel="ethnicity menu"
                 accessHint="Drop down options to select your ethnicity"
               />
-            </View>
 
+            </View>
             {/* checkbox and text container */}
             <View className="flex-1 flex-row justify-center my-6">
               <CheckBox
@@ -289,14 +292,14 @@ const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
             </View>
 
             {/* button container */}
-            <View className="flex-1 mb-14 mx-auto">
+            <View className="flex-1 mb-14 justify-center">
               <Button
                 onPress={handleReportButtonClick}
                 innerText="Report"
-                bgColor="bg-[#B4B4B4]"
-                textColor="text-black"
+                bgColor="bg-themeBlue"
+                textColor="text-themeWhite"
                 border={true}
-                borderColor="border border-2"
+                borderColor="border border-themeBlue"
                 width="80"
                 accessLabel="Report"
                 accessHint="Reports test results"

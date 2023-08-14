@@ -93,8 +93,8 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
 
 
         {/* Might need this one or the one below or both?*/}
-        <View className={`flex-1 max-w-lg mx-auto mt-6 p-4 px-8`}>
-          <Text className={`mb-4 text-auto leading-5 text-black font-light `}>
+        <View className={`flex-1 max-w-lg mx-auto mt-6 p-4 px-8 pr-12`}>
+          <Text className={`mb-4 text-auto leading-5 text-black font-light`}>
         
         
         {/* <View className={`flex-1 justify-center p-4  px-8`}> */}
@@ -131,7 +131,7 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
             </Text>
           </View> */}
           {/* <View className="border-slate-200 border-b-2 mb-16 pb-4"></View> */}
-          <View className="mt-10">
+          <View className="flex-1 mt-10 pl-5 pr-8">
             <View className={`flex-row items-left mb-3`}>
               <CheckBox
                 handleCheckChanges={() =>
@@ -140,11 +140,11 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
                 isSelected={checkBoxStates.isOver18Checked}
                 accessHint='If checked, you confirm that you are over 18 years old.'
               />
-              <Text className={`text-sm ml-2`}>
+              <Text className={`text-sm text-black ml-2`}>
                 I confirm that I'm over 18 years old.
               </Text>
             </View>
-            <View className={`flex-row items-center mb-4`}>
+            <View className={`flex-row my-4`}>
               <CheckBox
                 handleCheckChanges={() =>
                   handleCheckBoxChange('isConsentChecked')
@@ -152,7 +152,7 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
                 isSelected={checkBoxStates.isConsentChecked}
                 accessHint='If checked, you will consent processing of your personal data (including without limitation data I provide relating to my health) as set forth in this consent and in the Privacy Policy.'
               />
-              <Text className={`text-sm ml-2`}>
+              <Text className={`text-sm text-black ml-2`}>
                 I consent to the processing of my personal data (including
                 without limitation data I provide relating to my health) as set
                 forth in this consent and in the{' '}
@@ -163,7 +163,7 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
                 </Text>
               </Text>
             </View>
-            <View className={`flex-row items-center mb-4`}>
+            <View className={`flex-row my-4`}>
               <CheckBox
                 handleCheckChanges={() =>
                   handleCheckBoxChange('isReadAndAcceptChecked')
@@ -171,7 +171,7 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
                 isSelected={checkBoxStates.isReadAndAcceptChecked}
                 accessHint="I have read and accept Zoe Global's Terms of Use and Privacy Policy"
               />
-              <Text className={`text-sm ml-2`}>
+              <Text className={`text-sm text-black ml-2`}>
                 I have read and accept{' '}
                 <Text
                   className={`text-blue-500 underline`}

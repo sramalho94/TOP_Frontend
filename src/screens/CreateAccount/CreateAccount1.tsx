@@ -49,6 +49,10 @@ const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
     }
   };
 
+  const handleLoginClick = () => {
+    navigation.navigate('SignInPage');
+  }
+
   return (
     <SafeAreaView className="flex-1 h-screen w-screen bg-themeWhite">
       <ScrollView>
@@ -59,19 +63,30 @@ const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
         haveProgress={true}
         page={1}
       />
-      <View className="flex-1 min-h-[300px] bg-green-300" accessibilityLabel='Create Account for login Page 1' accessibilityHint='First page in creating a new account. IT asks you to create an email, username, and password' accessibilityRole='header'>
+      <View 
+        className="flex-1 min-h-[300px]" 
+        accessibilityLabel='Create Account for login Page 1' 
+        accessibilityHint='First page in creating a new account. IT asks you to create an email, username, and password' 
+        accessibilityRole='header'
+      >
       <View className="flex-1 mx-auto mb-2" >
-        <View className="w-[342]">
+        <View className="w-screen ">
           <View>
             <Image
-              className="mx-auto w-[217px] h-[217px] "
+              className="mx-auto mt-5 w-[217px] h-[217px] "
               source={CreateAccount}
             />
+            
+
             <View className={showError}>
               <PasswordError />
             </View>
           </View>
-          <View className="flex-1 mt-5">
+          <View className="flex-1 w-screen items-center mt-5">
+          <View className="text-left">
+              <Text className="text-lg">Already have an account? <Text className="text-themeBlue underline" onPress={handleLoginClick}>Log in.</Text></Text>
+              
+            </View>
             <TextInputField
               label="Email*"
               value={formState.email}
@@ -91,7 +106,7 @@ const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
           </View>
         </View>
       </View>
-      <View className="flex-1 mt-4 bg-blue-300 flex-col-reverse mb-3">
+      <View className="flex-1 mt-4 flex-col-reverse mb-3">
         <Button
           onPress={handleNext}
           innerText="Continue"
