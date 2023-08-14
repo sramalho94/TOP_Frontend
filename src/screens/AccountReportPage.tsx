@@ -109,7 +109,6 @@ const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
           {/* Result Buttons Container */}
           <View className="flex-1 justify-center space-x-4 flex-row my-8">
             <View className="m-2">
-
               <CircleBtn
                 textColor={negTextColor}
                 bgColor={negColor}
@@ -153,7 +152,7 @@ const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
                 img={PosTest}
               />
 
-<!--              <CircleBtn
+              {/* <!--              <CircleBtn
                   textColor={negTextColor}
                   bgColor={negColor}
                   borderColor="border-themeLightBlue"
@@ -194,8 +193,7 @@ const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
                   accessLabel="Positive"
                   accessHint="Touch if your test results are positive"
                   img={PosTest}
-                /> -->
-
+                /> --> */}
             </View>
           </View>
 

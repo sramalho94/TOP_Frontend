@@ -12,13 +12,14 @@ import GroupTopWave from '../../assets/GroupTopWave.png';
 const HomeDash: React.FC<{navigation: any}> = ({navigation}) => {
   const {onLogout, usernameVal} = useAuth();
   return (
-
     <SafeAreaView className="flex-1 h-screen w-screen bg-white">
       {/* <View className="flex-1 flex-col w-full "> */}
       {/* View for avatar, text and report test */}
-      <View className="flex-1 h-screen w-screen" accessibilityLabel="Home Page"
-          accessibilityHint="The home page for your account. Allows you to submit a Covid Test, view data, privacy, or exchange data for research"
-          accessibilityRole="header">
+      <View
+        className="flex-1 h-screen w-screen"
+        accessibilityLabel="Home Page"
+        accessibilityHint="The home page for your account. Allows you to submit a Covid Test, view data, privacy, or exchange data for research"
+        accessibilityRole="header">
         <Image source={GroupTopWave} />
       </View>
       <View className="flex w-full justify-center items-center ">
@@ -60,20 +61,20 @@ const HomeDash: React.FC<{navigation: any}> = ({navigation}) => {
         />
       </View>
 
-<!--     <SafeAreaView className="bg-themeWhite h-screen w-screen max-w-md self-center">
-      <ScrollView>
-        {/* View for whole screen */}
-        <View
+      {/* <SafeAreaView className="bg-themeWhite h-screen w-screen max-w-md self-center">
+      <ScrollView> */}
+      {/* View for whole screen */}
+      {/* <View
           className="flex flex-col w-full min-h-screen"
           accessibilityLabel="Home Page"
           accessibilityHint="The home page for your account. Allows you to submit a Covid Test, view data, privacy, or exchange data for research"
-          accessibilityRole="header">
-          {/* View for avatar, text and report test */}
-          <View className="flex w-full justify-center items-center">
-            {/* View for avatar*/}
-            {/* FIXME: size={72} on avatar does not work for android, might be something with size? idk
+          accessibilityRole="header"> */}
+      {/* View for avatar, text and report test */}
+      {/* <View className="flex w-full justify-center items-center"> */}
+      {/* View for avatar*/}
+      {/* FIXME: size={72} on avatar does not work for android, might be something with size? idk
             update* it also stopped working for IOS */}
-            <Image
+      {/* <Image
               className="w-full h-[200] mb-2 bg-cover bg-center "
               source={CTL}
             />
@@ -94,12 +95,12 @@ const HomeDash: React.FC<{navigation: any}> = ({navigation}) => {
                 accessHint="This is a button that displays your profile image."
                 imgHeight="h-12"
                 imgWidth="h-12"
-              />
-              {/* FIXME: Need to dynamically bring in logged in username to display on screen! */}
-              <Text className="pt-6">Welcome back, <Text className="capitalize">{usernameVal}!</Text></Text>
-            </View>
-            {/* need giant circle btn, need to refactor circle btn props? */}
-            <View className="mt-10">
+              /> */}
+      {/* FIXME: Need to dynamically bring in logged in username to display on screen! */}
+      {/* <Text className="pt-6">Welcome back, <Text className="capitalize">{usernameVal}!</Text></Text>
+            </View> */}
+      {/* need giant circle btn, need to refactor circle btn props? */}
+      {/* <View className="mt-10">
               <DashButton
                 img={Submit}
                 text={`Submit\nTest`}
@@ -115,8 +116,7 @@ const HomeDash: React.FC<{navigation: any}> = ({navigation}) => {
                 accessHint="This is a button that you can click on to report your Covid test results."
               />
             </View>
-          </View> -->
-
+          </View>  */}
 
       {/*View for 3 mini buttons*/}
       <View className="w-full mb-6 flex justify-center flex-row">

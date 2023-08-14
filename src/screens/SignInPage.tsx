@@ -28,6 +28,8 @@ export default function SignInPage(props: Props) {
     password: '',
   });
 
+  const [errorMessage, setErrorMessage] = useState<string>('');
+
   const handleChange = (field: string, value: string) => {
     setUserSignUp({...userSignUp, [field]: value});
   };
@@ -37,17 +39,18 @@ export default function SignInPage(props: Props) {
 
   const handleSubmit: any = (e: any) => {
     e.preventDefault();
-    console.log('userSignIn submit: ', {userSignUp});
 
     if (onLogin) {
       onLogin(userSignUp)
         .then((res: any) => {
-          console.log('res from login!!: ' + JSON.stringify(res));
           if (res.success) {
             navigation.navigate('AccountReportPage');
           }
         })
         .catch((error: any) => {
+          setErrorMessage(
+            'Username or Password is incorrect. Please try again or click Forgot Password.',
+          );
           console.log('Screen Login Err: ' + error);
         });
     } else {
@@ -70,7 +73,17 @@ export default function SignInPage(props: Props) {
               onChange={value => handleChange('username', value)}
               placeholder=""
             />
+            <Password
+              onChange={value => handleChange('password', value)}
+              password={userSignUp.password}
+            />
           </View>
+
+          {errorMessage ? (
+            <View className="mt-0 p-2 bg-red-100 border border-red-500 mx-auto w-[315]">
+              <Text className="text-red-500">{errorMessage}</Text>
+            </View>
+          ) : null}
         </View>
         <View className="mt-4 items-center">
           <Button
@@ -93,7 +106,7 @@ export default function SignInPage(props: Props) {
             borderColor="border border-black"
             width="80"
           />
-<!--           <Button
+          {/* <!--           <Button
             onPress={() => console.log('Skip button pressed')}
             innerText="Skip"
             bgColor=""
@@ -107,7 +120,7 @@ export default function SignInPage(props: Props) {
             accessLabel="Login"
             accessHint="Navigates to the login screen"
 
-          /> -->
+          /> --> */}
         </View>
       </ScrollView>
     </SafeAreaView>
