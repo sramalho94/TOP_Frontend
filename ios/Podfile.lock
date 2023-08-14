@@ -489,16 +489,16 @@ PODS:
     - React-jsi (= 0.72.0)
     - React-logger (= 0.72.0)
     - React-perflogger (= 0.72.0)
-  - RNCAsyncStorage (1.19.1):
+  - RNCAsyncStorage (1.19.2):
     - React-Core
   - RNCCheckbox (0.5.16):
     - BEMCheckBox (~> 1.4)
     - React-Core
-  - RNGestureHandler (2.12.0):
+  - RNGestureHandler (2.12.1):
     - React-Core
-  - RNKeychain (8.1.1):
+  - RNKeychain (8.1.2):
     - React-Core
-  - RNScreens (3.23.0):
+  - RNScreens (3.24.0):
     - React-Core
     - React-RCTImage
   - SocketRocket (0.6.0)
@@ -745,11 +745,11 @@ SPEC CHECKSUMS:
   React-runtimescheduler: 24614bcd31643eacb06c78c0b9101b453d6aac47
   React-utils: c12d2e75c8bbc727939ddc4319ed95493395ed5a
   ReactCommon: 517b45ed311ba9146aa8b55a8ef6617425f7448e
-  RNCAsyncStorage: f47fe18526970a69c34b548883e1aeceb115e3e1
+  RNCAsyncStorage: f57e929cd7757f2cb3dd8186d123c09e8281a1ad
   RNCCheckbox: 75255b03e604bbcc26411eb31c4cbe3e3865f538
-  RNGestureHandler: dec4645026e7401a0899f2846d864403478ff6a5
-  RNKeychain: ff836453cba46938e0e9e4c22e43d43fa2c90333
-  RNScreens: 6a8a3c6b808aa48dca1780df7b73ea524f602c63
+  RNGestureHandler: c0d04458598fcb26052494ae23dda8f8f5162b13
+  RNKeychain: a65256b6ca6ba6976132cc4124b238a5b13b3d9c
+  RNScreens: b21dc57dfa2b710c30ec600786a3fc223b1b92e7
   SocketRocket: fccef3f9c5cedea1353a9ef6ada904fde10d6608
   Yoga: 1d6727ed193122f6adaf435c3de1a768326ff83b
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
