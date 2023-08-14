@@ -27,6 +27,8 @@ const HomeDash: React.FC<{navigation: any}> = ({navigation}) => {
           <View className="self-end mb-2 ">
             <CircleBtn
               img={Avatar}
+              accessLabel="User profile image"
+              accessHint="This is a button that displays your profile image."
               // bgColor="bg-themeLightOrange"
               // text="Logout"
               onPress={() => {
@@ -54,6 +56,8 @@ const HomeDash: React.FC<{navigation: any}> = ({navigation}) => {
             Btnwidth="w-[182px]"
             Btnheight="h-[182px]"
             // textSize="3xl"
+            accessLabel="Report Test Button"
+            accessHint="This is a button that you can click on to report your Covid test results."
           />
         </View>
 
@@ -67,6 +71,8 @@ const HomeDash: React.FC<{navigation: any}> = ({navigation}) => {
               }}
               Btnwidth="w-28"
               Btnheight="h-28"
+              accessLabel="Privacy"
+              accessHint="This button navigates to privacy screen"
             />
             {/* <Text className="text-center p-3 text-black text-base">
                 Privacy
@@ -79,6 +85,8 @@ const HomeDash: React.FC<{navigation: any}> = ({navigation}) => {
               onPress={() => navigation.navigate('DataDashboard')}
               Btnwidth="w-28"
               Btnheight="h-28"
+              accessLabel="Dashboard"
+              accessHint="This button navigates to dashboard"
             />
             {/* <Text className="text-center p-3 text-black text-base">
                 Dashboard
@@ -86,7 +94,13 @@ const HomeDash: React.FC<{navigation: any}> = ({navigation}) => {
           </View>
 
           <View className="mt-1">
-            <CircleBtn img={HomeExchange} Btnwidth="w-28" Btnheight="h-28" />
+            <CircleBtn
+              img={HomeExchange}
+              Btnwidth="w-28"
+              Btnheight="h-28"
+              accessLabel="Exchange"
+              accessHint="This button navigates to data exchange screen"
+            />
             {/* <Text className="text-center p-3 text-black text-base">
                 Exchange
               </Text> */}
