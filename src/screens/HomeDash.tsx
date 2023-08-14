@@ -50,7 +50,7 @@ const HomeDash: React.FC<{navigation: any}> = ({navigation}) => {
                 imgWidth="h-12"
               />
               {/* FIXME: Need to dynamically bring in logged in username to display on screen! */}
-              <Text className="pt-6">Welcome back, Username{usernameVal}!</Text>
+              <Text className="pt-6">Welcome back, <Text className="capitalize">{usernameVal}!</Text></Text>
             </View>
             {/* need giant circle btn, need to refactor circle btn props? */}
             <View className="mt-10">
