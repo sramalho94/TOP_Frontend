@@ -31,8 +31,10 @@ export interface FormState {
 const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
   const [negColor, setNegColor] = useState<string>('bg-themeWhite');
   const [posColor, setPosColor] = useState<string>('bg-themeWhite');
-  const [negTextColor, setNegTextColor] = useState<string>('text-black');
-  const [posTextColor, setPosTextColor] = useState<string>('text-black');
+  const [negTextColor, setNegTextColor] = useState<string>('text-themeBlue');
+  const [posTextColor, setPosTextColor] = useState<string>(
+    'text-themeLightOrange',
+  );
   const [formState, setFormState] = useState<FormState>({
     result: null,
     DOB: '',
@@ -50,9 +52,15 @@ const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
         console.log('createTestResponse', Response.data);
 
         if (Response.data.test.result === true) {
-          navigation.navigate('PositiveThankYouScreen', {logIn: false});
+          navigation.navigate('ThankYouScreen', {
+            logIn: false,
+            resultState: true,
+          });
         } else {
-          navigation.navigate('ThankYouScreen');
+          navigation.navigate('ThankYouScreen', {
+            logIn: false,
+            resultState: false,
+          });
         }
 
         console.log('test created successfully:', Response.data);
@@ -91,6 +99,7 @@ const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
   const [ethnicityOpen, setEthnicityOpen] = useState<boolean>(false);
 
   return (
+
     <SafeAreaView className="bg-themeWhite w-screen h-screen flex-1">
       {/* NavBar */}
       <TopNavBar
@@ -99,25 +108,29 @@ const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
         textSize="xl"
         haveProgress={false}
       />
-
-      <ScrollView className="flex-1">
+      <ScrollView>
         {/* Page Container */}
         <View
           className="flex-1 w-full justify-center items-center flex-col"
           accessibilityLabel="Report Covid Test Page without an Account"
           accessibilityHint="Covid Test Reporting without an Account or anonymously"
           accessibilityRole="header">
-          <View>
+          <View className="flex-1 flex-col max-w-md mb-10">
             {/* Test Result Buttons */}
+
+<!--             <Text className="flex-1 text-lg md:text-2xl font-semibold mt-10 mx-auto w-[300px] text-center text-[20px]">
+              What were the results of your COVID-19 test? -->
+
             <Text className="text-xl text-black mt-10 mx-auto" >
               What were the results of your test?
+
             </Text>
             <View className="flex-1 justify-center space-x-4 flex-row my-9">
               <View className="m-2">
                 <CircleBtn
                   textColor={negTextColor}
                   bgColor={negColor}
-                  borderColor="border-themeLightBlue"
+                  borderColor="border border-4 border-themeLightBlue"
                   updateForm={() => {
                     updateFormState('result', false);
                     setNegColor('bg-themeLightBlue');
@@ -138,7 +151,7 @@ const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
               <View className="m-2">
                 <CircleBtn
                   textColor={posTextColor}
-                  borderColor="border-themeLightOrange"
+                  borderColor="border border-4 border-themeLightOrange"
                   text="Positive"
                   bgColor={posColor}
                   updateForm={() => {
@@ -280,31 +293,42 @@ const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
 
             </View>
             {/* checkbox and text container */}
+            {/* <View className="flex-1 "> */}
             <View className="flex-1 flex-row justify-center my-6">
               <CheckBox
                 isSelected={isCheckboxSelected}
                 handleCheckChanges={handleCheckChanges}
                 accessHint="If you click in this box, you will agree to share results with CDC"
               />
-              <Text className="font-bold mt-1 text-black">
+              <Text className="font-semibold mt-1 text-black text-[16px]">
                 I agree to share my results with the CDC
               </Text>
             </View>
 
             {/* button container */}
-            <View className="flex-1 mb-14 justify-center">
+
+            <View className="flex-1 mt-10 mx-auto justify-end">
+
+<!--             <View className="flex-1 mb-14 justify-center"> -->
+
               <Button
                 onPress={handleReportButtonClick}
                 innerText="Report"
                 bgColor="bg-themeBlue"
                 textColor="text-themeWhite"
-                border={true}
-                borderColor="border border-themeBlue"
+
+                border={false}
+                
+
+<!--                 border={true}
+                borderColor="border border-themeBlue" -->
+
                 width="80"
                 accessLabel="Report"
                 accessHint="Reports test results"
               />
             </View>
+            {/* </View> */}
           </View>
         </View>
       </ScrollView>

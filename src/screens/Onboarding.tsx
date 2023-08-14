@@ -18,16 +18,16 @@ import {ScrollView} from 'react-native';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import ProgressDots from './../components/ProgressDots';
 import Button from './../components/Button';
-import { RootStackParamList } from '../../App';
+import {RootStackParamList} from '../../App';
 type OnboardingScreenProps = NativeStackScreenProps<
   RootStackParamList,
   'Onboarding'
 >;
 
 const Onboarding = (props: OnboardingScreenProps) => {
-  const { navigation } = props;
+  const {navigation} = props;
   const [currentPage, setCurrentPage] = useState<number>(0);
-  const { width } = useWindowDimensions();
+  const {width} = useWindowDimensions();
   const scrollViewRef = useRef<ScrollView>(null);
 
   const pages = [
@@ -61,7 +61,7 @@ const Onboarding = (props: OnboardingScreenProps) => {
 
   const handleSwipeAnimation = (page: number) => {
     if (scrollViewRef.current) {
-      scrollViewRef.current.scrollTo({ x: page * width, animated: true });
+      scrollViewRef.current.scrollTo({x: page * width, animated: true});
       setCurrentPage(page);
     }
   };
@@ -73,19 +73,25 @@ const Onboarding = (props: OnboardingScreenProps) => {
   };
 
   return (
-<>
-    <ScrollView
-      ref={scrollViewRef}
-      pagingEnabled
-      horizontal
-      showsHorizontalScrollIndicator={false}
-      scrollEnabled
-      onScroll={handleScroll} // Handle scrolling event
-      scrollEventThrottle={16} // Adjust the scroll event frequency
-    >
+    <>
+      {/* <ScrollView
+        ref={scrollViewRef}
+        pagingEnabled
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        scrollEnabled
+        onScroll={handleScroll} // Handle scrolling event
+        scrollEventThrottle={16} // Adjust the scroll event frequency
+      > */}
       {pages.map((page, index) => (
-        <SafeAreaView key={index} className="bg-themeWhite h-screen w-screen items-center pb-4">
-          <View className="flex-1 flex-col max-w-md mb-10" accessibilityLabel='Onboarding Info Page' accessibilityHint='Informs you how your data will be used and not be used' accessibilityRole='header'>
+        <SafeAreaView
+          key={index}
+          className="bg-themeWhite h-screen w-screen items-center pb-4">
+          <View
+            className="flex-1 flex-col max-w-md mb-10"
+            accessibilityLabel="Onboarding Info Page"
+            accessibilityHint="Informs you how your data will be used and not be used"
+            accessibilityRole="header">
             <View className="">
               <Image
                 className="w-full h-[500px] max-h-full mb-5 bg-contain bg-center"
@@ -107,40 +113,38 @@ const Onboarding = (props: OnboardingScreenProps) => {
                   <ProgressDots page={page.pageIndicator} />
                 </View>
                 <View className="mx-auto mt-7">
-                <Button
-                  onPress={page.onButtonPress}
-                  innerText={page.buttonText}
-                  bgColor="bg-themeBlue"
-                  textColor="text-themeWhite"
-                  border={true}
-                  borderColor="border border-themeBlue border-3"
-                  width="80"
-                  accessLabel="Continue"
-                  accessHint="Navigates to the next screen"
-
-                />
-              
-                {page.pageIndicator !== pages.length && (
                   <Button
-                    onPress={() => navigation.navigate('CreateAccount1')}
-                    innerText="Skip"
-                    bgColor="bg-white"
-                    textColor="text-black"
-                    border={false}
-                    borderColor="border border-gray"
+                    onPress={page.onButtonPress}
+                    innerText={page.buttonText}
+                    bgColor="bg-themeBlue"
+                    textColor="text-themeWhite"
+                    border={true}
+                    borderColor="border border-themeBlue border-3"
                     width="80"
-                    accessLabel="Skip"
-                    accessHint="Navigates to the create account screen"
+                    accessLabel="Continue"
+                    accessHint="Navigates to the next screen"
                   />
-                )}
+
+                  {page.pageIndicator !== pages.length && (
+                    <Button
+                      onPress={() => navigation.navigate('CreateAccount1')}
+                      innerText="Skip"
+                      bgColor="bg-white"
+                      textColor="text-black"
+                      border={false}
+                      borderColor="border border-gray"
+                      width="80"
+                      accessLabel="Skip"
+                      accessHint="Navigates to the create account screen"
+                    />
+                  )}
                 </View>
               </View>
             </View>
           </View>
-          
         </SafeAreaView>
       ))}
-      </ScrollView>
+      {/* </ScrollView> */}
     </>
   );
 };

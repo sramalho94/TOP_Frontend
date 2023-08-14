@@ -62,9 +62,15 @@ const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
       console.log('res: ', res);
 
       if (res.data.test.result === true) {
-        navigation.navigate('PositiveThankYouScreen', {logIn: true});
+        navigation.navigate('ThankYouScreen', {
+          logIn: true,
+          resultState: true,
+        });
       } else {
-        navigation.navigate('ThankYouScreen');
+        navigation.navigate('ThankYouScreen', {
+          logIn: true,
+          resultState: false,
+        });
       }
 
       setFormState({
@@ -103,7 +109,51 @@ const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
           {/* Result Buttons Container */}
           <View className="flex-1 justify-center space-x-4 flex-row my-8">
             <View className="m-2">
-             <CircleBtn
+
+              <CircleBtn
+                textColor={negTextColor}
+                bgColor={negColor}
+                borderColor="border-themeLightBlue"
+                updateForm={() => {
+                  handleChange('result', false);
+                  setNegColor('bg-themeLightBlue');
+                  setPosColor('bg-themeWhite');
+                  setNegTextColor('text-white');
+                  setPosTextColor('text-black');
+                }}
+                text="Negative"
+                Btnwidth="w-32"
+                Btnheight="h-32"
+                textSize="text-xl"
+                value={false}
+                accessLabel="Negative"
+                accessHint="Touch if your test results are negative"
+                img={NegTest}
+              />
+            </View>
+            <View className="m-2">
+              <CircleBtn
+                textColor={posTextColor}
+                borderColor="border-themeLightOrange"
+                text="Positive"
+                bgColor={posColor}
+                updateForm={() => {
+                  handleChange('result', true);
+                  setNegColor('bg-themeWhite');
+                  setPosColor('bg-themeLightOrange');
+                  setNegTextColor('text-black');
+                  setPosTextColor('text-white');
+                }}
+                Btnwidth="w-32"
+                Btnheight="h-32"
+                textSize="text-xl"
+                value={true}
+                accessLabel="Positive"
+                accessHint="Touch if your test results are positive"
+                img={PosTest}
+              />
+
+<!--              <CircleBtn
                   textColor={negTextColor}
                   bgColor={negColor}
                   borderColor="border-themeLightBlue"
@@ -144,7 +194,8 @@ const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
                   accessLabel="Positive"
                   accessHint="Touch if your test results are positive"
                   img={PosTest}
-                />
+                /> -->
+
             </View>
           </View>
 
