@@ -5,7 +5,6 @@ import {
   SafeAreaView,
   View,
   Text,
-  ScrollView,
   TouchableOpacity,
   Linking,
 } from 'react-native';
@@ -90,16 +89,8 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
           fontFamily=""
           haveProgress={false}
         />
-
-
-        {/* Might need this one or the one below or both?*/}
         <View className={`flex-1 max-w-lg mx-auto mt-6 p-4 px-8 pr-12`}>
           <Text className={`mb-4 text-auto leading-5 text-black font-light`}>
-        
-        
-        {/* <View className={`flex-1 justify-center p-4  px-8`}> */}
-        {/* <ScrollView> */}
-          {/* <Text className={`flex-1 mb-4 text-auto leading-5 font-light -mt-[220px]`}> */}
             By checking the boxes below, you consent to our using the personal
             information we collect through your use of this app in the way we
             have described.
@@ -115,22 +106,9 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
               </Text>
             </Text>
           </View>
-          {/* might need to comment out  */}
-          {/* <Text className={` flex-1 mb-4 text-auto`}> */}
           <View className="shadow shadow-black ">
             <View className="border-gray-200 border-b-2 pb-3 mb-5"></View>
           </View>
-          {/* <View className="flex-row justify-start">
-            <Text className={`mb-7 text-auto`}>
-              Any questions may also be sent to{' '}
-              <Text
-                className={`text-blue-500 underline`}
-                onPress={handleEmailPress}>
-                leavecovidtracking-us@joinzoe.com.
-              </Text>
-            </Text>
-          </View> */}
-          {/* <View className="border-slate-200 border-b-2 mb-16 pb-4"></View> */}
           <View className="flex-1 mt-10 pl-5 pr-8">
             <View className={`flex-row items-left mb-3`}>
               <CheckBox
@@ -138,29 +116,10 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
                   handleCheckBoxChange('isOver18Checked')
                 }
                 isSelected={checkBoxStates.isOver18Checked}
-                accessHint='If checked, you confirm that you are over 18 years old.'
+                accessHint="If checked, you confirm that you are over 18 years old."
               />
               <Text className={`text-sm text-black ml-2`}>
                 I confirm that I'm over 18 years old.
-              </Text>
-            </View>
-            <View className={`flex-row my-4`}>
-              <CheckBox
-                handleCheckChanges={() =>
-                  handleCheckBoxChange('isConsentChecked')
-                }
-                isSelected={checkBoxStates.isConsentChecked}
-                accessHint='If checked, you will consent processing of your personal data (including without limitation data I provide relating to my health) as set forth in this consent and in the Privacy Policy.'
-              />
-              <Text className={`text-sm text-black ml-2`}>
-                I consent to the processing of my personal data (including
-                without limitation data I provide relating to my health) as set
-                forth in this consent and in the{' '}
-                <Text
-                  className={`text-blue-500 underline`}
-                  onPress={handlePrivacyPolicyPress}>
-                  Privacy Policy.
-                </Text>
               </Text>
             </View>
             <View className={`flex-row my-4`}>
@@ -186,8 +145,26 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
                 </Text>
               </Text>
             </View>
+            <View className={`flex-row my-4`}>
+              <CheckBox
+                handleCheckChanges={() =>
+                  handleCheckBoxChange('isConsentChecked')
+                }
+                isSelected={checkBoxStates.isConsentChecked}
+                accessHint="If checked, you will consent processing of your personal data (including without limitation data I provide relating to my health) as set forth in this consent and in the Privacy Policy."
+              />
+              <Text className={`text-sm text-black ml-2`}>
+                I consent to the processing of my personal data (including
+                without limitation data I provide relating to my health) as set
+                forth in this consent and in the{' '}
+                <Text
+                  className={`text-blue-500 underline`}
+                  onPress={handlePrivacyPolicyPress}>
+                  Privacy Policy.
+                </Text>
+              </Text>
+            </View>
           </View>
-          {/* </ScrollView> */}
           <View className="flex-1 justify-end">
             <TouchableOpacity
               onPress={handleAgree}
@@ -199,7 +176,6 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
             </TouchableOpacity>
           </View>
         </View>
-        
       </SafeAreaView>
     </>
   );

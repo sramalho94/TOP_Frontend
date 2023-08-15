@@ -130,7 +130,7 @@ const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
             <View className="w-screen ">
               <View>
                 <Image
-                  className="mx-auto mt-5 w-[217px] h-[217px] "
+                  className="mx-auto mt-3 w-[217px] h-[217px] "
                   source={CreateAccount}
                 />
 
@@ -138,7 +138,7 @@ const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
                   <PasswordError />
                 </View>
               </View>
-              <View className="flex-1 w-screen items-center mt-5">
+              <View className="flex-1 w-screen items-center">
                 <View className="text-left">
                   <Text className="text-lg">
                     Already have an account?{' '}
