@@ -1,10 +1,11 @@
-### GAxTOP Group 3
-
-## TOP Frontend
+### GAxTOP Community Test Lab
 
 ---
+#### This is the Frontend for GAxTOP Group 3's Full Stack project
+---
+## App Summary
 
-#### This is the Frontend for GAxTOP Group 3's project
+We used the U.S. COVID-19 Self-Test Data and Covid-19 Case Surveillance Public Use Data sets to build the Community Test Lab Mobile App, streamlining the sharing of diagnostic test data. This solution aids test users in sharing standardized COVID-19 test results, enhancing public health decision-making while building public trust.
 
 ---
 
