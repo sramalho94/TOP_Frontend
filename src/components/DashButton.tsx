@@ -4,14 +4,14 @@ import React from 'react';
 type Props = {
   text?: string;
   bgColor?: string;
-  updateForm?: (field: string, value: string | boolean) => void; // Make this optional
-  onPress?: () => void; // Add custom onPress prop
+  updateForm?: (field: string, value: string | boolean) => void;
+  onPress?: () => void;
   Btnwidth: string;
   Btnheight: string;
   textColor?: string;
   img?: any;
   textSize?: string;
-  value?: boolean; // Make this optional
+  value?: boolean;
   accessLabel: string;
   accessHint: string;
 };
