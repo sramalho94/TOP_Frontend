@@ -112,7 +112,7 @@ const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
               <CircleBtn
                 textColor={negTextColor}
                 bgColor={negColor}
-                borderColor="border-themeLightBlue"
+                borderColor="border border-4 border-themeLightBlue"
                 updateForm={() => {
                   handleChange('result', false);
                   setNegColor('bg-themeLightBlue');
@@ -133,7 +133,7 @@ const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
             <View className="m-2">
               <CircleBtn
                 textColor={posTextColor}
-                borderColor="border-themeLightOrange"
+                borderColor="border border-4 border-themeLightOrange"
                 text="Positive"
                 bgColor={posColor}
                 updateForm={() => {
