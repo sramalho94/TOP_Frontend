@@ -99,63 +99,20 @@ const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
           haveProgress={false}
           textValue="Report COVID-19 Test Result"
         />
+        <View>
+          {/* Page container */}
+          <View className="justify-center mx-auto max-w-sm mt-8">
+            <Text className="text-xl mx-auto">
+              What were the results of your test?
+            </Text>
 
-        {/* Page container */}
-        <View className="justify-center mx-auto max-w-sm mt-8">
-          <Text className="text-xl mx-auto">
-            What were the results of your test?
-          </Text>
-
-          {/* Result Buttons Container */}
-          <View className="flex-1 justify-center space-x-4 flex-row my-8">
-            <View className="m-2">
-              <CircleBtn
-                textColor={negTextColor}
-                bgColor={negColor}
-                borderColor="border border-4 border-themeLightBlue"
-                updateForm={() => {
-                  handleChange('result', false);
-                  setNegColor('bg-themeLightBlue');
-                  setPosColor('bg-themeWhite');
-                  setNegTextColor('text-white');
-                  setPosTextColor('text-black');
-                }}
-                text="Negative"
-                Btnwidth="w-32"
-                Btnheight="h-32"
-                textSize="text-xl"
-                value={false}
-                accessLabel="Negative"
-                accessHint="Touch if your test results are negative"
-                img={NegTest}
-              />
-            </View>
-            <View className="m-2">
-              <CircleBtn
-                textColor={posTextColor}
-                borderColor="border border-4 border-themeLightOrange"
-                text="Positive"
-                bgColor={posColor}
-                updateForm={() => {
-                  handleChange('result', true);
-                  setNegColor('bg-themeWhite');
-                  setPosColor('bg-themeLightOrange');
-                  setNegTextColor('text-black');
-                  setPosTextColor('text-white');
-                }}
-                Btnwidth="w-32"
-                Btnheight="h-32"
-                textSize="text-xl"
-                value={true}
-                accessLabel="Positive"
-                accessHint="Touch if your test results are positive"
-                img={PosTest}
-              />
-
-              {/* <!--              <CircleBtn
+            {/* Result Buttons Container */}
+            <View className="flex-1 justify-center space-x-4 flex-row my-8">
+              <View className="m-2">
+                <CircleBtn
                   textColor={negTextColor}
                   bgColor={negColor}
-                  borderColor="border-themeLightBlue"
+                  borderColor="border border-4 border-themeLightBlue"
                   updateForm={() => {
                     handleChange('result', false);
                     setNegColor('bg-themeLightBlue');
@@ -172,11 +129,11 @@ const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
                   accessHint="Touch if your test results are negative"
                   img={NegTest}
                 />
-            </View>
-            <View className="m-2">
-            <CircleBtn
+              </View>
+              <View className="m-2">
+                <CircleBtn
                   textColor={posTextColor}
-                  borderColor="border-themeLightOrange"
+                  borderColor="border border-4 border-themeLightOrange"
                   text="Positive"
                   bgColor={posColor}
                   updateForm={() => {
@@ -193,28 +150,28 @@ const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
                   accessLabel="Positive"
                   accessHint="Touch if your test results are positive"
                   img={PosTest}
-                /> --> */}
+                />
+              </View>
+            </View>
+
+            {/* Text input fields container */}
+            <View className="w-screen ">
+              <TextInputField
+                label="Date of Test*"
+                value={formState.DOT}
+                onChange={value => handleChange('DOT', value)}
+                placeholder="mm/dd/yyyy"
+              />
+              <TextInputField
+                label="Zip Code*"
+                value={formState.ZIP}
+                onChange={value => handleChange('ZIP', value)}
+                placeholder="Enter your ZIP code"
+              />
             </View>
           </View>
-
-          {/* Text input fields container */}
-          <View className="w-screen ">
-            <TextInputField
-              label="Date of Test*"
-              value={formState.DOT}
-              onChange={value => handleChange('DOT', value)}
-              placeholder="mm/dd/yyyy"
-            />
-            <TextInputField
-              label="Zip Code*"
-              value={formState.ZIP}
-              onChange={value => handleChange('ZIP', value)}
-              placeholder="Enter your ZIP code"
-            />
-          </View>
-
           {/* Submit button */}
-          <View className="my-4 flex-1">
+          <View className="items-center justify-center  mt-16">
             <Button
               onPress={handleSubmit}
               innerText="Submit"
