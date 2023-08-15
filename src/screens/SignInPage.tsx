@@ -62,35 +62,32 @@ export default function SignInPage(props: Props) {
     <SafeAreaView className="flex-1 bg-themeWhite w-screen h-screen ">
       <ScrollView>
         {/* <ScrollView className="flex-1" contentContainerStyle={{flexGrow: 1}}> */}
-        <View className="flex-1">
+        <View className="flex-1 space-y-12">
           <Text
             style={{fontFamily: 'Carter One'}}
-            className=" text-3xl color-black text-center pt-8">
+            className=" text-4xl color-black text-center mt-10">
             Welcome back!
           </Text>
           <View className="flex flex-row justify-center align-middle">
             <Image className="w-342 h-349" source={SignInImg}></Image>
           </View>
-          <View className="flex items-center align-middle justify-center">
-            <TextInputField
-              label="Username*"
-              value={userSignUp.username}
-              onChange={value => handleChange('username', value)}
-              placeholder=""
-            />
-            <Password
-              onChange={value => handleChange('password', value)}
-              password={userSignUp.password}
-            />
-          </View>
-
+          <TextInputField
+            label="Username*"
+            value={userSignUp.username}
+            onChange={value => handleChange('username', value)}
+            placeholder=""
+          />
+          <Password
+            onChange={value => handleChange('password', value)}
+            password={userSignUp.password}
+          />
           {errorMessage ? (
             <View className="mt-0 p-2 min-h-[50px] bg-red-100 border border-red-500 mx-auto w-[315]">
               <Text className="text-red-500">{errorMessage}</Text>
             </View>
           ) : null}
         </View>
-        <View className="items-center">
+        <View className="flex-1 items-center flex-end">
           <Button
             onPress={handleSubmit}
             innerText="Login"
@@ -102,7 +99,7 @@ export default function SignInPage(props: Props) {
             borderColor="border border-black"
             width="80"
           />
-          <Button
+          {/* <Button
             onPress={() => console.log('pressed')}
             innerText="Forgot Password"
             textColor=""
@@ -110,7 +107,7 @@ export default function SignInPage(props: Props) {
             border={true}
             borderColor="border border-black"
             width="80"
-          />
+          /> */}
         </View>
       </ScrollView>
     </SafeAreaView>
