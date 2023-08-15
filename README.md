@@ -2,6 +2,12 @@
 
 ---
 #### This is the Frontend for GAxTOP Group 3's Full Stack project
+
+## The Challange
+Create tools that integrate emerging technologies, such as image capture and IoT, into IVD
+testing devices, to help easily capture and transmit this information, while doing so in accordance with
+best practice data standards.
+
 ---
 ## App Summary
 
