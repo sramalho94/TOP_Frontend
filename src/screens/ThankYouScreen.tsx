@@ -45,7 +45,7 @@ const ThankYouScreen = ({navigation, route}: Props) => {
 
   return (
     <SafeAreaView className="h-screen w-screen mx-auto my-auto flex-1 bg-themeWhite">
-      <View className="flex-1 mx-auto  justify-center">
+      <View className="flex-1 mx-auto justify-center">
         <View
           accessibilityLabel="Thank you for Reporting your Covid Test"
           accessibilityHint="Thanking you for submitting you Covid Test"

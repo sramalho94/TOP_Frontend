@@ -59,14 +59,19 @@ export default function SignInPage(props: Props) {
   };
 
   return (
-    <SafeAreaView className="bg-themeWhite w-screen h-screen flex-1">
+    <SafeAreaView className="flex-1 bg-themeWhite w-screen h-screen ">
       <ScrollView>
-        {/* <TopNavBar textSize='xl' textValue='Sign In' fontFamily='' haveProgress={false} /> */}
-        <View className="">
+        {/* <ScrollView className="flex-1" contentContainerStyle={{flexGrow: 1}}> */}
+        <View className="flex-1">
+          <Text
+            style={{fontFamily: 'Carter One'}}
+            className=" text-3xl color-black text-center pt-8">
+            Welcome back!
+          </Text>
           <View className="flex flex-row justify-center align-middle">
-            <Image className="w-342 h-349 m-4" source={SignInImg}></Image>
+            <Image className="w-342 h-349" source={SignInImg}></Image>
           </View>
-          <View className="mb-6 flex items-center align-middle justify-center">
+          <View className="flex items-center align-middle justify-center">
             <TextInputField
               label="Username*"
               value={userSignUp.username}
@@ -80,12 +85,12 @@ export default function SignInPage(props: Props) {
           </View>
 
           {errorMessage ? (
-            <View className="mt-0 p-2 bg-red-100 border border-red-500 mx-auto w-[315]">
+            <View className="mt-0 p-2 min-h-[50px] bg-red-100 border border-red-500 mx-auto w-[315]">
               <Text className="text-red-500">{errorMessage}</Text>
             </View>
           ) : null}
         </View>
-        <View className="mt-4 items-center">
+        <View className="items-center">
           <Button
             onPress={handleSubmit}
             innerText="Login"
@@ -106,21 +111,6 @@ export default function SignInPage(props: Props) {
             borderColor="border border-black"
             width="80"
           />
-          {/* <!--           <Button
-            onPress={() => console.log('Skip button pressed')}
-            innerText="Skip"
-            bgColor=""
-            textColor=""
-            border={false}
-            borderColor=""
-            width="80"
-
-            borderColor="border border-themeBlue"
-            width='80'
-            accessLabel="Login"
-            accessHint="Navigates to the login screen"
-
-          /> --> */}
         </View>
       </ScrollView>
     </SafeAreaView>

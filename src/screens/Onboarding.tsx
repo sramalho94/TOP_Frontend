@@ -1,4 +1,4 @@
-import React, {useState, useRef, useEffect} from 'react';
+import React, {useState, useRef} from 'react';
 
 import onboardingAll_1 from './../../assets/onboardingAll_1.png';
 import onboardingAll_2 from './../../assets/onboardingAll_2.png';
@@ -73,46 +73,40 @@ const Onboarding = (props: OnboardingScreenProps) => {
   };
 
   return (
-    <>
-      {/* <ScrollView
-        ref={scrollViewRef}
-        pagingEnabled
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        scrollEnabled
-        onScroll={handleScroll} // Handle scrolling event
-        scrollEventThrottle={16} // Adjust the scroll event frequency
-      > */}
+    <ScrollView
+      ref={scrollViewRef}
+      horizontal
+      pagingEnabled
+      onScroll={handleScroll}
+      scrollEventThrottle={8}>
       {pages.map((page, index) => (
         <SafeAreaView
           key={index}
-          className="bg-themeWhite h-screen w-screen items-center pb-4">
+          className="flex-1 w-screen h-screen  bg-themeWhite self-center">
           <View
             className="flex-1 flex-col max-w-md mb-10"
             accessibilityLabel="Onboarding Info Page"
             accessibilityHint="Informs you how your data will be used and not be used"
             accessibilityRole="header">
-            <View className="">
-              <Image
-                className="w-full h-[500px] max-h-full mb-5 bg-contain bg-center"
-                source={page.imageSource}
-              />
-              <View>
-                <Text className="mx-auto font-serif text-[25px] text-center">
-                  {page.title}
-                </Text>
-                <Text className="mx-10 py-5 font-serif text-[14px] text-center leading-5 font-light">
-                  {page.text}
-                </Text>
-              </View>
+            <Image
+              className="w-full h-[500px] bg-contain bg-center"
+              source={page.imageSource}
+            />
+            <View>
+              <Text className="mx-auto font-serif text-[25px] text-center">
+                {page.title}
+              </Text>
+              <Text className="mx-10 py-5 font-serif text-[14px] text-center leading-5 font-light">
+                {page.text}
+              </Text>
             </View>
 
             <View className="flex-1 flex-col-reverse mt-1 ">
-              <View className="flex-1 mt-8 justify-center">
+              <View className="flex-1 mt-5 justify-center">
                 <View className="flex-1 mt-2 mb-2">
                   <ProgressDots page={page.pageIndicator} />
                 </View>
-                <View className="mx-auto mt-7">
+                <View className="mx-auto mt-5">
                   <Button
                     onPress={page.onButtonPress}
                     innerText={page.buttonText}
@@ -144,8 +138,7 @@ const Onboarding = (props: OnboardingScreenProps) => {
           </View>
         </SafeAreaView>
       ))}
-      {/* </ScrollView> */}
-    </>
+    </ScrollView>
   );
 };
 

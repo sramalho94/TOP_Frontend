@@ -19,7 +19,7 @@ const LandingPage: React.FC<{navigation: any}> = ({navigation}) => {
     <>
       <SafeAreaView className="w-screen h-screen flex-1 bg-themeWhite justify-center items-center align-middle max-w-md self-center">
         <StatusBar
-          backgroundColor="green"
+          backgroundColor="blue"
           barStyle={theme === 'dark' ? 'light-content' : 'default'}
         />
         <ScrollView className="w-full">
