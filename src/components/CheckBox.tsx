@@ -18,15 +18,14 @@ const CheckBox: React.FC<CheckBoxProps> = ({
   }, [isSelected]);
 
   return (
-    <TouchableOpacity 
-      onPress={handleCheckChanges} 
+    <TouchableOpacity
+      onPress={handleCheckChanges}
       accessible={true}
-      accessibilityLabel='checkbox'
+      accessibilityLabel="checkbox"
       accessibilityHint={accessHint}
-      accessibilityRole='checkbox'
+      accessibilityRole="checkbox"
       aria-checked={isSelected}
-      accessibilityState={{ selected: isSelected }}
-      >
+      accessibilityState={{selected: isSelected}}>
       {!isSelected ? (
         <Icon name="square-outline" size={22} color="#000000" />
       ) : (

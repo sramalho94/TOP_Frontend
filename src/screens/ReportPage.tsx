@@ -83,7 +83,6 @@ const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
 
   const handleCheckChanges = () => {
     setCheckboxSelection(prevState => !prevState);
-    // console.log('handleCheckChanges: ', isCheckboxSelected);
   };
 
   const updateFormState = (field: string, value: string | boolean) => {
@@ -93,7 +92,6 @@ const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
     }));
   };
 
-  // need this so that when a user has one dropdown open and selects another, the opened dropdown will close
   const [genderOpen, setGenderOpen] = useState<boolean>(false);
   const [raceOpen, setRaceOpen] = useState<boolean>(false);
   const [ethnicityOpen, setEthnicityOpen] = useState<boolean>(false);
@@ -115,11 +113,6 @@ const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
           accessibilityHint="Covid Test Reporting without an Account or anonymously"
           accessibilityRole="header">
           <View className="flex-1 flex-col max-w-md mb-10">
-            {/* Test Result Buttons */}
-
-            {/* <!--             <Text className="flex-1 text-lg md:text-2xl font-semibold mt-10 mx-auto w-[300px] text-center text-[20px]">
-              What were the results of your COVID-19 test? --> */}
-
             <Text className="text-xl text-black mt-10 mx-auto">
               What were the results of your test?
             </Text>
@@ -169,8 +162,6 @@ const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
                 />
               </View>
             </View>
-
-            {/* Text input and dropdown fields container */}
             <View className="w-screen items-center ">
               <TextInputField
                 label="Date of Test*"
@@ -287,8 +278,6 @@ const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
                 accessHint="Drop down options to select your ethnicity"
               />
             </View>
-            {/* checkbox and text container */}
-            {/* <View className="flex-1 "> */}
             <View className="flex-1 flex-row justify-center my-6">
               <CheckBox
                 isSelected={isCheckboxSelected}
@@ -299,27 +288,18 @@ const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
                 I agree to share my results with the CDC
               </Text>
             </View>
-
-            {/* button container */}
-
             <View className="flex-1 mt-10 mx-auto justify-end">
-              {/* <!--             <View className="flex-1 mb-14 justify-center"> --> */}
-
               <Button
                 onPress={handleReportButtonClick}
                 innerText="Report"
                 bgColor="bg-themeBlue"
                 textColor="text-themeWhite"
                 border={false}
-                // <!--                 border={true}
-                //                 borderColor="border border-themeBlue" -->
-
                 width="80"
                 accessLabel="Report"
                 accessHint="Reports test results"
               />
             </View>
-            {/* </View> */}
           </View>
         </View>
       </ScrollView>
