@@ -9,6 +9,7 @@ const DataDashboard: React.FC<DataDashboardProps> = props => (
     source={{
       uri: 'https://public.tableau.com/views/COVIDDashboard1_6/COVIDDBTester?:language=en-US&:display_count=n&:origin=viz_share_link',
     }}
+    accessible={true}
     accessibilityLabel="Data Dashboard Page"
     accessibilityHint="Shows Covid data and trends from each state and across the US"
     accessibilityRole="header"
