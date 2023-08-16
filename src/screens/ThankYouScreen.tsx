@@ -31,8 +31,6 @@ const ThankYouScreen = ({navigation, route}: Props) => {
     resultState: false,
   };
 
-  console.log('ThankYouScreen', route, logIn, resultState);
-
   const handleInfoPress = () => {
     const termsUrl =
       'https://www.cdc.gov/coronavirus/2019-ncov/your-health/isolation.html';
