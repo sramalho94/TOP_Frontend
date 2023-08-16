@@ -64,16 +64,13 @@ const HomeDash: React.FC<{navigation: any}> = ({navigation}) => {
             <CircleBtn
               img={HomePrivacyImg}
               onPress={() => {
-                console.log("You're Sick!!");
+                console.log('Feature Coming Soon');
               }}
               Btnwidth="w-28"
               Btnheight="h-28"
               accessLabel="Privacy"
               accessHint="This button navigates to privacy screen"
             />
-            {/* <Text className="text-center p-3 text-black text-base">
-                Privacy
-              </Text> */}
           </View>
 
           <View className="mt-16">
