@@ -2,8 +2,6 @@ import React, {useState} from 'react';
 import {SafeAreaView, View, Text, TouchableOpacity, Image} from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 
-// This component has been implemented on Report Page, if you wanted to test
-
 type Props = {
   text: string;
   selectItems: Object[];
@@ -23,7 +21,7 @@ const DropDownField = ({
   setOpen,
   onChange,
   accessLabel,
-  accessHint
+  accessHint,
 }: Props) => {
   // this sets a value when user selects an option from the dropdown
   const [value, setValue] = useState<string | null>(null);
