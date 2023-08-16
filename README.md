@@ -34,8 +34,8 @@ We used the U.S. COVID-19 Self-Test Data and Covid-19 Case Surveillance Public U
 
 ---
 
-- clone down the repo to your local machine
-- Run yarn install
+- Clone down the repo to your local machine
+- Run `yarn install`
 - Cd into ios, then run `pod install`
 - Run `yarn ios` or `yarn andriod`
 
