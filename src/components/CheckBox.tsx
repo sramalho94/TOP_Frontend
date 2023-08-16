@@ -13,9 +13,9 @@ const CheckBox: React.FC<CheckBoxProps> = ({
   isSelected,
   accessHint,
 }) => {
-  useEffect(() => {
-    console.log('checkbox selection component: ', isSelected);
-  }, [isSelected]);
+  // useEffect(() => {
+  //   // console.log('checkbox selection component: ', isSelected);
+  // }, [isSelected]);
 
   return (
     <TouchableOpacity
