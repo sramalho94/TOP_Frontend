@@ -60,16 +60,16 @@ export default function SignInPage(props: Props) {
 
   return (
     <SafeAreaView className="flex-1 bg-themeWhite w-screen h-screen ">
-      <ScrollView>
-        {/* <ScrollView className="flex-1" contentContainerStyle={{flexGrow: 1}}> */}
-        <View className="flex-1 space-y-12">
+      <ScrollView className="flex-1 space-y-12">
+        {/* // contentContainerStyle={{flexGrow: 1}} */}
+        <View>
           <Text
             style={{fontFamily: 'Carter One'}}
             className=" text-4xl color-black text-center mt-10">
             Welcome back!
           </Text>
           <View className="flex flex-row justify-center align-middle">
-            <Image className="w-342 h-349" source={SignInImg}></Image>
+            <Image className="w-[342px] h-[320px]" source={SignInImg}></Image>
           </View>
           <TextInputField
             label="Username*"
@@ -82,7 +82,7 @@ export default function SignInPage(props: Props) {
             password={userSignUp.password}
           />
           {errorMessage ? (
-            <View className="mt-0 p-2 min-h-[50px] bg-red-100 border border-red-500 mx-auto w-[315]">
+            <View className=" p-2 min-h-[50px] bg-red-100 border border-red-500 mx-auto w-[315]">
               <Text className="text-red-500">{errorMessage}</Text>
             </View>
           ) : null}
@@ -93,7 +93,7 @@ export default function SignInPage(props: Props) {
             innerText="Login"
             textColor="text-themeWhite"
             bgColor="bg-themeBlue"
-            border={true}
+            border={false}
             accessLabel="Login"
             accessHint="Navigates to the login screen"
             borderColor="border border-black"
