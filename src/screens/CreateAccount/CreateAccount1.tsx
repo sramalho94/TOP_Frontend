@@ -30,13 +30,11 @@ const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
   const handleNext = () => {
     // Check if email and username are not empty
     if (!formState.email || !formState.username || !formState.password) {
-      // alert('Please fill in all mandatory fields.');
       return; // Prevent proceeding to the next page
     }
 
     // Check if the email is in the correct format
     if (!isEmailValid(formState.email)) {
-      // alert('Please enter a valid email address.');
       return; // Prevent proceeding to the next page
     }
 
@@ -56,64 +54,6 @@ const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
   return (
     <SafeAreaView className="flex-1 h-screen w-screen bg-themeWhite">
       <ScrollView>
-        {/* <!--         <TopNavBar
-          fontFamily=""
-          textSize="xl"
-          textValue="Create Account"
-          haveProgress={true}
-          page={1}
-        />
-        <View
-          className="flex-1 min-h-[300px]"
-          accessibilityLabel="Create Account for login Page 1"
-          accessibilityHint="First page in creating a new account. IT asks you to create an email, username, and password"
-          accessibilityRole="header">
-          <View className="flex-1 mx-auto mb-2">
-            <View className="w-[342]">
-              <View>
-                <Image
-                  className="mx-auto w-[217px] h-[217px] "
-                  source={CreateAccount}
-                />
-                <View className={showError}>
-                  <PasswordError />
-                </View>
-              </View>
-              <View className="flex-1 mt-5">
-                <TextInputField
-                  label="Email*"
-                  value={formState.email}
-                  onChange={value => updateFormState('email', value)}
-                  placeholder="Email"
-                />
-                <TextInputField
-                  label="Username*"
-                  value={formState.username}
-                  onChange={value => updateFormState('username', value)}
-                  placeholder="Username"
-                />
-                <PasswordField
-                  onChange={value => updateFormState('password', value)}
-                  password={formState.password}
-                />
-              </View>
-            </View>
-          </View>
-          <View className="flex-1 mt-4 bg-blue-300 flex-col-reverse mb-3">
-            <Button
-              onPress={handleNext}
-              innerText="Continue"
-              textColor="text-white"
-              bgColor="bg-themeBlue"
-              border={true}
-              borderColor="border border-themeBlue border-2"
-              width="80"
-              accessLabel="Continue to Next Page"
-              accessHint="Continues to Account Page 2 for date of birth, zip code, and optional first name input"
-            />
-          </View>
-        </View> --> */}
-
         <TopNavBar
           fontFamily=""
           textSize="xl"
