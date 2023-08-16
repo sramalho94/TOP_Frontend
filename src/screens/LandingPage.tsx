@@ -12,7 +12,6 @@ import Button from '../components/Button';
 import LandingGroupImg from './../../assets/landingGroupImg.png';
 
 const LandingPage: React.FC<{navigation: any}> = ({navigation}) => {
-  // const {colors} = useTheme();
   const theme = useColorScheme();
 
   return (
@@ -62,7 +61,6 @@ const LandingPage: React.FC<{navigation: any}> = ({navigation}) => {
               />
             </View>
 
-            {/* FIXME: Might need to put in a view */}
             <View className="mb-2">
               <Button
                 onPress={() => navigation.navigate('Onboarding')}

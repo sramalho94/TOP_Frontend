@@ -44,12 +44,10 @@ const HomeDash: React.FC<{navigation: any}> = ({navigation}) => {
         </View>
       </View>
 
-      {/* need giant circle btn, need to refactor circle btn props? */}
       <View className="mb-10">
         <View className="flex w-full justify-center items-center ">
           <CircleBtn
             img={HomePageImg}
-            // bgColor="bg-themeLightOrange"
             onPress={() => {
               navigation.navigate('AccountReportPage');
             }}
@@ -82,9 +80,6 @@ const HomeDash: React.FC<{navigation: any}> = ({navigation}) => {
               accessLabel="Dashboard"
               accessHint="This button navigates to dashboard"
             />
-            {/* <Text className="text-center p-3 text-black text-base">
-                Dashboard
-              </Text> */}
           </View>
 
           <View className="mt-1">
@@ -95,9 +90,6 @@ const HomeDash: React.FC<{navigation: any}> = ({navigation}) => {
               accessLabel="Exchange"
               accessHint="This button navigates to data exchange screen"
             />
-            {/* <Text className="text-center p-3 text-black text-base">
-                Exchange
-              </Text> */}
           </View>
         </View>
       </View>
