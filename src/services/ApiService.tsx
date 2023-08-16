@@ -2,11 +2,7 @@ import axios, {AxiosResponse} from 'axios';
 import {Platform} from 'react-native';
 
 const BASE_URL =
-  Platform.OS === 'android'
-    ? 'http://10.0.2.2:3001/api'
-    : 'http://localhost:3001/api';
-
-// TODO: For deployment, use a logging library with log levels and log sensitive info under debug. That way, release can filter by warning and sensitive debug messages won't be shown.
+  'http://production.eba-zudmp3xm.us-east-1.elasticbeanstalk.com/api';
 
 export default class ApiService {
   // https://gabrielctroia.medium.com/side-effects-in-js-promise-chains-7db50b6302f3
@@ -157,7 +153,7 @@ export default class ApiService {
 
   // This only creates a test in our db for an anonymous user
   static createTest(testData: {
-    result: boolean;
+    result: boolean | null;
     ZIP: string;
     gender: string;
     race: string;
@@ -176,7 +172,7 @@ export default class ApiService {
 
   // Create test in our db for a registered user
   static createTestWithAccount(testData: {
-    result: boolean;
+    result: boolean | null;
     userId: number;
     ZIP: string;
     gender: string;

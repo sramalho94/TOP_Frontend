@@ -14,7 +14,6 @@ const CreateAccount3: React.FC<{navigation: any}> = ({navigation}) => {
   const handleNext = () => {
     // Perform any necessary validation before navigating to the next screen
     navigation.navigate('ConsentPage');
-    console.log('formState', {formState});
   };
 
   const handleGenderChange = (value: boolean) => {
@@ -38,17 +37,28 @@ const CreateAccount3: React.FC<{navigation: any}> = ({navigation}) => {
         haveProgress={true}
         page={3}
       />
-      <View className="mx-auto my-auto mt-5 mb-6">
-        <View className="w-[342]">
+      <View
+        className="max-w-md mx-auto mb-6"
+        accessible={true}
+        accessibilityHint="Second page in creating a new account. It asks for your date of birth, zip code, and first name"
+        accessibilityRole="header">
+        <View className="mt-5">
           <DropDownField
             text="Gender"
             selectItems={[
               {
-                label: 'MIGHT CHANGE BELOW SELECTION LATER',
-                value: 'MIGHT CHANGE BELOW SELECTION LATER',
+                label: 'Woman',
+                value: 'Woman',
               },
-              {label: '', value: ''},
-              {label: 'Prefer not to say', value: 'prefer not to say'},
+              {
+                label: 'Man',
+                value: 'Man',
+              },
+              {label: 'Non-binary', value: 'Non-binary'},
+              {
+                label: 'I prefer not to answer',
+                value: 'I prefer not to answer',
+              },
             ]}
             open={genderOpen}
             onOpen={() => {
@@ -58,34 +68,40 @@ const CreateAccount3: React.FC<{navigation: any}> = ({navigation}) => {
             }}
             setOpen={handleGenderChange}
             onChange={value => updateFormState('gender', value)}
+            accessLabel="gender menu"
+            accessHint="Drop down options to select your gender"
           />
           <DropDownField
             text="Race"
             selectItems={[
+              {label: 'White or European', value: 'White or European'},
               {
-                label: 'MIGHT CHANGE BELOW SELECTION LATER',
-                value: 'MIGHT CHANGE BELOW SELECTION LATER',
+                label: 'Black or of African descent',
+                value: 'Black or of African descent',
               },
               {
-                label: 'American Indian or Alaska Native',
-                value: 'american indian or alaska native',
+                label: 'Middle Eastern or North African',
+                value: 'Middle Eastern or North African',
               },
-              {label: 'Asian', value: 'asian'},
               {
-                label: 'Black or African American',
-                value: 'black or african american',
+                label: 'Indigenous, American Indian or Alaska Native',
+                value: 'Indigenous, American Indian or Alaska Native',
               },
               {
                 label: 'Native Hawaiian or Other Pacific Islander',
                 value: 'native hawaiian or other pacific islander',
               },
-              {label: 'Not Specified', value: 'not specified'},
+              {label: 'East Asian', value: 'East Asian'},
+              {label: 'Southeast Asian', value: 'Southeast Asian'},
+              {label: 'South Asian', value: 'South Asian'},
               {
                 label: 'Two or More Races/Ethnicities',
                 value: 'two or more races/ethnicities',
               },
-              {label: 'White', value: 'white'},
-              {label: 'Prefer not to say', value: 'prefer not to say'},
+              {
+                label: 'I prefer not to answer',
+                value: 'I prefer not to answer',
+              },
             ]}
             open={raceOpen}
             onOpen={() => {
@@ -95,20 +111,21 @@ const CreateAccount3: React.FC<{navigation: any}> = ({navigation}) => {
             }}
             setOpen={handleRaceChange}
             onChange={value => updateFormState('race', value)}
+            accessLabel="race menu"
+            accessHint="Drop down options to select your race"
           />
           <DropDownField
             text="Ethnicity"
             selectItems={[
-              {
-                label: 'MIGHT CHANGE BELOW SELECTION LATER',
-                value: 'MIGHT CHANGE BELOW SELECTION LATER',
-              },
               {label: 'Hispanic/Latino', value: 'hispanic/latino'},
               {
                 label: 'Non-Hispanic/Latino',
-                value: 'non-hispanic/latino',
+                value: 'Non-hispanic/latino',
               },
-              {label: 'Prefer not to say', value: 'prefer not to say'},
+              {
+                label: 'I prefer not to answer',
+                value: 'I prefer not to answer',
+              },
             ]}
             open={ethnicityOpen}
             onOpen={() => {
@@ -118,10 +135,12 @@ const CreateAccount3: React.FC<{navigation: any}> = ({navigation}) => {
             }}
             setOpen={handleEthnicityChange}
             onChange={value => updateFormState('ethnicity', value)}
+            accessLabel="ethnicity menu"
+            accessHint="Drop down options to select your ethnicity"
           />
         </View>
       </View>
-      <View className="flex-1 mb-5 justify-end ">
+      <View className="flex-1 justify-end mb-4">
         <Button
           onPress={handleNext}
           innerText="Continue"
@@ -130,6 +149,8 @@ const CreateAccount3: React.FC<{navigation: any}> = ({navigation}) => {
           border={true}
           borderColor="border border-themeBlue border-2"
           width="80"
+          accessLabel="Next"
+          accessHint="Navigates to the next screen"
         />
       </View>
     </SafeAreaView>

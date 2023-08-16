@@ -2,8 +2,6 @@ import React, {useState} from 'react';
 import {SafeAreaView, View, Text, TouchableOpacity, Image} from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 
-// This component has been implemented on Report Page, if you wanted to test
-
 type Props = {
   text: string;
   selectItems: Object[];
@@ -11,6 +9,8 @@ type Props = {
   onOpen: any;
   setOpen: any;
   onChange: (text: any) => void;
+  accessLabel: string;
+  accessHint: string;
 };
 
 const DropDownField = ({
@@ -20,15 +20,17 @@ const DropDownField = ({
   onOpen,
   setOpen,
   onChange,
+  accessLabel,
+  accessHint,
 }: Props) => {
   // this sets a value when user selects an option from the dropdown
   const [value, setValue] = useState<string | null>(null);
 
   return (
-    <View className="mx-auto">
+    <View className="w-full max-w-sm px-8">
       <Text className="font-bold my-2 capitalize">{text} (Optional)</Text>
       <DropDownPicker
-        className="my-2 w-80 border border-black rounded-lg"
+        className="my-2 border border-black rounded-lg"
         open={open}
         items={selectItems}
         value={value}
@@ -39,6 +41,10 @@ const DropDownField = ({
         dropDownDirection="TOP"
         listMode="SCROLLVIEW"
         placeholder={`Select your ${text.toLowerCase()}`}
+        accessible={true}
+        accessibilityLabel={accessLabel}
+        accessibilityHint={accessHint}
+        accessibilityRole="menu"
       />
     </View>
   );

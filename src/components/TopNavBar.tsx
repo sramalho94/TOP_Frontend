@@ -12,9 +12,6 @@ type Props = {
   page?: number;
 };
 
-// Add a page prop for the progressDots component.
-// haveProgress prop is a little bit redundant because you can use page to tell whether its haveProgress is true or false but I'll just leave it for now for whoever take over topNavBar to understand/implement this component more easily.
-
 const TopNavBar = ({
   textSize,
   textValue,
@@ -28,12 +25,15 @@ const TopNavBar = ({
   };
 
   return (
-    <View className="">
+    <View className="h-1/8 mb-1">
       <View className="flex-row mt-6 mb-2">
         <TouchableOpacity
           className="mt-2 ml-4"
-          onPress={() => navigation.goBack()}>
-          <Icon name="arrowleft" size={30} color="blue" className="" />
+          onPress={() => navigation.goBack()}
+          accessible={true}
+          accessibilityLabel="Back"
+          accessibilityHint="Navigates to the previous screen">
+          <Icon name="arrowleft" size={30} color="#000" className="" />
         </TouchableOpacity>
         <Text
           className={`text-${textSize}  text-themeBlue font-bold mx-auto mt-2 pr-12 font-${fontFamily}`}>
@@ -41,10 +41,7 @@ const TopNavBar = ({
         </Text>
       </View>
       <View className="shadow shadow-black ">
-        <View className="border-gray-200 border-b-2  pb-4">
-          {/* <View className="shadow shadow-red-500/40 md:shadow-red-500/40"> */}
-          {/* {haveProgress ? page ? <ProgressDots page={page} /> : null : null} */}
-        </View>
+        <View className="border-gray-200 border-b-2  pb-4"></View>
       </View>
     </View>
   );

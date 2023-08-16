@@ -1,35 +1,40 @@
-import React, { useState } from 'react';
-import {
-  SafeAreaView,
-  View,
-  Text,
-  Image,
-  ScrollView,
-} from 'react-native';
-import NoImage from '../../assets/blankimage.png';
-import Password from "../components/Password"
+import React, {useState} from 'react';
+import {SafeAreaView, View, Text, Image, ScrollView} from 'react-native';
+import Password from '../components/Password';
 import Button from '../components/Button';
 import TextInputField from '../components/TextInputField';
 import TopNavBar from '../components/TopNavBar';
-import { useAuth } from '../context/AuthContext';
-import { useNavigation } from '@react-navigation/native';
+import {useAuth} from '../context/AuthContext';
+import {useNavigation} from '@react-navigation/native';
+import SignInImg from '../../assets/SignInImg.png';
 
 type Props = {};
 
-export default function SignInPage(props: Props) {
+type FormState = {
+  username: string;
+  password: string;
+  showPassword: boolean;
+};
 
+const initialFormState: FormState = {
+  username: '',
+  password: '',
+  showPassword: false,
+};
+
+export default function SignInPage(props: Props) {
   const [userSignUp, setUserSignUp] = useState<any>({
     username: '',
     password: '',
-  })
+  });
 
   const [errorMessage, setErrorMessage] = useState<string>('');
 
   const handleChange = (field: string, value: string) => {
-    setUserSignUp({ ...userSignUp, [field]: value });
-  }
+    setUserSignUp({...userSignUp, [field]: value});
+  };
 
-  const { onLogin } = useAuth();
+  const {onLogin} = useAuth();
   const navigation: any = useNavigation();
 
   const handleSubmit: any = (e: any) => {
@@ -37,14 +42,15 @@ export default function SignInPage(props: Props) {
 
     if (onLogin) {
       onLogin(userSignUp)
-      .then((res: any) => {
-        if (res.success) {
-          navigation.navigate('AccountReportPage')
-        }
-      }
-      )
-      .catch((error: any) => {
-          setErrorMessage('Username or Password is incorrect. Please try again or click Forgot Password.');
+        .then((res: any) => {
+          if (res.success) {
+            navigation.navigate('AccountReportPage');
+          }
+        })
+        .catch((error: any) => {
+          setErrorMessage(
+            'Username or Password is incorrect. Please try again or click Forgot Password.',
+          );
           console.log('Screen Login Err: ' + error);
         });
     } else {
@@ -53,39 +59,47 @@ export default function SignInPage(props: Props) {
   };
 
   return (
-    <SafeAreaView className="w-342 m-4">
-      <ScrollView>
-        {/* <TopNavBar textSize='xl' textValue='Sign In' fontFamily='' haveProgress={false} /> */}
-        <View className="">
+    <SafeAreaView className="flex-1 bg-themeWhite w-screen h-screen ">
+      <ScrollView className="flex-1 space-y-12">
+        {/* // contentContainerStyle={{flexGrow: 1}} */}
+        <View>
+          <Text
+            style={{fontFamily: 'Carter One'}}
+            className=" text-4xl color-black text-center mt-10">
+            Welcome back!
+          </Text>
           <View className="flex flex-row justify-center align-middle">
-            <Image className="w-[342] h-[349] m-4" source={NoImage}></Image>
+            <Image className="w-[342px] h-[320px]" source={SignInImg}></Image>
           </View>
-          <View className="mb-1 mx-auto w-[342]">
+          <View className="flex-1 items-center flex-end">
             <TextInputField
-              label="Username"
+              label="Username*"
               value={userSignUp.username}
               onChange={value => handleChange('username', value)}
-              placeholder=''
+              placeholder=""
             />
-            <Password onChange={value => handleChange('password', value)} password={userSignUp.password} />
+            <Password
+              onChange={value => handleChange('password', value)}
+              password={userSignUp.password}
+            />
           </View>
-
           {errorMessage ? (
-            <View className="mt-0 p-2 bg-red-100 border border-red-500 mx-auto w-[315]">
+            <View className=" p-2 min-h-[50px] bg-red-100 border border-red-500 mx-auto w-[315]">
               <Text className="text-red-500">{errorMessage}</Text>
             </View>
           ) : null}
-
         </View>
-        <View className="mt-4">
+        <View className="flex-1 items-center flex-end">
           <Button
             onPress={handleSubmit}
             innerText="Login"
-            textColor=""
-            bgColor=""
-            border={true}
+            textColor="text-themeWhite"
+            bgColor="bg-themeBlue"
+            border={false}
+            accessLabel="Login"
+            accessHint="Navigates to the login screen"
             borderColor="border border-black"
-            width='80'
+            width="80"
           />
         </View>
       </ScrollView>

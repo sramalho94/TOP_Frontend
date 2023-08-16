@@ -10,6 +10,8 @@ type Props = {
   borderColor?: string;
   textDecoration?: string;
   width?: string;
+  accessLabel: string;
+  accessHint: string;
 };
 
 const Button = ({
@@ -21,13 +23,20 @@ const Button = ({
   textColor,
   textDecoration,
   width,
+  accessLabel,
+  accessHint,
 }: Props) => {
   return (
-    <View className={`max-h-36  flex-row justify-center mx-auto w-${width}`}>
+    <View
+      className={`w-${width} max-w-sm mx-auto align-center items-center`}>
       <TouchableOpacity
         className={`${border ? `${borderColor}` : ''}
-         flex justify-center items-center w-full max-w-sm h-[52] rounded-lg ${bgColor}`}
-        onPress={onPress}>
+        flex justify-center px-6 align-center items-center w-80 h-[52] rounded-lg mb-2 ${bgColor}`}
+        onPress={onPress}
+        accessible={true}
+        accessibilityLabel={accessLabel}
+        accessibilityHint={accessHint}
+        accessibilityRole="button">
         <Text
           className={`text-base font-semibold ${textColor} ${
             textDecoration ? `${textDecoration}` : ''

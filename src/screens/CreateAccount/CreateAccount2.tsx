@@ -7,7 +7,6 @@ import TopNavBar from '../../components/TopNavBar';
 
 const CreateAccount2: React.FC<{navigation: any}> = ({navigation}) => {
   const {formState, updateFormState} = useContext(CreateAccountContext);
-  const [isModalVisible, setIsModalVisible] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string>('');
 
   // Function to check if email format is correct
@@ -70,66 +69,69 @@ const CreateAccount2: React.FC<{navigation: any}> = ({navigation}) => {
       setErrorMessage('Please enter a valid zip code.');
       return; // Prevent proceeding to the next page
     } else {
-      setErrorMessage('')
+      setErrorMessage('');
       navigation.navigate('CreateAccount3');
     }
   };
 
-  const toggleModal = () => {
-    setIsModalVisible(!isModalVisible);
-  };
-
   return (
-    <SafeAreaView className="bg-white min-w-screen min-h-screen">
-      {/* <ScrollView> */}
-        <TopNavBar
-          fontFamily=""
-          textSize="xl"
-          textValue="Create Account"
-          haveProgress={true}
-          page={2}
-        />
+    <SafeAreaView className="bg-themeWhite min-w-screen min-h-screen">
+      <TopNavBar
+        fontFamily=""
+        textSize="xl"
+        textValue="Create Account"
+        haveProgress={true}
+        page={2}
+      />
 
-      <View className="mx-auto mb-3 mt-10">
-        <View className="w-[342]">
-
-        {errorMessage ? (
-          <View className="mt-0 p-2 bg-red-100 border border-red-500 mx-auto w-[315]">
-            <Text className="text-red-500">{errorMessage}</Text>
+      <View
+        className="flex-1 mb-5"
+        accessible={true}
+        accessibilityLabel="Create Account for login Page 2"
+        accessibilityHint="Second page in creating a new account. It asks for your date of birth, zip code, and first name"
+        accessibilityRole="header">
+        <View className="flex-1 mx-auto mb-3">
+          <View className="flex-1 w-screen min-h-[300px] mt-10">
+            {errorMessage ? (
+              <View className="mt-0 p-2 bg-red-100 border border-red-500 mx-auto w-[315]">
+                <Text className="text-red-500">{errorMessage}</Text>
+              </View>
+            ) : null}
+            <View className="flex-1 px-4">
+              <TextInputField
+                label="Date of Birth*"
+                value={formState.DOB}
+                onChange={value => updateFormState('DOB', value)}
+                placeholder="MM/DD/YYYY"
+              />
+              <TextInputField
+                label="Zip Code*"
+                value={formState.ZIP}
+                onChange={value => updateFormState('ZIP', value)}
+                placeholder="XXXXX"
+              />
+              <TextInputField
+                label="First Name"
+                value={formState.firstName}
+                onChange={value => updateFormState('firstName', value)}
+                placeholder="Your First Name"
+              />
+            </View>
           </View>
-        ) : null}
-        <View className="">
-          <TextInputField
-            label="Date of Birth*"
-            value={formState.DOB}
-            onChange={value => updateFormState('DOB', value)}
-            placeholder="MM/DD/YYYY"
-          />
-          <TextInputField
-            label="Zip Code*"
-            value={formState.ZIP}
-            onChange={value => updateFormState('ZIP', value)}
-            placeholder="XXXXX"
-          />
-          <TextInputField
-            label="First Name"
-            value={formState.firstName}
-            onChange={value => updateFormState('firstName', value)}
-            placeholder="Your First Name"
+        </View>
+        <View className="flex-1 mb-3 justify-end ">
+          <Button
+            onPress={handleNext}
+            innerText="Continue"
+            textColor="text-white"
+            bgColor="bg-themeBlue"
+            border={true}
+            borderColor="border border-themeBlue border-2"
+            width="80"
+            accessLabel="Next"
+            accessHint="Navigates to the next screen"
           />
         </View>
-      </View>
-      </View>
-      <View className="flex-1 mb-5 justify-end ">
-        <Button
-          onPress={handleNext}
-          innerText="Continue"
-          textColor="text-white"
-          bgColor="bg-themeBlue"
-          border={true}
-          borderColor="border border-themeBlue border-2"
-          width="80"
-        />
       </View>
     </SafeAreaView>
   );

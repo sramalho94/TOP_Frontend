@@ -1,4 +1,4 @@
-import React, {useState, useRef, useEffect} from 'react';
+import React, {useState, useRef} from 'react';
 
 import onboardingAll_1 from './../../assets/onboardingAll_1.png';
 import onboardingAll_2 from './../../assets/onboardingAll_2.png';
@@ -77,20 +77,22 @@ const Onboarding = (props: OnboardingScreenProps) => {
       ref={scrollViewRef}
       horizontal
       pagingEnabled
-      showsHorizontalScrollIndicator={false}
-      scrollEnabled
-      onScroll={handleScroll} // Handle scrolling event
-      scrollEventThrottle={16} // Adjust the scroll event frequency
-    >
+      onScroll={handleScroll}
+      scrollEventThrottle={8}>
       {pages.map((page, index) => (
-        <SafeAreaView key={index} className="h-screen w-screen bg-themeWhite">
-          <View className="flex-1 flex-col">
-            {/* <Image className="absolute bg-cover bg-center" source={WaveImage} /> */}
+        <SafeAreaView
+          key={index}
+          className="flex-1 w-screen h-screen  bg-themeWhite self-center">
+          <View
+            className="flex-1 flex-col max-w-md mb-10"
+            accessibilityLabel="Onboarding Info Page"
+            accessibilityHint="Informs you how your data will be used and not be used"
+            accessibilityRole="header">
+            <Image
+              className="w-full h-[500px] bg-contain bg-center"
+              source={page.imageSource}
+            />
             <View>
-              <Image
-                className="w-[400px] h-[500px] max-h-full mb-5 bg-contain bg-center"
-                source={page.imageSource}
-              />
               <Text className="mx-auto font-serif text-[25px] text-center">
                 {page.title}
               </Text>
@@ -99,32 +101,38 @@ const Onboarding = (props: OnboardingScreenProps) => {
               </Text>
             </View>
 
-            <View className="flex-col-reverse mt-1 ">
-              <View className="flex justify-center">
-                <View className="mb-2">
+            <View className="flex-1 flex-col-reverse mt-1 ">
+              <View className="flex-1 mt-5 justify-center">
+                <View className="flex-1 mt-2 mb-2">
                   <ProgressDots page={page.pageIndicator} />
                 </View>
-                <Button
-                  onPress={page.onButtonPress}
-                  innerText={page.buttonText}
-                  bgColor="bg-themeBlue"
-                  textColor="text-themeWhite"
-                  border={true}
-                  borderColor="border border-themeBlue border-3"
-                  width="80"
-                />
-
-                {page.pageIndicator !== pages.length && (
+                <View className="mx-auto mt-5">
                   <Button
-                    onPress={() => navigation.navigate('CreateAccount1')}
-                    innerText="Skip"
-                    bgColor="bg-white"
-                    textColor="text-black"
-                    border={false}
-                    borderColor="border border-gray"
+                    onPress={page.onButtonPress}
+                    innerText={page.buttonText}
+                    bgColor="bg-themeBlue"
+                    textColor="text-themeWhite"
+                    border={true}
+                    borderColor="border border-themeBlue border-3"
                     width="80"
+                    accessLabel="Continue"
+                    accessHint="Navigates to the next screen"
                   />
-                )}
+
+                  {page.pageIndicator !== pages.length && (
+                    <Button
+                      onPress={() => navigation.navigate('CreateAccount1')}
+                      innerText="Skip"
+                      bgColor="bg-white"
+                      textColor="text-black"
+                      border={false}
+                      borderColor="border border-gray"
+                      width="80"
+                      accessLabel="Skip"
+                      accessHint="Navigates to the create account screen"
+                    />
+                  )}
+                </View>
               </View>
             </View>
           </View>

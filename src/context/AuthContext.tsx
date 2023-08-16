@@ -63,7 +63,6 @@ export const AuthProvider = ({children}: any) => {
   useEffect(() => {
     const fetchToken = async () => {
       const token = await Keychain.getGenericPassword();
-      console.log('stored:', token);
       if (token && token.password) {
         // Check if the token exists and has a value
         axios.defaults.headers.common[
@@ -142,9 +141,6 @@ export const AuthProvider = ({children}: any) => {
     try {
       const result: any = await ApiService.register(registrationData);
       setAuthState({token: result.token, authenticated: true, loading: false});
-      console.log(
-        'This is authState in authContext: ' + JSON.stringify(authState),
-      );
       setUserId(result.data.user.id);
       saveUserIdToLocalStorage(result.data.user.id.toString());
 
@@ -160,7 +156,7 @@ export const AuthProvider = ({children}: any) => {
       await Keychain.setGenericPassword(TOKEN_KEY, result.data.token);
       return result;
     } catch (e) {
-      console.log('ooo error in authContext register: ' + e);
+      console.log('error in authContext register: ' + e);
       return {error: true, msg: (e as any).response.data.msg};
     }
   };
@@ -168,7 +164,6 @@ export const AuthProvider = ({children}: any) => {
   const login = async (loginData: LoginData) => {
     try {
       const result: any = await ApiService.login(loginData);
-      console.log('🚀 ~ file: AuthContext.tsx:54 ~ result:', result);
       setAuthState({
         token: result.data.token,
         authenticated: true,
