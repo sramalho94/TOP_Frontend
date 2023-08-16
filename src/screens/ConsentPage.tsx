@@ -1,6 +1,5 @@
 import React, {useState, useContext} from 'react';
-// import {useFormContext} from "react-hook-form";
-// import {useFormContext} from '../context/CreateAccountContext';
+
 import {
   SafeAreaView,
   View,

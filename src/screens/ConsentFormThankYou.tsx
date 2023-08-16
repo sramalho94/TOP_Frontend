@@ -29,9 +29,6 @@ const ConsentFormThankYou = ({navigation}: Props) => {
         accessibilityLabel="Thank You Page"
         accessibilityHint="Thank you for creating an account"
         accessibilityRole="header">
-        {/* FIXME: might use below instead of above */}
-        {/* <SafeAreaView className="flex-1 bg-themeWhite"> */}
-        {/* <View className="flex-1 mx-auto mb-20  justify-center"> */}
         <View className="justify-around w-full h-full">
           <Text
             className=" text-4xl  text-center mt-10 mx-6 pt-10"
@@ -42,7 +39,10 @@ const ConsentFormThankYou = ({navigation}: Props) => {
             Your account has been created.
           </Text>
           <View>
-            <Image className="mx-auto mt-5 h-[370px] w-[300px]" source={jumpImg} />
+            <Image
+              className="mx-auto mt-5 h-[370px] w-[300px]"
+              source={jumpImg}
+            />
           </View>
           <View className="flex-1 justify-end mb-4">
             <Button
