@@ -49,8 +49,6 @@ const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
     // Call the createTest method from the ApiService
     ApiService.createTest(formState)
       .then(Response => {
-        console.log('createTestResponse', Response.data);
-
         if (Response.data.test.result === true) {
           navigation.navigate('ThankYouScreen', {
             logIn: false,
@@ -63,7 +61,6 @@ const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
           });
         }
 
-        console.log('test created successfully:', Response.data);
         setFormState({
           result: null,
           DOB: '',
