@@ -99,15 +99,6 @@ export default function SignInPage(props: Props) {
             borderColor="border border-black"
             width="80"
           />
-          {/* <Button
-            onPress={() => console.log('pressed')}
-            innerText="Forgot Password"
-            textColor=""
-            bgColor=""
-            border={true}
-            borderColor="border border-black"
-            width="80"
-          /> */}
         </View>
       </ScrollView>
     </SafeAreaView>
