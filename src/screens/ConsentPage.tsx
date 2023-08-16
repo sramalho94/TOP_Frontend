@@ -51,21 +51,18 @@ const ConsentPage: React.FC<{navigation: any}> = ({navigation}) => {
     }
 
     if (onRegister) {
-      console.log('Double check of formState: ' + JSON.stringify(formState));
       onRegister(formState)
-        .then((res: any) =>
-          console.log('res from register!!: ' + JSON.stringify(res.data)),
-        )
+        // .then((res: any) =>
+        //   console.log('res from register!!: ' + JSON.stringify(res.data)),
+        // )
         .catch((error: any) => {
           console.log('Screen Register Err: ' + error);
         });
       resetFormState();
       navigation.navigate('ConsentFormThankYou');
-      console.log('reset marathon' + JSON.stringify(formState));
     } else {
       console.log('onRegister is not a function or is undefined.');
     }
-    // alert('Thank you for agreeing to the terms.');
   };
 
   const [checkBoxStates, setCheckBoxStates] = useState<CheckState>({
