@@ -59,7 +59,6 @@ const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
         ...formState,
         userId: formState.userId as number,
       });
-      console.log('res: ', res);
 
       if (res.data.test.result === true) {
         navigation.navigate('ThankYouScreen', {
@@ -87,7 +86,6 @@ const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
     } catch (error) {
       console.log('Create Covid Message: ' + error);
     }
-    console.log('Covid Info: ' + JSON.stringify(formState));
   };
 
   return (
