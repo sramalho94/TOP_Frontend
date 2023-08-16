@@ -71,16 +71,18 @@ export default function SignInPage(props: Props) {
           <View className="flex flex-row justify-center align-middle">
             <Image className="w-[342px] h-[320px]" source={SignInImg}></Image>
           </View>
-          <TextInputField
-            label="Username*"
-            value={userSignUp.username}
-            onChange={value => handleChange('username', value)}
-            placeholder=""
-          />
-          <Password
-            onChange={value => handleChange('password', value)}
-            password={userSignUp.password}
-          />
+          <View className="flex-1 items-center flex-end">
+            <TextInputField
+              label="Username*"
+              value={userSignUp.username}
+              onChange={value => handleChange('username', value)}
+              placeholder=""
+            />
+            <Password
+              onChange={value => handleChange('password', value)}
+              password={userSignUp.password}
+            />
+          </View>
           {errorMessage ? (
             <View className=" p-2 min-h-[50px] bg-red-100 border border-red-500 mx-auto w-[315]">
               <Text className="text-red-500">{errorMessage}</Text>

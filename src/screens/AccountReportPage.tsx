@@ -90,7 +90,7 @@ const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
 
   return (
     <SafeAreaView className="bg-themeWhite flex-1 min-w-screen">
-      <ScrollView>
+      <ScrollView className="flex-1 space-y-20">
         <TopNavBar
           textSize="xl"
           fontFamily=""
@@ -153,7 +153,7 @@ const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
             </View>
 
             {/* Text input fields container */}
-            <View className="w-screen ">
+            <View className="w-screen mb-10">
               <TextInputField
                 label="Date of Test*"
                 value={formState.DOT}
@@ -169,7 +169,7 @@ const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
             </View>
           </View>
           {/* Submit button */}
-          <View className="items-center justify-center  mt-16">
+          <View className="flex-1 items-center flex-end ">
             <Button
               onPress={handleSubmit}
               innerText="Submit"
