@@ -1,4 +1,4 @@
-import {View, Text, SafeAreaView, ScrollView, Image} from 'react-native';
+import {View, Text, SafeAreaView, Image} from 'react-native';
 import React from 'react';
 import Button from '../components/Button';
 import {RouteProp} from '@react-navigation/native';
