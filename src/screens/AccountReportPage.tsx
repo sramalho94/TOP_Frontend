@@ -94,7 +94,6 @@ const AccountReportPage: React.FC<{navigation: any}> = ({navigation}) => {
         <TopNavBar
           textSize="xl"
           fontFamily=""
-          haveProgress={false}
           textValue="Report COVID-19 Test Result"
         />
         <View>
