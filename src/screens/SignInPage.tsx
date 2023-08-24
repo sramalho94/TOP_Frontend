@@ -3,12 +3,9 @@ import {SafeAreaView, View, Text, Image, ScrollView} from 'react-native';
 import Password from '../components/Password';
 import Button from '../components/Button';
 import TextInputField from '../components/TextInputField';
-import TopNavBar from '../components/TopNavBar';
 import {useAuth} from '../context/AuthContext';
 import {useNavigation} from '@react-navigation/native';
 import SignInImg from '../../assets/SignInImg.png';
-
-type Props = {};
 
 type FormState = {
   username: string;
@@ -22,10 +19,9 @@ const initialFormState: FormState = {
   showPassword: false,
 };
 
-export default function SignInPage(props: Props) {
+export default function SignInPage() {
   const [userSignUp, setUserSignUp] = useState<any>({
-    username: '',
-    password: '',
+    initialFormState,
   });
 
   const [errorMessage, setErrorMessage] = useState<string>('');
@@ -61,7 +57,6 @@ export default function SignInPage(props: Props) {
   return (
     <SafeAreaView className="flex-1 bg-themeWhite w-screen h-screen ">
       <ScrollView className="flex-1 space-y-12">
-        {/* // contentContainerStyle={{flexGrow: 1}} */}
         <View>
           <Text
             style={{fontFamily: 'Carter One'}}

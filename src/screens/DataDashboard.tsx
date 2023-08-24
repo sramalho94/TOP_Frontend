@@ -1,13 +1,12 @@
 import {WebView} from 'react-native-webview';
 import React from 'react';
-import {View} from 'react-native';
 
 interface DataDashboardProps {}
 
-const DataDashboard: React.FC<DataDashboardProps> = props => (
+const DataDashboard: React.FC<DataDashboardProps> = () => (
   <WebView
     source={{
-      uri: 'https://public.tableau.com/views/COVIDDashboard1_6/COVIDDBTester?:language=en-US&:display_count=n&:origin=viz_share_link',
+      uri: 'https://public.tableau.com/views/COVIDDashboard2_6/COVIDDBTester?:language=en-US&:display_count=n&:origin=viz_share_link',
     }}
     accessible={true}
     accessibilityLabel="Data Dashboard Page"

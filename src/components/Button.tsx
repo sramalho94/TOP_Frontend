@@ -27,8 +27,7 @@ const Button = ({
   accessHint,
 }: Props) => {
   return (
-    <View
-      className={`w-${width} max-w-sm mx-auto align-center items-center`}>
+    <View className={`w-${width} max-w-sm mx-auto align-center items-center`}>
       <TouchableOpacity
         className={`${border ? `${borderColor}` : ''}
         flex justify-center px-6 align-center items-center w-80 h-[52] rounded-lg mb-2 ${bgColor}`}

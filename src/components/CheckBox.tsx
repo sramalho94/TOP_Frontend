@@ -1,5 +1,5 @@
 import {TouchableOpacity} from 'react-native';
-import React, {useEffect} from 'react';
+import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 interface CheckBoxProps {
@@ -13,10 +13,6 @@ const CheckBox: React.FC<CheckBoxProps> = ({
   isSelected,
   accessHint,
 }) => {
-  // useEffect(() => {
-  //   // console.log('checkbox selection component: ', isSelected);
-  // }, [isSelected]);
-
   return (
     <TouchableOpacity
       onPress={handleCheckChanges}
