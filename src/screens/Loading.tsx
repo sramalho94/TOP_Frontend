@@ -1,11 +1,12 @@
 import {View, Text} from 'react-native';
 import React from 'react';
 
-type Props = {};
-
-const Loading = (props: Props) => {
+const Loading = () => {
   return (
-    <View accessibilityLabel='Loading Page' accessibilityHint='Screen while destination page is loading' accessibilityRole='header'>
+    <View
+      accessibilityLabel="Loading Page"
+      accessibilityHint="Screen while destination page is loading"
+      accessibilityRole="header">
       <Text>Loading</Text>
     </View>
   );

@@ -107,6 +107,8 @@ const ThankYouScreen = ({navigation, route}: Props) => {
               border={false}
               borderColor="border border-gray"
               width="80"
+              accessLabel="Navigate Home"
+              accessHint="This button will navigate you to the Home Dashboard"
             />
           ) : (
             <>
@@ -118,6 +120,8 @@ const ThankYouScreen = ({navigation, route}: Props) => {
                 border={false}
                 borderColor="border border-gray"
                 width="80"
+                accessLabel="Create Account"
+                accessHint="This button will navigate you to create an account"
               />
               <Button
                 onPress={() => navigation.navigate('LandingPage')}
@@ -127,6 +131,8 @@ const ThankYouScreen = ({navigation, route}: Props) => {
                 border={false}
                 borderColor=""
                 width="80"
+                accessLabel="Navigate to LandingPage"
+                accessHint="This button will navigate you to the Landing Page"
               />
             </>
           )}

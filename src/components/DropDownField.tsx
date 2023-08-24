@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {SafeAreaView, View, Text, TouchableOpacity, Image} from 'react-native';
+import {View, Text} from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 
 type Props = {

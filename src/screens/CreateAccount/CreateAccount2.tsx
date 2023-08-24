@@ -1,5 +1,5 @@
 import React, {useContext, useState} from 'react';
-import {View, Text, SafeAreaView, Modal} from 'react-native';
+import {View, Text, SafeAreaView} from 'react-native';
 import CreateAccountContext from '../../context/CreateAccountContext';
 import TextInputField from '../../components/TextInputField';
 import Button from '../../components/Button';
@@ -76,13 +76,7 @@ const CreateAccount2: React.FC<{navigation: any}> = ({navigation}) => {
 
   return (
     <SafeAreaView className="bg-themeWhite min-w-screen min-h-screen">
-      <TopNavBar
-        fontFamily=""
-        textSize="xl"
-        textValue="Create Account"
-        haveProgress={true}
-        page={2}
-      />
+      <TopNavBar fontFamily="" textSize="xl" textValue="Create Account" />
 
       <View
         className="flex-1 mb-5"

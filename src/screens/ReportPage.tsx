@@ -1,13 +1,6 @@
-import {
-  View,
-  Text,
-  SafeAreaView,
-  TouchableOpacity,
-  ScrollView,
-} from 'react-native';
+import {View, Text, SafeAreaView, ScrollView} from 'react-native';
 import React, {useState} from 'react';
 import CheckBox from '../components/CheckBox';
-import Icon from 'react-native-vector-icons/AntDesign';
 import TextInputField from '../components/TextInputField';
 import DropDownField from '../components/DropDownField';
 import Button from '../components/Button';
@@ -100,7 +93,6 @@ const ReportPage: React.FC<{navigation: any}> = ({navigation}) => {
         textValue="Report COVID-19 Test Result"
         fontFamily=""
         textSize="xl"
-        haveProgress={false}
       />
       <ScrollView>
         {/* Page Container */}

@@ -1,5 +1,5 @@
 import React, {useContext, useState} from 'react';
-import {View, Text, SafeAreaView, ScrollView, Modal} from 'react-native';
+import {View, SafeAreaView} from 'react-native';
 import CreateAccountContext from '../../context/CreateAccountContext';
 import Button from '../../components/Button';
 import TopNavBar from '../../components/TopNavBar';
@@ -30,13 +30,7 @@ const CreateAccount3: React.FC<{navigation: any}> = ({navigation}) => {
 
   return (
     <SafeAreaView className="flex-1 h-screen w-screen bg-themeWhite">
-      <TopNavBar
-        fontFamily=""
-        textSize="xl"
-        textValue="Create Account"
-        haveProgress={true}
-        page={3}
-      />
+      <TopNavBar fontFamily="" textSize="xl" textValue="Create Account" />
       <View
         className="max-w-md mx-auto mb-6"
         accessible={true}

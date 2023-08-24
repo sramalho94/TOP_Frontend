@@ -1,8 +1,6 @@
 import React, {View, Text} from 'react-native';
 
-type Props = {};
-
-const PasswordError = (props: Props) => {
+const PasswordError = () => {
   return (
     <View className="my-4 w-80 mx-auto">
       <View className=" justify-center items-center ">

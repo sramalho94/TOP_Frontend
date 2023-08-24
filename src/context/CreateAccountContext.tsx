@@ -31,8 +31,8 @@ const CreateAccountContext = React.createContext<CreateAccountContextProps>({
     ethnicity: '',
     firstName: '',
   },
-  updateFormState: () => { },
-  resetFormState: () => { },
+  updateFormState: () => {},
+  resetFormState: () => {},
 });
 
 export default CreateAccountContext;
