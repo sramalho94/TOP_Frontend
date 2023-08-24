@@ -1,5 +1,4 @@
 import axios, {AxiosResponse} from 'axios';
-import {Platform} from 'react-native';
 
 const BASE_URL =
   'http://production.eba-zudmp3xm.us-east-1.elasticbeanstalk.com/api';
@@ -25,11 +24,6 @@ export default class ApiService {
   }): Promise<AxiosResponse> {
     return axios
       .post(`${BASE_URL}/auth/login`, credentials)
-      .then(
-        this.sideEffect((res: AxiosResponse) =>
-          console.log('Login successful in apiService: ' + res.data),
-        ),
-      )
       .catch(
         this.sideEffect((error: AxiosResponse) =>
           console.log('Login ' + error),
@@ -50,13 +44,6 @@ export default class ApiService {
   }): Promise<AxiosResponse> {
     return axios
       .post(`${BASE_URL}/auth/register`, userData)
-      .then(
-        this.sideEffect((res: AxiosResponse) =>
-          console.log(
-            'Register API service success: ' + JSON.stringify(res.data),
-          ),
-        ),
-      )
       .catch(
         this.sideEffect((error: AxiosResponse) =>
           console.log('Register API service error: ' + error),
@@ -68,7 +55,6 @@ export default class ApiService {
     // Add any necessary authentication headers, such as the JWT token
     return axios
       .get(`${BASE_URL}/auth/check-session`)
-      .then(this.sideEffect((res: AxiosResponse) => console.log(res)))
       .catch(this.sideEffect((error: AxiosResponse) => console.log(error)));
   }
 
@@ -79,7 +65,6 @@ export default class ApiService {
   }): Promise<AxiosResponse> {
     return axios
       .put(`${BASE_URL}/auth/update-password`, updatePassword)
-      .then(this.sideEffect((res: AxiosResponse) => console.log(res)))
       .catch(this.sideEffect((error: AxiosResponse) => console.log(error)));
   }
   // ####################### USER ####################### //
@@ -162,11 +147,6 @@ export default class ApiService {
     console.log('This is testData in Create Test: ' + JSON.stringify(testData));
     return axios
       .post(`${BASE_URL}/test/anon`, testData)
-      .then(
-        this.sideEffect((res: AxiosResponse) =>
-          console.log('Created Test: ' + JSON.stringify(res.data)),
-        ),
-      )
       .catch(this.sideEffect((error: AxiosResponse) => console.log(error)));
   }
 
@@ -182,16 +162,9 @@ export default class ApiService {
     console.log('This is testData in Create Test: ' + JSON.stringify(testData));
     return axios
       .post(`${BASE_URL}/test/`, testData)
-      .then(
-        this.sideEffect((res: AxiosResponse) =>
-          console.log('Created Test: ' + JSON.stringify(res.data)),
-        ),
-      )
       .catch(this.sideEffect((error: AxiosResponse) => console.log(error)));
   }
 
-  // Probably don't need???
-  // FIXME: not sure what type "testData" will be, so left it as "any" type
   static updateTest(id: number, testData: any): Promise<AxiosResponse> {
     return axios
       .put(`${BASE_URL}/test/${id}`, testData)
@@ -199,7 +172,6 @@ export default class ApiService {
       .catch(this.sideEffect((error: AxiosResponse) => console.log(error)));
   }
 
-  // Probably don't need???
   static deleteTest(id: number): Promise<AxiosResponse> {
     return axios
       .delete(`${BASE_URL}/test/${id}`)
