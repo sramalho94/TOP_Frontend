@@ -9,7 +9,6 @@ import {
   View,
   Text,
   Image,
-  Animated,
   NativeSyntheticEvent,
   NativeScrollEvent,
   useWindowDimensions,
@@ -56,8 +55,6 @@ const Onboarding = (props: OnboardingScreenProps) => {
       onButtonPress: () => navigation.navigate('CreateAccount1'),
     },
   ];
-
-  const swipeAnim = useRef(new Animated.Value(0)).current;
 
   const handleSwipeAnimation = (page: number) => {
     if (scrollViewRef.current) {
