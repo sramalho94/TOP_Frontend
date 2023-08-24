@@ -1,28 +1,16 @@
 import {View, Text, TouchableOpacity} from 'react-native';
 import React from 'react';
 import Icon from 'react-native-vector-icons/AntDesign';
-import ProgressDots from './ProgressDots';
 import {useNavigation} from '@react-navigation/native';
 
 type Props = {
   textSize: string;
   textValue: string;
   fontFamily: string;
-  haveProgress: boolean;
-  page?: number;
 };
 
-const TopNavBar = ({
-  textSize,
-  textValue,
-  fontFamily,
-  haveProgress,
-  page,
-}: Props) => {
+const TopNavBar = ({textSize, textValue, fontFamily}: Props) => {
   const navigation = useNavigation();
-  const handleBackNavigation = () => {
-    navigation.goBack();
-  };
 
   return (
     <View className="h-1/8 mb-1">
@@ -41,7 +29,7 @@ const TopNavBar = ({
         </Text>
       </View>
       <View className="shadow shadow-black ">
-        <View className="border-gray-200 border-b-2  pb-4"></View>
+        <View className="border-gray-200 border-b-2  pb-4" />
       </View>
     </View>
   );
