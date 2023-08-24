@@ -54,13 +54,7 @@ const CreateAccount1: React.FC<{navigation: any}> = ({navigation}) => {
   return (
     <SafeAreaView className="flex-1 h-screen w-screen bg-themeWhite">
       <ScrollView>
-        <TopNavBar
-          fontFamily=""
-          textSize="xl"
-          textValue="Create Account"
-          haveProgress={true}
-          page={1}
-        />
+        <TopNavBar fontFamily="" textSize="xl" textValue="Create Account" />
         <View
           className="flex-1 min-h-[300px]"
           accessibilityLabel="Create Account for login Page 1"
