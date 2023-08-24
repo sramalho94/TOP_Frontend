@@ -144,7 +144,6 @@ export default class ApiService {
     race: string;
     ethnicity: string;
   }): Promise<AxiosResponse> {
-    console.log('This is testData in Create Test: ' + JSON.stringify(testData));
     return axios
       .post(`${BASE_URL}/test/anon`, testData)
       .catch(this.sideEffect((error: AxiosResponse) => console.log(error)));
@@ -159,7 +158,6 @@ export default class ApiService {
     race: string;
     ethnicity: string;
   }): Promise<AxiosResponse> {
-    console.log('This is testData in Create Test: ' + JSON.stringify(testData));
     return axios
       .post(`${BASE_URL}/test/`, testData)
       .catch(this.sideEffect((error: AxiosResponse) => console.log(error)));
