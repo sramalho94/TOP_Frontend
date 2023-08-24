@@ -1,6 +1,5 @@
 import {Text, TouchableOpacity, Image, View} from 'react-native';
 import React from 'react';
-import Button from './Button';
 
 type Props = {
   text?: string;
@@ -10,7 +9,7 @@ type Props = {
   Btnwidth: string;
   Btnheight: string;
   textColor?: string;
-  borderColor: string;
+  borderColor?: string;
   img?: any;
   textSize?: string;
   value?: boolean;
@@ -34,8 +33,6 @@ const CircleBtn = ({
   value,
   accessLabel,
   accessHint,
-  imgWidth,
-  imgHeight,
 }: Props) => {
   const handlePress = () => {
     if (onPress) {
@@ -51,7 +48,9 @@ const CircleBtn = ({
     <>
       <TouchableOpacity
         onPress={handlePress}
-        className={`${bgColor} ${borderColor}  flex items-center rounded-full justify-center ${textColor} ${Btnheight} ${Btnwidth}`}>
+        className={`${bgColor} ${borderColor}  flex items-center rounded-full justify-center ${textColor} ${Btnheight} ${Btnwidth}`}
+        accessibilityLabel={accessLabel}
+        accessibilityHint={accessHint}>
         {img && !text ? (
           <Image
             className={`bg-contain ${Btnheight} ${Btnwidth} rounded-full`}
@@ -66,8 +65,8 @@ const CircleBtn = ({
             <Text className={`text-center ${textSize} ${textColor}`}>
               {text}
             </Text>
-            <View className={`rounded-lg`}>
-              <Image className={`bg-contain w-10 h-10`} source={img} />
+            <View className="rounded-lg">
+              <Image className="bg-contain w-10 h-10" source={img} />
             </View>
           </View>
         ) : null}
