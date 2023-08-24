@@ -7,7 +7,7 @@ interface DataDashboardProps {}
 const DataDashboard: React.FC<DataDashboardProps> = props => (
   <WebView
     source={{
-      uri: 'https://public.tableau.com/views/COVIDDashboard1_6/COVIDDBTester?:language=en-US&:display_count=n&:origin=viz_share_link',
+      uri: 'https://public.tableau.com/views/COVIDDashboard2_6/COVIDDBTester?:language=en-US&:display_count=n&:origin=viz_share_link',
     }}
     accessible={true}
     accessibilityLabel="Data Dashboard Page"
