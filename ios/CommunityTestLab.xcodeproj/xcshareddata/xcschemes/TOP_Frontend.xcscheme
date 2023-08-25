@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "TOP_Frontend.app"
-               BlueprintName = "TOP_Frontend"
-               ReferencedContainer = "container:TOP_Frontend.xcodeproj">
+               BuildableName = "CommunityTestLab.app"
+               BlueprintName = "CommunityTestLab"
+               ReferencedContainer = "container:CommunityTestLab.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "TOP_FrontendTests.xctest"
-               BlueprintName = "TOP_FrontendTests"
-               ReferencedContainer = "container:TOP_Frontend.xcodeproj">
+               BuildableName = "CommunityTestLabTests.xctest"
+               BlueprintName = "CommunityTestLabTests"
+               ReferencedContainer = "container:CommunityTestLab.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "TOP_Frontend.app"
-            BlueprintName = "TOP_Frontend"
-            ReferencedContainer = "container:TOP_Frontend.xcodeproj">
+            BuildableName = "CommunityTestLab.app"
+            BlueprintName = "CommunityTestLab"
+            ReferencedContainer = "container:CommunityTestLab.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "TOP_Frontend.app"
-            BlueprintName = "TOP_Frontend"
-            ReferencedContainer = "container:TOP_Frontend.xcodeproj">
+            BuildableName = "CommunityTestLab.app"
+            BlueprintName = "CommunityTestLab"
+            ReferencedContainer = "container:CommunityTestLab.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
